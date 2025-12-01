@@ -44,17 +44,15 @@ color = Color(0.6120363, 0.61203635, 0.6120363, 1)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer"]
-anchors_preset = 15
+anchors_preset = 10
 anchor_right = 1.0
-anchor_bottom = 1.0
+offset_bottom = 509.0
 grow_horizontal = 2
-grow_vertical = 2
 stretch = true
-stretch_shrink = 4
 
 [node name="SubViewport" type="SubViewport" parent="CanvasLayer/SubViewportContainer"]
 canvas_item_default_texture_filter = 0
-size = Vector2i(288, 162)
+size = Vector2i(1152, 509)
 
 [node name="Node2D" type="Node2D" parent="CanvasLayer/SubViewportContainer/SubViewport"]
 
