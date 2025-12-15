@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Collections;
 
-public partial class Main : Node
+public partial class SceneManager : Node
 {
 	Node currentScene;
 	Control globalHud;
@@ -14,12 +14,10 @@ public partial class Main : Node
 		globalHud = GetNode<Control>("GlobalHud");
 		fade = globalHud.GetNode<Control>("Fade") as Fade;
 		
-		SetScene("res://Scenes/Battle.tscn", SwitchState.DESTROY, 0.5f);
+		SetScene("res://Scenes/Battle.tscn", SwitchState.DESTROY);
 	}
 	
-	
-	public void SetScene(string ScenePath, SwitchState mode, float delay)
-	{
+	void LoadScene(string scenePath, SwitchState mode) {
 		switch (mode) {
 			case SwitchState.DESTROY:
 				foreach (Node child in currentScene.GetChildren()) {
@@ -30,11 +28,18 @@ public partial class Main : Node
 				break;	
 		}
 		
-		Node newScene = ResourceLoader.Load<PackedScene>(ScenePath).Instantiate();
-		
+		Node newScene = ResourceLoader.Load<PackedScene>(scenePath).Instantiate();
 		currentScene.AddChild(newScene);
+	}
+	
+	public async void SetScene(string scenePath, SwitchState mode)
+	{
+	//	if (fadeOut) {
+	//		fade.FadeOut(5.0f);
+	//	}
 		
-		fade.FadeOut(1.0f);
+		LoadScene(scenePath, mode);
+	//	fade.FadeIn(5.0f);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
