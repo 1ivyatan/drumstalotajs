@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="drumstalotajs"
-run/main_scene="uid://bmjo7bukmtvxw"
-config/features=PackedStringArray("4.5", "GL Compatibility")
+run/main_scene="uid://s8ko5yo6dt7t"
+config/features=PackedStringArray("4.5", "C#", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Main="*res://Main.cs"
 
 [dotnet]
 
