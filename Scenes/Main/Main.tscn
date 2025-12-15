@@ -1,9 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://s8ko5yo6dt7t"]
 
-[ext_resource type="Script" uid="uid://ca3lh0u7jcvuh" path="res://Main.cs" id="1_r150o"]
+[ext_resource type="Script" uid="uid://ca3lh0u7jcvuh" path="res://Scenes/Main/Main.cs" id="1_p8rbg"]
 
 [node name="Main" type="Node"]
-script = ExtResource("1_r150o")
+script = ExtResource("1_p8rbg")
 
 [node name="Scene" type="Node" parent="."]
 

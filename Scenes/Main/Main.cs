@@ -12,11 +12,21 @@ public partial class Main : Node
 		currentScene = GetNode<Node>("Scene");
 		globalHud = GetNode<Control>("GlobalHud");
 		
-		SetScene("res://Scenes/Battle.tscn");
+		SetScene("res://Scenes/Battle.tscn", SwitchState.DESTROY);
 	}
 	
-	public void SetScene(string ScenePath)
+	public void SetScene(string ScenePath, SwitchState mode)
 	{
+		switch (mode) {
+			case SwitchState.DESTROY:
+				foreach (Node child in currentScene.GetChildren()) {
+					child.QueueFree();
+				}
+				break;
+			default:
+				break;	
+		}
+		
 		Node newScene = ResourceLoader.Load<PackedScene>(ScenePath).Instantiate();
 		
 		currentScene.AddChild(newScene);
