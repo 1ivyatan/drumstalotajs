@@ -8,6 +8,10 @@ public partial class SceneManager : Node
 	Control globalHud;
 	Fade fade;
 	
+	public Node GetCurrentScene() {
+		return currentScene;
+	}
+	
 	public override void _Ready()
 	{
 		currentScene = GetNode<Node>("Scene");
@@ -39,10 +43,5 @@ public partial class SceneManager : Node
 		
 		LoadScene(sceneName, mode);
 	//	fade.FadeIn(5.0f);
-	}
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
 	}
 }
