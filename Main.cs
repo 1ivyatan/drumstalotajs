@@ -8,6 +8,7 @@ public partial class Main : Node
 	public override void _Ready()
 	{
 		sceneManager = GetNode<Node>("SceneManager") as SceneManager;
-		sceneManager.SetScene("res://Scenes/Battle.tscn", SwitchState.DESTROY);
+		
+		sceneManager.SetScene("StartMenu", SwitchState.DESTROY);
 	}
 }

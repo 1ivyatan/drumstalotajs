@@ -15,7 +15,7 @@ public partial class SceneManager : Node
 		fade = globalHud.GetNode<Control>("Fade") as Fade;
 	}
 	
-	void LoadScene(string scenePath, SwitchState mode) {
+	void LoadScene(string sceneName, SwitchState mode) {
 		switch (mode) {
 			case SwitchState.DESTROY:
 				foreach (Node child in currentScene.GetChildren()) {
@@ -26,17 +26,18 @@ public partial class SceneManager : Node
 				break;	
 		}
 		
+		string scenePath = $"res://Scenes/{sceneName}/{sceneName}.tscn";
 		Node newScene = ResourceLoader.Load<PackedScene>(scenePath).Instantiate();
 		currentScene.AddChild(newScene);
 	}
 	
-	public async void SetScene(string scenePath, SwitchState mode)
+	public async void SetScene(string sceneName, SwitchState mode)
 	{
 	//	if (fadeOut) {
 	//		fade.FadeOut(5.0f);
 	//	}
 		
-		LoadScene(scenePath, mode);
+		LoadScene(sceneName, mode);
 	//	fade.FadeIn(5.0f);
 	}
 
