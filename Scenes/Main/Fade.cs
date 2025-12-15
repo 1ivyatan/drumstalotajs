@@ -16,7 +16,9 @@ public partial class Fade : Control
 	}
 	
 	public void FadeOut(float Delay) {
-		GD.Print("test");
+		Tween tween = GetTree().CreateTween();
+		tween.TweenProperty(tint, "color", Colors.White, 1.0f);
+		tween.TweenCallback(Callable.From(tint.QueueFree));
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
