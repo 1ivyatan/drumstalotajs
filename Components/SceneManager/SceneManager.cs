@@ -13,8 +13,6 @@ public partial class SceneManager : Node
 		currentScene = GetNode<Node>("Scene");
 		globalHud = GetNode<Control>("GlobalHud");
 		fade = globalHud.GetNode<Control>("Fade") as Fade;
-		
-		SetScene("res://Scenes/Battle.tscn", SwitchState.DESTROY);
 	}
 	
 	void LoadScene(string scenePath, SwitchState mode) {
