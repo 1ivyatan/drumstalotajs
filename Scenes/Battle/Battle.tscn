@@ -2,5 +2,40 @@
 
 [ext_resource type="Script" uid="uid://oqygske4utxd" path="res://Scenes/Battle/Battle.cs" id="1_ael4v"]
 
-[node name="Battle" type="Node"]
+[node name="Battle" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_ael4v")
+
+[node name="HeadContainer" type="PanelContainer" parent="."]
+layout_mode = 2
+
+[node name="InfoContainer" type="HBoxContainer" parent="HeadContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Turns" type="Label" parent="HeadContainer/InfoContainer"]
+layout_mode = 2
+text = "5. kārta"
+
+[node name="MapContainer" type="Control" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="FooterContainer" type="PanelContainer" parent="."]
+layout_mode = 2
+
+[node name="ButtonContainer" type="HBoxContainer" parent="FooterContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Pause" type="Button" parent="FooterContainer/ButtonContainer"]
+layout_mode = 2
+text = "Pauze"
+
+[node name="NextTurn" type="Button" parent="FooterContainer/ButtonContainer"]
+layout_mode = 2
+text = "Nākamais"

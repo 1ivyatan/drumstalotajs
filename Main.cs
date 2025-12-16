@@ -36,6 +36,9 @@ public partial class Main : Node
 	void Battle() {
 		sceneManager.SetScene("Battle", SwitchState.DESTROY);
 		
+		Node recieverNode = sceneManager.GetCurrentScene().GetChild(0);
+		
+		ConnectToSignal(recieverNode, "LevelSelect", nameof(LevelSelect));
 	}
 	
 	void Exit() {

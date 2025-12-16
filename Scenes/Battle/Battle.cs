@@ -3,13 +3,17 @@ using System;
 
 public partial class Battle : Node
 {
-	// Called when the node enters the scene tree for the first time.
+	[Signal]
+	public delegate void LevelSelectEventHandler();
+	
 	public override void _Ready()
 	{
+		Button pauseButton = GetNode<Button>("FooterContainer/ButtonContainer/Pause");
+		
+		pauseButton.Connect("pressed", new Callable(this, nameof(ToLevelSelect)));
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
+	void ToLevelSelect() {
+		EmitSignal(SignalName.LevelSelect);
 	}
 }
