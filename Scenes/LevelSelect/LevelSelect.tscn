@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://bxs858qhrokit"]
+[gd_scene load_steps=3 format=3 uid="uid://bxs858qhrokit"]
+
+[ext_resource type="Script" uid="uid://byn763v67wii5" path="res://Scenes/LevelSelect/LevelSelect.cs" id="1_hlgt2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_3hlao"]
 
@@ -9,6 +11,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_hlgt2")
 
 [node name="Map" type="Control" parent="."]
 layout_mode = 1

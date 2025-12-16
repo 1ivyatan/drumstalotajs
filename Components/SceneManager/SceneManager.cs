@@ -24,6 +24,7 @@ public partial class SceneManager : Node
 			case SwitchState.DESTROY:
 				foreach (Node child in currentScene.GetChildren()) {
 					child.QueueFree();
+  					currentScene.RemoveChild(child);
 				}
 				break;
 			default:
@@ -35,7 +36,7 @@ public partial class SceneManager : Node
 		currentScene.AddChild(newScene);
 	}
 	
-	public async void SetScene(string sceneName, SwitchState mode)
+	public void SetScene(string sceneName, SwitchState mode)
 	{
 	//	if (fadeOut) {
 	//		fade.FadeOut(5.0f);

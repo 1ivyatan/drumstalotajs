@@ -4,25 +4,25 @@ using System;
 public partial class StartMenu : HBoxContainer
 {
 	[Signal]
-	public delegate void StartMenuStartEventHandler();
+	public delegate void LevelSelectEventHandler();
 	
 	[Signal]
-	public delegate void StartMenuExitEventHandler();
+	public delegate void ExitEventHandler();
 	
 	public override void _Ready()
 	{
 		Button startButton = GetNode<Button>("MenuContainer/Center/ButtonContainer/Start");
 		Button exitButton = GetNode<Button>("MenuContainer/Center/ButtonContainer/FooterContainer/Exit");
 		
-		startButton.Connect("pressed", new Callable(this, nameof(Start)));
+		startButton.Connect("pressed", new Callable(this, nameof(ToLevelSelect)));
 		exitButton.Connect("pressed", new Callable(this, nameof(Exit)));
 	}
 	
-	void Start() {
-		EmitSignal(SignalName.StartMenuStart);
+	void ToLevelSelect() {
+		EmitSignal(SignalName.LevelSelect);
 	}
 	
-	void Exit() {
-		EmitSignal(SignalName.StartMenuExit);
+	void ToExit() {
+		EmitSignal(SignalName.Exit);
 	}
 }
