@@ -30,6 +30,12 @@ public partial class Main : Node
 		Node recieverNode = sceneManager.GetCurrentScene().GetChild(0);
 		
 		ConnectToSignal(recieverNode, "StartMenu", nameof(StartMenu));
+		ConnectToSignal(recieverNode, "Battle", nameof(Battle));
+	}
+	
+	void Battle() {
+		sceneManager.SetScene("Battle", SwitchState.DESTROY);
+		
 	}
 	
 	void Exit() {
