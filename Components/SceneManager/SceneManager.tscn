@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://s8ko5yo6dt7t"]
+[gd_scene load_steps=6 format=3 uid="uid://s8ko5yo6dt7t"]
 
 [ext_resource type="Script" uid="uid://ca3lh0u7jcvuh" path="res://Components/SceneManager/SceneManager.cs" id="1_si7tj"]
 [ext_resource type="Script" uid="uid://2uap1ddx4oas" path="res://Components/SceneManager/Fade.cs" id="2_b7gyy"]
+[ext_resource type="Theme" uid="uid://bthnwnwip14g6" path="res://Assets/Theme.tres" id="2_fmb6k"]
 
 [sub_resource type="Animation" id="Animation_qtv3y"]
 resource_name = "Fade"
@@ -26,7 +27,14 @@ _data = {
 [node name="SceneManager" type="Node"]
 script = ExtResource("1_si7tj")
 
-[node name="Scene" type="Node" parent="."]
+[node name="Scene" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_fmb6k")
 
 [node name="GlobalHud" type="Control" parent="."]
 layout_mode = 3
