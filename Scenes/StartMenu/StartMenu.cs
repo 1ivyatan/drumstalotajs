@@ -11,8 +11,8 @@ public partial class StartMenu : HBoxContainer
 	
 	public override void _Ready()
 	{
-		Button startButton = GetNode<Button>("MenuContainer/Center/ButtonContainer/Start");
-		Button exitButton = GetNode<Button>("MenuContainer/Center/ButtonContainer/FooterContainer/Exit");
+		Button startButton = GetNode<Button>("MenuContainer/Center/Panel/ButtonContainer/Start");
+		Button exitButton = GetNode<Button>("MenuContainer/Center/Panel/ButtonContainer/FooterContainer/Exit");
 		
 		startButton.Connect("pressed", new Callable(this, nameof(ToLevelSelect)));
 		exitButton.Connect("pressed", new Callable(this, nameof(Exit)));
