@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=4 uid="uid://bxs858qhrokit"]
+[gd_scene load_steps=5 format=4 uid="uid://bxs858qhrokit"]
 
 [ext_resource type="Script" uid="uid://byn763v67wii5" path="res://Scenes/LevelSelect/LevelSelect.cs" id="1_hlgt2"]
 [ext_resource type="Texture2D" uid="uid://23o34jyimnad" path="res://Scenes/terraintiles.png" id="2_57dhh"]
@@ -48,8 +48,6 @@ texture_region_size = Vector2i(36, 36)
 [sub_resource type="TileSet" id="TileSet_lk835"]
 tile_size = Vector2i(36, 36)
 sources/0 = SubResource("TileSetAtlasSource_hb0kq")
-
-[sub_resource type="LabelSettings" id="LabelSettings_3hlao"]
 
 [node name="LevelSelect" type="Control"]
 layout_mode = 3
@@ -122,12 +120,10 @@ layout_mode = 2
 [node name="Name" type="Label" parent="InfoPanel/VerticalContainer"]
 layout_mode = 2
 text = "Title"
-label_settings = SubResource("LabelSettings_3hlao")
 
 [node name="Description" type="Label" parent="InfoPanel/VerticalContainer"]
 layout_mode = 2
 text = "Desctiption"
-label_settings = SubResource("LabelSettings_3hlao")
 
 [node name="PlayButton" type="Button" parent="InfoPanel/VerticalContainer"]
 layout_mode = 2
