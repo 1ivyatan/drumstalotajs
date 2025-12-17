@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ca3lh0u7jcvuh" path="res://Components/SceneManager/SceneManager.cs" id="1_si7tj"]
 [ext_resource type="Script" uid="uid://2uap1ddx4oas" path="res://Components/SceneManager/Fade.cs" id="2_b7gyy"]
-[ext_resource type="Theme" uid="uid://bthnwnwip14g6" path="res://Assets/Theme.tres" id="2_fmb6k"]
+[ext_resource type="Theme" uid="uid://bthnwnwip14g6" path="res://Assets/UI/Theme.tres" id="2_fmb6k"]
 
 [sub_resource type="Animation" id="Animation_qtv3y"]
 resource_name = "Fade"
