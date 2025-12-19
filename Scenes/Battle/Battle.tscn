@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bniocgo0b7api"]
+[gd_scene load_steps=6 format=3 uid="uid://bniocgo0b7api"]
 
 [ext_resource type="Script" uid="uid://oqygske4utxd" path="res://Scenes/Battle/Battle.cs" id="1_ael4v"]
 [ext_resource type="PackedScene" uid="uid://bduqqwfck5aes" path="res://Scenes/Battle/Grid.tscn" id="2_gunap"]
 [ext_resource type="Texture2D" uid="uid://bdnopv2qeluqe" path="res://Assets/Sprites/enemy.png" id="3_3ihc8"]
+[ext_resource type="Script" uid="uid://bx2nbdo0vlyaf" path="res://Scenes/Battle/Enemy.cs" id="3_odh8s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_odh8s"]
 size = Vector2(36, 36)
@@ -36,6 +37,7 @@ size_flags_vertical = 6
 [node name="Grid" parent="MapContainer/Map" instance=ExtResource("2_gunap")]
 
 [node name="Enemy" type="Area2D" parent="MapContainer/Map"]
+script = ExtResource("3_odh8s")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MapContainer/Map/Enemy"]
 shape = SubResource("RectangleShape2D_odh8s")
