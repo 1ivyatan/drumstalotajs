@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=4 uid="uid://bxs858qhrokit"]
 
 [ext_resource type="Script" uid="uid://byn763v67wii5" path="res://Scenes/LevelSelect/LevelSelect.cs" id="1_hlgt2"]
-[ext_resource type="Texture2D" uid="uid://23o34jyimnad" path="res://Scenes/terraintiles.png" id="2_57dhh"]
+[ext_resource type="Texture2D" uid="uid://23o34jyimnad" path="res://Assets/Sprites/terraintiles.png" id="2_57dhh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hb0kq"]
 texture = ExtResource("2_57dhh")

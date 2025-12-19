@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://23o34jyimnad"
-path="res://.godot/imported/terraintiles.png-1849aa790d825992908f40cf5f17948f.ctex"
+uid="uid://bdnopv2qeluqe"
+path="res://.godot/imported/enemy.png-5aea871448e18ce3fc8bb2f5d8e39469.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/terraintiles.png"
-dest_files=["res://.godot/imported/terraintiles.png-1849aa790d825992908f40cf5f17948f.ctex"]
+source_file="res://Assets/Sprites/enemy.png"
+dest_files=["res://.godot/imported/enemy.png-5aea871448e18ce3fc8bb2f5d8e39469.ctex"]
 
 [params]
 

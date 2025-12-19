@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=4 uid="uid://bmjo7bukmtvxw"]
 
-[ext_resource type="Script" uid="uid://h6oi8ow6iaq0" path="res://Scenes/Grid.gd" id="1_2h7oj"]
-[ext_resource type="Texture2D" uid="uid://23o34jyimnad" path="res://Scenes/terraintiles.png" id="1_wvl2i"]
+[ext_resource type="Script" uid="uid://h6oi8ow6iaq0" path="res://Scenes/grid.gd" id="1_2h7oj"]
+[ext_resource type="Texture2D" uid="uid://23o34jyimnad" path="res://Assets/Sprites/terraintiles.png" id="1_wvl2i"]
 [ext_resource type="Texture2D" uid="uid://civrbkfl2nkkq" path="res://Scenes/catap.png" id="2_vr6xi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vr6xi"]
