@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bniocgo0b7api"]
 
 [ext_resource type="Script" uid="uid://oqygske4utxd" path="res://Scenes/Battle/Battle.cs" id="1_ael4v"]
-[ext_resource type="PackedScene" uid="uid://bduqqwfck5aes" path="res://Scenes/Battle/Grid.tscn" id="2_gunap"]
+[ext_resource type="PackedScene" uid="uid://bduqqwfck5aes" path="res://Scenes/Battle/Grid/Grid.tscn" id="2_gunap"]
 
 [node name="Battle" type="VBoxContainer"]
 anchors_preset = 15

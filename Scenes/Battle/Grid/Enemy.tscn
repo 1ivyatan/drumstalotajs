@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://7gniaor4cbia"]
 
-[ext_resource type="Script" uid="uid://bx2nbdo0vlyaf" path="res://Scenes/Battle/Enemy.cs" id="1_cgxef"]
+[ext_resource type="Script" uid="uid://bx2nbdo0vlyaf" path="res://Scenes/Battle/Grid/Enemy.cs" id="1_cgxef"]
 [ext_resource type="Texture2D" uid="uid://bdnopv2qeluqe" path="res://Assets/Sprites/enemy.png" id="2_5aqwu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_odh8s"]
