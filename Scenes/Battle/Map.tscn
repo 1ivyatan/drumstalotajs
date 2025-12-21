@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://caf8cc4bjn3mb"]
+
+[ext_resource type="PackedScene" uid="uid://bduqqwfck5aes" path="res://Scenes/Battle/Grid/Grid.tscn" id="1_jj48v"]
+[ext_resource type="Script" uid="uid://j4k6o5xsoycj" path="res://Scenes/Battle/Map.cs" id="1_yi7wg"]
+[ext_resource type="Script" uid="uid://dwybjvd1kj3oy" path="res://Scenes/Battle/Stage.cs" id="2_ayraj"]
+
+[node name="Map" type="Node2D"]
+script = ExtResource("1_yi7wg")
+
+[node name="Grid" parent="." instance=ExtResource("1_jj48v")]
+
+[node name="Stage" type="Node2D" parent="."]
+script = ExtResource("2_ayraj")
