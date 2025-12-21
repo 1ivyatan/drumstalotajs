@@ -22,7 +22,7 @@ public partial class StageManager : Node2D
 		activeStage = stageNodes[0];
 	}
 	
-	public void DelegateInput(InputEvent @event)
+	public override void _Input(InputEvent @event)
 	{
 		activeStage.Input(@event);
 	}

@@ -10,13 +10,8 @@ public partial class Map : Node2D
 		stageManager = GetNode("StageManager") as StageManager;
 	}
 	
-	public override void _Input(InputEvent @event)
-	{
-		stageManager.DelegateInput(@event);
-	}
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		
 	}
 }
