@@ -1,8 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://c54na4d5kf08p"]
+[gd_scene load_steps=3 format=3 uid="uid://c54na4d5kf08p"]
 
 [ext_resource type="Texture2D" uid="uid://bybf6gth0qful" path="res://Assets/Sprites/arty.png" id="1_eopms"]
 
-[node name="DevicePlaceholder" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eopms"]
+size = Vector2(36, 36)
+
+[node name="DevicePlaceholder" type="Area2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_eopms")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_eopms")
