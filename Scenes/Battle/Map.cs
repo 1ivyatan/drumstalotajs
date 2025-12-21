@@ -3,16 +3,16 @@ using System;
 
 public partial class Map : Node2D
 {
-	Stage stage;
+	StageManager stageManager;
 	
 	public override void _Ready()
 	{
-		stage = GetNode("Stage") as Stage;
+		stageManager = GetNode("StageManager") as StageManager;
 	}
 	
 	public override void _Input(InputEvent @event)
 	{
-		stage.DelegateInput(@event);
+		stageManager.DelegateInput(@event);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
