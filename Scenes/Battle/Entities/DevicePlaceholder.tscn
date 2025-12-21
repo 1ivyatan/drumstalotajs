@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eopms"]
 size = Vector2(36, 36)
 
-[node name="DevicePlaceholder" type="Area2D"]
+[node name="DevicePlaceholder" type="Area2D" groups=["placeholder"]]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_eopms")

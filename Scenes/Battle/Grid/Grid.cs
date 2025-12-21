@@ -25,7 +25,7 @@ public partial class Grid : Node2D
 				{
 					Area2D collider = (Area2D)result[0]["collider"];
 						
-					GD.Print(collider);
+					GD.Print(collider.IsInGroup("placeholder"));
 				}
 			}
 		}
