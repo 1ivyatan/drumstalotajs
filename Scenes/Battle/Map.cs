@@ -3,8 +3,6 @@ using System;
 
 public partial class Map : Node2D
 {
-	int deviceMaxCount = 2;
-	
 	StageManager stageManager;
 	
 	public override void _Ready()
@@ -12,9 +10,9 @@ public partial class Map : Node2D
 		stageManager = GetNode("StageManager") as StageManager;
 	}
 	
-	public void ToggleDevice(Vector2 position)
+	public void ToggleDevice(Vector2I position)
 	{
-		GD.Print("added device");
-		GD.Print(position);
+		Entities entities = GetNode("Grid/Entities") as Entities;
+		entities.ToggleDevice(position);
 	}
 }

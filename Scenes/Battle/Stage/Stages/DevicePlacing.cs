@@ -4,7 +4,7 @@ using System;
 public partial class DevicePlacing : Stage
 {
 	[Signal]
-	public delegate void ToggleDeviceEventHandler(Vector2 position);
+	public delegate void ToggleDeviceEventHandler(Vector2I position);
 	
 	public override void Load()
 	{
