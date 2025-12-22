@@ -10,8 +10,13 @@ public partial class Map : Node2D
 		stageManager = GetNode("StageManager") as StageManager;
 	}
 	
-	public void ToggledDeviceInGrid(Vector2I position)
+	public void AddedDevice(Vector2I position)
 	{
-		GD.Print("Toggled at " + position);
+		GD.Print("Added at " + position);
+	}
+	
+	public void RemovedDevice(Vector2I position)
+	{
+		GD.Print("Removed at " + position);
 	}
 }

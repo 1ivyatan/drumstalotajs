@@ -6,19 +6,29 @@ public partial class DevicePlacing : Stage
 	[Signal]
 	public delegate void ToggledDeviceInGridEventHandler(Vector2I position);
 	
+	[Signal]
+	public delegate void OnGridDeviceAddedEventHandler(Vector2I position);
+	
+	[Signal]
+	public delegate void OnGridDeviceRemovedEventHandler(Vector2I position);
+	
 	public override void Load()
 	{
 		Map map = MapRootNode as Map;
-		Connect("ToggledDeviceInGrid", new Callable(map, "ToggledDeviceInGrid"));
+		Connect("OnGridDeviceAdded", new Callable(map, "AddedDevice"));
+		Connect("OnGridDeviceRemoved", new Callable(map, "RemovedDevice"));
 	}
 	
-	void ToggleDevice(Vector2I position)
+	void AddDevice(Vector2I position)
 	{
 		TileMapLayer entityLayer = MapGridNode.GetNode<TileMapLayer>("Entities");
-		
-		GD.Print(entityLayer.GetCellAtlasCoords(position));
-		
 		entityLayer.SetCell(position, 0, new Vector2I(0, 0), 1);
+	}
+	
+	void RemoveDevice(Vector2I position)
+	{
+		TileMapLayer entityLayer = MapGridNode.GetNode<TileMapLayer>("Entities");
+		entityLayer.SetCell(position, 0, new Vector2I(0, 0), 0);
 	}
 	
 	public override void Input(InputEvent @event) {
@@ -28,16 +38,20 @@ public partial class DevicePlacing : Stage
 			{
 				Vector2 globalMousePos = GetGlobalMousePosition();
 				Vector2 localMousePos = MapGridNode.ToLocal(globalMousePos);
-				TileMapLayer placeholderLayer = MapGridNode.GetNode<TileMapLayer>("Placeholders");
-				Vector2I cellPos = placeholderLayer.LocalToMap(localMousePos);
+				TileMapLayer entityLayer = MapGridNode.GetNode<TileMapLayer>("Entities");
+				Vector2I cellPos = entityLayer.LocalToMap(localMousePos);
 				
-				switch (placeholderLayer.GetCellAlternativeTile(cellPos))
+				switch (entityLayer.GetCellAlternativeTile(cellPos))
 				{
 					case -1:
 						break;
 					case 0:
-						ToggleDevice(cellPos);
-						EmitSignal(SignalName.ToggledDeviceInGrid, cellPos);
+						AddDevice(cellPos);
+						EmitSignal(SignalName.OnGridDeviceAdded, cellPos);
+						break;
+					case 1:
+						RemoveDevice(cellPos);
+						EmitSignal(SignalName.OnGridDeviceRemoved, cellPos);
 						break;
 					default:	
 						break;
