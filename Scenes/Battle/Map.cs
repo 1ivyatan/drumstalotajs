@@ -3,20 +3,24 @@ using System;
 
 public partial class Map : Node2D
 {
-	StageManager stageManager;
+	Node2D MapGrid;
+	StageManager MapStageManager;
+	Entities EntityManager;
 	
 	public override void _Ready()
 	{
-		stageManager = GetNode("StageManager") as StageManager;
+		MapStageManager = GetNode("StageManager") as StageManager;
+		MapGrid = GetNode<Node2D>("Grid");
+		EntityManager = MapGrid.GetNode("Entities") as Entities;
 	}
 	
 	public void AddedDevice(Vector2I position)
 	{
-		GD.Print("Added at " + position);
+		EntityManager.UpdateCount(Entities.EntityType.Device);
 	}
 	
 	public void RemovedDevice(Vector2I position)
 	{
-		GD.Print("Removed at " + position);
+		EntityManager.UpdateCount(Entities.EntityType.Device);
 	}
 }

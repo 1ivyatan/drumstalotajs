@@ -16,6 +16,7 @@ public partial class Entities : TileMapLayer
 	public void UpdateCount(EntityType entityTypeId)
 	{
 		entities[(int)entityTypeId] = GetUsedCellsById(0, new Vector2I(0, 0), (int)entityTypeId).Select(e => new Vector2(e.X, e.Y)).ToArray();
+		GD.Print(entityTypeId + ": " + entities[(int)entityTypeId].Length);
 	}
 	
 	public override void _Ready()
