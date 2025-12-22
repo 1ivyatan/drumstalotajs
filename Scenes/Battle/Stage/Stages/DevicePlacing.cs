@@ -13,20 +13,20 @@ public partial class DevicePlacing : Stage
 	
 	public override void Load()
 	{
-		Map map = MapRootNode as Map;
+		Map map = mapRootNode as Map;
 		Connect("OnGridDeviceAdded", new Callable(map, "AddedDevice"));
 		Connect("OnGridDeviceRemoved", new Callable(map, "RemovedDevice"));
 	}
 	
 	void AddDevice(Vector2I position)
 	{
-		TileMapLayer entityLayer = MapGridNode.GetNode<TileMapLayer>("Entities");
+		TileMapLayer entityLayer = mapGridNode.GetNode<TileMapLayer>("Entities");
 		entityLayer.SetCell(position, 0, new Vector2I(0, 0), 1); // device
 	}
 	
 	void RemoveDevice(Vector2I position)
 	{
-		TileMapLayer entityLayer = MapGridNode.GetNode<TileMapLayer>("Entities");
+		TileMapLayer entityLayer = mapGridNode.GetNode<TileMapLayer>("Entities");
 		entityLayer.SetCell(position, 0, new Vector2I(0, 0), 0); //placeholder
 	}
 	

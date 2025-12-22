@@ -10,28 +10,33 @@ public partial class StageManager : Node2D
 	List<Stage> stageNodes;
 	Stage activeStage;
 	
+	public void SetStage(string name)
+	{
+		string stagePath = $"res://Scenes/Battle/Stage/Stages/{name}.tscn";
+		Node stageNode = ResourceLoader.Load<PackedScene>(stagePath).Instantiate();
+		AddChild(stageNode);
+		
+		Stage stage = stageNode as Stage;
+		stage.MapRootNode = rootNode;
+		stage.MapGridNode = gridNode;
+		
+		stage.Load();
+		activeStage = stage;
+	}
+	
 	public override void _Ready()
 	{
-		stageNodes = new List<Stage>();
 		rootNode = GetNode("../");
 		gridNode = rootNode.GetNode<Node2D>("Grid");
-			
-		foreach (Node child in GetChildren()) 
-		{
-			if (child is Stage)
-			{
-				stageNodes.Add(child as Stage);
-				stageNodes.Last().SetMapRootNode(rootNode);
-				stageNodes.Last().SetMapGridNode(gridNode);
-			}
-		}
-		
-		activeStage = stageNodes[0];
-		activeStage.Load();
+		SetStage("DevicePlacing");
 	}
 	
 	public override void _Input(InputEvent @event)
 	{
-		activeStage.Input(@event);
+		if (activeStage != null)
+		{
+			activeStage.Input(@event);	
+		}
+		
 	}
 }
