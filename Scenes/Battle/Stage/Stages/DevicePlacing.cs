@@ -4,13 +4,12 @@ using System;
 public partial class DevicePlacing : Stage
 {
 	[Signal]
-	public delegate void ToggledDeviceInGridEventHandler(Vector2I position);
-	
-	[Signal]
 	public delegate void OnGridDeviceAddedEventHandler(Vector2I position);
 	
 	[Signal]
 	public delegate void OnGridDeviceRemovedEventHandler(Vector2I position);
+	
+	int DeviceLimit = 2;
 	
 	public override void Load()
 	{
@@ -22,13 +21,13 @@ public partial class DevicePlacing : Stage
 	void AddDevice(Vector2I position)
 	{
 		TileMapLayer entityLayer = MapGridNode.GetNode<TileMapLayer>("Entities");
-		entityLayer.SetCell(position, 0, new Vector2I(0, 0), 1);
+		entityLayer.SetCell(position, 0, new Vector2I(0, 0), 1); // device
 	}
 	
 	void RemoveDevice(Vector2I position)
 	{
 		TileMapLayer entityLayer = MapGridNode.GetNode<TileMapLayer>("Entities");
-		entityLayer.SetCell(position, 0, new Vector2I(0, 0), 0);
+		entityLayer.SetCell(position, 0, new Vector2I(0, 0), 0); //placeholder
 	}
 	
 	public override void Input(InputEvent @event) {
