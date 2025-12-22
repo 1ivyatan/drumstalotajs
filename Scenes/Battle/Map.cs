@@ -12,7 +12,7 @@ public partial class Map : Node2D
 		stageManager = GetNode("StageManager") as StageManager;
 	}
 	
-	public void AddDevice(Vector2 position)
+	public void ToggleDevice(Vector2 position)
 	{
 		GD.Print("added device");
 		GD.Print(position);

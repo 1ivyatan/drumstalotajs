@@ -9,7 +9,7 @@ public partial class DevicePlacing : Stage
 	public override void Load()
 	{
 		Map map = MapRootNode as Map;
-		Connect("ToggleDevice", new Callable(map, "AddDevice"));
+		Connect("ToggleDevice", new Callable(map, "ToggleDevice"));
 	}
 	
 	public override void Input(InputEvent @event) {
@@ -33,7 +33,7 @@ public partial class DevicePlacing : Stage
 					if (collider.IsInGroup("placeholder"))
 					{
 						Vector2 localPos = MapGridNode.ToLocal(globalMousePos);
-						TileMapLayer selectorLayer = MapGridNode.GetNode<TileMapLayer>("Dynamic");
+						TileMapLayer selectorLayer = MapGridNode.GetNode<TileMapLayer>("Placeholders");
 						EmitSignal(SignalName.ToggleDevice, selectorLayer.LocalToMap(localPos));
 					}
 				}
