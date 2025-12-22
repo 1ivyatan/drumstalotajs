@@ -3,6 +3,8 @@ using System;
 
 public partial class Map : Node2D
 {
+	int deviceMaxCount = 2;
+	
 	StageManager stageManager;
 	
 	public override void _Ready()
@@ -10,8 +12,8 @@ public partial class Map : Node2D
 		stageManager = GetNode("StageManager") as StageManager;
 	}
 	
-	public override void _Process(double delta)
+	public void AddDevice()
 	{
-		
+		GD.Print("added device");
 	}
 }
