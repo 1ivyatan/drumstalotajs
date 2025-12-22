@@ -6,6 +6,7 @@ using System.Linq;
 public partial class StageManager : Node2D
 {
 	Node rootNode;
+	Node2D gridNode;
 	List<Stage> stageNodes;
 	Stage activeStage;
 	
@@ -13,6 +14,7 @@ public partial class StageManager : Node2D
 	{
 		stageNodes = new List<Stage>();
 		rootNode = GetNode("../");
+		gridNode = rootNode.GetNode<Node2D>("Grid");
 			
 		foreach (Node child in GetChildren()) 
 		{
@@ -20,6 +22,7 @@ public partial class StageManager : Node2D
 			{
 				stageNodes.Add(child as Stage);
 				stageNodes.Last().SetMapRootNode(rootNode);
+				stageNodes.Last().SetMapGridNode(gridNode);
 			}
 		}
 		

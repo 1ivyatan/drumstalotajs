@@ -4,7 +4,7 @@ using System;
 public partial class DevicePlacing : Stage
 {
 	[Signal]
-	public delegate void ToggleDeviceEventHandler();
+	public delegate void ToggleDeviceEventHandler(Vector2 position);
 	
 	public override void Load()
 	{
@@ -17,9 +17,11 @@ public partial class DevicePlacing : Stage
 		{
 			if (eventButton.Pressed)
 			{
+				Vector2 globalMousePos = GetGlobalMousePosition();
+				
 	   			var spaceState = GetWorld2D().DirectSpaceState;
 				var query = new PhysicsPointQueryParameters2D();
-				query.Position = GetGlobalMousePosition();
+				query.Position = globalMousePos;
 				query.CollideWithAreas = true;
 				
 				var result = spaceState.IntersectPoint(query, 1);
@@ -30,7 +32,9 @@ public partial class DevicePlacing : Stage
 					
 					if (collider.IsInGroup("placeholder"))
 					{
-						EmitSignal(SignalName.ToggleDevice);
+						Vector2 localPos = MapGridNode.ToLocal(globalMousePos);
+						TileMapLayer selectorLayer = MapGridNode.GetNode<TileMapLayer>("Dynamic");
+						EmitSignal(SignalName.ToggleDevice, selectorLayer.LocalToMap(localPos));
 					}
 				}
 			}
