@@ -4,12 +4,18 @@ using System;
 public partial class DevicePlacing : Stage
 {
 	[Signal]
-	public delegate void ToggleDeviceEventHandler(Vector2I position);
+	public delegate void ToggledDeviceInGridEventHandler(Vector2I position);
 	
 	public override void Load()
 	{
 		Map map = MapRootNode as Map;
-		Connect("ToggleDevice", new Callable(map, "ToggleDevice"));
+		Connect("ToggledDeviceInGrid", new Callable(map, "ToggledDeviceInGrid"));
+	}
+	
+	void ToggleDevice(Vector2I position)
+	{
+		TileMapLayer entityLayer = MapGridNode.GetNode<TileMapLayer>("Entities");
+		entityLayer.SetCell(position, 0, new Vector2I(0, 0));
 	}
 	
 	public override void Input(InputEvent @event) {
@@ -34,7 +40,10 @@ public partial class DevicePlacing : Stage
 					{
 						Vector2 localPos = MapGridNode.ToLocal(globalMousePos);
 						TileMapLayer selectorLayer = MapGridNode.GetNode<TileMapLayer>("Placeholders");
-						EmitSignal(SignalName.ToggleDevice, selectorLayer.LocalToMap(localPos));
+						Vector2I tilePos = selectorLayer.LocalToMap(localPos);
+						
+						ToggleDevice(tilePos);
+						EmitSignal(SignalName.ToggledDeviceInGrid, tilePos);
 					}
 				}
 			}

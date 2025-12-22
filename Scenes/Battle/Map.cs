@@ -10,9 +10,8 @@ public partial class Map : Node2D
 		stageManager = GetNode("StageManager") as StageManager;
 	}
 	
-	public void ToggleDevice(Vector2I position)
+	public void ToggledDeviceInGrid(Vector2I position)
 	{
-		Entities entities = GetNode("Grid/Entities") as Entities;
-		entities.ToggleDevice(position);
+		GD.Print("Toggled at " + position);
 	}
 }
