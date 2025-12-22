@@ -15,7 +15,10 @@ public partial class DevicePlacing : Stage
 	void ToggleDevice(Vector2I position)
 	{
 		TileMapLayer entityLayer = MapGridNode.GetNode<TileMapLayer>("Entities");
-		entityLayer.SetCell(position, 0, new Vector2I(0, 0));
+		
+		GD.Print(entityLayer.GetCellAtlasCoords(position));
+		
+		entityLayer.SetCell(position, 0, new Vector2I(0, 0), 1);
 	}
 	
 	public override void Input(InputEvent @event) {
@@ -30,7 +33,7 @@ public partial class DevicePlacing : Stage
 				query.Position = globalMousePos;
 				query.CollideWithAreas = true;
 				
-				var result = spaceState.IntersectPoint(query, 1);
+				var result = spaceState.IntersectPoint(query, 2);
 				
 				if (result.Count > 0)
 				{

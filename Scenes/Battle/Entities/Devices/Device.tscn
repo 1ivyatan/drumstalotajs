@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://jpdga1u5cgjm"]
+
+[ext_resource type="Texture2D" uid="uid://civrbkfl2nkkq" path="res://Assets/Sprites/catap.png" id="1_n1is0"]
+
+[node name="Device" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_n1is0")
