@@ -7,11 +7,18 @@ public partial class StageManager : Node2D
 {
 	Node rootNode;
 	Node2D gridNode;
-	List<Stage> stageNodes;
 	Stage activeStage;
 	
 	public void SetStage(string name)
 	{
+		if (GetChildCount() > 0)
+		{
+			foreach (Node child in GetChildren())
+			{
+				RemoveChild(child);
+			}
+		}
+		
 		string stagePath = $"res://Scenes/Battle/Stage/Stages/{name}.tscn";
 		Node stageNode = ResourceLoader.Load<PackedScene>(stagePath).Instantiate();
 		AddChild(stageNode);
@@ -37,6 +44,5 @@ public partial class StageManager : Node2D
 		{
 			activeStage.Input(@event);	
 		}
-		
 	}
 }
