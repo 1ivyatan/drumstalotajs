@@ -27,7 +27,23 @@ public partial class DevicePlacing : Stage
 			if (eventButton.Pressed)
 			{
 				Vector2 globalMousePos = GetGlobalMousePosition();
+				Vector2 localMousePos = MapGridNode.ToLocal(globalMousePos);
+				TileMapLayer placeholderLayer = MapGridNode.GetNode<TileMapLayer>("Placeholders");
+				Vector2I cellPos = placeholderLayer.LocalToMap(localMousePos);
 				
+				switch (placeholderLayer.GetCellAlternativeTile(cellPos))
+				{
+					case -1:
+						break;
+					case 0:
+						ToggleDevice(cellPos);
+						EmitSignal(SignalName.ToggledDeviceInGrid, cellPos);
+						break;
+					default:	
+						break;
+				}
+				
+				/*
 	   			var spaceState = GetWorld2D().DirectSpaceState;
 				var query = new PhysicsPointQueryParameters2D();
 				query.Position = globalMousePos;
@@ -45,10 +61,11 @@ public partial class DevicePlacing : Stage
 						TileMapLayer selectorLayer = MapGridNode.GetNode<TileMapLayer>("Placeholders");
 						Vector2I tilePos = selectorLayer.LocalToMap(localPos);
 						
+						
 						ToggleDevice(tilePos);
 						EmitSignal(SignalName.ToggledDeviceInGrid, tilePos);
 					}
-				}
+				}*/
 			}
 		}
 	}
