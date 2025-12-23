@@ -1,25 +1,23 @@
 using Godot;
-using Godot.Collections;
 using System;
-using System.Linq;
+using System.Collections.Generic;
 
 public partial class EntityLayer : TileMapLayer
 {
-	Dictionary<int, Vector2[]> entities;
+	Dictionary<int, Entity> entities;
 	
-	public void UpdateCount(EntityType entityTypeId)
+	public Entity GetEntity(EntityType entityTypeId)
 	{
-		entities[(int)entityTypeId] = GetUsedCellsById(0, new Vector2I(0, 0), (int)entityTypeId).Select(e => new Vector2(e.X, e.Y)).ToArray();
-		GD.Print(entityTypeId + ": " + entities[(int)entityTypeId].Length);
+		return entities[(int)entityTypeId];
 	}
 	
 	public override void _Ready()
 	{
-		entities = new Dictionary<int, Vector2[]>();
+		entities = new Dictionary<int, Entity>();
 		
 		foreach (EntityType entityTypeId in Enum.GetValues(typeof(EntityType)))
 		{
-			UpdateCount(entityTypeId);
+			entities.Add((int)entityTypeId, new Entity(this, entityTypeId));
 		}
 	}
 }
