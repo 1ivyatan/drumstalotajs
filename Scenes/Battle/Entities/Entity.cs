@@ -22,13 +22,24 @@ public partial class Entity
 		count = instances.Count;
 	}
 	
+	public bool HasInstanceIn(Vector2I position)
+	{
+		return instances.Contains(position);
+	}
+	
 	public void AddInstance(Vector2I position)
 	{
-		if (!instances.Contains(position))
+		layer.SetCell(position, 0, new Vector2I(0, 0), (int)id);
+		instances.Add(position);
+		count++;
+	}
+	
+	public void DetachInstance(Vector2I position)
+	{
+		if (instances.Contains(position))
 		{
-			layer.SetCell(position, 0, new Vector2I(0, 0), (int)id);
-			instances.Add(position);
-			count++;
+			instances.Remove(position);
+			count--;
 		}
 	}
 	

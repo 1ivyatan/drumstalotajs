@@ -21,12 +21,18 @@ public partial class DevicePlacing : Stage
 	
 	void AddDevice(Vector2I position)
 	{
-		entityLayer.GetEntitiesOfType(EntityType.Device).AddInstance(position);
+		entityLayer.PlaceEntity(EntityType.Device, position);
+		
+	//	entityLayer.GetEntitiesOfType(EntityType.DevicePlaceholder).RemoveInstance(position);
+	//	entityLayer.GetEntitiesOfType(EntityType.Device).AddInstance(position);
 	}
 	
 	void RemoveDevice(Vector2I position)
 	{
-		entityLayer.GetEntitiesOfType(EntityType.DevicePlaceholder).AddInstance(position);
+		entityLayer.PlaceEntity(EntityType.DevicePlaceholder, position);
+		
+	//	entityLayer.GetEntitiesOfType(EntityType.Device).RemoveInstance(position);
+	//	entityLayer.GetEntitiesOfType(EntityType.DevicePlaceholder).AddInstance(position);
 	}
 	
 	public override void Input(InputEvent @event) {
@@ -38,15 +44,15 @@ public partial class DevicePlacing : Stage
 				Vector2 localMousePos = MapGridNode.ToLocal(globalMousePos);
 				Vector2I cellPos = entityLayer.LocalToMap(localMousePos);
 				
-				switch (entityLayer.GetCellAlternativeTile(cellPos))
+				switch ((EntityType)entityLayer.GetCellAlternativeTile(cellPos))
 				{
-					case -1:
+					case EntityType.None:
 						break;
-					case 0:
+					case EntityType.DevicePlaceholder:
 						AddDevice(cellPos);
 						EmitSignal(SignalName.OnGridDeviceAdded, cellPos);
 						break;
-					case 1:
+					case EntityType.Device:
 						RemoveDevice(cellPos);
 						EmitSignal(SignalName.OnGridDeviceRemoved, cellPos);
 						break;
