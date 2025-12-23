@@ -11,17 +11,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ael4v")
 
-[node name="HeadContainer" type="PanelContainer" parent="."]
-layout_mode = 2
-
-[node name="InfoContainer" type="HBoxContainer" parent="HeadContainer"]
-layout_mode = 2
-alignment = 1
-
-[node name="Turns" type="Label" parent="HeadContainer/InfoContainer"]
-layout_mode = 2
-text = "5. kārta"
-
 [node name="MapContainer" type="Control" parent="."]
 layout_mode = 2
 size_flags_horizontal = 4
@@ -32,14 +21,18 @@ size_flags_vertical = 6
 [node name="FooterContainer" type="PanelContainer" parent="."]
 layout_mode = 2
 
-[node name="ButtonContainer" type="HBoxContainer" parent="FooterContainer"]
+[node name="DevicePlacementFooter" type="HFlowContainer" parent="FooterContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="Pause" type="Button" parent="FooterContainer/ButtonContainer"]
+[node name="Exit" type="Button" parent="FooterContainer/DevicePlacementFooter"]
 layout_mode = 2
 text = "Pauze"
 
-[node name="NextTurn" type="Button" parent="FooterContainer/ButtonContainer"]
+[node name="Spacer" type="Control" parent="FooterContainer/DevicePlacementFooter"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="StartNextStage" type="Button" parent="FooterContainer/DevicePlacementFooter"]
 layout_mode = 2
 text = "Nākamais"

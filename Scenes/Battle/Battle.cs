@@ -8,7 +8,7 @@ public partial class Battle : Node
 	
 	public override void _Ready()
 	{
-		Button pauseButton = GetNode<Button>("FooterContainer/ButtonContainer/Pause");
+		Button pauseButton = GetNode<Button>("FooterContainer/ButtonContainer/Exit");
 		
 		pauseButton.Connect("pressed", new Callable(this, nameof(ToLevelSelect)));
 	}
