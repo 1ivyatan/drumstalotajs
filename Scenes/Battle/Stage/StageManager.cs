@@ -5,14 +5,12 @@ using System.Linq;
 
 public partial class StageManager : Node2D
 {
+	[Signal]
+	public delegate void StageChangedEventHandler(string name);
+	
 	Node rootNode;
 	Node2D gridNode;
 	Stage activeStage;
-	
-	public Stage ActiveStage
-	{
-		get { return activeStage; }
-	}
 	
 	public void SetStage(string name)
 	{
@@ -34,6 +32,8 @@ public partial class StageManager : Node2D
 		
 		stage.Load();
 		activeStage = stage;
+		
+		EmitSignal(SignalName.StageChanged, name);
 	}
 	
 	public override void _Ready()
