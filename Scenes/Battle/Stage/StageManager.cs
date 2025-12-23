@@ -8,8 +8,10 @@ public partial class StageManager : Node2D
 	[Signal]
 	public delegate void StageChangedEventHandler(string name);
 	
+	Node uiNode;
 	Node rootNode;
 	Node2D gridNode;
+	
 	Stage activeStage;
 	
 	public void SetStage(string name)
@@ -40,6 +42,9 @@ public partial class StageManager : Node2D
 	{
 		rootNode = GetNode("../");
 		gridNode = rootNode.GetNode<Node2D>("Grid");
+		uiNode = rootNode.GetNode("../../");
+		
+		Connect("StageChanged", new Callable(uiNode, "StageChanged"));
 		SetStage("DevicePlacing");
 	}
 	
