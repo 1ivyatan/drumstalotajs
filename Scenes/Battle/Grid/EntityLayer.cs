@@ -3,7 +3,7 @@ using Godot.Collections;
 using System;
 using System.Linq;
 
-public partial class Entities : TileMapLayer
+public partial class EntityLayer : TileMapLayer
 {
 	public enum EntityType
 	{

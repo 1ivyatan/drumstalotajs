@@ -1,10 +1,10 @@
-[gd_scene load_steps=12 format=4 uid="uid://bduqqwfck5aes"]
+[gd_scene load_steps=10 format=4 uid="uid://bduqqwfck5aes"]
 
 [ext_resource type="Script" uid="uid://0mcpgl0btk8f" path="res://Scenes/Battle/Grid/Grid.cs" id="1_ixyij"]
 [ext_resource type="Texture2D" uid="uid://23o34jyimnad" path="res://Assets/Sprites/terraintiles.png" id="1_mmrd4"]
 [ext_resource type="PackedScene" uid="uid://c54na4d5kf08p" path="res://Scenes/Battle/Entities/Placeholders/DevicePlaceholder.tscn" id="3_suf77"]
 [ext_resource type="PackedScene" uid="uid://jpdga1u5cgjm" path="res://Scenes/Battle/Entities/Devices/Device.tscn" id="5_peq6v"]
-[ext_resource type="Script" uid="uid://dv7eefeam75uh" path="res://Scenes/Battle/Grid/Entities.cs" id="6_peq6v"]
+[ext_resource type="Script" uid="uid://uf5yyvcdebka" path="res://Scenes/Battle/Grid/EntityLayer.cs" id="6_peq6v"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uroei"]
 texture = ExtResource("1_mmrd4")
@@ -20,14 +20,6 @@ tile_size = Vector2i(36, 36)
 custom_data_layer_0/name = "height"
 custom_data_layer_0/type = 3
 sources/0 = SubResource("TileSetAtlasSource_uroei")
-
-[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_uroei"]
-resource_name = "Placeholders"
-scenes/0/scene = ExtResource("3_suf77")
-
-[sub_resource type="TileSet" id="TileSet_2xq50"]
-tile_size = Vector2i(36, 36)
-sources/0 = SubResource("TileSetScenesCollectionSource_uroei")
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_wh4pr"]
 resource_name = "Entities"
@@ -45,12 +37,7 @@ script = ExtResource("1_ixyij")
 tile_map_data = PackedByteArray("AAD6//z/AAAAAAAAAAD6//3/AAAAAAAAAAD6//7/AAAAAAAAAAD6////AAAAAAAAAAD6/wAAAAAAAAAAAAD6/wEAAAAAAAAAAAD6/wIAAAAAAAAAAAD6/wMAAAAAAAAAAAD7//z/AAAAAAAAAAD7//3/AAAAAAAAAAD7//7/AAAAAAAAAAD7////AAAAAAAAAAD7/wAAAAAAAAAAAAD7/wEAAAAAAAAAAAD7/wIAAAAAAAAAAAD7/wMAAAAAAAAAAAD8//z/AAAAAAAAAAD8//3/AAAAAAAAAAD8//7/AAABAAAAAAD8////AAABAAAAAAD8/wAAAAABAAAAAAD8/wEAAAABAAAAAAD8/wIAAAABAAAAAAD8/wMAAAAAAAAAAAD9//z/AAAAAAAAAAD9//3/AAAAAAAAAAD9//7/AAABAAAAAAD9////AAABAAAAAAD9/wAAAAABAAAAAAD9/wEAAAABAAAAAAD9/wIAAAABAAAAAAD9/wMAAAAAAAAAAAD+//z/AAAAAAAAAAD+//3/AAAAAAAAAAD+//7/AAABAAAAAAD+////AAACAAAAAAD+/wAAAAABAAAAAAD+/wEAAAABAAAAAAD+/wIAAAABAAAAAAD+/wMAAAAAAAAAAAD///z/AAAAAAAAAAD///3/AAAAAAAAAAD///7/AAABAAAAAAD/////AAABAAAAAAD//wAAAAABAAAAAAD//wEAAAABAAAAAAD//wIAAAACAAAAAAD//wMAAAAAAAAAAAAAAPz/AAAAAAAAAAAAAP3/AAAAAAAAAAAAAP7/AAABAAAAAAAAAP//AAABAAAAAAAAAAAAAAABAAAAAAAAAAEAAAABAAAAAAAAAAIAAAABAAAAAAAAAAMAAAAAAAAAAAABAPz/AAAAAAAAAAABAP3/AAAAAAAAAAABAP7/AAABAAAAAAABAP//AAABAAAAAAABAAAAAAABAAAAAAABAAEAAAABAAAAAAABAAIAAAABAAAAAAABAAMAAAAAAAAAAAACAPz/AAAAAAAAAAACAP3/AAAAAAAAAAACAP7/AAABAAAAAAACAP//AAABAAAAAAACAAAAAAABAAAAAAACAAEAAAACAAAAAAACAAIAAAABAAAAAAACAAMAAAAAAAAAAAADAPz/AAAAAAAAAAADAP3/AAAAAAAAAAADAP7/AAABAAAAAAADAP//AAABAAAAAAADAAAAAAABAAAAAAADAAEAAAABAAAAAAADAAIAAAABAAAAAAADAAMAAAAAAAAAAAAEAPz/AAAAAAAAAAAEAP3/AAAAAAAAAAAEAP7/AAAAAAAAAAAEAP//AAAAAAAAAAAEAAAAAAAAAAAAAAAEAAEAAAAAAAAAAAAEAAIAAAAAAAAAAAAEAAMAAAAAAAAAAAAFAPz/AAAAAAAAAAAFAP3/AAAAAAAAAAAFAP7/AAAAAAAAAAAFAP//AAAAAAAAAAAFAAAAAAAAAAAAAAAFAAEAAAAAAAAAAAAFAAIAAAAAAAAAAAAFAAMAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_mmrd4")
 
-[node name="Placeholders" type="TileMapLayer" parent="."]
-visible = false
-tile_map_data = PackedByteArray("AAD+////AAAAAAAAAAD//wIAAAAAAAAAAAACAAEAAAAAAAAAAAA=")
-tile_set = SubResource("TileSet_2xq50")
-
-[node name="Entities" type="TileMapLayer" parent="."]
+[node name="EntityLayer" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAACAAEAAAAAAAAAAAD//wIAAAAAAAAAAAD+////AAAAAAAAAAA=")
 tile_set = SubResource("TileSet_0so38")
 script = ExtResource("6_peq6v")

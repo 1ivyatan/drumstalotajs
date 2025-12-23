@@ -9,24 +9,23 @@ public partial class DevicePlacing : Stage
 	[Signal]
 	public delegate void OnGridDeviceRemovedEventHandler(Vector2I position);
 	
-	int DeviceLimit = 2;
+	TileMapLayer entityLayer;
 	
 	public override void Load()
 	{
 		Map map = mapRootNode as Map;
+		entityLayer = mapGridNode.GetNode<TileMapLayer>("EntityLayer");
 		Connect("OnGridDeviceAdded", new Callable(map, "AddedDevice"));
 		Connect("OnGridDeviceRemoved", new Callable(map, "RemovedDevice"));
 	}
 	
 	void AddDevice(Vector2I position)
 	{
-		TileMapLayer entityLayer = mapGridNode.GetNode<TileMapLayer>("Entities");
 		entityLayer.SetCell(position, 0, new Vector2I(0, 0), 1); // device
 	}
 	
 	void RemoveDevice(Vector2I position)
 	{
-		TileMapLayer entityLayer = mapGridNode.GetNode<TileMapLayer>("Entities");
 		entityLayer.SetCell(position, 0, new Vector2I(0, 0), 0); //placeholder
 	}
 	
@@ -37,7 +36,6 @@ public partial class DevicePlacing : Stage
 			{
 				Vector2 globalMousePos = GetGlobalMousePosition();
 				Vector2 localMousePos = MapGridNode.ToLocal(globalMousePos);
-				TileMapLayer entityLayer = MapGridNode.GetNode<TileMapLayer>("Entities");
 				Vector2I cellPos = entityLayer.LocalToMap(localMousePos);
 				
 				switch (entityLayer.GetCellAlternativeTile(cellPos))
