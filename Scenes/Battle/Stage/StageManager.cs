@@ -9,6 +9,11 @@ public partial class StageManager : Node2D
 	Node2D gridNode;
 	Stage activeStage;
 	
+	public Stage ActiveStage
+	{
+		get { return activeStage; }
+	}
+	
 	public void SetStage(string name)
 	{
 		if (GetChildCount() > 0)
