@@ -5,12 +5,6 @@ using System.Linq;
 
 public partial class EntityLayer : TileMapLayer
 {
-	public enum EntityType
-	{
-		DevicePlaceholder = 0,
-		Device = 1
-	}
-	
 	Dictionary<int, Vector2[]> entities;
 	
 	public void UpdateCount(EntityType entityTypeId)

@@ -16,11 +16,11 @@ public partial class Map : Node2D
 	
 	public void AddedDevice(Vector2I position)
 	{
-		EntityManager.UpdateCount(EntityLayer.EntityType.Device);
+		EntityManager.UpdateCount(EntityType.Device);
 	}
 	
 	public void RemovedDevice(Vector2I position)
 	{
-		EntityManager.UpdateCount(EntityLayer.EntityType.Device);
+		EntityManager.UpdateCount(EntityType.Device);
 	}
 }
