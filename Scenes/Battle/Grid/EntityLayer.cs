@@ -6,7 +6,7 @@ public partial class EntityLayer : TileMapLayer
 {
 	Dictionary<int, Entity> entities;
 	
-	public Entity GetEntity(EntityType entityTypeId)
+	public Entity GetEntitiesOfType(EntityType entityTypeId)
 	{
 		return entities[(int)entityTypeId];
 	}

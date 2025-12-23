@@ -9,24 +9,24 @@ public partial class DevicePlacing : Stage
 	[Signal]
 	public delegate void OnGridDeviceRemovedEventHandler(Vector2I position);
 	
-	TileMapLayer entityLayer;
+	EntityLayer entityLayer;
 	
 	public override void Load()
 	{
 		Map map = mapRootNode as Map;
-		entityLayer = mapGridNode.GetNode<TileMapLayer>("EntityLayer");
+		entityLayer = mapGridNode.GetNode<TileMapLayer>("EntityLayer") as EntityLayer;
 		Connect("OnGridDeviceAdded", new Callable(map, "AddedDevice"));
 		Connect("OnGridDeviceRemoved", new Callable(map, "RemovedDevice"));
 	}
 	
 	void AddDevice(Vector2I position)
 	{
-		entityLayer.SetCell(position, 0, new Vector2I(0, 0), 1); // device
+		entityLayer.GetEntitiesOfType(EntityType.Device).SetInstance(position);
 	}
 	
 	void RemoveDevice(Vector2I position)
 	{
-		entityLayer.SetCell(position, 0, new Vector2I(0, 0), 0); //placeholder
+		entityLayer.GetEntitiesOfType(EntityType.DevicePlaceholder).SetInstance(position);
 	}
 	
 	public override void Input(InputEvent @event) {

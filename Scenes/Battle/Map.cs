@@ -16,11 +16,11 @@ public partial class Map : Node2D
 	
 	public void AddedDevice(Vector2I position)
 	{
-		EntityManager.GetEntity(EntityType.Device).UpdateInstances();
+		EntityManager.GetEntitiesOfType(EntityType.Device).UpdateInstances();
 	}
 	
 	public void RemovedDevice(Vector2I position)
 	{
-		EntityManager.GetEntity(EntityType.Device).UpdateInstances();
+		EntityManager.GetEntitiesOfType(EntityType.Device).UpdateInstances();
 	}
 }
