@@ -29,11 +29,6 @@ public partial class EntityLayer : TileMapLayer
 			
 			entities[entityType].AddInstance(position);
 		}
-		
-		//if (oldEntity.Count > 0)
-		//{
-			
-		//}
 	}
 	
 	public override void _Ready()
