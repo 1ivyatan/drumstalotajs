@@ -7,21 +7,39 @@ using System.Linq;
 public partial class Entity
 {
 	TileMapLayer layer;
-	Vector2[] instances;
+	List<Vector2I> instances;
 	EntityType id;
 	int count;
 	
-	public void UpdateInstances()
+	public int Count
 	{
-		instances = layer.GetUsedCellsById(0, new Vector2I(0, 0), (int)id)
-				 		 .Select(i => new Vector2(i.X, i.Y))
-				 		 .ToArray();
-		count = instances.Length;
+		get { return count; }
 	}
 	
-	public void SetInstance(Vector2I position)
+	public void UpdateInstances()
 	{
-		layer.SetCell(position, 0, new Vector2I(0, 0), (int)id);
+		instances = layer.GetUsedCellsById(0, new Vector2I(0, 0), (int)id).ToList();
+		count = instances.Count;
+	}
+	
+	public void AddInstance(Vector2I position)
+	{
+		if (!instances.Contains(position))
+		{
+			layer.SetCell(position, 0, new Vector2I(0, 0), (int)id);
+			instances.Add(position);
+			count++;
+		}
+	}
+	
+	public void RemoveInstance(Vector2I position)
+	{
+		if (instances.Contains(position))
+		{
+			layer.EraseCell(position);
+			instances.Remove(position);
+			count--;
+		}
 	}
 	
 	public Entity(TileMapLayer tileMapLayer, EntityType typeId)

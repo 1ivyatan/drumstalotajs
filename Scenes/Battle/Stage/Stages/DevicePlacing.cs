@@ -21,12 +21,12 @@ public partial class DevicePlacing : Stage
 	
 	void AddDevice(Vector2I position)
 	{
-		entityLayer.GetEntitiesOfType(EntityType.Device).SetInstance(position);
+		entityLayer.GetEntitiesOfType(EntityType.Device).AddInstance(position);
 	}
 	
 	void RemoveDevice(Vector2I position)
 	{
-		entityLayer.GetEntitiesOfType(EntityType.DevicePlaceholder).SetInstance(position);
+		entityLayer.GetEntitiesOfType(EntityType.DevicePlaceholder).AddInstance(position);
 	}
 	
 	public override void Input(InputEvent @event) {
