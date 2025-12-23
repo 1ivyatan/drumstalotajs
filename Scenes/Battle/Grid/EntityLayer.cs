@@ -17,7 +17,7 @@ public partial class EntityLayer : TileMapLayer
 		
 		if (oldEntityType == EntityType.None)
 		{
-			
+			EraseCell(position);
 		} else 
 		{
 			Entity oldEntity = entities[oldEntityType];
