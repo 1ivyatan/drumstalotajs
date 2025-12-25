@@ -21,10 +21,8 @@ public partial class DevicePlacing : Stage
 		Connect("OnGridDeviceRemoved", new Callable(map, "RemovedDevice"));
 	}
 	
-	void AddDevice(Vector2I position)
+	void UpdateHeader()
 	{
-		entityLayer.PlaceEntity(EntityType.Device, position);
-		
 		Node headerWidget = (sceneUiNode as Battle).HeaderWidget;
 		if (headerWidget != null)
 		{
@@ -36,9 +34,16 @@ public partial class DevicePlacing : Stage
 		}
 	}
 	
+	void AddDevice(Vector2I position)
+	{
+		entityLayer.PlaceEntity(EntityType.Device, position);
+		UpdateHeader();
+	}
+	
 	void RemoveDevice(Vector2I position)
 	{
 		entityLayer.PlaceEntity(EntityType.DevicePlaceholder, position);
+		UpdateHeader();
 	}
 	
 	public override void Input(InputEvent @event) {
