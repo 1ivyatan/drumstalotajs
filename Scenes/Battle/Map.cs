@@ -14,6 +14,16 @@ public partial class Map : Node2D
 		entityManager = MapGrid.GetNode("EntityLayer") as EntityLayer;
 	}
 	
+	public void LoadLevel(string name)
+	{
+		string path = $"res://Assets/Levels/{name}.json";
+		
+		using var file = FileAccess.Open(path, FileAccess.ModeFlags.Read);
+		string content = file.GetAsText();
+		
+		GD.Print(content);
+	}
+	
 	public void AddedDevice(Vector2I position)
 	{
 		

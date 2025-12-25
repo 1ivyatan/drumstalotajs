@@ -8,9 +8,12 @@ public partial class Battle : VBoxContainer
 	
 	Node headerContainer;
 	Node footerContainer;
+	Map map;
 	
 	public override void _Ready()
 	{
+		map = GetNode<Node2D>("MapContainer/Map") as Map;
+		map.LoadLevel("1");
 	}
 	
 	public Node HeaderWidget
