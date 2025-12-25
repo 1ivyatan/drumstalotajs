@@ -11,7 +11,7 @@ public partial class DevicePlacing : Stage
 	
 	EntityLayer entityLayer;
 	
-	public override void Load()
+	public override void LoadStage()
 	{
 		Map map = mapRootNode as Map;
 		entityLayer = mapGridNode.GetNode<TileMapLayer>("EntityLayer") as EntityLayer;
@@ -35,7 +35,7 @@ public partial class DevicePlacing : Stage
 			if (eventButton.Pressed)
 			{
 				Vector2 globalMousePos = GetGlobalMousePosition();
-				Vector2 localMousePos = MapGridNode.ToLocal(globalMousePos);
+				Vector2 localMousePos = mapGridNode.ToLocal(globalMousePos);
 				Vector2I cellPos = entityLayer.LocalToMap(localMousePos);
 				
 				switch ((EntityType)entityLayer.GetCellAlternativeTile(cellPos))

@@ -16,6 +16,7 @@ public partial class Map : Node2D
 	
 	public void AddedDevice(Vector2I position)
 	{
+		
 		GD.Print(EntityManager.GetEntitiesOfType(EntityType.Device).Count + " / " + 
 				 EntityManager.GetEntitiesOfType(EntityType.DevicePlaceholder).Count);
 	}

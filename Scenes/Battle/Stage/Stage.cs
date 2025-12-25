@@ -3,21 +3,18 @@ using System;
 
 public abstract partial class Stage : Node2D
 {
-	public abstract void Input(InputEvent @event);
-	public abstract void Load();
-	
 	protected Node mapRootNode;
 	protected Node2D mapGridNode;
+	protected Control sceneUiNode;
 	
-	public Node MapRootNode
-	{
-		get { return mapRootNode; }
-		set { mapRootNode = value; }
-	}
+	public abstract void Input(InputEvent @event);
+	public abstract void LoadStage();
 	
-	public Node2D MapGridNode
+	public void Load(Control uiNode, Node mapNode, Node2D gridNode)
 	{
-		get { return mapGridNode; }
-		set { mapGridNode = value; }
+		sceneUiNode = uiNode;
+		mapRootNode = mapNode;
+		mapGridNode = gridNode;
+		LoadStage();
 	}
 }
