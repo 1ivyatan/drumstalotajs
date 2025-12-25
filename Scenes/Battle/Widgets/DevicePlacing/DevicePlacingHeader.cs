@@ -7,4 +7,9 @@ public partial class DevicePlacingHeader : Widget
 	{
 		
 	}
+	
+	public void SetLabels(int deviceCount)
+	{
+		
+	}
 }
