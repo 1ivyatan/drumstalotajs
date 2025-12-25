@@ -11,6 +11,7 @@ public partial class DevicePlacing : Stage
 	
 	EntityLayer entityLayer;
 	
+	
 	public override void LoadStage()
 	{
 		Map map = mapRootNode as Map;
@@ -22,11 +23,20 @@ public partial class DevicePlacing : Stage
 	void AddDevice(Vector2I position)
 	{
 		entityLayer.PlaceEntity(EntityType.Device, position);
+		
+		Node headerWidget = (sceneUiNode as Battle).HeaderWidget;
+		if (headerWidget != null)
+		{
+			GD.Print("Has the widget!");
+		}
+		
+		EmitSignal(SignalName.OnGridDeviceAdded, cellPos);
 	}
 	
 	void RemoveDevice(Vector2I position)
 	{
 		entityLayer.PlaceEntity(EntityType.DevicePlaceholder, position);
+		EmitSignal(SignalName.OnGridDeviceRemoved, cellPos);
 	}
 	
 	public override void Input(InputEvent @event) {
@@ -44,11 +54,9 @@ public partial class DevicePlacing : Stage
 						break;
 					case EntityType.DevicePlaceholder:
 						AddDevice(cellPos);
-						EmitSignal(SignalName.OnGridDeviceAdded, cellPos);
 						break;
 					case EntityType.Device:
 						RemoveDevice(cellPos);
-						EmitSignal(SignalName.OnGridDeviceRemoved, cellPos);
 						break;
 					default:	
 						break;

@@ -13,6 +13,28 @@ public partial class Battle : VBoxContainer
 	{
 	}
 	
+	public Node HeaderWidget
+	{
+		get
+		{ 
+			headerContainer = GetNode<Control>($"HeaderContainer");
+			return (headerContainer.GetChildCount() == 1)
+				? headerContainer.GetChild(0)
+				: null;
+		}
+	}
+	
+	public Node FooterWidget
+	{
+		get
+		{ 
+			footerContainer = GetNode<Control>($"FooterContainer");
+			return (footerContainer.GetChildCount() == 1)
+				? footerContainer.GetChild(0)
+				: null;
+		}
+	}
+	
 	void RefreshContainer(Node container, string name, string type)
 	{
 		container = GetNode<Control>($"{type}Container");
