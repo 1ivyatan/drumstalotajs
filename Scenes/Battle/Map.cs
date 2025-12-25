@@ -22,6 +22,8 @@ public partial class Map : Node2D
 		string content = file.GetAsText();
 		
 		GD.Print(content);
+		
+		Level level = new Level();
 	}
 	
 	public void AddedDevice(Vector2I position)
