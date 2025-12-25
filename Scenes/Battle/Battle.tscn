@@ -11,7 +11,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ael4v")
 
-[node name="HeaderContainer" type="PanelContainer" parent="."]
+[node name="HeaderContainer" type="Control" parent="."]
 layout_mode = 2
 
 [node name="MapContainer" type="Control" parent="."]
