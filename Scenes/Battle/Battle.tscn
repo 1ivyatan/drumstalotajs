@@ -11,7 +11,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ael4v")
 
-[node name="HeaderContainer" type="Control" parent="."]
+[node name="HeaderContainer" type="PanelContainer" parent="."]
 layout_mode = 2
 
 [node name="MapContainer" type="Control" parent="."]
@@ -23,19 +23,3 @@ size_flags_vertical = 6
 
 [node name="FooterContainer" type="PanelContainer" parent="."]
 layout_mode = 2
-
-[node name="DevicePlacementFooter" type="HFlowContainer" parent="FooterContainer"]
-layout_mode = 2
-alignment = 1
-
-[node name="Exit" type="Button" parent="FooterContainer/DevicePlacementFooter"]
-layout_mode = 2
-text = "Pauze"
-
-[node name="Spacer" type="Control" parent="FooterContainer/DevicePlacementFooter"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="StartNextStage" type="Button" parent="FooterContainer/DevicePlacementFooter"]
-layout_mode = 2
-text = "Nākamais"

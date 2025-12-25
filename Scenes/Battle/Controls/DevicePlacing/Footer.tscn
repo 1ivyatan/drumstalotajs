@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://h6v6cj1h4h5k"]
+
+[node name="DevicePlacementFooter" type="HFlowContainer"]
+alignment = 1
+
+[node name="Exit" type="Button" parent="."]
+layout_mode = 2
+text = "Iziet"
+
+[node name="StartNextStage" type="Button" parent="."]
+layout_mode = 2
+text = "Sākt"
