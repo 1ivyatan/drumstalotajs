@@ -14,6 +14,6 @@ script = ExtResource("2_k1lvl")
 layout_mode = 2
 alignment = 1
 
-[node name="SelectedCount" type="Label" parent="HFlowContainer" index="0"]
+[node name="AddedCount" type="Label" parent="HFlowContainer" index="0"]
 layout_mode = 2
-text = "Atlasīti"
+text = "Nav nekas ievietots"
