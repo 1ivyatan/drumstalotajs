@@ -15,6 +15,8 @@ public partial class Battle : VBoxContainer
 	
 	void RefreshContainer(Node container, string name, string type)
 	{
+		container = GetNode<Control>($"{type}Container");
+		
 		foreach (Node child in container.GetChildren())
 		{
 			child.QueueFree();
@@ -32,10 +34,7 @@ public partial class Battle : VBoxContainer
 	}
 	
 	void StageChanged(string name)
-	{
-		headerContainer = GetNode<Control>("HeaderContainer");
-		footerContainer = GetNode<Control>("FooterContainer");
-		
+	{	
 		RefreshContainer(headerContainer, name, "Header");
 		RefreshContainer(footerContainer, name, "Footer");
 	}
