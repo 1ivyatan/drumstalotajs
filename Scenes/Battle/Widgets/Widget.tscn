@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://cvoayra3iuvq2"]
+
+[node name="Widget" type="PanelContainer"]
+size_flags_horizontal = 3

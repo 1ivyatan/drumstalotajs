@@ -13,39 +13,34 @@ public partial class Battle : VBoxContainer
 	{
 	}
 	
-	void StageChanged(string name)
+	void RefreshContainer(Node container, string name, string type)
 	{
-		headerContainer = GetNode<PanelContainer>("HeaderContainer");
-		footerContainer = GetNode<PanelContainer>("FooterContainer");
-		
-		foreach (Node child in headerContainer.GetChildren())
+		foreach (Node child in container.GetChildren())
 		{
 			child.QueueFree();
-			headerContainer.RemoveChild(child);
+			container.RemoveChild(child);
 		}
 		
-		foreach (Node child in footerContainer.GetChildren())
-		{
-			child.QueueFree();
-			footerContainer.RemoveChild(child);
-		}
+		string path = $"res://Scenes/Battle/Widgets/{name}/{name}";
 		
-		string path = $"res://Scenes/Battle/Controls/{name}";
-		
-		if (ResourceLoader.Exists($"{path}/Header.tscn")) 
+		if (ResourceLoader.Exists($"{path}{type}.tscn")) 
 		{
-			Node header = ResourceLoader.Load<PackedScene>($"{path}/Header.tscn").Instantiate();
-			headerContainer.AddChild(header);
-		}
-		
-		if (ResourceLoader.Exists($"{path}/Footer.tscn"))
-		{
-			Node footer = ResourceLoader.Load<PackedScene>($"{path}/Footer.tscn").Instantiate();
-			footerContainer.AddChild(footer);
+			Node child = ResourceLoader.Load<PackedScene>($"{path}{type}.tscn").Instantiate();
+			(child as Widget).Load(this, GetNode("MapContainer/Map/Grid"));
+			container.AddChild(child);
 		}
 	}
-
-	void ToLevelSelect() {
+	
+	void StageChanged(string name)
+	{
+		headerContainer = GetNode<Control>("HeaderContainer");
+		footerContainer = GetNode<Control>("FooterContainer");
+		
+		RefreshContainer(headerContainer, name, "Header");
+		RefreshContainer(footerContainer, name, "Footer");
+	}
+	
+	public void LeaveBattle() {
 		EmitSignal(SignalName.LevelSelect);
 	}
 }
