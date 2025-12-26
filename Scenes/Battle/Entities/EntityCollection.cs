@@ -21,6 +21,11 @@ public partial class EntityCollection
 		(layer as EntityLayer).EntityCollectionCountUpdate(id, count);
 	}
 	
+	public Entity GetInstance(Vector2I position)
+	{
+		return instances[position];
+	}
+	
 	public bool HasInstanceIn(Vector2I position)
 	{
 		return instances.ContainsKey(position);
