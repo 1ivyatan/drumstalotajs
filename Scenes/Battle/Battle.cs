@@ -13,7 +13,7 @@ public partial class Battle : VBoxContainer
 	public override void _Ready()
 	{
 		map = GetNode<Node2D>("MapContainer/Map") as Map;
-		map.LoadLevel("1");
+		//map.LoadLevel("1");
 	}
 	
 	public Node HeaderWidget
@@ -64,7 +64,13 @@ public partial class Battle : VBoxContainer
 		RefreshContainer(footerContainer, name, "Footer");
 	}
 	
-	public void LeaveBattle() {
+	public void StartBattle()
+	{
+		
+	}
+	
+	public void LeaveBattle()
+	{
 		EmitSignal(SignalName.LevelSelect);
 	}
 }

@@ -12,7 +12,7 @@ public partial class DevicePlacingFooter : Widget
 		startBattleButton = GetNode<Button>("Buttons/StartBattle");
 
 		exitButton.Connect("pressed", new Callable(this, nameof(ExitBattle)));
-		//startBattleButton.Connect("pressed", new Callable(this, nameof(StartBattle)));
+		startBattleButton.Connect("pressed", new Callable(this, nameof(StartBattle)));
 	}
 	
 	public void UpdateLock(bool enabled)
@@ -22,7 +22,7 @@ public partial class DevicePlacingFooter : Widget
 	
 	void StartBattle()
 	{
-		
+		(root as Battle).StartBattle();
 	}
 	
 	void ExitBattle()

@@ -42,7 +42,7 @@ public partial class StageManager : Node2D
 		uiNode = rootNode.GetNode<Control>("../../");
 		
 		Connect("StageChanged", new Callable(uiNode, "StageChanged"));
-		SetStage("DevicePlacing");
+	//	SetStage("DevicePlacing");
 	}
 	
 	public override void _Input(InputEvent @event)
