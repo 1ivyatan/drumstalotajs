@@ -24,6 +24,9 @@ public partial class Map : Node2D
 		
 		switch (oldStageName)
 		{
+			case "DevicePlacing":
+				/* cleanups, checks */
+				break;	
 			default:
 				break;
 		}
