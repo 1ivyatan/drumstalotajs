@@ -3,9 +3,11 @@ using System;
 
 public partial class Selector : Node2D
 {
+	[Signal]
+	public delegate void ClickedOnEntityEventHandler(int entityType, Vector2I position);
+	
 	Node2D parent;
 	TileMapLayer entityLayer;
-	
 	Sprite2D sprite;
 	
 	public override void _Ready()
@@ -13,11 +15,6 @@ public partial class Selector : Node2D
 		parent = GetParent<Node2D>();
 		entityLayer = parent.GetNode<TileMapLayer>("EntityLayer");
 		sprite = GetNode<Sprite2D>("Sprite");
-	}
-	
-	void SetSelectedEntity()
-	{
-		
 	}
 	
 	void PositionSelector(Vector2I cellPos)
@@ -44,9 +41,9 @@ public partial class Selector : Node2D
 			Vector2 globalMousePos = GetGlobalMousePosition();
 			Vector2 localMousePos = parent.ToLocal(globalMousePos);
 			Vector2I cellPos = entityLayer.LocalToMap(localMousePos);
-			EntityType entity = (EntityType)entityLayer.GetCellAlternativeTile(cellPos);
+			EntityType entityType = (EntityType)entityLayer.GetCellAlternativeTile(cellPos);
 			
-			if (entity == EntityType.None)
+			if (entityType == EntityType.None)
 			{
 				HideSelector();
 			} else {
@@ -57,8 +54,7 @@ public partial class Selector : Node2D
 			{
 				if (mouseClick.Pressed)
 				{
-				//	(entityLayer as EntityLayer)
-				//	GD.Print(cellPos);
+					EmitSignal(SignalName.ClickedOnEntity, (int)entityType, cellPos);
 				}
 			}
 		}

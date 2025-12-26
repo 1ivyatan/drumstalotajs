@@ -10,14 +10,17 @@ public partial class DevicePlacing : Stage
 	public delegate void OnGridDeviceRemovedEventHandler(Vector2I position);
 	
 	EntityLayer entityLayer;
+	Selector selector;
 	
 	public override void LoadStage()
 	{
 		Map map = mapRootNode as Map;
 		
 		entityLayer = mapGridNode.GetNode<TileMapLayer>("EntityLayer") as EntityLayer;
+		selector = mapGridNode.GetNode<Node2D>("Selector") as Selector;
 		
 		entityLayer.Connect("EntityCountUpdated", new Callable(this, nameof(UpdateUI)));
+		selector.Connect("ClickedOnEntity", new Callable(this, nameof(SetSelection)));
 		
 		Connect("OnGridDeviceAdded", new Callable(map, "AddedDevice"));
 		Connect("OnGridDeviceRemoved", new Callable(map, "RemovedDevice"));
@@ -56,43 +59,22 @@ public partial class DevicePlacing : Stage
 		}
 	}
 	
-	void AddDevice(Vector2I position)
+	void SetSelection(int entityType, Vector2I position)
 	{
-		entityLayer.InsertEntity(EntityType.Device, position);
-	}
-	
-	void RemoveDevice(Vector2I position)
-	{
-		entityLayer.InsertEntity(EntityType.DevicePlaceholder, position);
-		UpdateHeader();
-		UpdateFooter();
+		switch ((EntityType)entityType)
+		{
+			case EntityType.DevicePlaceholder:
+				entityLayer.InsertEntity(EntityType.Device, position);
+				break;
+			case EntityType.Device:
+				entityLayer.InsertEntity(EntityType.DevicePlaceholder, position);
+				break;
+			default:	
+				break;
+		}
 	}
 	
 	public override void Input(InputEvent @event) {
-		if (@event is InputEventMouseButton eventButton)
-		{
-			if (eventButton.Pressed)
-			{
-				Vector2 globalMousePos = GetGlobalMousePosition();
-				Vector2 localMousePos = mapGridNode.ToLocal(globalMousePos);
-				Vector2I cellPos = entityLayer.LocalToMap(localMousePos);
-				
-				switch ((EntityType)entityLayer.GetCellAlternativeTile(cellPos))
-				{
-					case EntityType.None:
-						break;
-					case EntityType.DevicePlaceholder:
-						AddDevice(cellPos);
-						EmitSignal(SignalName.OnGridDeviceAdded, cellPos);
-						break;
-					case EntityType.Device:
-						RemoveDevice(cellPos);
-						EmitSignal(SignalName.OnGridDeviceRemoved, cellPos);
-						break;
-					default:	
-						break;
-				}
-				
 				/*
 	   			var spaceState = GetWorld2D().DirectSpaceState;
 				var query = new PhysicsPointQueryParameters2D();
@@ -116,7 +98,5 @@ public partial class DevicePlacing : Stage
 						EmitSignal(SignalName.ToggledDeviceInGrid, tilePos);
 					}
 				}*/
-			}
-		}
 	}
 }
