@@ -66,7 +66,7 @@ public partial class Battle : VBoxContainer
 	
 	public void StartBattle()
 	{
-		
+		map.LoadStage("DevicePlacing");
 	}
 	
 	public void LeaveBattle()

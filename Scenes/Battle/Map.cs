@@ -13,8 +13,22 @@ public partial class Map : Node2D
 		MapGrid = GetNode<Node2D>("Grid");
 		entityManager = MapGrid.GetNode("EntityLayer") as EntityLayer;
 		
+		LoadStage("DevicePlacing");
+	}
+	
+	public void LoadStage(string name)
+	{
+		string oldStageName = MapStageManager.ActiveStageName;
 		
-		MapStageManager.SetStage("DevicePlacing");
+		GD.Print(oldStageName);
+		
+		switch (oldStageName)
+		{
+			default:
+				break;
+		}
+		
+		MapStageManager.SetStage(name);
 	}
 	
 	public void LoadLevel(string name)

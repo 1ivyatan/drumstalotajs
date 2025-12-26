@@ -13,6 +13,12 @@ public partial class StageManager : Node2D
 	Node2D gridNode;
 	
 	Stage activeStage;
+	string activeStageName;
+	
+	public string ActiveStageName
+	{
+		get { return activeStageName; }
+	}
 	
 	public void SetStage(string name)
 	{
@@ -31,6 +37,7 @@ public partial class StageManager : Node2D
 		Stage stage = stageNode as Stage;
 		stage.Load(uiNode, rootNode, gridNode);
 		activeStage = stage;
+		activeStageName = name;
 		
 		EmitSignal(SignalName.StageChanged, name);
 	}
@@ -40,6 +47,7 @@ public partial class StageManager : Node2D
 		rootNode = GetNode("../");
 		gridNode = rootNode.GetNode<Node2D>("Grid");
 		uiNode = rootNode.GetNode<Control>("../../");
+		activeStageName = null;
 		
 		Connect("StageChanged", new Callable(uiNode, "StageChanged"));
 	//	SetStage("DevicePlacing");
