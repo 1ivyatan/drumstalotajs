@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://jpdga1u5cgjm"]
+[gd_scene load_steps=3 format=3 uid="uid://jpdga1u5cgjm"]
 
+[ext_resource type="Script" uid="uid://dkaqwxpg3p0w5" path="res://Scenes/Battle/Entities/Devices/Device.cs" id="1_hx5je"]
 [ext_resource type="Texture2D" uid="uid://civrbkfl2nkkq" path="res://Assets/Sprites/catap.png" id="1_n1is0"]
 
 [node name="Device" type="Node2D"]
+script = ExtResource("1_hx5je")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_n1is0")
