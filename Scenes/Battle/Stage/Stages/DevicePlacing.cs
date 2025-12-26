@@ -31,7 +31,7 @@ public partial class DevicePlacing : Stage
 			DevicePlacingHeader widget = headerWidget as DevicePlacingHeader;
 			
 			widget.SetLabels(
-				entityLayer.GetEntitiesOfType(EntityType.Device).Count
+				entityLayer.GetEntityCollection(EntityType.Device).Count
 			);
 		}
 	}
@@ -45,7 +45,7 @@ public partial class DevicePlacing : Stage
 			
 			widget.UpdateLock(
 				/* !!!!!!!!! */
-				entityLayer.GetEntitiesOfType(EntityType.Device).Count > 0
+				entityLayer.GetEntityCollection(EntityType.Device).Count > 0
 			);
 		}
 	}

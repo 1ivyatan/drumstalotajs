@@ -14,7 +14,7 @@ public partial class EntityLayer : TileMapLayer
 		entityCollections[(EntityType)entityType].AddInstance(LocalToMap(entity.Position), entity as Entity);
 	}
 	
-	public EntityCollection GetEntitiesOfType(EntityType entityTypeId)
+	public EntityCollection GetEntityCollection(EntityType entityTypeId)
 	{
 		return entityCollections[entityTypeId];
 	}
