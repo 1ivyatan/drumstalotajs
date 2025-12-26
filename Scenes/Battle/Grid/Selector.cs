@@ -15,7 +15,12 @@ public partial class Selector : Node2D
 		sprite = GetNode<Sprite2D>("Sprite");
 	}
 	
-	void SetSelection(Vector2I cellPos)
+	void SetSelectedEntity()
+	{
+		
+	}
+	
+	void PositionSelector(Vector2I cellPos)
 	{
 		if (sprite != null)
 		{
@@ -24,7 +29,7 @@ public partial class Selector : Node2D
 		}
 	}
 	
-	void ClearSelection()
+	void HideSelector()
 	{
 		if (sprite != null)
 		{
@@ -34,17 +39,27 @@ public partial class Selector : Node2D
 	
 	public override void _Input(InputEvent @event)
 	{
-		if (@event is InputEventMouseMotion eventMotion)
+		if (@event is InputEventMouse mouseEvent)
 		{
 			Vector2 globalMousePos = GetGlobalMousePosition();
 			Vector2 localMousePos = parent.ToLocal(globalMousePos);
 			Vector2I cellPos = entityLayer.LocalToMap(localMousePos);
+			EntityType entity = (EntityType)entityLayer.GetCellAlternativeTile(cellPos);
 			
-			if ((EntityType)entityLayer.GetCellAlternativeTile(cellPos) == EntityType.None)
+			if (entity == EntityType.None)
 			{
-				ClearSelection();
+				HideSelector();
 			} else {
-				SetSelection(cellPos);	
+				PositionSelector(cellPos);	
+			}
+			
+			if (mouseEvent is InputEventMouseButton mouseClick)
+			{
+				if (mouseClick.Pressed)
+				{
+				//	(entityLayer as EntityLayer)
+					GD.Print(cellPos);
+				}
 			}
 		}
 	}
