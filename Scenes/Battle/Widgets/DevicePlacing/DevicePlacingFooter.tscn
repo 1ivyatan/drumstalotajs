@@ -14,17 +14,18 @@ grow_vertical = 0
 size_flags_vertical = 3
 script = ExtResource("2_v621r")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="." index="0"]
+[node name="Buttons" type="HBoxContainer" parent="." index="0"]
 layout_mode = 2
 
-[node name="Exit" type="Button" parent="HBoxContainer" index="0"]
+[node name="Exit" type="Button" parent="Buttons" index="0"]
 layout_mode = 2
 text = "Pamest"
 
-[node name="Control" type="Control" parent="HBoxContainer" index="1"]
+[node name="Spacing" type="Control" parent="Buttons" index="1"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Button2" type="Button" parent="HBoxContainer" index="2"]
+[node name="StartBattle" type="Button" parent="Buttons" index="2"]
 layout_mode = 2
+disabled = true
 text = "Poga"

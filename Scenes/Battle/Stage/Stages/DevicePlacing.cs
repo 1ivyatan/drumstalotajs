@@ -34,16 +34,32 @@ public partial class DevicePlacing : Stage
 		}
 	}
 	
+	void UpdateFooter()
+	{
+		Node footerWidget = (sceneUiNode as Battle).FooterWidget;
+		if (footerWidget != null)
+		{
+			DevicePlacingFooter widget = footerWidget as DevicePlacingFooter;
+			
+			widget.UpdateLock(
+				/* !!!!!!!!! */
+				entityLayer.GetEntitiesOfType(EntityType.Device).Count > 0
+			);
+		}
+	}
+	
 	void AddDevice(Vector2I position)
 	{
 		entityLayer.PlaceEntity(EntityType.Device, position);
 		UpdateHeader();
+		UpdateFooter();
 	}
 	
 	void RemoveDevice(Vector2I position)
 	{
 		entityLayer.PlaceEntity(EntityType.DevicePlaceholder, position);
 		UpdateHeader();
+		UpdateFooter();
 	}
 	
 	public override void Input(InputEvent @event) {
