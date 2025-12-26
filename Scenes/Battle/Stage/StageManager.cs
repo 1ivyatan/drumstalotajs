@@ -26,6 +26,7 @@ public partial class StageManager : Node2D
 		{
 			foreach (Node child in GetChildren())
 			{
+				child.QueueFree();
 				RemoveChild(child);
 			}
 		}
