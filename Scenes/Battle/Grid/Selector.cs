@@ -32,9 +32,7 @@ public partial class Selector : Node2D
 				return;
 			}
 			
-			SetPosition(localMousePos);
-			
-			GD.Print(localMousePos);
+			SetPosition((cellPos * 36) + new Vector2I(36 / 2, 36 / 2));
 		}
 	}
 }
