@@ -1,14 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://c54na4d5kf08p"]
+[gd_scene load_steps=4 format=3 uid="uid://b12fydagpjrx1"]
 
-[ext_resource type="Texture2D" uid="uid://bybf6gth0qful" path="res://Assets/Sprites/arty.png" id="1_63ay7"]
+[ext_resource type="PackedScene" uid="uid://ctljhiey6m8uh" path="res://Scenes/Battle/Entities/Entity.tscn" id="1_fgxkq"]
+[ext_resource type="Script" uid="uid://dogwtdonx6uuy" path="res://Scenes/Battle/Entities/Placeholders/DevicePlaceholder.cs" id="2_vakmo"]
+[ext_resource type="Texture2D" uid="uid://bybf6gth0qful" path="res://Assets/Sprites/arty.png" id="2_w0mux"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_eopms"]
-size = Vector2(36, 36)
+[node name="DevicePlaceholder" instance=ExtResource("1_fgxkq")]
+script = ExtResource("2_vakmo")
 
-[node name="DevicePlaceholder" type="Area2D"]
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_63ay7")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_eopms")
+[node name="Sprite2D" type="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_w0mux")

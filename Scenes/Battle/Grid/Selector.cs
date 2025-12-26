@@ -58,7 +58,7 @@ public partial class Selector : Node2D
 				if (mouseClick.Pressed)
 				{
 				//	(entityLayer as EntityLayer)
-					GD.Print(cellPos);
+				//	GD.Print(cellPos);
 				}
 			}
 		}

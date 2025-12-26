@@ -17,8 +17,16 @@ public partial class DevicePlacing : Stage
 		
 		entityLayer = mapGridNode.GetNode<TileMapLayer>("EntityLayer") as EntityLayer;
 		
+		entityLayer.Connect("EntityCountUpdated", new Callable(this, nameof(UpdateUI)));
+		
 		Connect("OnGridDeviceAdded", new Callable(map, "AddedDevice"));
 		Connect("OnGridDeviceRemoved", new Callable(map, "RemovedDevice"));
+	}
+	
+	void UpdateUI(int entityTypeId, int count)
+	{
+		UpdateHeader();
+		UpdateFooter();
 	}
 	
 	void UpdateHeader()
@@ -50,14 +58,12 @@ public partial class DevicePlacing : Stage
 	
 	void AddDevice(Vector2I position)
 	{
-		entityLayer.PlaceEntity(EntityType.Device, position);
-		UpdateHeader();
-		UpdateFooter();
+		entityLayer.InsertEntity(EntityType.Device, position);
 	}
 	
 	void RemoveDevice(Vector2I position)
 	{
-		entityLayer.PlaceEntity(EntityType.DevicePlaceholder, position);
+		entityLayer.InsertEntity(EntityType.DevicePlaceholder, position);
 		UpdateHeader();
 		UpdateFooter();
 	}

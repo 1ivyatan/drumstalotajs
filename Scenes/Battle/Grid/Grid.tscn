@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://0mcpgl0btk8f" path="res://Scenes/Battle/Grid/Grid.cs" id="1_ixyij"]
 [ext_resource type="Texture2D" uid="uid://23o34jyimnad" path="res://Assets/Sprites/terraintiles.png" id="1_mmrd4"]
-[ext_resource type="PackedScene" uid="uid://c54na4d5kf08p" path="res://Scenes/Battle/Entities/Placeholders/DevicePlaceholder.tscn" id="3_suf77"]
-[ext_resource type="PackedScene" uid="uid://jpdga1u5cgjm" path="res://Scenes/Battle/Entities/Devices/Device.tscn" id="5_peq6v"]
+[ext_resource type="PackedScene" uid="uid://b12fydagpjrx1" path="res://Scenes/Battle/Entities/Placeholders/DevicePlaceholder.tscn" id="3_suf77"]
+[ext_resource type="PackedScene" uid="uid://dg11dlsr5j0j8" path="res://Scenes/Battle/Entities/Devices/Device.tscn" id="4_wh4pr"]
 [ext_resource type="Script" uid="uid://uf5yyvcdebka" path="res://Scenes/Battle/Grid/EntityLayer.cs" id="6_peq6v"]
 [ext_resource type="Script" uid="uid://c17qdms31lqjn" path="res://Scenes/Battle/Grid/Selector.cs" id="6_wh4pr"]
 [ext_resource type="Texture2D" uid="uid://kegp0xp3pk3a" path="res://Assets/Sprites/selector.png" id="7_0so38"]
@@ -26,7 +26,7 @@ sources/0 = SubResource("TileSetAtlasSource_uroei")
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_wh4pr"]
 resource_name = "Entities"
 scenes/0/scene = ExtResource("3_suf77")
-scenes/1/scene = ExtResource("5_peq6v")
+scenes/1/scene = ExtResource("4_wh4pr")
 
 [sub_resource type="TileSet" id="TileSet_0so38"]
 tile_size = Vector2i(36, 36)

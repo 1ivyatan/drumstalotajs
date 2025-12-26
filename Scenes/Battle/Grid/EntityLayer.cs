@@ -4,15 +4,35 @@ using System.Collections.Generic;
 
 public partial class EntityLayer : TileMapLayer
 {
-	Dictionary<EntityType, EntityCollection> entities;
+	[Signal]
+	public delegate void EntityCountUpdatedEventHandler(int entityTypeId, int count);
+	
+	Dictionary<EntityType, EntityCollection> entityCollections;
+	
+	public void OnEntitySpawn(Node2D entity, int entityType)
+	{
+		entityCollections[(EntityType)entityType].AddInstance(LocalToMap(entity.Position), entity as Entity);
+	}
 	
 	public EntityCollection GetEntitiesOfType(EntityType entityTypeId)
 	{
-		return entities[entityTypeId];
+		return entityCollections[entityTypeId];
 	}
 	
-	public void PlaceEntity(EntityType entityType, Vector2I position)
+	public void InsertEntity(EntityType entityType, Vector2I position)
 	{
+		EntityType oldEntityType = (EntityType)GetCellAlternativeTile(position);
+		EntityCollection oldEntity = entityCollections[oldEntityType];
+		
+		if (oldEntity.HasInstanceIn(position))
+		{
+			oldEntity.DetachInstance(position);
+		}
+		
+		entityCollections[entityType].CreateInstance(position);
+		GD.Print(entityType + " " + position);
+		/* rewrite!!!! */
+		/*
 		EntityType oldEntityType = (EntityType)GetCellAlternativeTile(position);
 		
 		if (oldEntityType == EntityType.None)
@@ -27,13 +47,13 @@ public partial class EntityLayer : TileMapLayer
 				oldEntity.DetachInstance(position);
 			}
 			
-			entities[entityType].AddInstance(position);
-		}
+//			entities[entityType].AddInstance(position);
+		}*/
 	}
 	
 	public override void _Ready()
 	{
-		entities = new Dictionary<EntityType, EntityCollection>();
+		entityCollections = new Dictionary<EntityType, EntityCollection>();
 		
 		foreach (EntityType entityTypeId in Enum.GetValues(typeof(EntityType)))
 		{
@@ -41,7 +61,13 @@ public partial class EntityLayer : TileMapLayer
 			{
 				continue;
 			}
-			entities.Add(entityTypeId, new EntityCollection(this, entityTypeId));
+			
+			entityCollections.Add(entityTypeId, new EntityCollection(this, entityTypeId));
 		}
+	}
+	
+	public void EntityCollectionCountUpdate(EntityType entityType, int count)
+	{
+		EmitSignal(SignalName.EntityCountUpdated, (int)entityType, count);
 	}
 }

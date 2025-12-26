@@ -1,5 +1,4 @@
 using Godot;
-using Godot.Collections;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +6,7 @@ using System.Linq;
 public partial class EntityCollection
 {
 	TileMapLayer layer;
-	List<Vector2I> instances;
+	Dictionary<Vector2I, Entity> instances;
 	EntityType id;
 	int count;
 	
@@ -16,40 +15,34 @@ public partial class EntityCollection
 		get { return count; }
 	}
 	
-	public void UpdateInstances()
+	void UpdateCount(int val)
 	{
-		instances = layer.GetUsedCellsById(0, new Vector2I(0, 0), (int)id).ToList();
-		count = instances.Count;
+		count = val;
+		(layer as EntityLayer).EntityCollectionCountUpdate(id, count);
 	}
 	
 	public bool HasInstanceIn(Vector2I position)
 	{
-		return instances.Contains(position);
+		return instances.ContainsKey(position);
 	}
 	
-	public void AddInstance(Vector2I position)
+	public void CreateInstance(Vector2I position)
 	{
 		layer.SetCell(position, 0, new Vector2I(0, 0), (int)id);
-		instances.Add(position);
-		count++;
+	}
+	
+	public void AddInstance(Vector2I position, Entity entity)
+	{
+		instances.Add(position, entity);
+		UpdateCount(count + 1);
 	}
 	
 	public void DetachInstance(Vector2I position)
 	{
-		if (instances.Contains(position))
+		if (instances.ContainsKey(position))
 		{
 			instances.Remove(position);
-			count--;
-		}
-	}
-	
-	public void RemoveInstance(Vector2I position)
-	{
-		if (instances.Contains(position))
-		{
-			layer.EraseCell(position);
-			instances.Remove(position);
-			count--;
+			UpdateCount(count - 1);
 		}
 	}
 	
@@ -57,6 +50,7 @@ public partial class EntityCollection
 	{
 		layer = tileMapLayer;
 		id = typeId;
-		UpdateInstances();
+		instances = new Dictionary<Vector2I, Entity>();
+		count = 0;
 	}
 }

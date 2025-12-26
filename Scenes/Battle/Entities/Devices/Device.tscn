@@ -1,10 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://jpdga1u5cgjm"]
+[gd_scene load_steps=4 format=3 uid="uid://dg11dlsr5j0j8"]
 
-[ext_resource type="Script" uid="uid://dkaqwxpg3p0w5" path="res://Scenes/Battle/Entities/Devices/Device.cs" id="1_hx5je"]
-[ext_resource type="Texture2D" uid="uid://civrbkfl2nkkq" path="res://Assets/Sprites/catap.png" id="1_n1is0"]
+[ext_resource type="PackedScene" uid="uid://ctljhiey6m8uh" path="res://Scenes/Battle/Entities/Entity.tscn" id="1_0pnj5"]
+[ext_resource type="Texture2D" uid="uid://civrbkfl2nkkq" path="res://Assets/Sprites/catap.png" id="2_1jk80"]
+[ext_resource type="Script" uid="uid://dkaqwxpg3p0w5" path="res://Scenes/Battle/Entities/Devices/Device.cs" id="2_xn47x"]
 
-[node name="Device" type="Node2D"]
-script = ExtResource("1_hx5je")
+[node name="Device" instance=ExtResource("1_0pnj5")]
+script = ExtResource("2_xn47x")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_n1is0")
+[node name="Sprite2D" type="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_1jk80")
