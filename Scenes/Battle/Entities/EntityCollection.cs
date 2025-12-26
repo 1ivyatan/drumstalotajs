@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-public partial class Entity
+public partial class EntityCollection
 {
 	TileMapLayer layer;
 	List<Vector2I> instances;
@@ -53,7 +53,7 @@ public partial class Entity
 		}
 	}
 	
-	public Entity(TileMapLayer tileMapLayer, EntityType typeId)
+	public EntityCollection(TileMapLayer tileMapLayer, EntityType typeId)
 	{
 		layer = tileMapLayer;
 		id = typeId;
