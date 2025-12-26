@@ -3,12 +3,6 @@ using System;
 
 public partial class DevicePlacing : Stage
 {
-	[Signal]
-	public delegate void OnGridDeviceAddedEventHandler(Vector2I position);
-	
-	[Signal]
-	public delegate void OnGridDeviceRemovedEventHandler(Vector2I position);
-	
 	EntityLayer entityLayer;
 	Selector selector;
 	
@@ -21,9 +15,6 @@ public partial class DevicePlacing : Stage
 		
 		entityLayer.Connect("EntityCountUpdated", new Callable(this, nameof(UpdateUI)));
 		selector.Connect("ClickedOnEntity", new Callable(this, nameof(SetSelection)));
-		
-		Connect("OnGridDeviceAdded", new Callable(map, "AddedDevice"));
-		Connect("OnGridDeviceRemoved", new Callable(map, "RemovedDevice"));
 	}
 	
 	void UpdateUI(int entityTypeId, int count)
