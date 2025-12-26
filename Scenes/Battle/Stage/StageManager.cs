@@ -50,7 +50,6 @@ public partial class StageManager : Node2D
 		activeStageName = null;
 		
 		Connect("StageChanged", new Callable(uiNode, "StageChanged"));
-	//	SetStage("DevicePlacing");
 	}
 	
 	public override void _Input(InputEvent @event)

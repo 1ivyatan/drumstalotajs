@@ -1,10 +1,12 @@
-[gd_scene load_steps=10 format=4 uid="uid://bduqqwfck5aes"]
+[gd_scene load_steps=12 format=4 uid="uid://bduqqwfck5aes"]
 
 [ext_resource type="Script" uid="uid://0mcpgl0btk8f" path="res://Scenes/Battle/Grid/Grid.cs" id="1_ixyij"]
 [ext_resource type="Texture2D" uid="uid://23o34jyimnad" path="res://Assets/Sprites/terraintiles.png" id="1_mmrd4"]
 [ext_resource type="PackedScene" uid="uid://c54na4d5kf08p" path="res://Scenes/Battle/Entities/Placeholders/DevicePlaceholder.tscn" id="3_suf77"]
 [ext_resource type="PackedScene" uid="uid://jpdga1u5cgjm" path="res://Scenes/Battle/Entities/Devices/Device.tscn" id="5_peq6v"]
 [ext_resource type="Script" uid="uid://uf5yyvcdebka" path="res://Scenes/Battle/Grid/EntityLayer.cs" id="6_peq6v"]
+[ext_resource type="Script" uid="uid://c17qdms31lqjn" path="res://Scenes/Battle/Grid/Selector.cs" id="6_wh4pr"]
+[ext_resource type="Texture2D" uid="uid://kegp0xp3pk3a" path="res://Assets/Sprites/selector.png" id="7_0so38"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uroei"]
 texture = ExtResource("1_mmrd4")
@@ -41,3 +43,9 @@ tile_set = SubResource("TileSet_mmrd4")
 tile_map_data = PackedByteArray("AAACAAEAAAAAAAAAAAD//wIAAAAAAAAAAAD+////AAAAAAAAAAA=")
 tile_set = SubResource("TileSet_0so38")
 script = ExtResource("6_peq6v")
+
+[node name="Selector" type="Node2D" parent="."]
+script = ExtResource("6_wh4pr")
+
+[node name="Sprite" type="Sprite2D" parent="Selector"]
+texture = ExtResource("7_0so38")
