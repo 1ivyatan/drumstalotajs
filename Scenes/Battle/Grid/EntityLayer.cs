@@ -19,14 +19,24 @@ public partial class EntityLayer : TileMapLayer
 		return entityCollections[entityTypeId];
 	}
 	
+	public void RemoveEntitiesByType(EntityType entityType)
+	{
+		EntityCollection entityCollection = entityCollections[entityType];
+		
+		foreach (KeyValuePair<Vector2I, Entity> entry in entityCollection.Instances)
+		{
+			entityCollection.DestroyInstance(entry.Key);
+		}
+	}
+	
 	public void InsertEntity(EntityType entityType, Vector2I position)
 	{
 		EntityType oldEntityType = (EntityType)GetCellAlternativeTile(position);
-		EntityCollection oldEntity = entityCollections[oldEntityType];
+		EntityCollection oldEntityCollection = entityCollections[oldEntityType];
 		
-		if (oldEntity.HasInstanceIn(position))
+		if (oldEntityCollection.HasInstanceIn(position))
 		{
-			oldEntity.DetachInstance(position);
+			oldEntityCollection.DetachInstance(position);
 		}
 		
 		entityCollections[entityType].CreateInstance(position);

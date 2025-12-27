@@ -22,6 +22,11 @@ public partial class StageManager : Node2D
 	
 	public void SetStage(string name)
 	{
+		if (activeStage != null)
+		{
+			activeStage.CloseStage();
+		}
+		
 		if (GetChildCount() > 0)
 		{
 			foreach (Node child in GetChildren())

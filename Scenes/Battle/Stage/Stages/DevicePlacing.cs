@@ -17,6 +17,11 @@ public partial class DevicePlacing : Stage
 		selector.Connect("ClickedOnEntity", new Callable(this, nameof(SetSelection)));
 	}
 	
+	public override void CloseStage()
+	{
+		entityLayer.RemoveEntitiesByType(EntityType.DevicePlaceholder);
+	}
+	
 	void UpdateUI(int entityTypeId, int count)
 	{
 		UpdateHeader();

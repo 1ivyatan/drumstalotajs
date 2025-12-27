@@ -15,6 +15,11 @@ public partial class EntityCollection
 		get { return count; }
 	}
 	
+	public Dictionary<Vector2I, Entity> Instances
+	{
+		get { return instances; }
+	}
+	
 	void UpdateCount(int val)
 	{
 		count = val;
@@ -47,6 +52,16 @@ public partial class EntityCollection
 		if (instances.ContainsKey(position))
 		{
 			instances.Remove(position);
+			UpdateCount(count - 1);
+		}
+	}
+	
+	public void DestroyInstance(Vector2I position)
+	{
+		if (instances.ContainsKey(position))
+		{
+			instances.Remove(position);
+			layer.EraseCell(position);
 			UpdateCount(count - 1);
 		}
 	}

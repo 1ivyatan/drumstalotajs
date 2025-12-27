@@ -15,6 +15,11 @@ public partial class DeviceAdjustment : Stage
 		selector.Connect("ClickedOnEntity", new Callable(this, nameof(SelectedEntity)));
 	}
 	
+	public override void CloseStage()
+	{
+		
+	}
+	
 	void SelectedEntity(int entityType, Vector2I position)
 	{
 		switch ((EntityType)entityType)

@@ -9,6 +9,7 @@ public abstract partial class Stage : Node2D
 	
 	public abstract void Input(InputEvent @event);
 	public abstract void LoadStage();
+	public abstract void CloseStage();
 	
 	public void Load(Control uiNode, Node mapNode, Node2D gridNode)
 	{
