@@ -17,7 +17,16 @@ public partial class DeviceAdjustment : Stage
 	
 	void SelectedEntity(int entityType, Vector2I position)
 	{
-		GD.Print(entityLayer.GetEntityCollection((EntityType)entityType).GetInstance(position));
+		switch ((EntityType)entityType)
+		{
+			case EntityType.Device:
+				Entity entityInstance = entityLayer.GetEntityCollection((EntityType)entityType).GetInstance(position);
+				
+				GD.Print(entityInstance);
+				break;
+			default:
+				break;
+		}
 	}
 	
 	public override void Input(InputEvent @event)
