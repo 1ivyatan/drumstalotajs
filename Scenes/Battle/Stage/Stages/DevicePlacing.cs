@@ -13,6 +13,8 @@ public partial class DevicePlacing : Stage
 		entityLayer = mapGridNode.GetNode<TileMapLayer>("EntityLayer") as EntityLayer;
 		selector = mapGridNode.GetNode<Node2D>("Selector") as Selector;
 		
+		selector.Enabled(true);
+		
 		entityLayer.Connect("EntityCountUpdated", new Callable(this, nameof(UpdateUI)));
 		selector.Connect("ClickedOnEntity", new Callable(this, nameof(SetSelection)));
 	}

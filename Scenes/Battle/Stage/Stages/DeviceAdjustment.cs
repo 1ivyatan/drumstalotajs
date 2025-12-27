@@ -12,6 +12,8 @@ public partial class DeviceAdjustment : Stage
 		entityLayer = mapGridNode.GetNode<TileMapLayer>("EntityLayer") as EntityLayer;
 		selector = mapGridNode.GetNode<Node2D>("Selector") as Selector;
 		
+		selector.Enabled(true);
+		
 		selector.Connect("ClickedOnEntity", new Callable(this, nameof(SelectedEntity)));
 	}
 	

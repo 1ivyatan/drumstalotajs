@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class Selector : Node2D
 {
@@ -10,11 +11,21 @@ public partial class Selector : Node2D
 	TileMapLayer entityLayer;
 	Sprite2D sprite;
 	
+	List<EntityType> entityFilter;
+	
+	bool active;
+	
+	public void Enabled(bool enabled)
+	{
+		active = enabled;
+	}
+	
 	public override void _Ready()
 	{
 		parent = GetParent<Node2D>();
 		entityLayer = parent.GetNode<TileMapLayer>("EntityLayer");
 		sprite = GetNode<Sprite2D>("Sprite");
+		entityFilter = new List<EntityType>();
 	}
 	
 	void PositionSelector(Vector2I cellPos)
@@ -35,7 +46,12 @@ public partial class Selector : Node2D
 	}
 	
 	public override void _Input(InputEvent @event)
-	{
+	{	
+		if (!active)
+		{
+			return;
+		}
+		
 		if (@event is InputEventMouse mouseEvent)
 		{
 			Vector2 globalMousePos = GetGlobalMousePosition();

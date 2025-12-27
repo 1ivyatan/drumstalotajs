@@ -41,7 +41,6 @@ public partial class EntityLayer : TileMapLayer
 		
 		entityCollections[entityType].CreateInstance(position);
 		GD.Print(entityType + " " + position);
-		/* rewrite!!!! */
 		/*
 		EntityType oldEntityType = (EntityType)GetCellAlternativeTile(position);
 		
