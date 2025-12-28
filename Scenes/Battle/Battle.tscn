@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bniocgo0b7api"]
+[gd_scene load_steps=4 format=3 uid="uid://dif8attqhayx3"]
 
-[ext_resource type="Script" uid="uid://oqygske4utxd" path="res://Scenes/Battle/Battle.cs" id="1_ael4v"]
-[ext_resource type="PackedScene" uid="uid://caf8cc4bjn3mb" path="res://Scenes/Battle/Map.tscn" id="2_gunap"]
+[ext_resource type="Script" uid="uid://buqd23ft5gwyh" path="res://Scenes/Battle/Battle.cs" id="1_3ihc8"]
+[ext_resource type="Script" uid="uid://cyx82j2cot881" path="res://Scenes/Battle/MapControl.cs" id="2_odh8s"]
+[ext_resource type="Script" uid="uid://driopwg3h7ic3" path="res://Scenes/Battle/StageManager.cs" id="3_rremj"]
 
 [node name="Battle" type="VBoxContainer"]
 anchors_preset = 15
@@ -9,18 +10,59 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_ael4v")
+script = ExtResource("1_3ihc8")
 
-[node name="HeaderContainer" type="Control" parent="."]
+[node name="TopPanel" type="PanelContainer" parent="."]
 layout_mode = 2
 
-[node name="MapContainer" type="Control" parent="."]
+[node name="OptionsStatsGrid" type="HBoxContainer" parent="TopPanel"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 6
+size_flags_vertical = 4
 
-[node name="Map" parent="MapContainer" instance=ExtResource("2_gunap")]
-visible = false
-
-[node name="FooterContainer" type="Control" parent="."]
+[node name="ExitButton" type="Button" parent="TopPanel/OptionsStatsGrid"]
 layout_mode = 2
+text = "Iziet"
+
+[node name="Spacer" type="Control" parent="TopPanel/OptionsStatsGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="StatsContainer" type="HBoxContainer" parent="TopPanel/OptionsStatsGrid"]
+layout_mode = 2
+
+[node name="DeviceCount" type="Label" parent="TopPanel/OptionsStatsGrid/StatsContainer"]
+layout_mode = 2
+text = "99"
+
+[node name="FlyingLabel" type="Label" parent="TopPanel"]
+layout_mode = 2
+text = "Logs"
+horizontal_alignment = 1
+
+[node name="MapControl" type="Control" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("2_odh8s")
+
+[node name="MapContainer" type="Control" parent="MapControl"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Map" type="Node2D" parent="MapControl/MapContainer"]
+
+[node name="Grid" type="Node2D" parent="MapControl/MapContainer/Map"]
+
+[node name="Selector" type="Node2D" parent="MapControl/MapContainer/Map"]
+
+[node name="StageManager" type="Control" parent="MapControl"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_rremj")

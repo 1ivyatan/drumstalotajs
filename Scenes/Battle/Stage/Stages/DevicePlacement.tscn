@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://dahyj4ew83qe2"]
+
+[ext_resource type="PackedScene" uid="uid://yq8k1s527i2x" path="res://Scenes/Battle/Stage/Stage.tscn" id="1_jtafg"]
+[ext_resource type="Script" uid="uid://cn2fg10lrg6qp" path="res://Scenes/Battle/Stage/Stages/DevicePlacement.cs" id="2_0tn3b"]
+
+[node name="DevicePlacement" instance=ExtResource("1_jtafg")]
+script = ExtResource("2_0tn3b")
