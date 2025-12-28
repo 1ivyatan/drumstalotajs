@@ -11,6 +11,8 @@ public partial class DevicePlacement : Stage
 		this.map = this.GetNode<Node2D>("../../MapContainer/Map");
 		this.selector = this.map.GetNode<Node2D>("Selector") as Selector;
 		
+		this.selector.Layer = Selector.SelectorLayer.Entity;
+		this.selector.EntityTypeFilter = [Entity.EntityType.DeviceMarker, Entity.EntityType.Device];
 		this.selector.SelectorMode = Selector.SelectorFilterMode.Fitlered;
 	}
 	
