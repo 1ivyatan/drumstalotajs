@@ -4,6 +4,11 @@ using System.Collections.Generic;
 
 public partial class Selector : Node2D
 {
+	public enum SelectMode
+	{
+		Filtered
+	}
+	
 	[Signal]
 	public delegate void ClickedOnEntityEventHandler(int entityType, Vector2I position);
 	
@@ -11,6 +16,7 @@ public partial class Selector : Node2D
 	TileMapLayer entityLayer;
 	Sprite2D sprite;
 	
+	SelectMode selectMode;
 	List<EntityType> entityFilter;
 	
 	bool active;
@@ -18,6 +24,22 @@ public partial class Selector : Node2D
 	public void Enabled(bool enabled)
 	{
 		active = enabled;
+	}
+	
+	public void SetSelectMode(SelectMode mode)
+	{
+		selectMode = mode;
+	}
+	
+	public void SetFilter(List<EntityType> whitelist)
+	{
+		if (whitelist == null)
+		{
+			entityFilter.Clear();
+		} else
+		{
+			entityFilter = whitelist;
+		}
 	}
 	
 	public override void _Ready()
@@ -62,14 +84,28 @@ public partial class Selector : Node2D
 			if (entityType == EntityType.None)
 			{
 				HideSelector();
-			} else {
-				PositionSelector(cellPos);	
+				return;
+			}
+			
+			switch (selectMode)
+			{
+				case SelectMode.Filtered:
+					if (entityFilter.Count > 0 && !entityFilter.Contains(entityType))
+					{
+						return;
+					}
+					
+					PositionSelector(cellPos);
+					break;
+				default:
+					break;
 			}
 			
 			if (mouseEvent is InputEventMouseButton mouseClick)
 			{
 				if (mouseClick.Pressed)
 				{
+					
 					EmitSignal(SignalName.ClickedOnEntity, (int)entityType, cellPos);
 				}
 			}
