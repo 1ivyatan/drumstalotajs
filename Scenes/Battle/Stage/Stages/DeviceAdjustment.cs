@@ -12,6 +12,8 @@ public partial class DeviceAdjustment : Stage
 		entityLayer = mapGridNode.GetNode<TileMapLayer>("EntityLayer") as EntityLayer;
 		selector = mapGridNode.GetNode<Node2D>("Selector") as Selector;
 		
+		selector.SetSelectMode(Selector.SelectMode.Filtered);
+		selector.SetFilter([ EntityType.Device ]);
 		selector.Enabled(true);
 		
 		selector.Connect("ClickedOnEntity", new Callable(this, nameof(SelectedEntity)));
@@ -24,16 +26,9 @@ public partial class DeviceAdjustment : Stage
 	
 	void SelectedEntity(int entityType, Vector2I position)
 	{
-		switch ((EntityType)entityType)
-		{
-			case EntityType.Device:
-				Entity entityInstance = entityLayer.GetEntityCollection((EntityType)entityType).GetInstance(position);
+		Entity entityInstance = entityLayer.GetEntityCollection((EntityType)entityType).GetInstance(position);
 				
-				GD.Print(entityInstance);
-				break;
-			default:
-				break;
-		}
+		GD.Print(entityInstance);
 	}
 	
 	public override void Input(InputEvent @event)

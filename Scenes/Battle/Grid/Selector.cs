@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 
 public partial class Selector : Node2D
@@ -17,7 +18,7 @@ public partial class Selector : Node2D
 	Sprite2D sprite;
 	
 	SelectMode selectMode;
-	List<EntityType> entityFilter;
+	EntityType[] entityFilter;
 	
 	bool active;
 	
@@ -31,11 +32,11 @@ public partial class Selector : Node2D
 		selectMode = mode;
 	}
 	
-	public void SetFilter(List<EntityType> whitelist)
+	public void SetFilter(EntityType[] whitelist)
 	{
 		if (whitelist == null)
 		{
-			entityFilter.Clear();
+			entityFilter = null;
 		} else
 		{
 			entityFilter = whitelist;
@@ -47,7 +48,7 @@ public partial class Selector : Node2D
 		parent = GetParent<Node2D>();
 		entityLayer = parent.GetNode<TileMapLayer>("EntityLayer");
 		sprite = GetNode<Sprite2D>("Sprite");
-		entityFilter = new List<EntityType>();
+		entityFilter = null;
 	}
 	
 	void PositionSelector(Vector2I cellPos)
@@ -90,7 +91,7 @@ public partial class Selector : Node2D
 			switch (selectMode)
 			{
 				case SelectMode.Filtered:
-					if (entityFilter.Count > 0 && !entityFilter.Contains(entityType))
+					if (entityFilter != null && entityFilter.Length > 0 && !entityFilter.Contains(entityType))
 					{
 						return;
 					}

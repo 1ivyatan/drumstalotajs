@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class DevicePlacing : Stage
 {
@@ -13,6 +14,8 @@ public partial class DevicePlacing : Stage
 		entityLayer = mapGridNode.GetNode<TileMapLayer>("EntityLayer") as EntityLayer;
 		selector = mapGridNode.GetNode<Node2D>("Selector") as Selector;
 		
+		selector.SetSelectMode(Selector.SelectMode.Filtered);
+		selector.SetFilter([ EntityType.Device, EntityType.DevicePlaceholder ]);
 		selector.Enabled(true);
 		
 		entityLayer.Connect("EntityCountUpdated", new Callable(this, nameof(UpdateUI)));
