@@ -1,7 +1,6 @@
 using Godot;
 using System;
 
-public partial class Battle : VBoxContainer
+public partial class Battle : Control
 {
-	
 }
