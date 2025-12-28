@@ -4,10 +4,19 @@ using System;
 public partial class DevicePlacingHeader : Widget
 {
 	Label addedCount;
+	Button exitButton;
 	
 	protected override void LoadWidget()
 	{
-		addedCount = GetNode<Label>("HFlowContainer/AddedCount");
+		addedCount = GetNode<Label>("PanelContainer/HFlowContainer/CenterContainer/AddedCount");
+		exitButton = GetNode<Button>("PanelContainer/HFlowContainer/ExitButton");
+		
+		exitButton.Connect("pressed", new Callable(this, nameof(ExitBattle)));
+	}
+	
+	void ExitBattle()
+	{
+		(root as Battle).LeaveBattle();
 	}
 	
 	public void SetLabels(int deviceCount)
