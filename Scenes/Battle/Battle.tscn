@@ -20,6 +20,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 6
 
 [node name="Map" parent="MapContainer" instance=ExtResource("2_gunap")]
+visible = false
 
 [node name="FooterContainer" type="Control" parent="."]
 layout_mode = 2
