@@ -10,6 +10,5 @@ public partial class MapControl : Control
 		stageManager = GetNode<Control>("StageManager") as StageManager;
 		
 		stageManager.LoadStage("DevicePlacement");
-		stageManager.LoadStage("Fake");
 	}
 }

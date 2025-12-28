@@ -15,7 +15,7 @@ public partial class StageManager : Control
 		if (this.ActiveStage != null)
 		{
 			this.ActiveStage.QueueFree();
-			RemoveChild(this.ActiveStage);
+			this.RemoveChild(this.ActiveStage);
 		}
 		
 		if (ResourceLoader.Exists(stagePath))
@@ -23,7 +23,8 @@ public partial class StageManager : Control
 			Node stageNode = ResourceLoader.Load<PackedScene>(stagePath).Instantiate();
 			
 			this.ActiveStage = stageNode as Stage;
-			AddChild(stageNode);
+			this.AddChild(stageNode);
+			this.EmitSignal(SignalName.StageChanged, this.ActiveStage);
 		}
 	}
 }
