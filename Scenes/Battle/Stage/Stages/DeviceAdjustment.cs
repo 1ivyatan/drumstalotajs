@@ -19,6 +19,7 @@ public partial class DeviceAdjustment : Stage
 		this.selector.EntityTypeFilter = [Entity.EntityType.Device];
 		this.selector.SelectorMode = Selector.SelectorFilterMode.Fitlered;
 	
+		this.entityLayer.EraseEntitiesByType(Entity.EntityType.DeviceMarker);	
 		this.topPanel.SetTopbarLabel("Ierīču koriģēšana");
 	}
 }

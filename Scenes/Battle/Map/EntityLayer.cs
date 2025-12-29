@@ -21,6 +21,19 @@ public partial class EntityLayer : TileMapLayer
 		this.SetCell(position, 0, new Vector2I(0, 0), (int)entityType);
 	}
 	
+	public void EraseEntity(Vector2I position)
+	{
+		this.EraseCell(position);
+	}
+	
+	public void EraseEntitiesByType(Entity.EntityType entityType)
+	{
+		foreach(KeyValuePair<Vector2I, Entity> entity in this.EntityCollections[(Entity.EntityType)entityType].Instances)
+		{
+			this.EraseEntity(entity.Key);
+		}
+	}
+	
 	public override void _Ready()
 	{
 		this.EntityCollections = new Dictionary<Entity.EntityType, EntityCollection>();
