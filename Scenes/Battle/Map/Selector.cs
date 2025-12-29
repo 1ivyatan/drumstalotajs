@@ -48,6 +48,8 @@ public partial class Selector : Node2D
 		this.grid = GetNode<Node2D>("../Grid");
 		this.entityLayer = this.grid.GetNode<TileMapLayer>("EntityLayer");
 		this.sprite = this.GetNode<Sprite2D>("Sprite");
+		
+		this.sprite.Visible = false;
 	}
 	
 	public override void _Input(InputEvent @event)

@@ -8,12 +8,14 @@ public partial class DevicePlacement : Stage
 	private EntityLayer entityLayer;
 	private Callable entitySelectedCall;
 	private Callable entityAppearanceCall;
+	private Button startButton;
 	
 	public override void _Ready()
 	{
 		this.map = this.GetNode<Node2D>("../../MapContainer/Map");
 		this.selector = this.map.GetNode<Node2D>("Selector") as Selector;
 		this.entityLayer = this.map.GetNode<TileMapLayer>("Grid/EntityLayer") as EntityLayer;
+		this.startButton = this.GetNode<Button>("StartButton");
 		
 		this.entityAppearanceCall = new Callable(this, nameof(RefreshDevices));
 		this.entitySelectedCall = new Callable(this, nameof(ClickedOnDevice));
@@ -46,13 +48,20 @@ public partial class DevicePlacement : Stage
 	{
 		if ((Entity.EntityType)entityType == Entity.EntityType.Device)
 		{
-			GD.Print(this.entityLayer.EntityCollections[Entity.EntityType.Device].Count);
+			long count = this.entityLayer.EntityCollections[Entity.EntityType.Device].Count;
+			
+			/*  !!!!!!!!!!!!!!!!   */
+			if (count > 0)
+			{
+				this.startButton.Disabled = false;
+			} else
+			{
+				this.startButton.Disabled = true;
+			}
 		}
-		//GD.Print();
 	}
 	
 	public override void _ExitTree()
 	{
-		GD.Print("im being removed");
 	}
 }
