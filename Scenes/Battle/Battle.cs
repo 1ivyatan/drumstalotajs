@@ -6,8 +6,21 @@ public partial class Battle : Control
 	[Signal]
 	public delegate void LevelSelectEventHandler();
 	
+	private StageManager stageManager;
+	
+	public override void _Ready()
+	{
+		this.stageManager = GetNode<Control>("MapControl/StageManager") as StageManager;
+		this.stageManager.LoadStage("DevicePlacement");
+	}
+	
+	public void StartDeviceAdjustment()
+	{
+		this.stageManager.LoadStage("DeviceAdjustment");
+	}
+	
 	public void LeaveBattle()
 	{
-		EmitSignal(SignalName.LevelSelect);
+		this.EmitSignal(SignalName.LevelSelect);
 	}
 }

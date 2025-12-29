@@ -6,8 +6,10 @@ public partial class DevicePlacement : Stage
 	private Node2D map;
 	private Selector selector;
 	private EntityLayer entityLayer;
+	
 	private Callable entitySelectedCall;
 	private Callable entityAppearanceCall;
+	private Callable toDeviceAdjustmentStageCall;
 	
 	private TopPanel topPanel;
 	private Button startButton;
@@ -20,6 +22,7 @@ public partial class DevicePlacement : Stage
 		
 		this.entityAppearanceCall = new Callable(this, nameof(RefreshDevices));
 		this.entitySelectedCall = new Callable(this, nameof(ClickedOnDevice));
+		this.toDeviceAdjustmentStageCall = new Callable(this, nameof(ToAdjustmentStage));
 		
 		this.selector.Layer = Selector.SelectorLayer.Entity;
 		this.selector.EntityTypeFilter = [Entity.EntityType.DeviceMarker, Entity.EntityType.Device];
@@ -32,6 +35,7 @@ public partial class DevicePlacement : Stage
 		this.selector.Connect("EntitySelected", this.entitySelectedCall);
 		this.entityLayer.Connect("EntitySpawned", this.entityAppearanceCall);
 		this.entityLayer.Connect("EntityDestroyed", this.entityAppearanceCall);
+		this.startButton.Connect("pressed", this.toDeviceAdjustmentStageCall);
 	}
 	
 	private void ClickedOnDevice(int entityType, Vector2I position)
@@ -49,20 +53,26 @@ public partial class DevicePlacement : Stage
 		}
 	}
 	
+	private bool HasEnoughDevices()
+	{
+		long count = this.entityLayer.EntityCollections[Entity.EntityType.Device].Count;
+		
+		return count > 0;
+	}
+	
+	private void ToAdjustmentStage()
+	{
+		if (this.HasEnoughDevices())
+		{
+			(GetNode("../../../") as Battle).StartDeviceAdjustment();
+		}
+	}
+	
 	private void RefreshDevices(int entityType, Entity Entity)
 	{
 		if ((Entity.EntityType)entityType == Entity.EntityType.Device)
 		{
-			long count = this.entityLayer.EntityCollections[Entity.EntityType.Device].Count;
-			
-			/*  !!!!!!!!!!!!!!!!   */
-			if (count > 0)
-			{
-				this.startButton.Disabled = false;
-			} else
-			{
-				this.startButton.Disabled = true;
-			}
+			this.startButton.Disabled = !this.HasEnoughDevices();
 		}
 	}
 	
@@ -71,5 +81,6 @@ public partial class DevicePlacement : Stage
 		this.selector.Disconnect("EntitySelected", this.entitySelectedCall);
 		this.entityLayer.Disconnect("EntitySpawned", this.entityAppearanceCall);
 		this.entityLayer.Disconnect("EntityDestroyed", this.entityAppearanceCall);
+		this.startButton.Disconnect("pressed", this.toDeviceAdjustmentStageCall);
 	}
 }
