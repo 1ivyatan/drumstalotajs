@@ -5,8 +5,8 @@ public partial class Entity : Node2D
 {
 	public enum EntityType
 	{
-		None,
-		DeviceMarker,
-		Device
+		None = -1,
+		DeviceMarker = 0,
+		Device = 1
 	}
 }
