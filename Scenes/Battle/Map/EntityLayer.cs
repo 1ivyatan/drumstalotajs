@@ -30,12 +30,12 @@ public partial class EntityLayer : TileMapLayer
 		}
 	}
 	
-	public void _EntitySpawned(Entity entity)
+	public void _EntitySpawned(int entityType, Entity entity)
 	{
 		GD.Print(entity);
 	}
 	
-	public void _EntityDestroyed(Entity entity)
+	public void _EntityDestroyed(int entityType, Entity entity)
 	{
 		GD.Print(entity);
 	}

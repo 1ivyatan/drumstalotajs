@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Entity : Node2D
+public abstract partial class Entity : Node2D
 {
 	public enum EntityType
 	{
@@ -11,14 +11,19 @@ public partial class Entity : Node2D
 	}
 	
 	[Signal]
-	public delegate void EntitySpawnedEventHandler(Node2D instance);
+	public delegate void EntitySpawnedEventHandler(int entityType, Node2D instance);
 	
 	[Signal]
-	public delegate void EntityDestroyedEventHandler(Node2D instance);
+	public delegate void EntityDestroyedEventHandler(int entityType, Node2D instance);
 	
-	private Node parent;
-	private Callable spawnCall;
-	private Callable destroyCall;
+	protected abstract EntityType Type
+	{
+		get;
+	}
+	
+	protected Node parent;
+	protected Callable spawnCall;
+	protected Callable destroyCall;
 	
 	public override void _Ready()
 	{
@@ -31,7 +36,7 @@ public partial class Entity : Node2D
 			this.Connect("EntitySpawned", this.spawnCall);
 			this.Connect("EntityDestroyed", this.destroyCall);
 			
-			this.EmitSignal(SignalName.EntitySpawned, this);
+			this.EmitSignal(SignalName.EntitySpawned, (int)this.Type, this);
 		}
 		
 	}
@@ -40,7 +45,7 @@ public partial class Entity : Node2D
 	{
 		if (this.parent != null)
 		{
-			this.EmitSignal(SignalName.EntitySpawned, this);
+			this.EmitSignal(SignalName.EntitySpawned, (int)this.Type, this);
 			this.Disconnect("EntitySpawned", this.spawnCall);
 			this.Disconnect("EntityDestroyed", this.destroyCall);
 		}
