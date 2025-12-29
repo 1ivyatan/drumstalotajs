@@ -8,6 +8,8 @@ public partial class DevicePlacement : Stage
 	private EntityLayer entityLayer;
 	private Callable entitySelectedCall;
 	private Callable entityAppearanceCall;
+	
+	private TopPanel topPanel;
 	private Button startButton;
 	
 	public override void _Ready()
@@ -15,7 +17,6 @@ public partial class DevicePlacement : Stage
 		this.map = this.GetNode<Node2D>("../../MapContainer/Map");
 		this.selector = this.map.GetNode<Node2D>("Selector") as Selector;
 		this.entityLayer = this.map.GetNode<TileMapLayer>("Grid/EntityLayer") as EntityLayer;
-		this.startButton = this.GetNode<Button>("StartButton");
 		
 		this.entityAppearanceCall = new Callable(this, nameof(RefreshDevices));
 		this.entitySelectedCall = new Callable(this, nameof(ClickedOnDevice));
@@ -23,6 +24,11 @@ public partial class DevicePlacement : Stage
 		this.selector.Layer = Selector.SelectorLayer.Entity;
 		this.selector.EntityTypeFilter = [Entity.EntityType.DeviceMarker, Entity.EntityType.Device];
 		this.selector.SelectorMode = Selector.SelectorFilterMode.Fitlered;
+		
+		this.startButton = this.GetNode<Button>("StartButton");
+		this.topPanel = this.GetNode("../../../TopPanel") as TopPanel;
+		
+		this.topPanel.SetTopbarLabel("Ierīču ievietošana");
 		
 		this.selector.Connect("EntitySelected", this.entitySelectedCall);
 		this.entityLayer.Connect("EntitySpawned", this.entityAppearanceCall);
@@ -49,6 +55,7 @@ public partial class DevicePlacement : Stage
 		if ((Entity.EntityType)entityType == Entity.EntityType.Device)
 		{
 			long count = this.entityLayer.EntityCollections[Entity.EntityType.Device].Count;
+			
 			
 			/*  !!!!!!!!!!!!!!!!   */
 			if (count > 0)
