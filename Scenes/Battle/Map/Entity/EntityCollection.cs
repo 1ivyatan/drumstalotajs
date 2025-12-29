@@ -23,7 +23,7 @@ public class EntityCollection
 	public void Add(Vector2I position, Entity instance)
 	{
 		this.Instances.Add(position, instance);
-		this.Count++;
+		this.Count = this.Instances.Count;
 	}
 	
 	public void Remove(Vector2I position)
@@ -31,7 +31,7 @@ public class EntityCollection
 		if (this.Instances.ContainsKey(position))
 		{
 			this.Instances.Remove(position);
-			this.Count--;
+			this.Count = this.Instances.Count;
 		}
 	}
 	

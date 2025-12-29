@@ -4,6 +4,12 @@ using System.Collections.Generic;
 
 public partial class EntityLayer : TileMapLayer
 {
+	[Signal]
+	public delegate void EntitySpawnedEventHandler(int entityType, Node2D newEntity);
+	
+	[Signal]
+	public delegate void EntityDestroyedEventHandler(int entityType, Node2D oldEntity);
+	
 	public Dictionary<Entity.EntityType, EntityCollection> EntityCollections
 	{
 		get;
@@ -33,10 +39,12 @@ public partial class EntityLayer : TileMapLayer
 	public void _EntitySpawned(int entityType, Entity entity)
 	{
 		this.EntityCollections[(Entity.EntityType)entityType].Add(this.LocalToMap(entity.Position), entity);
+		this.EmitSignal(SignalName.EntitySpawned, entityType, entity);
 	}
 	
 	public void _EntityDestroyed(int entityType, Entity entity)
 	{
 		this.EntityCollections[(Entity.EntityType)entityType].Remove(this.LocalToMap(entity.Position));
+		this.EmitSignal(SignalName.EntityDestroyed, entityType, entity);
 	}
 }
