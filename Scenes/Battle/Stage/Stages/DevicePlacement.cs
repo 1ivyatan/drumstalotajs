@@ -69,5 +69,8 @@ public partial class DevicePlacement : Stage
 	
 	public override void _ExitTree()
 	{
+		this.selector.Disconnect("EntitySelected", this.entitySelectedCall);
+		this.entityLayer.Disconnect("EntitySpawned", this.entityAppearanceCall);
+		this.entityLayer.Disconnect("EntityDestroyed", this.entityAppearanceCall);
 	}
 }

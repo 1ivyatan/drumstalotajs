@@ -35,4 +35,10 @@ public partial class TopPanel : PanelContainer
 		this.entityLayer.Connect("EntitySpawned", this.entityAppearanceCall);
 		this.entityLayer.Connect("EntityDestroyed", this.entityAppearanceCall);
 	}
+	
+	public override void _ExitTree()
+	{
+		this.entityLayer.Disconnect("EntitySpawned", this.entityAppearanceCall);
+		this.entityLayer.Disconnect("EntityDestroyed", this.entityAppearanceCall);
+	}
 }
