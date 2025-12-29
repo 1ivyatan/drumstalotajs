@@ -29,4 +29,14 @@ public partial class EntityLayer : TileMapLayer
 			this.EntityCollections.Add(entityType, new EntityCollection(this, entityType));
 		}
 	}
+	
+	public void _EntitySpawned(Entity entity)
+	{
+		GD.Print(entity);
+	}
+	
+	public void _EntityDestroyed(Entity entity)
+	{
+		GD.Print(entity);
+	}
 }
