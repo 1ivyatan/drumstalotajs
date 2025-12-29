@@ -63,26 +63,19 @@ public partial class Selector : Node2D
 			Vector2 globalMousePos = GetGlobalMousePosition();
 			Vector2 localMousePos = this.grid.ToLocal(globalMousePos);
 			Vector2I cellPos = this.entityLayer.LocalToMap(localMousePos);
+			Entity.EntityType selectedEntityType = Entity.EntityType.None;
 			
 			switch(this.Layer)
 			{
 				case SelectorLayer.Entity:
-					Entity.EntityType selectedEntityType = (Entity.EntityType)this.entityLayer.GetCellAlternativeTile(cellPos);
+				case SelectorLayer.All:
+					selectedEntityType = (Entity.EntityType)this.entityLayer.GetCellAlternativeTile(cellPos);
 					
-					if (
-						selectedEntityType == Entity.EntityType.None ||
-						this.SelectorMode == SelectorFilterMode.Fitlered &&
-						(
-							this.EntityTypeFilter != null &&
-							this.EntityTypeFilter.Length > 0 &&
-							!this.EntityTypeFilter.Contains(selectedEntityType)
-						)
-					)
+					if (!this.EntityInFilter(selectedEntityType, cellPos))
 					{
 						this.sprite.Visible = false;
 						return;
 					}
-					
 					break;
 				default:
 					break;
@@ -98,14 +91,36 @@ public partial class Selector : Node2D
 					switch(this.Layer)
 					{
 						case SelectorLayer.Entity:
-							
+						case SelectorLayer.All:
+							if (selectedEntityType != Entity.EntityType.None)
+							{
+								EmitSignal(SignalName.EntitySelected, (int)selectedEntityType, cellPos);
+							}
 							break;
 						default:
 							break;
 					}
-					//EmitSignal(SignalName.Selected, (int)entityType, cellPos);
 				}
 			}
+		}
+	}
+	
+	private bool EntityInFilter(Entity.EntityType selectedEntityType, Vector2I cellPos)
+	{
+		if (
+			selectedEntityType == Entity.EntityType.None ||
+			this.SelectorMode == SelectorFilterMode.Fitlered &&
+			(
+				this.EntityTypeFilter != null &&
+				this.EntityTypeFilter.Length > 0 &&
+				!this.EntityTypeFilter.Contains(selectedEntityType)
+			)
+		)
+		{
+			return false;
+		} else 
+		{
+			return true;
 		}
 	}
 }
