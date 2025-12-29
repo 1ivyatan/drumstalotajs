@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://ltyi7c8rpybk"]
+
+[ext_resource type="PackedScene" uid="uid://dvnj41pc8cjf5" path="res://Scenes/Battle/Map/Entity/Entity.tscn" id="1_o7r73"]
+[ext_resource type="Script" uid="uid://bw2ghn6pjrxg8" path="res://Scenes/Battle/Map/Entity/Entities/DevicePlaceholder.cs" id="2_ub7iu"]
+
+[node name="Entity" instance=ExtResource("1_o7r73")]
+script = ExtResource("2_ub7iu")
