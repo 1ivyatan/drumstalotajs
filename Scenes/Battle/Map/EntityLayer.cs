@@ -4,11 +4,20 @@ using System.Collections.Generic;
 
 public partial class EntityLayer : TileMapLayer
 {
-	private Dictionary<Entity.EntityType, EntityCollection> collections;
+	public Dictionary<Entity.EntityType, EntityCollection> EntityCollections
+	{
+		get;
+		private set;
+	}
+	
+	public void InsertEntity(Entity.EntityType entityType, Vector2I position)
+	{
+		this.SetCell(position, 0, new Vector2I(0, 0), (int)entityType);
+	}
 	
 	public override void _Ready()
 	{
-		this.collections = new Dictionary<Entity.EntityType, EntityCollection>();
+		this.EntityCollections = new Dictionary<Entity.EntityType, EntityCollection>();
 		
 		foreach (Entity.EntityType entityType in Enum.GetValues(typeof(Entity.EntityType)))
 		{
@@ -17,7 +26,7 @@ public partial class EntityLayer : TileMapLayer
 				continue;
 			}
 			
-			this.collections.Add(entityType, new EntityCollection(this, entityType));
+			this.EntityCollections.Add(entityType, new EntityCollection(this, entityType));
 		}
 	}
 }

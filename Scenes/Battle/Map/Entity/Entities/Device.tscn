@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://bcvj5lmggceht"]
+
+[ext_resource type="PackedScene" uid="uid://dvnj41pc8cjf5" path="res://Scenes/Battle/Map/Entity/Entity.tscn" id="1_qbsng"]
+[ext_resource type="Script" uid="uid://b1rqfja7vd46e" path="res://Scenes/Battle/Map/Entity/Entities/Device.cs" id="2_jjrjt"]
+[ext_resource type="Texture2D" uid="uid://b7tf2jiuu05gm" path="res://Assets/Sprites/device.png" id="3_al8yh"]
+
+[node name="Device" instance=ExtResource("1_qbsng")]
+script = ExtResource("2_jjrjt")
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="0"]
+texture = ExtResource("3_al8yh")
