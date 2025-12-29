@@ -38,14 +38,13 @@ public abstract partial class Entity : Node2D
 			
 			this.EmitSignal(SignalName.EntitySpawned, (int)this.Type, this);
 		}
-		
 	}
 	
 	public override void _ExitTree()
 	{
 		if (this.parent != null)
 		{
-			this.EmitSignal(SignalName.EntitySpawned, (int)this.Type, this);
+			this.EmitSignal(SignalName.EntityDestroyed, (int)this.Type, this);
 			this.Disconnect("EntitySpawned", this.spawnCall);
 			this.Disconnect("EntityDestroyed", this.destroyCall);
 		}

@@ -32,11 +32,11 @@ public partial class EntityLayer : TileMapLayer
 	
 	public void _EntitySpawned(int entityType, Entity entity)
 	{
-		GD.Print(entity);
+		this.EntityCollections[(Entity.EntityType)entityType].Add(this.LocalToMap(entity.Position), entity);
 	}
 	
 	public void _EntityDestroyed(int entityType, Entity entity)
 	{
-		GD.Print(entity);
+		this.EntityCollections[(Entity.EntityType)entityType].Remove(this.LocalToMap(entity.Position));
 	}
 }

@@ -20,6 +20,21 @@ public class EntityCollection
 	private TileMapLayer parent;
 	private Entity.EntityType type;
 	
+	public void Add(Vector2I position, Entity instance)
+	{
+		this.Instances.Add(position, instance);
+		this.Count++;
+	}
+	
+	public void Remove(Vector2I position)
+	{
+		if (this.Instances.ContainsKey(position))
+		{
+			this.Instances.Remove(position);
+			this.Count--;
+		}
+	}
+	
 	public EntityCollection(TileMapLayer parent, Entity.EntityType type)
 	{
 		this.parent = parent;
