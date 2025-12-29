@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Linq;
 
 public partial class Selector : Node2D
 {
@@ -50,18 +51,42 @@ public partial class Selector : Node2D
 	}
 	
 	public override void _Input(InputEvent @event)
-	{
-		if (this.SelectorMode == SelectorFilterMode.None)
-		{
-			this.sprite.Visible = false;
-			return;
-		}
-		
+	{	
 		if (@event is InputEventMouse mouseEvent)
 		{
+			if (this.SelectorMode == SelectorFilterMode.None)
+			{
+				this.sprite.Visible = false;
+				return;
+			}
+			
 			Vector2 globalMousePos = GetGlobalMousePosition();
 			Vector2 localMousePos = this.grid.ToLocal(globalMousePos);
 			Vector2I cellPos = this.entityLayer.LocalToMap(localMousePos);
+			
+			switch(this.Layer)
+			{
+				case SelectorLayer.Entity:
+					Entity.EntityType selectedEntityType = (Entity.EntityType)this.entityLayer.GetCellAlternativeTile(cellPos);
+					
+					if (
+						selectedEntityType == Entity.EntityType.None ||
+						this.SelectorMode == SelectorFilterMode.Fitlered &&
+						(
+							this.EntityTypeFilter != null &&
+							this.EntityTypeFilter.Length > 0 &&
+							!this.EntityTypeFilter.Contains(selectedEntityType)
+						)
+					)
+					{
+						this.sprite.Visible = false;
+						return;
+					}
+					
+					break;
+				default:
+					break;
+			}
 			
 			SetPosition((cellPos * 80) + new Vector2I(80 / 2, 80 / 2));	
 			this.sprite.Visible = true;
