@@ -56,7 +56,6 @@ public partial class DevicePlacement : Stage
 		{
 			long count = this.entityLayer.EntityCollections[Entity.EntityType.Device].Count;
 			
-			
 			/*  !!!!!!!!!!!!!!!!   */
 			if (count > 0)
 			{

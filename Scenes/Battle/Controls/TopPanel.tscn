@@ -22,7 +22,7 @@ layout_mode = 2
 
 [node name="DeviceCount" type="Label" parent="OptionsStatsGrid/StatsContainer"]
 layout_mode = 2
-text = "99"
+text = "0"
 
 [node name="FlyingLabel" type="Label" parent="."]
 layout_mode = 2
