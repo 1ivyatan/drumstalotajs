@@ -20,7 +20,7 @@ public partial class DevicePlacement : Stage
 		this.selector = this.map.GetNode<Node2D>("Selector") as Selector;
 		this.entityLayer = this.map.GetNode<TileMapLayer>("Grid/EntityLayer") as EntityLayer;
 		
-		this.entityAppearanceCall = new Callable(this, nameof(RefreshDevices));
+		this.entityAppearanceCall = new Callable(this, nameof(PrepareToAdjustmentButton));
 		this.entitySelectedCall = new Callable(this, nameof(ClickedOnDevice));
 		this.toDeviceAdjustmentStageCall = new Callable(this, nameof(ToAdjustmentStage));
 		
@@ -68,7 +68,7 @@ public partial class DevicePlacement : Stage
 		}
 	}
 	
-	private void RefreshDevices(int entityType, Entity Entity)
+	private void PrepareToAdjustmentButton(int entityType, Entity Entity)
 	{
 		if ((Entity.EntityType)entityType == Entity.EntityType.Device)
 		{
