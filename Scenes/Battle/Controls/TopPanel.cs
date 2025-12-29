@@ -9,6 +9,7 @@ public partial class TopPanel : PanelContainer
 	
 	private EntityLayer entityLayer;
 	private Callable entityAppearanceCall;
+	private Callable battleExitCall;
 	
 	private void RefreshCounters(int entityType, Vector2I position)
 	{
@@ -24,6 +25,11 @@ public partial class TopPanel : PanelContainer
 		this.topbarLabel.Text = text;
 	}
 	
+	private void LeaveBattle()
+	{
+		(GetNode("..") as Battle).LeaveBattle();
+	}
+	
 	public override void _Ready()
 	{
 		this.exitButton = this.GetNode<Button>("OptionsStatsGrid/ExitButton");
@@ -31,14 +37,19 @@ public partial class TopPanel : PanelContainer
 		this.topbarLabel = this.GetNode<Label>("FlyingLabel");
 		
 		this.entityLayer = this.GetNode<TileMapLayer>("../MapControl/MapContainer/Map/Grid/EntityLayer") as EntityLayer;
+		
 		this.entityAppearanceCall = new Callable(this, nameof(RefreshCounters));
+		this.battleExitCall = new Callable(this, nameof(LeaveBattle));
+		
 		this.entityLayer.Connect("EntitySpawned", this.entityAppearanceCall);
 		this.entityLayer.Connect("EntityDestroyed", this.entityAppearanceCall);
+		this.exitButton.Connect("pressed", this.battleExitCall);
 	}
 	
 	public override void _ExitTree()
 	{
 		this.entityLayer.Disconnect("EntitySpawned", this.entityAppearanceCall);
 		this.entityLayer.Disconnect("EntityDestroyed", this.entityAppearanceCall);
+		this.exitButton.Disconnect("pressed", this.battleExitCall);
 	}
 }

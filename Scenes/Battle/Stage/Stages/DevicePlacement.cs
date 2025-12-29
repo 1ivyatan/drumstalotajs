@@ -27,7 +27,6 @@ public partial class DevicePlacement : Stage
 		
 		this.startButton = this.GetNode<Button>("StartButton");
 		this.topPanel = this.GetNode("../../../TopPanel") as TopPanel;
-		
 		this.topPanel.SetTopbarLabel("Ierīču ievietošana");
 		
 		this.selector.Connect("EntitySelected", this.entitySelectedCall);
