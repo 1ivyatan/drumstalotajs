@@ -10,21 +10,12 @@ public partial class DeviceAdjustment : Stage
 	
 	private Callable entitySelectedCall;
 	
-	private PanelContainer deviceAdjustmentPanel;
-	
-	private void HideAdjustmentPanel()
-	{
-		
-	}
-	
-	private void ShowAdjustmentPanel()
-	{
-		
-	}
+	private DeviceAdjustmentPanel deviceAdjustmentPanel;
 	
 	private void ClickedOnDevice(int entityType, Vector2I position)
 	{
-		GD.Print("selected!!!!!!");
+		Entity entity = this.entityLayer.EntityCollections[(Entity.EntityType)entityType].Instances[position];
+		deviceAdjustmentPanel.ShowEntityInfo(entity);
 	}
 	
 	public override void _Ready()
@@ -33,20 +24,20 @@ public partial class DeviceAdjustment : Stage
 		this.selector = this.map.GetNode<Node2D>("Selector") as Selector;
 		this.entityLayer = this.map.GetNode<TileMapLayer>("Grid/EntityLayer") as EntityLayer;
 		this.topPanel = this.GetNode("../../../TopPanel") as TopPanel;
-		this.deviceAdjustmentPanel = this.GetNode<PanelContainer>("DeviceAdjustmentPanel");
+		this.deviceAdjustmentPanel = this.GetNode("DeviceAdjustmentPanel") as DeviceAdjustmentPanel;
 	
 		this.selector.Layer = Selector.SelectorLayer.Entity;
 		this.selector.EntityTypeFilter = [Entity.EntityType.Device];
 		this.selector.SelectorMode = Selector.SelectorFilterMode.Fitlered;
 		
 		this.entitySelectedCall = new Callable(this, nameof(ClickedOnDevice));
-
-		this.topPanel.SetTopbarLabel("Ierīču koriģēšana");
 		
 		if (this.entityLayer.EntityCollections[Entity.EntityType.DeviceMarker].Count > 0)
 		{
 			this.entityLayer.EraseEntitiesByType(Entity.EntityType.DeviceMarker);	
 		}
+		
+		this.topPanel.SetTopbarLabel("Ierīču koriģēšana");
 		
 		this.selector.Connect("EntitySelected", this.entitySelectedCall);
 	}
