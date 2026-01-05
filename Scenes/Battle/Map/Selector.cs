@@ -69,8 +69,10 @@ public partial class Selector : Node2D
 			
 			switch(this.Layer)
 			{
-				case SelectorLayer.Entity:
 				case SelectorLayer.All:
+					selectedEntityType = (Entity.EntityType)this.entityLayer.GetCellAlternativeTile(cellPos);
+					break;
+				case SelectorLayer.Entity:
 					selectedEntityType = (Entity.EntityType)this.entityLayer.GetCellAlternativeTile(cellPos);
 					
 					if (!this.EntityInFilter(selectedEntityType, cellPos))
@@ -92,8 +94,10 @@ public partial class Selector : Node2D
 				{
 					switch(this.Layer)
 					{
-						case SelectorLayer.Entity:
 						case SelectorLayer.All:
+							EmitSignal(SignalName.EntitySelected, (int)selectedEntityType, cellPos);
+							break;
+						case SelectorLayer.Entity:
 							if (selectedEntityType != Entity.EntityType.None)
 							{
 								EmitSignal(SignalName.EntitySelected, (int)selectedEntityType, cellPos);

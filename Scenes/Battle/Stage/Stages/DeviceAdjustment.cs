@@ -12,10 +12,20 @@ public partial class DeviceAdjustment : Stage
 	
 	private DeviceAdjustmentPanel deviceAdjustmentPanel;
 	
-	private void ClickedOnDevice(int entityType, Vector2I position)
+	private void ClickedOnEntity(int entityType, Vector2I position)
 	{
-		Entity entity = this.entityLayer.EntityCollections[(Entity.EntityType)entityType].Instances[position];
-		deviceAdjustmentPanel.ShowEntityInfo(entity);
+		switch ((Entity.EntityType)entityType)
+		{
+			case Entity.EntityType.None:
+				deviceAdjustmentPanel.HideDeviceInfo();
+				break;
+			case Entity.EntityType.Device:
+				Entity entity = this.entityLayer.EntityCollections[(Entity.EntityType)entityType].Instances[position];
+				deviceAdjustmentPanel.ShowDeviceInfo(entity);
+				break;
+			default:
+				break;
+		}
 	}
 	
 	public override void _Ready()
@@ -26,11 +36,10 @@ public partial class DeviceAdjustment : Stage
 		this.topPanel = this.GetNode("../../../TopPanel") as TopPanel;
 		this.deviceAdjustmentPanel = this.GetNode("DeviceAdjustmentPanel") as DeviceAdjustmentPanel;
 	
-		this.selector.Layer = Selector.SelectorLayer.Entity;
-		this.selector.EntityTypeFilter = [Entity.EntityType.Device];
-		this.selector.SelectorMode = Selector.SelectorFilterMode.Fitlered;
+		this.selector.Layer = Selector.SelectorLayer.All;
+		this.selector.SelectorMode = Selector.SelectorFilterMode.All;
 		
-		this.entitySelectedCall = new Callable(this, nameof(ClickedOnDevice));
+		this.entitySelectedCall = new Callable(this, nameof(ClickedOnEntity));
 		
 		if (this.entityLayer.EntityCollections[Entity.EntityType.DeviceMarker].Count > 0)
 		{
