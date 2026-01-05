@@ -41,12 +41,14 @@ public partial class Selector : Node2D
 	
 	private Node2D grid;
 	private TileMapLayer entityLayer;
+	private TileMapLayer groundLayer;
 	private Sprite2D sprite;
 	
 	public override void _Ready()
 	{
 		this.grid = GetNode<Node2D>("../Grid");
 		this.entityLayer = this.grid.GetNode<TileMapLayer>("EntityLayer");
+		this.groundLayer = this.grid.GetNode<TileMapLayer>("GroundLayer");
 		this.sprite = this.GetNode<Sprite2D>("Sprite");
 		
 		this.sprite.Visible = false;
@@ -70,12 +72,10 @@ public partial class Selector : Node2D
 			switch(this.Layer)
 			{
 				case SelectorLayer.All:
-					selectedEntityType = (Entity.EntityType)this.entityLayer.GetCellAlternativeTile(cellPos);
-					break;
 				case SelectorLayer.Entity:
 					selectedEntityType = (Entity.EntityType)this.entityLayer.GetCellAlternativeTile(cellPos);
 					
-					if (!this.EntityInFilter(selectedEntityType, cellPos))
+					if (this.EntityTypeFilter != null && !this.EntityInFilter(selectedEntityType, cellPos))
 					{
 						this.sprite.Visible = false;
 						return;
@@ -85,8 +85,15 @@ public partial class Selector : Node2D
 					break;
 			}
 			
-			SetPosition((cellPos * 80) + new Vector2I(80 / 2, 80 / 2));	
-			this.sprite.Visible = true;
+			if (this.groundLayer.GetCellAtlasCoords(cellPos).Equals(new Vector2I(-1, -1)))
+			{
+				this.sprite.Visible = false;
+				return;
+			} else
+			{
+				SetPosition((cellPos * 80) + new Vector2I(80 / 2, 80 / 2));	
+				this.sprite.Visible = true;
+			}
 			
 			if (mouseEvent is InputEventMouseButton mouseClick)
 			{
@@ -96,6 +103,11 @@ public partial class Selector : Node2D
 					{
 						case SelectorLayer.All:
 							EmitSignal(SignalName.EntitySelected, (int)selectedEntityType, cellPos);
+							
+							if (this.groundLayer.GetCellAlternativeTile(cellPos) != -1)
+							{
+								// do something in future
+							}
 							break;
 						case SelectorLayer.Entity:
 							if (selectedEntityType != Entity.EntityType.None)

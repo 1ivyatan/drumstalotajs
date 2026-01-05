@@ -37,6 +37,7 @@ public partial class DeviceAdjustment : Stage
 		this.deviceAdjustmentPanel = this.GetNode("DeviceAdjustmentPanel") as DeviceAdjustmentPanel;
 	
 		this.selector.Layer = Selector.SelectorLayer.All;
+		this.selector.EntityTypeFilter = null;
 		this.selector.SelectorMode = Selector.SelectorFilterMode.All;
 		
 		this.entitySelectedCall = new Callable(this, nameof(ClickedOnEntity));
