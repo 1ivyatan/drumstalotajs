@@ -3,13 +3,15 @@ using System;
 
 public partial class DeviceAdjustmentPanel : PanelContainer
 {
-	private void Hide()
+	public void HideInfo()
 	{
-		
+		this.Visible = false;
 	}
 	
-	private void ShowEntityInfo(Entity entity)
+	public void ShowEntityInfo(Entity entity)
 	{
+		
 		GD.Print(entity);
+		this.Visible = true;
 	}
 }
