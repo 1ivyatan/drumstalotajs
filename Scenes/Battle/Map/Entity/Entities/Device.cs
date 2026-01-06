@@ -7,4 +7,18 @@ public partial class Device : Entity
 	{
 		get;
 	} = EntityType.Device;
+	
+	private int azimuth;
+	public int Azimuth
+	{
+		get
+		{
+			return this.Azimuth;
+		}
+		
+		set
+		{
+			this.azimuth = value > 360 ? value - ( 360 *  ( value / 360 )) : value;
+		}
+	} = 0;
 }
