@@ -10,7 +10,7 @@ public partial class StageManager : Control
 	
 	public void LoadStage(string name)
 	{
-		string stagePath = $"res://Scenes/Battle/Stage/Stages/{name}.tscn";
+		string stagePath = $"res://Scenes/Battle/Stage/Stages/{name}/{name}.tscn";
 		
 		if (this.ActiveStage != null)
 		{
