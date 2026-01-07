@@ -3,15 +3,22 @@ using System;
 
 public partial class DeviceAdjustmentPanel : PanelContainer
 {
+	private Label infoBox;
+	
+	public override void _Ready()
+	{
+		this.infoBox = this.GetNode<Label>("VBoxContainer/InfoBox");
+	}
+	
 	public void HideDeviceInfo()
 	{
 		this.Visible = false;
 	}
 	
-	public void ShowDeviceInfo(Entity entity)
+	public void ShowDeviceInfo(Device device, Vector2I position)
 	{
-		
-		GD.Print(entity);
+		GD.Print(device);
+		this.infoBox.Text = $"Novietojums: {position}\nAzimuts: {device.Azimuth}";
 		this.Visible = true;
 	}
 }

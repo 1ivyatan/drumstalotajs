@@ -21,7 +21,7 @@ public partial class DeviceAdjustment : Stage
 				break;
 			case Entity.EntityType.Device:
 				Entity entity = this.entityLayer.EntityCollections[(Entity.EntityType)entityType].Instances[position];
-				deviceAdjustmentPanel.ShowDeviceInfo(entity);
+				deviceAdjustmentPanel.ShowDeviceInfo((Device)entity, position);
 				break;
 			default:
 				break;

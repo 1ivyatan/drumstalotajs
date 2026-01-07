@@ -38,10 +38,6 @@ script = ExtResource("3_qymj2")
 [node name="VBoxContainer" type="VBoxContainer" parent="DeviceAdjustmentPanel" index="0"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="DeviceAdjustmentPanel/VBoxContainer" index="0"]
+[node name="InfoBox" type="Label" parent="DeviceAdjustmentPanel/VBoxContainer" index="0"]
 layout_mode = 2
-text = "Ierīce (x;x) punktā"
-
-[node name="Label2" type="Label" parent="DeviceAdjustmentPanel/VBoxContainer" index="1"]
-layout_mode = 2
-text = "Azimuts:"
+text = "infobox"
