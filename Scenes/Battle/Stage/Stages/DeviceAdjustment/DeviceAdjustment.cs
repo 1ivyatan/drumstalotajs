@@ -13,6 +13,8 @@ public partial class DeviceAdjustment : Stage
 	
 	private Device selectedDevice;
 	
+	private int deviceRotationDirectionSign;
+	
 	private void ClickedOnEntity(int entityType, Vector2I position)
 	{
 		switch ((Entity.EntityType)entityType)
@@ -35,16 +37,24 @@ public partial class DeviceAdjustment : Stage
 		}
 	}
 	
+	public override void _PhysicsProcess(double delta)
+	{
+		if (deviceRotationDirectionSign != 0)
+		{
+			GD.Print("rotation!");
+		}
+	}
+	
 	public override void _Input(InputEvent @event)
 	{
 		if (@event.IsActionPressed("device_adjustment_clockwise") && this.selectedDevice != null)
 		{
-			GD.Print("held");
+			this.deviceRotationDirectionSign = 1;
 		}
 		
 		if (@event.IsActionReleased("device_adjustment_clockwise") && this.selectedDevice != null)
 		{
-			GD.Print("release");
+			this.deviceRotationDirectionSign = 0;
 		}
 	}
 	
@@ -69,6 +79,7 @@ public partial class DeviceAdjustment : Stage
 		
 		this.topPanel.SetTopbarLabel("Ierīču koriģēšana");
 		
+		this.deviceRotationDirectionSign = 0;
 		this.selectedDevice = null;
 				
 		this.selector.Connect("EntitySelected", this.entitySelectedCall);
