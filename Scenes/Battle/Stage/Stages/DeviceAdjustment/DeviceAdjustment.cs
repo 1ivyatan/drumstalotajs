@@ -39,9 +39,10 @@ public partial class DeviceAdjustment : Stage
 	
 	public override void _PhysicsProcess(double delta)
 	{
-		if (deviceRotationDirectionSign != 0)
+		if (deviceRotationDirectionSign != 0 && selectedDevice != null)
 		{
-			GD.Print("rotation!");
+			selectedDevice.Azimuth += deviceRotationDirectionSign;
+			GD.Print(selectedDevice.Azimuth);
 		}
 	}
 	
@@ -52,7 +53,12 @@ public partial class DeviceAdjustment : Stage
 			this.deviceRotationDirectionSign = 1;
 		}
 		
-		if (@event.IsActionReleased("device_adjustment_clockwise") && this.selectedDevice != null)
+		if (@event.IsActionPressed("device_adjustment_counterclockwise") && this.selectedDevice != null)
+		{
+			this.deviceRotationDirectionSign = -1;
+		}
+		
+		if ((@event.IsActionReleased("device_adjustment_clockwise") || @event.IsActionReleased("device_adjustment_counterclockwise")) && this.selectedDevice != null)
 		{
 			this.deviceRotationDirectionSign = 0;
 		}

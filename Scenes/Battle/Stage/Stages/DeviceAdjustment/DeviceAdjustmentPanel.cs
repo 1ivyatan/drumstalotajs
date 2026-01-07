@@ -17,7 +17,6 @@ public partial class DeviceAdjustmentPanel : PanelContainer
 	
 	public void ShowDeviceInfo(Device device, Vector2I position)
 	{
-		GD.Print(device);
 		this.infoBox.Text = $"Novietojums: {position}\nAzimuts: {device.Azimuth}";
 		this.Visible = true;
 	}
