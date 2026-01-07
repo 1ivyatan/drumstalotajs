@@ -7,10 +7,11 @@ public partial class DeviceAdjustment : Stage
 	private Selector selector;
 	private EntityLayer entityLayer;
 	private TopPanel topPanel;
+	private DeviceAdjustmentPanel deviceAdjustmentPanel;
 	
 	private Callable entitySelectedCall;
 	
-	private DeviceAdjustmentPanel deviceAdjustmentPanel;
+	private Device selectedDevice;
 	
 	private void ClickedOnEntity(int entityType, Vector2I position)
 	{
@@ -18,13 +19,32 @@ public partial class DeviceAdjustment : Stage
 		{
 			case Entity.EntityType.None:
 				deviceAdjustmentPanel.HideDeviceInfo();
+				
+				this.selectedDevice = null;
+				
 				break;
 			case Entity.EntityType.Device:
-				Entity entity = this.entityLayer.EntityCollections[(Entity.EntityType)entityType].Instances[position];
-				deviceAdjustmentPanel.ShowDeviceInfo((Device)entity, position);
+				Device device = (Device)this.entityLayer.EntityCollections[(Entity.EntityType)entityType].Instances[position];
+
+				this.selectedDevice = device;
+
+				deviceAdjustmentPanel.ShowDeviceInfo(device, position);
 				break;
 			default:
 				break;
+		}
+	}
+	
+	public override void _Input(InputEvent @event)
+	{
+		if (@event.IsActionPressed("device_adjustment_clockwise") && this.selectedDevice != null)
+		{
+			GD.Print("held");
+		}
+		
+		if (@event.IsActionReleased("device_adjustment_clockwise") && this.selectedDevice != null)
+		{
+			GD.Print("release");
 		}
 	}
 	
@@ -49,6 +69,8 @@ public partial class DeviceAdjustment : Stage
 		
 		this.topPanel.SetTopbarLabel("Ierīču koriģēšana");
 		
+		this.selectedDevice = null;
+				
 		this.selector.Connect("EntitySelected", this.entitySelectedCall);
 	}
 	
