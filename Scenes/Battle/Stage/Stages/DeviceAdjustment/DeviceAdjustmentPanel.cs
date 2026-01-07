@@ -15,9 +15,9 @@ public partial class DeviceAdjustmentPanel : PanelContainer
 		this.Visible = false;
 	}
 	
-	public void ShowDeviceInfo(Device device, Vector2I position)
+	public void ShowDeviceInfo(Device device)
 	{
-		this.infoBox.Text = $"Novietojums: {position}\nAzimuts: {device.Azimuth}";
+		this.infoBox.Text = $"Azimuts: {device.Azimuth}°";
 		this.Visible = true;
 	}
 }

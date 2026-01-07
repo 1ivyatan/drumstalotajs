@@ -30,7 +30,7 @@ public partial class DeviceAdjustment : Stage
 
 				this.selectedDevice = device;
 
-				deviceAdjustmentPanel.ShowDeviceInfo(device, position);
+				deviceAdjustmentPanel.ShowDeviceInfo(device);
 				break;
 			default:
 				break;
@@ -42,7 +42,7 @@ public partial class DeviceAdjustment : Stage
 		if (deviceRotationDirectionSign != 0 && selectedDevice != null)
 		{
 			selectedDevice.Azimuth += deviceRotationDirectionSign;
-			GD.Print(selectedDevice.Azimuth);
+			deviceAdjustmentPanel.ShowDeviceInfo(selectedDevice);
 		}
 	}
 	
