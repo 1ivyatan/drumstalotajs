@@ -11,6 +11,17 @@ public partial class Device : Entity
 	public int Azimuth
 	{
 		get;
-		set => field = (value > 360) ? (value - (360 * (value / 360))) : value;
+		set {
+			if (value > 360)
+			{
+				field = value - (360 * (value / 360));
+			} else if (value < 0)
+			{
+				field = 360 - value;
+			} else
+			{
+				field = value;
+			}
+		}
 	} = 0;
 }
