@@ -19,9 +19,9 @@ public partial class Battle : Control
 		this.stageManager.LoadStage("DeviceAdjustment");
 	}
 	
-	public void StartBattle()
+	public void StartDeviceFiring()
 	{
-		this.stageManager.LoadStage("Battle");
+		this.stageManager.LoadStage("DeviceFiring");
 	}
 	
 	public void LeaveStage()

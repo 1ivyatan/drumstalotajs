@@ -2,13 +2,13 @@
 
 [ext_resource type="PackedScene" uid="uid://yq8k1s527i2x" path="res://Scenes/Battle/Stage/Stage.tscn" id="1_ndryb"]
 [ext_resource type="Script" uid="uid://ds5ai2l52ngw6" path="res://Scenes/Battle/Stage/Stages/DeviceAdjustment/DeviceAdjustment.cs" id="2_vci35"]
-[ext_resource type="Script" uid="uid://c1pxqypufiw01" path="res://Scenes/Battle/Stage/Stages/DeviceAdjustment/BattleButton.cs" id="3_km5o3"]
+[ext_resource type="Script" uid="uid://c1pxqypufiw01" path="res://Scenes/Battle/Stage/Stages/DeviceAdjustment/DeviceFiringButton.cs" id="3_km5o3"]
 [ext_resource type="Script" uid="uid://cjje0i52hauo3" path="res://Scenes/Battle/Stage/Stages/DeviceAdjustment/DeviceAdjustmentPanel.cs" id="3_qymj2"]
 
 [node name="Stage" instance=ExtResource("1_ndryb")]
 script = ExtResource("2_vci35")
 
-[node name="BattleButton" type="Button" parent="." index="0"]
+[node name="DeviceFiringButton" type="Button" parent="." index="0"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
