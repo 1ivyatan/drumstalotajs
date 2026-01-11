@@ -27,6 +27,8 @@ public partial class Device : Entity
 	
 	public void Fire()
 	{
-		GD.Print("fired!");
+		Node projectile = ResourceLoader.Load<PackedScene>("res://Scenes/Battle/Map/Entity/Entities/Devices/Projectile.tscn").Instantiate();
+		
+		this.parent.AddChild(projectile);
 	}
 }
