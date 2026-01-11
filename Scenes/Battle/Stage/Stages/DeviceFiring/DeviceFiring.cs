@@ -9,6 +9,10 @@ public partial class DeviceFiring : Control
 	
 	private TopPanel topPanel;
 	
+	/* to be removed!!!!!!!! */
+	private Timer tempFakeTimer;
+	/* ^^^^^^^^^^^^^^^^^^^^^^^^ */
+	
 	public override void _Ready()
 	{
 		this.map = this.GetNode<Node2D>("../../MapContainer/Map");
@@ -17,5 +21,21 @@ public partial class DeviceFiring : Control
 		
 		this.topPanel = this.GetNode("../../../TopPanel") as TopPanel;
 		this.topPanel.SetTopbarLabel("Ierīču šaušana");
+		
+		/* !!!!!!!!!!!!! */
+		this.tempFakeTimer = this.GetNode<Timer>("TempFakeTimer");
+		this.tempFakeTimer.Connect("timeout", new Callable(this, nameof(OnTimeOut)));
+		this.tempFakeTimer.Start();
+		/* !!!!!!!!!!!!!! */
+	}
+	
+	private void ToDeviceAdjustment()
+	{
+		GD.Print(123);
+	}
+	
+	private void OnTimeOut()
+	{
+		ToDeviceAdjustment();
 	}
 }
