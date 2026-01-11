@@ -27,7 +27,7 @@ public partial class TopPanel : PanelContainer
 	
 	private void LeaveBattle()
 	{
-		(GetNode("..") as Battle).LeaveBattle();
+		(GetNode("..") as Battle).LeaveStage();
 	}
 	
 	public override void _Ready()

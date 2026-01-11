@@ -24,7 +24,7 @@ public partial class Battle : Control
 		this.stageManager.LoadStage("Battle");
 	}
 	
-	public void LeaveBattle()
+	public void LeaveStage()
 	{
 		this.EmitSignal(SignalName.LevelSelect);
 	}
