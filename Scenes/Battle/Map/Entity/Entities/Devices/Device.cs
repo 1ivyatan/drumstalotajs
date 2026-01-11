@@ -8,13 +8,13 @@ public partial class Device : Entity
 		get;
 	} = EntityType.Device;
 	
-	public int Azimuth
+	public float Azimuth
 	{
 		get;
 		set {
 			if (value > 360)
 			{
-				field = value - (360 * (value / 360));
+				field = value - (360 * (int)(value / 360));
 			} else if (value < 0)
 			{
 				field = 360 - value;
@@ -27,7 +27,9 @@ public partial class Device : Entity
 	
 	public void Fire()
 	{
-		Node projectile = ResourceLoader.Load<PackedScene>("res://Scenes/Battle/Map/Entity/Entities/Devices/Projectile.tscn").Instantiate();
+		Projectile projectile = ResourceLoader.Load<PackedScene>("res://Scenes/Battle/Map/Entity/Entities/Devices/Projectile.tscn").Instantiate() as Projectile;
+		
+		projectile.SetTrajectory(this.Azimuth);
 		
 		this.parent.AddChild(projectile);
 	}
