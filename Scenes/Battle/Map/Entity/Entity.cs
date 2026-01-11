@@ -25,7 +25,7 @@ public abstract partial class Entity : Node2D
 	protected Callable spawnCall;
 	protected Callable destroyCall;
 	
-	public override void _Ready()
+	public sealed override  void _Ready()
 	{
 		this.parent = GetParent();
 		if (this.parent != null)
@@ -40,7 +40,7 @@ public abstract partial class Entity : Node2D
 		}
 	}
 	
-	public override void _ExitTree()
+	public sealed override void _ExitTree()
 	{
 		if (this.parent != null)
 		{
