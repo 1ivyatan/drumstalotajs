@@ -20,6 +20,9 @@ public partial class DeviceFiring : Control
 		this.map = this.GetNode<Node2D>("../../MapContainer/Map");
 		this.selector = this.map.GetNode<Node2D>("Selector") as Selector;
 		this.entityLayer = this.map.GetNode<TileMapLayer>("Grid/EntityLayer") as EntityLayer;
+
+		this.selector.EntityTypeFilter = [];
+		this.selector.SelectorMode = Selector.SelectorFilterMode.None;
 		
 		this.topPanel = this.GetNode("../../../TopPanel") as TopPanel;
 		this.topPanel.SetTopbarLabel("Ierīču šaušana");
