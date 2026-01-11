@@ -4,16 +4,22 @@ using System;
 public partial class DeviceAdjustment : Stage
 {
 	private Node2D map;
+	private BattleButton battleButton;
 	private Selector selector;
 	private EntityLayer entityLayer;
 	private TopPanel topPanel;
 	private DeviceAdjustmentPanel deviceAdjustmentPanel;
 	
 	private Callable entitySelectedCall;
+	private Callable battleStageCall;
 	
 	private Device selectedDevice;
-	
 	private int deviceRotationDirectionSign;
+	
+	private void ClickedBattleButton()
+	{
+		GD.Print("hi!!!!");
+	}
 	
 	private void ClickedOnEntity(int entityType, Vector2I position)
 	{
@@ -71,12 +77,14 @@ public partial class DeviceAdjustment : Stage
 		this.entityLayer = this.map.GetNode<TileMapLayer>("Grid/EntityLayer") as EntityLayer;
 		this.topPanel = this.GetNode("../../../TopPanel") as TopPanel;
 		this.deviceAdjustmentPanel = this.GetNode("DeviceAdjustmentPanel") as DeviceAdjustmentPanel;
-	
+		this.battleButton = this.GetNode("BattleButton") as BattleButton; 
+		
 		this.selector.Layer = Selector.SelectorLayer.All;
 		this.selector.EntityTypeFilter = null;
 		this.selector.SelectorMode = Selector.SelectorFilterMode.All;
 		
 		this.entitySelectedCall = new Callable(this, nameof(ClickedOnEntity));
+		this.battleStageCall = new Callable(this, nameof(ClickedBattleButton));
 		
 		if (this.entityLayer.EntityCollections[Entity.EntityType.DeviceMarker].Count > 0)
 		{
@@ -89,10 +97,12 @@ public partial class DeviceAdjustment : Stage
 		this.selectedDevice = null;
 				
 		this.selector.Connect("EntitySelected", this.entitySelectedCall);
+		this.battleButton.Connect("pressed", this.battleStageCall);
 	}
 	
 	public override void _ExitTree()
 	{
 		this.selector.Disconnect("EntitySelected", this.entitySelectedCall);
+		this.battleButton.Disconnect("pressed", this.battleStageCall);
 	}
 }
