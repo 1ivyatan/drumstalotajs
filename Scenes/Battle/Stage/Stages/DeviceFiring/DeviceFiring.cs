@@ -1,5 +1,7 @@
 using Godot;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 public partial class DeviceFiring : Control
 {
@@ -21,6 +23,18 @@ public partial class DeviceFiring : Control
 		
 		this.topPanel = this.GetNode("../../../TopPanel") as TopPanel;
 		this.topPanel.SetTopbarLabel("Ierīču šaušana");
+		
+		this.StartFiringSequence();
+	}
+	
+	private void StartFiringSequence()
+	{
+		Dictionary<Vector2I, Entity> devices = this.entityLayer.EntityCollections[Entity.EntityType.Device].Instances;
+		
+		foreach (KeyValuePair<Vector2I, Entity> device in devices)
+		{
+			GD.Print($"{device.Key}");
+		}
 		
 		/* !!!!!!!!!!!!! */
 		this.tempFakeTimer = this.GetNode<Timer>("TempFakeTimer");
