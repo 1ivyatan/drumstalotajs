@@ -14,7 +14,8 @@ public partial class DeviceAdjustment : Stage
 	private Callable deviceFiringCall;
 	
 	private Device selectedDevice;
-	private int deviceRotationDirectionSign;
+	private int deviceAzimuthDirectionSign;
+	private int deviceAngleDirectionSign;
 	
 	private void ToDeviceFiringStage()
 	{
@@ -45,28 +46,57 @@ public partial class DeviceAdjustment : Stage
 	
 	public override void _PhysicsProcess(double delta)
 	{
-		if (deviceRotationDirectionSign != 0 && selectedDevice != null)
+		if (selectedDevice != null)
 		{
-			selectedDevice.Azimuth += deviceRotationDirectionSign;
-			deviceAdjustmentPanel.ShowDeviceInfo(selectedDevice);
+			if (this.deviceAzimuthDirectionSign != 0)
+			{
+				selectedDevice.Azimuth += this.deviceAzimuthDirectionSign;
+				this.deviceAdjustmentPanel.ShowDeviceInfo(selectedDevice);
+			}
+			
+			if (this.deviceAngleDirectionSign != 0)
+			{
+				selectedDevice.Angle += this.deviceAngleDirectionSign;
+				this.deviceAdjustmentPanel.ShowDeviceInfo(selectedDevice);
+			}
 		}
 	}
 	
 	public override void _Input(InputEvent @event)
 	{
-		if (@event.IsActionPressed("device_adjustment_clockwise") && this.selectedDevice != null)
+		if (this.selectedDevice != null)
 		{
-			this.deviceRotationDirectionSign = 1;
-		}
-		
-		if (@event.IsActionPressed("device_adjustment_counterclockwise") && this.selectedDevice != null)
-		{
-			this.deviceRotationDirectionSign = -1;
-		}
-		
-		if ((@event.IsActionReleased("device_adjustment_clockwise") || @event.IsActionReleased("device_adjustment_counterclockwise")) && this.selectedDevice != null)
-		{
-			this.deviceRotationDirectionSign = 0;
+			/* Azimuth */
+			if (@event.IsActionPressed("device_adjustment_clockwise"))
+			{
+				this.deviceAzimuthDirectionSign = 1;
+			}
+			
+			if (@event.IsActionPressed("device_adjustment_counterclockwise"))
+			{
+				this.deviceAzimuthDirectionSign = -1;
+			}
+			
+			if ((@event.IsActionReleased("device_adjustment_clockwise") || @event.IsActionReleased("device_adjustment_counterclockwise")))
+			{
+				this.deviceAzimuthDirectionSign = 0;
+			}
+			
+			/* Angle */
+			if (@event.IsActionPressed("device_adjustment_raise"))
+			{
+				this.deviceAngleDirectionSign = 1;
+			}
+			
+			if (@event.IsActionPressed("device_adjustment_lower"))
+			{
+				this.deviceAngleDirectionSign = -1;
+			}
+			
+			if ((@event.IsActionReleased("device_adjustment_raise") || @event.IsActionReleased("device_adjustment_lower")))
+			{
+				this.deviceAngleDirectionSign = 0;
+			}
 		}
 	}
 	
@@ -93,7 +123,7 @@ public partial class DeviceAdjustment : Stage
 		
 		this.topPanel.SetTopbarLabel("Ierīču koriģēšana");
 		
-		this.deviceRotationDirectionSign = 0;
+		this.deviceAzimuthDirectionSign = 0;
 		this.selectedDevice = null;
 				
 		this.selector.Connect("EntitySelected", this.entitySelectedCall);
