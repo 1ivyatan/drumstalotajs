@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://dtq2jnp3b2gt6" path="res://Scenes/Battle/Map/Selector.cs" id="2_aetmg"]
 [ext_resource type="Script" uid="uid://bo7rmlh4qb1hh" path="res://Scenes/Battle/Map/EntityLayer.cs" id="2_dohyj"]
 [ext_resource type="Texture2D" uid="uid://b6w1j8ue1wa0y" path="res://Assets/Sprites/gridselector.png" id="3_hbtq2"]
-[ext_resource type="PackedScene" uid="uid://bcvj5lmggceht" path="res://Scenes/Battle/Map/Entity/Entities/Device.tscn" id="3_wq325"]
+[ext_resource type="PackedScene" uid="uid://bcvj5lmggceht" path="res://Scenes/Battle/Map/Entity/Entities/Devices/Device.tscn" id="3_wq325"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aetmg"]
 texture = ExtResource("1_gwxle")
