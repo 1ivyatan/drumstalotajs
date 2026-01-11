@@ -9,6 +9,12 @@ public partial class Projectile : Node2D
 		private set;
 	}
 	
+	public float Angle
+	{
+		get;
+		private set;
+	}
+	
 	public void SetTrajectory(float azimuth, Vector2 spawnPosition)
 	{
 		this.Azimuth = azimuth;

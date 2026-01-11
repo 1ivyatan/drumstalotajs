@@ -17,7 +17,7 @@ public partial class DeviceAdjustmentPanel : PanelContainer
 	
 	public void ShowDeviceInfo(Device device)
 	{
-		this.infoBox.Text = $"Azimuts: {device.Azimuth}°";
+		this.infoBox.Text = $"Azimuts: {device.Azimuth}°\nLeņķis: {device.Angle}°";
 		this.Visible = true;
 	}
 }
