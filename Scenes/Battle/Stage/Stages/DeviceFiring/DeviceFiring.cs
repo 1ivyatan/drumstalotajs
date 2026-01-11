@@ -31,7 +31,7 @@ public partial class DeviceFiring : Control
 	
 	private void ToDeviceAdjustment()
 	{
-		GD.Print(123);
+		(GetNode("../../../") as Battle).StartDeviceAdjustment();
 	}
 	
 	private void OnTimeOut()

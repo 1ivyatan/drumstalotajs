@@ -18,7 +18,6 @@ public partial class DeviceAdjustment : Stage
 	
 	private void ToDeviceFiringStage()
 	{
-		
 		(GetNode("../../../") as Battle).StartDeviceFiring();
 	}
 	
