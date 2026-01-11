@@ -19,6 +19,11 @@ public partial class Battle : Control
 		this.stageManager.LoadStage("DeviceAdjustment");
 	}
 	
+	public void StartBattle()
+	{
+		this.stageManager.LoadStage("Battle");
+	}
+	
 	public void LeaveBattle()
 	{
 		this.EmitSignal(SignalName.LevelSelect);

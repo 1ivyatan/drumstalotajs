@@ -16,9 +16,10 @@ public partial class DeviceAdjustment : Stage
 	private Device selectedDevice;
 	private int deviceRotationDirectionSign;
 	
-	private void ClickedBattleButton()
+	private void ToBattleStage()
 	{
-		GD.Print("hi!!!!");
+		
+		(GetNode("../../../") as Battle).StartBattle();
 	}
 	
 	private void ClickedOnEntity(int entityType, Vector2I position)
@@ -84,7 +85,7 @@ public partial class DeviceAdjustment : Stage
 		this.selector.SelectorMode = Selector.SelectorFilterMode.All;
 		
 		this.entitySelectedCall = new Callable(this, nameof(ClickedOnEntity));
-		this.battleStageCall = new Callable(this, nameof(ClickedBattleButton));
+		this.battleStageCall = new Callable(this, nameof(ToBattleStage));
 		
 		if (this.entityLayer.EntityCollections[Entity.EntityType.DeviceMarker].Count > 0)
 		{
