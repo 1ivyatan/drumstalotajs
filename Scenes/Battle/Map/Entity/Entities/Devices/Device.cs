@@ -24,4 +24,9 @@ public partial class Device : Entity
 			}
 		}
 	} = 0;
+	
+	public void Fire()
+	{
+		GD.Print("fired!");
+	}
 }

@@ -29,11 +29,12 @@ public partial class DeviceFiring : Control
 	
 	private void StartFiringSequence()
 	{
-		Dictionary<Vector2I, Entity> devices = this.entityLayer.EntityCollections[Entity.EntityType.Device].Instances;
+		Dictionary<Vector2I, Entity> deviceEntities = this.entityLayer.EntityCollections[Entity.EntityType.Device].Instances;
 		
-		foreach (KeyValuePair<Vector2I, Entity> device in devices)
+		foreach (KeyValuePair<Vector2I, Entity> entity in deviceEntities)
 		{
-			GD.Print($"{device.Key}");
+			Device device = (Device)entity.Value;
+			device.Fire();
 		}
 		
 		/* !!!!!!!!!!!!! */
