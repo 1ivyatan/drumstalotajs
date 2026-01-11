@@ -9,8 +9,13 @@ public partial class Projectile : Node2D
 		private set;
 	}
 	
-	public void SetTrajectory(float azimuth)
+	public void SetTrajectory(float azimuth, Vector2 spawnPosition)
 	{
 		this.Azimuth = azimuth;
+		this.Position = new Vector2(spawnPosition.X, spawnPosition.Y);
+	}
+	
+	public override void _EnterTree()
+	{
 	}
 }

@@ -29,7 +29,7 @@ public partial class Device : Entity
 	{
 		Projectile projectile = ResourceLoader.Load<PackedScene>("res://Scenes/Battle/Map/Entity/Entities/Devices/Projectile.tscn").Instantiate() as Projectile;
 		
-		projectile.SetTrajectory(this.Azimuth);
+		projectile.SetTrajectory(this.Azimuth, this.Position);
 		
 		this.parent.AddChild(projectile);
 	}
