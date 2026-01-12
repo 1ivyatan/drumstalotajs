@@ -18,7 +18,9 @@ public partial class Projectile : Node2D
 	public void SetTrajectory(float azimuth, Vector2 spawnPosition)
 	{
 		this.Azimuth = azimuth;
+		
 		this.Position = new Vector2(spawnPosition.X, spawnPosition.Y);
+		this.RotationDegrees = azimuth;
 	}
 	
 	public void Fire()
