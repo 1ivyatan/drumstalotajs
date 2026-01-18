@@ -15,6 +15,12 @@ public partial class Projectile : Area2D
 		private set;
 	} = 0;
 	
+	public float Range
+	{
+		get;
+		private set;
+	} = 0;
+	
 	public Vector2 TargetPosition
 	{
 		get;
@@ -27,9 +33,11 @@ public partial class Projectile : Area2D
 		private set;
 	} = false;
 	
-	public void SetTrajectory(float azimuth, Vector2 spawnPosition)
+	public void SetTrajectory(float azimuth, float initialVelocity, float angle, Vector2 spawnPosition)
 	{
 		this.Azimuth = azimuth;
+		this.Angle = angle;
+		this.Range = ( (float)Math.Pow((float)initialVelocity, 2) * (float)Math.Sin(2 * Physics.ToRadians(this.Angle)) ) / Physics.Gravity;
 		this.Position = new Vector2(spawnPosition.X, spawnPosition.Y);
 	}
 	
@@ -60,6 +68,7 @@ public partial class Projectile : Area2D
 	
 	public override void _Ready()
 	{
+		GD.Print(this.Range);
 		Fire();
 	}
 }

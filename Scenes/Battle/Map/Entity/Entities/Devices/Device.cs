@@ -42,11 +42,23 @@ public partial class Device : Entity
 		}
 	} = 45;
 	
+	public float Velocity
+	{
+		get;
+		private set {
+			if (value < 0) {
+				field = 0;
+			} else {
+				field = value;
+			}
+		}
+	} = 20;
+	
 	public void Fire()
 	{
 		Projectile projectile = ResourceLoader.Load<PackedScene>("res://Scenes/Battle/Map/Entity/Entities/Devices/Projectile.tscn").Instantiate() as Projectile;
 		
-		projectile.SetTrajectory(this.Azimuth, this.Position);
+		projectile.SetTrajectory(this.Azimuth, this.Velocity, this.Angle, this.Position);
 		
 		this.parent.AddChild(projectile);
 	}
