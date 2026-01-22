@@ -53,11 +53,21 @@ public class ProjectileMotion
 			private set;
 		}
 		
-		public CanvasCalculation(Vector2 startPosition, double azimuth)
+		public Vector2 EndPosition
+		{
+			get;
+			private set;
+		}
+		
+		public CanvasCalculation(Calculation projectile, Vector2 startPosition, double azimuth)
 		{
 			this.Azimuth = azimuth;
 			this.Rotation = (90.0 - azimuth) * (Math.PI / 180.0);
 			this.StartPosition = startPosition;
+			this.EndPosition = new Vector2(
+				(float)(startPosition.X + projectile.Range * Math.Cos(this.Rotation)),
+				(float)(startPosition.Y + projectile.Range * Math.Sin(this.Rotation))
+			);
 		}
 	}
 	
@@ -76,6 +86,6 @@ public class ProjectileMotion
 	public ProjectileMotion(Vector2 startPosition, double azimuth, double angle, double initialVelocity)
 	{
 		this.Movement = new Calculation(angle, initialVelocity);
-		this.MapMovement = new CanvasCalculation(startPosition, azimuth);
+		this.MapMovement = new CanvasCalculation(this.Movement, startPosition, azimuth);
 	}
 }

@@ -21,20 +21,19 @@ public partial class Projectile : Area2D
 	
 	public void Fire()
 	{
-		
-		//this.Flying = true;
+		this.Flying = true;
 		//float distance = GlobalTransform.Origin.DistanceTo(this.TargetPosition);
 	}
 	
 	
 	public override void _PhysicsProcess(double delta)
 	{
-		//if (this.Flying)
-		//{
-	//		Vector2 targetDistance = (this.TargetPosition - this.Position);
-//			Vector2 velocity = new Vector2(targetDistance.X * (float)delta, targetDistance.Y * (float)delta);
-//			this.Position += velocity;
-//		}
+		if (this.Flying)
+		{
+			Vector2 targetDistance = (this.projectileMotion.MapMovement.EndPosition - this.Position);
+			Vector2 velocity = new Vector2(targetDistance.X * (float)delta, targetDistance.Y * (float)delta);
+			this.Position += velocity;
+		}
 			//this.body.Velocity = Position.DirectionTo(_target) * 400;
 		//GD.Print(GlobalPosition.DistanceTo(this.TargetPosition));
 		// LookAt(_target);
