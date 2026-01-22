@@ -15,7 +15,8 @@ public partial class Projectile : Area2D
 	{
 		this.projectileMotion = new ProjectileMotion(spawnPosition, (double)azimuth, (double)angle, (double)initialVelocity);
 
-		this.Position = new Vector2(spawnPosition.X, spawnPosition.Y);
+		this.Position = this.projectileMotion.MapMovement.StartPosition;
+		this.Rotation = (float)this.projectileMotion.MapMovement.Rotation;
 	}
 	
 	public void Fire()

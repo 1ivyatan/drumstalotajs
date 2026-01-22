@@ -41,6 +41,12 @@ public class ProjectileMotion
 			private set;
 		}
 		
+		public double Rotation
+		{
+			get;
+			private set;
+		}
+		
 		public Vector2 StartPosition
 		{
 			get;
@@ -50,6 +56,7 @@ public class ProjectileMotion
 		public CanvasCalculation(Vector2 startPosition, double azimuth)
 		{
 			this.Azimuth = azimuth;
+			this.Rotation = (90.0 - azimuth) * (Math.PI / 180.0);
 			this.StartPosition = startPosition;
 		}
 	}
