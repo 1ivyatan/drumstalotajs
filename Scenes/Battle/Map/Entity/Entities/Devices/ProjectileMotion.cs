@@ -79,7 +79,7 @@ public class ProjectileMotion
 			this.StartPosition = startPosition;
 			this.EndPosition = new Vector2(
 				(float)(startPosition.X + (projectile.Range * 1) * Math.Cos(this.Rotation)),
-				(float)(startPosition.Y + (projectile.Range * 1) * Math.Sin(this.Rotation))
+				(float)(startPosition.Y + (projectile.Range * -1) * Math.Sin(this.Rotation))
 			);
 			this.Range = this.EndPosition - this.StartPosition;
 		}
