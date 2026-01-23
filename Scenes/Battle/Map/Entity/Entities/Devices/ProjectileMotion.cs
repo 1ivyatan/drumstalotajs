@@ -9,19 +9,25 @@ public class ProjectileMotion
 		{
 			get;
 			private set;
-		} = 0;
+		}
 		
 		public double Range
 		{
 			get;
 			private set;
-		} = 0;
+		}
 			
 		public double InitialVelocity
 		{
 			get;
 			private set;
-		} = 0;
+		}
+		
+		public double Time
+		{
+			get;
+			private set;
+		}
 		
 		public Calculation(double angle, double initialVelocity)
 		{
@@ -30,6 +36,7 @@ public class ProjectileMotion
 			this.Range = (
 				Math.Pow(initialVelocity, 2) * Math.Sin(2 * Physics.ToRadians(this.Angle))
 			) / Physics.Gravity;
+			this.Time = 2 * ((initialVelocity * Math.Sin(angle) ) / Physics.Gravity);
 		}
 	}
 	
@@ -59,15 +66,22 @@ public class ProjectileMotion
 			private set;
 		}
 		
+		public Vector2 Range
+		{
+			get;
+			private set;
+		}
+		
 		public CanvasCalculation(Calculation projectile, Vector2 startPosition, double azimuth)
 		{
 			this.Azimuth = azimuth;
 			this.Rotation = (90.0 - azimuth) * (Math.PI / 180.0);
 			this.StartPosition = startPosition;
 			this.EndPosition = new Vector2(
-				(float)(startPosition.X + projectile.Range * Math.Cos(this.Rotation)),
-				(float)(startPosition.Y + projectile.Range * Math.Sin(this.Rotation))
+				(float)(startPosition.X + (projectile.Range * 1) * Math.Cos(this.Rotation)),
+				(float)(startPosition.Y + (projectile.Range * 1) * Math.Sin(this.Rotation))
 			);
+			this.Range = this.EndPosition - this.StartPosition;
 		}
 	}
 	

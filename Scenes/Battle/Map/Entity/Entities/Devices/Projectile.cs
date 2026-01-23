@@ -21,19 +21,24 @@ public partial class Projectile : Area2D
 	
 	public void Fire()
 	{
-		this.Flying = true;
+		Tween tween = this.CreateTween();
+		tween.TweenProperty(this, "position", this.projectileMotion.MapMovement.EndPosition, 1.0f);
+		tween.TweenCallback(Callable.From(this.QueueFree));
+		//this.Flying = true;
 		//float distance = GlobalTransform.Origin.DistanceTo(this.TargetPosition);
 	}
 	
 	
 	public override void _PhysicsProcess(double delta)
 	{
-		if (this.Flying)
-		{
-			Vector2 targetDistance = (this.projectileMotion.MapMovement.EndPosition - this.Position);
-			Vector2 velocity = new Vector2(targetDistance.X * (float)delta, targetDistance.Y * (float)delta);
-			this.Position += velocity;
-		}
+		//if (this.Flying)
+		//{
+			//this.GlobalPosition = this.GlobalPosition.MoveToward(this.projectileMotion.MapMovement.EndPosition, (float)delta);
+			//GD.Print(this.projectileMotion.MapMovement.Range * delta);
+			//Vector2 velocity = new Vector2(targetDistance.X * (float)delta, targetDistance.Y * (float)delta);
+		//	GD.Print(velocity);
+			//this.Position += this.projectileMotion.MapMovement.Range * delta;
+	//	}
 			//this.body.Velocity = Position.DirectionTo(_target) * 400;
 		//GD.Print(GlobalPosition.DistanceTo(this.TargetPosition));
 		// LookAt(_target);
