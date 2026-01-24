@@ -8,12 +8,7 @@ public partial class DeviceFiring : Control
 	private Node2D map;
 	private Selector selector;
 	private EntityLayer entityLayer;
-	
 	private TopPanel topPanel;
-	
-	/* to be removed!!!!!!!! */
-	private Timer tempFakeTimer;
-	/* ^^^^^^^^^^^^^^^^^^^^^^^^ */
 	
 	public override void _Ready()
 	{
@@ -33,27 +28,29 @@ public partial class DeviceFiring : Control
 	private void StartFiringSequence()
 	{
 		Dictionary<Vector2I, Entity> deviceEntities = this.entityLayer.EntityCollections[Entity.EntityType.Device].Instances;
+		int firedCount = 0;
 		
 		foreach (KeyValuePair<Vector2I, Entity> entity in deviceEntities)
 		{
-			Device device = (Device)entity.Value;
-			device.Fire();
+			SceneTreeTimer delayToFire = GetTree().CreateTimer(GD.RandRange(0.05f, 0.5f));
+			delayToFire.Connect("timeout", Callable.From(() => {
+				Device device = (Device)entity.Value;
+				
+				Projectile projectile = device.Fire();
+				projectile.Connect("ProjectileLanded", Callable.From(() => {
+					firedCount++;
+					
+					if (firedCount == deviceEntities.Count)
+					{
+						ToDeviceAdjustment();
+					}
+				}));
+			}));
 		}
-		
-		/* !!!!!!!!!!!!! */
-		this.tempFakeTimer = this.GetNode<Timer>("TempFakeTimer");
-		this.tempFakeTimer.Connect("timeout", new Callable(this, nameof(OnTimeOut)));
-		this.tempFakeTimer.Start();
-		/* !!!!!!!!!!!!!! */
 	}
 	
 	private void ToDeviceAdjustment()
 	{
 		(GetNode("../../../") as Battle).StartDeviceAdjustment();
-	}
-	
-	private void OnTimeOut()
-	{
-		ToDeviceAdjustment();
 	}
 }

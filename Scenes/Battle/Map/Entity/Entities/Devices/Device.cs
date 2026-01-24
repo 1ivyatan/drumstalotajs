@@ -54,12 +54,11 @@ public partial class Device : Entity
 		}
 	} = 20;
 	
-	public void Fire()
+	public Projectile Fire()
 	{
 		Projectile projectile = ResourceLoader.Load<PackedScene>("res://Scenes/Battle/Map/Entity/Entities/Devices/Projectile.tscn").Instantiate() as Projectile;
-		
 		projectile.SetTrajectory(this.Azimuth, this.Velocity, this.Angle, this.Position);
-		
 		this.parent.AddChild(projectile);
+		return projectile;
 	}
 }

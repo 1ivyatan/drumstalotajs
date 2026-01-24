@@ -5,7 +5,3 @@
 
 [node name="Stage" instance=ExtResource("1_qvats")]
 script = ExtResource("2_40jnh")
-
-[node name="TempFakeTimer" type="Timer" parent="." index="0"]
-wait_time = 2.0
-one_shot = true
