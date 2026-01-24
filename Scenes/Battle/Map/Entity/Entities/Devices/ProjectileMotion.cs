@@ -29,6 +29,14 @@ public class ProjectileMotion
 			private set;
 		}
 		
+		private double _vy0;
+		private double _heightTwo;
+		
+		public double GetHeight(double time)
+		{
+			return _vy0 * time - 0.5 * Physics.Gravity * Math.Pow(time, 2);
+		}
+		
 		public Calculation(double angle, double initialVelocity)
 		{
 			this.Angle = angle;
@@ -36,7 +44,9 @@ public class ProjectileMotion
 			this.Range = (
 				Math.Pow(initialVelocity, 2) * Math.Sin(2 * Physics.ToRadians(this.Angle))
 			) / Physics.Gravity;
-			this.Time = 2 * ((initialVelocity * Math.Sin(angle) ) / Physics.Gravity);
+			this.Time = (2 * initialVelocity * Math.Sin(Physics.ToRadians(this.Angle)) ) / Physics.Gravity;
+			
+			this._vy0 = initialVelocity * Math.Sin(Physics.ToRadians(this.Angle));
 		}
 	}
 	
@@ -97,9 +107,20 @@ public class ProjectileMotion
 		private set;
 	}
 	
+	
+	public double CalculateHeight(Vector2 position)
+	{
+		Vector2 range = this.MapMovement.Range;
+		Vector2 distance = position - this.MapMovement.StartPosition;
+		double percentage = Math.Sqrt(Math.Pow(distance.X, 2) + Math.Pow(distance.Y, 2)) / Math.Sqrt(Math.Pow(range.X, 2) + Math.Pow(range.Y, 2));
+		double time = percentage * this.Movement.Time;
+		return this.Movement.GetHeight(time);
+	}
+	
 	public ProjectileMotion(Vector2 startPosition, double azimuth, double angle, double initialVelocity)
 	{
 		this.Movement = new Calculation(angle, initialVelocity);
 		this.MapMovement = new CanvasCalculation(this.Movement, startPosition, azimuth);
+		
 	}
 }

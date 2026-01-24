@@ -33,11 +33,11 @@ public partial class Projectile : Area2D
 	
 	public override void _PhysicsProcess(double delta)
 	{
-		Vector2I position = this.groundLayer.LocalToMap(this.Position);
-		TileData data = this.groundLayer.GetCellTileData(position);
+		Vector2I gridPosition = this.groundLayer.LocalToMap(this.Position);
+		TileData data = this.groundLayer.GetCellTileData(gridPosition);
 		
-		var height = data.GetCustomData("height");
-		GD.Print(height);
+		double height = (double)data.GetCustomData("height");
+		GD.Print(this.projectileMotion.CalculateHeight(this.Position));
 	}
 	
 	public override void _Ready()
