@@ -78,8 +78,8 @@ public class ProjectileMotion
 			this.Rotation = (90.0 - azimuth) * (Math.PI / 180.0);
 			this.StartPosition = startPosition;
 			this.EndPosition = new Vector2(
-				(float)(startPosition.X + (projectile.Range * 1) * Math.Cos(this.Rotation)),
-				(float)(startPosition.Y + (projectile.Range * -1) * Math.Sin(this.Rotation))
+				(float)(startPosition.X + ((projectile.Range * Physics.Pixels * 1) * Math.Cos(this.Rotation)) / Physics.Scale),
+				(float)(startPosition.Y + ((projectile.Range * Physics.Pixels * -1) * Math.Sin(this.Rotation)) / Physics.Scale)
 			);
 			this.Range = this.EndPosition - this.StartPosition;
 		}

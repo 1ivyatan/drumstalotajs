@@ -19,7 +19,7 @@ public partial class Projectile : Area2D
 	public void Fire()
 	{
 		Tween tween = this.CreateTween();
-		tween.TweenProperty(this, "position", this.projectileMotion.MapMovement.EndPosition, 1.0f);
+		tween.TweenProperty(this, "position", this.projectileMotion.MapMovement.EndPosition, this.projectileMotion.Movement.Time);
 		tween.TweenCallback(Callable.From(() => {
 			this.EmitSignal(SignalName.ProjectileLanded);
 			this.QueueFree();
