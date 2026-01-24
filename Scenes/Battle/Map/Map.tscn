@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=4 uid="uid://b7vwq73x7xsuu"]
 
-[ext_resource type="Texture2D" uid="uid://cxu5sns3wvmt6" path="res://Assets/Sprites/groundgrid.png" id="1_gwxle"]
+[ext_resource type="Texture2D" uid="uid://cgrutqhu62x5e" path="res://Assets/Sprites/grid.png" id="1_wq325"]
 [ext_resource type="PackedScene" uid="uid://ltyi7c8rpybk" path="res://Scenes/Battle/Map/Entity/Entities/DeviceMarker.tscn" id="2_8pfi8"]
 [ext_resource type="Script" uid="uid://dtq2jnp3b2gt6" path="res://Scenes/Battle/Map/Selector.cs" id="2_aetmg"]
 [ext_resource type="Script" uid="uid://bo7rmlh4qb1hh" path="res://Scenes/Battle/Map/EntityLayer.cs" id="2_dohyj"]
@@ -8,13 +8,32 @@
 [ext_resource type="PackedScene" uid="uid://bcvj5lmggceht" path="res://Scenes/Battle/Map/Entity/Entities/Devices/Device.tscn" id="3_wq325"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aetmg"]
-texture = ExtResource("1_gwxle")
+texture = ExtResource("1_wq325")
 texture_region_size = Vector2i(80, 80)
 0:0/0 = 0
 1:0/0 = 0
+1:0/0/custom_data_0 = 5.0
+2:0/0 = 0
+2:0/0/custom_data_0 = 10.0
+3:0/0 = 0
+3:0/0/custom_data_0 = 25.0
+4:0/0 = 0
+4:0/0/custom_data_0 = 50.0
+6:0/0 = 0
+6:0/0/custom_data_0 = 250.0
+5:0/0 = 0
+5:0/0/custom_data_0 = 100.0
+7:0/0 = 0
+7:0/0/custom_data_0 = 500.0
+8:0/0 = 0
+8:0/0/custom_data_0 = 750.0
+9:0/0 = 0
+9:0/0/custom_data_0 = 1000.0
 
 [sub_resource type="TileSet" id="TileSet_1xtvr"]
 tile_size = Vector2i(80, 80)
+custom_data_layer_0/name = "height"
+custom_data_layer_0/type = 3
 sources/3 = SubResource("TileSetAtlasSource_aetmg")
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_hbtq2"]
