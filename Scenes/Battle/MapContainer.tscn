@@ -1,9 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://dk7en8igfrlxl"]
+[gd_scene load_steps=3 format=3 uid="uid://dk7en8igfrlxl"]
 
 [ext_resource type="Script" uid="uid://dbm3fsiljr5ei" path="res://Source/Battle/MapContainer.cs" id="1_y77gt"]
+[ext_resource type="Script" uid="uid://ci5tgte5uy6ju" path="res://Source/Battle/Stages/Manager.cs" id="2_4h1d5"]
 
 [node name="MapContainer" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 size_flags_vertical = 3
 script = ExtResource("1_y77gt")
+
+[node name="Map" type="Node2D" parent="."]
+
+[node name="StageOverlay" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_4h1d5")
