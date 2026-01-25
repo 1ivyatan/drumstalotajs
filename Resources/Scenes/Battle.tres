@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_dx4n1")
-Path = "res://Scenery/Battle/Battle.tscn"
+Path = "res://Scenes/Battle/Battle.tscn"
 metadata/_custom_type_script = "uid://5tnoopda0y04"

@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://nfn5ufmitkad"]
+
+[ext_resource type="Script" uid="uid://6ihybxohy7hr" path="res://Source/Battle/TopPanel.cs" id="1_7p5vq"]
+
+[node name="TopPanel" type="PanelContainer"]
+offset_right = 1.0
+offset_bottom = 23.0
+script = ExtResource("1_7p5vq")
+
+[node name="Columns" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2

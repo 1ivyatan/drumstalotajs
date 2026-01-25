@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://be3dit4fpcd51"]
 
 [ext_resource type="Script" uid="uid://dda2l6xaxgf45" path="res://Source/Main.cs" id="1_cef5m"]
-[ext_resource type="PackedScene" uid="uid://dx1a7o2cluymv" path="res://Source/Managers/SceneManager/SceneManager.tscn" id="2_qbhck"]
+[ext_resource type="PackedScene" uid="uid://dx1a7o2cluymv" path="res://Managers/SceneManager.tscn" id="2_qbhck"]
 
 [node name="Root" type="Node"]
 script = ExtResource("1_cef5m")
