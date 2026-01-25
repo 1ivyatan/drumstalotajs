@@ -1,0 +1,86 @@
+[gd_scene load_steps=4 format=3 uid="uid://da3r404axjbbn"]
+
+[ext_resource type="Script" uid="uid://c3a3on8v65mx" path="res://_Scenes/StartMenu/StartMenu.cs" id="1_dfhac"]
+[ext_resource type="Texture2D" uid="uid://c37s8ykdnosoo" path="res://Assets/Sprites/__original_drawn_by_19vodnik__d9ce7f2ba0807a6c6cbf254ed1a0a89d.jpg" id="2_f6vxn"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_th06j"]
+font_size = 48
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(5, 5)
+
+[node name="StartMenu" type="HBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+alignment = 1
+script = ExtResource("1_dfhac")
+
+[node name="TitleContainer" type="Control" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BackgroundImage" type="TextureRect" parent="TitleContainer"]
+modulate = Color(0.06990608, 0.06990608, 0.06990608, 0.7607843)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_f6vxn")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Center" type="CenterContainer" parent="TitleContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="TitleContainer/Center"]
+layout_mode = 2
+text = "Drumstalotājs"
+label_settings = SubResource("LabelSettings_th06j")
+
+[node name="MenuContainer" type="Control" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Center" type="CenterContainer" parent="MenuContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Panel" type="PanelContainer" parent="MenuContainer/Center"]
+layout_mode = 2
+
+[node name="ButtonContainer" type="VBoxContainer" parent="MenuContainer/Center/Panel"]
+layout_mode = 2
+
+[node name="Start" type="Button" parent="MenuContainer/Center/Panel/ButtonContainer"]
+layout_mode = 2
+text = "Sākt"
+
+[node name="FooterContainer" type="HBoxContainer" parent="MenuContainer/Center/Panel/ButtonContainer"]
+layout_mode = 2
+
+[node name="About" type="Button" parent="MenuContainer/Center/Panel/ButtonContainer/FooterContainer"]
+layout_mode = 2
+text = "Par"
+
+[node name="Exit" type="Button" parent="MenuContainer/Center/Panel/ButtonContainer/FooterContainer"]
+layout_mode = 2
+text = "Iziet"
