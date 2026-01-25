@@ -9,7 +9,9 @@ public partial class Projectile : Area2D
 	private ProjectileMotion projectileMotion;
 	
 	private TileMapLayer groundLayer;
-	private Tween tween;
+	private Tween tween = null;
+	
+	private double startingHeight;
 	
 	public void SetTrajectory(float azimuth, float initialVelocity, float angle, Vector2 spawnPosition)
 	{
@@ -21,23 +23,39 @@ public partial class Projectile : Area2D
 	
 	public void Fire()
 	{
+		Vector2I gridPosition = this.groundLayer.LocalToMap(this.Position);
+		TileData data = this.groundLayer.GetCellTileData(gridPosition);
+		this.startingHeight = (double)data.GetCustomData("height");
+		
 		this.tween = this.CreateTween();
 		this.tween.SetProcessMode(0); /* physics process */
 		this.tween.SetTrans((Tween.TransitionType)1);
 		this.tween.TweenProperty(this, "position", this.projectileMotion.MapMovement.EndPosition, this.projectileMotion.Movement.Time);
-		this.tween.TweenCallback(Callable.From(() => {
-			this.EmitSignal(SignalName.ProjectileLanded);
-			this.QueueFree();
-		}));
+		this.tween.TweenCallback(Callable.From(this._DestroyProjectile));
 	}
 	
 	public override void _PhysicsProcess(double delta)
 	{
-		Vector2I gridPosition = this.groundLayer.LocalToMap(this.Position);
-		TileData data = this.groundLayer.GetCellTileData(gridPosition);
+		if (this.tween != null && this.tween.IsValid())
+		{
+			Vector2I gridPosition = this.groundLayer.LocalToMap(this.Position);
+			TileData data = this.groundLayer.GetCellTileData(gridPosition);
 		
-		double height = (double)data.GetCustomData("height");
-		GD.Print(this.projectileMotion.CalculateHeight(this.Position));
+			double tileHeight = (double)data.GetCustomData("height");
+			double projectileHeight = this.startingHeight + this.projectileMotion.CalculateHeight(this.Position);
+		
+			if (projectileHeight < tileHeight)
+			{
+				this.tween.Kill();
+				this._DestroyProjectile();
+			}
+		}
+	}
+	
+	private void _DestroyProjectile()
+	{
+		this.EmitSignal(SignalName.ProjectileLanded);
+		this.QueueFree();
 	}
 	
 	public override void _Ready()

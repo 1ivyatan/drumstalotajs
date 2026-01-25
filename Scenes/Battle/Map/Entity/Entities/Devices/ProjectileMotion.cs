@@ -30,7 +30,6 @@ public class ProjectileMotion
 		}
 		
 		private double _vy0;
-		private double _heightTwo;
 		
 		public double GetHeight(double time)
 		{
