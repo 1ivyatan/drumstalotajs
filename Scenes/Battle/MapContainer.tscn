@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dk7en8igfrlxl"]
+
+[ext_resource type="Script" uid="uid://dbm3fsiljr5ei" path="res://Source/Battle/MapContainer.cs" id="1_y77gt"]
+
+[node name="MapContainer" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+size_flags_vertical = 3
+script = ExtResource("1_y77gt")

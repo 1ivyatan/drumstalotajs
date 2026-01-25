@@ -1,10 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://dxrxp1gmki1g"]
+[gd_scene load_steps=4 format=3 uid="uid://dxrxp1gmki1g"]
 
 [ext_resource type="Script" uid="uid://cepv1sj7xkrbo" path="res://Source/Battle/Scene.cs" id="1_ael4v"]
 [ext_resource type="PackedScene" uid="uid://nfn5ufmitkad" path="res://Scenes/Battle/TopPanel.tscn" id="2_gunap"]
+[ext_resource type="PackedScene" uid="uid://dk7en8igfrlxl" path="res://Scenes/Battle/MapContainer.tscn" id="3_3ihc8"]
 
-[node name="Battle" type="Control"]
-layout_mode = 3
+[node name="Battle" type="VBoxContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -13,8 +13,7 @@ grow_vertical = 2
 script = ExtResource("1_ael4v")
 
 [node name="TopPanel" parent="." instance=ExtResource("2_gunap")]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_right = 0.0
-grow_horizontal = 2
+layout_mode = 2
+
+[node name="MapContainer" parent="." instance=ExtResource("3_3ihc8")]
+layout_mode = 2
