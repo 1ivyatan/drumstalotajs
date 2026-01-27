@@ -10,7 +10,7 @@ namespace Drumstalotajs
 		public override void _Ready()
 		{
 			this.SceneManager = GetNode<Node>("SceneManager") as Managers.SceneManager;
-			this.SceneManager.LoadScene("Start");
+			this.SceneManager.Start();
 		}
 	}
 }

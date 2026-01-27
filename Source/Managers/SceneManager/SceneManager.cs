@@ -7,7 +7,21 @@ namespace Drumstalotajs.Managers
 	{
 		private Node CurrentScene { get; set; }
 		
-		public void LoadScene(string name)
+		public void Start()
+		{
+			LoadScene("Start");
+			ShowScene();
+		}
+		
+		public void Battle(string levelName)
+		{
+			LoadScene("Battle");
+			Battle.Scene battleScene = CurrentScene as Battle.Scene;
+			battleScene.LoadLevel("1");
+			ShowScene();
+		}
+			
+		private void LoadScene(string name)
 		{
 			if (CurrentScene != null)
 			{
@@ -17,9 +31,11 @@ namespace Drumstalotajs.Managers
 			
 			string sceneResourcePath = $"res://Resources/Scenes/{name}.tres";
 			Drumstalotajs.Resources.Scene sceneResource = ResourceLoader.Load<Drumstalotajs.Resources.Scene>(sceneResourcePath);
-			Node newScene = ResourceLoader.Load<PackedScene>(sceneResource.Path).Instantiate();
-			
-			CurrentScene = newScene;
+			CurrentScene = ResourceLoader.Load<PackedScene>(sceneResource.Path).Instantiate();
+		}
+		
+		private void ShowScene()
+		{
 			AddChild(CurrentScene);
 		}
 	}

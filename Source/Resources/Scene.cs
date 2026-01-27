@@ -13,7 +13,7 @@ namespace Drumstalotajs.Resources
 		
 		public Scene(string path)
 		{
-			this.Path = path ?? "";
+			Path = path ?? "";
 		}
 	}
 }
