@@ -16,7 +16,7 @@ namespace Drumstalotajs.Managers
 			}
 			
 			string sceneResourcePath = $"res://Resources/Scenes/{name}.tres";
-			Resources.SceneResource sceneResource = ResourceLoader.Load<Resources.SceneResource>(sceneResourcePath);
+			Drumstalotajs.Resources.Scene sceneResource = ResourceLoader.Load<Drumstalotajs.Resources.Scene>(sceneResourcePath);
 			Node newScene = ResourceLoader.Load<PackedScene>(sceneResource.Path).Instantiate();
 			
 			CurrentScene = newScene;

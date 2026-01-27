@@ -4,14 +4,14 @@ using System;
 namespace Drumstalotajs.Resources
 {
 	[GlobalClass]
-	public partial class SceneResource : Resource
+	public partial class Scene : Resource
 	{
 		[Export]
 		public string Path { get; set; }
 		
-		public SceneResource() : this("") {}
+		public Scene() : this("") {}
 		
-		public SceneResource(string path)
+		public Scene(string path)
 		{
 			this.Path = path ?? "";
 		}
