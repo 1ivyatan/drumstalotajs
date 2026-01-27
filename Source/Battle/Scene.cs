@@ -7,7 +7,9 @@ namespace Drumstalotajs.Battle
 	{
 		public void LoadLevel(string name)
 		{
-			GD.Print(name);
+			string levelResourcePath = $"res://Resources/Levels/{name}.tres";
+			Drumstalotajs.Resources.Level levelResource = ResourceLoader.Load<Drumstalotajs.Resources.Level>(levelResourcePath);
+			GD.Print(levelResource.Title);
 		}
 	}
 }
