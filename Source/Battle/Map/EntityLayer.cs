@@ -18,6 +18,21 @@ namespace Drumstalotajs.Battle.Map
 			private set;
 		}
 		
+		public void InsertEntity(Entities.Type type, Vector2I position)
+		{
+			
+		}
+		
+		public void RemoveEntity(Vector2I position)
+		{
+			
+		}
+		
+		public void RemoveAllEntitiesByType(Entities.Type type)
+		{
+			
+		}
+		
 		public override void _Ready()
 		{
 			EntityPointers = new Dictionary<Entities.Type, Dictionary<Vector2I, Entities.Entity>>();
@@ -32,11 +47,11 @@ namespace Drumstalotajs.Battle.Map
 				EntityPointers.Add(type, new Dictionary<Vector2I, Entities.Entity>());
 			}
 			
-			ChildEnteredTree += EntityEntered;
-			ChildExitingTree += EntityLeft;
+			ChildEnteredTree += _EntityEntered;
+			ChildExitingTree += _EntityLeft;
 		}
 
-		private void EntityEntered(Node node)
+		private void _EntityEntered(Node node)
 		{
 			if (node is Entities.Entity)
 			{
@@ -52,7 +67,7 @@ namespace Drumstalotajs.Battle.Map
 			}
 		}
 
-		private void EntityLeft(Node node)
+		private void _EntityLeft(Node node)
 		{
 			if (node is Entities.Entity)
 			{
