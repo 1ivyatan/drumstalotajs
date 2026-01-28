@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Level" format=3 uid="uid://xhurvhukm111"]
+
+[ext_resource type="Script" uid="uid://bnyj87sc5un27" path="res://Source/Resources/Level.cs" id="1_1ijub"]
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_cqwlj"]
+
+[resource]
+script = ExtResource("1_1ijub")
+Title = "One"
+Description = "huhuhuhuh"
+Scale = 10.0
+GroundPattern = SubResource("TileMapPattern_cqwlj")
+metadata/_custom_type_script = "uid://bnyj87sc5un27"

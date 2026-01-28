@@ -14,7 +14,7 @@ namespace Drumstalotajs.Battle
 			_label.Text = text;
 		}
 		
-		public overrride void _Ready()
+		public override void _Ready()
 		{
 			_exitButton = GetNode<Button>("Columns/ExitButton");
 			_deviceCountLabel = GetNode<Label>("Columns/Stats/DeviceCount");

@@ -16,16 +16,20 @@ namespace Drumstalotajs.Resources
 		public float Scale { get; set; }
 		
 		[Export]
-		public TileMapPattern Pattern { get; set; }
+		public TileMapPattern GroundPattern { get; set; }
 		
-		public Level() : this("", "", 1.0f, null) {}
+		[Export]
+		public TileMapPattern EntityPattern { get; set; }
 		
-		public Level(string title, string description, float scale, TileMapPattern pattern)
+		public Level() : this("", "", 1.0f, null, null) {}
+		
+		public Level(string title, string description, float scale, TileMapPattern groundPattern, TileMapPattern entityPattern)
 		{
 			Title = title;
 			Description = description;
 			Scale = scale;
-			Pattern = pattern ?? null;
+			GroundPattern = groundPattern ?? null;
+			EntityPattern = entityPattern ?? null;
 		}
 	}
 }

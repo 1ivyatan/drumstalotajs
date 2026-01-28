@@ -23,15 +23,19 @@ namespace Drumstalotajs.Managers
 			
 		private void LoadScene(string name)
 		{
+			string sceneResourcePath = $"res://Resources/Scenes/{name}.tres";
+			
 			if (CurrentScene != null)
 			{
 				CurrentScene.QueueFree();
   				RemoveChild(CurrentScene);
 			}
 			
-			string sceneResourcePath = $"res://Resources/Scenes/{name}.tres";
-			Drumstalotajs.Resources.Scene sceneResource = ResourceLoader.Load<Drumstalotajs.Resources.Scene>(sceneResourcePath);
-			CurrentScene = ResourceLoader.Load<PackedScene>(sceneResource.Path).Instantiate();
+			if (ResourceLoader.Exists(sceneResourcePath))
+			{
+				Drumstalotajs.Resources.Scene sceneResource = ResourceLoader.Load<Drumstalotajs.Resources.Scene>(sceneResourcePath);
+				CurrentScene = ResourceLoader.Load<PackedScene>(sceneResource.Path).Instantiate();
+			}
 		}
 		
 		private void ShowScene()
