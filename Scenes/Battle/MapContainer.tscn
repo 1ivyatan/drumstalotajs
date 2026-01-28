@@ -34,7 +34,7 @@ sources/0 = SubResource("TileSetAtlasSource_3q8cv")
 pattern_0 = SubResource("TileMapPattern_bvrth")
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_bvrth"]
-scenes/0/scene = ExtResource("3_tuv7x")
+scenes/1/scene = ExtResource("3_tuv7x")
 
 [sub_resource type="TileSet" id="TileSet_bvrth"]
 tile_size = Vector2i(80, 80)
@@ -57,7 +57,7 @@ tile_map_data = PackedByteArray("AAABAAEAAAAAAAAAAAABAAIAAAAAAAAAAAABAAMAAAAAAAA
 tile_set = SubResource("TileSet_4h1d5")
 
 [node name="EntityLayer" type="TileMapLayer" parent="Map" unique_id=827837631]
-tile_map_data = PackedByteArray("AAAFAAQAAAAAAAAAAAAMAAYAAAAAAAAAAAACAAYAAAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAFAAQAAAAAAAAAAQAMAAYAAAAAAAAAAQACAAYAAAAAAAAAAQA=")
 tile_set = SubResource("TileSet_bvrth")
 script = ExtResource("4_n0ml5")
 

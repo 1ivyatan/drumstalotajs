@@ -13,7 +13,7 @@ namespace Drumstalotajs.Resources
 		public int Type
 		{ 
 			get; 
-			set
+			set;/*
 			{
 				if (!Enum.IsDefined(typeof(Battle.Entities.Type), value))
 				{
@@ -22,7 +22,7 @@ namespace Drumstalotajs.Resources
 				{
 					field = value;
 				}
-			}
+			}*/
 		}
 		
 		[Export]

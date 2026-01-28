@@ -6,7 +6,7 @@ namespace Drumstalotajs.Battle.Entities
 	public enum Type
 	{
 		None = -1,
-		DeviceMarker = 0,
-		Device = 1
+		DeviceMarker = 1,
+		Device = 2
 	}
 }

@@ -5,5 +5,7 @@
 
 [resource]
 script = ExtResource("1_pq2yd")
+Id = 1
+Type = 1
 Sprites = Array[Texture2D]([ExtResource("1_5k81x")])
 metadata/_custom_type_script = "uid://d07w6ngr0dmna"

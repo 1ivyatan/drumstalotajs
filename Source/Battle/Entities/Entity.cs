@@ -3,10 +3,10 @@ using System;
 
 namespace Drumstalotajs.Battle.Entities
 {
-	public partial class Entity : Node
+	public partial class Entity : Node2D
 	{
 		[Export]
-		private Resources.Entity EntityResource { get; set; }
+		public Resources.Entity EntityResource { get; private set; }
 		
 		[Export]
 		private int TextureIndex { get; set; }
