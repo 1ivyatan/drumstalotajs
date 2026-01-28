@@ -10,7 +10,7 @@ namespace Drumstalotajs.Battle.Map
 		
 		public SelectorLayer Layer { get; set; }
 		public SelectorFilterMode FilterMode { get; set; }
-		public Battle.Entities.Type[] EntityFilters { get; set; }
+		public Battle.Entities.Type[] Filter { get; set; }
 
 		public bool Enabled { get; set; }
 		
@@ -89,6 +89,9 @@ namespace Drumstalotajs.Battle.Map
 				Visible = false;
 			}
 		}
+		
+		//private bool EntityInFilter
+		//Filter
 
 		public override void _Process(double delta)
 		{

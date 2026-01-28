@@ -14,7 +14,7 @@ namespace Drumstalotajs.Battle.Stages
 			_selector.Enabled = true;
 			_selector.Layer = Map.Selector.SelectorLayer.Entity;
 			_selector.FilterMode = Map.Selector.SelectorFilterMode.Fitlered;
-			_selector.EntityFilters = [ Battle.Entities.Type.DeviceMarker, Battle.Entities.Type.Device ];
+			_selector.Filter = [ Battle.Entities.Type.DeviceMarker, Battle.Entities.Type.Device ];
 		}
 	}
 }
