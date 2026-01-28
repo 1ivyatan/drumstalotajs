@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://h1sl1lwano8s"]
+
+[ext_resource type="PackedScene" uid="uid://xsjtymh23tx" path="res://Scenes/Battle/Entity.tscn" id="1_paxgv"]
+[ext_resource type="Resource" uid="uid://evokpfl178dv" path="res://Resources/Entities/DeviceMarker.tres" id="2_rkh7e"]
+
+[node name="Entity" unique_id=365178665 instance=ExtResource("1_paxgv")]
+EntityResource = ExtResource("2_rkh7e")

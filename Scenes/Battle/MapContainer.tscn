@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://ci5tgte5uy6ju" path="res://Source/Battle/Stages/Manager.cs" id="2_4h1d5"]
 [ext_resource type="Texture2D" uid="uid://cgrutqhu62x5e" path="res://Assets/Sprites/grid.png" id="2_usrys"]
 [ext_resource type="Script" uid="uid://ylgjymjafqwq" path="res://Source/Battle/Map/Selector.cs" id="3_3q8cv"]
+[ext_resource type="PackedScene" uid="uid://h1sl1lwano8s" path="res://Scenes/Battle/Entities/DeviceMarker.tscn" id="3_tuv7x"]
 [ext_resource type="Texture2D" uid="uid://b6w1j8ue1wa0y" path="res://Assets/Sprites/gridselector.png" id="4_bvrth"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_bvrth"]
@@ -32,6 +33,7 @@ sources/0 = SubResource("TileSetAtlasSource_3q8cv")
 pattern_0 = SubResource("TileMapPattern_bvrth")
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_bvrth"]
+scenes/0/scene = ExtResource("3_tuv7x")
 
 [sub_resource type="TileSet" id="TileSet_bvrth"]
 tile_size = Vector2i(80, 80)
@@ -54,6 +56,7 @@ tile_map_data = PackedByteArray("AAABAAEAAAAAAAAAAAABAAIAAAAAAAAAAAABAAMAAAAAAAA
 tile_set = SubResource("TileSet_4h1d5")
 
 [node name="EntityLayer" type="TileMapLayer" parent="Map" unique_id=827837631]
+tile_map_data = PackedByteArray("AAAFAAQAAAAAAAAAAAAMAAYAAAAAAAAAAAACAAYAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_bvrth")
 
 [node name="Selector" type="Node2D" parent="Map" unique_id=978541128]

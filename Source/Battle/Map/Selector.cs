@@ -10,7 +10,8 @@ namespace Drumstalotajs.Battle.Map
 		
 		public SelectorLayer Layer { get; set; }
 		public SelectorFilterMode FilterMode { get; set; }
-	
+		public Battle.Entities.Type[] EntityFilters { get; set; }
+
 		public bool Enabled { get; set; }
 		
 		private TileMapLayer _groundLayer;
@@ -21,6 +22,7 @@ namespace Drumstalotajs.Battle.Map
 		{
 			_highlighter = GetNode<Sprite2D>("Highlighter");
 			_groundLayer = GetNode<TileMapLayer>("../GroundLayer");
+			_entityLayer = GetNode<TileMapLayer>("../EntityLayer");
 			Enabled = false;
 			Visible = false;
 		}
@@ -35,7 +37,14 @@ namespace Drumstalotajs.Battle.Map
 					Vector2 localMousePos = _groundLayer.ToLocal(globalMousePos);
 					Vector2I cellPos = _groundLayer.LocalToMap(localMousePos);
 
-					if (_groundLayer.GetCellAtlasCoords(cellPos).Equals(new Vector2I(-1, -1)))
+					if (
+						( Layer == SelectorLayer.Ground && 
+						_groundLayer.GetCellAtlasCoords(cellPos).Equals(new Vector2I(-1, -1))) ||
+						( Layer == SelectorLayer.Entity && 
+						_entityLayer.GetCellAlternativeTile(cellPos) == -1 ) ||
+						( Layer == SelectorLayer.All && 
+						_groundLayer.GetCellAtlasCoords(cellPos).Equals(new Vector2I(-1, -1)) )
+					)
 					{
 						Visible = false;
 						return;
@@ -61,7 +70,7 @@ namespace Drumstalotajs.Battle.Map
 						{
 							switch (Layer)
 							{
-								case SelectorLayer.Ground:
+								case SelectorLayer.Ground: 
 								
 									break;
 								case SelectorLayer.Entity:
@@ -75,6 +84,9 @@ namespace Drumstalotajs.Battle.Map
 					}
 					
 				}
+			} else
+			{
+				Visible = false;
 			}
 		}
 
