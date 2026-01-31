@@ -7,6 +7,9 @@ namespace Drumstalotajs.Battle.Map
 	public partial class EntityLayer : TileMapLayer
 	{
 		[Signal]
+		public delegate void ChangeInEntitiesEventHandler(int entityType);
+		
+		[Signal]
 		public delegate void AddedEntityEventHandler(Entities.Entity entity);
 		
 		[Signal]
@@ -63,6 +66,7 @@ namespace Drumstalotajs.Battle.Map
 				{
 					EntityPointers[(Entities.Type)entity.EntityResource.Type].Add(cellPos, entity);
 					EmitSignal("AddedEntity", entity);
+					EmitSignal("ChangeInEntities", entity.EntityResource.Type);
 				}
 			}
 		}
@@ -79,6 +83,7 @@ namespace Drumstalotajs.Battle.Map
 				{
 					EntityPointers[(Entities.Type)entity.EntityResource.Type].Remove(cellPos);
 					EmitSignal("RemovedEntity", entity);
+					EmitSignal("ChangeInEntities", entity.EntityResource.Type);
 				}
 			}
 		}

@@ -28,13 +28,8 @@ namespace Drumstalotajs.Battle
 			_label = GetNode<Label>("Label");
 			
 			_entityLayer.Connect(
-				"AddedEntity", Callable.From((Entities.Entity entity) => {
-					UpdateStats();
-				})
-			);
-			
-			_entityLayer.Connect(
-				"RemovedEntity", Callable.From((Entities.Entity entity) => {
+				"ChangeInEntities", Callable.From((int entityType) => {
+					GD.Print("change");
 					UpdateStats();
 				})
 			);
