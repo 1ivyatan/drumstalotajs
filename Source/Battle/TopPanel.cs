@@ -5,6 +5,7 @@ namespace Drumstalotajs.Battle
 {
 	public partial class TopPanel : PanelContainer
 	{
+		private Map.EntityLayer _entityLayer;
 		private Button _exitButton;
 		private Label _deviceCountLabel;
 		private Label _label;
@@ -14,11 +15,29 @@ namespace Drumstalotajs.Battle
 			_label.Text = text;
 		}
 		
+		private void UpdateStats()
+		{
+			_deviceCountLabel.Text = $"{_entityLayer.EntityPointers[Entities.Type.Device].Count}";
+		}
+		
 		public override void _Ready()
 		{
+			_entityLayer = GetNode<TileMapLayer>("../MapContainer/Map/EntityLayer") as Map.EntityLayer;
 			_exitButton = GetNode<Button>("Columns/ExitButton");
 			_deviceCountLabel = GetNode<Label>("Columns/Stats/DeviceCount");
 			_label = GetNode<Label>("Label");
+			
+			_entityLayer.Connect(
+				"AddedEntity", Callable.From((Entities.Entity entity) => {
+					UpdateStats();
+				})
+			);
+			
+			_entityLayer.Connect(
+				"RemovedEntity", Callable.From((Entities.Entity entity) => {
+					UpdateStats();
+				})
+			);
 		}
 	}
 }
