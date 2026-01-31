@@ -1,7 +1,11 @@
 [gd_scene format=3 uid="uid://h1sl1lwano8s"]
 
 [ext_resource type="PackedScene" uid="uid://xsjtymh23tx" path="res://Scenes/Battle/Entity.tscn" id="1_paxgv"]
-[ext_resource type="Resource" uid="uid://evokpfl178dv" path="res://Resources/Entities/DeviceMarker.tres" id="2_rkh7e"]
+[ext_resource type="Script" uid="uid://ce0uobelsr6su" path="res://Source/Battle/Entities/DeviceMarker/DeviceMarker.cs" id="2_rkh7e"]
+[ext_resource type="Resource" uid="uid://evokpfl178dv" path="res://Resources/Entities/DeviceMarker.tres" id="3_xm64c"]
 
 [node name="Entity" unique_id=365178665 instance=ExtResource("1_paxgv")]
-EntityResource = ExtResource("2_rkh7e")
+script = ExtResource("2_rkh7e")
+EntityResource = ExtResource("3_xm64c")
+
+[node name="Sprite" type="Sprite2D" parent="." index="0" unique_id=58001794]

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Entity" format=3 uid="uid://d20a4rocot28"]
+
+[ext_resource type="Script" uid="uid://d07w6ngr0dmna" path="res://Source/Resources/Entity.cs" id="1_3k36v"]
+[ext_resource type="Texture2D" uid="uid://b7tf2jiuu05gm" path="res://Assets/Sprites/device.png" id="1_5bu5n"]
+
+[resource]
+script = ExtResource("1_3k36v")
+Id = 2
+Type = 2
+Sprites = Array[Texture2D]([ExtResource("1_5bu5n")])
+metadata/_custom_type_script = "uid://d07w6ngr0dmna"

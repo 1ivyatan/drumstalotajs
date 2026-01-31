@@ -20,7 +20,7 @@ namespace Drumstalotajs.Battle.Map
 		
 		public void InsertEntity(Entities.Type type, Vector2I position)
 		{
-			
+			SetCell(position, 0, new Vector2I(0, 0), (int)type);
 		}
 		
 		public void RemoveEntity(Vector2I position)
@@ -62,7 +62,7 @@ namespace Drumstalotajs.Battle.Map
 				if ((Entities.Type)entity.EntityResource.Type != Entities.Type.None)
 				{
 					EntityPointers[(Entities.Type)entity.EntityResource.Type].Add(cellPos, entity);
-					EmitSignal(entity);
+					EmitSignal("AddedEntity", entity);
 				}
 			}
 		}
@@ -78,7 +78,7 @@ namespace Drumstalotajs.Battle.Map
 				if ((Entities.Type)entity.EntityResource.Type != Entities.Type.None)
 				{
 					EntityPointers[(Entities.Type)entity.EntityResource.Type].Remove(cellPos);
-					EmitSignal(entity);
+					EmitSignal("RemovedEntity", entity);
 				}
 			}
 		}
