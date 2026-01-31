@@ -36,15 +36,12 @@ namespace Drumstalotajs.Battle.Stages
 			_selector.Layer = Map.Selector.SelectorLayer.Entity;
 			_selector.FilterMode = Map.Selector.SelectorFilterMode.Fitlered;
 			_selector.Filter = [ Battle.Entities.Type.DeviceMarker, Battle.Entities.Type.Device ];
-			
-			_selector.Connect("SelectedEntity", new Callable(this, nameof(ClickedOnDeviceTile)));
-			
 			_toDeviceAdjustmentButton.Disabled = true;
 			
+			_selector.Connect("SelectedEntity", new Callable(this, nameof(ClickedOnDeviceTile)));
 			_entityLayer.Connect("ChangeInEntities", new Callable(this, nameof(CheckDeviceCount)));
-			
 			_toDeviceAdjustmentButton.Connect("pressed", Callable.From(() => {
-				GD.Print(123);
+				(GetParent<Control>() as Stages.Manager).DeviceAdjustment();
 			}));
 		}
 	}
