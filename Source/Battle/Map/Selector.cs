@@ -8,6 +8,9 @@ namespace Drumstalotajs.Battle.Map
 		[Signal]
 		public delegate void SelectedEntityEventHandler(int entityType, Vector2I tilePosition);
 		
+		[Signal]
+		public delegate void HoveredGroundEventHandler(Vector2I tilePosition);
+		
 		public enum SelectorLayer { Ground, Entity, All }
 		public enum SelectorFilterMode { Fitlered, All }
 		
@@ -21,6 +24,7 @@ namespace Drumstalotajs.Battle.Map
 		private TileMapLayer _groundLayer;
 		private TileMapLayer _entityLayer;
 		private Sprite2D _highlighter;
+		private Vector2I _currentCellPos;
 		
 		public override void _Ready()
 		{
@@ -28,6 +32,7 @@ namespace Drumstalotajs.Battle.Map
 			_mapWidget = GetParent<Node2D>() as Map.Widget;
 			_groundLayer = _mapWidget.GetNode<TileMapLayer>("GroundLayer");
 			_entityLayer = _mapWidget.GetNode<TileMapLayer>("EntityLayer");
+			_currentCellPos = new Vector2I(0, 0);
 			Enabled = false;
 			Visible = false;
 		}
@@ -46,7 +51,7 @@ namespace Drumstalotajs.Battle.Map
 						( Layer == SelectorLayer.Ground && 
 						_groundLayer.GetCellAtlasCoords(cellPos).Equals(new Vector2I(-1, -1))) ||
 						( Layer == SelectorLayer.Entity && 
-						_entityLayer.GetCellAlternativeTile(cellPos) == -1 ) ||
+						(Entities.Type)_entityLayer.GetCellAlternativeTile(cellPos) == Entities.Type.None ) ||
 						( Layer == SelectorLayer.All && 
 						_groundLayer.GetCellAtlasCoords(cellPos).Equals(new Vector2I(-1, -1)) )
 					)
@@ -56,30 +61,7 @@ namespace Drumstalotajs.Battle.Map
 					} else
 					{
 						Entities.Type entityType = (Entities.Type)_entityLayer.GetCellAlternativeTile(cellPos);
-						switch (Layer)
-						{
-							case SelectorLayer.Ground:
-								
-								break;
-							case SelectorLayer.Entity:
-								if (!AllowedEntity(entityType))
-								{
-									Visible = false;
-									return;
-								}
-								break;
-							case SelectorLayer.All:
-								if (!AllowedEntity(entityType))
-								{
-									Visible = false;
-									return;
-								}
-								break;
-						}
-						
-						SetPosition((cellPos * Physics.Pixels) + new Vector2I(Physics.Pixels / 2, Physics.Pixels / 2));	
-						Visible = true;
-						
+
 						if (mouseEvent is InputEventMouseButton mouseClick && mouseClick.Pressed)
 						{
 							/* left */
@@ -91,13 +73,50 @@ namespace Drumstalotajs.Battle.Map
 								
 										break;
 									case SelectorLayer.Entity:
-										EmitSignal("SelectedEntity", (int)entityType, cellPos);
+										if (AllowedEntity(entityType))
+										{
+											EmitSignal("SelectedEntity", (int)entityType, cellPos);
+										}
+										
 										break;
 									case SelectorLayer.All:
-										EmitSignal("SelectedEntity", (int)entityType, cellPos);
+										if (AllowedEntity(entityType))
+										{
+											EmitSignal("SelectedEntity", (int)entityType, cellPos);
+										}
 									break;
 								}
 							}
+						}
+						
+						SetPosition((cellPos * Physics.Pixels) + new Vector2I(Physics.Pixels / 2, Physics.Pixels / 2));	
+						Visible = true;
+						
+						if (mouseEvent is InputEventMouseMotion mouseMotion)
+						{
+							if (_currentCellPos == cellPos)
+							{
+								return;
+							}
+							
+							switch (Layer)
+							{
+								case SelectorLayer.Ground:
+									EmitSignal("HoveredGround", cellPos);
+									break;
+								case SelectorLayer.Entity:
+									if (!AllowedEntity(entityType))
+									{
+										Visible = false;
+										return;
+									}
+									break;
+								case SelectorLayer.All:
+									EmitSignal("HoveredGround", cellPos);
+									break;
+							}
+							
+							_currentCellPos = cellPos;
 						}
 					}
 					
@@ -110,7 +129,7 @@ namespace Drumstalotajs.Battle.Map
 		
 		private bool AllowedEntity(Entities.Type entityType)
 		{
-			if (FilterMode == SelectorFilterMode.All || (
+			if (entityType != Entities.Type.None || FilterMode == SelectorFilterMode.All || (
 				FilterMode == SelectorFilterMode.Fitlered &&
 				Filter != null && Filter.Length > 0 &&
 				Filter.Contains(entityType)
