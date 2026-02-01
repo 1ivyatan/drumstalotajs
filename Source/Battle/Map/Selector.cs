@@ -9,6 +9,9 @@ namespace Drumstalotajs.Battle.Map
 		public delegate void SelectedEntityEventHandler(int entityType, Vector2I tilePosition);
 		
 		[Signal]
+		public delegate void SelectedEmptyEntityEventHandler(Vector2I tilePosition);
+		
+		[Signal]
 		public delegate void HoveredGroundEventHandler(Vector2I tilePosition);
 		
 		[Signal]
@@ -90,6 +93,9 @@ namespace Drumstalotajs.Battle.Map
 										if (AllowedEntity(entityType))
 										{
 											EmitSignal("SelectedEntity", (int)entityType, cellPos);
+										} else
+										{
+											EmitSignal("SelectedEmptyEntity", cellPos);
 										}
 									break;
 								}
