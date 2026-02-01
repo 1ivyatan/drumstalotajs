@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("1_3k36v")
+Name = "Catapult"
 Id = 2
 Type = 2
 Sprites = Array[Texture2D]([ExtResource("1_5bu5n")])

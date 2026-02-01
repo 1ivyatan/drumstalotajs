@@ -1,9 +1,9 @@
 using Godot;
 using System;
 
-namespace Drumstalotajs.Battle.Stages
+namespace Drumstalotajs.Battle.Stage.StageOverlays.DeviceAdjustment
 {
-	public partial class DeviceAdjustment : StageOverlay
+	public partial class Stage : Battle.Stage.StageOverlay
 	{
 		private Battle.Map.Selector _selector;
 		private Battle.Map.EntityLayer _entityLayer;
@@ -15,7 +15,7 @@ namespace Drumstalotajs.Battle.Stages
 			
 			if (!(_entityLayer.EntityPointers[Entities.Type.Device].Count > 0))
 			{
-				(GetParent<Control>() as Stages.Manager).DeviceAdjustment();
+			//	(GetParent<Control>() as Stage.Manager).DeviceAdjustment();
 				return;
 			}
 		}

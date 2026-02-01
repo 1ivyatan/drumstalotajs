@@ -2,32 +2,30 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-namespace Drumstalotajs.Battle.Stages
+namespace Drumstalotajs.Battle.Stage.StageOverlays.DevicePlacement
 {
-	public partial class DevicePlacement : StageOverlay
+	public partial class Stage : Battle.Stage.StageOverlay
 	{
 		private Battle.Scene _scene;
 		private Battle.Map.Selector _selector;
 		private Battle.Map.EntityLayer _entityLayer;
 		private Button _toDeviceAdjustmentButton;
+		private MapDevices _mapDevices;
 		
 		private void ClickedOnDeviceTile(int entityType, Vector2I tilePosition)
 		{
-			//if (_scene.Level.Devices.ContainsKey)
-			//{
-		//		return;
-		//	}
+			//Entities.Entity entity = _entityLayer.EntityPointers[(Entities.Type)entityType][tilePosition];
 			
-			_entityLayer.InsertEntity((
-				(Entities.Type)entityType == Entities.Type.DeviceMarker
-					? Entities.Type.Device
-					: Entities.Type.DeviceMarker
-			), tilePosition);
+			_entityLayer.InsertEntity(
+				((Entities.Type)entityType == Entities.Type.DeviceMarker
+					? (Entities.Id)_mapDevices.SelectedDeviceId
+					: Entities.Id.DeviceMarker
+				), tilePosition
+			);
 		}
 		
 		private void CheckDeviceCount(Entities.Entity entity, Vector2I tilePosition)
 		{
-			GD.Print(entity.EntityResource.Type);
 			if ((Entities.Type)entity.EntityResource.Type == Entities.Type.Device)
 			{
 				if (_scene.Level.Devices.ContainsKey(entity.EntityResource.Id))
@@ -39,10 +37,9 @@ namespace Drumstalotajs.Battle.Stages
 					{
 						_toDeviceAdjustmentButton.Disabled = true;
 					}
-					GD.Print(_scene.Level.Devices[entity.EntityResource.Id]);
 				} else
 				{
-					_entityLayer.InsertEntity(Entities.Type.DeviceMarker, tilePosition);
+					//_entityLayer.InsertEntity(Entities.Type.DeviceMarker, tilePosition);
 				}
 				
 			}
@@ -66,6 +63,7 @@ namespace Drumstalotajs.Battle.Stages
 		public override void _Ready()
 		{
 			_toDeviceAdjustmentButton = GetNode<Button>("ToDeviceAdjustmentButton");
+			_mapDevices = GetNode<Container>("MapDevices") as MapDevices;
 			_entityLayer = GetNode<Node2D>("../../Map/EntityLayer") as Battle.Map.EntityLayer;
 			_selector = GetNode<Node2D>("../../Map/Selector") as Battle.Map.Selector;
 			_scene = GetNode<Control>("../../..") as Battle.Scene;
@@ -81,8 +79,13 @@ namespace Drumstalotajs.Battle.Stages
 			_entityLayer.Connect("AddedEntity", new Callable(this, nameof(CheckDeviceCount)));
 			_entityLayer.Connect("RemovedEntity", new Callable(this, nameof(CheckDeviceCount)));
 			_toDeviceAdjustmentButton.Connect("pressed", Callable.From(() => {
-				(GetParent<Control>() as Stages.Manager).DeviceAdjustment();
+				//(GetParent<Control>() as Stage.Manager).DeviceAdjustment();
 			}));
+			
+			if (_scene.Level != null)
+			{
+				_mapDevices.SetDevices(_scene.Level.Devices);
+			}
 			
 			//AddedEntityEventHandler
 			/*

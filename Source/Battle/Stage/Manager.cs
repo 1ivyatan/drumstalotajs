@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-namespace Drumstalotajs.Battle.Stages
+namespace Drumstalotajs.Battle.Stage
 {
 	public partial class Manager : Control
 	{
@@ -19,7 +19,7 @@ namespace Drumstalotajs.Battle.Stages
 		
 		private void LoadStage(string name)
 		{
-			string stagePath = $"res://Scenes/Battle/Stages/{name}.tscn";
+			string stagePath = $"res://Scenes/Battle/Stages/{name}/{name}.tscn";
 		
 			if (CurrentStage != null)
 			{

@@ -21,9 +21,9 @@ namespace Drumstalotajs.Battle.Map
 			private set;
 		}
 		
-		public void InsertEntity(Entities.Type type, Vector2I position)
+		public void InsertEntity(Entities.Id entityId, Vector2I position)
 		{
-			SetCell(position, 0, new Vector2I(0, 0), (int)type);
+			SetCell(position, 0, new Vector2I(0, 0), (int)entityId);
 		}
 		
 		public void RemoveEntity(Vector2I position)

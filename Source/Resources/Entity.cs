@@ -7,6 +7,9 @@ namespace Drumstalotajs.Resources
 	public partial class Entity : Resource
 	{
 		[Export]
+		public string Name { get; set; }
+		
+		[Export]
 		public int Id { get; set; }
 		
 		[Export]
@@ -28,10 +31,11 @@ namespace Drumstalotajs.Resources
 		[Export]
 		public Texture2D[] Sprites { get; set; }
 		
-		public Entity() : this(-1, (int)Battle.Entities.Type.None, null) {}
+		public Entity() : this("", -1, (int)Battle.Entities.Type.None, null) {}
 		
-		public Entity(int id, int type, Texture2D[] sprites)
+		public Entity(string name, int id, int type, Texture2D[] sprites)
 		{
+			Name = name;
 			Id = id;
 			Type = type;
 			Sprites = sprites ?? null;

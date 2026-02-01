@@ -7,11 +7,11 @@ namespace Drumstalotajs.Battle
 	{
 		public Drumstalotajs.Resources.Level Level { get; private set; }
 		
-		private Stages.Manager _stageManager;
+		private Stage.Manager _stageManager;
 		
 		public override void _Ready()
 		{
-			_stageManager = GetNode<Control>("MapContainer/StageOverlay") as Stages.Manager;
+			_stageManager = GetNode<Control>("MapContainer/StageOverlay") as Stage.Manager;
 			
 			_stageManager.DevicePlacement();
 		}

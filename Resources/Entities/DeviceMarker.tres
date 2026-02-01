@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("1_pq2yd")
+Name = "Device Marker"
 Id = 1
 Type = 1
 Sprites = Array[Texture2D]([ExtResource("1_5k81x")])
