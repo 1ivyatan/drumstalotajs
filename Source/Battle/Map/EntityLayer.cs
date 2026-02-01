@@ -28,12 +28,16 @@ namespace Drumstalotajs.Battle.Map
 		
 		public void RemoveEntity(Vector2I position)
 		{
-			
+			GD.Print(position);
+			EraseCell(position);
 		}
 		
 		public void RemoveAllEntitiesByType(Entities.Type type)
 		{
-			
+			foreach (var cell in EntityPointers[type])
+			{
+				RemoveEntity(cell.Key);
+			}
 		}
 		
 		public override void _Ready()

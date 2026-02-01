@@ -13,11 +13,7 @@ namespace Drumstalotajs.Battle.Stage.StageOverlays.DeviceAdjustment
 			_entityLayer = GetNode<Node2D>("../../Map/EntityLayer") as Battle.Map.EntityLayer;
 			_selector = GetNode<Node2D>("../../Map/Selector") as Battle.Map.Selector;
 			
-			if (!(_entityLayer.EntityPointers[Entities.Type.Device].Count > 0))
-			{
-			//	(GetParent<Control>() as Stage.Manager).DeviceAdjustment();
-				return;
-			}
+			_entityLayer.RemoveAllEntitiesByType(Entities.Type.DeviceMarker);
 		}
 	}
 }

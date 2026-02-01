@@ -4,8 +4,8 @@
 [ext_resource type="Script" uid="uid://ci5tgte5uy6ju" path="res://Source/Battle/Stage/Manager.cs" id="2_4h1d5"]
 [ext_resource type="Texture2D" uid="uid://cgrutqhu62x5e" path="res://Assets/Sprites/grid.png" id="2_usrys"]
 [ext_resource type="Script" uid="uid://ylgjymjafqwq" path="res://Source/Battle/Map/Selector.cs" id="3_3q8cv"]
-[ext_resource type="PackedScene" uid="uid://h1sl1lwano8s" path="res://Scenes/Battle/Entities/DeviceMarker.tscn" id="3_tuv7x"]
-[ext_resource type="PackedScene" uid="uid://com4i07an24c7" path="res://Scenes/Battle/Entities/Device.tscn" id="4_57jof"]
+[ext_resource type="PackedScene" uid="uid://h1sl1lwano8s" path="res://Scenes/Battle/Entities/Markers/DeviceMarker.tscn" id="3_tuv7x"]
+[ext_resource type="PackedScene" uid="uid://com4i07an24c7" path="res://Scenes/Battle/Entities/Devices/Device.tscn" id="4_57jof"]
 [ext_resource type="Texture2D" uid="uid://b6w1j8ue1wa0y" path="res://Assets/Sprites/gridselector.png" id="4_bvrth"]
 [ext_resource type="Script" uid="uid://ctwanbmk8cxjb" path="res://Source/Battle/Map/EntityLayer.cs" id="4_n0ml5"]
 

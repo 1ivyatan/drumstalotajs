@@ -19,7 +19,7 @@ namespace Drumstalotajs.Battle.Stage
 		
 		private void LoadStage(string name)
 		{
-			string stagePath = $"res://Scenes/Battle/Stages/{name}/{name}.tscn";
+			string stagePath = $"res://Scenes/Battle/StageOverlays/{name}/{name}.tscn";
 		
 			if (CurrentStage != null)
 			{

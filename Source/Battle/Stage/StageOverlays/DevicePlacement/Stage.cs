@@ -79,7 +79,7 @@ namespace Drumstalotajs.Battle.Stage.StageOverlays.DevicePlacement
 			_entityLayer.Connect("AddedEntity", new Callable(this, nameof(CheckDeviceCount)));
 			_entityLayer.Connect("RemovedEntity", new Callable(this, nameof(CheckDeviceCount)));
 			_toDeviceAdjustmentButton.Connect("pressed", Callable.From(() => {
-				//(GetParent<Control>() as Stage.Manager).DeviceAdjustment();
+				(GetParent<Control>() as Battle.Stage.Manager).DeviceAdjustment();
 			}));
 			
 			if (_scene.Level != null)

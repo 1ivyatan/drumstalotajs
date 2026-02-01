@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dpxfhtfmi263t"]
 
-[ext_resource type="PackedScene" uid="uid://c2qn35q10drob" path="res://Scenes/Battle/StageOverlay.tscn" id="1_h5dvo"]
+[ext_resource type="PackedScene" uid="uid://c2qn35q10drob" path="res://Scenes/Battle/StageOverlays/StageOverlay.tscn" id="1_h5dvo"]
 [ext_resource type="Script" uid="uid://brv0hv28ehlhs" path="res://Source/Battle/Stage/StageOverlays/DevicePlacement/Stage.cs" id="2_nykxr"]
 [ext_resource type="Script" uid="uid://cwwf87j46q7sc" path="res://Source/Battle/Stage/StageOverlays/DevicePlacement/MapDevices.cs" id="3_nykxr"]
 
