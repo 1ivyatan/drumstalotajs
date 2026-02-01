@@ -3,8 +3,10 @@ using System;
 
 namespace Drumstalotajs.Battle
 {	
-	public partial class Scene : Node
+	public partial class Scene : Control
 	{
+		public Drumstalotajs.Resources.Level Level { get; private set; }
+		
 		private Stages.Manager _stageManager;
 		
 		public override void _Ready()
@@ -20,9 +22,12 @@ namespace Drumstalotajs.Battle
 			
 			if (ResourceLoader.Exists(levelResourcePath))
 			{
-				Drumstalotajs.Resources.Level levelResource = ResourceLoader.Load<Drumstalotajs.Resources.Level>(levelResourcePath);
+				Level = ResourceLoader.Load<Drumstalotajs.Resources.Level>(levelResourcePath);
 
-				GD.Print(levelResource.Title);
+				GD.Print(Level.Title);
+			} else
+			{
+				Level = null;
 			}
 		}
 	}

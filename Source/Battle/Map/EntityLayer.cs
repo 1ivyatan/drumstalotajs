@@ -10,10 +10,10 @@ namespace Drumstalotajs.Battle.Map
 		public delegate void ChangeInEntitiesEventHandler(int entityType);
 		
 		[Signal]
-		public delegate void AddedEntityEventHandler(Entities.Entity entity);
+		public delegate void AddedEntityEventHandler(Entities.Entity entity, Vector2I position);
 		
 		[Signal]
-		public delegate void RemovedEntityEventHandler(Entities.Entity entity);
+		public delegate void RemovedEntityEventHandler(Entities.Entity entity, Vector2I position);
 		
 		public Dictionary<Entities.Type, Dictionary<Vector2I, Entities.Entity>> EntityPointers
 		{
@@ -65,7 +65,7 @@ namespace Drumstalotajs.Battle.Map
 				if ((Entities.Type)entity.EntityResource.Type != Entities.Type.None)
 				{
 					EntityPointers[(Entities.Type)entity.EntityResource.Type].Add(cellPos, entity);
-					EmitSignal("AddedEntity", entity);
+					EmitSignal("AddedEntity", entity, cellPos);
 					EmitSignal("ChangeInEntities", entity.EntityResource.Type);
 				}
 			}
@@ -82,7 +82,7 @@ namespace Drumstalotajs.Battle.Map
 				if ((Entities.Type)entity.EntityResource.Type != Entities.Type.None)
 				{
 					EntityPointers[(Entities.Type)entity.EntityResource.Type].Remove(cellPos);
-					EmitSignal("RemovedEntity", entity);
+					EmitSignal("RemovedEntity", entity, cellPos);
 					EmitSignal("ChangeInEntities", entity.EntityResource.Type);
 				}
 			}
