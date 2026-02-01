@@ -11,6 +11,9 @@ namespace Drumstalotajs.Battle.Map
 		[Signal]
 		public delegate void HoveredGroundEventHandler(Vector2I tilePosition);
 		
+		[Signal]
+		public delegate void HoveredEmptyGroundEventHandler(Vector2I tilePosition);
+		
 		public enum SelectorLayer { Ground, Entity, All }
 		public enum SelectorFilterMode { Fitlered, All }
 		
@@ -57,6 +60,10 @@ namespace Drumstalotajs.Battle.Map
 					)
 					{
 						Visible = false;
+						if (Layer == SelectorLayer.Ground || Layer == SelectorLayer.All)
+						{
+							EmitSignal("HoveredEmptyGround", cellPos);
+						}
 						return;
 					} else
 					{
