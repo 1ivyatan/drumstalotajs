@@ -5,6 +5,8 @@ namespace Drumstalotajs.Battle.Stage.StageOverlays.DeviceAdjustment
 {
 	public partial class Stage : Battle.Stage.StageOverlay
 	{
+		private Entities.Device SelectedEntity { get; set; }
+		
 		private Battle.Map.Selector _selector;
 		private Battle.Map.EntityLayer _entityLayer;
 		private Battle.Map.GroundLayer _groundLayer;
@@ -17,10 +19,10 @@ namespace Drumstalotajs.Battle.Stage.StageOverlays.DeviceAdjustment
 			groundInfoLabel.Text = $"Lauks: {position}";
 		}
 		
-		private void UpdateEntityStats(Entities.Type entityType, Vector2I position)
+		private void UpdateEntityStats(Battle.Entities.Device device, Vector2I position)
 		{
 			Label entityInfoLabel = _entityInfo.GetNode<Label>("Label");
-			entityInfoLabel.Text = $"sadasdsadsa";
+			entityInfoLabel.Text = $"{device.Angle}";
 		}
 		
 		public override void _Ready()
@@ -40,8 +42,12 @@ namespace Drumstalotajs.Battle.Stage.StageOverlays.DeviceAdjustment
 
 			_selector.Connect("SelectedEntity", Callable.From(
 			(int entityType, Vector2I position) => {
-				UpdateEntityStats((Entities.Type)entityType, position);
-				_entityInfo.Visible = true;
+				if ((Entities.Type)entityType == Entities.Type.Device)
+				{
+					SelectedEntity = _entityLayer.EntityPointers[(Entities.Type)entityType][position] as Entities.Device;
+					UpdateEntityStats(SelectedEntity, position);
+					_entityInfo.Visible = true;
+				}
 			}));
 				
 			_selector.Connect("SelectedEmptyEntity", Callable.From(

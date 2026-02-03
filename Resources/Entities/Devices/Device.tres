@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Device" format=3 uid="uid://to7jup2538hc"]
+
+[ext_resource type="Texture2D" uid="uid://b7tf2jiuu05gm" path="res://Assets/Sprites/device.png" id="1_w6bcn"]
+[ext_resource type="Script" uid="uid://v2c7hs5id7u5" path="res://Source/Resources/Entities/Device.cs" id="2_ubg3i"]
+
+[resource]
+script = ExtResource("2_ubg3i")
+StartingAngle = 45.0
+AngleRadius = 20.0
+Name = "Catapult"
+Id = 2
+Type = 2
+Sprites = Array[Texture2D]([ExtResource("1_w6bcn")])
+metadata/_custom_type_script = "uid://v2c7hs5id7u5"
