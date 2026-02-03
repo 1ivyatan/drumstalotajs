@@ -21,8 +21,9 @@ namespace Drumstalotajs.Battle.Stage.StageOverlays.DeviceAdjustment
 		
 		private void UpdateEntityStats(Battle.Entities.Device device, Vector2I position)
 		{
-			Label entityInfoLabel = _entityInfo.GetNode<Label>("Label");
-			entityInfoLabel.Text = $"{device.Angle}";
+			Label primaryInfo = _entityInfo.GetNode<Label>("VBoxContainer/PrimaryInfo");
+			primaryInfo.Text = $"Angle: {device.Angle}deg";
+			//seconaryInfo.Text = $"Angle range: {device.DeviceResource.StartingAngle - device.DeviceResource.AngleRadius}deg - {device.DeviceResource.StartingAngle + device.DeviceResource.AngleRadius}deg";
 		}
 		
 		public override void _Ready()
