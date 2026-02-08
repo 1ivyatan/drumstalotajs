@@ -5,19 +5,29 @@ namespace Drumstalotajs.Battle.Entities
 {
 	public partial class Device : Entity
 	{
-		public Resources.Entities.Device DeviceResource => EntityResource as Resources.Entities.Device;
-		
-		public double Angle { 
-			get; 
-			set
+		public class AngleProperties
+		{
+			public double Min {get; private set;}
+			public double Max {get; private set;}
+			public double Value
 			{
-				field = Mathf.Clamp(
-					value, 
-					DeviceResource.StartingAngle - DeviceResource.AngleRadius,
-					DeviceResource.StartingAngle + DeviceResource.AngleRadius
-				);
+				get;
+				set
+				{
+					field = Mathf.Clamp(value, Min, Max);
+				}
+			}
+			
+			public AngleProperties(double startingAngle, double angleRadius)
+			{
+				Min = startingAngle - angleRadius;
+				Max = startingAngle + angleRadius;
+				Value = startingAngle;
 			}
 		}
+		
+		public Resources.Entities.Device DeviceResource => EntityResource as Resources.Entities.Device;
+		public AngleProperties Angle { get; private set; }
 		
 		private TileMapLayer _parent;
 		private Sprite2D _sprite;
@@ -26,7 +36,7 @@ namespace Drumstalotajs.Battle.Entities
 		{
 			_parent = GetParent<TileMapLayer>();
 			_sprite = GetNode<Sprite2D>("Sprite");
-			Angle = DeviceResource.StartingAngle;
+			Angle = new AngleProperties(DeviceResource.StartingAngle, DeviceResource.AngleRadius);
 			
 			if (EntityResource != null)
 			{
