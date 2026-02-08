@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c2qn35q10drob" path="res://Scenes/Battle/StageOverlays/StageOverlay.tscn" id="1_vtms6"]
 [ext_resource type="Script" uid="uid://cs3rsyx5tpdy2" path="res://Source/Battle/Stage/StageOverlays/DeviceAdjustment/Stage.cs" id="2_ok0cr"]
+[ext_resource type="Script" uid="uid://cs3itbmh5q15r" path="res://Source/Battle/Stage/StageOverlays/DeviceAdjustment/AngleControl.cs" id="3_1k5lv"]
 
 [node name="StageOverlay" unique_id=106437751 instance=ExtResource("1_vtms6")]
 script = ExtResource("2_ok0cr")
@@ -24,9 +25,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -20.0
-offset_top = -40.0
-offset_right = 20.0
+offset_left = -78.0
+offset_top = -49.0
+offset_right = 78.0
 grow_horizontal = 2
 grow_vertical = 0
 
@@ -35,19 +36,17 @@ layout_mode = 2
 
 [node name="AngleControl" type="HBoxContainer" parent="EntityInfo/VBoxContainer" index="0" unique_id=1938501148]
 layout_mode = 2
+script = ExtResource("3_1k5lv")
 
 [node name="Label" type="Label" parent="EntityInfo/VBoxContainer/AngleControl" index="0" unique_id=947585672]
 layout_mode = 2
-text = "Angle:"
+text = "Angle:
+"
 
 [node name="Degrees" type="Label" parent="EntityInfo/VBoxContainer/AngleControl" index="1" unique_id=2138288728]
 layout_mode = 2
+size_flags_horizontal = 3
 text = "~00deg"
 
-[node name="LinePreview" type="CenterContainer" parent="EntityInfo/VBoxContainer/AngleControl" index="2" unique_id=468747429]
-layout_mode = 2
-
-[node name="Line" type="Node2D" parent="EntityInfo/VBoxContainer/AngleControl/LinePreview" index="0" unique_id=1823102618]
-
-[node name="Slider" type="VSlider" parent="EntityInfo/VBoxContainer/AngleControl" index="3" unique_id=1972102282]
+[node name="Slider" type="VSlider" parent="EntityInfo/VBoxContainer/AngleControl" index="2" unique_id=1972102282]
 layout_mode = 2

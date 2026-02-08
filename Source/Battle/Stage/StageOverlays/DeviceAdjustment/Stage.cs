@@ -10,8 +10,11 @@ namespace Drumstalotajs.Battle.Stage.StageOverlays.DeviceAdjustment
 		private Battle.Map.Selector _selector;
 		private Battle.Map.EntityLayer _entityLayer;
 		private Battle.Map.GroundLayer _groundLayer;
+		
 		private Control _groundInfo;
 		private Control _entityInfo;
+		
+		private AngleControl _angleControl;
 		
 		private void UpdateGroundStats(Vector2I position)
 		{
@@ -21,8 +24,8 @@ namespace Drumstalotajs.Battle.Stage.StageOverlays.DeviceAdjustment
 		
 		private void UpdateEntityStats(Battle.Entities.Device device, Vector2I position)
 		{
-			Label primaryInfo = _entityInfo.GetNode<Label>("VBoxContainer/PrimaryInfo");
-			primaryInfo.Text = $"Angle: {device.Angle}deg";
+			//Label primaryInfo = _entityInfo.GetNode<Label>("VBoxContainer/PrimaryInfo");
+			//primaryInfo.Text = $"Angle: {device.Angle}deg";
 			//seconaryInfo.Text = $"Angle range: {device.DeviceResource.StartingAngle - device.DeviceResource.AngleRadius}deg - {device.DeviceResource.StartingAngle + device.DeviceResource.AngleRadius}deg";
 		}
 		
@@ -33,6 +36,8 @@ namespace Drumstalotajs.Battle.Stage.StageOverlays.DeviceAdjustment
 			_selector = GetNode<Node2D>("../../Map/Selector") as Battle.Map.Selector;
 			_groundInfo = GetNode<Control>("GroundInfo");
 			_entityInfo = GetNode<Control>("EntityInfo");
+			
+			_angleControl = GetNode<HBoxContainer>("EntityInfo/VBoxContainer/AngleControl") as AngleControl;
 			
 			_selector.Enabled = true;
 			_selector.Layer = Map.Selector.SelectorLayer.All;
@@ -47,6 +52,7 @@ namespace Drumstalotajs.Battle.Stage.StageOverlays.DeviceAdjustment
 				{
 					SelectedEntity = _entityLayer.EntityPointers[(Entities.Type)entityType][position] as Entities.Device;
 					UpdateEntityStats(SelectedEntity, position);
+					_angleControl.SetRange(SelectedEntity.Angle.Min, SelectedEntity.Angle.Max, SelectedEntity.Angle.Value);
 					_entityInfo.Visible = true;
 				}
 			}));
@@ -65,6 +71,11 @@ namespace Drumstalotajs.Battle.Stage.StageOverlays.DeviceAdjustment
 			_selector.Connect("HoveredEmptyGround", Callable.From(
 			(Vector2I position) => {
 				_groundInfo.Visible = false;
+			}));
+			
+			_angleControl.Connect("Change", Callable.From(
+			(float value) => {
+				SelectedEntity.Angle.Value = value;
 			}));
 		}
 	}
