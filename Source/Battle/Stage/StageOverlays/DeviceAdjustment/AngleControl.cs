@@ -16,6 +16,7 @@ namespace Drumstalotajs.Battle.Stage.StageOverlays.DeviceAdjustment
 			angleSlider.MaxValue = max;
 			angleSlider.MinValue = min;
 			angleSlider.Value = value;
+			label.Text = $"~{(int)value}deg";
 		}
 	
 		public override void _Ready()
@@ -25,7 +26,7 @@ namespace Drumstalotajs.Battle.Stage.StageOverlays.DeviceAdjustment
 			
 			angleSlider.Connect("value_changed", Callable.From(
 			(float value) => {
-				label.Text = $"~{value}deg";
+				label.Text = $"~{(int)value}deg";
 				EmitSignal("Change", value);
 			}));
 		}

@@ -25,9 +25,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -78.0
-offset_top = -49.0
-offset_right = 78.0
+offset_left = -88.0
+offset_top = -102.0
+offset_right = 88.0
 grow_horizontal = 2
 grow_vertical = 0
 
@@ -50,3 +50,21 @@ text = "~00deg"
 
 [node name="Slider" type="VSlider" parent="EntityInfo/VBoxContainer/AngleControl" index="2" unique_id=1972102282]
 layout_mode = 2
+step = 0.1
+
+[node name="TraverseControl" type="HBoxContainer" parent="EntityInfo/VBoxContainer" index="1" unique_id=1813452768]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="EntityInfo/VBoxContainer/TraverseControl" index="0" unique_id=495015044]
+layout_mode = 2
+text = "Traverse:
+"
+
+[node name="Degrees" type="Label" parent="EntityInfo/VBoxContainer/TraverseControl" index="1" unique_id=2126383898]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "~00deg"
+
+[node name="Slider" type="VSlider" parent="EntityInfo/VBoxContainer/TraverseControl" index="2" unique_id=967976537]
+layout_mode = 2
+step = 0.1
