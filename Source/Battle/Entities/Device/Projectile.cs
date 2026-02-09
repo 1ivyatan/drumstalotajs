@@ -30,8 +30,7 @@ namespace Drumstalotajs.Battle.Entities
 					Math.Pow(InitialVelocity, 2) * Math.Sin(2 * Battle.Physics.ToRadians(Angle))
 				) / Battle.Physics.Gravity;
 				_vy0 = InitialVelocity * Math.Sin(Battle.Physics.ToRadians(Angle));
-				//Time = (_vy0 + Math.Sqrt( Math.Pow(_vy0, 2) + 2 * Battle.Physics.Gravity * initialHeight));
-				//GD.Print(Time);
+//				Time = (_vy0 + Math.Sqrt( Math.Pow(_vy0, 2) + 2 * Battle.Physics.Gravity * InitialHeight) / Battle.Physics.Gravity);
 				Time = (2 * InitialVelocity * Math.Sin(Battle.Physics.ToRadians(Angle)) ) / Battle.Physics.Gravity;
 			}
 		}
