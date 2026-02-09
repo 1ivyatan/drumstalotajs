@@ -1,32 +1,9 @@
 [gd_scene format=3 uid="uid://dpxfhtfmi263t"]
 
-[ext_resource type="PackedScene" uid="uid://c2qn35q10drob" path="res://Scenes/Battle/StageOverlays/StageOverlay.tscn" id="1_h5dvo"]
-[ext_resource type="Script" uid="uid://brv0hv28ehlhs" path="res://Source/Battle/Stage/StageOverlays/DevicePlacement/Stage.cs" id="2_nykxr"]
-[ext_resource type="Script" uid="uid://cwwf87j46q7sc" path="res://Source/Battle/Stage/StageOverlays/DevicePlacement/MapDevices.cs" id="3_nykxr"]
-
-[node name="StageOverlay" unique_id=106437751 instance=ExtResource("1_h5dvo")]
-script = ExtResource("2_nykxr")
-
-[node name="ToDeviceAdjustmentButton" type="Button" parent="." index="0" unique_id=1386188608]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
+[node name="Stage" type="Control" unique_id=1123400742]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -103.0
-offset_top = -31.0
-grow_horizontal = 0
-grow_vertical = 0
-disabled = true
-text = "Novietot"
-
-[node name="MapDevices" type="HBoxContainer" parent="." index="1" unique_id=1181816309]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -40.0
-offset_right = 40.0
-grow_vertical = 0
-script = ExtResource("3_nykxr")
+grow_horizontal = 2
+grow_vertical = 2

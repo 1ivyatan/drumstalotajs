@@ -1,11 +1,9 @@
 [gd_scene format=3 uid="uid://dfqhicmbgfbiw"]
 
-[ext_resource type="Script" uid="uid://voru15gbi0lm" path="res://Source/Battle/Entities/Device/Projectile.cs" id="1_c7ccx"]
-[ext_resource type="Texture2D" uid="uid://3vp3y2n41mwa" path="res://Assets/Sprites/boulder.png" id="1_dcjhd"]
-
-[node name="Projectile" type="Node2D" unique_id=1335191587]
-script = ExtResource("1_c7ccx")
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=136847172]
-scale = Vector2(0.978, 1)
-texture = ExtResource("1_dcjhd")
+[node name="Stage" type="Control" unique_id=1123400742]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

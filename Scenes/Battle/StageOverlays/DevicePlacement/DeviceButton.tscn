@@ -1,28 +1,9 @@
 [gd_scene format=3 uid="uid://be60qujn0h44v"]
 
-[ext_resource type="Script" uid="uid://ik6fdkxkf8m6" path="res://Source/Battle/Stage/StageOverlays/DevicePlacement/DeviceButton.cs" id="1_u7chn"]
-
-[node name="DeviceButton" type="Button" unique_id=870804816]
+[node name="Stage" type="Control" unique_id=1123400742]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_u7chn")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=200652097]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="DeviceIcon" type="TextureRect" parent="VBoxContainer" unique_id=228370921]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Counter" type="Label" parent="VBoxContainer" unique_id=195234671]
-layout_mode = 2
-text = "0"
-horizontal_alignment = 1
