@@ -20,6 +20,7 @@ offset_right = 40.0
 offset_bottom = 23.0
 
 [node name="EntityInfo" type="PanelContainer" parent="." index="1" unique_id=276305318]
+visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
