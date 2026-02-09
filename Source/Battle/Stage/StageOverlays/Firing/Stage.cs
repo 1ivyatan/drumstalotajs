@@ -17,16 +17,15 @@ namespace Drumstalotajs.Battle.Stage.StageOverlays.Firing
 				SceneTreeTimer delayToFire = GetTree().CreateTimer(GD.RandRange(0.05f, 0.5f));
 				delayToFire.Connect("timeout", Callable.From(() => {
 					Entities.Device device = cell.Value as Entities.Device;
-				
-					//Projectile projectile = device.Fire();
-					//projectile.Connect("ProjectileLanded", Callable.From(() => {
-					firedCount++;
+					Entities.Projectile projectile = device.Fire();
 					
-					if (firedCount == _entityLayer.EntityPointers[Entities.Type.Device].Count)
-					{
-						(GetParent<Control>() as Battle.Stage.Manager).DeviceAdjustment();
-					}
-					//}));
+					projectile.Connect("Landed", Callable.From(() => {
+						firedCount++;
+						if (firedCount == _entityLayer.EntityPointers[Entities.Type.Device].Count)
+						{
+							(GetParent<Control>() as Battle.Stage.Manager).DeviceAdjustment();
+						}
+					}));
 				}));
 			}
 		}

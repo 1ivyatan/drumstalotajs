@@ -41,7 +41,14 @@ namespace Drumstalotajs.Battle.Entities
 		private TileMapLayer _parent;
 		private Sprite2D _sprite;
 		
-		public sealed override void _Ready()
+		public Projectile Fire()
+		{
+			Projectile projectile = ResourceLoader.Load<PackedScene>("res://Scenes/Battle/Entities/Devices/Projectile.tscn").Instantiate() as Projectile;
+			_parent.AddChild(projectile);
+			return projectile;
+		}
+		
+		public override void _Ready()
 		{
 			_parent = GetParent<TileMapLayer>();
 			_sprite = GetNode<Sprite2D>("Sprite");
