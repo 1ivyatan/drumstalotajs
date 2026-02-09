@@ -11,5 +11,8 @@ namespace Drumstalotajs.Resources.Entities
 		
 		[Export]
 		public double AngleRadius { get; set; }
+		
+		[Export]
+		public double Velocity { get; set; }
 	}
 }

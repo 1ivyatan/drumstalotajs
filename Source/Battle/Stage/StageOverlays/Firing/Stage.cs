@@ -14,7 +14,7 @@ namespace Drumstalotajs.Battle.Stage.StageOverlays.Firing
 			int firedCount = 0;
 			foreach (var cell in _entityLayer.EntityPointers[Entities.Type.Device])
 			{
-				SceneTreeTimer delayToFire = GetTree().CreateTimer(GD.RandRange(0.05f, 0.5f));
+				SceneTreeTimer delayToFire = GetTree().CreateTimer(GD.RandRange(0.01f, 1f));
 				delayToFire.Connect("timeout", Callable.From(() => {
 					Entities.Device device = cell.Value as Entities.Device;
 					Entities.Projectile projectile = device.Fire();
