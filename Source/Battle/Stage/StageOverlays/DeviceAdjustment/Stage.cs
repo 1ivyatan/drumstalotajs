@@ -10,6 +10,7 @@ namespace Drumstalotajs.Battle.Stage.StageOverlays.DeviceAdjustment
 		private Battle.Map.Selector _selector;
 		private Battle.Map.EntityLayer _entityLayer;
 		private Battle.Map.GroundLayer _groundLayer;
+		private TopPanel _topPanel;
 		
 		private Control _groundInfo;
 		private Control _entityInfo;
@@ -41,7 +42,10 @@ namespace Drumstalotajs.Battle.Stage.StageOverlays.DeviceAdjustment
 			_toFiringButton = GetNode<Button>("ToFiringButton");
 			_angleControl = GetNode<HBoxContainer>("EntityInfo/VBoxContainer/AngleControl") as AngleControl;
 			_traverseControl = GetNode<HBoxContainer>("EntityInfo/VBoxContainer/TraverseControl") as TraverseControl;
+			_topPanel = GetNode<Control>("../../../TopPanel") as Battle.TopPanel;
 			
+			_topPanel.SetLabel("Device adjustment");
+
 			_selector.Enabled = true;
 			_selector.Layer = Map.Selector.SelectorLayer.All;
 			_selector.FilterMode = Map.Selector.SelectorFilterMode.Fitlered;
@@ -99,6 +103,15 @@ namespace Drumstalotajs.Battle.Stage.StageOverlays.DeviceAdjustment
 			
 			_toFiringButton.Connect("pressed", Callable.From(
 			() => {
+				foreach (var cell in _entityLayer.EntityPointers[Entities.Type.Device])
+				{
+					Entities.Device device = cell.Value as Entities.Device;
+					if (!device.Traverse.Locked)
+					{
+						device.Traverse.Locked = true;
+					}
+				}
+				
 				(GetParent<Control>() as Battle.Stage.Manager).Firing();
 			}));
 		}

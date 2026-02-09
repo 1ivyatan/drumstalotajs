@@ -11,6 +11,7 @@ namespace Drumstalotajs.Battle.Stage.StageOverlays.DevicePlacement
 		private Battle.Map.EntityLayer _entityLayer;
 		private Button _toDeviceAdjustmentButton;
 		private MapDevices _mapDevices;
+		private TopPanel _topPanel;
 		
 		private void ClickedOnDeviceTile(int entityType, Vector2I tilePosition)
 		{
@@ -67,6 +68,9 @@ namespace Drumstalotajs.Battle.Stage.StageOverlays.DevicePlacement
 			_entityLayer = GetNode<Node2D>("../../Map/EntityLayer") as Battle.Map.EntityLayer;
 			_selector = GetNode<Node2D>("../../Map/Selector") as Battle.Map.Selector;
 			_scene = GetNode<Control>("../../..") as Battle.Scene;
+			_topPanel = GetNode<Control>("../../../TopPanel") as Battle.TopPanel;
+			
+			_topPanel.SetLabel("Device placement");
 
 			_selector.Enabled = true;
 			_selector.Layer = Map.Selector.SelectorLayer.Entity;
