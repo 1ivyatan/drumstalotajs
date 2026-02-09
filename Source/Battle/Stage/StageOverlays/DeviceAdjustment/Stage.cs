@@ -15,6 +15,7 @@ namespace Drumstalotajs.Battle.Stage.StageOverlays.DeviceAdjustment
 		private Control _entityInfo;
 		
 		private AngleControl _angleControl;
+		private TraverseControl _traverseControl;
 		
 		private void UpdateGroundStats(Vector2I position)
 		{
@@ -34,10 +35,10 @@ namespace Drumstalotajs.Battle.Stage.StageOverlays.DeviceAdjustment
 			_entityLayer = GetNode<Node2D>("../../Map/EntityLayer") as Battle.Map.EntityLayer;
 			_groundLayer = GetNode<Node2D>("../../Map/GroundLayer") as Battle.Map.GroundLayer;
 			_selector = GetNode<Node2D>("../../Map/Selector") as Battle.Map.Selector;
-			_groundInfo = GetNode<Control>("GroundInfo");
 			_entityInfo = GetNode<Control>("EntityInfo");
-			
+			_groundInfo = GetNode<Control>("GroundInfo");
 			_angleControl = GetNode<HBoxContainer>("EntityInfo/VBoxContainer/AngleControl") as AngleControl;
+			_traverseControl = GetNode<HBoxContainer>("EntityInfo/VBoxContainer/TraverseControl") as TraverseControl;
 			
 			_selector.Enabled = true;
 			_selector.Layer = Map.Selector.SelectorLayer.All;
@@ -53,6 +54,7 @@ namespace Drumstalotajs.Battle.Stage.StageOverlays.DeviceAdjustment
 					SelectedEntity = _entityLayer.EntityPointers[(Entities.Type)entityType][position] as Entities.Device;
 					UpdateEntityStats(SelectedEntity, position);
 					_angleControl.SetRange(SelectedEntity.Angle.Min, SelectedEntity.Angle.Max, SelectedEntity.Angle.Value);
+					_traverseControl.SetRange(SelectedEntity.Traverse.Locked, SelectedEntity.Traverse.Azimuth);
 					_entityInfo.Visible = true;
 				}
 			}));
@@ -73,9 +75,24 @@ namespace Drumstalotajs.Battle.Stage.StageOverlays.DeviceAdjustment
 				_groundInfo.Visible = false;
 			}));
 			
+			_entityInfo.Connect("mouse_entered", Callable.From(
+			() => {
+				_selector.Enabled = false;
+			}));
+			
+			_entityInfo.Connect("mouse_exited", Callable.From(
+			() => {
+				_selector.Enabled = true;
+			}));
+			
 			_angleControl.Connect("Change", Callable.From(
 			(float value) => {
 				SelectedEntity.Angle.Value = value;
+			}));
+			
+			_traverseControl.Connect("Change", Callable.From(
+			(float value) => {
+				SelectedEntity.Traverse.Azimuth = value;
 			}));
 		}
 	}

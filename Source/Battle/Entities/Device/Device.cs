@@ -12,10 +12,7 @@ namespace Drumstalotajs.Battle.Entities
 			public double Value
 			{
 				get;
-				set
-				{
-					field = Mathf.Clamp(value, Min, Max);
-				}
+				set { field = Mathf.Clamp(value, Min, Max); }
 			}
 			
 			public AngleProperties(double startingAngle, double angleRadius)
@@ -26,8 +23,20 @@ namespace Drumstalotajs.Battle.Entities
 			}
 		}
 		
+		public class TraverseProperties
+		{
+			public bool Locked { get; set; }
+			public double Azimuth { get; set; }
+			public TraverseProperties()
+			{
+				Azimuth = 0;
+				Locked = false;
+			}
+		}
+		
 		public Resources.Entities.Device DeviceResource => EntityResource as Resources.Entities.Device;
 		public AngleProperties Angle { get; private set; }
+		public TraverseProperties Traverse { get; private set; }
 		
 		private TileMapLayer _parent;
 		private Sprite2D _sprite;
@@ -36,7 +45,9 @@ namespace Drumstalotajs.Battle.Entities
 		{
 			_parent = GetParent<TileMapLayer>();
 			_sprite = GetNode<Sprite2D>("Sprite");
+			
 			Angle = new AngleProperties(DeviceResource.StartingAngle, DeviceResource.AngleRadius);
+			Traverse = new TraverseProperties();
 			
 			if (EntityResource != null)
 			{
