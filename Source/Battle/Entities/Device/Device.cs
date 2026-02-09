@@ -44,7 +44,8 @@ namespace Drumstalotajs.Battle.Entities
 		public Projectile Fire()
 		{
 			Projectile projectile = ResourceLoader.Load<PackedScene>("res://Scenes/Battle/Entities/Devices/Projectile.tscn").Instantiate() as Projectile;
-			projectile.SetMotion(this);
+			Drumstalotajs.Resources.Level levelData = (GetNode("../../../..") as Battle.Scene).Level;
+			projectile.SetMotion(this, levelData);
 			_parent.AddChild(projectile);
 			return projectile;
 		}

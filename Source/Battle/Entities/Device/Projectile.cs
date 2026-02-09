@@ -5,6 +5,7 @@ namespace Drumstalotajs.Battle.Entities
 {
 	public partial class Projectile : Node2D
 	{
+		
 		public class ProjectileMotionProperties
 		{
 			public double Angle { get; private set; }
@@ -37,13 +38,13 @@ namespace Drumstalotajs.Battle.Entities
 			public Vector2 EndPosition { get; private set; }
 			public Vector2 Range { get; private set; }
 			
-			public MapMotionProperties(Entities.Device device, ProjectileMotionProperties projectileMotion)
+			public MapMotionProperties(Entities.Device device, ProjectileMotionProperties projectileMotion, Drumstalotajs.Resources.Level levelData)
 			{
 				Rotation = (90.0 - device.Traverse.Azimuth) * (Math.PI / 180.0);
 				StartPosition = device.Position;
 				this.EndPosition = new Vector2(
-					(float)(StartPosition.X + ((projectileMotion.Range * Physics.Pixels * 1) * Math.Cos(Rotation)) / 4),
-					(float)(StartPosition.Y + ((projectileMotion.Range * Physics.Pixels * -1) * Math.Sin(Rotation))/ 4)
+					(float)(StartPosition.X + ((projectileMotion.Range * Physics.Pixels * 1) * Math.Cos(Rotation)) / levelData.Scale),
+					(float)(StartPosition.Y + ((projectileMotion.Range * Physics.Pixels * -1) * Math.Sin(Rotation))/ levelData.Scale)
 				);
 				this.Range = this.EndPosition - this.StartPosition;
 			}
@@ -56,10 +57,10 @@ namespace Drumstalotajs.Battle.Entities
 		public MapMotionProperties MapMotion { get; private set; }
 		private Tween tween = null;
 		
-		public void SetMotion(Entities.Device device)
+		public void SetMotion(Entities.Device device, Drumstalotajs.Resources.Level levelData)
 		{
 			ProjectileMotion = new ProjectileMotionProperties(device);
-			MapMotion = new MapMotionProperties(device, ProjectileMotion);
+			MapMotion = new MapMotionProperties(device, ProjectileMotion, levelData);
 			Position = MapMotion.StartPosition;
 		}
 		
