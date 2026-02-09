@@ -13,6 +13,7 @@ namespace Drumstalotajs.Battle.Stage.StageOverlays.DeviceAdjustment
 		
 		private Control _groundInfo;
 		private Control _entityInfo;
+		private Button _toFiringButton;
 		
 		private AngleControl _angleControl;
 		private TraverseControl _traverseControl;
@@ -37,6 +38,7 @@ namespace Drumstalotajs.Battle.Stage.StageOverlays.DeviceAdjustment
 			_selector = GetNode<Node2D>("../../Map/Selector") as Battle.Map.Selector;
 			_entityInfo = GetNode<Control>("EntityInfo");
 			_groundInfo = GetNode<Control>("GroundInfo");
+			_toFiringButton = GetNode<Button>("ToFiringButton");
 			_angleControl = GetNode<HBoxContainer>("EntityInfo/VBoxContainer/AngleControl") as AngleControl;
 			_traverseControl = GetNode<HBoxContainer>("EntityInfo/VBoxContainer/TraverseControl") as TraverseControl;
 			
@@ -93,6 +95,11 @@ namespace Drumstalotajs.Battle.Stage.StageOverlays.DeviceAdjustment
 			_traverseControl.Connect("Change", Callable.From(
 			(float value) => {
 				SelectedEntity.Traverse.Azimuth = value;
+			}));
+			
+			_toFiringButton.Connect("pressed", Callable.From(
+			() => {
+				(GetParent<Control>() as Battle.Stage.Manager).Firing();
 			}));
 		}
 	}

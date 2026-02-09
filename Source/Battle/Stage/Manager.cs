@@ -17,6 +17,11 @@ namespace Drumstalotajs.Battle.Stage
 			LoadStage("DeviceAdjustment");
 		}
 		
+		public void Firing()
+		{
+			LoadStage("Firing");
+		}
+		
 		private void LoadStage(string name)
 		{
 			string stagePath = $"res://Scenes/Battle/StageOverlays/{name}/{name}.tscn";
