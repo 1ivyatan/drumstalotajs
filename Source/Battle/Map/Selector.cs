@@ -52,42 +52,26 @@ namespace Drumstalotajs.Battle.Map
 					Vector2 globalMousePos = GetGlobalMousePosition();
 					Vector2 localMousePos = _groundLayer.ToLocal(globalMousePos);
 					Vector2I cellPos = _groundLayer.LocalToMap(localMousePos);
-
-					if (
-						( Layer == SelectorLayer.Ground && 
-						_groundLayer.GetCellAtlasCoords(cellPos).Equals(new Vector2I(-1, -1))) ||
-						( Layer == SelectorLayer.Entity && 
-						(Entities.Type)_entityLayer.GetCellAlternativeTile(cellPos) == Entities.Type.None ) ||
-						( Layer == SelectorLayer.All && 
-						_groundLayer.GetCellAtlasCoords(cellPos).Equals(new Vector2I(-1, -1)) )
-					)
+					Entities.Type entityType = (Entities.Type)_entityLayer.GetCellAlternativeTile(cellPos);
+					
+					if (mouseEvent is InputEventMouseButton mouseClick)
 					{
-						Visible = false;
-						if (Layer == SelectorLayer.Ground || Layer == SelectorLayer.All)
+						_currentCellPos = cellPos;
+						
+						if (FilteredOut(cellPos, entityType))
 						{
-							EmitSignal("HoveredEmptyGround", cellPos);
+							Visible = false;
+							return;
 						}
-						return;
-					} else
-					{
-						Entities.Type entityType = (Entities.Type)_entityLayer.GetCellAlternativeTile(cellPos);
-
-						if (mouseEvent is InputEventMouseButton mouseClick && mouseClick.Pressed)
+						
+						if (mouseClick.Pressed)
 						{
-							/* left */
 							if (mouseClick.ButtonIndex == (MouseButton)1)
 							{
 								switch (Layer)
 								{
-									case SelectorLayer.Ground: 
-								
-										break;
 									case SelectorLayer.Entity:
-										if (AllowedEntity(entityType))
-										{
-											EmitSignal("SelectedEntity", (int)entityType, cellPos);
-										}
-										
+										EmitSignal("SelectedEntity", (int)entityType, cellPos);
 										break;
 									case SelectorLayer.All:
 										if (AllowedEntity(entityType))
@@ -97,42 +81,38 @@ namespace Drumstalotajs.Battle.Map
 										{
 											EmitSignal("SelectedEmptyEntity", cellPos);
 										}
-									break;
+										break;
 								}
 							}
-						}
-						
-						SetPosition((cellPos * Physics.Pixels) + new Vector2I(Physics.Pixels / 2, Physics.Pixels / 2));	
-						Visible = true;
-						
-						if (mouseEvent is InputEventMouseMotion mouseMotion)
-						{
-							if (_currentCellPos == cellPos)
-							{
-								return;
-							}
 							
-							switch (Layer)
-							{
-								case SelectorLayer.Ground:
-									EmitSignal("HoveredGround", cellPos);
-									break;
-								case SelectorLayer.Entity:
-									if (!AllowedEntity(entityType))
-									{
-										Visible = false;
-										return;
-									}
-									break;
-								case SelectorLayer.All:
-									EmitSignal("HoveredGround", cellPos);
-									break;
-							}
-							
-							_currentCellPos = cellPos;
 						}
 					}
 					
+					if (mouseEvent is InputEventMouseMotion mouseMotion)
+					{
+						if (FilteredOut(cellPos, entityType))
+						{
+							Visible = false;
+							return;
+						}
+						
+						if (_currentCellPos == cellPos)
+						{
+							return;
+						}
+						
+						switch (Layer)
+						{
+							case SelectorLayer.All:
+							case SelectorLayer.Ground:
+								EmitSignal("HoveredGround", cellPos);
+								break;
+						}
+						
+					}
+					
+					SetPosition((cellPos * Physics.Pixels) + new Vector2I(Physics.Pixels / 2, Physics.Pixels / 2));
+					Visible = true;
 				}
 			} else
 			{
@@ -140,10 +120,41 @@ namespace Drumstalotajs.Battle.Map
 			}
 		}
 		
+		private bool FilteredOut(Vector2I cellPos, Entities.Type entityType)
+		{
+			switch (Layer)
+			{
+				case SelectorLayer.All:
+					if (_groundLayer.GetCellAtlasCoords(cellPos).Equals(new Vector2I(-1, -1)) )
+					{
+						EmitSignal("HoveredEmptyGround", cellPos);
+						return true;
+					}
+					break;
+				case SelectorLayer.Ground:
+					if (_groundLayer.GetCellAtlasCoords(cellPos).Equals(new Vector2I(-1, -1)) )
+					{
+						EmitSignal("HoveredEmptyGround", cellPos);
+						return true;
+					}
+					break;
+				case SelectorLayer.Entity:
+					if (!AllowedEntity(entityType))
+					{
+						EmitSignal("SelectedEmptyEntity", cellPos);
+						return true;
+					}
+					break;
+				default: break;
+			}
+			
+			return false;
+		}
+		
 		private bool AllowedEntity(Entities.Type entityType)
 		{
 			return ((FilterMode == SelectorFilterMode.All && entityType != Entities.Type.None)
-			|| (FilterMode == SelectorFilterMode.Fitlered && Filter != null && Filter.Length > 0 && Filter.Contains(entityType)));
+			|| (FilterMode == SelectorFilterMode.Fitlered && entityType != Entities.Type.None && Filter != null && Filter.Length > 0 && Filter.Contains(entityType)));
 		}
 
 		public override void _Process(double delta)
