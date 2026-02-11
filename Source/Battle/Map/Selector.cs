@@ -142,21 +142,9 @@ namespace Drumstalotajs.Battle.Map
 		
 		private bool AllowedEntity(Entities.Type entityType)
 		{
-			if (entityType != Entities.Type.None || FilterMode == SelectorFilterMode.All || (
-				FilterMode == SelectorFilterMode.Fitlered &&
-				Filter != null && Filter.Length > 0 &&
-				Filter.Contains(entityType)
-			))
-			{
-				return true;
-			} else
-			{
-				return false;
-			}
+			return ((FilterMode == SelectorFilterMode.All && entityType != Entities.Type.None)
+			|| (FilterMode == SelectorFilterMode.Fitlered && Filter != null && Filter.Length > 0 && Filter.Contains(entityType)));
 		}
-		
-		//private bool EntityInFilter
-		//Filter
 
 		public override void _Process(double delta)
 		{
