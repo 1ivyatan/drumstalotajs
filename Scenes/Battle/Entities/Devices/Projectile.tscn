@@ -3,9 +3,14 @@
 [ext_resource type="Script" uid="uid://voru15gbi0lm" path="res://Source/Battle/Entities/Device/Projectile.cs" id="1_c7ccx"]
 [ext_resource type="Texture2D" uid="uid://3vp3y2n41mwa" path="res://Assets/Sprites/boulder.png" id="1_dcjhd"]
 
-[node name="Projectile" type="Node2D" unique_id=1335191587]
+[sub_resource type="CircleShape2D" id="CircleShape2D_c7ccx"]
+
+[node name="Projectile" type="Area2D" unique_id=54933716]
 script = ExtResource("1_c7ccx")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=136847172]
 scale = Vector2(0.978, 1)
 texture = ExtResource("1_dcjhd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2067290220]
+shape = SubResource("CircleShape2D_c7ccx")

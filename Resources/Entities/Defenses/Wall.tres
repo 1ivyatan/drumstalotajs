@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Defense" format=3 uid="uid://bcvam2uuc6n0m"]
+
+[ext_resource type="Script" uid="uid://v74o0f5at7pf" path="res://Source/Resources/Entities/Defense.cs" id="1_kji6j"]
+[ext_resource type="Texture2D" uid="uid://b3pyfutt3xdxj" path="res://Assets/Sprites/wall.png" id="1_piatn"]
+
+[resource]
+script = ExtResource("1_kji6j")
+Name = "Wall"
+Id = 3
+Type = 3
+Sprites = Array[Texture2D]([ExtResource("1_piatn")])
+metadata/_custom_type_script = "uid://v74o0f5at7pf"

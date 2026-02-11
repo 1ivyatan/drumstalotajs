@@ -7,6 +7,7 @@ namespace Drumstalotajs.Battle.Entities
 	{
 		None = -1,
 		DeviceMarker = 1,
-		Device = 2
+		Device = 2,
+		Defense = 3
 	}
 }

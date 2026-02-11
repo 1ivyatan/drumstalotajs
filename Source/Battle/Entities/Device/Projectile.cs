@@ -3,7 +3,7 @@ using System;
 
 namespace Drumstalotajs.Battle.Entities
 {
-	public partial class Projectile : Node2D
+	public partial class Projectile : Area2D
 	{
 		public class ProjectileMotionProperties
 		{
