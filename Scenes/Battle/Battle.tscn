@@ -1,9 +1,19 @@
 [gd_scene format=3 uid="uid://dxrxp1gmki1g"]
 
-[node name="Stage" type="Control" unique_id=1123400742]
-layout_mode = 3
+[ext_resource type="Script" uid="uid://cepv1sj7xkrbo" path="res://Source/Battle/Scene.cs" id="1_ael4v"]
+[ext_resource type="PackedScene" uid="uid://nfn5ufmitkad" path="res://Scenes/Battle/TopPanel.tscn" id="2_gunap"]
+[ext_resource type="PackedScene" uid="uid://dk7en8igfrlxl" path="res://Scenes/Battle/MapContainer.tscn" id="3_3ihc8"]
+
+[node name="Battle" type="VBoxContainer" unique_id=1868674133]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ael4v")
+
+[node name="TopPanel" parent="." unique_id=1393450344 instance=ExtResource("2_gunap")]
+layout_mode = 2
+
+[node name="MapContainer" parent="." unique_id=1096369777 instance=ExtResource("3_3ihc8")]
+layout_mode = 2

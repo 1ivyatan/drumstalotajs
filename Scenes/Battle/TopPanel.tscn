@@ -1,9 +1,26 @@
 [gd_scene format=3 uid="uid://nfn5ufmitkad"]
 
-[node name="Stage" type="Control" unique_id=1123400742]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[ext_resource type="Script" uid="uid://6ihybxohy7hr" path="res://Source/Battle/TopPanel.cs" id="1_7p5vq"]
+
+[node name="TopPanel" type="PanelContainer" unique_id=218349996]
+offset_right = 42.0
+offset_bottom = 31.0
+script = ExtResource("1_7p5vq")
+
+[node name="Columns" type="HBoxContainer" parent="." unique_id=104566338]
+layout_mode = 2
+
+[node name="ExitButton" type="Button" parent="Columns" unique_id=1924043623]
+layout_mode = 2
+text = "Exit"
+
+[node name="Stats" type="HBoxContainer" parent="Columns" unique_id=1620925540]
+layout_mode = 2
+
+[node name="DeviceCount" type="Label" parent="Columns/Stats" unique_id=57302443]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="." unique_id=1436472155]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Level"
