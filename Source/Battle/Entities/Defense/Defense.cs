@@ -7,6 +7,20 @@ namespace Drumstalotajs.Battle.Entities
 	{
 		public Resources.Entities.Defense DefenseResource => EntityResource as Resources.Entities.Defense;
 		
+		public double Health
+		{
+			get;
+			set 
+			{ 
+				field = Mathf.Clamp(value, 0, 100);
+				if (field == 0)
+				{
+					QueueFree();
+					GetParent().RemoveChild(this);
+				}
+			}
+		}
+		
 		private Sprite2D _sprite;
 		
 		public override void _Ready()
