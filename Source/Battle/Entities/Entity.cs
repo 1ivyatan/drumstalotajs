@@ -7,5 +7,7 @@ namespace Drumstalotajs.Battle.Entities
 	{
 		[Export]
 		public Resources.Entity EntityResource { get; private set; }
+		
+		
 	}
 }

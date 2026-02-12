@@ -23,7 +23,7 @@ namespace Drumstalotajs.Battle.Entities
 			public ProjectileMotionProperties(Entities.Device device, Drumstalotajs.Resources.Level levelData, double relHeight)
 			{
 				Angle = device.Angle.Value;
-				InitialVelocity = device.DeviceResource.Velocity;
+				InitialVelocity = device.DeviceResource.MuzzleVelocity;
 				BaseHeight = levelData.BaseHeight;
 				InitialHeight =  relHeight + BaseHeight;
 				Range = (
