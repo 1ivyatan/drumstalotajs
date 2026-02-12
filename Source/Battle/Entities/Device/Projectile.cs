@@ -110,13 +110,16 @@ namespace Drumstalotajs.Battle.Entities
 					double objectHeight = 0;
 					
 					Entities.Type entityType = _entityLayer.GetEntityType(gridPosition);
+					Entities.Defense defenseEntity = null;
 					if (entityType == Entities.Type.Defense)
 					{
-						objectHeight += ((_entityLayer.EntityPointers[entityType][gridPosition] as Entities.Defense).DefenseResource.Height);
+						defenseEntity = (_entityLayer.EntityPointers[entityType][gridPosition] as Entities.Defense);
+						objectHeight += defenseEntity.DefenseResource.Height;
 					}
 				
 					if (projectileHeight < tileHeight + objectHeight)
 					{
+						if (defenseEntity != null) defenseEntity.Destroy();
 						Destroy();
 					}
 				} else

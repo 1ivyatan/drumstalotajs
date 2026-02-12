@@ -22,7 +22,8 @@ namespace Drumstalotajs.Battle.Entities
 		
 		private Sprite2D _sprite;
 		
-		private void Destroy()
+		/* change this! */
+		public void Destroy()
 		{
 			QueueFree();
 			GetParent().RemoveChild(this);
