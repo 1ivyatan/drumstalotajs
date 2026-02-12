@@ -15,13 +15,18 @@ namespace Drumstalotajs.Battle.Entities
 				field = Mathf.Clamp(value, 0, 100);
 				if (field == 0)
 				{
-					QueueFree();
-					GetParent().RemoveChild(this);
+					Destroy();
 				}
 			}
 		}
 		
 		private Sprite2D _sprite;
+		
+		private void Destroy()
+		{
+			QueueFree();
+			GetParent().RemoveChild(this);
+		}
 		
 		public override void _Ready()
 		{

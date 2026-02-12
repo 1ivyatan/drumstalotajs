@@ -61,7 +61,8 @@ namespace Drumstalotajs.Battle.Entities
 		public MapMotionProperties MapMotion { get; private set; }
 		private Tween _tween = null;
 		
-		private TileMapLayer _groundLayer;
+		private Map.GroundLayer _groundLayer;
+		private Map.EntityLayer _entityLayer;
 		
 		public double GetTrajectoryHeight()
 		{
@@ -104,11 +105,17 @@ namespace Drumstalotajs.Battle.Entities
 				
 				if (!_groundLayer.GetCellAtlasCoords(gridPosition).Equals(new Vector2I(-1, -1)))
 				{
-					TileData data = _groundLayer.GetCellTileData(gridPosition);
-					double tileHeight = (double)data.GetCustomData("RelativeHeight") + ProjectileMotion.BaseHeight;
+					double tileHeight = _groundLayer.GetHeight(gridPosition); //(double)data.GetCustomData("RelativeHeight") + ProjectileMotion.BaseHeight;
 					double projectileHeight = GetTrajectoryHeight();
+					double objectHeight = 0;
+					
+					Entities.Type entityType = _entityLayer.GetEntityType(gridPosition);
+					if (entityType == Entities.Type.Defense)
+					{
+						objectHeight += ((_entityLayer.EntityPointers[entityType][gridPosition] as Entities.Defense).DefenseResource.Height);
+					}
 				
-					if (projectileHeight < tileHeight)
+					if (projectileHeight < tileHeight + objectHeight)
 					{
 						Destroy();
 					}
@@ -122,7 +129,8 @@ namespace Drumstalotajs.Battle.Entities
 		
 		public override void _Ready()
 		{
-			_groundLayer = GetNode<TileMapLayer>("../../GroundLayer");
+			_entityLayer = GetNode<TileMapLayer>("..") as Map.EntityLayer;
+			_groundLayer = GetNode<TileMapLayer>("../../GroundLayer") as Map.GroundLayer;
 			Fire();
 		}
 	}

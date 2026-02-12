@@ -11,5 +11,8 @@ namespace Drumstalotajs.Resources.Entities
 		
 		[Export]
 		public double MaterialFactor { get; set; }
+		
+		[Export]
+		public double Height { get; set; }
 	}
 }

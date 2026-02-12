@@ -91,5 +91,10 @@ namespace Drumstalotajs.Battle.Map
 				}
 			}
 		}
+		
+		public Entities.Type GetEntityType(Vector2I position)
+		{
+			return (Entities.Type)GetCellAlternativeTile(position);
+		}
 	}
 }

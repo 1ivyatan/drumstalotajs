@@ -5,6 +5,9 @@
 
 [resource]
 script = ExtResource("1_kji6j")
+Thickness = 2.0
+MaterialFactor = 0.2
+Height = 5.0
 Name = "Wall"
 Id = 3
 Type = 3
