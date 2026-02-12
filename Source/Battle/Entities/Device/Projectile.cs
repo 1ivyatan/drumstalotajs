@@ -88,6 +88,10 @@ namespace Drumstalotajs.Battle.Entities
 		
 		private void Destroy()
 		{
+			if (_tween != null && _tween.IsValid())
+			{
+				_tween.Kill();
+			}
 			EmitSignal(SignalName.Landed);
 			QueueFree();
 		}
@@ -97,15 +101,22 @@ namespace Drumstalotajs.Battle.Entities
 			if (_tween != null && _tween.IsValid())
 			{
 				Vector2I gridPosition = _groundLayer.LocalToMap(Position);
-				TileData data = _groundLayer.GetCellTileData(gridPosition);
-				double tileHeight = (double)data.GetCustomData("RelativeHeight") + ProjectileMotion.BaseHeight;
-				double projectileHeight = GetTrajectoryHeight();
 				
-				if (projectileHeight < tileHeight)
+				if (!_groundLayer.GetCellAtlasCoords(gridPosition).Equals(new Vector2I(-1, -1)))
 				{
-					_tween.Kill();
+					TileData data = _groundLayer.GetCellTileData(gridPosition);
+					double tileHeight = (double)data.GetCustomData("RelativeHeight") + ProjectileMotion.BaseHeight;
+					double projectileHeight = GetTrajectoryHeight();
+				
+					if (projectileHeight < tileHeight)
+					{
+						Destroy();
+					}
+				} else
+				{
 					Destroy();
 				}
+				
 			}
 		}
 		
