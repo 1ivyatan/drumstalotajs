@@ -34,9 +34,12 @@ namespace Drumstalotajs.Battle.Entities
 			}
 		}
 		
-		public Resources.Entities.Device DeviceResource => EntityResource as Resources.Entities.Device;
 		public AngleProperties Angle { get; private set; }
 		public TraverseProperties Traverse { get; private set; }
+		
+		public Resources.Entities.Device DeviceResource => EntityResource as Resources.Entities.Device;
+		public DeviceProperties Properties { get; private set; }
+		public ProjectileProperties[] Projectiles { get; private set; }
 		
 		private TileMapLayer _parent;
 		private TileMapLayer _groundLayer;
