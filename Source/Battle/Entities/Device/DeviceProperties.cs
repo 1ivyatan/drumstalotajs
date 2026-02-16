@@ -11,7 +11,14 @@ namespace Drumstalotajs.Battle.Entities
 			{
 				public double Min { get; private set; }
 				public double Max { get; private set; }
-				public Angle (double min, double max)
+				public double Value { 
+					get; 
+					set
+					{
+						
+					}
+				}
+				public Angle(double min, double max)
 				{
 					Min = min;
 					Max = max;
@@ -22,7 +29,14 @@ namespace Drumstalotajs.Battle.Entities
 			{
 				public double Min { get; private set; }
 				public double Max { get; private set; }
-				public Traverse (double min, double max)
+				public double Value { 
+					get; 
+					set
+					{
+						
+					}
+				}
+				public Traverse(double min, double max)
 				{
 					Min = min;
 					Max = max;
@@ -32,13 +46,19 @@ namespace Drumstalotajs.Battle.Entities
 			
 			public struct Range
 			{
-				
+				public double Min { get; private set; }
+				public double Max { get; private set; }
+				public Range(double min, double max)
+				{
+					Min = min;
+					Max = max;
+				}
 			}
 			
 			public float Altitude { get; private set; }
 			public float Velocity { get; private set; }
 			
-			public DeviceProperties()
+			public DeviceProperties(Resources.Entities.Device deviceResource)
 			{
 				
 			}
