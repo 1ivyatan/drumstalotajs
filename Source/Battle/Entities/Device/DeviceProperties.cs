@@ -6,53 +6,36 @@ namespace Drumstalotajs.Battle.Entities
 	public partial class Device : Entity
 	{
 		public class DeviceProperties
-		{
-			public struct Angle
-			{
-				public double Min { get; private set; }
-				public double Max { get; private set; }
-				public double Value { 
-					get; 
-					set
-					{
-						
-					}
-				}
-				public Angle(double min, double max)
-				{
-					Min = min;
-					Max = max;
-				}
-			}
-			
+		{	
 			public struct Traverse
 			{
+				private bool Locked { get; set; }
 				public double Min { get; private set; }
 				public double Max { get; private set; }
+				public double Range { get; private set; }
+				public double Azimuth { get; private set; }
 				public double Value { 
 					get; 
 					set
 					{
-						
+						if (!Locked)
+						{
+							Azimuth = value;
+							field = value;
+							Min = value - (Range / 2);
+							Max = value + (Range / 2);
+						} else
+						{
+							field = Mathf.Clamp(value, Min, Max);
+						}
 					}
 				}
-				public Traverse(double min, double max)
+				public Traverse(double range)
 				{
-					Min = min;
-					Max = max;
+					Range = range;
+					Locked = false;
 				}
 				
-			}
-			
-			public struct Range
-			{
-				public double Min { get; private set; }
-				public double Max { get; private set; }
-				public Range(double min, double max)
-				{
-					Min = min;
-					Max = max;
-				}
 			}
 			
 			public float Altitude { get; private set; }
