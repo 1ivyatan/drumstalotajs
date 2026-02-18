@@ -42,7 +42,7 @@ namespace Drumstalotajs.Battle.Entities
 		public ProjectileProperties[] Projectiles { get; private set; }
 		
 		private TileMapLayer _parent;
-		private TileMapLayer _groundLayer;
+		private Map.GroundLayer _groundLayer;
 		private Sprite2D _sprite;
 		
 		public Projectile Fire()
@@ -62,14 +62,16 @@ namespace Drumstalotajs.Battle.Entities
 		public override void _Ready()
 		{
 			_parent = GetParent<TileMapLayer>();
-			_groundLayer = _parent.GetNode<TileMapLayer>("../GroundLayer");
+			_groundLayer = _parent.GetNode<TileMapLayer>("../GroundLayer") as Map.GroundLayer;
 			_sprite = GetNode<Sprite2D>("Sprite");
-			
-			Angle = new AngleProperties(DeviceResource.StartingAngle, DeviceResource.AngleRadius);
-			Traverse = new TraverseProperties();
 			
 			if (EntityResource != null)
 			{
+				Properties = new DeviceProperties(this, _groundLayer);
+			
+				Angle = new AngleProperties(DeviceResource.StartingAngle, DeviceResource.AngleRadius);
+				Traverse = new TraverseProperties();
+			
 				_sprite.Texture = EntityResource.Sprites[0];
 			}
 		}

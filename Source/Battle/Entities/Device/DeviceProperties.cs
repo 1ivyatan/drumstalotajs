@@ -7,7 +7,7 @@ namespace Drumstalotajs.Battle.Entities
 	{
 		public class DeviceProperties
 		{	
-			public struct Traverse
+			public struct TraverseProperties
 			{
 				private bool Locked { get; set; }
 				public double Min { get; private set; }
@@ -38,12 +38,15 @@ namespace Drumstalotajs.Battle.Entities
 				
 			}
 			
+			public TraverseProperties Traverse { get; private set; }
 			public float Altitude { get; private set; }
 			public float Velocity { get; private set; }
 			
-			public DeviceProperties(Resources.Entities.Device deviceResource)
+			public DeviceProperties(Entities.Device device, Map.GroundLayer groundLayer)
 			{
-				
+				Resources.Entities.Device deviceResource = device.DeviceResource;
+				Traverse = new TraverseProperties(deviceResource.TraverseRange);
+				GD.Print(device);
 			}
 		}
 	}

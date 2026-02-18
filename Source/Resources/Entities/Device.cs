@@ -9,7 +9,7 @@ namespace Drumstalotajs.Resources.Entities
 		[ExportGroup("Device")]
 		[Export] public double StartingAngle { get; set; }
 		[Export] public double AngleRadius { get; set; }
-		[Export] public double TraverseRadius { get; set; }
+		[Export] public double TraverseRange { get; set; }
 		[Export] public double MuzzleVelocity { get; set; }
 		
 		[ExportGroup("Projectile")]
