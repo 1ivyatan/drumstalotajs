@@ -7,7 +7,7 @@ namespace Drumstalotajs.Battle.Entities
 	{
 		public class DeviceProperties
 		{	
-			public struct TraverseProperties
+			public class TraverseProperties
 			{
 				private bool Locked { get; set; }
 				public double Min { get; private set; }
@@ -30,10 +30,12 @@ namespace Drumstalotajs.Battle.Entities
 						}
 					}
 				}
-				public Traverse(double range)
+				
+				public TraverseProperties(double range)
 				{
 					Range = range;
 					Locked = false;
+					Azimuth = 0;
 				}
 				
 			}

@@ -13,14 +13,8 @@ namespace Drumstalotajs.Battle.Stage.StageOverlays.DeviceAdjustment
 		
 		public void SetRange(bool locked, double value)
 		{
-			if (locked)
-			{
-				traverseSlider.Visible = false;
-			} else 
-			{
-				traverseSlider.Value = value;
-				traverseSlider.Visible = true;
-			}
+			traverseSlider.Value = value;
+			traverseSlider.Visible = true;
 
 			label.Text = $"~{(int)value}deg";
 		}
