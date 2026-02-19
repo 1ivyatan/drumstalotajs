@@ -9,7 +9,7 @@ namespace Drumstalotajs.Battle.Entities
 		{	
 			public class TraverseProperties
 			{
-				private bool Locked { get; set; }
+				public bool Locked { get; set; }
 				public double Min { get; private set; }
 				public double Max { get; private set; }
 				public double Range { get; private set; }
@@ -36,6 +36,8 @@ namespace Drumstalotajs.Battle.Entities
 					Range = range;
 					Locked = false;
 					Azimuth = 0;
+					Min = 0;
+					Max = 360;
 				}
 				
 			}

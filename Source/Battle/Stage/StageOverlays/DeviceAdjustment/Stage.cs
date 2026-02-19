@@ -60,7 +60,7 @@ namespace Drumstalotajs.Battle.Stage.StageOverlays.DeviceAdjustment
 					SelectedEntity = _entityLayer.EntityPointers[(Entities.Type)entityType][position] as Entities.Device;
 					UpdateEntityStats(SelectedEntity, position);
 					_angleControl.SetRange(SelectedEntity.Angle.Min, SelectedEntity.Angle.Max, SelectedEntity.Angle.Value);
-					_traverseControl.SetRange(SelectedEntity.Traverse.Locked, SelectedEntity.Traverse.Azimuth);
+					_traverseControl.SetRange(SelectedEntity.Properties.Traverse.Value, SelectedEntity.Properties.Traverse.Min, SelectedEntity.Properties.Traverse.Max, SelectedEntity.Properties.Traverse.Locked);
 					_entityInfo.Visible = true;
 				}
 			}));
@@ -109,7 +109,7 @@ namespace Drumstalotajs.Battle.Stage.StageOverlays.DeviceAdjustment
 					Entities.Device device = cell.Value as Entities.Device;
 					if (!device.Traverse.Locked)
 					{
-						device.Traverse.Locked = true;
+						device.Properties.Traverse.Locked = true;
 					}
 				}
 				

@@ -8,25 +8,33 @@ namespace Drumstalotajs.Battle.Stage.StageOverlays.DeviceAdjustment
 		[Signal]
 		public delegate void ChangeEventHandler(float value);
 		
-		private Slider traverseSlider;
-		private Label label;
+		private Slider _traverseSlider;
+		private Label _label;
+		private Label _degrees;
 		
-		public void SetRange(bool locked, double value)
+		public void SetRange(double value, double min, double max, bool locked)
 		{
-			traverseSlider.Value = value;
-			traverseSlider.Visible = true;
-
-			label.Text = $"~{(int)value}deg";
+			_traverseSlider.Value = value;
+			
+			if (locked)
+			{
+				
+			} else
+			{
+				
+			}
+			
+			_degrees.Text = $"~{(int)value}deg";
 		}
 	
 		public override void _Ready()
 		{
-			traverseSlider = GetNode<Slider>("Slider");
-			label = GetNode<Label>("Degrees");
+			_traverseSlider = GetNode<Slider>("Slider");
+			_degrees = GetNode<Label>("Degrees");
 			
-			traverseSlider.Connect("value_changed", Callable.From(
+			_traverseSlider.Connect("value_changed", Callable.From(
 			(float value) => {
-				label.Text = $"~{(int)value}deg";
+				_degrees.Text = $"~{(int)value}deg";
 				EmitSignal("Change", value);
 			}));
 		}
