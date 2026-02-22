@@ -17,7 +17,7 @@ namespace Drumstalotajs.Battle.Entities
 		public Projectile Fire()
 		{
 			Projectile projectile = ResourceLoader.Load<PackedScene>("res://Scenes/Battle/Entities/Devices/Projectile.tscn").Instantiate() as Projectile;
-			Drumstalotajs.Resources.Level levelData = (GetNode("../../../..") as Battle.Scene).Level;
+			Resources.Levels.Level levelData = (GetNode("../../../..") as Battle.Scene).Level;
 			
 			Vector2I gridPosition = _groundLayer.LocalToMap(Position);
 			TileData tileData = _groundLayer.GetCellTileData(gridPosition);

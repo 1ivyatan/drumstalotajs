@@ -7,7 +7,7 @@ namespace Drumstalotajs.Battle.Entities
 	{
 		public struct ProjectileMapProperties
 		{
-			public ProjectileMapProperties(Entities.Device device, Drumstalotajs.Resources.Level levelData, ProjectileProperties projectileProperties)
+			public ProjectileMapProperties(Entities.Device device, Resources.Levels.Level levelData, ProjectileProperties projectileProperties)
 			{
 				
 			}

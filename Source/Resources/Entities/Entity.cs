@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-namespace Drumstalotajs.Resources
+namespace Drumstalotajs.Resources.Entities
 {
 	[GlobalClass]
 	public partial class Entity : Resource

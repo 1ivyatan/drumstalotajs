@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Level" format=3 uid="uid://xhurvhukm111"]
 
-[ext_resource type="Script" uid="uid://bnyj87sc5un27" path="res://Source/Resources/Level.cs" id="1_envha"]
+[ext_resource type="Script" uid="uid://bnyj87sc5un27" path="res://Source/Resources/Levels/Level.cs" id="1_envha"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_cqwlj"]
 

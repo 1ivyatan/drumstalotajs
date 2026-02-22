@@ -79,7 +79,7 @@ namespace Drumstalotajs.Battle.Entities
 			//Position = MapMotion.StartPosition;
 		}
 		*/
-		public void SetProjectile(Entities.Device device, Drumstalotajs.Resources.Level levelData, TileData tileData)
+		public void SetProjectile(Entities.Device device, Drumstalotajs.Resources.Levels.Level levelData, TileData tileData)
 		{
 			Properties = new ProjectileProperties(device, levelData, tileData);
 			MapProperties = new ProjectileMapProperties(device, levelData, Properties);

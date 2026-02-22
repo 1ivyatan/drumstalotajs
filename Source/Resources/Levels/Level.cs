@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-namespace Drumstalotajs.Resources
+namespace Drumstalotajs.Resources.Levels
 {
 	[GlobalClass]
 	public partial class Level : Resource

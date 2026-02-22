@@ -5,7 +5,7 @@ namespace Drumstalotajs.Battle
 {	
 	public partial class Scene : Control
 	{
-		public Drumstalotajs.Resources.Level Level { get; private set; }
+		public Drumstalotajs.Resources.Levels.Level Level { get; private set; }
 		
 		private Stage.Manager _stageManager;
 		
@@ -22,7 +22,7 @@ namespace Drumstalotajs.Battle
 			
 			if (ResourceLoader.Exists(levelResourcePath))
 			{
-				Level = ResourceLoader.Load<Drumstalotajs.Resources.Level>(levelResourcePath);
+				Level = ResourceLoader.Load<Resources.Levels.Level>(levelResourcePath);
 
 				GD.Print(Level.Title);
 			} else
