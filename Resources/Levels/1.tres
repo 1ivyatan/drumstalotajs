@@ -13,5 +13,6 @@ BaseHeight = 25.0
 Devices = Dictionary[int, int]({
 2: 2
 })
+Devicez = Dictionary[int, Object]({})
 GroundPattern = SubResource("TileMapPattern_cqwlj")
 metadata/_custom_type_script = "uid://bnyj87sc5un27"
