@@ -6,16 +6,10 @@ namespace Drumstalotajs.Resources.Entities
 	[GlobalClass]
 	public partial class Device : Entity
 	{
-		[ExportGroup("Device")]
-		[Export] public double StartingAngle { get; set; }
-		[Export] public double AngleRadius { get; set; }
+		[Export] public double AngleMin { get; set; }
+		[Export] public double AngleMax { get; set; }
 		[Export] public double TraverseRange { get; set; }
 		[Export] public double MuzzleVelocity { get; set; }
-		
-		[ExportGroup("Projectile")]
-		[Export] public double CasingWeight { get; set; }
-		[Export] public double ExplosiveWeight { get; set; }
-		[Export] public double TntFactor { get; set; }
-		
+		[Export] Resources.Entities.Projectile[] Projectiles { get; set; }
 	}
 }
