@@ -5,6 +5,7 @@ namespace Drumstalotajs.Battle.Entities
 {
 	public partial class Projectile : Area2D
 	{
+		/*
 		public class ProjectileMotionProperties
 		{
 			public double Angle { get; private set; }
@@ -53,17 +54,14 @@ namespace Drumstalotajs.Battle.Entities
 				this.Range = this.EndPosition - this.StartPosition;
 			}
 		}
-		
+		*/ 
 		[Signal]
 		public delegate void LandedEventHandler();
-		
-		public ProjectileMotionProperties ProjectileMotion { get; private set; }
-		public MapMotionProperties MapMotion { get; private set; }
 		private Tween _tween = null;
 		
 		private Map.GroundLayer _groundLayer;
 		private Map.EntityLayer _entityLayer;
-		
+		/*
 		public double GetTrajectoryHeight()
 		{
 			Vector2 distance = Position - MapMotion.StartPosition;
@@ -77,7 +75,7 @@ namespace Drumstalotajs.Battle.Entities
 			//MapMotion = new MapMotionProperties(device, ProjectileMotion, levelData);
 			//Position = MapMotion.StartPosition;
 		}
-		
+		*/
 		public void SetProjectile(Entities.Device device, Drumstalotajs.Resources.Level levelData, TileData relHeight)
 		{
 			Position = new Vector2(100, 100);
