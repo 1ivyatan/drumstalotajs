@@ -59,7 +59,7 @@ namespace Drumstalotajs.Battle.Stage.StageOverlays.DeviceAdjustment
 				{
 					SelectedEntity = _entityLayer.EntityPointers[(Entities.Type)entityType][position] as Entities.Device;
 					UpdateEntityStats(SelectedEntity, position);
-					_angleControl.SetRange(SelectedEntity.Angle.Min, SelectedEntity.Angle.Max, SelectedEntity.Angle.Value);
+					_angleControl.SetRange(SelectedEntity.Properties.Angle.Value, SelectedEntity.Properties.Angle.Min, SelectedEntity.Properties.Angle.Max);
 					_traverseControl.SetRange(SelectedEntity.Properties.Traverse.Value, SelectedEntity.Properties.Traverse.Min, SelectedEntity.Properties.Traverse.Max, SelectedEntity.Properties.Traverse.Locked);
 					_entityInfo.Visible = true;
 				}
@@ -93,7 +93,7 @@ namespace Drumstalotajs.Battle.Stage.StageOverlays.DeviceAdjustment
 			
 			_angleControl.Connect("Change", Callable.From(
 			(float value) => {
-				SelectedEntity.Angle.Value = value;
+				SelectedEntity.Properties.Angle.Value = value;
 			}));
 			
 			_traverseControl.Connect("Change", Callable.From(
@@ -107,7 +107,7 @@ namespace Drumstalotajs.Battle.Stage.StageOverlays.DeviceAdjustment
 				foreach (var cell in _entityLayer.EntityPointers[Entities.Type.Device])
 				{
 					Entities.Device device = cell.Value as Entities.Device;
-					if (!device.Traverse.Locked)
+					if (!device.Properties.Traverse.Locked)
 					{
 						device.Properties.Traverse.Locked = true;
 					}

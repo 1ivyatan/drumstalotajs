@@ -12,19 +12,17 @@ namespace Drumstalotajs.Battle.Stage.StageOverlays.DeviceAdjustment
 		private Label _label;
 		private Label _degrees;
 		
+		public void SetText(double value)
+		{
+			_degrees.Text = $"~{(int)value}deg";
+		}
+		
 		public void SetRange(double value, double min, double max, bool locked)
 		{
 			_traverseSlider.Value = value;
-			
-			if (locked)
-			{
-				
-			} else
-			{
-				
-			}
-			
-			_degrees.Text = $"~{(int)value}deg";
+			_traverseSlider.MinValue = min;
+			_traverseSlider.MaxValue = max;
+			SetText(value);
 		}
 	
 		public override void _Ready()
@@ -34,7 +32,7 @@ namespace Drumstalotajs.Battle.Stage.StageOverlays.DeviceAdjustment
 			
 			_traverseSlider.Connect("value_changed", Callable.From(
 			(float value) => {
-				_degrees.Text = $"~{(int)value}deg";
+				SetText(value);
 				EmitSignal("Change", value);
 			}));
 		}

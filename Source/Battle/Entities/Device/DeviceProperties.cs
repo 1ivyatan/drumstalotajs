@@ -39,10 +39,28 @@ namespace Drumstalotajs.Battle.Entities
 					Min = 0;
 					Max = 360;
 				}
+			}
+			
+			public class AngleProperties
+			{
+				public double Min { get; private set; }
+				public double Max { get; private set; }
+				public double Value { 
+					get; 
+					set { field = Mathf.Clamp(value, Min, Max); }
+				}
 				
+				public AngleProperties(double min, double max)
+				{
+					Min = min;
+					Max = max;
+					Value = ((max - min) / 2) + min;
+				}
 			}
 			
 			public TraverseProperties Traverse { get; private set; }
+			public AngleProperties Angle { get; private set; }
+			
 			public float Altitude { get; private set; }
 			public float Velocity { get; private set; }
 			
@@ -50,6 +68,7 @@ namespace Drumstalotajs.Battle.Entities
 			{
 				Resources.Entities.Device deviceResource = device.DeviceResource;
 				Traverse = new TraverseProperties(deviceResource.TraverseRange);
+				Angle = new AngleProperties(deviceResource.AngleMin, deviceResource.AngleMax);
 				GD.Print(device);
 			}
 		}

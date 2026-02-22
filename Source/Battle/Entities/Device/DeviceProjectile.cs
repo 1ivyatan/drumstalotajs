@@ -3,7 +3,8 @@ using System;
 
 namespace Drumstalotajs.Battle.Entities
 {
-	public partial class ProjectileProperties
+	public partial class DeviceProjectile : Node
 	{
+		
 	}
 }

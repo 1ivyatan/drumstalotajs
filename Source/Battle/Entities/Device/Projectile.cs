@@ -22,7 +22,7 @@ namespace Drumstalotajs.Battle.Entities
 			
 			public ProjectileMotionProperties(Entities.Device device, Drumstalotajs.Resources.Level levelData, double relHeight)
 			{
-				Angle = device.Angle.Value;
+				Angle = 1;
 				InitialVelocity = device.DeviceResource.MuzzleVelocity;
 				BaseHeight = levelData.BaseHeight;
 				InitialHeight =  relHeight + BaseHeight;
@@ -44,7 +44,7 @@ namespace Drumstalotajs.Battle.Entities
 			
 			public MapMotionProperties(Entities.Device device, ProjectileMotionProperties projectileMotion, Drumstalotajs.Resources.Level levelData)
 			{
-				Rotation = (90.0 - device.Traverse.Azimuth) * (Math.PI / 180.0);
+				Rotation = (90.0 - device.Properties.Traverse.Azimuth) * (Math.PI / 180.0);
 				StartPosition = device.Position;
 				this.EndPosition = new Vector2(
 					(float)(StartPosition.X + ((projectileMotion.Range * Physics.Pixels * 1) * Math.Cos(Rotation)) / levelData.Scale),
@@ -73,9 +73,9 @@ namespace Drumstalotajs.Battle.Entities
 		
 		public void SetMotion(Entities.Device device, Drumstalotajs.Resources.Level levelData, double relHeight)
 		{	
-			ProjectileMotion = new ProjectileMotionProperties(device, levelData, relHeight);
-			MapMotion = new MapMotionProperties(device, ProjectileMotion, levelData);
-			Position = MapMotion.StartPosition;
+			//ProjectileMotion = new ProjectileMotionProperties(device, levelData, relHeight);
+			//MapMotion = new MapMotionProperties(device, ProjectileMotion, levelData);
+			//Position = MapMotion.StartPosition;
 		}
 		
 		private void Fire()

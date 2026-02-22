@@ -11,7 +11,7 @@ namespace Drumstalotajs.Battle.Stage.StageOverlays.DeviceAdjustment
 		private Slider angleSlider;
 		private Label label;
 		
-		public void SetRange(double min, double max, double value)
+		public void SetRange(double value, double min, double max)
 		{
 			angleSlider.MaxValue = max;
 			angleSlider.MinValue = min;
