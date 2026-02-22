@@ -12,9 +12,12 @@ namespace Drumstalotajs.Battle.Stage.StageOverlays.DeviceAdjustment
 		private Label _label;
 		private Label _degrees;
 		
+		private double Amplitude { get; set; }
+		private double Zero { get; set; }
+		
 		public void SetText(double value)
 		{
-			_degrees.Text = $"~{(int)value}deg";
+			_degrees.Text = $"~{(int)(value - Zero)}deg";
 		}
 		
 		public void SetRange(double value, double min, double max, bool locked)
@@ -22,6 +25,9 @@ namespace Drumstalotajs.Battle.Stage.StageOverlays.DeviceAdjustment
 			_traverseSlider.Value = value;
 			_traverseSlider.MinValue = min;
 			_traverseSlider.MaxValue = max;
+			Amplitude = max - min;
+			Zero = locked ? min + (Amplitude / 2) : 0;
+			_label.Text = locked ? "Traverse" : "Azimuth";
 			SetText(value);
 		}
 	
@@ -29,6 +35,7 @@ namespace Drumstalotajs.Battle.Stage.StageOverlays.DeviceAdjustment
 		{
 			_traverseSlider = GetNode<Slider>("Slider");
 			_degrees = GetNode<Label>("Degrees");
+			_label = GetNode<Label>("Label");
 			
 			_traverseSlider.Connect("value_changed", Callable.From(
 			(float value) => {
