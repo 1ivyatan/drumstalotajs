@@ -62,8 +62,8 @@ namespace Drumstalotajs.Battle.Entities
 		public ProjectileMapProperties MapProperties { get; private set; }
 		
 		private Tween _tween = null;
-		private Map.GroundLayer _groundLayer;
-		private Map.EntityLayer _entityLayer;
+		private Map.Layers.GroundLayer _groundLayer;
+		private Map.Layers.EntityLayer _entityLayer;
 		/*
 		public double GetTrajectoryHeight()
 		{
@@ -147,8 +147,8 @@ namespace Drumstalotajs.Battle.Entities
 		
 		public override void _Ready()
 		{
-			_entityLayer = GetNode<TileMapLayer>("..") as Map.EntityLayer;
-			_groundLayer = GetNode<TileMapLayer>("../../GroundLayer") as Map.GroundLayer;
+			_entityLayer = GetNode<TileMapLayer>("..") as Map.Layers.EntityLayer;
+			_groundLayer = GetNode<TileMapLayer>("../../GroundLayer") as Map.Layers.GroundLayer;
 			Fire();
 		}
 	}

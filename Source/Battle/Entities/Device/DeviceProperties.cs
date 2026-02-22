@@ -63,7 +63,7 @@ namespace Drumstalotajs.Battle.Entities
 			public double Altitude { get; private set; }
 			public double Velocity { get; private set; }
 			
-			public DeviceProperties(Entities.Device device, Map.GroundLayer groundLayer, TileData tileData)
+			public DeviceProperties(Entities.Device device, Map.Layers.GroundLayer groundLayer, TileData tileData)
 			{
 				Resources.Entities.Device deviceResource = device.DeviceResource;
 				Traverse = new TraverseProperties(deviceResource.TraverseRange);

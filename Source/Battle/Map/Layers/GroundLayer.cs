@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-namespace Drumstalotajs.Battle.Map
+namespace Drumstalotajs.Battle.Map.Layers
 {
 	public partial class GroundLayer : TileMapLayer
 	{

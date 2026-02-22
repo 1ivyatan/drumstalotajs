@@ -10,7 +10,7 @@ namespace Drumstalotajs.Battle.Entities
 		public DeviceProjectile Projectile { get; private set; }
 		
 		private TileMapLayer _parent;
-		private Map.GroundLayer _groundLayer;
+		private Map.Layers.GroundLayer _groundLayer;
 		private Sprite2D _sprite;
 		
 		public Projectile Fire()
@@ -28,7 +28,7 @@ namespace Drumstalotajs.Battle.Entities
 		public override void _Ready()
 		{
 			_parent = GetParent<TileMapLayer>();
-			_groundLayer = _parent.GetNode<TileMapLayer>("../GroundLayer") as Map.GroundLayer;
+			_groundLayer = _parent.GetNode<TileMapLayer>("../GroundLayer") as Map.Layers.GroundLayer;
 			_sprite = GetNode<Sprite2D>("Sprite");
 			
 			Vector2I gridPosition = _groundLayer.LocalToMap(Position);

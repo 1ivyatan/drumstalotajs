@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-namespace Drumstalotajs.Battle.Map
+namespace Drumstalotajs.Battle.Map.Layers
 {
 	public partial class EntityLayer : TileMapLayer
 	{

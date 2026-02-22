@@ -8,8 +8,8 @@ namespace Drumstalotajs.Battle.Stage.StageOverlays.DeviceAdjustment
 		private Entities.Device SelectedEntity { get; set; }
 		
 		private Battle.Map.Selector _selector;
-		private Battle.Map.EntityLayer _entityLayer;
-		private Battle.Map.GroundLayer _groundLayer;
+		private Map.Layers.EntityLayer _entityLayer;
+		private Map.Layers.GroundLayer _groundLayer;
 		private TopPanel _topPanel;
 		
 		private Control _groundInfo;
@@ -34,8 +34,8 @@ namespace Drumstalotajs.Battle.Stage.StageOverlays.DeviceAdjustment
 		
 		public override void _Ready()
 		{
-			_entityLayer = GetNode<Node2D>("../../Map/EntityLayer") as Battle.Map.EntityLayer;
-			_groundLayer = GetNode<Node2D>("../../Map/GroundLayer") as Battle.Map.GroundLayer;
+			_entityLayer = GetNode<Node2D>("../../Map/EntityLayer") as Map.Layers.EntityLayer;
+			_groundLayer = GetNode<Node2D>("../../Map/GroundLayer") as Map.Layers.GroundLayer;
 			_selector = GetNode<Node2D>("../../Map/Selector") as Battle.Map.Selector;
 			_entityInfo = GetNode<Control>("EntityInfo");
 			_groundInfo = GetNode<Control>("GroundInfo");

@@ -5,8 +5,8 @@ namespace Drumstalotajs.Battle.Stage.StageOverlays.Firing
 {
 	public partial class Stage : Battle.Stage.StageOverlay
 	{
-		private Battle.Map.Selector _selector;
-		private Battle.Map.EntityLayer _entityLayer;
+		private Map.Selector _selector;
+		private Map.Layers.EntityLayer _entityLayer;
 		private TopPanel _topPanel;
 		
 		private void StartFiring()
@@ -35,7 +35,7 @@ namespace Drumstalotajs.Battle.Stage.StageOverlays.Firing
 		{
 			_selector = GetNode<Node2D>("../../Map/Selector") as Battle.Map.Selector;
 			_topPanel = GetNode<Control>("../../../TopPanel") as Battle.TopPanel;
-			_entityLayer = GetNode<Node2D>("../../Map/EntityLayer") as Battle.Map.EntityLayer;
+			_entityLayer = GetNode<Node2D>("../../Map/EntityLayer") as Map.Layers.EntityLayer;
 			
 			_topPanel.SetLabel("Firing!");
 			_selector.Enabled = false;
