@@ -31,7 +31,7 @@ namespace Drumstalotajs.Battle.Stage.StageOverlays.DevicePlacement
 			{
 				if (_scene.Level.Devices.ContainsKey(entity.EntityResource.Id))
 				{
-					if (_entityLayer.EntityPointers[Entities.Type.Device].Count > 0 &&  _entityLayer.EntityPointers[Entities.Type.Device].Count <= _scene.Level.Devices[entity.EntityResource.Id])
+					if (_entityLayer.EntityPointers[Entities.Type.Device].Count > 0 &&  _entityLayer.EntityPointers[Entities.Type.Device].Count <= _scene.Level.Devices[entity.EntityResource.Id].Amount)
 					{
 						_toDeviceAdjustmentButton.Disabled = false;
 					} else
