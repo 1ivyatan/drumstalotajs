@@ -7,7 +7,8 @@ namespace Drumstalotajs.Battle.Entities
 	{
 		public Resources.Entities.Device DeviceResource => EntityResource as Resources.Entities.Device;
 		public DeviceProperties Properties { get; private set; }
-		public DeviceProjectile[] Projectiles { get; private set; }
+		public DeviceProjectile Projectile { get; private set; }
+		public int ProjectileIndex { get; set; }
 		
 		private TileMapLayer _parent;
 		private Map.GroundLayer _groundLayer;
@@ -32,6 +33,7 @@ namespace Drumstalotajs.Battle.Entities
 			_parent = GetParent<TileMapLayer>();
 			_groundLayer = _parent.GetNode<TileMapLayer>("../GroundLayer") as Map.GroundLayer;
 			_sprite = GetNode<Sprite2D>("Sprite");
+			Projectile = new DeviceProjectile(DeviceResource.Projectiles[0]);
 			
 			if (EntityResource != null)
 			{
