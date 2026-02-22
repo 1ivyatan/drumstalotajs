@@ -10,6 +10,6 @@ namespace Drumstalotajs.Resources.Entities
 		[Export] public double AngleMax { get; set; }
 		[Export] public double TraverseRange { get; set; }
 		[Export] public double MuzzleVelocity { get; set; }
-		[Export] Resources.Entities.Projectile[] Projectiles { get; set; }
+		[Export] public Resources.Entities.Projectile[] Projectiles { get; set; }
 	}
 }
