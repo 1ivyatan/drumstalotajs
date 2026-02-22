@@ -6,7 +6,7 @@
 [sub_resource type="Resource" id="Resource_amgyj"]
 script = ExtResource("1_h2nrj")
 Amount = 2
-AllowedIndices = PackedInt32Array(1)
+AllowedIndices = PackedInt32Array(0)
 metadata/_custom_type_script = "uid://c521occo36il3"
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_cqwlj"]
@@ -15,7 +15,7 @@ metadata/_custom_type_script = "uid://c521occo36il3"
 script = ExtResource("1_envha")
 Title = "One"
 Description = "huhuhuhuh"
-Scale = 10.0
+Scale = 20.0
 BaseHeight = 25.0
 Devices = Dictionary[int, Object]({
 2: SubResource("Resource_amgyj")

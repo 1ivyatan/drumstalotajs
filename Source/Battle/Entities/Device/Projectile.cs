@@ -79,12 +79,18 @@ namespace Drumstalotajs.Battle.Entities
 			//Position = MapMotion.StartPosition;
 		}
 		*/
-		public void SetProjectile(Entities.Device device, Drumstalotajs.Resources.Levels.Level levelData, TileData tileData)
+		
+		public void SetProjectile(Device.DeviceProperties properties, Device.DeviceProjectile projectile, Resources.Levels.Level levelData, TileData tileData)
 		{
-			Properties = new ProjectileProperties(device, levelData, tileData);
-			MapProperties = new ProjectileMapProperties(device, levelData, Properties);
-			Position = new Vector2(100, 100);
+			Properties = new ProjectileProperties(properties, projectile, levelData, tileData);
 		}
+		
+		//public void SetProjectile(Entities.Device device, Drumstalotajs.Resources.Levels.Level levelData, TileData tileData)
+	//	{
+	//		Properties = new ProjectileProperties(device, levelData, tileData);
+		//	MapProperties = new ProjectileMapProperties(device, levelData, Properties);
+			//Position = new Vector2(100, 100);
+		//}
 		
 		private void Fire()
 		{
