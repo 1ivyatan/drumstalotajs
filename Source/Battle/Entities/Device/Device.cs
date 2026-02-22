@@ -19,10 +19,10 @@ namespace Drumstalotajs.Battle.Entities
 			Drumstalotajs.Resources.Level levelData = (GetNode("../../../..") as Battle.Scene).Level;
 			
 			Vector2I gridPosition = _groundLayer.LocalToMap(Position);
-			TileData data = _groundLayer.GetCellTileData(gridPosition);
-			double relTileHeight = (double)data.GetCustomData("RelativeHeight");
+			TileData tileData = _groundLayer.GetCellTileData(gridPosition);
+			//double relTileHeight = (double)data.GetCustomData("RelativeHeight");
 			
-			projectile.SetMotion(this, levelData, relTileHeight);
+			projectile.SetProjectile(this, levelData, tileData);
 			_parent.AddChild(projectile);
 			return projectile;
 		}

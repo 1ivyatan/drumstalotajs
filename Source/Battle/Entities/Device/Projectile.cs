@@ -78,12 +78,17 @@ namespace Drumstalotajs.Battle.Entities
 			//Position = MapMotion.StartPosition;
 		}
 		
+		public void SetProjectile(Entities.Device device, Drumstalotajs.Resources.Level levelData, TileData relHeight)
+		{
+			Position = new Vector2(100, 100);
+		}
+		
 		private void Fire()
 		{
 			_tween = CreateTween();
 			_tween.SetProcessMode(0);
 			_tween.SetTrans((Tween.TransitionType)1);
-			_tween.TweenProperty(this, "position", MapMotion.EndPosition, ProjectileMotion.Time);
+			_tween.TweenProperty(this, "position", new Vector2(0, 0), 1);
 			_tween.TweenCallback(Callable.From(Destroy));
 		}
 		
@@ -99,6 +104,7 @@ namespace Drumstalotajs.Battle.Entities
 		
 		public override void _PhysicsProcess(double delta)
 		{
+			/*
 			if (_tween != null && _tween.IsValid())
 			{
 				Vector2I gridPosition = _groundLayer.LocalToMap(Position);
@@ -127,7 +133,7 @@ namespace Drumstalotajs.Battle.Entities
 					Destroy();
 				}
 				
-			}
+			}*/
 		}
 		
 		public override void _Ready()
