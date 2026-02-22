@@ -11,6 +11,7 @@ namespace Drumstalotajs.Battle.Stage.StageOverlays.Firing
 		
 		private void StartFiring()
 		{
+			/*
 			int firedCount = 0;
 			foreach (var cell in _entityLayer.EntityPointers[Entities.Type.Device])
 			{
@@ -27,7 +28,7 @@ namespace Drumstalotajs.Battle.Stage.StageOverlays.Firing
 						}
 					}));
 				}));
-			}
+			}*/
 		}
 		
 		public override void _Ready()

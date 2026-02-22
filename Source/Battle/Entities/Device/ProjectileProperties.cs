@@ -19,7 +19,7 @@ namespace Drumstalotajs.Battle.Entities
 				Angle = properties.Angle.Value;
 				InitialVelocity = properties.Velocity;
 				Altitude = properties.Altitude;
-				Range = 
+				//Range = 
 			}
 		}
 	}
