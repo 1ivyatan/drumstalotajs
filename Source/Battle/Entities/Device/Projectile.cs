@@ -57,8 +57,11 @@ namespace Drumstalotajs.Battle.Entities
 		*/ 
 		[Signal]
 		public delegate void LandedEventHandler();
-		private Tween _tween = null;
 		
+		public ProjectileProperties Properties { get; private set; }
+		public ProjectileMapProperties MapProperties { get; private set; }
+		
+		private Tween _tween = null;
 		private Map.GroundLayer _groundLayer;
 		private Map.EntityLayer _entityLayer;
 		/*
@@ -76,8 +79,10 @@ namespace Drumstalotajs.Battle.Entities
 			//Position = MapMotion.StartPosition;
 		}
 		*/
-		public void SetProjectile(Entities.Device device, Drumstalotajs.Resources.Level levelData, TileData relHeight)
+		public void SetProjectile(Entities.Device device, Drumstalotajs.Resources.Level levelData, TileData tileData)
 		{
+			Properties = new ProjectileProperties(device, levelData, tileData);
+			MapProperties = new ProjectileMapProperties(device, levelData, Properties);
 			Position = new Vector2(100, 100);
 		}
 		
