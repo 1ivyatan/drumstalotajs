@@ -37,7 +37,7 @@ namespace Drumstalotajs.Battle.Map.Projectiles
 						return;
 					} else
 					{
-						double dragForce = airDensity * Math.Pow(horizontalSpeed, 2) * 0.5;
+						double dragForce = airDensity * _projectile.DragCoefficient * _projectile.Area * Math.Pow(horizontalSpeed, 2) * 0.5;
 						double dragAcceleration = dragForce / _projectile.TotalWeight;
 						Horizontal -= Horizontal.Normalized() * (float)(dragAcceleration * delta);
 					}
