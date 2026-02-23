@@ -26,14 +26,26 @@ namespace Drumstalotajs.Battle.Map.Projectiles
 				public Vector2 Horizontal { get; private set; }
 				public double Vertical { get; private set; }
 				
+				private Entities.Device.DeviceProjectile _projectile; 
+				
 				private void ApplyHorizontalDrag(double airDensity, double delta)
 				{
+					double horizontalSpeed = Horizontal.Length();
 					
+					if (horizontalSpeed < 0.1)
+					{
+						return;
+					} else
+					{
+						double dragForce = airDensity * Math.Pow(horizontalSpeed, 2) * 0.5;
+						double dragAcceleration = dragForce / _projectile.TotalWeight;
+						Horizontal -= Horizontal.Normalized() * (float)(dragAcceleration * delta);
+					}
 				}
 				
 				private void ApplyVerticalDrag(double airDensity, double delta)
 				{
-					
+					double verticalSpeed = Math.Abs(Vertical);
 				}
 				
 				public void ApplyDrag(double airDensity, double delta)
@@ -42,10 +54,11 @@ namespace Drumstalotajs.Battle.Map.Projectiles
 					ApplyVerticalDrag(airDensity, delta);
 				}
 				
-				public VelocityProperties(Vector2 direction, double muzzleVelocity, double elevationAngle)
+				public VelocityProperties(Entities.Device.DeviceProjectile projectile, Vector2 direction, double muzzleVelocity, double elevationAngle)
 				{
 					Horizontal = direction * (float)(muzzleVelocity * Math.Cos(elevationAngle));
 					Vertical = muzzleVelocity * Math.Sin(elevationAngle);
+					_projectile = projectile;
 				}
 			}
 			
@@ -70,7 +83,7 @@ namespace Drumstalotajs.Battle.Map.Projectiles
 				double elevation = Battle.Physics.ToRadians(_device.Properties.Angle.Value);
 				Altitude = new AltitudeProperties(_device.Properties.Altitude, _device.Properties.Altitude);
 				Position = _device.Position;
-				Velocity = new VelocityProperties(direction, _device.Properties.MuzzleVelocity, elevation);
+				Velocity = new VelocityProperties(_device.Projectile, direction, _device.Properties.MuzzleVelocity, elevation);
 			}
 			
 			public ProjectileProperties(Entities.Device device)
