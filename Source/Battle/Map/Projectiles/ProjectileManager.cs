@@ -23,6 +23,13 @@ namespace Drumstalotajs.Battle.Map.Projectiles
 		
 		public Projectile SpawnShell(Entities.Device device)
 		{
+			if (GetChildCount() >= 50)
+			{
+				Node oldestProjectile = GetChild(0);
+				oldestProjectile.QueueFree();
+				RemoveChild(oldestProjectile);
+			}
+			
 			Projectile projectile = ResourceLoader.Load<PackedScene>("res://Scenes/Battle/Map/Projectile.tscn").Instantiate() as Projectile;
 			AddChild(projectile);
 			return projectile;
