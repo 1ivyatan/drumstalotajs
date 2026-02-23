@@ -6,6 +6,9 @@
 
 [sub_resource type="Resource" id="Resource_5fiot"]
 script = ExtResource("1_ubg3i")
+Caliber = 81.0
+DragCoefficient = 0.45
+BallisticCoefficient = 0.18
 CasingWeight = 36.6
 ExplosiveWeight = 6.9
 TntFactor = 1.33
