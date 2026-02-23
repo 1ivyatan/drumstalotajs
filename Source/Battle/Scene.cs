@@ -23,8 +23,6 @@ namespace Drumstalotajs.Battle
 			if (ResourceLoader.Exists(levelResourcePath))
 			{
 				Level = ResourceLoader.Load<Resources.Levels.Level>(levelResourcePath);
-
-				GD.Print(Level.Title);
 			} else
 			{
 				Level = null;

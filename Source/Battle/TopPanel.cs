@@ -29,7 +29,6 @@ namespace Drumstalotajs.Battle
 			
 			_entityLayer.Connect(
 				"ChangeInEntities", Callable.From((int entityType) => {
-					GD.Print("change");
 					UpdateStats();
 				})
 			);

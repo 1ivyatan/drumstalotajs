@@ -99,7 +99,6 @@ namespace Drumstalotajs.Battle.Stage.StageOverlays.DeviceAdjustment
 			_traverseControl.Connect("Change", Callable.From(
 			(float value) => {
 				SelectedEntity.Properties.Traverse.Value = value;
-				GD.Print(SelectedEntity.Properties.Traverse.Value);
 			}));
 			
 			_toFiringButton.Connect("pressed", Callable.From(

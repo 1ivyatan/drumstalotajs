@@ -13,18 +13,6 @@ namespace Drumstalotajs.Battle.Entities
 		private Map.Layers.GroundLayer _groundLayer;
 		private Sprite2D _sprite;
 		
-		public Projectile Fire()
-		{
-			Entities.Projectile projectile = ResourceLoader.Load<PackedScene>("res://Scenes/Battle/Entities/Devices/Projectile.tscn").Instantiate() as Projectile;
-			Resources.Levels.Level levelData = (GetNode("../../../..") as Battle.Scene).Level;
-			Vector2I gridPosition = _groundLayer.LocalToMap(Position);
-			TileData tileData = _groundLayer.GetCellTileData(gridPosition);
-			projectile.SetProjectile(Properties, Projectile, levelData, tileData);
-			//projectile.SetProjectile(this, levelData, tileData);
-			_parent.AddChild(projectile);
-			return projectile;
-		}
-		
 		public override void _Ready()
 		{
 			_parent = GetParent<TileMapLayer>();
