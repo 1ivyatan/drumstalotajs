@@ -18,6 +18,11 @@ namespace Drumstalotajs.Battle.Map.Projectiles
 			Properties = new ProjectileProperties(device);
 		}
 		
+		public bool HasHit()
+		{
+			return false;
+		}
+		
 		public void Launch()
 		{
 			Flying = true;
@@ -29,7 +34,13 @@ namespace Drumstalotajs.Battle.Map.Projectiles
 			if (Flying)
 			{
 				Position = Properties.Position;
-				Properties.NextStep(delta);
+				if (HasHit())
+				{
+					
+				} else
+				{
+					Properties.NextStep(delta);
+				}
 			}
 		}
 		

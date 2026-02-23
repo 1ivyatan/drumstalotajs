@@ -73,7 +73,11 @@ namespace Drumstalotajs.Battle.Map.Projectiles
 			private Entities.Device _device;
 			private Vector2 _targetPos;
 			
-			
+			public double CalculateRelativeAltitude()
+			{
+				Vector2 totalDistance = Position.DistanceTo(_targetPos);
+				Vector2 traveledDistance = Position.DistanceTo();
+			}
 			
 			public void NextStep(double delta)
 			{
