@@ -8,7 +8,7 @@ namespace Drumstalotajs.Battle.Map.Projectiles
 		[Signal] public delegate void LandedEventHandler();
 		
 		public ProjectileProperties Properties { get; private set; }
-		public bool Flying { get; private set; } = false;
+		private bool Flying { get; set; } = false;
 		
 		private Map.Layers.GroundLayer _groundLayer;
 		private Map.Layers.EntityLayer _entityLayer;
@@ -22,6 +22,15 @@ namespace Drumstalotajs.Battle.Map.Projectiles
 		{
 			Flying = true;
 			Visible = true;
+		}
+		
+		public override void _PhysicsProcess(double delta)
+		{
+			if (Flying)
+			{
+				
+				Properties.NextStep();
+			}
 		}
 		
 		public override void _Ready()
