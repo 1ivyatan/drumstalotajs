@@ -9,6 +9,11 @@ namespace Drumstalotajs.Battle
 		public const double ScaleHeight = 8500.0;
 		public const double SeaLevelAirDensity = 1.225;
 		public const int Pixels = 80;
+		
+		public static double CalculateAirDensity(double altitude)
+		{
+			return SeaLevelAirDensity * Math.Exp(-altitude / ScaleHeight);
+		}
 	
 		public static double ToRadians(double degrees)
 		{

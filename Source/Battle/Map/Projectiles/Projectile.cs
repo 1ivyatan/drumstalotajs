@@ -28,8 +28,8 @@ namespace Drumstalotajs.Battle.Map.Projectiles
 		{
 			if (Flying)
 			{
-				
-				Properties.NextStep();
+				Position = Properties.Position;
+				Properties.NextStep(delta);
 			}
 		}
 		
