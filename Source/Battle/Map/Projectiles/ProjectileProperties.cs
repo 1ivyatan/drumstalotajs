@@ -43,15 +43,19 @@ namespace Drumstalotajs.Battle.Map.Projectiles
 					}
 				}
 				
-				private void ApplyVerticalDrag(double airDensity, double delta)
+				private void ApplyVerticalForce(double airDensity, double delta)
 				{
 					double verticalSpeed = Math.Abs(Vertical);
+					double dragForce = airDensity * _projectile.DragCoefficient * _projectile.Area * Math.Pow(verticalSpeed, 2) * 0.5;
+					double dragAcceleration = dragForce / _projectile.TotalWeight;
+					double dragDirection = -Math.Sign(Vertical);
+					Vertical += (Battle.Physics.Gravity * -1.0 + dragDirection * dragAcceleration) * delta;
 				}
 				
 				public void ApplyDrag(double airDensity, double delta)
 				{
 					ApplyHorizontalDrag(airDensity, delta);
-					ApplyVerticalDrag(airDensity, delta);
+					ApplyVerticalForce(airDensity, delta);
 				}
 				
 				public VelocityProperties(Entities.Device.DeviceProjectile projectile, Vector2 direction, double muzzleVelocity, double elevationAngle)
@@ -68,6 +72,8 @@ namespace Drumstalotajs.Battle.Map.Projectiles
 			
 			private Entities.Device _device;
 			private Vector2 _targetPos;
+			
+			
 			
 			public void NextStep(double delta)
 			{
