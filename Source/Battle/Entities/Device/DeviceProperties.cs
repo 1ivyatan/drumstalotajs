@@ -61,14 +61,14 @@ namespace Drumstalotajs.Battle.Entities
 			public TraverseProperties Traverse { get; private set; }
 			public AngleProperties Angle { get; private set; }
 			public double Altitude { get; private set; }
-			public double Velocity { get; private set; }
+			public double MuzzleVelocity { get; private set; }
 			
 			public DeviceProperties(Entities.Device device, Map.Layers.GroundLayer groundLayer, TileData tileData)
 			{
 				Resources.Entities.Device deviceResource = device.DeviceResource;
 				Traverse = new TraverseProperties(deviceResource.TraverseRange);
 				Angle = new AngleProperties(deviceResource.AngleMin, deviceResource.AngleMax);
-				Velocity = deviceResource.MuzzleVelocity;
+				MuzzleVelocity = deviceResource.MuzzleVelocity;
 				Altitude = groundLayer.Height + (double)tileData.GetCustomData("RelativeHeight");
 			}
 		}

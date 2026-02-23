@@ -17,7 +17,7 @@ namespace Drumstalotajs.Battle.Entities
 			public ProjectileProperties(Device.DeviceProperties properties, Device.DeviceProjectile projectile, Resources.Levels.Level levelData, TileData tileData)
 			{
 				Angle = properties.Angle.Value;
-				InitialVelocity = properties.Velocity;
+				//InitialVelocity = properties.Velocity;
 				Altitude = properties.Altitude;
 				//Range = 
 			}
