@@ -75,8 +75,9 @@ namespace Drumstalotajs.Battle.Map.Projectiles
 			
 			public double CalculateRelativeAltitude()
 			{
-				Vector2 totalDistance = Position.DistanceTo(_targetPos);
-				Vector2 traveledDistance = Position.DistanceTo();
+				//Vector2 totalDistance = Position.DistanceTo(_targetPos);
+				//Vector2 traveledDistance = Position.DistanceTo();
+				return 1;
 			}
 			
 			public void NextStep(double delta)
@@ -89,8 +90,8 @@ namespace Drumstalotajs.Battle.Map.Projectiles
 			
 			public void Reset()
 			{
-				Vector2 direction = (_targetPos - _device.Position).Normalized();
-				double elevation = Battle.Physics.ToRadians(_device.Properties.Angle.Value);
+				Vector2 direction = Topography.AzimuthToDirection(_device.Properties.Traverse.Value);
+				double elevation = Physics.ToRadians(_device.Properties.Angle.Value);
 				Altitude = new AltitudeProperties(_device.Properties.Altitude, _device.Properties.Altitude);
 				Position = _device.Position;
 				Velocity = new VelocityProperties(_device.Projectile, direction, _device.Properties.MuzzleVelocity, elevation);

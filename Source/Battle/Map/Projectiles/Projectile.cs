@@ -33,12 +33,13 @@ namespace Drumstalotajs.Battle.Map.Projectiles
 		{
 			if (Flying)
 			{
-				Position = Properties.Position;
 				if (HasHit())
 				{
 					
 				} else
 				{
+					Position = Properties.Position;
+					//GD.Print();
 					Properties.NextStep(delta);
 				}
 			}
