@@ -17,25 +17,23 @@ namespace Drumstalotajs.Battle.Map.Projectiles
 		private void CheckHit()
 		{
 			Vector2I cellPos = _groundLayer.GetCellPos(Position);
+			double height = _groundLayer.GetHeight(Position);
+			
 			if (cellPos != CurrentPos)
 			{
-				double height = _groundLayer.GetHeight(Position);
 				Entities.Type entityType = _entityLayer.GetEntityType(cellPos);
 				
-				if (entityType !== Entities.Type.None)
+				if (entityType != Entities.Type.None)
 				{
-					
+					height += _entityLayer.EntityPointers[entityType][cellPos].EntityResource.Height;
 				}
 				
 				CurrentPos = cellPos;
-			} else
+			}
+				
+			if (Properties.Altitude.Value < height)
 			{
-				
-				
-			//	if (Properties.Altitude.Value < height)
-				//{
-					
-				//}
+				GD.Print("HIT");
 			}
 			
 			//GD.Print($"{Properties.Altitude.Value} {_groundLayer.GetHeight(Position)}");

@@ -7,9 +7,9 @@
 script = ExtResource("1_kji6j")
 Thickness = 2.0
 MaterialFactor = 0.2
-Height = 5.0
 Name = "Wall"
 Id = 3
 Type = 3
+Height = 12.0
 Sprites = Array[Texture2D]([ExtResource("1_piatn")])
 metadata/_custom_type_script = "uid://v74o0f5at7pf"
