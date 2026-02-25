@@ -20,18 +20,22 @@ namespace Drumstalotajs.Battle.Map.Projectiles
 			if (cellPos != CurrentPos)
 			{
 				double height = _groundLayer.GetHeight(Position);
+				Entities.Type entityType = _entityLayer.GetEntityType(cellPos);
 				
-				//if (_entityLayer.EntityPointers.ContainsKey(cellPos))
-				//{
-					
-				//}
-				
-				if (Properties.Altitude.Value < height)
+				if (entityType !== Entities.Type.None)
 				{
 					
 				}
 				
 				CurrentPos = cellPos;
+			} else
+			{
+				
+				
+			//	if (Properties.Altitude.Value < height)
+				//{
+					
+				//}
 			}
 			
 			//GD.Print($"{Properties.Altitude.Value} {_groundLayer.GetHeight(Position)}");
