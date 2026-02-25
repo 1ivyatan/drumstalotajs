@@ -9,44 +9,66 @@ namespace Drumstalotajs.Battle.Map.Projectiles
 		
 		public ProjectileProperties Properties { get; private set; }
 		private bool Flying { get; set; } = false;
+		private Vector2I CurrentPos;
 		
 		private Map.Layers.GroundLayer _groundLayer;
 		private Map.Layers.EntityLayer _entityLayer;
 		
+		private void CheckHit()
+		{
+			Vector2I cellPos = _groundLayer.GetCellPos(Position);
+			if (cellPos != CurrentPos)
+			{
+				double height = _groundLayer.GetHeight(Position);
+				
+				//if (_entityLayer.EntityPointers.ContainsKey(cellPos))
+				//{
+					
+				//}
+				
+				if (Properties.Altitude.Value < height)
+				{
+					
+				}
+				
+				CurrentPos = cellPos;
+			}
+			
+			//GD.Print($"{Properties.Altitude.Value} {_groundLayer.GetHeight(Position)}");
+			//return Properties.Altitude.Value > _groundLayer.GetHeight(Position);
+		}
+		
+		private void Destroy()
+		{
+			
+		}
+		
 		public void Set(Entities.Device device)
 		{
 			Properties = new ProjectileProperties(device);
-		}
-		
-		public bool HasHit()
-		{
-			return false;
+			Position = Properties.Position;
 		}
 		
 		public void Launch()
 		{
-			Flying = true;
 			Visible = true;
+			Flying = true;
 		}
 		
 		public override void _PhysicsProcess(double delta)
 		{
 			if (Flying)
 			{
-				if (HasHit())
-				{
-					
-				} else
-				{
-					Position = Properties.Position;
-					//GD.Print();
-					Properties.NextStep(delta);
-				}
+				Position = Properties.Position;
+				Properties.NextStep(delta);
+				CheckHit();
 			}
 		}
 		
 		public override void _Ready()
 		{
+			_entityLayer = GetNode<TileMapLayer>("../../EntityLayer") as Map.Layers.EntityLayer;
+			_groundLayer = GetNode<TileMapLayer>("../../GroundLayer") as Map.Layers.GroundLayer;
 			Visible = false;
 		}
 	}
