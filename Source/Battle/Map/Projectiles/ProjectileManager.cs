@@ -12,7 +12,7 @@ namespace Drumstalotajs.Battle.Map.Projectiles
 		
 		public Projectile SpawnShell(Entities.Device device)
 		{
-			if (GetChildCount() >= 50)
+			if (GetChildCount() >= _maxShells)
 			{
 				Node oldestProjectile = GetChild(0);
 				oldestProjectile.QueueFree();
