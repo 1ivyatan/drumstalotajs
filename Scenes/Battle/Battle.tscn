@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cepv1sj7xkrbo" path="res://Source/Battle/Scene.cs" id="1_ael4v"]
 [ext_resource type="PackedScene" uid="uid://nfn5ufmitkad" path="res://Scenes/Battle/TopPanel.tscn" id="2_gunap"]
-[ext_resource type="PackedScene" uid="uid://dk7en8igfrlxl" path="res://Scenes/Battle/MapContainer.tscn" id="3_3ihc8"]
+[ext_resource type="PackedScene" uid="uid://dk7en8igfrlxl" path="res://Scenes/Battle/Map/MapContainer.tscn" id="3_3ihc8"]
 
 [node name="Battle" type="VBoxContainer" unique_id=1868674133]
 anchors_preset = 15

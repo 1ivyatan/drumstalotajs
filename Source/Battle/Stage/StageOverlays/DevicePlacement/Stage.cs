@@ -8,7 +8,7 @@ namespace Drumstalotajs.Battle.Stage.StageOverlays.DevicePlacement
 	{
 		private Battle.Scene _scene;
 		private Battle.Map.Selector _selector;
-		private Battle.Map.EntityLayer _entityLayer;
+		private Map.Layers.EntityLayer _entityLayer;
 		private Button _toDeviceAdjustmentButton;
 		private MapDevices _mapDevices;
 		private TopPanel _topPanel;
@@ -31,7 +31,7 @@ namespace Drumstalotajs.Battle.Stage.StageOverlays.DevicePlacement
 			{
 				if (_scene.Level.Devices.ContainsKey(entity.EntityResource.Id))
 				{
-					if (_entityLayer.EntityPointers[Entities.Type.Device].Count > 0 &&  _entityLayer.EntityPointers[Entities.Type.Device].Count <= _scene.Level.Devices[entity.EntityResource.Id])
+					if (_entityLayer.EntityPointers[Entities.Type.Device].Count > 0 &&  _entityLayer.EntityPointers[Entities.Type.Device].Count <= _scene.Level.Devices[entity.EntityResource.Id].Amount)
 					{
 						_toDeviceAdjustmentButton.Disabled = false;
 					} else
@@ -65,7 +65,7 @@ namespace Drumstalotajs.Battle.Stage.StageOverlays.DevicePlacement
 		{
 			_toDeviceAdjustmentButton = GetNode<Button>("ToDeviceAdjustmentButton");
 			_mapDevices = GetNode<Container>("MapDevices") as MapDevices;
-			_entityLayer = GetNode<Node2D>("../../Map/EntityLayer") as Battle.Map.EntityLayer;
+			_entityLayer = GetNode<Node2D>("../../Map/EntityLayer") as Map.Layers.EntityLayer;
 			_selector = GetNode<Node2D>("../../Map/Selector") as Battle.Map.Selector;
 			_scene = GetNode<Control>("../../..") as Battle.Scene;
 			_topPanel = GetNode<Control>("../../../TopPanel") as Battle.TopPanel;

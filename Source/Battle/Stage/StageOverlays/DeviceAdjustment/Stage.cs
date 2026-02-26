@@ -8,8 +8,8 @@ namespace Drumstalotajs.Battle.Stage.StageOverlays.DeviceAdjustment
 		private Entities.Device SelectedEntity { get; set; }
 		
 		private Battle.Map.Selector _selector;
-		private Battle.Map.EntityLayer _entityLayer;
-		private Battle.Map.GroundLayer _groundLayer;
+		private Map.Layers.EntityLayer _entityLayer;
+		private Map.Layers.GroundLayer _groundLayer;
 		private TopPanel _topPanel;
 		
 		private Control _groundInfo;
@@ -34,8 +34,8 @@ namespace Drumstalotajs.Battle.Stage.StageOverlays.DeviceAdjustment
 		
 		public override void _Ready()
 		{
-			_entityLayer = GetNode<Node2D>("../../Map/EntityLayer") as Battle.Map.EntityLayer;
-			_groundLayer = GetNode<Node2D>("../../Map/GroundLayer") as Battle.Map.GroundLayer;
+			_entityLayer = GetNode<Node2D>("../../Map/EntityLayer") as Map.Layers.EntityLayer;
+			_groundLayer = GetNode<Node2D>("../../Map/GroundLayer") as Map.Layers.GroundLayer;
 			_selector = GetNode<Node2D>("../../Map/Selector") as Battle.Map.Selector;
 			_entityInfo = GetNode<Control>("EntityInfo");
 			_groundInfo = GetNode<Control>("GroundInfo");
@@ -59,8 +59,8 @@ namespace Drumstalotajs.Battle.Stage.StageOverlays.DeviceAdjustment
 				{
 					SelectedEntity = _entityLayer.EntityPointers[(Entities.Type)entityType][position] as Entities.Device;
 					UpdateEntityStats(SelectedEntity, position);
-					_angleControl.SetRange(SelectedEntity.Angle.Min, SelectedEntity.Angle.Max, SelectedEntity.Angle.Value);
-					_traverseControl.SetRange(SelectedEntity.Traverse.Locked, SelectedEntity.Traverse.Azimuth);
+					_angleControl.SetRange(SelectedEntity.Properties.Angle.Value, SelectedEntity.Properties.Angle.Min, SelectedEntity.Properties.Angle.Max);
+					_traverseControl.SetRange(SelectedEntity.Properties.Traverse.Value, SelectedEntity.Properties.Traverse.Min, SelectedEntity.Properties.Traverse.Max, SelectedEntity.Properties.Traverse.Locked);
 					_entityInfo.Visible = true;
 				}
 			}));
@@ -93,12 +93,12 @@ namespace Drumstalotajs.Battle.Stage.StageOverlays.DeviceAdjustment
 			
 			_angleControl.Connect("Change", Callable.From(
 			(float value) => {
-				SelectedEntity.Angle.Value = value;
+				SelectedEntity.Properties.Angle.Value = value;
 			}));
 			
 			_traverseControl.Connect("Change", Callable.From(
 			(float value) => {
-				SelectedEntity.Traverse.Azimuth = value;
+				SelectedEntity.Properties.Traverse.Value = value;
 			}));
 			
 			_toFiringButton.Connect("pressed", Callable.From(
@@ -106,9 +106,9 @@ namespace Drumstalotajs.Battle.Stage.StageOverlays.DeviceAdjustment
 				foreach (var cell in _entityLayer.EntityPointers[Entities.Type.Device])
 				{
 					Entities.Device device = cell.Value as Entities.Device;
-					if (!device.Traverse.Locked)
+					if (!device.Properties.Traverse.Locked)
 					{
-						device.Traverse.Locked = true;
+						device.Properties.Traverse.Locked = true;
 					}
 				}
 				

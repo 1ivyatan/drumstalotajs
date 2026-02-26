@@ -9,7 +9,7 @@ namespace Drumstalotajs.Battle.Stage.StageOverlays.DevicePlacement
 	{
 		public int SelectedDeviceId { get; private set; }
 		
-		public void SetDevices(Dictionary<int, int> deviceData)
+		public void SetDevices(Dictionary<int, Resources.Levels.DeviceProps> deviceData)
 		{
 			PackedScene deviceSelector = ResourceLoader.Load<PackedScene>("res://Scenes/Battle/StageOverlays/DevicePlacement/DeviceButton.tscn");
 			

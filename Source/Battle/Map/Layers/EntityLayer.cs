@@ -2,18 +2,13 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-namespace Drumstalotajs.Battle.Map
+namespace Drumstalotajs.Battle.Map.Layers
 {
 	public partial class EntityLayer : TileMapLayer
 	{
-		[Signal]
-		public delegate void ChangeInEntitiesEventHandler(int entityType);
-		
-		[Signal]
-		public delegate void AddedEntityEventHandler(Entities.Entity entity, Vector2I position);
-		
-		[Signal]
-		public delegate void RemovedEntityEventHandler(Entities.Entity entity, Vector2I position);
+		[Signal] public delegate void ChangeInEntitiesEventHandler(int entityType);
+		[Signal] public delegate void AddedEntityEventHandler(Entities.Entity entity, Vector2I position);
+		[Signal] public delegate void RemovedEntityEventHandler(Entities.Entity entity, Vector2I position);
 		
 		public Dictionary<Entities.Type, Dictionary<Vector2I, Entities.Entity>> EntityPointers
 		{
@@ -28,7 +23,6 @@ namespace Drumstalotajs.Battle.Map
 		
 		public void RemoveEntity(Vector2I position)
 		{
-			GD.Print(position);
 			EraseCell(position);
 		}
 		

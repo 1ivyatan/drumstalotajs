@@ -8,31 +8,38 @@ namespace Drumstalotajs.Battle.Stage.StageOverlays.DeviceAdjustment
 		[Signal]
 		public delegate void ChangeEventHandler(float value);
 		
-		private Slider traverseSlider;
-		private Label label;
+		private Slider _traverseSlider;
+		private Label _label;
+		private Label _degrees;
 		
-		public void SetRange(bool locked, double value)
+		private double Amplitude { get; set; }
+		private double Zero { get; set; }
+		
+		public void SetText(double value)
 		{
-			if (locked)
-			{
-				traverseSlider.Visible = false;
-			} else 
-			{
-				traverseSlider.Value = value;
-				traverseSlider.Visible = true;
-			}
-
-			label.Text = $"~{(int)value}deg";
+			_degrees.Text = $"~{(int)(value - Zero)}deg";
+		}
+		
+		public void SetRange(double value, double min, double max, bool locked)
+		{
+			_traverseSlider.Value = value;
+			_traverseSlider.MinValue = min;
+			_traverseSlider.MaxValue = max;
+			Amplitude = max - min;
+			Zero = locked ? min + (Amplitude / 2) : 0;
+			_label.Text = locked ? "Traverse" : "Azimuth";
+			SetText(value);
 		}
 	
 		public override void _Ready()
 		{
-			traverseSlider = GetNode<Slider>("Slider");
-			label = GetNode<Label>("Degrees");
+			_traverseSlider = GetNode<Slider>("Slider");
+			_degrees = GetNode<Label>("Degrees");
+			_label = GetNode<Label>("Label");
 			
-			traverseSlider.Connect("value_changed", Callable.From(
+			_traverseSlider.Connect("value_changed", Callable.From(
 			(float value) => {
-				label.Text = $"~{(int)value}deg";
+				SetText(value);
 				EmitSignal("Change", value);
 			}));
 		}

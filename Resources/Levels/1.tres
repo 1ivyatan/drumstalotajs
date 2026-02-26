@@ -1,6 +1,13 @@
 [gd_resource type="Resource" script_class="Level" format=3 uid="uid://xhurvhukm111"]
 
-[ext_resource type="Script" uid="uid://bnyj87sc5un27" path="res://Source/Resources/Level.cs" id="1_envha"]
+[ext_resource type="Script" uid="uid://bnyj87sc5un27" path="res://Source/Resources/Levels/Level.cs" id="1_envha"]
+[ext_resource type="Script" uid="uid://c521occo36il3" path="res://Source/Resources/Levels/DeviceProps.cs" id="1_h2nrj"]
+
+[sub_resource type="Resource" id="Resource_amgyj"]
+script = ExtResource("1_h2nrj")
+Amount = 2
+AllowedIndices = PackedInt32Array(0)
+metadata/_custom_type_script = "uid://c521occo36il3"
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_cqwlj"]
 
@@ -8,10 +15,10 @@
 script = ExtResource("1_envha")
 Title = "One"
 Description = "huhuhuhuh"
-Scale = 10.0
+Scale = 20.0
 BaseHeight = 25.0
-Devices = Dictionary[int, int]({
-2: 2
+Devices = Dictionary[int, Object]({
+2: SubResource("Resource_amgyj")
 })
 GroundPattern = SubResource("TileMapPattern_cqwlj")
 metadata/_custom_type_script = "uid://bnyj87sc5un27"

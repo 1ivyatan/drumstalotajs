@@ -5,7 +5,7 @@ namespace Drumstalotajs.Battle
 {
 	public partial class TopPanel : PanelContainer
 	{
-		private Map.EntityLayer _entityLayer;
+		private Map.Layers.EntityLayer _entityLayer;
 		private Button _exitButton;
 		private Label _deviceCountLabel;
 		private Label _label;
@@ -22,14 +22,13 @@ namespace Drumstalotajs.Battle
 		
 		public override void _Ready()
 		{
-			_entityLayer = GetNode<TileMapLayer>("../MapContainer/Map/EntityLayer") as Map.EntityLayer;
+			_entityLayer = GetNode<TileMapLayer>("../MapContainer/Map/EntityLayer") as Map.Layers.EntityLayer;
 			_exitButton = GetNode<Button>("Columns/ExitButton");
 			_deviceCountLabel = GetNode<Label>("Columns/Stats/DeviceCount");
 			_label = GetNode<Label>("Label");
 			
 			_entityLayer.Connect(
 				"ChangeInEntities", Callable.From((int entityType) => {
-					GD.Print("change");
 					UpdateStats();
 				})
 			);
