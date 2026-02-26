@@ -35,7 +35,15 @@ namespace Drumstalotajs.Battle.Entities
 			
 			public struct BlastProperties
 			{
+				public double LethalRadius { get; }
+				public double CasualityRadius { get; }
 				
+				public BlastProperties(ProjectileProperties projectileProperties)
+				{
+					double tntEquivalent = projectileProperties.TntFactor * projectileProperties.ExplosiveWeight;
+					LethalRadius = 2.5 * Math.Pow(projectileProperties.CasingWeight * tntEquivalent, 1/3);
+					CasualityRadius = 5 * Math.Pow(projectileProperties.CasingWeight * tntEquivalent, 1/3);
+				}
 			}
 			
 			public ProjectileProperties Projectile { get; }
@@ -44,6 +52,7 @@ namespace Drumstalotajs.Battle.Entities
 			public DeviceProjectile(DeviceProperties deviceProperties, Resources.Entities.Projectile projectileData)
 			{
 				Projectile = new ProjectileProperties(deviceProperties, projectileData);
+				Blast = new BlastProperties(Projectile);
 			}
 		}
 	}
