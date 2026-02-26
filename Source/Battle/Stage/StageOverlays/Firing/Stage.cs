@@ -20,19 +20,13 @@ namespace Drumstalotajs.Battle.Stage.StageOverlays.Firing
 					Entities.Device device = cell.Value as Entities.Device;
 					Map.Projectiles.Projectile projectile = _projectileManager.SpawnShell(device);
 					
-					projectile.Connect("Landed", Callable.From(() => {
+					projectile.Connect("Detonated", Callable.From(() => {
 						firedCount++;
-					}));
-					/*
-					Entities.Projectile projectile = device.Fire();
-					
-					projectile.Connect("Landed", Callable.From(() => {
-						
 						if (firedCount == _entityLayer.EntityPointers[Entities.Type.Device].Count)
 						{
 							(GetParent<Control>() as Battle.Stage.Manager).DeviceAdjustment();
 						}
-					}));*/
+					}));
 				}));
 			}
 		}
