@@ -33,7 +33,7 @@ namespace Drumstalotajs.Battle.Map.Projectiles
 				CurrentPos = cellPos;
 			}
 				
-			if (Properties.Altitude.Value < height)
+			if (Properties.Altitude.Value < height && Properties.Velocity.Vertical < 0)
 			{
 				Detonate();
 			}
@@ -42,6 +42,7 @@ namespace Drumstalotajs.Battle.Map.Projectiles
 		private void Detonate()
 		{
 			
+			QueueFree();
 		}
 		
 		public void Set(Entities.Device device)
