@@ -35,13 +35,14 @@ namespace Drumstalotajs.Battle.Map.Projectiles
 				
 			if (Properties.Altitude.Value < height && Properties.Velocity.Vertical < 0)
 			{
-				Detonate();
+				Detonate(height);
 			}
 		}
 		
-		private void Detonate()
+		private void Detonate(double height)
 		{
-			
+			Flying = false;
+			Properties.Altitude.Value = height;
 			QueueFree();
 		}
 		
