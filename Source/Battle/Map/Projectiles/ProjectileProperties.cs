@@ -73,13 +73,6 @@ namespace Drumstalotajs.Battle.Map.Projectiles
 			private Entities.Device _device;
 			private Vector2 _targetPos;
 			
-			public double CalculateRelativeAltitude()
-			{
-				//Vector2 totalDistance = Position.DistanceTo(_targetPos);
-				//Vector2 traveledDistance = Position.DistanceTo();
-				return 1;
-			}
-			
 			public void NextStep(double delta)
 			{
 				double airDensity = Battle.Physics.CalculateAirDensity(Altitude.Value);
