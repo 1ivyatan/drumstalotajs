@@ -25,15 +25,15 @@ namespace Drumstalotajs.Battle.Map.Projectiles
 				
 				if (entityType != Entities.Type.None)
 				{
-					switch (entityType)
-					{
-					}
+					//switch (entityType)
+					//{
+					//}
 					height += _entityLayer.EntityPointers[entityType][cellPos].EntityResource.Height;
 				}
 				CurrentPos = cellPos;
 			}
 				
-			if (Properties.Altitude.Value < height && Properties.Velocity.Vertical < 0)
+			if (Properties.Altitude.Value < height)
 			{
 				Detonate(height);
 			}
