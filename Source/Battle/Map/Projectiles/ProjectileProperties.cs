@@ -6,21 +6,7 @@ namespace Drumstalotajs.Battle.Map.Projectiles
 	public partial class Projectile : Node2D
 	{
 		public class ProjectileProperties
-		{
-			public class AltitudeProperties
-			{
-				public double Start { get; private set; }
-				public double End { get; private set; }
-				public double Value { get; set; }
-				
-				public AltitudeProperties (double start, double end)
-				{
-					Start = start;
-					Value = start;
-					End = end;
-				}
-			}
-			
+		{	
 			public class VelocityProperties
 			{
 				public Vector2 Horizontal { get; private set; }
@@ -66,18 +52,17 @@ namespace Drumstalotajs.Battle.Map.Projectiles
 				}
 			}
 			
-			public AltitudeProperties Altitude { get; private set; }
 			public VelocityProperties Velocity { get; private set; }
+			public double Altitude { get; protected set; }
 			public Vector2 Position { get; private set; }
 			
 			private Entities.Device _device;
-			private Vector2 _targetPos;
 			
 			public void NextStep(double delta)
 			{
-				double airDensity = Battle.Physics.CalculateAirDensity(Altitude.Value);
+				double airDensity = Battle.Physics.CalculateAirDensity(Altitude);
 				Velocity.ApplyDrag(airDensity, delta);
-				Altitude.Value += Velocity.Vertical * (float)delta;
+				Altitude += Velocity.Vertical * (float)delta;
 				Position += Velocity.Horizontal * (float)delta;
 			}
 			
@@ -85,14 +70,13 @@ namespace Drumstalotajs.Battle.Map.Projectiles
 			{
 				Vector2 direction = Topography.AzimuthToDirection(_device.Properties.Traverse.Value);
 				double elevation = Physics.ToRadians(_device.Properties.Angle.Value);
-				Altitude = new AltitudeProperties(_device.Properties.Altitude, _device.Properties.Altitude);
+				Altitude = _device.Properties.Altitude;
 				Position = _device.Position;
 				Velocity = new VelocityProperties(_device.Projectile, direction, _device.Properties.MuzzleVelocity, elevation);
 			}
 			
 			public ProjectileProperties(Entities.Device device)
 			{
-				_targetPos = new Vector2(100, 100);
 				_device = device;
 				Reset();
 			}
