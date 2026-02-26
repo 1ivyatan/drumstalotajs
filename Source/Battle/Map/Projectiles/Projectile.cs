@@ -17,7 +17,7 @@ namespace Drumstalotajs.Battle.Map.Projectiles
 		private void CheckHit()
 		{
 			Vector2I cellPos = _groundLayer.GetCellPos(Position);
-			double height = _groundLayer.GetHeight(Position);
+			double height = _groundLayer.GetHeight(cellPos);
 			
 			if (cellPos != CurrentPos)
 			{
@@ -25,22 +25,21 @@ namespace Drumstalotajs.Battle.Map.Projectiles
 				
 				if (entityType != Entities.Type.None)
 				{
+					switch (entityType)
+					{
+					}
 					height += _entityLayer.EntityPointers[entityType][cellPos].EntityResource.Height;
 				}
-				
 				CurrentPos = cellPos;
 			}
 				
 			if (Properties.Altitude.Value < height)
 			{
-				GD.Print("HIT");
+				Detonate();
 			}
-			
-			//GD.Print($"{Properties.Altitude.Value} {_groundLayer.GetHeight(Position)}");
-			//return Properties.Altitude.Value > _groundLayer.GetHeight(Position);
 		}
 		
-		private void Destroy()
+		private void Detonate()
 		{
 			
 		}
