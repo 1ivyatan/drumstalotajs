@@ -26,7 +26,7 @@ namespace Drumstalotajs.Battle.Map.Projectiles
 				public Vector2 Horizontal { get; private set; }
 				public double Vertical { get; private set; }
 				
-				private Entities.Device.DeviceProjectile _projectile; 
+				private Entities.Device.DeviceProjectile _projectileProperties; 
 				
 				private void ApplyHorizontalDrag(double airDensity, double delta)
 				{
@@ -37,8 +37,8 @@ namespace Drumstalotajs.Battle.Map.Projectiles
 						return;
 					} else
 					{
-						double dragForce = airDensity * _projectile.DragCoefficient * _projectile.Area * Math.Pow(horizontalSpeed, 2) * 0.5;
-						double dragAcceleration = dragForce / _projectile.TotalWeight;
+						double dragForce = airDensity * _projectileProperties.Projectile.DragCoefficient * _projectileProperties.Projectile.Area * Math.Pow(horizontalSpeed, 2) * 0.5;
+						double dragAcceleration = dragForce / _projectileProperties.Projectile.TotalWeight;
 						Horizontal -= Horizontal.Normalized() * (float)(dragAcceleration * delta);
 					}
 				}
@@ -46,8 +46,8 @@ namespace Drumstalotajs.Battle.Map.Projectiles
 				private void ApplyVerticalForce(double airDensity, double delta)
 				{
 					double verticalSpeed = Math.Abs(Vertical);
-					double dragForce = airDensity * _projectile.DragCoefficient * _projectile.Area * Math.Pow(verticalSpeed, 2) * 0.5;
-					double dragAcceleration = dragForce / _projectile.TotalWeight;
+					double dragForce = airDensity * _projectileProperties.Projectile.DragCoefficient * _projectileProperties.Projectile.Area * Math.Pow(verticalSpeed, 2) * 0.5;
+					double dragAcceleration = dragForce / _projectileProperties.Projectile.TotalWeight;
 					double dragDirection = -Math.Sign(Vertical);
 					Vertical += (Battle.Physics.Gravity * -1.0 + dragDirection * dragAcceleration) * delta;
 				}
@@ -62,7 +62,7 @@ namespace Drumstalotajs.Battle.Map.Projectiles
 				{
 					Horizontal = direction * (float)(muzzleVelocity * Math.Cos(elevationAngle));
 					Vertical = muzzleVelocity * Math.Sin(elevationAngle);
-					_projectile = projectile;
+					_projectileProperties = projectile;
 				}
 			}
 			

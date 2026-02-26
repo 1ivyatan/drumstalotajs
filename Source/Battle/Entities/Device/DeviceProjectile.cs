@@ -7,27 +7,43 @@ namespace Drumstalotajs.Battle.Entities
 	{
 		public struct DeviceProjectile
 		{
-			public double Caliber { get; }
-			public double DragCoefficient { get; }
-			public double BallisticCoefficient { get;}
-			public double TotalWeight { get; }
-			public double CasingWeight { get; }
-			public double ExplosiveWeight { get; }
-			public double TntFactor { get; }
-			public double Area { get; }
-			public double Radius { get; }
+			public struct ProjectileProperties
+			{
+				public double Caliber { get; }
+				public double DragCoefficient { get; }
+				public double BallisticCoefficient { get;}
+				public double TotalWeight { get; }
+				public double CasingWeight { get; }
+				public double ExplosiveWeight { get; }
+				public double TntFactor { get; }
+				public double Area { get; }
+				public double Radius { get; }
+			
+				public ProjectileProperties(DeviceProperties deviceProperties, Resources.Entities.Projectile projectileData)
+				{
+					Caliber = projectileData.Caliber;
+					DragCoefficient = projectileData.DragCoefficient;
+					BallisticCoefficient = projectileData.BallisticCoefficient;
+					CasingWeight = projectileData.CasingWeight;
+					ExplosiveWeight = projectileData.ExplosiveWeight;
+					TotalWeight = CasingWeight + ExplosiveWeight;
+					TntFactor = projectileData.TntFactor;
+					Radius = (Caliber / 1000.0) / 2.0;
+					Area = Math.PI * Math.Pow(Radius, 2);
+				}
+			}
+			
+			public struct BlastProperties
+			{
+				
+			}
+			
+			public ProjectileProperties Projectile { get; }
+			public BlastProperties Blast { get; }
 			
 			public DeviceProjectile(DeviceProperties deviceProperties, Resources.Entities.Projectile projectileData)
 			{
-				Caliber = projectileData.Caliber;
-				DragCoefficient = projectileData.DragCoefficient;
-				BallisticCoefficient = projectileData.BallisticCoefficient;
-				CasingWeight = projectileData.CasingWeight;
-				ExplosiveWeight = projectileData.ExplosiveWeight;
-				TotalWeight = CasingWeight + ExplosiveWeight;
-				TntFactor = projectileData.TntFactor;
-				Radius = (Caliber / 1000.0) / 2.0;
-				Area = Math.PI * Math.Pow(Radius, 2);
+				Projectile = new ProjectileProperties(deviceProperties, projectileData);
 			}
 		}
 	}
