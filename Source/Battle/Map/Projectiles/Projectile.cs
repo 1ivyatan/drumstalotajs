@@ -5,7 +5,7 @@ namespace Drumstalotajs.Battle.Map.Projectiles
 {
 	public partial class Projectile : Node2D
 	{
-		[Signal] public delegate void LandedEventHandler();
+		[Signal] public delegate void DetonatedEventHandler();
 		
 		public ProjectileProperties Properties { get; private set; }
 		private bool Flying { get; set; } = false;
@@ -42,6 +42,7 @@ namespace Drumstalotajs.Battle.Map.Projectiles
 		private void Detonate(double height)
 		{
 			Flying = false;
+			EmitSignal(SignalName.Detonated);
 			QueueFree();
 		}
 		
