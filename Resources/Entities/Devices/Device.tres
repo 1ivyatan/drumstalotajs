@@ -24,5 +24,6 @@ Projectiles = Array[Object]([SubResource("Resource_5fiot")])
 Name = "Catapult"
 Id = 2
 Type = 2
+Height = 0.25
 Sprites = Array[Texture2D]([ExtResource("1_w6bcn")])
 metadata/_custom_type_script = "uid://v2c7hs5id7u5"
