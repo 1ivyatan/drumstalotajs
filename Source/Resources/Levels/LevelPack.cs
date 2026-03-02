@@ -10,6 +10,6 @@ namespace Drumstalotajs.Resources.Levels
 		[Export] public string Title { get; set; }
 		
 		[ExportGroup("Levels")]
-		[Export] public Godot.Collections.Dictionary<Vector2, Levels.Level> Levels { get; set; }
+		[Export] public Levels.LevelProps[] Levels { get; set; }
 	}
 }
