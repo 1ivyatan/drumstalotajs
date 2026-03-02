@@ -5,8 +5,10 @@ namespace Drumstalotajs.Levels
 {
 	public partial class Scene : Node
 	{
-		private Button _toLevelButton { get; set; }
-		private Button _toStartButton { get; set; }
+		[Export] private Resources.Levels.LevelPack LevelPack { get; set; }
+		
+		private Button _toLevelButton;
+		private Button _toStartButton;
 		
 		private void LoadList()
 		{

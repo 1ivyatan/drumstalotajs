@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cpvyxe8mrxgwh"]
 
 [ext_resource type="Script" uid="uid://cpqnfdan8t42p" path="res://Source/Levels/Scene.cs" id="1_gk738"]
+[ext_resource type="Resource" uid="uid://vspogdbncj7o" path="res://Resources/LevelPacks/RockyIsland.tres" id="2_q2tp7"]
 
 [node name="Levels" type="Control" unique_id=613196279]
 layout_mode = 3
@@ -11,6 +12,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 0
 script = ExtResource("1_gk738")
+LevelPack = ExtResource("2_q2tp7")
 
 [node name="ToBattleButton" type="Button" parent="." unique_id=988108794]
 layout_mode = 1
