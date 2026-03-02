@@ -13,6 +13,12 @@ namespace Drumstalotajs.Managers
 			ShowScene();
 		}
 		
+		public void Levels()
+		{
+			LoadScene("Levels");
+			ShowScene();
+		}
+		
 		public void Battle(string levelName)
 		{
 			LoadScene("Battle");
