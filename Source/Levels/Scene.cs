@@ -12,7 +12,10 @@ namespace Drumstalotajs.Levels
 		
 		private void LoadList()
 		{
-			
+			foreach (Resources.Levels.LevelProps levelProps in LevelPack.Levels)
+			{
+				GD.Print(levelProps.Position);
+			}
 		}
 		
 		public override void _Ready()
