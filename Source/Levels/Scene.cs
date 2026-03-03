@@ -7,21 +7,20 @@ namespace Drumstalotajs.Levels
 	{
 		[Export] private Resources.Levels.LevelPack LevelPack { get; set; }
 		
+		private LevelContainer _levelContainer;
 		private Button _toLevelButton;
 		private Button _toStartButton;
 		
 		private void LoadList()
 		{
-			foreach (Resources.Levels.LevelProps levelProps in LevelPack.Levels)
-			{
-				GD.Print(levelProps.Position);
-			}
+			_levelContainer.LoadLevels(LevelPack);
 		}
 		
 		public override void _Ready()
 		{
 			_toLevelButton = GetNode<Button>("ToBattleButton");
 			_toStartButton = GetNode<Button>("ToStartButton");
+			_levelContainer = GetNode<Container>("LevelContainer") as LevelContainer;
 			
 			LoadList();
 			
