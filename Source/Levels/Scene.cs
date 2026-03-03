@@ -26,7 +26,7 @@ namespace Drumstalotajs.Levels
 		
 		public override void _Ready()
 		{
-			_toLevelButton = GetNode<Button>("InfoPanel/VBoxContainer/ToBattleButton");
+			_toLevelButton = GetNode<Button>("InfoPanel/InfoContainer/ToBattleButton");
 			_toStartButton = GetNode<Button>("Map/ToStartButton");
 			_levelMarkerContainer = GetNode<Control>("Map/LevelContainer/LevelMarkerContainer") as LevelMarkerContainer;
 			
