@@ -20,7 +20,7 @@ namespace Drumstalotajs.Levels
 		{
 			_toLevelButton = GetNode<Button>("ToBattleButton");
 			_toStartButton = GetNode<Button>("ToStartButton");
-			_levelContainer = GetNode<Container>("LevelContainer") as LevelContainer;
+			_levelContainer = GetNode<Control>("LevelContainer") as LevelContainer;
 			
 			LoadList();
 			

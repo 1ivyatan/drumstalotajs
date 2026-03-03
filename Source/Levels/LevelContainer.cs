@@ -3,14 +3,10 @@ using System;
 
 namespace Drumstalotajs.Levels
 {
-	public partial class LevelContainer : CenterContainer
+	public partial class LevelContainer : Control
 	{
 		private void SpawnLevelButton(Resources.Levels.LevelProps levelProps)
 		{
-			/*Projectile projectile = ResourceLoader.Load<PackedScene>("res://Scenes/Battle/Map/Projectile.tscn").Instantiate() as Projectile;
-			projectile.Set(device);
-			AddChild(projectile);*/
-			
 			LevelMarker levelMarker = ResourceLoader.Load<PackedScene>("res://Scenes/Levels/LevelMarker.tscn").Instantiate() as LevelMarker;
 			levelMarker.SetMarker(levelProps);
 			AddChild(levelMarker);

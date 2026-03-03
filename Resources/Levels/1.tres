@@ -1,4 +1,4 @@
-[gd_resource type="Resource" format=3 uid="uid://xhurvhukm111"]
+[gd_resource type="Resource" script_class="Level" format=3 uid="uid://xhurvhukm111"]
 
 [ext_resource type="Script" uid="uid://bnyj87sc5un27" path="res://Source/Resources/Levels/Level.cs" id="1_envha"]
 [ext_resource type="Script" uid="uid://c521occo36il3" path="res://Source/Resources/Levels/DeviceProps.cs" id="1_h2nrj"]
