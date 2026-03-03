@@ -7,20 +7,20 @@ namespace Drumstalotajs.Levels
 	{
 		[Export] private Resources.Levels.LevelPack LevelPack { get; set; }
 		
-		private LevelContainer _levelContainer;
+		private LevelMarkerContainer _levelMarkerContainer;
 		private Button _toLevelButton;
 		private Button _toStartButton;
 		
 		private void LoadList()
 		{
-			_levelContainer.LoadLevels(LevelPack);
+			_levelMarkerContainer.LoadLevels(LevelPack);
 		}
 		
 		public override void _Ready()
 		{
 			_toLevelButton = GetNode<Button>("ToBattleButton");
 			_toStartButton = GetNode<Button>("ToStartButton");
-			_levelContainer = GetNode<Control>("LevelContainer") as LevelContainer;
+			_levelMarkerContainer = GetNode<Control>("LevelContainer/LevelMarkerContainer") as LevelMarkerContainer;
 			
 			LoadList();
 			

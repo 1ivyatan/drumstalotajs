@@ -3,7 +3,7 @@ using System;
 
 namespace Drumstalotajs.Levels
 {
-	public partial class LevelContainer : Control
+	public partial class LevelMarkerContainer : Control
 	{
 		private void SpawnLevelButton(Resources.Levels.LevelProps levelProps)
 		{
