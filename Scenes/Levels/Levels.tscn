@@ -4,6 +4,7 @@
 [ext_resource type="Resource" uid="uid://vspogdbncj7o" path="res://Resources/LevelPacks/RockyIsland.tres" id="2_q2tp7"]
 [ext_resource type="Script" uid="uid://pw680cbsdynr" path="res://Source/Levels/LevelMarkerContainer.cs" id="3_5wqow"]
 [ext_resource type="Texture2D" uid="uid://23o34jyimnad" path="res://Assets/Sprites/terraintiles.png" id="3_rvccs"]
+[ext_resource type="Script" uid="uid://bqt44wu3vsuy4" path="res://Source/Levels/InfoContainer.cs" id="5_gea7q"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gea7q"]
 texture = ExtResource("3_rvccs")
@@ -84,6 +85,7 @@ grow_vertical = 2
 
 [node name="InfoContainer" type="VBoxContainer" parent="InfoPanel" unique_id=1554246959]
 layout_mode = 2
+script = ExtResource("5_gea7q")
 
 [node name="Desc" type="TextEdit" parent="InfoPanel/InfoContainer" unique_id=1279722404]
 layout_mode = 2
@@ -110,4 +112,5 @@ virtual_keyboard_enabled = false
 [node name="ToBattleButton" type="Button" parent="InfoPanel/InfoContainer" unique_id=988108794]
 layout_mode = 2
 size_flags_vertical = 8
+disabled = true
 text = "Start!"
