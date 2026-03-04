@@ -11,7 +11,7 @@ namespace Drumstalotajs.Start
 		{
 			_toLevelButton = GetNode<Button>("ToLevelButton");
 			_toLevelButton.Connect("pressed", Callable.From(() => {
-				(GetNode("..") as Managers.SceneManager).Battle("1");
+				(GetNode("..") as Managers.SceneManager).Levels();
 			}));
 		}
 	}

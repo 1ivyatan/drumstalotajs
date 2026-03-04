@@ -5,7 +5,7 @@ namespace Drumstalotajs.Battle
 {	
 	public partial class Scene : Control
 	{
-		public Drumstalotajs.Resources.Levels.Level Level { get; private set; }
+		public Resources.Levels.Level Level { get; private set; }
 		
 		private Stage.Manager _stageManager;
 		
@@ -14,6 +14,11 @@ namespace Drumstalotajs.Battle
 			_stageManager = GetNode<Control>("MapContainer/StageOverlay") as Stage.Manager;
 			
 			_stageManager.DevicePlacement();
+		}
+		
+		public void LoadLevel(Resources.Levels.Level level)
+		{
+			Level = level;
 		}
 		
 		public void LoadLevel(string name)

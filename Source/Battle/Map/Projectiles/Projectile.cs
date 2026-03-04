@@ -8,6 +8,7 @@ namespace Drumstalotajs.Battle.Map.Projectiles
 		[Signal] public delegate void DetonatedEventHandler();
 		
 		public ProjectileProperties Properties { get; private set; }
+		
 		private bool Flying { get; set; } = false;
 		private Vector2I CurrentPos;
 		
@@ -42,6 +43,22 @@ namespace Drumstalotajs.Battle.Map.Projectiles
 		private void Detonate(double height)
 		{
 			Flying = false;
+			
+			var spaceState = GetWorld2D().DirectSpaceState;
+			PhysicsShapeQueryParameters2D query = new PhysicsShapeQueryParameters2D();
+			CircleShape2D scannerShape = new CircleShape2D();
+			scannerShape.Radius = (float)Properties.Device.Projectile.Blast.CasualityRadius;
+			query.Shape = scannerShape;
+			query.Transform = GlobalTransform;
+			query.CollideWithAreas = true;
+			
+			GD.Print(Properties.Device.Projectile.Blast.CasualityRadius);
+			
+			foreach (var area in spaceState.IntersectShape(query))
+			{
+				GD.Print("something within raidus!!");
+			}
+			
 			EmitSignal(SignalName.Detonated);
 			QueueFree();
 		}

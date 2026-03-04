@@ -55,8 +55,7 @@ namespace Drumstalotajs.Battle.Map.Projectiles
 			public VelocityProperties Velocity { get; private set; }
 			public double Altitude { get; protected set; }
 			public Vector2 Position { get; private set; }
-			
-			private Entities.Device _device;
+			public Entities.Device Device { get; private set; }
 			
 			public void NextStep(double delta)
 			{
@@ -68,16 +67,16 @@ namespace Drumstalotajs.Battle.Map.Projectiles
 			
 			public void Reset()
 			{
-				Vector2 direction = Topography.AzimuthToDirection(_device.Properties.Traverse.Value);
-				double elevation = Physics.ToRadians(_device.Properties.Angle.Value);
-				Altitude = _device.Properties.Altitude;
-				Position = _device.Position;
-				Velocity = new VelocityProperties(_device.Projectile, direction, _device.Properties.MuzzleVelocity, elevation);
+				Vector2 direction = Topography.AzimuthToDirection(Device.Properties.Traverse.Value);
+				double elevation = Physics.ToRadians(Device.Properties.Angle.Value);
+				Altitude = Device.Properties.Altitude;
+				Position = Device.Position;
+				Velocity = new VelocityProperties(Device.Projectile, direction, Device.Properties.MuzzleVelocity, elevation);
 			}
 			
 			public ProjectileProperties(Entities.Device device)
 			{
-				_device = device;
+				Device = device;
 				Reset();
 			}
 		}
