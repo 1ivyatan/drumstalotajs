@@ -16,7 +16,11 @@ namespace Drumstalotajs.Levels
 		
 		private void StartBattle()
 		{
-			
+			GD.Print(123);
+			//if (SelectedLevel.Unlocked)
+			//{
+		//		_toBattleButton.Pressed += () => (GetNode("..") as Managers.SceneManager).Battle(SelectedLevel.Level);
+		//	}
 		}
 		
 		private void SelectLevel(Resources.Levels.LevelProps levelProps)
@@ -39,7 +43,7 @@ namespace Drumstalotajs.Levels
 			_levelMarkerContainer = GetNode<Control>("Map/LevelContainer/LevelMarkerContainer") as LevelMarkerContainer;
 			_infoContainer = GetNode<Control>("InfoPanel/InfoContainer") as InfoContainer;
 			
-			LoadList();////_toBattleButton.Pressed += () => (GetNode("..") as Managers.SceneManager).Battle("1");
+			LoadList();
 			
 			_toStartButton.Pressed += () => (GetNode("..") as Managers.SceneManager).Start();
 			_toBattleButton.Pressed += StartBattle;
