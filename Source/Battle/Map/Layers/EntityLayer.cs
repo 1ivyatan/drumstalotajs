@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Drumstalotajs.Battle.Map.Layers
 {
@@ -23,6 +24,12 @@ namespace Drumstalotajs.Battle.Map.Layers
 		
 		public void RemoveEntity(Vector2I position)
 		{
+			EraseCell(position);
+		}
+		
+		public void RemoveEntity(Entities.Entity entity)
+		{
+			Vector2I position = EntityPointers[(Entities.Type)entity.EntityResource.Type].FirstOrDefault(e => e.Value == entity).Key;
 			EraseCell(position);
 		}
 		

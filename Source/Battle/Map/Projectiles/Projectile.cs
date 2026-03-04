@@ -56,6 +56,7 @@ namespace Drumstalotajs.Battle.Map.Projectiles
 			
 			foreach (var area in spaceState.IntersectShape(query))
 			{
+				
 				GD.Print("something within raidus!!");
 			}
 			
