@@ -16,11 +16,10 @@ namespace Drumstalotajs.Levels
 		
 		private void StartBattle()
 		{
-			GD.Print(123);
-			//if (SelectedLevel.Unlocked)
-			//{
-		//		_toBattleButton.Pressed += () => (GetNode("..") as Managers.SceneManager).Battle(SelectedLevel.Level);
-		//	}
+			if (SelectedLevel.Unlocked)
+			{
+				(GetNode("..") as Managers.SceneManager).Battle(SelectedLevel.Level);
+			}
 		}
 		
 		private void SelectLevel(Resources.Levels.LevelProps levelProps)
