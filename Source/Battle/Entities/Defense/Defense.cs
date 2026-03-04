@@ -7,19 +7,6 @@ namespace Drumstalotajs.Battle.Entities
 	{
 		public Resources.Entities.Defense DefenseResource => EntityResource as Resources.Entities.Defense;
 		
-		public double Health
-		{
-			get;
-			set 
-			{ 
-				field = Mathf.Clamp(value, 0, 100);
-				if (field == 0)
-				{
-					Destroy();
-				}
-			}
-		}
-		
 		private Sprite2D _sprite;
 		
 		/* change this! */

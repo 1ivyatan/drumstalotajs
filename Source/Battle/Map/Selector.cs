@@ -57,7 +57,6 @@ namespace Drumstalotajs.Battle.Map
 					if (mouseEvent is InputEventMouseButton mouseClick)
 					{
 						_currentCellPos = cellPos;
-						
 						if (FilteredOut(cellPos, entityType))
 						{
 							Visible = false;
