@@ -23,6 +23,9 @@ namespace Drumstalotajs.Battle.Entities
 			if (parent != null && parent is Map.Layers.EntityLayer)
 			{
 				(parent as Map.Layers.EntityLayer).RemoveEntity(this);
+			} else
+			{
+				QueueFree();
 			}
 		}
 		
