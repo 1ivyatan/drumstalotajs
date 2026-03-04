@@ -56,8 +56,8 @@ namespace Drumstalotajs.Battle.Map.Projectiles
 			
 			foreach (var area in spaceState.IntersectShape(query))
 			{
-				
-				GD.Print("something within raidus!!");
+				Area2D collider = area["collider"];
+				//GD.Print();
 			}
 			
 			EmitSignal(SignalName.Detonated);
