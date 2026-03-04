@@ -10,12 +10,20 @@ namespace Drumstalotajs.Levels
 		private Resources.Levels.LevelProps SelectedLevel;
 		
 		private LevelMarkerContainer _levelMarkerContainer;
-		private Button _toLevelButton;
+		private InfoContainer _infoContainer;
 		private Button _toStartButton;
+		private Button _toBattleButton;
+		
+		private void StartBattle()
+		{
+			
+		}
 		
 		private void SelectLevel(Resources.Levels.LevelProps levelProps)
 		{
 			SelectedLevel = levelProps;
+			_infoContainer.SetInfo(levelProps);
+			_toBattleButton.Disabled = !levelProps.Unlocked;
 		}
 		
 		private void LoadList()
@@ -26,14 +34,15 @@ namespace Drumstalotajs.Levels
 		
 		public override void _Ready()
 		{
-			_toLevelButton = GetNode<Button>("InfoPanel/InfoContainer/ToBattleButton");
 			_toStartButton = GetNode<Button>("Map/ToStartButton");
+			_toBattleButton = GetNode<Button>("InfoPanel/InfoContainer/ToBattleButton");
 			_levelMarkerContainer = GetNode<Control>("Map/LevelContainer/LevelMarkerContainer") as LevelMarkerContainer;
+			_infoContainer = GetNode<Control>("InfoPanel/InfoContainer") as InfoContainer;
 			
-			LoadList();
+			LoadList();////_toBattleButton.Pressed += () => (GetNode("..") as Managers.SceneManager).Battle("1");
 			
-			_toLevelButton.Pressed += () => (GetNode("..") as Managers.SceneManager).Battle("1");
 			_toStartButton.Pressed += () => (GetNode("..") as Managers.SceneManager).Start();
+			_toBattleButton.Pressed += StartBattle;
 		}
 	}
 }
