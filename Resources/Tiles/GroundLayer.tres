@@ -1,3 +1,20 @@
 [gd_resource type="TileSet" format=3 uid="uid://ckikuqgbn6v0l"]
 
+[ext_resource type="Texture2D" uid="uid://b4wd5p4mtidtu" path="res://Assets/Sprites/groundlayer.png" id="1_bjeyp"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pof14"]
+texture = ExtResource("1_bjeyp")
+0:0/0 = 0
+0:0/0/custom_data_0 = -10.0
+1:0/0 = 0
+2:0/0 = 0
+2:0/0/custom_data_0 = 5.0
+3:0/0 = 0
+3:0/0/custom_data_0 = 100.0
+4:0/0 = 0
+4:0/0/custom_data_0 = 500.0
+
 [resource]
+custom_data_layer_0/name = "RelativeHeight"
+custom_data_layer_0/type = 3
+sources/2 = SubResource("TileSetAtlasSource_pof14")
