@@ -1,5 +1,7 @@
 using Godot;
+using Godot.Collections;
 using System;
+using System.Collections.Generic;
 
 namespace Drumstalotajs.Editor
 {
@@ -8,6 +10,13 @@ namespace Drumstalotajs.Editor
 		private TileMapLayer _groundLayer;
 		private TileMapLayer _decorationLayer;
 		private readonly Shortcut _saveShortcut = new Shortcut();
+		
+		private void SavePattern(TileMapLayer layer)
+		{
+			Array<Vector2I> cells = layer.GetUsedCells();
+			TileMapPattern pattern = layer.GetPattern(cells);
+			ResourceSaver.Save(pattern, $"res://Exports/{layer.Name}.tres");
+		}
 		
 		public override void _Ready()
 		{
@@ -30,9 +39,9 @@ namespace Drumstalotajs.Editor
 				if (_saveShortcut.MatchesEvent(@event) &&
 					eventKey.Pressed && !eventKey.Echo
 				) {
-					GD.Print("save");
-					
-					
+					SavePattern(_groundLayer);
+					SavePattern(_decorationLayer);
+					GD.Print("should be saved, go to ");
 				}
 			}
 		}
