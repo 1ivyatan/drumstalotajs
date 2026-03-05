@@ -17,6 +17,16 @@ namespace Drumstalotajs.Battle.Map.Layers
 			private set;
 		}
 		
+		public Entities.Entity GetEntity(Vector2I position)
+		{
+			foreach (var dict in EntityPointers)
+			{
+				Entities.Entity value = dict.Value.FirstOrDefault(e => e.Key == position).Value;
+				if (value != null) return value;
+			}
+			return null;
+		}
+		
 		public void InsertEntity(Entities.Id entityId, Vector2I position)
 		{
 			SetCell(position, 0, new Vector2I(0, 0), (int)entityId);

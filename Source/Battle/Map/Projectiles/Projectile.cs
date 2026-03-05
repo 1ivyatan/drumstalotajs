@@ -56,13 +56,9 @@ namespace Drumstalotajs.Battle.Map.Projectiles
 			
 			foreach (var area in spaceState.IntersectShape(query))
 			{
-				var collider = area;
-				//if (collider is Entities.Entity)
-				//{
-					GD.Print(area);
-					GD.Print(collider is Entities.Entity);
-				//}
-				//GD.Print();
+				Vector2I cellPos = _groundLayer.GetCellPos((Node2D)area["collider"].Position);
+				Entities.Entity entity = _entityLayer.GetEntity(cellPos);
+				GD.Print(_entityLayer.GetEntity(cellPos));
 			}
 			
 			EmitSignal(SignalName.Detonated);
