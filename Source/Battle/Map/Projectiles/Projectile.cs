@@ -26,9 +26,6 @@ namespace Drumstalotajs.Battle.Map.Projectiles
 				
 				if (entityType != Entities.Type.None)
 				{
-					//switch (entityType)
-					//{
-					//}
 					height += _entityLayer.EntityPointers[entityType][cellPos].EntityResource.Height;
 				}
 				CurrentPos = cellPos;
@@ -56,9 +53,11 @@ namespace Drumstalotajs.Battle.Map.Projectiles
 			
 			foreach (var area in spaceState.IntersectShape(query))
 			{
-				Vector2I cellPos = _groundLayer.GetCellPos((Node2D)area["collider"].Position);
+				Node2D collided = (Node2D)area["collider"];
+				Vector2I cellPos = _groundLayer.GetCellPos(collided.Position);
 				Entities.Entity entity = _entityLayer.GetEntity(cellPos);
-				GD.Print(_entityLayer.GetEntity(cellPos));
+				double damage = Properties.CalcDamage(entity);
+				entity.DecreaseIntegrity(damage);
 			}
 			
 			EmitSignal(SignalName.Detonated);

@@ -57,6 +57,11 @@ namespace Drumstalotajs.Battle.Map.Projectiles
 			public Vector2 Position { get; private set; }
 			public Entities.Device Device { get; private set; }
 			
+			public double CalcDamage(Entities.Entity entity)
+			{
+				return 100;
+			}
+			
 			public void NextStep(double delta)
 			{
 				double airDensity = Battle.Physics.CalculateAirDensity(Altitude);
