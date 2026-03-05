@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="LevelPack" format=3 uid="uid://vspogdbncj7o"]
 
-[ext_resource type="Resource" uid="uid://xhurvhukm111" path="res://Resources/Levels/1.tres" id="1_j26nx"]
+[ext_resource type="Resource" uid="uid://xhurvhukm111" path="res://Resources/Levels/1/1.tres" id="1_fav7t"]
 [ext_resource type="Script" uid="uid://o8wlhk210oat" path="res://Source/Resources/Levels/LevelPack.cs" id="1_v7k2h"]
 [ext_resource type="Script" uid="uid://cx8t5xfpsqwyi" path="res://Source/Resources/Levels/LevelProps.cs" id="2_fav7t"]
 
@@ -8,7 +8,7 @@
 script = ExtResource("2_fav7t")
 Unlocked = true
 Position = Vector2(100, 100)
-Level = ExtResource("1_j26nx")
+Level = ExtResource("1_fav7t")
 metadata/_custom_type_script = "uid://cx8t5xfpsqwyi"
 
 [resource]
