@@ -17,6 +17,16 @@ namespace Drumstalotajs.Battle.Entities
 			}
 		} = 100;
 		
+		public void DecreaseIntegrity(double amount)
+		{
+			Integrity -= amount;
+		}
+		
+		public void RestoreIntegrity(double amount)
+		{
+			Integrity += amount;
+		}
+		
 		private void Destroy()
 		{
 			Node parent = GetParent();
@@ -27,16 +37,6 @@ namespace Drumstalotajs.Battle.Entities
 			{
 				QueueFree();
 			}
-		}
-		
-		public void DecreaseIntegrity(double amount)
-		{
-			Integrity -= amount;
-		}
-		
-		public void RestoreIntegrity(double amount)
-		{
-			Integrity += amount;
 		}
 	}
 }
