@@ -16,7 +16,7 @@ namespace Drumstalotajs.Resources.Levels
 		[Export] public Godot.Collections.Dictionary<int, Levels.DeviceProps> Devices { get; set; }
 		
 		[ExportGroup("Victory")]
-		[Export] public Vector2I[] MustDestroy { get; set; }
+		[Export] public Vector2[] MustDestroy { get; set; }
 		
 		[ExportGroup("Patterns")]
 		[Export] public TileMapPattern GroundPattern { get; set; }
