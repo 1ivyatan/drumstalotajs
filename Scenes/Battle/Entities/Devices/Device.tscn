@@ -1,11 +1,15 @@
 [gd_scene format=3 uid="uid://com4i07an24c7"]
 
-[ext_resource type="PackedScene" uid="uid://xsjtymh23tx" path="res://Scenes/Battle/Entities/Entity.tscn" id="1_njuqb"]
 [ext_resource type="Script" uid="uid://ci438lqovha2b" path="res://Source/Battle/Entities/Device/Device.cs" id="2_scg10"]
 [ext_resource type="Resource" uid="uid://to7jup2538hc" path="res://Resources/Entities/Devices/Device.tres" id="3_xn47x"]
 
-[node name="Entity" unique_id=365178665 instance=ExtResource("1_njuqb")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_hx5je"]
+
+[node name="Entity" type="Area2D" unique_id=1826869923]
 script = ExtResource("2_scg10")
 EntityResource = ExtResource("3_xn47x")
 
-[node name="Sprite" type="Sprite2D" parent="." index="0" unique_id=792430989]
+[node name="Sprite" type="Sprite2D" parent="." unique_id=792430989]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1276926913]
+shape = SubResource("CircleShape2D_hx5je")
