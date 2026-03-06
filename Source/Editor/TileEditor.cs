@@ -10,6 +10,23 @@ namespace Drumstalotajs.Editor
 		private TileMapLayer _groundLayer;
 		private TileMapLayer _decorationLayer;
 		private readonly Shortcut _saveShortcut = new Shortcut();
+		private bool _saving { get; set; }
+		
+		private void SavePatterns()
+		{
+			if (!_saving)
+			{
+				SavePattern(_groundLayer);
+				SavePattern(_decorationLayer);
+				GD.Print("should be saved, go to exports directory");
+				
+				_saving = true;
+				SceneTreeTimer delayToSaveAgain = GetTree().CreateTimer(5f);
+					delayToSaveAgain.Connect("timeout", Callable.From(() => {
+					_saving = false;
+				}));
+			}
+		}
 		
 		private void SavePattern(TileMapLayer layer)
 		{
@@ -39,9 +56,7 @@ namespace Drumstalotajs.Editor
 				if (_saveShortcut.MatchesEvent(@event) &&
 					eventKey.Pressed && !eventKey.Echo
 				) {
-					SavePattern(_groundLayer);
-					SavePattern(_decorationLayer);
-					GD.Print("should be saved, go to ");
+					SavePatterns();
 				}
 			}
 		}
