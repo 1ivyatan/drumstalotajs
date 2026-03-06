@@ -23,7 +23,7 @@ namespace Drumstalotajs.Managers
 		{
 			LoadScene("Battle");
 			Battle.Scene battleScene = CurrentScene as Battle.Scene;
-			battleScene.LoadLevel(level);
+			battleScene.AssignLevel(level);
 			ShowScene();
 		}
 		
@@ -31,7 +31,7 @@ namespace Drumstalotajs.Managers
 		{
 			LoadScene("Battle");
 			Battle.Scene battleScene = CurrentScene as Battle.Scene;
-			battleScene.LoadLevel(levelName);
+			battleScene.AssignLevel(levelName);
 			ShowScene();
 		}
 			

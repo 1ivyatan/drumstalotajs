@@ -1,8 +1,8 @@
 [gd_scene format=4 uid="uid://dkvpov5ft5bie"]
 
-[ext_resource type="TileSet" uid="uid://ckikuqgbn6v0l" path="res://Resources/Tiles/GroundLayer.tres" id="1_byyxo"]
+[ext_resource type="TileSet" uid="uid://ckikuqgbn6v0l" path="res://Resources/Tiles/GroundTileSet.tres" id="1_byyxo"]
 [ext_resource type="Script" uid="uid://b4ylwnl1qt70y" path="res://Source/Editor/TileEditor.cs" id="1_yewe7"]
-[ext_resource type="TileSet" uid="uid://bieu8h60f5mo5" path="res://Resources/Tiles/DecorationLayer.tres" id="2_yewe7"]
+[ext_resource type="TileSet" uid="uid://bieu8h60f5mo5" path="res://Resources/Tiles/DecorationTileSet.tres" id="2_yewe7"]
 
 [node name="TileEditor" type="Node2D" unique_id=1372910257]
 script = ExtResource("1_yewe7")

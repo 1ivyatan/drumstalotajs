@@ -6,22 +6,40 @@ namespace Drumstalotajs.Battle.Map
 {	
 	public partial class Widget : Node2D
 	{
-		private float TileScale { get; set; }
+		public float TileScale { get; private set; }
 	
 		private TileMapLayer _groundTileLayer;
-	
-		public void LoadLevel(TileMapPattern groundPattern, TileMapPattern entityPattern)
-		{
+		private TileMapLayer _decorationLayer;
+		private TileMapLayer _entityLayer;
 		
+		public void LoadIntoLayer(TileMapLayer layer, string path)
+		{
+			if (ResourceLoader.Exists(path))
+			{
+				TileMapPattern pattern = GD.Load<TileMapPattern>(path);
+				
+				if (pattern != null)
+				{
+					layer.SetPattern(new Vector2I(0, 0), pattern);
+				}
+			}
+		}
+	
+		public void LoadLayers(string groundLayerPath, string decorationLayerPath, string entityLayerPath)
+		{
+			LoadIntoLayer(_groundTileLayer, groundLayerPath);
+			LoadIntoLayer(_decorationLayer, decorationLayerPath);
+		//	LoadIntoLayer(_entityLayer, entityLayerPath);
+			/*(ResourceLoader.Exists(levelResourcePath))
+			{
+				Level = ResourceLoader.Load<Resources.Levels.Level>(levelResourcePath);*/
 		}
 	
 		public override void _Ready()
 		{
-			_groundTileLayer = GetNode<TileMapLayer>("GroundLayer");
-		}
-
-		public override void _Process(double delta)
-		{
+			_groundTileLayer = GetNode<TileMapLayer>("GroundLayer2");
+			_decorationLayer = GetNode<TileMapLayer>("DecorationLayer");
+			_entityLayer = GetNode<TileMapLayer>("EntityLayer");
 		}
 	}
 }
