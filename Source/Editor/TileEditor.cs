@@ -30,9 +30,23 @@ namespace Drumstalotajs.Editor
 		
 		private void SavePattern(TileMapLayer layer)
 		{
-			Array<Vector2I> cells = layer.GetUsedCells();
-			TileMapPattern pattern = layer.GetPattern(cells);
-			ResourceSaver.Save(pattern, $"res://Exports/{layer.Name}.tres");
+			Rect2I usedRect = layer.GetUsedRect();
+			Array<Vector2I> allCells = new Array<Vector2I>();
+			
+			for (int y = usedRect.Position.Y; y < usedRect.Position.Y + usedRect.Size.Y; y++)
+			{
+				for (int x = usedRect.Position.X; x < usedRect.Position.X + usedRect.Size.X; x++)
+				{
+					allCells.Add(new Vector2I(x, y));
+				}
+			}
+			
+			TileMapPattern tiles = layer.GetPattern(allCells);
+			Resources.Levels.Pattern pattern = new Resources.Levels.Pattern();
+			pattern.Tiles = tiles;
+			pattern.Offset = usedRect.Position;
+			
+			ResourceSaver.Save(pattern, $"res://Exports/{layer.Name}Pattern.tres");
 		}
 		
 		public override void _Ready()

@@ -20,7 +20,7 @@ BaseHeight = 25.0
 Devices = Dictionary[int, Object]({
 2: SubResource("Resource_amgyj")
 })
-GroundPatternPath = "res://Resources/Levels/1/GroundLayer.tres"
-DecorationPatternPath = "res://Resources/Levels/1/DecorationLayer.tres"
+GroundPatternPath = "res://Resources/Levels/1/GroundLayerPattern.tres"
+DecorationPatternPath = "res://Resources/Levels/1/DecorationLayerPattern.tres"
 GroundPattern = SubResource("TileMapPattern_4fmpy")
 metadata/_custom_type_script = "uid://bnyj87sc5un27"

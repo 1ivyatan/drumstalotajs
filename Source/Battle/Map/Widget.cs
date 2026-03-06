@@ -16,11 +16,11 @@ namespace Drumstalotajs.Battle.Map
 		{
 			if (ResourceLoader.Exists(path))
 			{
-				TileMapPattern pattern = GD.Load<TileMapPattern>(path);
+				Resources.Levels.Pattern pattern = GD.Load<Resources.Levels.Pattern>(path);
 				
 				if (pattern != null)
 				{
-					layer.SetPattern(new Vector2I(0, 0), pattern);
+					layer.SetPattern(pattern.Offset, pattern.Tiles);
 				}
 			}
 		}
