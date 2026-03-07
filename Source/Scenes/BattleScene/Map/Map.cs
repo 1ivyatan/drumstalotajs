@@ -10,7 +10,8 @@ namespace Drumstalotajs.Scenes.BattleScene
 		
 		private void Zoom(Vector2 amount)
 		{
-			camera.Zoom += amount;
+			Vector2 zoom = camera.Zoom + amount;
+			camera.Zoom = zoom.Clamp(new Vector2(1f, 1f), new Vector2(2f, 2f));
 		}
 		
 		public override void _Ready()
