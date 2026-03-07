@@ -1,10 +1,11 @@
 using Godot;
 using System;
 
-namespace Drumstalotajs.Scenes.BattleScene
+namespace Drumstalotajs.Scenes.BattleScene.Map
 {
-	public partial class Map : Node2D
+	public partial class MapWidget : Node2D
 	{
+		public bool Dragging = false;
 		private Camera2D camera;
 		private bool dragging = false;
 		
@@ -24,9 +25,7 @@ namespace Drumstalotajs.Scenes.BattleScene
 			if (@event is InputEventMouse mouseEvent)
 			{
 				if (mouseEvent is InputEventMouseButton mouseClick)
-				{
-					dragging = mouseClick.Pressed && mouseClick.ButtonIndex == (MouseButton)1;
-					
+				{	
 					if (mouseClick.Pressed)
 					{
 						switch (mouseClick.ButtonIndex)
@@ -34,29 +33,12 @@ namespace Drumstalotajs.Scenes.BattleScene
 							case (MouseButton)4: Zoom(new Vector2(0.25f, 0.25f)); break;
 							case (MouseButton)5: Zoom(new Vector2(-0.25f, -0.25f)); break;
 						}
-						GD.Print(mouseClick.ButtonIndex);
 					}
-					
-					/*
-					dragging = mouseClick.Pressed && buttonIndex == (MouseButton)1;
-						GD.Print(buttonIndex);
-						switch (buttonIndex)
-						{
-							case (MouseButton)4:
-								camera.Zoom += new Vector2(0.25f, 0.25f);
-								break;
-							
-							case (MouseButton)5:
-								camera.Zoom -= new Vector2(0.25f, 0.25f);
-								break;
-						}*/
-					
-					
 				}
 				
 				if (mouseEvent is InputEventMouseMotion mouseMotion)
 				{
-					if (dragging)
+					if (Dragging)
 					{
 						GD.Print(mouseMotion.Relative);
 					}
