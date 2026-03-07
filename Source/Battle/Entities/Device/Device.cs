@@ -16,14 +16,13 @@ namespace Drumstalotajs.Battle.Entities
 		public override void _Ready()
 		{
 			_parent = GetParent<TileMapLayer>();
-			_groundLayer = _parent.GetNode<TileMapLayer>("../GroundLayer") as Map.Layers.GroundLayer;
-			_sprite = GetNode<Sprite2D>("Sprite");
-			
-			Vector2I gridPosition = _groundLayer.LocalToMap(Position);
-			TileData tileData = _groundLayer.GetCellTileData(gridPosition);
 			
 			if (EntityResource != null)
 			{
+				_groundLayer = _parent.GetNode<TileMapLayer>("../GroundLayer") as Map.Layers.GroundLayer;
+				_sprite = GetNode<Sprite2D>("Sprite");
+				Vector2I gridPosition = _groundLayer.LocalToMap(Position);
+				TileData tileData = _groundLayer.GetCellTileData(gridPosition);
 				Properties = new DeviceProperties(this, _groundLayer, tileData);
 				Projectile = new DeviceProjectile(Properties, DeviceResource.Projectiles[0]); ///
 				_sprite.Texture = EntityResource.Sprites[0];

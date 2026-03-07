@@ -22,5 +22,6 @@ Devices = Dictionary[int, Object]({
 })
 GroundPatternPath = "res://Resources/Levels/1/GroundLayerPattern.tres"
 DecorationPatternPath = "res://Resources/Levels/1/DecorationLayerPattern.tres"
+EntityPatternPath = "res://Resources/Levels/1/EntityLayerPattern.tres"
 GroundPattern = SubResource("TileMapPattern_4fmpy")
 metadata/_custom_type_script = "uid://bnyj87sc5un27"

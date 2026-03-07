@@ -36,6 +36,7 @@ namespace Drumstalotajs.Battle.Entities
 			} else
 			{
 				QueueFree();
+				GetParent().RemoveChild(this);
 			}
 		}
 	}

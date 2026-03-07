@@ -9,13 +9,6 @@ namespace Drumstalotajs.Battle.Entities
 		
 		private Sprite2D _sprite;
 		
-		/* change this! */
-		public void Destroy()
-		{
-			QueueFree();
-			GetParent().RemoveChild(this);
-		}
-		
 		public override void _Ready()
 		{
 			_sprite = GetNode<Sprite2D>("Sprite");

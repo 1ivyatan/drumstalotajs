@@ -13,16 +13,16 @@ namespace Drumstalotajs.Battle.Stage.StageOverlays.Firing
 		private void StartFiring()
 		{
 			int firedCount = 0;
-			foreach (var cell in _entityLayer.EntityPointers[Entities.Type.Device])
+			foreach (var cell in _entityLayer.Entitys[Entities.Type.Device])
 			{
 				SceneTreeTimer delayToFire = GetTree().CreateTimer(GD.RandRange(0.01f, 1f));
 				delayToFire.Connect("timeout", Callable.From(() => {
-					Entities.Device device = cell.Value as Entities.Device;
+					Entities.Device device = cell as Entities.Device;
 					Map.Projectiles.Projectile projectile = _projectileManager.SpawnShell(device);
 					
 					projectile.Connect("Detonated", Callable.From(() => {
 						firedCount++;
-						if (firedCount == _entityLayer.EntityPointers[Entities.Type.Device].Count)
+						if (firedCount == _entityLayer.Entitys[Entities.Type.Device].Count)
 						{
 							(GetParent<Control>() as Battle.Stage.Manager).DeviceAdjustment();
 						}

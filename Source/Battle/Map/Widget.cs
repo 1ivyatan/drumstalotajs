@@ -28,16 +28,13 @@ namespace Drumstalotajs.Battle.Map
 		public void LoadLayers(string groundLayerPath, string decorationLayerPath, string entityLayerPath)
 		{
 			LoadIntoLayer(_groundTileLayer, groundLayerPath);
-			LoadIntoLayer(_decorationLayer, decorationLayerPath);
-		//	LoadIntoLayer(_entityLayer, entityLayerPath);
-			/*(ResourceLoader.Exists(levelResourcePath))
-			{
-				Level = ResourceLoader.Load<Resources.Levels.Level>(levelResourcePath);*/
+			LoadIntoLayer(_decorationLayer, decorationLayerPath);	
+			LoadIntoLayer(_entityLayer, entityLayerPath);
 		}
 	
 		public override void _Ready()
 		{
-			_groundTileLayer = GetNode<TileMapLayer>("GroundLayer2");
+			_groundTileLayer = GetNode<TileMapLayer>("GroundLayer");
 			_decorationLayer = GetNode<TileMapLayer>("DecorationLayer");
 			_entityLayer = GetNode<TileMapLayer>("EntityLayer");
 		}

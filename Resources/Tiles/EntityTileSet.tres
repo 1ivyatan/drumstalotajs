@@ -1,0 +1,13 @@
+[gd_resource type="TileSet" format=3 uid="uid://c14yecbsy03ol"]
+
+[ext_resource type="PackedScene" uid="uid://h1sl1lwano8s" path="res://Scenes/Battle/Entities/Markers/DeviceMarker.tscn" id="1_ia08q"]
+[ext_resource type="PackedScene" uid="uid://com4i07an24c7" path="res://Scenes/Battle/Entities/Devices/Device.tscn" id="2_yfw5e"]
+[ext_resource type="PackedScene" uid="uid://bvdaeqrdq3xsk" path="res://Scenes/Battle/Entities/Defenses/Wall.tscn" id="3_juudl"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_bvrth"]
+scenes/1/scene = ExtResource("1_ia08q")
+scenes/2/scene = ExtResource("2_yfw5e")
+scenes/3/scene = ExtResource("3_juudl")
+
+[resource]
+sources/0 = SubResource("TileSetScenesCollectionSource_bvrth")

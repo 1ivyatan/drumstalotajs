@@ -5,24 +5,31 @@ using System.Linq;
 
 namespace Drumstalotajs.Battle.Map.Layers
 {
-	public partial class EntityLayer : TileMapLayer
+	public partial class EntityLayer : Layer
 	{
 		[Signal] public delegate void ChangeInEntitiesEventHandler(int entityType);
 		[Signal] public delegate void AddedEntityEventHandler(Entities.Entity entity, Vector2I position);
 		[Signal] public delegate void RemovedEntityEventHandler(Entities.Entity entity, Vector2I position);
 		
-		public Dictionary<Entities.Type, Dictionary<Vector2I, Entities.Entity>> EntityPointers
-		{
-			get;
-			private set;
-		}
+		public Dictionary<Entities.Type, List<Entities.Entity>> Entitys { get; private set; }
 		
 		public Entities.Entity GetEntity(Vector2I position)
 		{
-			foreach (var dict in EntityPointers)
+			foreach (var entityType in Entitys)
 			{
-				Entities.Entity value = dict.Value.FirstOrDefault(e => e.Key == position).Value;
-				if (value != null) return value;
+				
+				//if (GetCellPos(entity.Position) == position) return entity;
+			}
+			return null;
+		}
+		
+		public Entities.Entity GetEntity(Entities.Type entityType, Vector2I position)
+		{
+			foreach (var entity in Entitys[entityType])
+			{
+				GD.Print(entity.Position);
+				GD.Print(GetCellPos(entity.Position));
+				if (GetCellPos(entity.Position) == position) return entity;
 			}
 			return null;
 		}
@@ -39,21 +46,20 @@ namespace Drumstalotajs.Battle.Map.Layers
 		
 		public void RemoveEntity(Entities.Entity entity)
 		{
-			Vector2I position = EntityPointers[(Entities.Type)entity.EntityResource.Type].FirstOrDefault(e => e.Value == entity).Key;
-			EraseCell(position);
+			EraseCell(GetCellPos(entity.Position));
 		}
 		
 		public void RemoveAllEntitiesByType(Entities.Type type)
 		{
-			foreach (var cell in EntityPointers[type])
+			foreach (var cell in Entitys[type])
 			{
-				RemoveEntity(cell.Key);
+				RemoveEntity(cell);
 			}
 		}
 		
 		public override void _Ready()
 		{
-			EntityPointers = new Dictionary<Entities.Type, Dictionary<Vector2I, Entities.Entity>>();
+			Entitys = new Dictionary<Entities.Type, List<Entities.Entity>>();
 			
 			foreach (Entities.Type type in Enum.GetValues(typeof(Entities.Type)))
 			{
@@ -61,8 +67,7 @@ namespace Drumstalotajs.Battle.Map.Layers
 				{
 					continue;
 				}
-				
-				EntityPointers.Add(type, new Dictionary<Vector2I, Entities.Entity>());
+				Entitys.Add(type, new List<Entities.Entity>());
 			}
 			
 			ChildEnteredTree += _EntityEntered;
@@ -79,7 +84,7 @@ namespace Drumstalotajs.Battle.Map.Layers
 				
 				if ((Entities.Type)entity.EntityResource.Type != Entities.Type.None)
 				{
-					EntityPointers[(Entities.Type)entity.EntityResource.Type].Add(cellPos, entity);
+					Entitys[(Entities.Type)entity.EntityResource.Type].Add(entity);
 					EmitSignal("AddedEntity", entity, cellPos);
 					EmitSignal("ChangeInEntities", entity.EntityResource.Type);
 				}
@@ -91,12 +96,13 @@ namespace Drumstalotajs.Battle.Map.Layers
 			if (node is Entities.Entity)
 			{
 				Entities.Entity entity = node as Entities.Entity;
+				
 				Vector2 localPos = ToLocal(entity.Position);
 				Vector2I cellPos = LocalToMap(localPos);
 				
 				if ((Entities.Type)entity.EntityResource.Type != Entities.Type.None)
 				{
-					EntityPointers[(Entities.Type)entity.EntityResource.Type].Remove(cellPos);
+					Entitys[(Entities.Type)entity.EntityResource.Type].Remove(entity);
 					EmitSignal("RemovedEntity", entity, cellPos);
 					EmitSignal("ChangeInEntities", entity.EntityResource.Type);
 				}

@@ -57,11 +57,12 @@ namespace Drumstalotajs.Battle.Stage.StageOverlays.DeviceAdjustment
 			(int entityType, Vector2I position) => {
 				if ((Entities.Type)entityType == Entities.Type.Device)
 				{
-					SelectedEntity = _entityLayer.EntityPointers[(Entities.Type)entityType][position] as Entities.Device;
-					UpdateEntityStats(SelectedEntity, position);
-					_angleControl.SetRange(SelectedEntity.Properties.Angle.Value, SelectedEntity.Properties.Angle.Min, SelectedEntity.Properties.Angle.Max);
-					_traverseControl.SetRange(SelectedEntity.Properties.Traverse.Value, SelectedEntity.Properties.Traverse.Min, SelectedEntity.Properties.Traverse.Max, SelectedEntity.Properties.Traverse.Locked);
-					_entityInfo.Visible = true;
+					SelectedEntity = _entityLayer.GetEntity((Entities.Type)entityType, position) as Entities.Device;
+					GD.Print(SelectedEntity);
+//					UpdateEntityStats(SelectedEntity, position);
+//					_angleControl.SetRange(SelectedEntity.Properties.Angle.Value, SelectedEntity.Properties.Angle.Min, SelectedEntity.Properties.Angle.Max);
+//					_traverseControl.SetRange(SelectedEntity.Properties.Traverse.Value, SelectedEntity.Properties.Traverse.Min, SelectedEntity.Properties.Traverse.Max, SelectedEntity.Properties.Traverse.Locked);
+//					_entityInfo.Visible = true;
 				}
 			}));
 				
@@ -103,9 +104,9 @@ namespace Drumstalotajs.Battle.Stage.StageOverlays.DeviceAdjustment
 			
 			_toFiringButton.Connect("pressed", Callable.From(
 			() => {
-				foreach (var cell in _entityLayer.EntityPointers[Entities.Type.Device])
+				foreach (var cell in _entityLayer.Entitys[Entities.Type.Device])
 				{
-					Entities.Device device = cell.Value as Entities.Device;
+					Entities.Device device = cell as Entities.Device;
 					if (!device.Properties.Traverse.Locked)
 					{
 						device.Properties.Traverse.Locked = true;

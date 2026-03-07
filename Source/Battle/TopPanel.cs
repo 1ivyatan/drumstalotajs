@@ -17,7 +17,7 @@ namespace Drumstalotajs.Battle
 		
 		private void UpdateStats()
 		{
-			_deviceCountLabel.Text = $"{_entityLayer.EntityPointers[Entities.Type.Device].Count}";
+			_deviceCountLabel.Text = $"{_entityLayer.Entitys[Entities.Type.Device].Count}";
 		}
 		
 		public override void _Ready()

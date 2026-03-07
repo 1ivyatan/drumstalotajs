@@ -9,6 +9,7 @@ namespace Drumstalotajs.Editor
 	{
 		private TileMapLayer _groundLayer;
 		private TileMapLayer _decorationLayer;
+		private TileMapLayer _entityLayer;
 		private readonly Shortcut _saveShortcut = new Shortcut();
 		private bool _saving { get; set; }
 		
@@ -18,6 +19,7 @@ namespace Drumstalotajs.Editor
 			{
 				SavePattern(_groundLayer);
 				SavePattern(_decorationLayer);
+				SavePattern(_entityLayer);
 				GD.Print("should be saved, go to exports directory");
 				
 				_saving = true;
@@ -53,6 +55,7 @@ namespace Drumstalotajs.Editor
 		{
 			_groundLayer = GetNode<TileMapLayer>("GroundLayer");
 			_decorationLayer = GetNode<TileMapLayer>("DecorationLayer");
+			_entityLayer = GetNode<TileMapLayer>("EntityLayer");
 			
 			InputEventKey keyEvent = new InputEventKey
 			{

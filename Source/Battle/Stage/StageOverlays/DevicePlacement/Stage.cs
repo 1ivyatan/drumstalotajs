@@ -15,8 +15,6 @@ namespace Drumstalotajs.Battle.Stage.StageOverlays.DevicePlacement
 		
 		private void ClickedOnDeviceTile(int entityType, Vector2I tilePosition)
 		{
-			//Entities.Entity entity = _entityLayer.EntityPointers[(Entities.Type)entityType][tilePosition];
-			
 			_entityLayer.InsertEntity(
 				((Entities.Type)entityType == Entities.Type.DeviceMarker
 					? (Entities.Id)_mapDevices.SelectedDeviceId
@@ -31,7 +29,7 @@ namespace Drumstalotajs.Battle.Stage.StageOverlays.DevicePlacement
 			{
 				if (_scene.Level.Devices.ContainsKey(entity.EntityResource.Id))
 				{
-					if (_entityLayer.EntityPointers[Entities.Type.Device].Count > 0 &&  _entityLayer.EntityPointers[Entities.Type.Device].Count <= _scene.Level.Devices[entity.EntityResource.Id].Amount)
+					if (_entityLayer.Entitys[Entities.Type.Device].Count > 0 &&  _entityLayer.Entitys[Entities.Type.Device].Count <= _scene.Level.Devices[entity.EntityResource.Id].Amount)
 					{
 						_toDeviceAdjustmentButton.Disabled = false;
 					} else

@@ -3,14 +3,9 @@ using System;
 
 namespace Drumstalotajs.Battle.Map.Layers
 {
-	public partial class GroundLayer : TileMapLayer
+	public partial class GroundLayer : Layer
 	{
 		public double Height { get; private set; }
-		
-		public Vector2I GetCellPos(Vector2 position)
-		{
-			return LocalToMap(ToLocal(position));
-		}
 		
 		public double GetHeight(Vector2I position)
 		{
