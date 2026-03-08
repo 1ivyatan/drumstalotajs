@@ -9,6 +9,11 @@ namespace Drumstalotajs.Scenes.BattleScene.Map
 		private Camera2D camera;
 		private bool dragging = false;
 		
+		private void Move(Vector2 amount)
+		{
+			camera.Position -= amount;
+		}
+		
 		private void Zoom(Vector2 amount)
 		{
 			Vector2 zoom = camera.Zoom + amount;
@@ -40,7 +45,7 @@ namespace Drumstalotajs.Scenes.BattleScene.Map
 				{
 					if (Dragging)
 					{
-						GD.Print(mouseMotion.Relative);
+						Move(mouseMotion.Relative);
 					}
 				}
 			}
