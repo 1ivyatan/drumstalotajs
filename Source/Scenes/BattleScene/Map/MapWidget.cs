@@ -5,9 +5,18 @@ namespace Drumstalotajs.Scenes.BattleScene.Map
 {
 	public partial class MapWidget : Node2D
 	{
-		public bool Dragging = false;
+		public bool Locked { get; set; } = false;
+		public bool Dragging { get; set; } = false;
+		
+		private Map.Layers.GroundLayer groundLayer;
 		private Camera2D camera;
-		private bool dragging = false;
+		
+		public void Center()
+		{
+			Rect2 usedRect = groundLayer.GetUsedRect();
+			GD.Print(usedRect.GetCenter() * 16);
+			camera.Position = usedRect.Position + usedRect.GetCenter() * 16;
+		}
 		
 		private void Move(Vector2 amount)
 		{
@@ -22,30 +31,35 @@ namespace Drumstalotajs.Scenes.BattleScene.Map
 		
 		public override void _Ready()
 		{
+			groundLayer = GetNode<TileMapLayer>("GroundLayer") as Map.Layers.GroundLayer;
 			camera = GetNode<Camera2D>("Camera");
+			Center();
 		}
 		
 		public override void _UnhandledInput(InputEvent @event)
 		{
-			if (@event is InputEventMouse mouseEvent)
+			if (!Locked)
 			{
-				if (mouseEvent is InputEventMouseButton mouseClick)
-				{	
-					if (mouseClick.Pressed)
-					{
-						switch (mouseClick.ButtonIndex)
+				if (@event is InputEventMouse mouseEvent)
+				{
+					if (mouseEvent is InputEventMouseButton mouseClick)
+					{	
+						if (mouseClick.Pressed)
 						{
-							case (MouseButton)4: Zoom(new Vector2(0.25f, 0.25f)); break;
-							case (MouseButton)5: Zoom(new Vector2(-0.25f, -0.25f)); break;
+							switch (mouseClick.ButtonIndex)
+							{
+								case (MouseButton)4: Zoom(new Vector2(0.25f, 0.25f)); break;
+								case (MouseButton)5: Zoom(new Vector2(-0.25f, -0.25f)); break;
+							}
 						}
 					}
-				}
 				
-				if (mouseEvent is InputEventMouseMotion mouseMotion)
-				{
-					if (Dragging)
+					if (mouseEvent is InputEventMouseMotion mouseMotion)
 					{
-						Move(mouseMotion.Relative);
+						if (Dragging)
+						{
+							Move(mouseMotion.Relative);
+						}
 					}
 				}
 			}
