@@ -10,7 +10,7 @@ namespace Drumstalotajs.Scenes.BattleScene.Stages
 		public override void _Ready()
 		{
 			map = GetNode<Node2D>("../../Map") as Map.MapWidget;
-			
+			SetDefaultCursorShape(Control.CursorShape.Cross);
 		/*	map.DraggingChange += (Map.MapWidget.DraggingState state) => {
 				if (state != Map.MapWidget.DraggingState.NONE)
 				{

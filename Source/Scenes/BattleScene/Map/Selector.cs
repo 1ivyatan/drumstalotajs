@@ -5,8 +5,11 @@ namespace Drumstalotajs.Scenes.BattleScene.Map
 {
 	public partial class Selector : Node2D
 	{
+		[Signal] public delegate void HoverChangeEventHandler(Vector2I cellPos);
+		
 		public bool Disabled { get; set; }
 		private Map.Layers.GroundLayer groundLayer;
+		private Vector2I CurrentCell { get; set; }
 		
 		public override void _Ready()
 		{
@@ -22,14 +25,35 @@ namespace Drumstalotajs.Scenes.BattleScene.Map
 					Vector2 globalMousePos = GetGlobalMousePosition();
 					Vector2 localMousePos = groundLayer.ToLocal(globalMousePos);
 					Vector2I cellPos = groundLayer.LocalToMap(localMousePos);
-					MoveSelector(cellPos);
+					
+					if (FilterAllowed(cellPos))
+					{
+						MoveSelector(cellPos);
+						Visible = true;
+					} else
+					{
+						Visible = false;
+						return;
+					}
+					
+					if (mouseEvent is InputEventMouseMotion mouseMotion)
+					{
+						if (CurrentCell != cellPos)
+						{
+							EmitSignal("HoverChange");
+							CurrentCell = cellPos;
+						}
+					}
 				}
-				
-				Visible = true;
 			} else
 			{
 				Visible = false;
 			}
+		}
+		
+		private bool FilterAllowed(Vector2I cellPos)
+		{
+			return groundLayer.GetCellAtlasCoords(cellPos) != new Vector2I(-1, -1);
 		}
 		
 		private void MoveSelector(Vector2I cellPos)

@@ -26,14 +26,15 @@ namespace Drumstalotajs.Scenes.BattleScene.Map
 			selector = GetNode<Node2D>("Selector") as Map.Selector;
 			camera = GetNode<Camera2D>("Camera") as Camera;
 			
+			Input.SetDefaultCursorShape(Input.CursorShape.Move);
+			/*
 			DraggingChange += (Map.MapWidget.DraggingState state) => {
 				if (state != Map.MapWidget.DraggingState.NONE)
 				{
-					Input.SetDefaultCursorShape(Input.CursorShape.Move);
 				} else {
 					Input.SetDefaultCursorShape(Input.CursorShape.Arrow);
 				}
-			};
+			};*/
 		}
 		
 		public override void _UnhandledInput(InputEvent @event)
