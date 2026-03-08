@@ -9,31 +9,40 @@ namespace Drumstalotajs.Scenes.BattleScene.Map
 		public bool Dragging { get; set; } = false;
 		
 		private Map.Layers.GroundLayer groundLayer;
-		private Camera2D camera;
+		private Camera camera;
 		
-		public void Center()
+		public void CenterAndAlign()
 		{
 			Rect2 usedRect = groundLayer.GetUsedRect();
-			GD.Print(usedRect.GetCenter() * 16);
+			camera.SetLimits(usedRect, groundLayer.TileSize);
 			camera.Position = usedRect.Position + usedRect.GetCenter() * 16;
 		}
 		
 		private void Move(Vector2 amount)
 		{
-			camera.Position -= amount;
+			Rect2 usedRect = groundLayer.GetUsedRect();
+			Vector2 newPosition = (camera.Position - (amount / camera.Zoom));
+			Vector2 clampedPosition = newPosition.Clamp(
+				usedRect.Position * groundLayer.TileSize,
+				(usedRect.Position + usedRect.Size) * groundLayer.TileSize
+			);
+			camera.Position = clampedPosition;
+			GD.Print(clampedPosition);
+			GD.Print(usedRect.Position * groundLayer.TileSize);
+			GD.Print((usedRect.Position + usedRect.Size) * groundLayer.TileSize);
 		}
 		
 		private void Zoom(Vector2 amount)
 		{
 			Vector2 zoom = camera.Zoom + amount;
-			camera.Zoom = zoom.Clamp(new Vector2(1f, 1f), new Vector2(2f, 2f));
+			camera.Zoom = zoom.Clamp(new Vector2(.25f, .25f), new Vector2(2f, 2f));
 		}
 		
 		public override void _Ready()
 		{
 			groundLayer = GetNode<TileMapLayer>("GroundLayer") as Map.Layers.GroundLayer;
-			camera = GetNode<Camera2D>("Camera");
-			Center();
+			camera = GetNode<Camera2D>("Camera") as Camera;
+			CenterAndAlign();
 		}
 		
 		public override void _UnhandledInput(InputEvent @event)

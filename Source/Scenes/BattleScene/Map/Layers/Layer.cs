@@ -5,5 +5,9 @@ namespace Drumstalotajs.Scenes.BattleScene.Map.Layers
 {
 	public partial class Layer : TileMapLayer
 	{
+		public int TileSize
+		{
+			get => TileSet.TileSize.X;
+		}
 	}
 }
