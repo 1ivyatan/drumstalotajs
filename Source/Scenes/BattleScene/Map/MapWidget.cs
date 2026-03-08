@@ -20,7 +20,7 @@ namespace Drumstalotajs.Scenes.BattleScene.Map
 			camera = GetNode<Camera2D>("Camera");
 		}
 		
-		public override void _Input(InputEvent @event)
+		public override void _UnhandledInput(InputEvent @event)
 		{
 			if (@event is InputEventMouse mouseEvent)
 			{

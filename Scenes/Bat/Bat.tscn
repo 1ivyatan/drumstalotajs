@@ -33,7 +33,7 @@ script = ExtResource("4_jjlgw")
 anchors_preset = 10
 anchor_right = 1.0
 grow_horizontal = 2
-mouse_filter = 1
+mouse_force_pass_scroll_events = false
 
 [node name="HorizBox" type="HBoxContainer" parent="UI/TopPanel" unique_id=334050843]
 layout_mode = 2
