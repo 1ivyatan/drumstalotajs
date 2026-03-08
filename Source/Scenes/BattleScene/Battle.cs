@@ -16,24 +16,6 @@ namespace Drumstalotajs.Scenes.BattleScene
 			map.LoadLayers(Level);
 		}
 		
-		public override void _Input(InputEvent @event)
-		{
-			if (@event is InputEventMouse mouseEvent)
-			{
-				if (mouseEvent is InputEventMouseButton mouseClick)
-				{
-					map.Dragging = mouseClick.Pressed && mouseClick.ButtonIndex == (MouseButton)1;
-					if (map.Dragging)
-					{
-						stageManager.MouseDefaultCursorShape = Control.CursorShape.Move;
-					} else
-					{
-						stageManager.MouseDefaultCursorShape = Control.CursorShape.Arrow;
-					}
-				}
-			}
-		}
-		
 		public void AssignLevel(Resources.Levels.Level level)
 		{
 			Level = level;

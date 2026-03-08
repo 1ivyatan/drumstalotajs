@@ -5,18 +5,35 @@ namespace Drumstalotajs.Scenes.BattleScene.Map
 {
 	public partial class MapWidget : Node2D
 	{
+		[Signal] public delegate void DraggingChangeEventHandler(DraggingState state);
+		[Signal] public delegate void ScrollingChangeEventHandler(bool scrolling);
+		
 		public bool Locked { get; set; } = false;
 		public bool Dragging { get; set; } = false;
+		public DraggingState DragState { get; set; } = DraggingState.NONE;
+	//	public bool Zooming { get; set; } = false;
 		
 		private Map.Layers.GroundLayer groundLayer;
 		private Map.Layers.DecorationLayer decorationLayer;
+		private Map.Selector selector;
+		
 		private Camera camera;
 		
 		public override void _Ready()
 		{
 			groundLayer = GetNode<TileMapLayer>("GroundLayer") as Map.Layers.GroundLayer;
 			decorationLayer = GetNode<TileMapLayer>("DecorationLayer") as Map.Layers.DecorationLayer;
+			selector = GetNode<Node2D>("Selector") as Map.Selector;
 			camera = GetNode<Camera2D>("Camera") as Camera;
+			
+			DraggingChange += (Map.MapWidget.DraggingState state) => {
+				if (state != Map.MapWidget.DraggingState.NONE)
+				{
+					Input.SetDefaultCursorShape(Input.CursorShape.Move);
+				} else {
+					Input.SetDefaultCursorShape(Input.CursorShape.Arrow);
+				}
+			};
 		}
 		
 		public override void _UnhandledInput(InputEvent @event)
@@ -27,6 +44,8 @@ namespace Drumstalotajs.Scenes.BattleScene.Map
 				{
 					if (mouseEvent is InputEventMouseButton mouseClick)
 					{	
+						Dragging = mouseClick.Pressed && mouseClick.ButtonIndex == (MouseButton)1;
+						
 						if (mouseClick.Pressed)
 						{
 							switch (mouseClick.ButtonIndex)
@@ -39,9 +58,24 @@ namespace Drumstalotajs.Scenes.BattleScene.Map
 				
 					if (mouseEvent is InputEventMouseMotion mouseMotion)
 					{
-						if (Dragging)
+						if (mouseMotion.Relative != Vector2.Zero)
 						{
-							Move(mouseMotion.Relative);
+							if (Dragging)
+							{
+								selector.Disabled = true;
+								Move(mouseMotion.Relative);
+							} else
+							{
+								selector.Disabled = false;
+								DragState = DraggingState.NONE;
+								EmitSignal("DraggingChange", (int)DragState);
+							}
+							
+							//if (Zooming)
+							//{
+							//	Zooming = false;
+							//	EmitSignal("ScrollingChange", Zooming);
+							//}
 						}
 					}
 				}
@@ -70,9 +104,26 @@ namespace Drumstalotajs.Scenes.BattleScene.Map
 				
 				if (limitLeft < limitRight || limitTop < limitBottom)
 				{
-					if (limitLeft < limitRight) newPosition.X = Mathf.Clamp(newPosition.X, limitLeft, limitRight);
-					if (limitTop < limitBottom) newPosition.Y = Mathf.Clamp(newPosition.Y, limitTop, limitBottom);
+					if (limitLeft < limitRight)
+					{
+						newPosition.X = Mathf.Clamp(newPosition.X, limitLeft, limitRight);
+						DragState = DraggingState.HORIZONTAL;
+					}
+					
+					if (limitTop < limitBottom)
+					{
+						newPosition.Y = Mathf.Clamp(newPosition.Y, limitTop, limitBottom);
+						DragState = DraggingState.VERTICAL;
+					}
+					
+					if (limitLeft < limitRight && limitTop < limitBottom) {
+						DragState = DraggingState.ALL;
+					}
+					
 					camera.GlobalPosition = newPosition;
+				} else
+				{
+					DragState = DraggingState.NONE;
 				}
 			}
 		}
@@ -83,6 +134,8 @@ namespace Drumstalotajs.Scenes.BattleScene.Map
 			{
 				Vector2 zoom = camera.Zoom + amount;
 				camera.Zoom = zoom.Clamp(new Vector2(.25f, .25f), new Vector2(2.5f, 2.5f));
+				//Zooming = true;
+				//EmitSignal("ScrollingChange", Zooming);
 			}
 		}
 

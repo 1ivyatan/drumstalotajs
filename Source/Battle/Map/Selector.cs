@@ -54,7 +54,6 @@ namespace Drumstalotajs.Battle.Map
 					Vector2I cellPos = _groundLayer.LocalToMap(localMousePos);
 					Entities.Type entityType = (Entities.Type)_entityLayer.GetCellAlternativeTile(cellPos);
 					
-					
 					if (mouseEvent is InputEventMouseButton mouseClick)
 					{
 						_currentCellPos = cellPos;

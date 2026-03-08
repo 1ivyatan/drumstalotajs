@@ -12,6 +12,12 @@
 [ext_resource type="Script" uid="uid://u2jw1v8sdhjt" path="res://Source/Scenes/BattleScene/UI/TopPanel.cs" id="7_fkoes"]
 [ext_resource type="Script" uid="uid://gxgx761xs0on" path="res://Source/Scenes/BattleScene/UI/PauseMenu.cs" id="7_klqyf"]
 [ext_resource type="Script" uid="uid://jddq8gm4jqko" path="res://Source/Scenes/BattleScene/Map/Layers/DecorationLayer.cs" id="7_ov0md"]
+[ext_resource type="Texture2D" uid="uid://461wrfeyxmld" path="res://Assets/Sprites/map.svg" id="8_0r338"]
+[ext_resource type="Script" uid="uid://b12l75tm16cjv" path="res://Source/Scenes/BattleScene/Map/Selector.cs" id="8_et7eu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_et7eu"]
+atlas = ExtResource("8_0r338")
+region = Rect2(0, 0, 16, 16)
 
 [node name="Battle" type="Node2D" unique_id=1647671739]
 script = ExtResource("1_lbndd")
@@ -27,6 +33,12 @@ script = ExtResource("4_wko0m")
 [node name="DecorationLayer" type="TileMapLayer" parent="Map" unique_id=721226725]
 tile_set = ExtResource("6_fq2pg")
 script = ExtResource("7_ov0md")
+
+[node name="Selector" type="Node2D" parent="Map" unique_id=1038233918]
+script = ExtResource("8_et7eu")
+
+[node name="Sprite" type="Sprite2D" parent="Map/Selector" unique_id=553884794]
+texture = SubResource("AtlasTexture_et7eu")
 
 [node name="Camera" type="Camera2D" parent="Map" unique_id=97879156]
 script = ExtResource("5_v1kpu")
