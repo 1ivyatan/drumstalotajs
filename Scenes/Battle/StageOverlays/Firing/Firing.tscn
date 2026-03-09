@@ -1,7 +1,0 @@
-[gd_scene format=3 uid="uid://dvke6hr82smaj"]
-
-[ext_resource type="PackedScene" uid="uid://c2qn35q10drob" path="res://Scenes/Battle/StageOverlays/StageOverlay.tscn" id="1_i5yhw"]
-[ext_resource type="Script" uid="uid://bn6k4kjs8axl8" path="res://Source/Battle/Stage/StageOverlays/Firing/Stage.cs" id="2_0yks0"]
-
-[node name="StageOverlay" unique_id=106437751 instance=ExtResource("1_i5yhw")]
-script = ExtResource("2_0yks0")

@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="Scene" format=3 uid="uid://clohgi8vys4kc"]
-
-[ext_resource type="Script" uid="uid://5tnoopda0y04" path="res://Source/Resources/Scene.cs" id="1_6iin0"]
-
-[resource]
-script = ExtResource("1_6iin0")
-Path = "res://Scenes/Levels/Levels.tscn"
-metadata/_custom_type_script = "uid://5tnoopda0y04"

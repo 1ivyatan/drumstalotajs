@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="SceneResource" load_steps=2 format=3 uid="uid://u0tk58dse4jb"]
-
-[ext_resource type="Script" uid="uid://5tnoopda0y04" path="res://Source/Resources/Scene.cs" id="1_g24ej"]
-
-[resource]
-script = ExtResource("1_g24ej")
-Path = "res://Scenes/Battle/Battle.tscn"
-metadata/_custom_type_script = "uid://5tnoopda0y04"
