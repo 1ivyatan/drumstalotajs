@@ -4,7 +4,4 @@
     <EnableDynamicLoading>true</EnableDynamicLoading>
     <RootNamespace>Drumstalotajs</RootNamespace>
   </PropertyGroup>
-  <ItemGroup>
-    <Compile Include="Source/**/*.cs" />
-  </ItemGroup>
 </Project>

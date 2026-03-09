@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="drumstalotajs"
-run/main_scene="uid://be3dit4fpcd51"
+run/main_scene="uid://gno18tio1tc1"
 config/features=PackedStringArray("4.6", "C#", "GL Compatibility")
 config/icon="res://icon.svg"
 
