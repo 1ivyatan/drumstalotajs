@@ -28,7 +28,7 @@ namespace Drumstalotajs.Scenes.BattleScene.Map
 			selector = GetNode<Node2D>("Selector") as Map.Selector;
 			camera = GetNode<Camera2D>("Camera") as Camera;
 			
-			Input.SetDefaultCursorShape(Input.CursorShape.Move);
+			//Input.SetDefaultCursorShape(Input.CursorShape.Move);
 			/*
 			DraggingChange += (Map.MapWidget.DraggingState state) => {
 				if (state != Map.MapWidget.DraggingState.NONE)
@@ -141,8 +141,6 @@ namespace Drumstalotajs.Scenes.BattleScene.Map
 				//EmitSignal("ScrollingChange", Zooming);
 			}
 		}
-
-		//{//Level.GroundPatternPath, Level.DecorationPatternPath, Level.EntityPatternPath);
 		
 		public void LoadLayers(Resources.Levels.Level level)
 		{

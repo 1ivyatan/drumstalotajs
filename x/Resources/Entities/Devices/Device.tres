@@ -22,7 +22,6 @@ TraverseRange = 45.0
 MuzzleVelocity = 50.0
 Projectiles = Array[Object]([SubResource("Resource_5fiot")])
 Name = "Catapult"
-Id = 2
 Type = 2
 Height = 0.25
 Sprites = Array[Texture2D]([ExtResource("1_w6bcn")])

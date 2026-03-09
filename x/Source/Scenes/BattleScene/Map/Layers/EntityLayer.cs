@@ -8,10 +8,12 @@ namespace Drumstalotajs.Scenes.BattleScene.Map.Layers
 	public partial class EntityLayer : Layer
 	{
 		public Dictionary<BattleScene.Map.Entities.Type, List<Entities.Entity>> Entities { get; private set; }
+		public int[] EntityIds { get; private set; }
 		
 		public override void _Ready()
 		{
 			Entities = new Dictionary<BattleScene.Map.Entities.Type, List<Entities.Entity>>();
+			EntityIds = GetSceneTileIds(this, 0);
 			
 			foreach (BattleScene.Map.Entities.Type type in Enum.GetValues(typeof(BattleScene.Map.Entities.Type)))
 			{
@@ -33,6 +35,10 @@ namespace Drumstalotajs.Scenes.BattleScene.Map.Layers
 				{
 					Entities[entityType].Add(entity);
 				}
+				
+				Vector2I cellPos = LocalToMap(entity.Position);
+				GD.Print(entity.Position);
+				GD.Print(cellPos);
 			}
 		}
 		

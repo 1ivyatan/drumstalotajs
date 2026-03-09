@@ -19,5 +19,19 @@ namespace Drumstalotajs.Scenes.BattleScene.Map.Layers
 				}
 			}
 		}
+		
+		protected int[] GetSceneTileIds(TileMapLayer layer, int sourceId)
+		{
+			TileSet tileSet = layer.TileSet;
+			TileSetScenesCollectionSource source = tileSet.GetSource(sourceId) as TileSetScenesCollectionSource;
+			int count = source.GetSceneTilesCount();
+			int[] tileIds = new int[count];
+			for (int i = 0; i < count; i++)
+			{
+				int id = source.GetSceneTileId(i);
+				tileIds[i] = id;
+			}
+			return tileIds;
+		}
 	}
 }

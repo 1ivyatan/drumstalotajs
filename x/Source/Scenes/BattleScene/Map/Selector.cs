@@ -9,13 +9,17 @@ namespace Drumstalotajs.Scenes.BattleScene.Map
 		[Signal] public delegate void SelectedChangeEventHandler();
 		
 		public bool Disabled { get; set; }
+		public SelectorFilter Filter { get; set; }
 		private Vector2I CurrentCell { get; set; }
 		
 		private Map.Layers.GroundLayer groundLayer;
+		private Map.Layers.EntityLayer entityLayer;
 		
 		public override void _Ready()
 		{
 			groundLayer = GetNode<TileMapLayer>("../GroundLayer") as Map.Layers.GroundLayer;
+			entityLayer = GetNode<TileMapLayer>("../EntityLayer") as Map.Layers.EntityLayer;
+			Filter = new SelectorFilter(null, Map.Layers.LayerType.ALL);
 		}
 		
 		public override void _UnhandledInput(InputEvent @event)
@@ -32,10 +36,14 @@ namespace Drumstalotajs.Scenes.BattleScene.Map
 					{
 						if (mouseEvent is InputEventMouseMotion mouseMotion)
 						{
-							if (CurrentCell != cellPos)
+							if (Filter.Layer == Map.Layers.LayerType.GROUND || 
+							Filter.Layer == Map.Layers.LayerType.ALL)
 							{
-								EmitSignal("HoverChange");
-								CurrentCell = cellPos;
+								if (CurrentCell != cellPos)
+								{
+									EmitSignal("HoverChange");
+									CurrentCell = cellPos;
+								}
 							}
 						}
 						
@@ -43,7 +51,11 @@ namespace Drumstalotajs.Scenes.BattleScene.Map
 						{
 							if (mouseClick.Pressed)
 							{
-								EmitSignal("SelectedChange");
+								if (Filter.Layer == Map.Layers.LayerType.ENTITY || 
+								Filter.Layer == Map.Layers.LayerType.ALL)
+								{
+									EmitSignal("SelectedChange");
+								}
 							}
 						}
 						
@@ -63,7 +75,24 @@ namespace Drumstalotajs.Scenes.BattleScene.Map
 		
 		private bool FilterAllowed(Vector2I cellPos)
 		{
-			return groundLayer.GetCellAtlasCoords(cellPos) != new Vector2I(-1, -1);
+			GD.Print(Filter.Layer);
+			GD.Print(cellPos);
+			
+			//if (Filter.Layer == Map.Layers.LayerType.GROUND || 
+			//Filter.Layer == Map.Layers.LayerType.ALL)
+			//{
+				if (groundLayer.GetCellAtlasCoords(cellPos) == new Vector2I(-1, -1)) return false;
+			//}
+			
+			//if (Filter.Layer == Map.Layers.LayerType.ENTITY || 
+			//Filter.Layer == Map.Layers.LayerType.ALL)
+			//{
+		//	}
+				return true;
+			//return (
+			//	groundLayer.GetCellAtlasCoords(cellPos) != new Vector2I(-1, -1) &&
+			//	Filter.
+			//);
 		}
 		
 		private void MoveSelector(Vector2I cellPos)
