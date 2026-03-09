@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://jddq8gm4jqko" path="res://Source/Scenes/BattleScene/Map/Layers/DecorationLayer.cs" id="7_ov0md"]
 [ext_resource type="Texture2D" uid="uid://461wrfeyxmld" path="res://Assets/Sprites/map.svg" id="8_0r338"]
 [ext_resource type="Script" uid="uid://b12l75tm16cjv" path="res://Source/Scenes/BattleScene/Map/Selector.cs" id="8_et7eu"]
+[ext_resource type="Script" uid="uid://d2q5361lnn3r7" path="res://Source/Scenes/BattleScene/Map/Layers/EntityLayer.cs" id="8_wwh5u"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_et7eu"]
 atlas = ExtResource("8_0r338")
@@ -33,6 +34,9 @@ script = ExtResource("4_wko0m")
 [node name="DecorationLayer" type="TileMapLayer" parent="Map" unique_id=721226725]
 tile_set = ExtResource("6_fq2pg")
 script = ExtResource("7_ov0md")
+
+[node name="EntityLayer" type="TileMapLayer" parent="Map" unique_id=1850330543]
+script = ExtResource("8_wwh5u")
 
 [node name="Selector" type="Node2D" parent="Map" unique_id=1038233918]
 script = ExtResource("8_et7eu")
