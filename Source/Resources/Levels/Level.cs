@@ -22,9 +22,5 @@ namespace Drumstalotajs.Resources.Levels
 		[Export] public string GroundPatternPath { get; set; }
 		[Export] public string DecorationPatternPath { get; set; }
 		[Export] public string EntityPatternPath { get; set; }
-		
-		[Export] public TileMapPattern GroundPattern { get; set; }
-		[Export] public TileMapPattern DecorationPattern { get; set; }
-		[Export] public TileMapPattern EntityPattern { get; set; }
 	}
 }

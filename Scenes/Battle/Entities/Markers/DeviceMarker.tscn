@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://xsjtymh23tx" path="res://Scenes/Battle/Entities/Entity.tscn" id="1_paxgv"]
 [ext_resource type="Script" uid="uid://ce0uobelsr6su" path="res://Source/Battle/Entities/DeviceMarker/DeviceMarker.cs" id="2_rkh7e"]
-[ext_resource type="Resource" uid="uid://evokpfl178dv" path="res://Resources/Entities/Markers/DeviceMarker.tres" id="3_xm64c"]
+[ext_resource type="Resource" uid="uid://evokpfl178dv" path="res://Resources/Entities/Markers/DevicePlacementMarker.tres" id="3_xm64c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ihy8n"]
 

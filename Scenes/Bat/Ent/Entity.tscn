@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://wra5fwtdl2vu"]
+
+[ext_resource type="Script" uid="uid://kggyc527enx2" path="res://Source/Scenes/BattleScene/Entities/Entity.cs" id="1_w5nia"]
+
+[node name="Entity" type="Area2D" unique_id=1408007627]
+script = ExtResource("1_w5nia")

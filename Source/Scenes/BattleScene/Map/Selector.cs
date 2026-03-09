@@ -6,10 +6,12 @@ namespace Drumstalotajs.Scenes.BattleScene.Map
 	public partial class Selector : Node2D
 	{
 		[Signal] public delegate void HoverChangeEventHandler(Vector2I cellPos);
+		[Signal] public delegate void SelectedChangeEventHandler();
 		
 		public bool Disabled { get; set; }
-		private Map.Layers.GroundLayer groundLayer;
 		private Vector2I CurrentCell { get; set; }
+		
+		private Map.Layers.GroundLayer groundLayer;
 		
 		public override void _Ready()
 		{
@@ -28,21 +30,29 @@ namespace Drumstalotajs.Scenes.BattleScene.Map
 					
 					if (FilterAllowed(cellPos))
 					{
+						if (mouseEvent is InputEventMouseMotion mouseMotion)
+						{
+							if (CurrentCell != cellPos)
+							{
+								EmitSignal("HoverChange");
+								CurrentCell = cellPos;
+							}
+						}
+						
+						if (mouseEvent is InputEventMouseButton mouseClick)
+						{
+							if (mouseClick.Pressed)
+							{
+								EmitSignal("SelectedChange");
+							}
+						}
+						
 						MoveSelector(cellPos);
 						Visible = true;
 					} else
 					{
 						Visible = false;
 						return;
-					}
-					
-					if (mouseEvent is InputEventMouseMotion mouseMotion)
-					{
-						if (CurrentCell != cellPos)
-						{
-							EmitSignal("HoverChange");
-							CurrentCell = cellPos;
-						}
 					}
 				}
 			} else

@@ -86,7 +86,7 @@ namespace Drumstalotajs.Battle.Map.Layers
 				{
 					Entitys[(Entities.Type)entity.EntityResource.Type].Add(entity);
 					EmitSignal("AddedEntity", entity, cellPos);
-					EmitSignal("ChangeInEntities", entity.EntityResource.Type);
+				//	EmitSignal("ChangeInEntities", entity.EntityResource.Type);
 				}
 			}
 		}
@@ -104,7 +104,7 @@ namespace Drumstalotajs.Battle.Map.Layers
 				{
 					Entitys[(Entities.Type)entity.EntityResource.Type].Remove(entity);
 					EmitSignal("RemovedEntity", entity, cellPos);
-					EmitSignal("ChangeInEntities", entity.EntityResource.Type);
+				//	EmitSignal("ChangeInEntities", entity.EntityResource.Type);
 				}
 			}
 		}

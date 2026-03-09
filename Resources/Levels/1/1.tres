@@ -9,8 +9,6 @@ Amount = 2
 AllowedIndices = PackedInt32Array(0)
 metadata/_custom_type_script = "uid://c521occo36il3"
 
-[sub_resource type="TileMapPattern" id="TileMapPattern_4fmpy"]
-
 [resource]
 script = ExtResource("2_ounny")
 Title = "One"
@@ -23,5 +21,4 @@ Devices = Dictionary[int, Object]({
 GroundPatternPath = "res://Resources/Levels/1/GroundLayerPattern.tres"
 DecorationPatternPath = "res://Resources/Levels/1/DecorationLayerPattern.tres"
 EntityPatternPath = "res://Resources/Levels/1/EntityLayerPattern.tres"
-GroundPattern = SubResource("TileMapPattern_4fmpy")
 metadata/_custom_type_script = "uid://bnyj87sc5un27"

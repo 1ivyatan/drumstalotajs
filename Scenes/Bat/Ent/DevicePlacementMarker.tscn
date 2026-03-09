@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://crvlw2bvxtu3x"]
+
+[ext_resource type="PackedScene" uid="uid://wra5fwtdl2vu" path="res://Scenes/Bat/Ent/Entity.tscn" id="1_g0gim"]
+[ext_resource type="Script" uid="uid://cers4af10dwg6" path="res://Source/Scenes/BattleScene/Entities/Markers/DevicePlacementMarker.cs" id="2_1jykl"]
+[ext_resource type="Resource" uid="uid://evokpfl178dv" path="res://Resources/Entities/Markers/DevicePlacementMarker.tres" id="3_xenil"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1jykl"]
+
+[node name="DevicePlacementMarker" unique_id=1408007627 instance=ExtResource("1_g0gim")]
+script = ExtResource("2_1jykl")
+EntityResource = ExtResource("3_xenil")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0" unique_id=893801746]
+shape = SubResource("RectangleShape2D_1jykl")
+
+[node name="Sprite" type="Sprite2D" parent="." index="1" unique_id=1753954324]

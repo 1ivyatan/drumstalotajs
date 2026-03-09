@@ -23,11 +23,11 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="px"
-     inkscape:zoom="15.175"
-     inkscape:cx="40"
-     inkscape:cy="19.472817"
-     inkscape:window-width="1920"
-     inkscape:window-height="1008"
+     inkscape:zoom="21.460691"
+     inkscape:cx="15.84292"
+     inkscape:cy="10.437688"
+     inkscape:window-width="1463"
+     inkscape:window-height="795"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
@@ -45,5 +45,18 @@
        height="4.2333331"
        x="0"
        y="0" />
+    <rect
+       style="fill:#3697b1;stroke:#000000;stroke-width:0.23336249;stroke-opacity:0.5;fill-opacity:0.75;stroke-dasharray:none;paint-order:stroke fill markers;stroke-linecap:square"
+       id="rect2"
+       width="4.0000539"
+       height="2.4125531"
+       x="4.3499732"
+       y="0.9103899" />
+    <circle
+       style="fill:#6c787b;fill-opacity:0.75;stroke:none;stroke-width:0.233363;stroke-linecap:square;stroke-dasharray:none;stroke-opacity:0.5;paint-order:stroke fill markers"
+       id="path2"
+       cx="6.3500004"
+       cy="2.1166663"
+       r="0.22012286" />
   </g>
 </svg>

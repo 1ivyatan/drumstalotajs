@@ -15,6 +15,7 @@ namespace Drumstalotajs.Scenes.BattleScene.Map
 		
 		private Map.Layers.GroundLayer groundLayer;
 		private Map.Layers.DecorationLayer decorationLayer;
+		private Map.Layers.EntityLayer entityLayer;
 		private Map.Selector selector;
 		
 		private Camera camera;
@@ -23,6 +24,7 @@ namespace Drumstalotajs.Scenes.BattleScene.Map
 		{
 			groundLayer = GetNode<TileMapLayer>("GroundLayer") as Map.Layers.GroundLayer;
 			decorationLayer = GetNode<TileMapLayer>("DecorationLayer") as Map.Layers.DecorationLayer;
+			entityLayer = GetNode<TileMapLayer>("EntityLayer") as Map.Layers.EntityLayer;
 			selector = GetNode<Node2D>("Selector") as Map.Selector;
 			camera = GetNode<Camera2D>("Camera") as Camera;
 			
@@ -146,6 +148,7 @@ namespace Drumstalotajs.Scenes.BattleScene.Map
 		{
 			groundLayer.LoadLayer(level.GroundPatternPath);
 			decorationLayer.LoadLayer(level.DecorationPatternPath);
+			entityLayer.LoadLayer(level.EntityPatternPath);
 			CenterAndAlign();
 		}
 	}

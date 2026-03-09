@@ -3,17 +3,18 @@
 [ext_resource type="Script" uid="uid://tiv3nqru62sa" path="res://Source/Scenes/BattleScene/Battle.cs" id="1_lbndd"]
 [ext_resource type="Script" uid="uid://wsesrie7rfqm" path="res://Source/Scenes/BattleScene/Map/MapWidget.cs" id="2_83gj6"]
 [ext_resource type="Resource" uid="uid://xhurvhukm111" path="res://Resources/Levels/1/1.tres" id="2_nxcn7"]
-[ext_resource type="TileSet" uid="uid://ckikuqgbn6v0l" path="res://Resources/Tiles/GroundTileSet.tres" id="2_xgher"]
 [ext_resource type="Script" uid="uid://q7frraadyp1i" path="res://Source/Scenes/BattleScene/Stages/StageManager.cs" id="4_jjlgw"]
+[ext_resource type="TileSet" uid="uid://dgn056d4olrhp" path="res://Resources/Tiles/GrndTileSet.tres" id="4_qeb2k"]
 [ext_resource type="Script" uid="uid://d1qv8uaci3dfa" path="res://Source/Scenes/BattleScene/Map/Layers/GroundLayer.cs" id="4_wko0m"]
 [ext_resource type="Script" uid="uid://bxqp2prh2cd7x" path="res://Source/Scenes/BattleScene/Map/Camera.cs" id="5_v1kpu"]
-[ext_resource type="TileSet" uid="uid://bieu8h60f5mo5" path="res://Resources/Tiles/DecorationTileSet.tres" id="6_fq2pg"]
 [ext_resource type="Script" uid="uid://dbmwj7gbtqdf" path="res://Source/Scenes/BattleScene/UI/UIOverlay.cs" id="6_opbbs"]
+[ext_resource type="TileSet" uid="uid://b143du8gqiss5" path="res://Resources/Tiles/DecoTileSet.tres" id="6_qeb2k"]
 [ext_resource type="Script" uid="uid://u2jw1v8sdhjt" path="res://Source/Scenes/BattleScene/UI/TopPanel.cs" id="7_fkoes"]
 [ext_resource type="Script" uid="uid://gxgx761xs0on" path="res://Source/Scenes/BattleScene/UI/PauseMenu.cs" id="7_klqyf"]
 [ext_resource type="Script" uid="uid://jddq8gm4jqko" path="res://Source/Scenes/BattleScene/Map/Layers/DecorationLayer.cs" id="7_ov0md"]
-[ext_resource type="Texture2D" uid="uid://461wrfeyxmld" path="res://Assets/Sprites/map.svg" id="8_0r338"]
+[ext_resource type="Texture2D" uid="uid://461wrfeyxmld" path="res://Assets/interactables.svg" id="8_0r338"]
 [ext_resource type="Script" uid="uid://b12l75tm16cjv" path="res://Source/Scenes/BattleScene/Map/Selector.cs" id="8_et7eu"]
+[ext_resource type="TileSet" uid="uid://cxwh44dffasx8" path="res://Resources/Tiles/EntTileSet.tres" id="8_qeb2k"]
 [ext_resource type="Script" uid="uid://d2q5361lnn3r7" path="res://Source/Scenes/BattleScene/Map/Layers/EntityLayer.cs" id="8_wwh5u"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_et7eu"]
@@ -28,14 +29,15 @@ Level = ExtResource("2_nxcn7")
 script = ExtResource("2_83gj6")
 
 [node name="GroundLayer" type="TileMapLayer" parent="Map" unique_id=627677766]
-tile_set = ExtResource("2_xgher")
+tile_set = ExtResource("4_qeb2k")
 script = ExtResource("4_wko0m")
 
 [node name="DecorationLayer" type="TileMapLayer" parent="Map" unique_id=721226725]
-tile_set = ExtResource("6_fq2pg")
+tile_set = ExtResource("6_qeb2k")
 script = ExtResource("7_ov0md")
 
 [node name="EntityLayer" type="TileMapLayer" parent="Map" unique_id=1850330543]
+tile_set = ExtResource("8_qeb2k")
 script = ExtResource("8_wwh5u")
 
 [node name="Selector" type="Node2D" parent="Map" unique_id=1038233918]
@@ -57,7 +59,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 1
+mouse_filter = 2
 script = ExtResource("4_jjlgw")
 
 [node name="TopPanel" type="PanelContainer" parent="UIOverlay" unique_id=682083975]

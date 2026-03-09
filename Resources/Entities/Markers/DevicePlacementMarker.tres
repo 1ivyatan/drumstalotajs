@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Entity" format=3 uid="uid://evokpfl178dv"]
+
+[ext_resource type="Texture2D" uid="uid://461wrfeyxmld" path="res://Assets/interactables.svg" id="1_xiu8p"]
+[ext_resource type="Script" uid="uid://d07w6ngr0dmna" path="res://Source/Resources/Entities/Entity.cs" id="2_ogxag"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8bkfp"]
+atlas = ExtResource("1_xiu8p")
+region = Rect2(16, 0, 16, 16)
+
+[resource]
+script = ExtResource("2_ogxag")
+Name = "Device Marker"
+Type = 1
+Sprites = Array[Texture2D]([SubResource("AtlasTexture_8bkfp")])
+metadata/_custom_type_script = "uid://d07w6ngr0dmna"

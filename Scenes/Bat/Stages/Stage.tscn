@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://b6et8j2y5s7l6"]
+
+[ext_resource type="Script" uid="uid://d1yqp0jb6fuue" path="res://Source/Scenes/BattleScene/Stages/Stage.cs" id="1_grwwm"]
+
+[node name="Stage" type="Control" unique_id=782350670]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_grwwm")

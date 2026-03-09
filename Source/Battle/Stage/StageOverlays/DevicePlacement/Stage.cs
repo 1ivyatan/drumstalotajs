@@ -27,7 +27,7 @@ namespace Drumstalotajs.Battle.Stage.StageOverlays.DevicePlacement
 		{
 			if ((Entities.Type)entity.EntityResource.Type == Entities.Type.Device)
 			{
-				if (_scene.Level.Devices.ContainsKey(entity.EntityResource.Id))
+				/*if (_scene.Level.Devices.ContainsKey(entity.EntityResource.Id))
 				{
 					if (_entityLayer.Entitys[Entities.Type.Device].Count > 0 &&  _entityLayer.Entitys[Entities.Type.Device].Count <= _scene.Level.Devices[entity.EntityResource.Id].Amount)
 					{
@@ -39,7 +39,7 @@ namespace Drumstalotajs.Battle.Stage.StageOverlays.DevicePlacement
 				} else
 				{
 					//_entityLayer.InsertEntity(Entities.Type.DeviceMarker, tilePosition);
-				}
+				}*/
 				
 			}
 			/*

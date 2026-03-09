@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://cgtc1nd3yftdc"]
+
+[ext_resource type="PackedScene" uid="uid://b6et8j2y5s7l6" path="res://Scenes/Bat/Stages/Stage.tscn" id="1_1k6w1"]
+
+[node name="Placement" unique_id=782350670 instance=ExtResource("1_1k6w1")]
