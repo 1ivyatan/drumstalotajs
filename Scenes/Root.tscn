@@ -4,3 +4,5 @@
 
 [node name="Root" type="Node" unique_id=1938553251]
 script = ExtResource("1_a5hps")
+
+[node name="SceneManager" type="Node" parent="." unique_id=1948025743]
