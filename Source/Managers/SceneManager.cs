@@ -13,6 +13,12 @@ public partial class SceneManager : Node
 		ShowScene();
 	}
 	
+	public void LevelsScene()
+	{
+		LoadScene("Levels");
+		ShowScene();
+	}
+	
 	private void LoadScene(string name)
 	{
 		String path = $"res://Scenes/{name}/{name}.tscn";
