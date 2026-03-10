@@ -19,6 +19,12 @@ public partial class SceneManager : Node
 		ShowScene();
 	}
 	
+	public void EditorScene()
+	{
+		LoadScene("Editor");
+		ShowScene();
+	}
+	
 	private void LoadScene(string name)
 	{
 		String path = $"res://Scenes/{name}/{name}.tscn";

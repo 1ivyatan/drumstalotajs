@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-namespace drumstalotajs.Start;
+namespace drumstalotajs.Levels;
 
 public partial class LevelsScene : Node2D
 {

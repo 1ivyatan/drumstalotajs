@@ -56,4 +56,4 @@ device_adjustment_lower={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
-environment/defaults/default_clear_color=Color(0, 0, 0, 1)
+environment/defaults/default_clear_color=Color(0.19315124, 0.3118591, 0.3389618, 1)

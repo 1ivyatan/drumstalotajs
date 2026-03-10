@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="80"
+   height="16"
+   viewBox="0 0 21.166666 4.2333333"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.2 (ebf0e940d0, 2025-05-08)"
+   sodipodi:docname="Ground.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#b4b4b4"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px"
+     inkscape:zoom="16.705275"
+     inkscape:cx="55.461524"
+     inkscape:cy="9.6975357"
+     inkscape:window-width="1463"
+     inkscape:window-height="795"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Slānis 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:#5e65c8;fill-opacity:1;stroke:none;stroke-width:0.476195;stroke-linecap:square;paint-order:stroke fill markers"
+       id="rect1"
+       width="4.2333331"
+       height="4.2333331"
+       x="0"
+       y="0" />
+    <rect
+       style="fill:#b1ac83;fill-opacity:1;stroke:none;stroke-width:0.476195;stroke-linecap:square;paint-order:stroke fill markers"
+       id="rect1-3"
+       width="4.2333331"
+       height="4.2333331"
+       x="4.2333331"
+       y="0" />
+    <rect
+       style="fill:#6ea442;fill-opacity:1;stroke:none;stroke-width:0.476195;stroke-linecap:square;paint-order:stroke fill markers"
+       id="rect1-3-1"
+       width="4.2333331"
+       height="4.2333331"
+       x="8.4666662"
+       y="0" />
+    <rect
+       style="fill:#ffffff;fill-opacity:0.50427783;stroke:none;stroke-width:0.476195;stroke-linecap:square;paint-order:stroke fill markers"
+       id="rect1-3-1-3"
+       width="4.2333331"
+       height="4.2333331"
+       x="12.7"
+       y="0" />
+  </g>
+</svg>

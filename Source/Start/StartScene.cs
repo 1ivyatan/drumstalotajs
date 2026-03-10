@@ -16,4 +16,15 @@ public partial class StartScene : CanvasLayer
 			sceneManager.LevelsScene();
 		};
 	}
+	
+	public override void _Input(InputEvent @event)
+	{
+		if (@event is InputEventKey keyEvent && keyEvent.Pressed)
+		{
+			if (keyEvent.Keycode == Key.E && keyEvent.CtrlPressed)
+			{
+				sceneManager.EditorScene();
+			}
+		}
+	}
 }
