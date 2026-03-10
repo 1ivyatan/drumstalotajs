@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://gno18tio1tc1"]
 
 [ext_resource type="Script" uid="uid://bqyf8mscxyken" path="res://Source/Main.cs" id="1_a5hps"]
+[ext_resource type="Script" uid="uid://dfsur52pslkvm" path="res://Source/Managers/SceneManager.cs" id="2_kqog5"]
 
 [node name="Root" type="Node" unique_id=1938553251]
 script = ExtResource("1_a5hps")
 
 [node name="SceneManager" type="Node" parent="." unique_id=1948025743]
+script = ExtResource("2_kqog5")
