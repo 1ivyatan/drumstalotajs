@@ -19,14 +19,13 @@ public partial class Selector : Node2D
 		groundLayer = GetNode<TileMapLayer>("../GroundLayer") as Layers.GroundLayer;
 	}
 	
-	public override void _Input(InputEvent @event)
+	public override void _UnhandledInput(InputEvent @event)
 	{
 		if (@event is InputEventMouse mouseEvent)
 		{
 			Vector2 globalMousePos = GetGlobalMousePosition();
 			Vector2 localMousePos = groundLayer.ToLocal(globalMousePos);
-			Vector2I cellPos = groundLayer.LocalToMap(localMousePos);
-			
+			Vector2I cellPos = groundLayer.LocalToMap(localMousePos);	
 			if (AllowedFilter(cellPos))
 			{
 				if (mouseEvent is InputEventMouseMotion mouseMotion)
@@ -46,12 +45,11 @@ public partial class Selector : Node2D
 						switch (mouseClick.ButtonIndex)
 						{
 							case MouseButton.Left:
-								break;
+							break;
 						}
 					}
 				}
 			}
-			
 		}
 	}
 	

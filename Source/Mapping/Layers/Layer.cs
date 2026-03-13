@@ -5,6 +5,8 @@ namespace drumstalotajs.Mapping.Layers;
 
 public partial class Layer : TileMapLayer
 {
+	public int TileSize { get => TileSet.TileSize.X; }
+	
 	public Vector2I[] GetTileAtlas()
 	{
 		TileSet tileSet = TileSet;

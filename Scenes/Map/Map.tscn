@@ -5,6 +5,7 @@
 [ext_resource type="TileSet" uid="uid://d15thjfivaen6" path="res://Resources/TileSets/GroundLayer.tres" id="2_yju8x"]
 [ext_resource type="Script" uid="uid://cbqqrqycssnr0" path="res://Source/Mapping/Selector.cs" id="4_yju8x"]
 [ext_resource type="Texture2D" uid="uid://d0cdb8hgex132" path="res://Assets/Ground.svg" id="5_urk12"]
+[ext_resource type="Script" uid="uid://dfr7dmkx4q53h" path="res://Source/Mapping/MapCamera.cs" id="6_lats3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lats3"]
 atlas = ExtResource("5_urk12")
@@ -23,3 +24,6 @@ script = ExtResource("4_yju8x")
 
 [node name="Sprite" type="Sprite2D" parent="Selector" unique_id=454587203]
 texture = SubResource("AtlasTexture_lats3")
+
+[node name="Camera" type="Camera2D" parent="." unique_id=110770291]
+script = ExtResource("6_lats3")

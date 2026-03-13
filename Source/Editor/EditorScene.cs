@@ -13,6 +13,8 @@ public partial class EditorScene : Node2D
 	private RichTextLabel help;
 	private Managers.ToastManager toastManager;
 	
+	private double heightFactor = 1;
+	
 	public override void _Ready()
 	{
 		map = GetNode<Node2D>("Map") as Mapping.Map;
@@ -46,10 +48,10 @@ public partial class EditorScene : Node2D
 						NextTileFromAtlas(map.GroundLayer, groundLayerAtlas, map.CurrentCellPos);
 						break;
 					case Key.R:
-						ChangeGroundHeight(map.CurrentCellPos, keyEvent.ShiftPressed ? 0.1 : 1);
+						ChangeGroundHeight(map.CurrentCellPos, keyEvent.ShiftPressed ? ( heightFactor * 0.1 ) : heightFactor);
 						break;
 					case Key.F:
-						ChangeGroundHeight(map.CurrentCellPos, keyEvent.ShiftPressed ? -0.1 : -1);
+						ChangeGroundHeight(map.CurrentCellPos, keyEvent.ShiftPressed ? ( -heightFactor * 0.1 ) : -heightFactor);
 						break;
 				}
 			}
