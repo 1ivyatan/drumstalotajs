@@ -1,20 +1,25 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 namespace drumstalotajs.Editor;
 
 public partial class EditorScene : Node2D
 {
+	private Dictionary<Vector2I, double> relativeHeights;
+	private Vector2I[] groundLayerAtlas;
+	
 	private Mapping.Map map;
 	private RichTextLabel help;
-	private HeightDisplay heightDisplay;
-	private Vector2I[] groundLayerAtlas;
+	private Managers.ToastManager toastManager;
 	
 	public override void _Ready()
 	{
 		map = GetNode<Node2D>("Map") as Mapping.Map;
 		help = GetNode<RichTextLabel>("UI/Help");
+		toastManager = GetNode<Control>("../../Overlay/ToastManager") as Managers.ToastManager;
 		groundLayerAtlas = map.GroundLayer.GetTileAtlas();
+		relativeHeights = new Dictionary<Vector2I, double>();
 	}
 	
 	public override void _Input(InputEvent @event)
@@ -23,24 +28,29 @@ public partial class EditorScene : Node2D
 		{
 			if (keyEvent.Pressed)
 			{
-				if (!keyEvent.Echo)
+				switch (keyEvent.Keycode)
 				{
-					switch (keyEvent.Keycode)
-					{
-						case Key.H:
-							help.SetVisible(!help.Visible);
-							break;
-						case Key.S:
-							if (keyEvent.CtrlPressed)
-							{
-								GD.Print("Ctrl+S pressed manually");
-							}
-							break;
-						case Key.G:
-							NextTileFromAtlas(map.GroundLayer, groundLayerAtlas, map.CurrentCellPos);
-							break;
-						default: break;
-					}	
+					case Key.H:
+						if (keyEvent.Echo) return;
+						help.SetVisible(!help.Visible);
+						break;
+					case Key.S:
+						if (keyEvent.Echo) return;
+						if (keyEvent.CtrlPressed)
+						{
+							GD.Print("Ctrl+S pressed manually");
+						}
+						break;
+					case Key.G:
+						if (keyEvent.Echo) return;
+						NextTileFromAtlas(map.GroundLayer, groundLayerAtlas, map.CurrentCellPos);
+						break;
+					case Key.R:
+						ChangeGroundHeight(map.CurrentCellPos, keyEvent.ShiftPressed ? 0.1 : 1);
+						break;
+					case Key.F:
+						ChangeGroundHeight(map.CurrentCellPos, keyEvent.ShiftPressed ? -0.1 : -1);
+						break;
 				}
 			}
 		}
@@ -60,5 +70,17 @@ public partial class EditorScene : Node2D
 		{
 			layer.EraseCell(cellPos);
 		}
+	}
+	
+	private void ChangeGroundHeight(Vector2I cellPos, double change)
+	{
+		if (!relativeHeights.ContainsKey(cellPos))
+		{
+			relativeHeights.Add(cellPos, 0);
+		}
+		
+		relativeHeights[cellPos] = Math.Round(relativeHeights[cellPos] + change, 3);
+		toastManager.Clear();
+		toastManager.SpawnToast($"{relativeHeights[cellPos]}m");
 	}
 }

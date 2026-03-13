@@ -2,12 +2,17 @@
 
 [ext_resource type="Script" uid="uid://cw5c32ji8leid" path="res://Source/Components/Toast.cs" id="1_n3ki5"]
 
-[node name="Toast" type="Panel" unique_id=277990017]
-size_flags_horizontal = 0
+[node name="Toast" type="PanelContainer" unique_id=2083970714]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -16.0
+offset_right = 16.0
+offset_bottom = 23.0
+grow_horizontal = 2
+size_flags_horizontal = 4
 script = ExtResource("1_n3ki5")
 
 [node name="Label" type="Label" parent="." unique_id=1160609818]
-layout_mode = 1
-offset_right = 32.0
-offset_bottom = 23.0
-text = "ssss"
+layout_mode = 2
+size_flags_horizontal = 4

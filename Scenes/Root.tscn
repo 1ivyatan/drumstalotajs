@@ -2,9 +2,27 @@
 
 [ext_resource type="Script" uid="uid://bqyf8mscxyken" path="res://Source/Main.cs" id="1_a5hps"]
 [ext_resource type="Script" uid="uid://dfsur52pslkvm" path="res://Source/Managers/SceneManager.cs" id="2_kqog5"]
+[ext_resource type="Script" uid="uid://6q1vw0xev5d6" path="res://Source/Managers/ToastManager.cs" id="3_knkkn"]
 
 [node name="Root" type="Node" unique_id=1938553251]
 script = ExtResource("1_a5hps")
 
 [node name="SceneManager" type="Node" parent="." unique_id=1948025743]
 script = ExtResource("2_kqog5")
+
+[node name="Overlay" type="CanvasLayer" parent="." unique_id=646312016]
+
+[node name="ToastManager" type="Control" parent="Overlay" unique_id=521868669]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+script = ExtResource("3_knkkn")

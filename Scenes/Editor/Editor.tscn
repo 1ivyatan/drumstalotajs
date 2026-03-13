@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://vsf2m3tlfpec" path="res://Source/Editor/EditorScene.cs" id="1_tw15f"]
 [ext_resource type="PackedScene" uid="uid://cbxsa10nydtms" path="res://Scenes/Map/Map.tscn" id="2_wl3go"]
-[ext_resource type="Script" uid="uid://cxc8lmovwvdc6" path="res://Source/Editor/HeightDisplay.cs" id="3_s7bqi"]
 
 [node name="Editor" type="Node2D" unique_id=1859903503]
 script = ExtResource("1_tw15f")
@@ -31,17 +30,6 @@ H: Toggle this help
 G: Change ground layer tile
 D: Change decoration layer tile
 E: Change entity layer tile
+R: Raise height (shift to 0.1)
+F: Lower height (shift to 0.1)
 It will be cumbersome to edit each tile individually"
-
-[node name="HeightDisplay" type="Label" parent="UI" unique_id=350657294]
-visible = false
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -53.5
-offset_right = 53.5
-offset_bottom = 23.0
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 32
-text = "0000000000m"
-script = ExtResource("3_s7bqi")
