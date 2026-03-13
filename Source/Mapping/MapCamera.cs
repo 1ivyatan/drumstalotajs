@@ -10,13 +10,8 @@ public partial class MapCamera : Camera2D
 
 	public bool Locked { get; set; }
 	public bool Dragging { get; private set; } = false;
-	public DraggingState Drag { get; 
-		private set
-		{
-			field = value;
-			EmitSignal("DraggingChange", (int)value);
-		}
-	}
+	public bool Zooming { get; private set; } = false;
+	public DraggingState Drag { get; private set; }
 	
 	private Vector2 minZoom;
 	private Vector2 maxZoom;
@@ -60,22 +55,33 @@ public partial class MapCamera : Camera2D
 		{
 			if (mouseEvent is InputEventMouseButton mouseClick)
 			{
-				Dragging = mouseClick.Pressed;
+				if (mouseClick.Pressed)
+				{
+					switch (mouseClick.ButtonIndex)
+					{
+						case MouseButton.Left: Dragging = true; break;
+					}
+				} else
+				{
+					if (!(Zooming && Dragging))
+					{
+						Dragging = false;
+						Drag = DraggingState.NONE;
+						EmitSignal("DraggingChange", (int)Drag);
+					}
+				}
 			}
 
 			if (mouseEvent is InputEventMouseMotion mouseMotion)
 			{
-				if (mouseMotion.Relative != Vector2.Zero && Dragging)
-				{
-					ChangePosition(mouseMotion.Relative);
-				}
+				ChangePosition(mouseMotion.Relative);
 			}
 		}
 	}
 	
 	private void ChangePosition(Vector2 amount)
 	{
-		if (!Locked && usedRect.Position != new Vector2(-1f, -1f))
+		if (!Locked && usedRect.Position != new Vector2(-1f, -1f) && Dragging && amount != Vector2.Zero)
 		{
 			Vector2 viewportSize = GetViewportRect().Size / Zoom;
 			Vector2 newPosition = (GlobalPosition - (amount / Zoom));
@@ -88,7 +94,6 @@ public partial class MapCamera : Camera2D
 			{
 				if (limitLeft < limitRight)
 				{
-					
 					newPosition.X = Mathf.Clamp(newPosition.X, limitLeft, limitRight);
 					Drag = DraggingState.VERTICAL;
 				}
@@ -109,6 +114,8 @@ public partial class MapCamera : Camera2D
 			{
 				Drag = DraggingState.NONE;
 			}
+			
+			EmitSignal("DraggingChange", (int)Drag);
 		}
 	}
 	
@@ -126,6 +133,9 @@ public partial class MapCamera : Camera2D
 						case MouseButton.WheelDown: ChangeZoom(-zoomFactor); break;
 					}
 				}
+			} else
+			{
+				Zooming = false;
 			}
 		}
 	}
@@ -136,8 +146,8 @@ public partial class MapCamera : Camera2D
 		{
 			Vector2 zoom = Zoom + change;
 			Zoom = zoom.Clamp(minZoom, maxZoom);
-			
+			EmitSignal("ZoomingChange", change.Length() * change.X > 0 ? 1 : -1);
+			Zooming = true;
 		}
-		/*Input.SetDefaultCursorShape(Input.CursorShape.Wait);*/
 	}
 }

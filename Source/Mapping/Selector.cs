@@ -8,6 +8,9 @@ public partial class Selector : Node2D
 	[Signal] public delegate void SelectedEventHandler(Vector2I cellPos);
 	[Signal] public delegate void HoveredEventHandler(Vector2I cellPos);
 	
+	public bool Locked { get; set; } = false;
+	public bool Readonly { get; set; } = true;
+	
 	private Layers.GroundLayer groundLayer;
 	private Sprite2D sprite;
 	
@@ -21,45 +24,86 @@ public partial class Selector : Node2D
 	
 	public override void _UnhandledInput(InputEvent @event)
 	{
-		if (@event is InputEventMouse mouseEvent)
+		if (!Locked)
 		{
-			Vector2 globalMousePos = GetGlobalMousePosition();
-			Vector2 localMousePos = groundLayer.ToLocal(globalMousePos);
-			Vector2I cellPos = groundLayer.LocalToMap(localMousePos);	
-			if (AllowedFilter(cellPos))
+			if (@event is InputEventMouse mouseEvent)
 			{
-				if (mouseEvent is InputEventMouseMotion mouseMotion)
+				Vector2 localPos = GetLocalPos();
+				Vector2I cellPos = GetCellPos(localPos);
+				if (AllowedFilter(cellPos))
 				{
-					if (cellPos != currentCellPos)
+					if (mouseEvent is InputEventMouseMotion mouseMotion)
 					{
-						EmitSignal("Hovered", cellPos);
-						MoveHighlighter(cellPos);
-						currentCellPos = cellPos;
-					}
-				}
-				
-				if (mouseEvent is InputEventMouseButton mouseClick)
-				{
-					if (mouseClick.Pressed)
-					{
-						switch (mouseClick.ButtonIndex)
+						if (cellPos != currentCellPos)
 						{
-							case MouseButton.Left:
-							break;
+							MoveHighlighter(cellPos);
 						}
 					}
+				
+					if (mouseEvent is InputEventMouseButton mouseClick)
+					{
+						if (mouseClick.Pressed)
+						{
+							switch (mouseClick.ButtonIndex)
+							{
+								case MouseButton.Left:
+								break;
+							}
+						}
+					}
+				} else
+				{
+					HideHighlighter();
 				}
 			}
+		} else
+		{
+			HideHighlighter();
 		}
+	}
+	
+	public void Reposition()
+	{
+		if (!Locked)
+		{
+			Vector2 localPos = GetLocalPos();
+			Vector2I cellPos = GetCellPos(localPos);
+			MoveHighlighter(cellPos);
+		}
+	}
+	
+	private Vector2 GetLocalPos()
+	{
+		Vector2 globalMousePos = GetGlobalMousePosition();
+		return groundLayer.ToLocal(globalMousePos);
+	}
+	
+	private Vector2I GetCellPos(Vector2 localMousePos)
+	{
+		return groundLayer.LocalToMap(localMousePos);
 	}
 	
 	private bool AllowedFilter(Vector2I cellPos)
 	{
-		return true;
+		if (Readonly)
+		{
+			return true;
+		} else
+		{
+			return true;
+		}
+	}
+	
+	private void HideHighlighter()
+	{
+		Visible = false;
 	}
 	
 	private void MoveHighlighter(Vector2I cellPos)
 	{
 		SetPosition((cellPos * groundLayer.TileSize) + new Vector2I(groundLayer.TileSize / 2, groundLayer.TileSize / 2));
+		currentCellPos = cellPos;
+		Visible = true;
+		EmitSignal("Hovered", cellPos);
 	}
 }

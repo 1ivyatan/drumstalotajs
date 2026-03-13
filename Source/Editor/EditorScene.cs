@@ -8,9 +8,10 @@ public partial class EditorScene : Node2D
 {
 	private Dictionary<Vector2I, double> relativeHeights;
 	private Vector2I[] groundLayerAtlas;
+	private Vector2I[] decorationLayerAtlas;
 	
 	private Mapping.Map map;
-	private RichTextLabel help;
+	private PanelContainer helpContainer;
 	private Managers.ToastManager toastManager;
 	
 	private double heightFactor = 1;
@@ -18,10 +19,12 @@ public partial class EditorScene : Node2D
 	public override void _Ready()
 	{
 		map = GetNode<Node2D>("Map") as Mapping.Map;
-		help = GetNode<RichTextLabel>("UI/Help");
+		helpContainer = GetNode<PanelContainer>("UI/HelpContainer");
 		toastManager = GetNode<Control>("../../Overlay/ToastManager") as Managers.ToastManager;
 		groundLayerAtlas = map.GroundLayer.GetTileAtlas();
+		decorationLayerAtlas = map.DecorationLayer.GetTileAtlas();
 		relativeHeights = new Dictionary<Vector2I, double>();
+		map.Editing = true;
 	}
 	
 	public override void _Input(InputEvent @event)
@@ -34,7 +37,7 @@ public partial class EditorScene : Node2D
 				{
 					case Key.H:
 						if (keyEvent.Echo) return;
-						help.SetVisible(!help.Visible);
+						helpContainer.SetVisible(!helpContainer.Visible);
 						break;
 					case Key.S:
 						if (keyEvent.Echo) return;
@@ -47,6 +50,14 @@ public partial class EditorScene : Node2D
 						if (keyEvent.Echo) return;
 						NextTileFromAtlas(map.GroundLayer, groundLayerAtlas, map.CurrentCellPos);
 						break;
+					case Key.D:
+						if (keyEvent.Echo) return;
+						NextTileFromAtlas(map.DecorationLayer, decorationLayerAtlas, map.CurrentCellPos);
+						break;
+					case Key.E:
+						if (keyEvent.Echo) return;
+						NextEntity(map.EntityLayer, map.CurrentCellPos);
+						break;
 					case Key.R:
 						ChangeGroundHeight(map.CurrentCellPos, keyEvent.ShiftPressed ? ( heightFactor * 0.1 ) : heightFactor);
 						break;
@@ -56,6 +67,13 @@ public partial class EditorScene : Node2D
 				}
 			}
 		}
+	}
+	
+	private void NextEntity(Mapping.Layers.EntityLayer entityLayer, Vector2I cellPos)
+	{
+		//int currentId = 
+		Vector2 localPos = entityLayer.CellToLocalPos(cellPos);
+		entityLayer.SpawnEntity(localPos, 0);
 	}
 	
 	private void NextTileFromAtlas(Mapping.Layers.Layer layer, Vector2I[] atlas, Vector2I cellPos)
@@ -78,7 +96,8 @@ public partial class EditorScene : Node2D
 	{
 		if (!relativeHeights.ContainsKey(cellPos))
 		{
-			relativeHeights.Add(cellPos, 0);
+			double defaultHeight = (double)map.GroundLayer.GetCellTileData(cellPos).GetCustomData("DefaultRelHeightee");
+			relativeHeights.Add(cellPos, defaultHeight);
 		}
 		
 		relativeHeights[cellPos] = Math.Round(relativeHeights[cellPos] + change, 3);
