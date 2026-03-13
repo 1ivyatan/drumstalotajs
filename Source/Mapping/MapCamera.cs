@@ -5,14 +5,18 @@ namespace drumstalotajs.Mapping;
 
 public partial class MapCamera : Camera2D
 {
-	//[Signal] public delegate void DraggingEventHandler(Vector2I cellPos);
-	//[Signal] public delegate void ZoomingEventHandler(Vector2I cellPos);
-	
-	public enum DraggingState { NONE, HORIZONTAL, VERTICAL, ALL }
-	
+	[Signal] public delegate void DraggingChangeEventHandler(DraggingState draggingState);
+	[Signal] public delegate void ZoomingChangeEventHandler(double factor);
+
 	public bool Locked { get; set; }
 	public bool Dragging { get; private set; } = false;
-	public DraggingState Drag { get; private set; }
+	public DraggingState Drag { get; 
+		private set
+		{
+			field = value;
+			EmitSignal("DraggingChange", (int)value);
+		}
+	}
 	
 	private Vector2 minZoom;
 	private Vector2 maxZoom;
@@ -24,6 +28,7 @@ public partial class MapCamera : Camera2D
 		minZoom = new Vector2(.5f, .5f);
 		maxZoom = new Vector2(3f, 3f);
 		zoomFactor = new Vector2(.5f, .5f);
+		usedRect = new Rect2(new Vector2(-1f, -1f), new Vector2(-1f, -1f));
 	}
 	
 	public override void _UnhandledInput(InputEvent @event)
@@ -70,7 +75,7 @@ public partial class MapCamera : Camera2D
 	
 	private void ChangePosition(Vector2 amount)
 	{
-		if (!Locked && usedRect != null)
+		if (!Locked && usedRect.Position != new Vector2(-1f, -1f))
 		{
 			Vector2 viewportSize = GetViewportRect().Size / Zoom;
 			Vector2 newPosition = (GlobalPosition - (amount / Zoom));
