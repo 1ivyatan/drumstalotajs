@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace drumstalotajs.Mapping.Layers;
@@ -53,14 +54,10 @@ public partial class EntityLayer : Node2D
 	public Entities.Entity[] Flash(Vector2 position, int limit)
 	{
 		var spaceState = GetWorld2D().DirectSpaceState;
-		PhysicsShapeQueryParameters2D query = new PhysicsShapeQueryParameters2D();
-		RectangleShape2D scannerShape = new RectangleShape2D();
-		scannerShape.Size = new Vector2(TileSize, TileSize);
-		query.Shape = scannerShape;
-		query.Transform = new Transform2D(0, GlobalPosition + position);
+		PhysicsPointQueryParameters2D query = new PhysicsPointQueryParameters2D();
+		query.Position = GlobalPosition + position;
 		query.CollideWithAreas = true;
-		var intersectedEntities = spaceState.IntersectShape(query);
-		
+		var intersectedEntities = spaceState.IntersectPoint(query);
 		if (intersectedEntities.Count > 0)
 		{
 			Entities.Entity[] entities = new Entities.Entity[intersectedEntities.Count];
@@ -69,6 +66,11 @@ public partial class EntityLayer : Node2D
 				Node2D collided = (Node2D)intersectedEntities[i]["collider"];	
 				entities[i] = collided as Entities.Entity;
 			}
+			
+			entities = entities.OrderBy(entity => {
+				return position.DistanceTo(entity.Position);
+			}).ToArray();
+			
 			return entities;
 		} else {
 			return null;

@@ -8,6 +8,8 @@ namespace drumstalotajs.Editor;
 public partial class EditorScene : Node2D
 {
 	private Dictionary<Vector2I, double> relativeHeights;
+	
+	
 	private Vector2I[] groundLayerAtlas;
 	private Vector2I[] decorationLayerAtlas;
 	
@@ -65,6 +67,12 @@ public partial class EditorScene : Node2D
 					case Key.F:
 						ChangeGroundHeight(map.CurrentCellPos, keyEvent.ShiftPressed ? ( -heightFactor * 0.1 ) : -heightFactor);
 						break;
+					case Key.Q:
+						
+						break;
+					case Key.W:
+						
+						break;
 				}
 			}
 		}
@@ -72,11 +80,11 @@ public partial class EditorScene : Node2D
 	
 	private void NextEntity(Mapping.Layers.EntityLayer entityLayer, Vector2I cellPos)
 	{
-		Vector2 localPos = entityLayer.CellToLocalPos(cellPos);
 		Vector2 localPosCentered = entityLayer.CellToLocalPos(cellPos, true);
-		Entities.Entity[] entities = entityLayer.Flash(localPos, 1);
+		Entities.Entity[] entities = entityLayer.Flash(localPosCentered, 1);
+		
 		if (entities == null) {
-			entityLayer.SpawnEntity(localPosCentered, 1);
+			entityLayer.SpawnEntity(localPosCentered + new Vector2(50f, 0), 1);
 		} else {
 			int id = entities[0].EntityResource.Id;
 			int length = entityLayer.EntityScenes.Count;
@@ -90,8 +98,6 @@ public partial class EditorScene : Node2D
 				int nextId = entityLayer.EntityScenes.GetAt(next).Key;
 				entityLayer.SpawnEntity(localPosCentered, nextId);
 			}
-			
-			GD.Print(entityLayer.Entities.Count);
 		}
 	}
 	
@@ -122,5 +128,10 @@ public partial class EditorScene : Node2D
 		relativeHeights[cellPos] = Math.Round(relativeHeights[cellPos] + change, 3);
 		toastManager.Clear();
 		toastManager.SpawnToast($"{relativeHeights[cellPos]}m");
+	}
+	
+	private void ChangeEntityAzimuth()
+	{
+		
 	}
 }

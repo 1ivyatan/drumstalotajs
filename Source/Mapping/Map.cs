@@ -8,7 +8,7 @@ public partial class Map : Node2D
 	public Layers.GroundLayer GroundLayer { get; private set; }
 	public Layers.DecorationLayer DecorationLayer { get; private set; }
 	public Layers.EntityLayer EntityLayer { get; private set; }
-	public Mapping.Selector Selector { get; private set; }
+	public Mapping.Selection.Selector Selector { get; private set; }
 	public MapCamera Camera { get; private set; }
 	public int TileSize { get; private set; }
 	public Vector2I CurrentCellPos { get; private set; }
@@ -25,11 +25,11 @@ public partial class Map : Node2D
 		GroundLayer = GetNode<TileMapLayer>("GroundLayer") as Layers.GroundLayer;
 		DecorationLayer = GetNode<TileMapLayer>("DecorationLayer") as Layers.DecorationLayer;
 		EntityLayer = GetNode<Node2D>("EntityLayer") as Layers.EntityLayer;
-		Selector = GetNode<Node2D>("Selector") as Mapping.Selector;
+		Selector = GetNode<Node2D>("Selector") as Mapping.Selection.Selector;
 		Camera = GetNode<Camera2D>("Camera") as MapCamera;
 		
 		TileSize = GroundLayer.TileSet.TileSize.X;
-		Selector.Hovered += (Vector2I cellPos) => { CurrentCellPos = cellPos; };
+		Selector.HoveredGround += (Vector2I cellPos) => { CurrentCellPos = cellPos; };
 		
 		Camera.Calibrate(GroundLayer);
 		Camera.DraggingChange += (MapCamera.DraggingState draggingState) => {
