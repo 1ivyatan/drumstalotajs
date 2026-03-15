@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="EntitySet" format=3 uid="uid://byrfeo7ckbos0"]
+
+[ext_resource type="PackedScene" uid="uid://boaerq2blgp8k" path="res://Scenes/Entities/Defenses/Sandbags.tscn" id="1_y2ht3"]
+[ext_resource type="Script" uid="uid://bpgu3yw4u1jq7" path="res://Source/Resources/Sets/EntitySet.cs" id="2_ddxi4"]
+
+[resource]
+script = ExtResource("2_ddxi4")
+TileSize = 16
+Scenes = Dictionary[int, PackedScene]({
+1: ExtResource("1_y2ht3")
+})
+metadata/_custom_type_script = "uid://bpgu3yw4u1jq7"

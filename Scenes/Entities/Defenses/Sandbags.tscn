@@ -1,14 +1,18 @@
 [gd_scene format=3 uid="uid://boaerq2blgp8k"]
 
 [ext_resource type="PackedScene" uid="uid://cv6jxgdeciule" path="res://Scenes/Entities/Entity.tscn" id="1_sa6pl"]
+[ext_resource type="Script" uid="uid://cdkbdguy8v0al" path="res://Source/Entities/Defenses/Sandbags.cs" id="2_054i2"]
 [ext_resource type="Shape2D" uid="uid://d0wtbxdg2ryf1" path="res://Resources/Areas/Tile.tres" id="2_cr5rc"]
 [ext_resource type="Texture2D" uid="uid://bn0hkjw183q01" path="res://Assets/Entities.svg" id="2_xu6ly"]
+[ext_resource type="Resource" uid="uid://c1dy0a1fa46ay" path="res://Resources/Entities/Wall.tres" id="3_wd73g"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cr5rc"]
 atlas = ExtResource("2_xu6ly")
 region = Rect2(0, 0, 16, 16)
 
-[node name="Entity" unique_id=93164720 instance=ExtResource("1_sa6pl")]
+[node name="Sandbags" unique_id=93164720 instance=ExtResource("1_sa6pl")]
+script = ExtResource("2_054i2")
+EntityResource = ExtResource("3_wd73g")
 
 [node name="Collision" type="CollisionShape2D" parent="." index="0" unique_id=1457051878]
 shape = ExtResource("2_cr5rc")

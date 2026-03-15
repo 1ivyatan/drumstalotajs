@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 
 namespace drumstalotajs.Editor;
 
@@ -71,9 +72,27 @@ public partial class EditorScene : Node2D
 	
 	private void NextEntity(Mapping.Layers.EntityLayer entityLayer, Vector2I cellPos)
 	{
-		//int currentId = 
 		Vector2 localPos = entityLayer.CellToLocalPos(cellPos);
-		entityLayer.SpawnEntity(localPos, 0);
+		Vector2 localPosCentered = entityLayer.CellToLocalPos(cellPos, true);
+		Entities.Entity[] entities = entityLayer.Flash(localPos, 1);
+		if (entities == null) {
+			entityLayer.SpawnEntity(localPosCentered, 1);
+		} else {
+			int id = entities[0].EntityResource.Id;
+			int length = entityLayer.EntityScenes.Count;
+			int index = entityLayer.EntityScenes.IndexOf(id);
+			int next = index + 1;
+			
+			map.EntityLayer.RemoveEntity(entities[0]);
+			
+			if (next < length)
+			{
+				int nextId = entityLayer.EntityScenes.GetAt(next).Key;
+				entityLayer.SpawnEntity(localPosCentered, nextId);
+			}
+			
+			GD.Print(entityLayer.Entities.Count);
+		}
 	}
 	
 	private void NextTileFromAtlas(Mapping.Layers.Layer layer, Vector2I[] atlas, Vector2I cellPos)
