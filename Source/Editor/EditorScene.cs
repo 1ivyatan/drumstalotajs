@@ -130,7 +130,7 @@ public partial class EditorScene : Node2D
 	{
 		if (!relativeHeights.ContainsKey(cellPos))
 		{
-			double defaultHeight = (double)map.GroundLayer.GetCellTileData(cellPos).GetCustomData("DefaultRelHeightee");
+			double defaultHeight = (double)map.GroundLayer.GetCellTileData(cellPos).GetCustomData("DefaultRelHeight");
 			relativeHeights.Add(cellPos, defaultHeight);
 		}
 		

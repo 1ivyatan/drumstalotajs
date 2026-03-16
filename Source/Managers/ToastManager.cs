@@ -8,6 +8,7 @@ public partial class ToastManager : Control
 {
 	private List<Components.Toast> Toasts;
 	private PackedScene toastScene;
+	private int limit = 5;
 	
 	public override void _Ready()
 	{
@@ -15,7 +16,14 @@ public partial class ToastManager : Control
 		toastScene = ResourceLoader.Load<PackedScene>("res://Scenes/Components/Toast.tscn");;
 		
 		ChildEnteredTree += (Node node) => {
-			if (node is Components.Toast) Toasts.Add(node as Components.Toast);
+			if (node is Components.Toast)
+			{
+				if (Toasts.Count >= limit)
+				{
+					Toasts.RemoveAt(0);
+				}
+				Toasts.Add(node as Components.Toast);
+			}
 		};
 		
 		ChildExitingTree += (Node node) => {
