@@ -66,6 +66,7 @@ public partial class Selector : Node2D
 					currentEntity = null;
 					cellPos = GetCellPos(localPos);
 					MoveGroundHighlighter(cellPos);
+					GD.Print(e);
 				}
 			}
 		} else
