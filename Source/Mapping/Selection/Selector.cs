@@ -116,6 +116,14 @@ public partial class Selector : Node2D
 		}
 	}
 	
+	public void Reflash()
+	{
+		if (!Locked)
+		{
+			ScanEntities();
+		}
+	}
+	
 	private void MoveEntityHighlighter(Vector2 localPos)
 	{
 		SetPosition(localPos);

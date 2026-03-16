@@ -108,6 +108,8 @@ public partial class EditorScene : Node2D
 				entityLayer.SpawnEntity(localPosCentered, nextId);
 			}
 		}
+		
+		map.Selector.Reflash();
 	}
 	
 	private void NextTileFromAtlas(Mapping.Layers.Layer layer, Vector2I[] atlas, Vector2I cellPos)
