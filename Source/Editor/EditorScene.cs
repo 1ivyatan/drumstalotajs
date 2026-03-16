@@ -55,7 +55,6 @@ public partial class EditorScene : Node2D
 						if (keyEvent.Echo) return;
 						if (keyEvent.CtrlPressed)
 						{
-							GD.Print("Ctrl+S pressed manually");
 						}
 						break;
 					case Key.G:
@@ -85,6 +84,11 @@ public partial class EditorScene : Node2D
 				}
 			}
 		}
+	}
+	
+	private void SaveLevel()
+	{
+		
 	}
 	
 	private void NextEntity(Mapping.Layers.EntityLayer entityLayer, Vector2I cellPos)
