@@ -7,7 +7,6 @@ namespace drumstalotajs.Editor;
 
 public partial class EditorScene : Node2D
 {
-	private Dictionary<Vector2I, double> relativeHeights;
 	private Vector2I[] groundLayerAtlas;
 	private Vector2I[] decorationLayerAtlas;
 	
@@ -28,7 +27,6 @@ public partial class EditorScene : Node2D
 		toastManager = GetNode<Control>("../../Overlay/ToastManager") as Managers.ToastManager;
 		groundLayerAtlas = map.GroundLayer.GetTileAtlas();
 		decorationLayerAtlas = map.DecorationLayer.GetTileAtlas();
-		relativeHeights = new Dictionary<Vector2I, double>();
 		map.Editing = true;
 		map.Selector.HoveredEntity += (Entities.Entity entity) => {
 			selectedEntity = entity;
@@ -140,15 +138,10 @@ public partial class EditorScene : Node2D
 	
 	private void ChangeGroundHeight(Vector2I cellPos, double change)
 	{
-		if (!relativeHeights.ContainsKey(cellPos))
-		{
-			double defaultHeight = (double)map.GroundLayer.GetCellTileData(cellPos).GetCustomData("DefaultRelHeight");
-			relativeHeights.Add(cellPos, defaultHeight);
-		}
-		
-		relativeHeights[cellPos] = Math.Round(relativeHeights[cellPos] + change, 3);
+		double newHeight = map.GroundLayer.GetRelHeight(cellPos) + change;
+		map.GroundLayer.SetRelHeight(cellPos, newHeight);
 		toastManager.Clear();
-		toastManager.SpawnToast($"{relativeHeights[cellPos]}m");
+		toastManager.SpawnToast($"{newHeight}m");
 	}
 	
 	private void ChangeEntityAzimuth(Entities.Entity entity, double change)
