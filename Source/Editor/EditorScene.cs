@@ -21,6 +21,7 @@ public partial class EditorScene : Node2D
 	private double aziFactor = 1;
 	
 	private Entities.Entity selectedEntity = null;
+	private bool saving = false;
 	
 	public override void _Ready()
 	{
@@ -53,9 +54,7 @@ public partial class EditorScene : Node2D
 						break;
 					case Key.S:
 						if (keyEvent.Echo) return;
-						if (keyEvent.CtrlPressed)
-						{
-						}
+						if (keyEvent.CtrlPressed) SaveMap();
 						break;
 					case Key.G:
 						if (keyEvent.Echo) return;
@@ -86,9 +85,16 @@ public partial class EditorScene : Node2D
 		}
 	}
 	
-	private void SaveLevel()
+	private void SaveMap()
 	{
-		
+		if (saving == false)
+		{
+			saving = true;
+			SceneTreeTimer delayToSaveAgain = GetTree().CreateTimer(5f);
+			delayToSaveAgain.Connect("timeout", Callable.From(() => {
+				saving = false;
+			}));
+		}
 	}
 	
 	private void NextEntity(Mapping.Layers.EntityLayer entityLayer, Vector2I cellPos)
