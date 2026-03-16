@@ -23,11 +23,11 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="px"
-     inkscape:zoom="23.624826"
-     inkscape:cx="10.476267"
-     inkscape:cy="10.391611"
-     inkscape:window-width="1920"
-     inkscape:window-height="1008"
+     inkscape:zoom="16.705275"
+     inkscape:cx="17.689024"
+     inkscape:cy="11.972266"
+     inkscape:window-width="1463"
+     inkscape:window-height="795"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
@@ -102,5 +102,43 @@
        x="-1.8629181"
        y="1.0923437"
        transform="rotate(-90)" />
+    <ellipse
+       style="fill:#af9158;fill-opacity:1;stroke:#65592b;stroke-width:0.281792;stroke-linecap:square;stroke-opacity:1;paint-order:stroke fill markers"
+       id="path2"
+       cx="5.2306023"
+       cy="2.7202299"
+       rx="0.73998398"
+       ry="0.8666904" />
+    <ellipse
+       style="fill:#af9158;fill-opacity:1;stroke:#65592b;stroke-width:0.277917;stroke-linecap:square;stroke-opacity:1;paint-order:stroke fill markers"
+       id="path2-9"
+       cx="7.4272957"
+       cy="1.2448512"
+       rx="0.71816421"
+       ry="0.86862814" />
+    <rect
+       style="fill:#af9158;fill-opacity:1;stroke:#65592b;stroke-width:0.233363;stroke-linecap:square;stroke-opacity:1;paint-order:stroke fill markers"
+       id="rect3"
+       width="0.81567299"
+       height="2.2490401"
+       x="4.7453451"
+       y="-5.4421587"
+       transform="rotate(57.934336)" />
+    <rect
+       style="fill:#af9158;fill-opacity:1;stroke:#65592b;stroke-width:0.233363;stroke-linecap:square;stroke-opacity:1;paint-order:stroke fill markers"
+       id="rect3-9"
+       width="0.81567299"
+       height="2.2490401"
+       x="5.8813925"
+       y="-5.4658723"
+       transform="rotate(57.934336)" />
+    <rect
+       style="fill:#af9158;fill-opacity:1;stroke:#65592b;stroke-width:0.233363;stroke-linecap:square;stroke-opacity:1;paint-order:stroke fill markers"
+       id="rect3-9-2"
+       width="0.81567299"
+       height="2.2490401"
+       x="3.6478019"
+       y="-5.3963313"
+       transform="rotate(57.934336)" />
   </g>
 </svg>
