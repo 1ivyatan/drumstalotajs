@@ -8,6 +8,7 @@ public partial class Selector : Node2D
 {
 	[Signal] public delegate void SelectedEventHandler(Vector2I cellPos);
 	[Signal] public delegate void HoveredGroundEventHandler(Vector2I cellPos);
+	[Signal] public delegate void HoveredEntityEventHandler(Entities.Entity entity);
 	
 	public bool Locked { get; set; } = false;
 	public bool Readonly { get; set; } = true;
@@ -16,6 +17,7 @@ public partial class Selector : Node2D
 	private Sprite2D sprite;
 	
 	private Vector2I currentCellPos;
+	private Entities.Entity currentEntity = null;
 	private bool moving = false;
 	private Timer timer;
 	
@@ -23,7 +25,8 @@ public partial class Selector : Node2D
 	{
 		sprite = GetNode<Sprite2D>("Sprite");
 		map = GetNode<Node2D>("../") as Map;
-		timer = SetMovementTimer(.1f);
+		currentEntity = null;
+		timer = SetMovementTimer(.001f);
 		timer.Timeout += ScanEntities;
 		AddChild(timer);
 	}
@@ -48,56 +51,21 @@ public partial class Selector : Node2D
 					}
 				}
 				
-				if (allowedGroundFilter)
+				try {
+					if (currentEntity != null)
+					{
+						MoveEntityHighlighter(currentEntity.Position);
+					} else
+					{
+						cellPos = GetCellPos(localPos);
+						MoveGroundHighlighter(cellPos);
+					}
+				} catch (Exception e)
 				{
+					currentEntity = null;
 					cellPos = GetCellPos(localPos);
 					MoveGroundHighlighter(cellPos);
 				}
-				
-				
-				
-				/*bool allowedGroundFilter = false;
-				bool allowedEntityFilter = false;
-				
-				if (mouseEvent is InputEventMouseMotion mouseMotion)
-				{
-					if (cellPos != currentCellPos)
-					{
-						allowedGroundFilter = AllowedTileFilter(cellPos);
-						cellPos = currentCellPos;
-						moving = true;
-						ResetMovementTimer(timer);
-					}
-				}
-				
-				if (!moving)
-				{
-					allowedEntityFilter = AllowedEntityFilter(localPos);
-				}
-				
-				GD.Print(cellPos);
-				if (allowedGroundFilter)
-				{
-					MoveHighlighter(cellPos);
-				} else
-				{
-					HideHighlighter();
-				}*/
-				
-			
-			/*	if (AllowedTileFilter(cellPos))
-				{
-					if (mouseEvent is InputEventMouseMotion mouseMotion)
-					{
-						if (cellPos != currentCellPos)
-						{
-							MoveHighlighter(cellPos);
-						}
-					} else
-					{
-						GD.Print(123);
-					}
-				} */
 			}
 		} else
 		{
@@ -114,7 +82,25 @@ public partial class Selector : Node2D
 		if (entities != null && entities.Length > 0)
 		{
 			Entities.Entity entity = entities[0];
-			MoveHighlighter(entity.Position);
+			
+			if (currentEntity != entity)
+			{
+				currentEntity = entity;
+				EmitSignal("HoveredEntity", currentEntity);
+			}
+			
+			var removeSelectedEntity = () => {
+				currentEntity = null;
+			};
+			
+			var removeSelectedEntityCall = Callable.From(removeSelectedEntity);
+			
+			if (!entity.IsConnected("mouse_exited", removeSelectedEntityCall))
+			{
+				entity.Connect("mouse_exited", removeSelectedEntityCall);
+			}
+			
+			MoveEntityHighlighter(currentEntity.Position);
 		}
 	}
 	
@@ -128,11 +114,10 @@ public partial class Selector : Node2D
 		}
 	}
 	
-	private void MoveHighlighter(Vector2 localPos)
+	private void MoveEntityHighlighter(Vector2 localPos)
 	{
 		SetPosition(localPos);
 		Visible = true;
-		//EmitSignal("HoveredGround", cellPos);
 	}
 	
 	private void MoveGroundHighlighter(Vector2I cellPos)

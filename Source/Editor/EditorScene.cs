@@ -84,7 +84,7 @@ public partial class EditorScene : Node2D
 		Entities.Entity[] entities = entityLayer.Flash(localPosCentered, 1);
 		
 		if (entities == null) {
-			entityLayer.SpawnEntity(localPosCentered + new Vector2(50f, 0), 1);
+			entityLayer.SpawnEntity(localPosCentered, 1);
 		} else {
 			int id = entities[0].EntityResource.Id;
 			int length = entityLayer.EntityScenes.Count;
