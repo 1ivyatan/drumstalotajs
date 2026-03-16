@@ -8,8 +8,6 @@ namespace drumstalotajs.Editor;
 public partial class EditorScene : Node2D
 {
 	private Dictionary<Vector2I, double> relativeHeights;
-
-	
 	private Vector2I[] groundLayerAtlas;
 	private Vector2I[] decorationLayerAtlas;
 	
@@ -89,6 +87,8 @@ public partial class EditorScene : Node2D
 	{
 		if (saving == false)
 		{
+			
+			
 			saving = true;
 			SceneTreeTimer delayToSaveAgain = GetTree().CreateTimer(5f);
 			delayToSaveAgain.Connect("timeout", Callable.From(() => {
