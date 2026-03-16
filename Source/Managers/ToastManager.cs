@@ -20,7 +20,7 @@ public partial class ToastManager : Control
 			{
 				if (Toasts.Count >= limit)
 				{
-					Toasts.RemoveAt(0);
+					Pop();
 				}
 				Toasts.Add(node as Components.Toast);
 			}
@@ -29,6 +29,14 @@ public partial class ToastManager : Control
 		ChildExitingTree += (Node node) => {
 			if (node is Components.Toast) Toasts.Remove(node as Components.Toast);
 		};
+	}
+	
+	public void Pop()
+	{
+		Components.Toast toast = GetChild(0) as Components.Toast;
+		toast.Destroy();
+		RemoveChild(toast);
+		Toasts.RemoveAt(0);
 	}
 	
 	public void Clear()
