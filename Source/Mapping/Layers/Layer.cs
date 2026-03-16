@@ -20,11 +20,6 @@ public partial class Layer : TileMapLayer
 		}
 		return tileAtlas;
 	}
-	
-	public void ExportTiles()
-	{
-		
-	}
 	/*
 		
 		protected int[] GetSceneTileIds(TileMapLayer layer, int sourceId)

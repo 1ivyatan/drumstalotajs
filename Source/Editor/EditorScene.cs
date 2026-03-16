@@ -85,9 +85,13 @@ public partial class EditorScene : Node2D
 	{
 		if (saving == false)
 		{
+			Resources.Maps.Layers.GroundLayer groundLayerData = map.GroundLayer.ExportTiles();
 			
+			
+			ResourceSaver.Save(groundLayerData, $"res://Exports/Maps/GroundPattern.tres");
 			
 			saving = true;
+			toastManager.SpawnToast("Save successful");
 			SceneTreeTimer delayToSaveAgain = GetTree().CreateTimer(5f);
 			delayToSaveAgain.Connect("timeout", Callable.From(() => {
 				saving = false;

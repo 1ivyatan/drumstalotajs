@@ -5,6 +5,7 @@ namespace drumstalotajs.Utilities;
 
 public static class Topography
 {
+	public static int TileSize = 16;
 	public static Vector2 AzimuthToDirection(double azimuth)
 	{
 		double radians = Physics.ToRadians(90.0 - azimuth);
