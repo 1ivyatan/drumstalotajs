@@ -9,6 +9,7 @@ public partial class Selector : Node2D
 	[Signal] public delegate void SelectedEventHandler(Vector2I cellPos);
 	[Signal] public delegate void HoveredGroundEventHandler(Vector2I cellPos);
 	[Signal] public delegate void HoveredEntityEventHandler(Entities.Entity entity);
+	[Signal] public delegate void UnhoveredEntityEventHandler();
 	
 	public bool Locked { get; set; } = false;
 	public bool Readonly { get; set; } = true;
@@ -91,6 +92,7 @@ public partial class Selector : Node2D
 			
 			var removeSelectedEntity = () => {
 				currentEntity = null;
+				EmitSignal("UnhoveredEntity");
 			};
 			
 			var removeSelectedEntityCall = Callable.From(removeSelectedEntity);

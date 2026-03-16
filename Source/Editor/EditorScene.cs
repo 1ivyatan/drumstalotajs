@@ -8,7 +8,7 @@ namespace drumstalotajs.Editor;
 public partial class EditorScene : Node2D
 {
 	private Dictionary<Vector2I, double> relativeHeights;
-	
+
 	
 	private Vector2I[] groundLayerAtlas;
 	private Vector2I[] decorationLayerAtlas;
@@ -18,6 +18,9 @@ public partial class EditorScene : Node2D
 	private Managers.ToastManager toastManager;
 	
 	private double heightFactor = 1;
+	private double aziFactor = 1;
+	
+	private Entities.Entity selectedEntity = null;
 	
 	public override void _Ready()
 	{
@@ -28,6 +31,12 @@ public partial class EditorScene : Node2D
 		decorationLayerAtlas = map.DecorationLayer.GetTileAtlas();
 		relativeHeights = new Dictionary<Vector2I, double>();
 		map.Editing = true;
+		map.Selector.HoveredEntity += (Entities.Entity entity) => {
+			selectedEntity = entity;
+		};
+		map.Selector.UnhoveredEntity += () => {
+			selectedEntity = null;
+		};
 	}
 	
 	public override void _Input(InputEvent @event)
@@ -67,11 +76,11 @@ public partial class EditorScene : Node2D
 					case Key.F:
 						ChangeGroundHeight(map.CurrentCellPos, keyEvent.ShiftPressed ? ( -heightFactor * 0.1 ) : -heightFactor);
 						break;
-					case Key.Q:
-						
-						break;
 					case Key.W:
-						
+						ChangeEntityAzimuth(selectedEntity, keyEvent.ShiftPressed ? ( aziFactor * 0.1 ) : aziFactor);
+						break;
+					case Key.Q:
+						ChangeEntityAzimuth(selectedEntity, keyEvent.ShiftPressed ? ( -aziFactor * 0.1 ) : -aziFactor);
 						break;
 				}
 			}
@@ -130,8 +139,14 @@ public partial class EditorScene : Node2D
 		toastManager.SpawnToast($"{relativeHeights[cellPos]}m");
 	}
 	
-	private void ChangeEntityAzimuth()
+	private void ChangeEntityAzimuth(Entities.Entity entity, double change)
 	{
-		
+		if (entity != null)
+		{
+			double newAzimuth = Math.Round(entity.Azimuth + change, 3);
+			entity.Azimuth = newAzimuth;
+			toastManager.Clear();
+			toastManager.SpawnToast($"{entity.Azimuth}deg");
+		}
 	}
 }
