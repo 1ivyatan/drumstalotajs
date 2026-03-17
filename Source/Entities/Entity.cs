@@ -24,4 +24,11 @@ public partial class Entity : Area2D
 		Position = position;
 		Id = id;
 	}
+	
+	public void Initialize(Vector2 position, double azimuth, int id)
+	{
+		Position = position;
+		Azimuth = azimuth;
+		Id = id;
+	}
 }

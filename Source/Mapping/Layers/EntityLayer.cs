@@ -51,20 +51,31 @@ public partial class EntityLayer : Node2D
 		return entity;
 	}
 	
+	public Entities.Entity SpawnEntity(Vector2 position, double azimuth, int id)
+	{
+		Entities.Entity entity = EntityScenes[id].Instantiate() as Entities.Entity;
+		entity.Initialize(position, azimuth, id);
+		AddChild(entity);
+		return entity;
+	}
+	
 	public Resources.Maps.Layers.EntityLayer ExportTiles()
 	{
 		Resources.Maps.Layers.EntityLayer layer = new Resources.Maps.Layers.EntityLayer();
-		layer.Entities = new Godot.Collections.Dictionary<int, Godot.Collections.Array<Vector2>>();
+		layer.Entities = new Godot.Collections.Dictionary<int, Godot.Collections.Array<Resources.Maps.Layers.Entities.EntityProperties>>();
 		foreach (Entities.Entity entity in Entities)
 		{
 			int id = entity.Id;
 			
 			if (!layer.Entities.ContainsKey(id))
 			{
-				layer.Entities.Add(id, new Godot.Collections.Array<Vector2>());
+				layer.Entities.Add(id, new Godot.Collections.Array<Resources.Maps.Layers.Entities.EntityProperties>());
 			}
 
-			layer.Entities[id].Add(entity.Position);
+			Resources.Maps.Layers.Entities.EntityProperties entityProperties = new Resources.Maps.Layers.Entities.EntityProperties();
+			entityProperties.Position = entity.Position;
+			entityProperties.Azimuth = entity.Azimuth;
+			layer.Entities[id].Add(entityProperties);
 		}
 		return layer;
 	}
@@ -73,9 +84,9 @@ public partial class EntityLayer : Node2D
 	{
 		foreach (var entity in entityLayer.Entities)
 		{
-			foreach (var position in entity.Value)
+			foreach (var properties in entity.Value)
 			{
-				SpawnEntity(position, entity.Key);
+				SpawnEntity(properties.Position, properties.Azimuth, entity.Key);
 			}
 		}
 	}
