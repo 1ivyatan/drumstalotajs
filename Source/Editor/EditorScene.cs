@@ -123,7 +123,7 @@ public partial class EditorScene : Node2D
 		if (entities == null) {
 			entityLayer.SpawnEntity(localPosCentered, 1);
 		} else {
-			int id = entities[0].EntityResource.Id;
+			int id = entities[0].Id;
 			int length = entityLayer.EntityScenes.Count;
 			int index = entityLayer.EntityScenes.IndexOf(id);
 			int next = index + 1;

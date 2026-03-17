@@ -8,6 +8,8 @@ public partial class Entity : Area2D
 {
 	[Export] public Resources.Entities.Entity EntityResource { get; private set; }
 	
+	public int Id { get; set; }
+	
 	public double Azimuth { 
 		get; 
 		set
@@ -20,6 +22,6 @@ public partial class Entity : Area2D
 	public void Initialize(Vector2 position, int id)
 	{
 		Position = position;
-		EntityResource.Id = id;
+		Id = id;
 	}
 }
