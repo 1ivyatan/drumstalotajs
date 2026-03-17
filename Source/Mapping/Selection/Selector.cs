@@ -41,14 +41,14 @@ public partial class Selector : Node2D
 			{
 				Vector2 localPos = GetLocalPos();
 				Vector2I cellPos = GetCellPos(localPos);
-				bool allowedGroundFilter = false;
+				
+				/* vvv complete mess vvv */
 				
 				if (mouseEvent is InputEventMouseMotion mouseMotion)
 				{
 					if (cellPos != currentCellPos)
 					{
-						allowedGroundFilter = AllowedTileFilter(cellPos);
-						cellPos = currentCellPos;
+						currentCellPos = cellPos;
 						ResetMovementTimer(timer);
 					}
 				}
@@ -61,6 +61,7 @@ public partial class Selector : Node2D
 					{
 						cellPos = GetCellPos(localPos);
 						MoveGroundHighlighter(cellPos);
+						
 					}
 				} catch (Exception e)
 				{
@@ -134,9 +135,18 @@ public partial class Selector : Node2D
 	
 	private void MoveGroundHighlighter(Vector2I cellPos)
 	{
-		SetPosition((cellPos * map.GroundLayer.TileSize) + new Vector2I(map.GroundLayer.TileSize / 2, map.GroundLayer.TileSize / 2));
-		Visible = true;
-		EmitSignal("HoveredGround", cellPos);
+		bool allowed = AllowedTileFilter(currentCellPos);
+		if (allowed)
+		{
+			SetPosition((cellPos * map.GroundLayer.TileSize) + new Vector2I(map.GroundLayer.TileSize / 2, map.GroundLayer.TileSize / 2));
+			Visible = true;
+		}
+		
+		if (allowed || !Readonly)
+		{
+			EmitSignal("HoveredGround", cellPos);
+		}
+		
 	}
 	
 	private void HideHighlighter()

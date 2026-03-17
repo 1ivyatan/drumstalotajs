@@ -10,6 +10,8 @@ public partial class Selector : Node2D
 	{
 		if (Readonly)
 		{
+			if (map.GroundLayer.GetCellAtlasCoords(cellPos) == Utilities.Topography.NegativeVector)
+				return false;
 			return true;
 		} else
 		{
