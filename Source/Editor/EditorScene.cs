@@ -32,20 +32,20 @@ public partial class EditorScene : Node2D
 		groundLayerAtlas = map.GroundLayer.GetTileAtlas();
 		decorationLayerAtlas = map.DecorationLayer.GetTileAtlas();
 		
-		//LoadMap();
-		
-		map.Editing = true;
 		map.Selector.HoveredEntity += (Entities.Entity entity) => {
 			selectedEntity = entity;
 		};
 		map.Selector.UnhoveredEntity += () => {
 			selectedEntity = null;
 		};
+		
+		map.LoadMap(metaData);
+		map.Editing = true;
 	}
 	
 	public override void _UnhandledInput(InputEvent @event)
 	{
-		if (!map.Loaded) return;
+		if (!map.Loaded && !map.Editing) return;
 		if (@event is InputEventKey keyEvent)
 		{
 			if (keyEvent.Pressed)
@@ -74,6 +74,7 @@ public partial class EditorScene : Node2D
 						break;
 					case Key.E:
 						if (keyEvent.Echo) return;
+						if (keyEvent.CtrlPressed) return;
 						NextEntity(map.EntityLayer, map.CurrentCellPos);
 						break;
 					case Key.R:
@@ -101,6 +102,7 @@ public partial class EditorScene : Node2D
 			Resources.Maps.Map mapData = new Resources.Maps.Map();
 			mapData.GroundLayer = map.GroundLayer.ExportTiles();
 			mapData.DecorationLayer = map.DecorationLayer.ExportTiles();
+			mapData.EntityLayer = map.EntityLayer.ExportTiles();
 			ResourceSaver.Save(mapData, $"res://Exports/Maps/Map.tres");
 			ResourceSaver.Save(metaData, $"res://Exports/Maps/Meta.tres");
 			

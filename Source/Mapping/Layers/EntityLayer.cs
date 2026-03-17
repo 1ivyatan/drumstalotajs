@@ -51,6 +51,35 @@ public partial class EntityLayer : Node2D
 		return entity;
 	}
 	
+	public Resources.Maps.Layers.EntityLayer ExportTiles()
+	{
+		Resources.Maps.Layers.EntityLayer layer = new Resources.Maps.Layers.EntityLayer();
+		layer.Entities = new Godot.Collections.Dictionary<int, Godot.Collections.Array<Vector2>>();
+		foreach (Entities.Entity entity in Entities)
+		{
+			int id = entity.EntityResource.Id;
+			
+			if (!layer.Entities.ContainsKey(id))
+			{
+				layer.Entities.Add(id, new Godot.Collections.Array<Vector2>());
+			}
+
+			layer.Entities[id].Add(entity.Position);
+		}
+		return layer;
+	}
+	
+	public void LoadLayer(Resources.Maps.Layers.EntityLayer entityLayer)
+	{
+		foreach (var entity in entityLayer.Entities)
+		{
+			foreach (var position in entity.Value)
+			{
+				SpawnEntity(position, entity.Key);
+			}
+		}
+	}
+	
 	public Entities.Entity[] Flash(Vector2 position, int limit)
 	{
 		var spaceState = GetWorld2D().DirectSpaceState;

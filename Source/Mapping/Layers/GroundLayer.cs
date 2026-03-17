@@ -37,9 +37,8 @@ public partial class GroundLayer : Layer
 	
 	public void LoadLayer(Resources.Maps.Layers.GroundLayer groundLayer)
 	{
-		GD.Print(groundLayer.Offset);
-		//SetPattern(groundLayer.Offset, groundLayer.Tiles);
-		//relativeHeights = groundLayer.RelativeHeights;
+		SetPattern(groundLayer.Offset, groundLayer.Tiles);
+		relativeHeights = groundLayer.RelativeHeights;
 	}
 	
 	public void SetRelHeight(Vector2I cellPos, double value)

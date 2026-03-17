@@ -27,6 +27,7 @@ public partial class Selector : Node2D
 		sprite = GetNode<Sprite2D>("Sprite");
 		map = GetNode<Node2D>("../") as Map;
 		currentEntity = null;
+		Visible = false;
 		timer = SetMovementTimer(.001f);
 		timer.Timeout += ScanEntities;
 		AddChild(timer);

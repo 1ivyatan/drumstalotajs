@@ -32,4 +32,9 @@ public partial class DecorationLayer : Layer
 		
 		return layer;
 	}
+	
+	public void LoadLayer(Resources.Maps.Layers.DecorationLayer decorationLayer)
+	{
+		SetPattern(decorationLayer.Offset, decorationLayer.Tiles);
+	}
 }

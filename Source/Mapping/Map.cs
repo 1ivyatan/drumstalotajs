@@ -31,8 +31,6 @@ public partial class Map : Node2D
 		
 		TileSize = GroundLayer.TileSet.TileSize.X;
 		Selector.HoveredGround += (Vector2I cellPos) => { CurrentCellPos = cellPos; };
-		
-		Camera.Calibrate(GroundLayer);
 		Camera.DraggingChange += (MapCamera.DraggingState draggingState) => {
 			switch(draggingState)
 			{
@@ -58,6 +56,9 @@ public partial class Map : Node2D
 	{
 		Resources.Maps.Map mapData = ResourceLoader.Load<Resources.Maps.Map>(metaData.MapPath);;
 		GroundLayer.LoadLayer(mapData.GroundLayer);
+		DecorationLayer.LoadLayer(mapData.DecorationLayer);
+		EntityLayer.LoadLayer(mapData.EntityLayer);
+		Camera.Calibrate(GroundLayer);
 		Loaded = true;
 	}
 }
