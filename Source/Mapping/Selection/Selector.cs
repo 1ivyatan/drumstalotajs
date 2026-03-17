@@ -56,7 +56,7 @@ public partial class Selector : Node2D
 				try {
 					if (currentEntity != null)
 					{
-						MoveEntityHighlighter(currentEntity.Position);
+						MoveEntityHighlighter(currentEntity.Position, currentEntity.Rotation);
 					} else
 					{
 						cellPos = GetCellPos(localPos);
@@ -105,7 +105,7 @@ public partial class Selector : Node2D
 				entity.Connect("mouse_exited", removeSelectedEntityCall);
 			}
 			
-			MoveEntityHighlighter(currentEntity.Position);
+			MoveEntityHighlighter(currentEntity.Position, currentEntity.Rotation);
 		}
 	}
 	
@@ -127,9 +127,10 @@ public partial class Selector : Node2D
 		}
 	}
 	
-	private void MoveEntityHighlighter(Vector2 localPos)
+	private void MoveEntityHighlighter(Vector2 localPos, float rotation)
 	{
-		SetPosition(localPos);
+		Position = localPos;
+		Rotation = rotation;
 		Visible = true;
 	}
 	
@@ -139,6 +140,7 @@ public partial class Selector : Node2D
 		if (allowed)
 		{
 			SetPosition((cellPos * map.GroundLayer.TileSize) + new Vector2I(map.GroundLayer.TileSize / 2, map.GroundLayer.TileSize / 2));
+			Rotation = 0f;
 			Visible = true;
 		}
 		
