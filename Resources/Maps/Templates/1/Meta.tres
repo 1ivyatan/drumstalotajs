@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Meta" format=3 uid="uid://bnq3c6vn74pi6"]
+
+[ext_resource type="Script" uid="uid://bm5b8hklscgbv" path="res://Source/Resources/Maps/Meta.cs" id="1_kxiyj"]
+
+[resource]
+script = ExtResource("1_kxiyj")
+Title = "sdfsdfsdf"
+MapPath = "res://Resources/Maps/Templates/1/Map.tres"

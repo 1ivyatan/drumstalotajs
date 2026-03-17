@@ -19,6 +19,7 @@ public partial class Map : Node2D
 			if (Selector != null) Selector.Readonly = !value;
 		}
 	} = false;
+	public bool Loaded { get; private set; } = false;
 	
 	public override void _Ready()
 	{
@@ -51,5 +52,12 @@ public partial class Map : Node2D
 		};
 		
 		Input.SetDefaultCursorShape(Input.CursorShape.Cross);
+	}
+	
+	public void LoadMap(Resources.Maps.Meta metaData)
+	{
+		Resources.Maps.Map mapData = ResourceLoader.Load<Resources.Maps.Map>(metaData.MapPath);;
+		GroundLayer.LoadLayer(mapData.GroundLayer);
+		Loaded = true;
 	}
 }

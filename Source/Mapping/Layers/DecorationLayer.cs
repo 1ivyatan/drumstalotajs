@@ -26,7 +26,7 @@ public partial class DecorationLayer : Layer
 		}
 		
 		TileMapPattern tiles = GetPattern(allCells);
-		Resources.Maps.Layers.GroundLayer layer = new Resources.Maps.Layers.GroundLayer();
+		Resources.Maps.Layers.DecorationLayer layer = new Resources.Maps.Layers.DecorationLayer();
 		layer.Tiles = tiles;
 		layer.Offset = usedRect.Position;
 		

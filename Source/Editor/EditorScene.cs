@@ -7,11 +7,14 @@ namespace drumstalotajs.Editor;
 
 public partial class EditorScene : Node2D
 {
+	[Export] private Resources.Maps.Meta metaData;
+	
 	private Vector2I[] groundLayerAtlas;
 	private Vector2I[] decorationLayerAtlas;
 	
 	private Mapping.Map map;
-	private PanelContainer helpContainer;
+	private HelpContainer helpContainer;
+	private MetaContainer metaContainer;
 	private Managers.ToastManager toastManager;
 	
 	private double heightFactor = 1;
@@ -23,10 +26,14 @@ public partial class EditorScene : Node2D
 	public override void _Ready()
 	{
 		map = GetNode<Node2D>("Map") as Mapping.Map;
-		helpContainer = GetNode<PanelContainer>("UI/HelpContainer");
+		helpContainer = GetNode<PanelContainer>("UI/HelpContainer") as HelpContainer;
+		metaContainer = GetNode<PanelContainer>("UI/MetaContainer") as MetaContainer;
 		toastManager = GetNode<Control>("../../Overlay/ToastManager") as Managers.ToastManager;
 		groundLayerAtlas = map.GroundLayer.GetTileAtlas();
 		decorationLayerAtlas = map.DecorationLayer.GetTileAtlas();
+		
+		//LoadMap();
+		
 		map.Editing = true;
 		map.Selector.HoveredEntity += (Entities.Entity entity) => {
 			selectedEntity = entity;
@@ -36,8 +43,9 @@ public partial class EditorScene : Node2D
 		};
 	}
 	
-	public override void _Input(InputEvent @event)
+	public override void _UnhandledInput(InputEvent @event)
 	{
+		if (!map.Loaded) return;
 		if (@event is InputEventKey keyEvent)
 		{
 			if (keyEvent.Pressed)
@@ -46,7 +54,11 @@ public partial class EditorScene : Node2D
 				{
 					case Key.H:
 						if (keyEvent.Echo) return;
-						helpContainer.SetVisible(!helpContainer.Visible);
+						helpContainer.ToggleContainer();
+						break;
+					case Key.M:
+						if (keyEvent.Echo) return;
+						metaContainer.ToggleContainer();
 						break;
 					case Key.S:
 						if (keyEvent.Echo) return;
@@ -85,10 +97,12 @@ public partial class EditorScene : Node2D
 	{
 		if (saving == false)
 		{
-			Resources.Maps.Layers.GroundLayer groundLayerData = map.GroundLayer.ExportTiles();
-			
-			
-			ResourceSaver.Save(groundLayerData, $"res://Exports/Maps/GroundPattern.tres");
+			Resources.Maps.Meta metaData = metaContainer.ExportMeta();
+			Resources.Maps.Map mapData = new Resources.Maps.Map();
+			mapData.GroundLayer = map.GroundLayer.ExportTiles();
+			mapData.DecorationLayer = map.DecorationLayer.ExportTiles();
+			ResourceSaver.Save(mapData, $"res://Exports/Maps/Map.tres");
+			ResourceSaver.Save(metaData, $"res://Exports/Maps/Meta.tres");
 			
 			saving = true;
 			toastManager.SpawnToast("Save successful");
