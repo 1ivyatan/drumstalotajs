@@ -5,7 +5,7 @@
 [node name="Start" type="CanvasLayer" unique_id=337833598]
 script = ExtResource("1_tdy0i")
 
-[node name="ToStartButton" type="Button" parent="." unique_id=1838391284]
+[node name="ToLevelsButton" type="Button" parent="." unique_id=1838391284]
 offset_right = 8.0
 offset_bottom = 8.0
 text = "Start"

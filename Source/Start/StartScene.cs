@@ -6,13 +6,13 @@ namespace drumstalotajs.Start;
 public partial class StartScene : CanvasLayer
 {
 	private Managers.SceneManager sceneManager;
-	private Button toStartButton;
+	private Button toLevelsButton;
 
 	public override void _Ready()
 	{
 		sceneManager = GetNode<Node>("../") as Managers.SceneManager;
-		toStartButton = GetNode<Button>("ToStartButton");
-		toStartButton.Pressed += () => {
+		toLevelsButton = GetNode<Button>("ToLevelsButton");
+		toLevelsButton.Pressed += () => {
 			sceneManager.LevelsScene();
 		};
 	}

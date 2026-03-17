@@ -37,6 +37,7 @@ public partial class Selector : Node2D
 	{
 		if (!Locked)
 		{
+			/* fix this */
 			if (@event is InputEventMouse mouseEvent)
 			{
 				Vector2 localPos = GetLocalPos();

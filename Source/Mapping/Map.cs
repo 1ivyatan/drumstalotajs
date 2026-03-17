@@ -28,7 +28,6 @@ public partial class Map : Node2D
 		EntityLayer = GetNode<Node2D>("EntityLayer") as Layers.EntityLayer;
 		Selector = GetNode<Node2D>("Selector") as Mapping.Selection.Selector;
 		Camera = GetNode<Camera2D>("Camera") as MapCamera;
-		
 		TileSize = GroundLayer.TileSet.TileSize.X;
 		Selector.HoveredGround += (Vector2I cellPos) => { CurrentCellPos = cellPos; };
 		Camera.DraggingChange += (MapCamera.DraggingState draggingState) => {

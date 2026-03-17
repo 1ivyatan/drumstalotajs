@@ -49,6 +49,11 @@ public partial class MapCamera : Camera2D
 		Position = usedRect.Position + usedRect.GetCenter() * layer.TileSize;
 	}
 	
+	public void Fit(Layers.Layer layer)
+	{
+		
+	}
+	
 	private void HandleDrag(InputEventMouse mouseEvent)
 	{
 		if (!Locked)
