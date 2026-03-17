@@ -32,9 +32,6 @@ public partial class GroundLayer : Layer
 		layer.Offset = usedRect.Position;
 		layer.RelativeHeights = relativeHeights;
 		
-		GD.Print(layer.Offset);
-		GD.Print(layer.Offset * TileSize);
-		
 		return layer;
 	}
 	
