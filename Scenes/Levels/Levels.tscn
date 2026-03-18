@@ -2,14 +2,12 @@
 
 [ext_resource type="Script" uid="uid://c4ibg6w3gf631" path="res://Source/Levels/LevelsScene.cs" id="1_gk738"]
 [ext_resource type="PackedScene" uid="uid://cbxsa10nydtms" path="res://Scenes/Map/Map.tscn" id="2_q2tp7"]
-[ext_resource type="Resource" uid="uid://bnq3c6vn74pi6" path="res://Resources/Maps/Templates/1/Meta.tres" id="3_5wqow"]
 [ext_resource type="Script" uid="uid://87yd51ufkufs" path="res://Source/Levels/LevelSelectionContainer.cs" id="4_rvccs"]
 
 [node name="Levels" type="Node2D" unique_id=641084867]
 script = ExtResource("1_gk738")
 
 [node name="Map" parent="." unique_id=657688654 instance=ExtResource("2_q2tp7")]
-metaData = ExtResource("3_5wqow")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=249199293]
 

@@ -6,7 +6,7 @@ namespace drumstalotajs.Mapping.Selection;
 
 public partial class Selector : Node2D
 {
-	[Signal] public delegate void SelectedEventHandler(Vector2I cellPos);
+	//[Signal] public delegate void SelectedEventHandler(Vector2I cellPos);
 	[Signal] public delegate void HoveredGroundEventHandler(Vector2I cellPos);
 	[Signal] public delegate void HoveredEntityEventHandler(Entities.Entity entity);
 	[Signal] public delegate void UnhoveredEntityEventHandler();
@@ -26,24 +26,23 @@ public partial class Selector : Node2D
 	{
 		sprite = GetNode<Sprite2D>("Sprite");
 		map = GetNode<Node2D>("../") as Map;
-		currentEntity = null;
-		Visible = false;
-		timer = SetMovementTimer(.001f);
-		timer.Timeout += ScanEntities;
-		AddChild(timer);
+		//currentEntity = null;
+		//Visible = false;
+		//timer = SetMovementTimer(.001f);
+		//timer.Timeout += ScanEntities;
+		//AddChild(timer);
 	}
 	
 	public override void _UnhandledInput(InputEvent @event)
 	{
+		/*
 		if (!Locked)
 		{
-			/* fix this */
 			if (@event is InputEventMouse mouseEvent)
 			{
 				Vector2 localPos = GetLocalPos();
 				Vector2I cellPos = GetCellPos(localPos);
 				
-				/* vvv complete mess vvv */
 				
 				if (mouseEvent is InputEventMouseMotion mouseMotion)
 				{
@@ -75,11 +74,11 @@ public partial class Selector : Node2D
 		} else
 		{
 			HideHighlighter();
-		}
+		}*/
 	}
 	
 	private void ScanEntities()
-	{
+	{/*
 		Vector2 localPos = GetLocalPos();
 		Vector2I cellPos = GetCellPos(localPos);
 		Entities.Entity[] entities = AllowedEntityFilter(localPos);
@@ -155,5 +154,6 @@ public partial class Selector : Node2D
 	private void HideHighlighter()
 	{
 		Visible = false;
+	}*/
 	}
 }

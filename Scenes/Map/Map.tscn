@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://cbqqrqycssnr0" path="res://Source/Mapping/Selection/Selector.cs" id="4_yju8x"]
 [ext_resource type="Texture2D" uid="uid://d0cdb8hgex132" path="res://Assets/Ground.svg" id="5_urk12"]
 [ext_resource type="Script" uid="uid://by6tm4mlvp8r4" path="res://Source/Mapping/Layers/EntityLayer.cs" id="6_8xir4"]
-[ext_resource type="Script" uid="uid://dfr7dmkx4q53h" path="res://Source/Mapping/MapCamera.cs" id="6_lats3"]
+[ext_resource type="Script" uid="uid://dfr7dmkx4q53h" path="res://Source/Mapping/Camera/MapCamera.cs" id="6_lats3"]
 [ext_resource type="Resource" uid="uid://byrfeo7ckbos0" path="res://Resources/Sets/EntitySets/Entities.tres" id="7_2brea"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lats3"]

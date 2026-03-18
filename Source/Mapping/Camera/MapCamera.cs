@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-namespace drumstalotajs.Mapping;
+namespace drumstalotajs.Mapping.Camera;
 
 public partial class MapCamera : Camera2D
 {
@@ -28,6 +28,7 @@ public partial class MapCamera : Camera2D
 	
 	public override void _UnhandledInput(InputEvent @event)
 	{
+		/*
 		if (!Locked)
 		{
 			if (@event is InputEventMouse mouseEvent)
@@ -35,7 +36,7 @@ public partial class MapCamera : Camera2D
 				HandleZoom(mouseEvent);
 				HandleDrag(mouseEvent);
 			}
-		}
+		}*/
 	}
 	
 	public void Calibrate(Layers.Layer layer)

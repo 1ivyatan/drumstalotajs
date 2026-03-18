@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-namespace drumstalotajs.Mapping;
+namespace drumstalotajs.Mapping.Camera;
 
 public partial class MapCamera : Camera2D
 {

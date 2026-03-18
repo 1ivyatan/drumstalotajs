@@ -32,29 +32,27 @@ public partial class EditorScene : Node2D
 		groundLayerAtlas = map.GroundLayer.GetTileAtlas();
 		decorationLayerAtlas = map.DecorationLayer.GetTileAtlas();
 		
+		/*
 		map.Selector.HoveredEntity += (Entities.Entity entity) => {
 			selectedEntity = entity;
 		};
 		map.Selector.UnhoveredEntity += () => {
 			selectedEntity = null;
-		};
+		};*/
 		
 		if (metaData != null)
 		{
 			/* FIX CAMERA AND SELECTOR */
 		//	map.Camera.Calibrate(map.GroundLayer);
 			map.LoadMap(metaData);
-		} else
-		{
-			
 		}
 		
-		map.Editing = true;
+		map.Mode = Mapping.Map.MapState.EDIT;
 	}
 	
 	public override void _UnhandledInput(InputEvent @event)
 	{
-		if (!map.Loaded && !map.Editing) return;
+	//	if (!map.Loaded && !map.Editing) return;
 		if (@event is InputEventKey keyEvent)
 		{
 			if (keyEvent.Pressed)
@@ -73,6 +71,8 @@ public partial class EditorScene : Node2D
 						if (keyEvent.Echo) return;
 						if (keyEvent.CtrlPressed) SaveMap();
 						break;
+						
+					/*
 					case Key.G:
 						if (keyEvent.Echo) return;
 						NextTileFromAtlas(map.GroundLayer, groundLayerAtlas, map.CurrentCellPos);
@@ -97,7 +97,7 @@ public partial class EditorScene : Node2D
 						break;
 					case Key.Q:
 						ChangeEntityAzimuth(selectedEntity, keyEvent.ShiftPressed ? ( -aziFactor * 0.1 ) : -aziFactor);
-						break;
+						break;*/
 				}
 			}
 		}
@@ -123,7 +123,7 @@ public partial class EditorScene : Node2D
 			}));
 		}
 	}
-	
+	/*
 	private void NextEntity(Mapping.Layers.EntityLayer entityLayer, Vector2I cellPos)
 	{
 		Vector2 localPosCentered = entityLayer.CellToLocalPos(cellPos, true);
@@ -182,5 +182,5 @@ public partial class EditorScene : Node2D
 			toastManager.Clear();
 			toastManager.SpawnToast($"{entity.Azimuth}deg");
 		}
-	}
+	}*/
 }
