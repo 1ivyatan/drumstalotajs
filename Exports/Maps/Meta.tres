@@ -1,6 +1,0 @@
-[gd_resource type="Resource" script_class="Meta" format=3]
-
-[ext_resource type="Script" path="res://Source/Resources/Maps/Meta.cs" id="1_dwf4b"]
-
-[resource]
-script = ExtResource("1_dwf4b")

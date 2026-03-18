@@ -39,7 +39,16 @@ public partial class EditorScene : Node2D
 			selectedEntity = null;
 		};
 		
-		map.LoadMap(metaData);
+		if (metaData != null)
+		{
+			/* FIX CAMERA AND SELECTOR */
+		//	map.Camera.Calibrate(map.GroundLayer);
+		//	map.LoadMap(metaData);
+		} else
+		{
+			
+		}
+		
 		map.Editing = true;
 	}
 	
