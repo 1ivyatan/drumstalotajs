@@ -5,6 +5,7 @@ namespace drumstalotajs.Mapping;
 
 public partial class Map : Node2D
 {
+	[Export] private Resources.Maps.Meta metaData;
 	public Layers.GroundLayer GroundLayer { get; private set; }
 	public Layers.DecorationLayer DecorationLayer { get; private set; }
 	public Layers.EntityLayer EntityLayer { get; private set; }
@@ -49,10 +50,19 @@ public partial class Map : Node2D
 		};
 		
 		Input.SetDefaultCursorShape(Input.CursorShape.Cross);
+		
+		if (metaData != null)
+		{
+			LoadMap(metaData);
+		} else
+		{
+			Loaded = true;
+		}
 	}
 	
 	public void LoadMap(Resources.Maps.Meta metaData)
 	{
+		Loaded = false;
 		Resources.Maps.Map mapData = ResourceLoader.Load<Resources.Maps.Map>(metaData.MapPath);;
 		GroundLayer.LoadLayer(mapData.GroundLayer);
 		DecorationLayer.LoadLayer(mapData.DecorationLayer);

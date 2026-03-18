@@ -2,31 +2,33 @@
 
 [ext_resource type="Script" uid="uid://c4ibg6w3gf631" path="res://Source/Levels/LevelsScene.cs" id="1_gk738"]
 [ext_resource type="PackedScene" uid="uid://cbxsa10nydtms" path="res://Scenes/Map/Map.tscn" id="2_q2tp7"]
+[ext_resource type="Resource" uid="uid://bnq3c6vn74pi6" path="res://Resources/Maps/Templates/1/Meta.tres" id="3_5wqow"]
+[ext_resource type="Script" uid="uid://87yd51ufkufs" path="res://Source/Levels/LevelSelectionContainer.cs" id="4_rvccs"]
 
 [node name="Levels" type="Node2D" unique_id=641084867]
 script = ExtResource("1_gk738")
 
 [node name="Map" parent="." unique_id=657688654 instance=ExtResource("2_q2tp7")]
+metaData = ExtResource("3_5wqow")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=249199293]
 
-[node name="LevelsContainer" type="Control" parent="UI" unique_id=260463341]
-layout_mode = 3
-anchors_preset = 9
-anchor_bottom = 1.0
-grow_vertical = 2
-
-[node name="MetadataContainer" type="PanelContainer" parent="UI" unique_id=2089202447]
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
+[node name="LevelSelectionContainer" type="HBoxContainer" parent="UI" unique_id=2147118303]
+anchors_preset = 15
 anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -40.0
-offset_top = -20.0
-offset_bottom = 20.0
-grow_horizontal = 0
+anchor_bottom = 1.0
+grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("4_rvccs")
+
+[node name="LevelsContainer" type="Control" parent="UI/LevelSelectionContainer" unique_id=260463341]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="MetadataContainer" type="PanelContainer" parent="UI/LevelSelectionContainer" unique_id=2089202447]
+layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="ToStartButton" type="Button" parent="UI" unique_id=754370758]
 anchors_preset = 2

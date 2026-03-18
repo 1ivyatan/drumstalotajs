@@ -43,7 +43,7 @@ public partial class EditorScene : Node2D
 		{
 			/* FIX CAMERA AND SELECTOR */
 		//	map.Camera.Calibrate(map.GroundLayer);
-		//	map.LoadMap(metaData);
+			map.LoadMap(metaData);
 		} else
 		{
 			
