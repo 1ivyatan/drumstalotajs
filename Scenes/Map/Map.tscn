@@ -38,3 +38,6 @@ texture = SubResource("AtlasTexture_lats3")
 
 [node name="Camera" type="Camera2D" parent="." unique_id=110770291]
 script = ExtResource("6_lats3")
+MinZoom = 0.75
+MaxZoom = 2.0
+ZoomFactor = 0.15

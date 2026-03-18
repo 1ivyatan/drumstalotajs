@@ -47,7 +47,7 @@ public partial class EditorScene : Node2D
 			map.LoadMap(metaData);
 		}
 		
-		map.Mode = Mapping.Map.MapState.EDIT;
+		map.Mode = Mapping.Map.MapMode.EDIT;
 	}
 	
 	public override void _UnhandledInput(InputEvent @event)

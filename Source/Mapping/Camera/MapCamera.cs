@@ -7,33 +7,35 @@ public partial class MapCamera : Camera2D
 {
 	[Signal] public delegate void DraggingChangeEventHandler(DraggingState draggingState);
 	[Signal] public delegate void ZoomingChangeEventHandler(double factor);
-
-	public bool Locked { get; set; }
-	public bool Dragging { get; private set; } = false;
-	public bool Zooming { get; private set; } = false;
-	public DraggingState Drag { get; private set; }
 	
-	private Vector2 minZoom;
-	private Vector2 maxZoom;
-	private Vector2 zoomFactor;
-	private Rect2 usedRect;
+	[Export] private double MinZoom;
+	[Export] private double MaxZoom;
+	[Export] private double ZoomFactor;
+	private Rect2 UsedRect;
 	
 	public override void _Ready()
 	{
-		minZoom = new Vector2(.5f, .5f);
-		maxZoom = new Vector2(3f, 3f);
-		zoomFactor = new Vector2(.5f, .5f);
-		usedRect = new Rect2(new Vector2(-1f, -1f), new Vector2(-1f, -1f));
+		//UsedRect = new Rect2();
 	}
 	
 	public override void _UnhandledInput(InputEvent @event)
 	{
+		switch (Mode)
+		{
+			case MapCameraMode.VIEW: 
+				if (@event is InputEventMouse mouseEvent)
+				{
+					HandleZoom(mouseEvent);
+				}
+				break;
+			default: break;
+		}
 		/*
 		if (!Locked)
 		{
 			if (@event is InputEventMouse mouseEvent)
 			{
-				HandleZoom(mouseEvent);
+				HandleMouseZoom(mouseEvent);
 				HandleDrag(mouseEvent);
 			}
 		}*/
@@ -41,13 +43,13 @@ public partial class MapCamera : Camera2D
 	
 	public void Calibrate(Layers.Layer layer)
 	{
-		usedRect = layer.GetUsedRect();
+		UsedRect = layer.GetUsedRect();
 		int tileSize = layer.TileSize;
-		LimitLeft = (int)(usedRect.Position.X * tileSize);
-		LimitRight = (int)((usedRect.Position.X + usedRect.Size.X) * tileSize);
-		LimitTop = (int)(usedRect.Position.Y * tileSize);
-		LimitBottom = (int)((usedRect.Size.Y * tileSize) + (usedRect.Position.Y * tileSize));
-		Position = usedRect.Position + usedRect.GetCenter() * layer.TileSize;
+		LimitLeft = (int)(UsedRect.Position.X * tileSize);
+		LimitRight = (int)((UsedRect.Position.X + UsedRect.Size.X) * tileSize);
+		LimitTop = (int)(UsedRect.Position.Y * tileSize);
+		LimitBottom = (int)((UsedRect.Size.Y * tileSize) + (UsedRect.Position.Y * tileSize));
+		Position = UsedRect.Position + UsedRect.GetCenter() * layer.TileSize;
 	}
 	
 	public void Fit(Layers.Layer layer)
@@ -57,6 +59,7 @@ public partial class MapCamera : Camera2D
 	
 	private void HandleDrag(InputEventMouse mouseEvent)
 	{
+		/*
 		if (!Locked)
 		{
 			if (mouseEvent is InputEventMouseButton mouseClick)
@@ -82,11 +85,12 @@ public partial class MapCamera : Camera2D
 			{
 				ChangePosition(mouseMotion.Relative);
 			}
-		}
+		}*/
 	}
 	
 	private void ChangePosition(Vector2 amount)
 	{
+		/*
 		if (!Locked && usedRect.Position != new Vector2(-1f, -1f) && Dragging && amount != Vector2.Zero)
 		{
 			Vector2 viewportSize = GetViewportRect().Size / Zoom;
@@ -122,11 +126,49 @@ public partial class MapCamera : Camera2D
 			}
 			
 			EmitSignal("DraggingChange", (int)Drag);
-		}
+		}*/
 	}
 	
 	private void HandleZoom(InputEventMouse mouseEvent)
 	{
+		if (mouseEvent is InputEventMouseButton mouseClick)
+		{
+			if (mouseClick.Pressed)
+			{
+				switch (mouseClick.ButtonIndex)
+				{
+					case MouseButton.WheelUp: ZoomToCursor(ZoomFactor); break;
+					case MouseButton.WheelDown: ZoomToCursor(-ZoomFactor); break;
+				}
+				//State = MapCameraState.ZOOM;
+				////EmitSignal("ZoomingChange", change.Length() * change.X > 0 ? 1 : -1);
+			} else
+			{
+				
+			}
+		}
+	}
+	
+	private Vector2 ScreenToWorld(Vector2 screenPos)
+	{
+		Vector2 viewportSize = GetViewport().GetVisibleRect().Size;
+		Vector2 viewportCenter = viewportSize / 2f;
+		return Position + (screenPos - viewportCenter) / Zoom.X;
+	}
+	
+	private void ZoomToCursor(double factor)
+	{
+		Vector2 mouseScreenPos = GetViewport().GetMousePosition();
+		Vector2 viewportCenter = GetViewport().GetVisibleRect().Size / 2f;
+		Vector2 offset = mouseScreenPos - viewportCenter;
+		float oldZoom = (float)Zoom.X;
+		float newZoom = (float)Mathf.Clamp(oldZoom + factor, MinZoom, MaxZoom);
+		Vector2 mouseWorldBefore = Position + offset / oldZoom;
+		Vector2 mouseWorldAfter  = Position + offset / newZoom;
+		Zoom = new Vector2(newZoom, newZoom);
+		Position -= mouseWorldAfter - mouseWorldBefore;
+	}
+		/*
 		if (!Locked)
 		{
 			if (mouseEvent is InputEventMouseButton mouseClick)
@@ -155,5 +197,6 @@ public partial class MapCamera : Camera2D
 			EmitSignal("ZoomingChange", change.Length() * change.X > 0 ? 1 : -1);
 			Zooming = true;
 		}
-	}
+	}*/
+	//}
 }

@@ -5,6 +5,7 @@ namespace drumstalotajs.Mapping;
 
 public partial class Map : Node2D
 {
+	[Signal] public delegate void LoadedMapEventHandler(double factor);
 	[Export] private Resources.Maps.Meta metaData;
 	public int TileSize { get; private set; }
 	public Layers.GroundLayer GroundLayer { get; private set; }

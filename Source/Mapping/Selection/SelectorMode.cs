@@ -6,9 +6,9 @@ namespace drumstalotajs.Mapping.Selection;
 
 public partial class Selector : Node2D
 {
-	public enum SelectorState { LOCK, VIEW, EDIT }
+	public enum SelectorMode { LOCK, VIEW, EDIT }
 	
-	public SelectorState Mode
+	public SelectorMode Mode
 	{
 		get;
 		set
@@ -16,11 +16,11 @@ public partial class Selector : Node2D
 			field = value;
 			switch (value)
 			{
-				case SelectorState.LOCK: 
+				case SelectorMode.LOCK: 
 					break;
-				case SelectorState.VIEW: 
+				case SelectorMode.VIEW: 
 					break;
-				case SelectorState.EDIT: 
+				case SelectorMode.EDIT: 
 					break;
 				default: break;
 			}
