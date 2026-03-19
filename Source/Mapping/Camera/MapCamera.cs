@@ -5,12 +5,9 @@ namespace drumstalotajs.Mapping.Camera;
 
 public partial class MapCamera : Camera2D
 {
-	//[Signal] public delegate void DraggingChangeEventHandler(DraggingState draggingState);
-	//[Signal] public delegate void ZoomingChangeEventHandler(double factor);
 	[Export] private double MinZoom;
 	[Export] private double MaxZoom;
 	[Export] private double ZoomFactor;
-	private Rect2 UsedRect;
 	private bool dragging = false;
 	private Vector2 dragAnchorWorld;
 	
@@ -21,8 +18,8 @@ public partial class MapCamera : Camera2D
 			case MapCameraMode.VIEW: 
 				if (@event is InputEventMouse mouseEvent)
 				{
-					HandleDrag(mouseEvent);
 					HandleZoom(mouseEvent);
+					HandleDrag(mouseEvent);
 				}
 				break;
 			default: break;
@@ -35,6 +32,7 @@ public partial class MapCamera : Camera2D
 		{
 			dragging = mouseClick.Pressed;
 			if (dragging) dragAnchorWorld = ScreenToWorld(GetViewport().GetMousePosition());
+			else State = MapCameraState.IDLE;
 		}
 		
 		if (mouseEvent is InputEventMouseMotion && dragging)
@@ -50,6 +48,7 @@ public partial class MapCamera : Camera2D
 		Vector2 desiredPosition = Position - (currentWorldUnderCursor - dragAnchorWorld);
 		Position = ClampToLimits(desiredPosition);
 		dragAnchorWorld = ScreenToWorld(mouseScreenPos);
+		State = MapCameraState.DRAG;
 	}
 	
 	private void HandleZoom(InputEventMouse mouseEvent)
@@ -75,6 +74,13 @@ public partial class MapCamera : Camera2D
 		Vector2 mouseWorldAfter  = Position + offset / newZoom;
 		Zoom = new Vector2(newZoom, newZoom);
 		Position = ClampToLimits(Position - (mouseWorldAfter - mouseWorldBefore));
-		if (dragging) dragAnchorWorld = ScreenToWorld(GetViewport().GetMousePosition());
+		if (dragging)
+		{
+			dragAnchorWorld = ScreenToWorld(GetViewport().GetMousePosition());
+			State = MapCameraState.ZOOMDRAG;
+		} else
+		{
+			State = MapCameraState.ZOOM;
+		}
 	}
 }
