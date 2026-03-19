@@ -18,9 +18,9 @@ public partial class Selector : Node2D
 	private Sprite2D sprite;
 	
 	private Vector2I currentCellPos;
-	private Entities.Entity currentEntity = null;
-	private bool moving = false;
-	private Timer timer;
+	//private Entities.Entity currentEntity = null;
+	//private bool moving = false;
+	//private Timer timer;
 	
 	public override void _Ready()
 	{
@@ -35,6 +35,37 @@ public partial class Selector : Node2D
 	
 	public override void _UnhandledInput(InputEvent @event)
 	{
+		if (@event is InputEventMouse mouseEvent)
+		{
+			switch (Mode)
+			{
+				case SelectorMode.VIEW:
+				case SelectorMode.EDIT:
+					HandleGround(mouseEvent);
+					break;
+			}
+		}
+	}
+	
+	private void HandleGround(InputEventMouse mouseEvent)
+	{
+		if (mouseEvent is InputEventMouseMotion mouseMotion)
+		{
+			Vector2I cellPos = GetCellPos(GetCellPosFromMouse);
+			
+			switch (Mode)
+			{
+				case SelectorMode.VIEW:
+					
+					break;
+				case SelectorMode.EDIT:
+					break;
+			}
+			
+		} else
+		{
+		}
+	}
 		/*
 		if (!Locked)
 		{
@@ -75,7 +106,6 @@ public partial class Selector : Node2D
 		{
 			HideHighlighter();
 		}*/
-	}
 	
 	private void ScanEntities()
 	{/*

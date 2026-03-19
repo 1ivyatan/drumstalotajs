@@ -42,7 +42,7 @@ public partial class EditorScene : Node2D
 		
 		if (metaData != null)
 		{
-			/* FIX CAMERA AND SELECTOR */
+			/* FIX SELECTOR */
 		//	map.Camera.Calibrate(map.GroundLayer);
 			map.LoadMap(metaData);
 		}
@@ -53,24 +53,20 @@ public partial class EditorScene : Node2D
 	public override void _UnhandledInput(InputEvent @event)
 	{
 	//	if (!map.Loaded && !map.Editing) return;
-		if (@event is InputEventKey keyEvent)
+		if (@event is InputEventKey keyEvent && keyEvent.Pressed)
 		{
-			if (keyEvent.Pressed)
+			switch (keyEvent.Keycode)
 			{
-				switch (keyEvent.Keycode)
-				{
-					case Key.H:
-						if (keyEvent.Echo) return;
-						helpContainer.ToggleContainer();
-						break;
-					case Key.M:
-						if (keyEvent.Echo) return;
-						metaContainer.ToggleContainer();
-						break;
-					case Key.S:
-						if (keyEvent.Echo) return;
-						if (keyEvent.CtrlPressed) SaveMap();
-						break;
+				case Key.H when !keyEvent.Echo:
+					helpContainer.ToggleContainer();
+					break;
+				case Key.M when !keyEvent.Echo:
+					metaContainer.ToggleContainer();
+					break;
+				case Key.S when !keyEvent.Echo && keyEvent.CtrlPressed:
+					SaveMap();
+					break;
+			}
 						
 					/*
 					case Key.G:
@@ -98,8 +94,8 @@ public partial class EditorScene : Node2D
 					case Key.Q:
 						ChangeEntityAzimuth(selectedEntity, keyEvent.ShiftPressed ? ( -aziFactor * 0.1 ) : -aziFactor);
 						break;*/
-				}
-			}
+				
+			
 		}
 	}
 	
