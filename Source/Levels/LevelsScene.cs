@@ -14,7 +14,7 @@ public partial class LevelsScene : Node2D
 		sceneManager = GetNode<Node>("../") as Managers.SceneManager;
 		map = GetNode<Node2D>("Map") as Mapping.Map;
 		toStartButton = GetNode<Button>("UI/ToStartButton");
-		//map.Camera.Fit(map.GroundLayer);
+	//	map.Camera.FitCamera(map.GroundLayer);
 		toStartButton.Pressed += () => {
 			sceneManager.StartScene();
 		};

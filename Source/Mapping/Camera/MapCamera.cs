@@ -45,8 +45,8 @@ public partial class MapCamera : Camera2D
 	{
 		Vector2 mouseScreenPos = GetViewport().GetMousePosition();
 		Vector2 currentWorldUnderCursor = ScreenToWorld(mouseScreenPos);
-		Vector2 desiredPosition = Position - (currentWorldUnderCursor - dragAnchorWorld);
-		Position = ClampToLimits(desiredPosition);
+		Vector2 desiredPosition = GlobalPosition - (currentWorldUnderCursor - dragAnchorWorld);
+		GlobalPosition = ClampToLimits(desiredPosition);
 		dragAnchorWorld = ScreenToWorld(mouseScreenPos);
 		State = MapCameraState.DRAG;
 	}
@@ -70,10 +70,11 @@ public partial class MapCamera : Camera2D
 		Vector2 offset = mouseScreenPos - viewportCenter;
 		float oldZoom = (float)Zoom.X;
 		float newZoom = (float)Mathf.Clamp(oldZoom + factor, MinZoom, MaxZoom);
-		Vector2 mouseWorldBefore = Position + offset / oldZoom;
-		Vector2 mouseWorldAfter  = Position + offset / newZoom;
+		Vector2 mouseWorldBefore = GlobalPosition + offset / oldZoom;
+		Vector2 mouseWorldAfter  = GlobalPosition + offset / newZoom;
 		Zoom = new Vector2(newZoom, newZoom);
-		Position = ClampToLimits(Position - (mouseWorldAfter - mouseWorldBefore));
+		GlobalPosition = ClampToLimits(GlobalPosition - (mouseWorldAfter - mouseWorldBefore));
+		
 		if (dragging)
 		{
 			dragAnchorWorld = ScreenToWorld(GetViewport().GetMousePosition());

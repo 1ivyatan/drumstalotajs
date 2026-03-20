@@ -16,7 +16,8 @@ public partial class Selector : Node2D
 			field = value;
 			switch (value)
 			{
-				case SelectorMode.LOCK: 
+				case SelectorMode.LOCK:
+					Visible = false;
 					break;
 				case SelectorMode.VIEW: 
 					break;

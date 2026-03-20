@@ -6,6 +6,22 @@ namespace drumstalotajs.Mapping.Selection;
 
 public partial class Selector : Node2D
 {
+	private bool AllowedGround(Vector2I cellPos)
+	{
+		bool retval = false;
+		switch (Mode)
+		{
+			case SelectorMode.VIEW:
+				retval = true;
+				break;
+			case SelectorMode.EDIT:
+				retval = true;
+				break;
+		}
+		
+		return retval;
+	}
+	/*
 	private bool AllowedTileFilter(Vector2I cellPos)
 	{
 		if (Readonly)
@@ -17,7 +33,7 @@ public partial class Selector : Node2D
 		{
 			return true;
 		}
-	}
+	}*/
 	
 	private Entities.Entity[] AllowedEntityFilter(Vector2 localPos)
 	{

@@ -26,7 +26,7 @@ public partial class MapCamera : Camera2D
 		LimitRight = (int)((usedRect.Position.X + usedRect.Size.X) * tileSize);
 		LimitTop = (int)(usedRect.Position.Y * tileSize);
 		LimitBottom = (int)((usedRect.Size.Y * tileSize) + (usedRect.Position.Y * tileSize));
-		Position = usedRect.Position + usedRect.GetCenter() * layer.TileSize;
+		GlobalPosition = usedRect.Position + usedRect.GetCenter() * layer.TileSize;
 	}
 	
 	public void FitCamera(Layers.Layer layer)
@@ -41,13 +41,12 @@ public partial class MapCamera : Camera2D
 		float zoomY = viewportSize.Y / worldRect.Size.Y;
 		float newZoom = Mathf.Max(zoomX, zoomY);
 		Zoom = new Vector2(newZoom, newZoom);
-		Position = ClampToLimits(worldRect.GetCenter());
+		GlobalPosition = ClampToLimits(worldRect.GetCenter());
 	}
 	
-	private Vector2 ScreenToWorld(Vector2 screenPos)
+	public Vector2 ScreenToWorld(Vector2 screenPos)
 	{
-		Vector2 viewportSize = GetViewport().GetVisibleRect().Size;
-		Vector2 viewportCenter = viewportSize / 2f;
-		return Position + (screenPos - viewportCenter) / Zoom.X;
+		Vector2 viewportCenter = GetViewport().GetVisibleRect().Size / 2f;
+		return GlobalPosition + (screenPos - viewportCenter) / Zoom.X;
 	}
 }
