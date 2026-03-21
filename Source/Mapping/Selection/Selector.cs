@@ -88,6 +88,11 @@ public partial class Selector : Node2D
 		}
 	}
 	
+	public void RefreshHightlighter()
+	{
+		PlaceHighlighter();
+	}
+	
 	private void PlaceHighlighter()
 	{
 		if (holdEntity)

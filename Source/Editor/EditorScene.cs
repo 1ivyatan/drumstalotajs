@@ -20,6 +20,7 @@ public partial class EditorScene : Node2D
 	private double heightFactor = 1;
 	private double aziFactor = 1;
 	
+	private Vector2I selectedPosition;
 	private Entities.Entity selectedEntity = null;
 	private bool saving = false;
 	
@@ -32,19 +33,23 @@ public partial class EditorScene : Node2D
 		groundLayerAtlas = map.GroundLayer.GetTileAtlas();
 		decorationLayerAtlas = map.DecorationLayer.GetTileAtlas();
 		
-		/*
-		map.Selector.HoveredEntity += (Entities.Entity entity) => {
-			selectedEntity = entity;
-		};
-		map.Selector.UnhoveredEntity += () => {
-			selectedEntity = null;
-		};*/
-		
 		if (metaData != null)
 		{
 			map.Camera.Calibrate(map.GroundLayer);
 			map.LoadMap(metaData);
 		}
+		
+		map.Selector.HoveredGround += (Vector2I cellPos) => {
+			selectedPosition = cellPos;
+		};
+		
+		map.Selector.HoveredEntity += (Entities.Entity entity) => {
+			selectedEntity = entity;
+		};
+		map.Selector.UnhoveredEntity += () => {
+			selectedEntity = null;
+		};
+		
 		map.Mode = Mapping.Map.MapMode.EDIT;
 	}
 	
@@ -63,6 +68,18 @@ public partial class EditorScene : Node2D
 					break;
 				case Key.S when !keyEvent.Echo && keyEvent.CtrlPressed:
 					SaveMap();
+					break;
+				case Key.R:
+					ChangeGroundHeight(selectedPosition, keyEvent.ShiftPressed ? ( heightFactor * 0.1 ) : heightFactor);
+					break;
+				case Key.F:
+					ChangeGroundHeight(selectedPosition, keyEvent.ShiftPressed ? ( -heightFactor * 0.1 ) : -heightFactor);
+					break;
+			case Key.W:
+					ChangeEntityAzimuth(selectedEntity, keyEvent.ShiftPressed ? ( aziFactor * 0.1 ) : aziFactor);
+					break;
+				case Key.Q:
+					ChangeEntityAzimuth(selectedEntity, keyEvent.ShiftPressed ? ( -aziFactor * 0.1 ) : -aziFactor);
 					break;
 			}
 		}
@@ -155,7 +172,7 @@ public partial class EditorScene : Node2D
 		{
 			layer.EraseCell(cellPos);
 		}
-	}
+	}*/
 	
 	private void ChangeGroundHeight(Vector2I cellPos, double change)
 	{
@@ -173,6 +190,7 @@ public partial class EditorScene : Node2D
 			entity.Azimuth = newAzimuth;
 			toastManager.Clear();
 			toastManager.SpawnToast($"{entity.Azimuth}deg");
+			map.Selector.RefreshHightlighter();
 		}
-	}*/
+	}
 }
