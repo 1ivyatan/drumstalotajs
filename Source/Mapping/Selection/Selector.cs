@@ -16,13 +16,11 @@ public partial class Selector : Node2D
 	[Signal] public delegate void ClickedEntityEventHandler(Entities.Entity entity);
 	[Signal] public delegate void UnclickedEntityEventHandler();
 	
-	public bool Locked { get; set; } = false;
-	public bool Readonly { get; set; } = true;
-	
 	private Map map;
 	private Camera.MapCamera camera;
 	private Sprite2D sprite;
 	
+	private Callable setEntityHoldCall;
 	private Vector2I currentCellPos;
 	private Entities.Entity currentEntity = null;
 	private bool canGround = false;
@@ -37,7 +35,7 @@ public partial class Selector : Node2D
 		movementTimer = new MovementTimer();
 		movementTimer.SetTimer(.025f, ScanEntities);
 		AddChild(movementTimer);
-		setEntityHoldCall = Callable.From(() => {SetEntityHold(false);});
+		setEntityHoldCall = Callable.From(() => {holdEntity = false;});
 	}
 	
 	public override void _UnhandledInput(InputEvent @event)
@@ -108,12 +106,6 @@ public partial class Selector : Node2D
 		{
 			Visible = false;
 		}
-	}
-	
-	private Callable setEntityHoldCall;
-	private void SetEntityHold(bool toggle)
-	{
-		holdEntity = toggle;
 	}
 	
 	private void ScanEntities()
