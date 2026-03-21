@@ -14,7 +14,7 @@ region = Rect2(0, 0, 16, 16)
 script = ExtResource("2_054i2")
 EntityResource = ExtResource("3_wd73g")
 
-[node name="Collision" type="CollisionShape2D" parent="." index="0" unique_id=1457051878]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0" unique_id=1457051878]
 shape = ExtResource("2_cr5rc")
 
 [node name="Sprite" type="Sprite2D" parent="." index="1" unique_id=654926152]

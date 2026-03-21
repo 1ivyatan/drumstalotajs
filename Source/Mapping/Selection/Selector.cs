@@ -27,6 +27,7 @@ public partial class Selector : Node2D
 	private Entities.Entity currentEntity = null;
 	private bool canGround = false;
 	private bool canEntity = false;
+	private bool holdEntity = false;
 	
 	public override void _Ready()
 	{
@@ -34,16 +35,17 @@ public partial class Selector : Node2D
 		map = GetNode<Node2D>("../") as Map;
 		camera = map.GetNode<Camera2D>("Camera") as Camera.MapCamera;
 		movementTimer = new MovementTimer();
-		movementTimer.SetTimer(.05f, ScanEntities);
+		movementTimer.SetTimer(.025f, ScanEntities);
 		AddChild(movementTimer);
+		setEntityHoldCall = Callable.From(() => {SetEntityHold(false);});
 	}
 	
 	public override void _UnhandledInput(InputEvent @event)
 	{
 		if (@event is InputEventMouse mouseEvent && Mode != SelectorMode.LOCK)
 		{
-			HandleGround(mouseEvent);
 			HandleEntity(mouseEvent);
+			HandleGround(mouseEvent);
 		}
 	}
 	
@@ -51,13 +53,8 @@ public partial class Selector : Node2D
 	{
 		if (mouseEvent is InputEventMouseMotion mouseMotion || mouseEvent is InputEventMouseButton mouseClick && ( mouseClick.ButtonIndex == MouseButton.WheelUp || mouseClick.ButtonIndex == MouseButton.WheelDown))
 		{
-			Vector2 mouseLocalPos = GetLocalMousePos();
-			Vector2I cellPos = map.GroundLayer.LocalToMap(mouseLocalPos);
-			if (cellPos != currentCellPos)
-			{
-				currentCellPos = map.GroundLayer.LocalToMap(mouseLocalPos); 
-				return true;
-			} else return false;
+			Vector2I cellPos = GetCellPosFromMouse();
+			return cellPos != currentCellPos;
 		} else return false;
 	}
 	
@@ -65,6 +62,7 @@ public partial class Selector : Node2D
 	{
 		if (HasNewCellPosition(mouseEvent) && mouseEvent is InputEventMouseMotion mouseMotion)
 		{
+			currentCellPos = GetCellPosFromMouse();
 			canGround = AllowedGround(currentCellPos);
 			EmitSignal(canGround ? "HoveredGround" : "UnhoveredGround", currentCellPos);
 			PlaceHighlighter();
@@ -80,6 +78,7 @@ public partial class Selector : Node2D
 	{
 		if (mouseEvent is InputEventMouseMotion mouseMotion)
 		{
+			if (holdEntity) return;
 			canEntity = false;
 			movementTimer.RestartTimer();
 		}
@@ -93,7 +92,7 @@ public partial class Selector : Node2D
 	
 	private void PlaceHighlighter()
 	{
-		if (canEntity)
+		if (holdEntity)
 		{
 			Position = currentEntity.Position;
 			Rotation = currentEntity.Rotation;
@@ -111,6 +110,12 @@ public partial class Selector : Node2D
 		}
 	}
 	
+	private Callable setEntityHoldCall;
+	private void SetEntityHold(bool toggle)
+	{
+		holdEntity = toggle;
+	}
+	
 	private void ScanEntities()
 	{
 		Vector2 mouseLocalPos = GetLocalMousePos();
@@ -118,14 +123,16 @@ public partial class Selector : Node2D
 		if (entities != null && entities.Length > 0)
 		{
 			currentEntity = entities[0];
+			if (!currentEntity.IsConnected("mouse_exited", setEntityHoldCall)) currentEntity.Connect("mouse_exited", setEntityHoldCall);
 			canEntity = true;
+			holdEntity = true;
 			EmitSignal("HoveredEntity", currentEntity);
 		} else
 		{
 			canEntity = false;
+			holdEntity = false;
 			EmitSignal("UnhoveredEntity");
 		}
-
 		PlaceHighlighter();
 	}
 }

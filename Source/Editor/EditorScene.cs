@@ -42,17 +42,15 @@ public partial class EditorScene : Node2D
 		
 		if (metaData != null)
 		{
-			/* FIX SELECTOR */
-		//	map.Camera.Calibrate(map.GroundLayer);
+			map.Camera.Calibrate(map.GroundLayer);
 			map.LoadMap(metaData);
 		}
-		
 		map.Mode = Mapping.Map.MapMode.EDIT;
 	}
 	
 	public override void _UnhandledInput(InputEvent @event)
 	{
-	//	if (!map.Loaded && !map.Editing) return;
+		if (!map.Loaded || map.Mode != Mapping.Map.MapMode.EDIT) return;
 		if (@event is InputEventKey keyEvent && keyEvent.Pressed)
 		{
 			switch (keyEvent.Keycode)
@@ -67,6 +65,7 @@ public partial class EditorScene : Node2D
 					SaveMap();
 					break;
 			}
+		}
 						
 					/*
 					case Key.G:
@@ -94,9 +93,6 @@ public partial class EditorScene : Node2D
 					case Key.Q:
 						ChangeEntityAzimuth(selectedEntity, keyEvent.ShiftPressed ? ( -aziFactor * 0.1 ) : -aziFactor);
 						break;*/
-				
-			
-		}
 	}
 	
 	private void SaveMap()

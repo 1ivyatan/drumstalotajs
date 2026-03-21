@@ -5,12 +5,14 @@ namespace drumstalotajs.Mapping;
 
 public partial class Map : Node2D
 {
-	public bool Loaded { get;
+	public bool Loaded {
+		get;
 		private set
 		{
-			
+			field = value;
 		}
 	} = false;
+	
 	public enum MapMode { LOCK, VIEW, EDIT }
 	
 	public MapMode Mode { 

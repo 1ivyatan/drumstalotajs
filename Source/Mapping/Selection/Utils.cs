@@ -25,6 +25,6 @@ public partial class Selector : Node2D
 	
 	private Vector2I GetCellPosFromMouse()
 	{
-		return map.GroundLayer.LocalToMap(GetLocalPos());
+		return map.GroundLayer.LocalToMap(GetLocalMousePos());
 	}
 }
