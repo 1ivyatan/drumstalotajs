@@ -11,20 +11,6 @@ public partial class Selector : Node2D
 	public SelectorMode Mode
 	{
 		get;
-		set
-		{
-			field = value;
-			switch (value)
-			{
-				case SelectorMode.LOCK:
-					Visible = false;
-					break;
-				case SelectorMode.VIEW: 
-					break;
-				case SelectorMode.EDIT: 
-					break;
-				default: break;
-			}
-		}
+		set { field = value; if (value == SelectorMode.LOCK) Visible = false; }
 	}
 }

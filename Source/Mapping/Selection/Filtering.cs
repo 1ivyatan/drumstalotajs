@@ -27,19 +27,6 @@ public partial class Selector : Node2D
 		Entities.Entity[] flashedEntites = map.EntityLayer.FlashEntities(localPos, 9);
 		return flashedEntites;
 	}
-	/*
-	private bool AllowedTileFilter(Vector2I cellPos)
-	{
-		if (Readonly)
-		{
-			if (map.GroundLayer.GetCellAtlasCoords(cellPos) == Utilities.Topography.NegativeVector)
-				return false;
-			return true;
-		} else
-		{
-			return true;
-		}
-	}*/
 	
 	private Entities.Entity[] AllowedEntityFilter(Vector2 localPos)
 	{
