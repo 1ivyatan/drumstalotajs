@@ -21,6 +21,12 @@ public partial class Selector : Node2D
 		
 		return retval;
 	}
+	
+	private Entities.Entity[] AllowedEntities(Vector2 localPos)
+	{
+		Entities.Entity[] flashedEntites = map.EntityLayer.FlashEntities(localPos, 9);
+		return flashedEntites;
+	}
 	/*
 	private bool AllowedTileFilter(Vector2I cellPos)
 	{

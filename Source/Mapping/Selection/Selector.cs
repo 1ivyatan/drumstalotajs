@@ -19,8 +19,9 @@ public partial class Selector : Node2D
 	private Sprite2D sprite;
 	
 	private Vector2I currentCellPos;
+	private Entities.Entity currentEntity = null;
 	private bool canGround = false;
-	//private Entities.Entity currentEntity = null;
+	private bool canEntity = false;
 	//private bool moving = false;
 	//private Timer timer;
 	
@@ -29,34 +30,36 @@ public partial class Selector : Node2D
 		sprite = GetNode<Sprite2D>("Sprite");
 		map = GetNode<Node2D>("../") as Map;
 		camera = map.GetNode<Camera2D>("Camera") as Camera.MapCamera;
+		movementTimer = SetMovementTimer(.05f, ScanEntities);
+		AddChild(movementTimer);
 		//currentEntity = null;
 		//Visible = false;
-		//timer = SetMovementTimer(.001f);
-		//timer.Timeout += ScanEntities;
-		//AddChild(timer);
 	}
 	
 	public override void _UnhandledInput(InputEvent @event)
 	{
 		if (@event is InputEventMouse mouseEvent && Mode != SelectorMode.LOCK)
 		{
-			if (HasNewPosition(mouseEvent))
+			if (HasNewCellPosition(mouseEvent))
 			{
 				HandleGround(mouseEvent);
-				PlaceHighlighter();
 			}
+
+			HandleEntity(mouseEvent);
 		}
 	}
 	
-	private bool HasNewPosition(InputEventMouse mouseEvent)
+	private bool HasNewCellPosition(InputEventMouse mouseEvent)
 	{
 		if (mouseEvent is InputEventMouseMotion mouseMotion || mouseEvent is InputEventMouseButton mouseClick && ( mouseClick.ButtonIndex == MouseButton.WheelUp || mouseClick.ButtonIndex == MouseButton.WheelDown))
 		{
-			Vector2 mouseScreenPos = GetViewport().GetMousePosition();
-			Vector2 mouseWorldPos = camera.ScreenToWorld(mouseScreenPos);
-			Vector2 mouseLocalPos = map.GroundLayer.ToLocal(mouseWorldPos);
-			currentCellPos = map.GroundLayer.LocalToMap(mouseLocalPos);
-			return true;
+			Vector2 mouseLocalPos = GetLocalMousePos();
+			Vector2I cellPos = map.GroundLayer.LocalToMap(mouseLocalPos);
+			if (cellPos != currentCellPos)
+			{
+				currentCellPos = map.GroundLayer.LocalToMap(mouseLocalPos); 
+				return true;
+			} else return false;
 		} else return false;
 	}
 	
@@ -65,12 +68,26 @@ public partial class Selector : Node2D
 		if (mouseEvent is InputEventMouseMotion mouseMotion)
 		{
 			canGround = AllowedGround(currentCellPos);
+			PlaceHighlighter();
+		}
+	}
+	
+	private void HandleEntity(InputEventMouse mouseEvent)
+	{
+		if (mouseEvent is InputEventMouseMotion mouseMotion)
+		{
+			canEntity = false;
+			StartMovementTimer(movementTimer);
 		}
 	}
 	
 	private void PlaceHighlighter()
 	{
-		if (canGround)
+		if (canEntity)
+		{
+			Position = currentEntity.Position;
+			Rotation = currentEntity.Rotation;
+		} else if (canGround)
 		{
 			int tileSize = map.GroundLayer.TileSize;
 			SetPosition((currentCellPos * tileSize) + new Vector2I(tileSize / 2, tileSize / 2));
@@ -80,6 +97,23 @@ public partial class Selector : Node2D
 		{
 			Visible = false;
 		}
+	}
+	
+	
+	private void ScanEntities()
+	{
+		Vector2 mouseLocalPos = GetLocalMousePos();
+		Entities.Entity[] entities = AllowedEntities(mouseLocalPos);
+		if (entities != null && entities.Length > 0)
+		{
+			currentEntity = entities[0];
+			canEntity = true;
+		} else
+		{
+			canEntity = false;
+		}
+
+		PlaceHighlighter();
 	}
 		/*
 		if (!Locked)
@@ -122,8 +156,8 @@ public partial class Selector : Node2D
 			HideHighlighter();
 		}*/
 	
-	private void ScanEntities()
-	{/*
+//	private void ScanEntities()
+/*	{
 		Vector2 localPos = GetLocalPos();
 		Vector2I cellPos = GetCellPos(localPos);
 		Entities.Entity[] entities = AllowedEntityFilter(localPos);
@@ -152,9 +186,9 @@ public partial class Selector : Node2D
 			
 			MoveEntityHighlighter(currentEntity.Position, currentEntity.Rotation);
 		}
-	}
+	}*/
 	
-	public void Reposition()
+	/*public void Reposition()
 	{
 		if (!Locked)
 		{
@@ -170,7 +204,7 @@ public partial class Selector : Node2D
 		{
 			ScanEntities();
 		}
-	}
+	}*//*
 	
 	private void MoveEntityHighlighter(Vector2 localPos, float rotation)
 	{
@@ -199,6 +233,6 @@ public partial class Selector : Node2D
 	private void HideHighlighter()
 	{
 		Visible = false;
-	}*/
-	}
+	} */
+	
 }

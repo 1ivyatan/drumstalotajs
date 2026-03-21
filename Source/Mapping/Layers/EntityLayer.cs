@@ -91,6 +91,39 @@ public partial class EntityLayer : Node2D
 		}
 	}
 	
+	public Entities.Entity[] FlashEntities(Vector2 localPos, int limit)
+	{
+		var spaceState = GetWorld2D().DirectSpaceState;
+		PhysicsPointQueryParameters2D query = new PhysicsPointQueryParameters2D();
+		query.Position = GlobalPosition + localPos;
+		query.CollideWithAreas = true;
+		var intersectedNodes = spaceState.IntersectPoint(query, limit);
+		if (intersectedNodes.Count > 0)
+		{
+			List<Entities.Entity> entities = new List<Entities.Entity>(); 
+			foreach (var node in intersectedNodes)
+			{
+				Node2D collider = (Node2D)node["collider"];
+				if (collider is Entities.Entity entity)
+				{
+					entities.Add(entity);
+				}
+			}
+			
+			if (entities.Count > 0)
+			{
+				return entities.OrderBy(entity => {
+					return localPos.DistanceTo(entity.Position);
+				}).ToArray();
+			} else
+			{
+				return [];
+			}
+		}
+		
+		return [];
+	}
+	
 	public Entities.Entity[] Flash(Vector2 position, int limit)
 	{
 		var spaceState = GetWorld2D().DirectSpaceState;
