@@ -5,20 +5,21 @@ namespace drumstalotajs.Mapping.Selection;
 
 public partial class Selector : Node2D
 {
-	private Timer movementTimer;
-	
-	private Timer SetMovementTimer(double timeout, Action timeoutAction)
+	private partial class MovementTimer : Timer
 	{
-		Timer timer = new Timer();
-		timer.WaitTime = timeout;
-		timer.OneShot = true;
-		timer.Timeout += timeoutAction;
-		return timer;
+		public void SetTimer(double timeout, Action timeoutAction)
+		{
+			WaitTime = timeout;
+			OneShot = true;
+			Timeout += timeoutAction;
+		}
+		
+		public void RestartTimer()
+		{
+			Stop();
+			Start();
+		}
 	}
 	
-	private void StartMovementTimer(Timer timer)
-	{
-		timer.Stop();
-		timer.Start();
-	}
+	private MovementTimer movementTimer;
 }

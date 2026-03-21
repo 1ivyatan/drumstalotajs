@@ -6,10 +6,13 @@ namespace drumstalotajs.Mapping.Selection;
 
 public partial class Selector : Node2D
 {
-	//[Signal] public delegate void SelectedEventHandler(Vector2I cellPos);
 	[Signal] public delegate void HoveredGroundEventHandler(Vector2I cellPos);
+	[Signal] public delegate void UnhoveredGroundEventHandler(Vector2I cellPos);
 	[Signal] public delegate void HoveredEntityEventHandler(Entities.Entity entity);
 	[Signal] public delegate void UnhoveredEntityEventHandler();
+	
+	//[Signal] public delegate void HoveredEntityEventHandler(Entities.Entity entity);
+	//[Signal] public delegate void UnhoveredEntityEventHandler();
 	
 	public bool Locked { get; set; } = false;
 	public bool Readonly { get; set; } = true;
@@ -22,18 +25,15 @@ public partial class Selector : Node2D
 	private Entities.Entity currentEntity = null;
 	private bool canGround = false;
 	private bool canEntity = false;
-	//private bool moving = false;
-	//private Timer timer;
 	
 	public override void _Ready()
 	{
 		sprite = GetNode<Sprite2D>("Sprite");
 		map = GetNode<Node2D>("../") as Map;
 		camera = map.GetNode<Camera2D>("Camera") as Camera.MapCamera;
-		movementTimer = SetMovementTimer(.05f, ScanEntities);
+		movementTimer = new MovementTimer();
+		movementTimer.SetTimer(.05f, ScanEntities);
 		AddChild(movementTimer);
-		//currentEntity = null;
-		//Visible = false;
 	}
 	
 	public override void _UnhandledInput(InputEvent @event)
@@ -68,6 +68,10 @@ public partial class Selector : Node2D
 		if (mouseEvent is InputEventMouseMotion mouseMotion)
 		{
 			canGround = AllowedGround(currentCellPos);
+			
+			if (canGround) EmitSignal("HoveredGround", cellPos);
+			else EmitSignal("UnhoveredGround", cellPos);
+			
 			PlaceHighlighter();
 		}
 	}
@@ -77,7 +81,7 @@ public partial class Selector : Node2D
 		if (mouseEvent is InputEventMouseMotion mouseMotion)
 		{
 			canEntity = false;
-			StartMovementTimer(movementTimer);
+			movementTimer.RestartTimer();
 		}
 	}
 	
@@ -87,6 +91,8 @@ public partial class Selector : Node2D
 		{
 			Position = currentEntity.Position;
 			Rotation = currentEntity.Rotation;
+			Visible = true;
+			
 		} else if (canGround)
 		{
 			int tileSize = map.GroundLayer.TileSize;
@@ -108,9 +114,11 @@ public partial class Selector : Node2D
 		{
 			currentEntity = entities[0];
 			canEntity = true;
+			EmitSignal("HoveredEntity", currentEntity);
 		} else
 		{
 			canEntity = false;
+			EmitSignal("UnhoveredEntity");
 		}
 
 		PlaceHighlighter();
