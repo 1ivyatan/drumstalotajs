@@ -31,6 +31,7 @@ script = ExtResource("6_8xir4")
 EntitySetResource = ExtResource("7_2brea")
 
 [node name="Selector" type="Node2D" parent="." unique_id=877666026]
+visible = false
 script = ExtResource("4_yju8x")
 
 [node name="Sprite" type="Sprite2D" parent="Selector" unique_id=454587203]

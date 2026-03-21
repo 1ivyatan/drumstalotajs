@@ -11,7 +11,8 @@ script = ExtResource("1_gk738")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=249199293]
 
-[node name="LevelSelectionContainer" type="HBoxContainer" parent="UI" unique_id=2147118303]
+[node name="LevelSelectionContainer" type="Control" parent="UI" unique_id=1988848340]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -20,13 +21,38 @@ grow_vertical = 2
 script = ExtResource("4_rvccs")
 
 [node name="LevelsContainer" type="Control" parent="UI/LevelSelectionContainer" unique_id=260463341]
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 3
 mouse_filter = 2
 
 [node name="MetadataContainer" type="PanelContainer" parent="UI/LevelSelectionContainer" unique_id=2089202447]
-layout_mode = 2
+layout_mode = 1
+offset_right = 257.0
+offset_bottom = 27.0
 size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/LevelSelectionContainer/MetadataContainer" unique_id=175016548]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/LevelSelectionContainer/MetadataContainer/VBoxContainer" unique_id=599370050]
+layout_mode = 2
+text = "Title"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/LevelSelectionContainer/MetadataContainer/VBoxContainer" unique_id=511271497]
+layout_mode = 2
+text = "desc"
+fit_content = true
+
+[node name="Button" type="Button" parent="UI/LevelSelectionContainer/MetadataContainer/VBoxContainer" unique_id=858565713]
+layout_mode = 2
+text = "Start"
 
 [node name="ToStartButton" type="Button" parent="UI" unique_id=754370758]
 anchors_preset = 2

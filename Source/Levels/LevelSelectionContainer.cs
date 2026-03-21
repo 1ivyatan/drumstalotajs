@@ -3,7 +3,7 @@ using System;
 
 namespace drumstalotajs.Levels;
 
-public partial class LevelSelectionContainer : HBoxContainer
+public partial class LevelSelectionContainer : Control
 {
 	
 }
