@@ -2,16 +2,19 @@
 
 [ext_resource type="Script" uid="uid://c4ibg6w3gf631" path="res://Source/Levels/LevelsScene.cs" id="1_gk738"]
 [ext_resource type="PackedScene" uid="uid://cbxsa10nydtms" path="res://Scenes/Map/Map.tscn" id="2_q2tp7"]
+[ext_resource type="Resource" uid="uid://bodkpmkf03x5a" path="res://Resources/Sets/LevelSets/RockyIsland.tres" id="2_rvccs"]
 [ext_resource type="Script" uid="uid://87yd51ufkufs" path="res://Source/Levels/LevelSelectionContainer.cs" id="4_rvccs"]
 
 [node name="Levels" type="Node2D" unique_id=641084867]
 script = ExtResource("1_gk738")
+LevelSet = ExtResource("2_rvccs")
 
 [node name="Map" parent="." unique_id=657688654 instance=ExtResource("2_q2tp7")]
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=249199293]
 
 [node name="LevelSelectionContainer" type="Control" parent="UI" unique_id=1988848340]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -32,10 +35,25 @@ grow_vertical = 2
 size_flags_horizontal = 3
 mouse_filter = 2
 
+[node name="Button" type="Button" parent="UI/LevelSelectionContainer/LevelsContainer" unique_id=1635738546]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "1
+"
+
 [node name="MetadataContainer" type="PanelContainer" parent="UI/LevelSelectionContainer" unique_id=2089202447]
 layout_mode = 1
-offset_right = 257.0
-offset_bottom = 27.0
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -257.0
+offset_top = -42.5
+offset_bottom = 42.5
+grow_horizontal = 0
+grow_vertical = 2
 size_flags_horizontal = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/LevelSelectionContainer/MetadataContainer" unique_id=175016548]

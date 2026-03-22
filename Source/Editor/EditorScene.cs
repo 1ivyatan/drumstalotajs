@@ -35,8 +35,8 @@ public partial class EditorScene : Node2D
 		
 		if (metaData != null)
 		{
-			map.Camera.Calibrate(map.GroundLayer);
 			map.LoadMap(metaData);
+			map.Camera.Calibrate(map.GroundLayer);
 		}
 		
 		map.Selector.HoveredGround += (Vector2I cellPos) => {
@@ -75,7 +75,7 @@ public partial class EditorScene : Node2D
 				case Key.F:
 					ChangeGroundHeight(selectedPosition, keyEvent.ShiftPressed ? ( -heightFactor * 0.1 ) : -heightFactor);
 					break;
-			case Key.W:
+				case Key.W:
 					ChangeEntityAzimuth(selectedEntity, keyEvent.ShiftPressed ? ( aziFactor * 0.1 ) : aziFactor);
 					break;
 				case Key.Q:
