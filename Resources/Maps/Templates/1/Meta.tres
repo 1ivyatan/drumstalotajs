@@ -5,4 +5,5 @@
 [resource]
 script = ExtResource("1_kxiyj")
 Title = "sdfsdfsdf"
+Desc = ":DDDDD"
 MapPath = "res://Resources/Maps/Templates/1/Map.tres"

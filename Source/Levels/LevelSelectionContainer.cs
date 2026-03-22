@@ -5,20 +5,25 @@ namespace drumstalotajs.Levels;
 
 public partial class LevelSelectionContainer : Control
 {
+	private Resources.Sets.Levels.LevelProperties SelectedLevelProperties { get; set; }
+	
+	private MetadataModal metadataModal;
 	private LevelMarkers.LevelMarkersContainer levelMarkersContainer;
 	
 	public override void _Ready()
 	{
-		levelMarkersContainer = GetNode<Control>("LevelsContainer") as LevelMarkers.LevelMarkersContainer;
+		metadataModal = GetNode<Control>("MetadataModal") as MetadataModal;
+		levelMarkersContainer = GetNode<Control>("LevelMarkersContainer") as LevelMarkers.LevelMarkersContainer;
 		levelMarkersContainer.ClickedMarker += (Resources.Sets.Levels.LevelProperties levelProps) => {
-			GD.Print(111111);
+			metadataModal.LoadModal(levelProps);
 		};
-		Visible = false;
+		levelMarkersContainer.UnclickedMarker += () => {
+			metadataModal.CloseModal();
+		};
 	}
 	
 	public void LoadLevelSelection(Resources.Sets.Levels.LevelSet levelSet)
 	{
 		levelMarkersContainer.LoadMarkers(levelSet.Levels);
-		Visible = true;
 	}
 }

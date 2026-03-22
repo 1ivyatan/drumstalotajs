@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="Map" format=3]
+[gd_resource type="Resource" script_class="Map" format=3 uid="uid://be6mke5880h6x"]
 
-[ext_resource type="Script" path="res://Source/Resources/Maps/Layers/DecorationLayer.cs" id="1_kfqxo"]
-[ext_resource type="Script" path="res://Source/Resources/Maps/Layers/Entities/EntityProperties.cs" id="2_yyfhv"]
-[ext_resource type="Script" path="res://Source/Resources/Maps/Layers/EntityLayer.cs" id="3_6gh52"]
-[ext_resource type="Script" path="res://Source/Resources/Maps/Layers/GroundLayer.cs" id="4_kb5is"]
-[ext_resource type="Script" path="res://Source/Resources/Maps/Map.cs" id="5_rkrtj"]
+[ext_resource type="Script" uid="uid://bmm8dxa13vuy3" path="res://Source/Resources/Maps/Layers/DecorationLayer.cs" id="1_kfqxo"]
+[ext_resource type="Script" uid="uid://dfgbkit0nxgkq" path="res://Source/Resources/Maps/Layers/Entities/EntityProperties.cs" id="2_yyfhv"]
+[ext_resource type="Script" uid="uid://crvy4cj74kipt" path="res://Source/Resources/Maps/Layers/EntityLayer.cs" id="3_6gh52"]
+[ext_resource type="Script" uid="uid://rejpdpv2a55k" path="res://Source/Resources/Maps/Layers/GroundLayer.cs" id="4_kb5is"]
+[ext_resource type="Script" uid="uid://dcgbhbux6vrn5" path="res://Source/Resources/Maps/Map.cs" id="5_rkrtj"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_gctps"]
 tile_data = PackedInt32Array(0, 0, 1, 1, 0, 1, 2, 0, 1, 3, 0, 1, 4, 0, 1, 5, 0, 1, 6, 0, 1, 7, 0, 1, 8, 0, 1, 9, 0, 1, 10, 0, 1, 11, 0, 1, 12, 0, 1, 65536, 0, 1, 65537, 0, 1, 65538, 0, 1, 65539, 0, 1, 65540, 0, 1, 65541, 0, 1, 65542, 0, 1, 65543, 0, 1, 65544, 0, 1, 65545, 0, 1, 65546, 0, 1, 65547, 0, 1, 65548, 0, 1, 131072, 0, 1, 131073, 0, 1, 131074, 0, 1, 131075, 0, 1, 131076, 0, 1, 131077, 0, 1, 131078, 0, 1, 131079, 0, 1, 131080, 0, 1, 131081, 0, 1, 131082, 0, 1, 131083, 0, 1, 131084, 0, 1, 196608, 0, 1, 196609, 0, 1, 196610, 0, 1, 196611, 0, 1, 196612, 0, 1, 196613, 0, 1, 196614, 0, 1, 196615, 0, 1, 196616, 0, 1, 196617, 0, 1, 196618, 0, 1, 196619, 0, 1, 196620, 0, 1, 262144, 0, 1, 262145, 0, 1, 262146, 0, 1, 262147, 0, 1, 262148, 0, 1, 262149, 0, 1, 262150, 0, 1, 262151, 0, 1, 262152, 0, 1, 262153, 0, 1, 262154, 0, 1, 262155, 0, 1, 262156, 0, 1, 327680, 0, 1, 327681, 0, 1, 327682, 0, 1, 327683, 0, 1, 327684, 0, 1, 327685, 0, 1, 327686, 0, 1, 327687, 0, 1, 327688, 0, 1, 327689, 0, 1, 327690, 0, 1, 327691, 0, 1, 327692, 0, 1, 393216, 0, 1, 393217, 0, 1, 393218, 0, 1, 393219, 0, 1, 393220, 0, 1, 393221, 0, 1, 393222, 0, 1, 393223, 0, 1, 393224, 0, 1, 393225, 0, 1, 393226, 0, 1, 393227, 0, 1, 393228, 0, 1, 458752, 0, 1, 458753, 0, 1, 458754, 0, 1, 458755, 0, 1, 458756, 0, 1, 458757, 0, 1, 458758, 0, 1, 458759, 0, 1, 458760, 0, 1, 458761, 0, 1, 458762, 0, 1, 458763, 0, 1, 458764, 0, 1)

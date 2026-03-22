@@ -3,7 +3,7 @@ using System;
 
 namespace drumstalotajs.Levels.LevelMarkers;
 
-public partial class Marker : TextureButton
+public partial class Marker : BaseButton
 {
 	[Signal] public delegate void SelectedEventHandler(Resources.Sets.Levels.LevelProperties levelProps);
 	private Resources.Sets.Levels.LevelProperties LevelProperties { get; set; }
