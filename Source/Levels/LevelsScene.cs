@@ -19,12 +19,10 @@ public partial class LevelsScene : Node2D
 		map = GetNode<Node2D>("Map") as Mapping.Map;
 		toStartButton = GetNode<Button>("UI/ToStartButton");
 		map.Mode = Mapping.Map.MapMode.LOCK;
-		GD.Print(LevelSet.BackgroundMap);
 		map.LoadMap(LevelSet.BackgroundMap);
 		map.Camera.Calibrate(map.GroundLayer);
 		map.Camera.FitCamera(map.GroundLayer);
 		levelSelectionContainer.LoadLevelSelection(LevelSet);
-	
 		toStartButton.Pressed += () => {
 			sceneManager.StartScene();
 		};

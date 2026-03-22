@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="80"
+   height="80"
+   viewBox="0 0 21.166666 21.166666"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.2 (ebf0e940d0, 2025-05-08)"
+   sodipodi:docname="UI.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#b4b4b4"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px"
+     inkscape:zoom="5.9062066"
+     inkscape:cx="45.629965"
+     inkscape:cy="39.026742"
+     inkscape:window-width="1920"
+     inkscape:window-height="1008"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1"
+     showgrid="false" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Slānis 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <ellipse
+       style="fill:#f3fbc8;stroke:#909263;stroke-width:0.0800055;stroke-linecap:round;stroke-linejoin:round"
+       id="path1"
+       cx="3.063288"
+       cy="3.1487832"
+       rx="2.9405935"
+       ry="2.907069" />
+    <path
+       style="fill:#f3fbc8;stroke:#000000;stroke-width:0.0800055;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
+       d="M 2.5501544,5.5862165 1.6154791,0.89929429"
+       id="path2" />
+    <path
+       style="fill:#f13939;fill-opacity:1;stroke:#000000;stroke-width:0.0800055;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
+       d="M 1.6832092,1.2243986 5.2187197,1.6849632 2.1302278,3.5001297 Z"
+       id="path3" />
+  </g>
+</svg>

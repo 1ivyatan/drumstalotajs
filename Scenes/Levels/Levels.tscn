@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://cbxsa10nydtms" path="res://Scenes/Map/Map.tscn" id="2_q2tp7"]
 [ext_resource type="Resource" uid="uid://bodkpmkf03x5a" path="res://Resources/Sets/LevelSets/RockyIsland.tres" id="2_rvccs"]
 [ext_resource type="Script" uid="uid://87yd51ufkufs" path="res://Source/Levels/LevelSelectionContainer.cs" id="4_rvccs"]
+[ext_resource type="Script" uid="uid://ct8cfr1j42ta4" path="res://Source/Levels/LevelMarkers/LevelMarkersContainer.cs" id="5_gea7q"]
+[ext_resource type="PackedScene" uid="uid://2hnsrjm4xqqc" path="res://Scenes/Levels/Marker.tscn" id="6_sbgl7"]
 
 [node name="Levels" type="Node2D" unique_id=641084867]
 script = ExtResource("1_gk738")
@@ -34,13 +36,8 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 mouse_filter = 2
-
-[node name="Button" type="Button" parent="UI/LevelSelectionContainer/LevelsContainer" unique_id=1635738546]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
-text = "1
-"
+script = ExtResource("5_gea7q")
+markerScene = ExtResource("6_sbgl7")
 
 [node name="MetadataContainer" type="PanelContainer" parent="UI/LevelSelectionContainer" unique_id=2089202447]
 layout_mode = 1
