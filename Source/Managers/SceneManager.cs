@@ -25,6 +25,11 @@ public partial class SceneManager : Node
 		ShowScene();
 	}
 	
+	public void BattleScene(Resources.Maps.Meta mapMeta)
+	{
+		
+	}
+	
 	private void LoadScene(string name)
 	{
 		String path = $"res://Scenes/{name}/{name}.tscn";

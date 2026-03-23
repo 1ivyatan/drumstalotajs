@@ -12,7 +12,6 @@ public partial class LevelsScene : Node2D
 	private Mapping.Map map;
 	private Button toStartButton;
 	
-
 	public override void _Ready()
 	{
 		sceneManager = GetNode<Node>("../") as Managers.SceneManager;
@@ -27,6 +26,8 @@ public partial class LevelsScene : Node2D
 		toStartButton.Pressed += () => {
 			sceneManager.StartScene();
 		};
-		
+		levelSelectionContainer.MetadataModal.ClickedBattle += (Resources.Maps.Meta mapMeta) => {
+			sceneManager.BattleScene(mapMeta);
+		};
 	}
 }
