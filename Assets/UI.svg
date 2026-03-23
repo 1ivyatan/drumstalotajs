@@ -23,9 +23,9 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="px"
-     inkscape:zoom="5.9062066"
-     inkscape:cx="45.629965"
-     inkscape:cy="39.026742"
+     inkscape:zoom="90.509668"
+     inkscape:cx="46.431504"
+     inkscape:cy="2.3809611"
      inkscape:window-width="1920"
      inkscape:window-height="1008"
      inkscape:window-x="0"
@@ -39,20 +39,53 @@
      inkscape:label="Slānis 1"
      inkscape:groupmode="layer"
      id="layer1">
-    <ellipse
-       style="fill:#f3fbc8;stroke:#909263;stroke-width:0.0800055;stroke-linecap:round;stroke-linejoin:round"
+    <circle
+       style="fill:#f3fbc8;stroke:#909263;stroke-width:0.0785648;stroke-linecap:round;stroke-linejoin:round"
        id="path1"
-       cx="3.063288"
-       cy="3.1487832"
-       rx="2.9405935"
-       ry="2.907069" />
+       cx="2.9104166"
+       cy="2.9104166"
+       r="2.871134" />
     <path
-       style="fill:#f3fbc8;stroke:#000000;stroke-width:0.0800055;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
-       d="M 2.5501544,5.5862165 1.6154791,0.89929429"
+       style="fill:#f3fbc8;stroke:#000000;stroke-width:0.0785648;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
+       d="M 2.4094037,5.3177203 1.4968062,0.688734"
        id="path2" />
     <path
-       style="fill:#f13939;fill-opacity:1;stroke:#000000;stroke-width:0.0800055;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
-       d="M 1.6832092,1.2243986 5.2187197,1.6849632 2.1302278,3.5001297 Z"
+       style="fill:#f13939;fill-opacity:1;stroke:#000000;stroke-width:0.0785648;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
+       d="m 1.5629365,1.0098196 3.4519987,0.4548715 -3.015539,1.792729 z"
        id="path3" />
+    <circle
+       style="fill:#f3fbc8;stroke:#909263;stroke-width:0.0785648;stroke-linecap:round;stroke-linejoin:round"
+       id="path1-3"
+       cx="8.7312498"
+       cy="2.9104164"
+       r="2.871134" />
+    <path
+       style="fill:#f3fbc8;stroke:#000000;stroke-width:0.0785648;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
+       d="M 8.2302365,5.3177201 7.317639,0.68873382"
+       id="path2-5" />
+    <path
+       style="fill:#39f178;fill-opacity:1;stroke:#000000;stroke-width:0.0785648;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
+       d="M 7.3837693,1.0098194 10.835768,1.4646909 7.820229,3.2574199 Z"
+       id="path3-6" />
+    <path
+       id="path4"
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.265982;stroke-linecap:round;stroke-linejoin:miter;stroke-dasharray:none"
+       d="m 12.054543,0.29415692 a 0.74623507,0.74161196 0 0 0 -0.117887,1.04223428 0.74623507,0.74161196 0 0 0 0.859129,0.226421 L 13.229034,2.1024277 13.574456,1.8285191 13.13958,1.2868797 A 0.74623507,0.74161196 0 0 0 13.103275,0.41130594 0.74623507,0.74161196 0 0 0 12.054543,0.29415692 Z" />
+    <path
+       style="fill:#000000;fill-opacity:1;stroke:#ffffff;stroke-width:0.264583;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
+       d="m 11.891823,0.84774552 h 1.22777"
+       id="path5" />
+    <path
+       id="path4-7"
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.265982;stroke-linecap:round;stroke-linejoin:miter;stroke-dasharray:none"
+       d="m 12.054544,2.6755544 a 0.74623507,0.74161196 0 0 0 -0.117887,1.0422343 0.74623507,0.74161196 0 0 0 0.859129,0.226421 L 13.229035,4.4838252 13.574457,4.2099166 13.139581,3.6682772 A 0.74623507,0.74161196 0 0 0 13.103271,2.7927035 0.74623507,0.74161196 0 0 0 12.054539,2.6755544 Z" />
+    <path
+       style="fill:#000000;fill-opacity:1;stroke:#ffffff;stroke-width:0.264583;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
+       d="m 11.891824,3.229143 h 1.22777"
+       id="path5-0" />
+    <path
+       style="fill:#000000;fill-opacity:1;stroke:#ffffff;stroke-width:0.264583;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
+       d="M 12.517211,1.480254 V 0.25248399"
+       id="path5-0-6" />
   </g>
 </svg>

@@ -27,7 +27,9 @@ public partial class SceneManager : Node
 	
 	public void BattleScene(Resources.Maps.Meta mapMeta)
 	{
-		
+		LoadScene("Battle");
+		(CurrentScene as Battle.BattleScene).LoadMap(mapMeta);
+		ShowScene();
 	}
 	
 	private void LoadScene(string name)
