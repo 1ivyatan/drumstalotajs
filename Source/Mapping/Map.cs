@@ -5,7 +5,6 @@ namespace drumstalotajs.Mapping;
 
 public partial class Map : Node2D
 {
-	[Signal] public delegate void LoadedMapEventHandler(double factor);
 	[Export] private Resources.Maps.Meta metaData;
 	public int TileSize { get; private set; }
 	public Layers.GroundLayer GroundLayer { get; private set; }
@@ -13,8 +12,6 @@ public partial class Map : Node2D
 	public Layers.EntityLayer EntityLayer { get; private set; }
 	public Mapping.Selection.Selector Selector { get; private set; }
 	public Camera.MapCamera Camera { get; private set; }
-	
-	
 	
 	//public Vector2I CurrentCellPos { get; private set; }
 	
@@ -65,7 +62,7 @@ public partial class Map : Node2D
 	public void LoadMap(Resources.Maps.Meta metaData)
 	{
 		Loaded = false;
-		Resources.Maps.Map mapData = ResourceLoader.Load<Resources.Maps.Map>(metaData.MapPath);;
+		Resources.Maps.Map mapData = metaData.LoadMap(); 
 		GroundLayer.LoadLayer(mapData.GroundLayer);
 		DecorationLayer.LoadLayer(mapData.DecorationLayer);
 		EntityLayer.LoadLayer(mapData.EntityLayer);

@@ -5,11 +5,14 @@ namespace drumstalotajs.Mapping;
 
 public partial class Map : Node2D
 {
+	[Signal] public delegate void LoadedStateEventHandler(bool state);
+
 	public bool Loaded {
 		get;
 		private set
 		{
 			field = value;
+			EmitSignal(SignalName.LoadedState, value);
 		}
 	} = false;
 	

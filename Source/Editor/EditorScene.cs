@@ -36,7 +36,6 @@ public partial class EditorScene : Node2D
 		if (metaData != null)
 		{
 			map.LoadMap(metaData);
-			map.Camera.Calibrate(map.GroundLayer);
 		}
 		
 		map.Selector.HoveredGround += (Vector2I cellPos) => {

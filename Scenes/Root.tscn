@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bqyf8mscxyken" path="res://Source/Main.cs" id="1_a5hps"]
 [ext_resource type="Script" uid="uid://dfsur52pslkvm" path="res://Source/Managers/SceneManager.cs" id="2_kqog5"]
 [ext_resource type="Script" uid="uid://6q1vw0xev5d6" path="res://Source/Managers/ToastManager.cs" id="3_knkkn"]
+[ext_resource type="Script" uid="uid://b261c41yxx57o" path="res://Source/Managers/CursorManager.cs" id="4_sxhdm"]
 
 [node name="Root" type="Node" unique_id=1938553251]
 script = ExtResource("1_a5hps")
@@ -27,3 +28,6 @@ grow_vertical = 0
 size_flags_horizontal = 4
 mouse_filter = 2
 script = ExtResource("3_knkkn")
+
+[node name="CursorManager" type="Node" parent="." unique_id=2003874654]
+script = ExtResource("4_sxhdm")

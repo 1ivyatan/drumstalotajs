@@ -5,7 +5,10 @@ namespace drumstalotajs.Managers;
 
 public partial class SceneManager : Node
 {
-	private Node CurrentScene;
+	[Signal] public delegate void SwitchedSceneEventHandler(string SceneName);
+
+	private Node CurrentScene { get; set; }
+	private string SceneName { get; set; }
 	
 	public void StartScene()
 	{
@@ -35,6 +38,7 @@ public partial class SceneManager : Node
 	private void LoadScene(string name)
 	{
 		String path = $"res://Scenes/{name}/{name}.tscn";
+		SceneName = name;
 		
 		if (CurrentScene != null)
 		{
@@ -50,6 +54,7 @@ public partial class SceneManager : Node
 		
 	private void ShowScene()
 	{
+		EmitSignal(SignalName.SwitchedScene, SceneName);
 		AddChild(CurrentScene);
 	}
 }
