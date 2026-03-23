@@ -14,11 +14,17 @@ public partial class LevelSelectionContainer : Control
 	{
 		metadataModal = GetNode<Control>("MetadataModal") as MetadataModal;
 		levelMarkersContainer = GetNode<Control>("LevelMarkersContainer") as LevelMarkers.LevelMarkersContainer;
+		
 		levelMarkersContainer.ClickedMarker += (Resources.Sets.Levels.LevelProperties levelProps) => {
 			metadataModal.LoadModal(levelProps);
 		};
+		
 		levelMarkersContainer.UnclickedMarker += () => {
 			metadataModal.CloseModal();
+		};
+		
+		metadataModal.ClickedBattle += (Resources.Sets.Levels.LevelProperties levelProps) => {
+			
 		};
 	}
 	

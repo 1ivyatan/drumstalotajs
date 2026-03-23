@@ -5,6 +5,8 @@ namespace drumstalotajs.Levels;
 
 public partial class MetadataModal : Control
 {
+	[Signal] public delegate void ClickedBattleEventHandler(Resources.Sets.Levels.LevelProperties levelProps);
+	
 	private Resources.Sets.Levels.LevelProperties LevelProperties { get; set; }
 
 	private Label title;
@@ -17,6 +19,9 @@ public partial class MetadataModal : Control
 		title = container.GetNode<Label>("Title");
 		desc = container.GetNode<RichTextLabel>("Desc");
 		toBattleButton = container.GetNode<Button>("ToBattleButton");
+		toBattleButton.Pressed += () => {
+			EmitSignal(SignalName.ClickedBattle, LevelProperties);
+		};
 	}
 	
 	public void LoadModal(Resources.Sets.Levels.LevelProperties levelProps)
