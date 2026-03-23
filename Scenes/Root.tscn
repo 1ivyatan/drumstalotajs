@@ -4,6 +4,11 @@
 [ext_resource type="Script" uid="uid://dfsur52pslkvm" path="res://Source/Managers/SceneManager.cs" id="2_kqog5"]
 [ext_resource type="Script" uid="uid://6q1vw0xev5d6" path="res://Source/Managers/ToastManager.cs" id="3_knkkn"]
 [ext_resource type="Script" uid="uid://b261c41yxx57o" path="res://Source/Managers/CursorManager.cs" id="4_sxhdm"]
+[ext_resource type="Texture2D" uid="uid://dk1h65lr58feq" path="res://Assets/UI.svg" id="5_oss8w"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pl8e4"]
+atlas = ExtResource("5_oss8w")
+region = Rect2(43.910492, 0, 7.9110565, 8.203752)
 
 [node name="Root" type="Node" unique_id=1938553251]
 script = ExtResource("1_a5hps")
@@ -31,3 +36,4 @@ script = ExtResource("3_knkkn")
 
 [node name="CursorManager" type="Node" parent="." unique_id=2003874654]
 script = ExtResource("4_sxhdm")
+zoomCursorTexture = SubResource("AtlasTexture_pl8e4")
