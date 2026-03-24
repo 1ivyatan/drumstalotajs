@@ -21,6 +21,7 @@ script = ExtResource("1_gunap")
 
 [node name="StageManager" type="CanvasLayer" parent="." unique_id=428664782]
 script = ExtResource("3_odh8s")
+StagePath = "res://Scenes/Battle/Stages/"
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=789815528]
 

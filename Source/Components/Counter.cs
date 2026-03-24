@@ -15,6 +15,7 @@ public partial class Counter : Control
 		counter = GetNode<Label>("Counter");
 		iconControl = GetNode<TextureRect>("Icon");
 		iconControl.Texture = Icon;
+		SetCounter(0);
 	}
 	
 	public void SetCounter(int count)

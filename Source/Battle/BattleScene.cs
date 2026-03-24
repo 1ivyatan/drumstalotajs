@@ -12,6 +12,7 @@ public partial class BattleScene : Node2D
 	private Managers.SceneManager sceneManager;
 	private Managers.CursorManager cursorManager;
 	private Components.Modals.Modal pauseModal;
+	private Stages.StageManager stageManager;
 
 	public override void _Ready()
 	{
@@ -19,6 +20,7 @@ public partial class BattleScene : Node2D
 		sceneManager = GetNode<Node>("../") as Managers.SceneManager;
 		pauseModal = GetNode<Control>("UI/PauseModal") as Components.Modals.Modal;
 		cursorManager = GetNode<Node>("../../CursorManager") as Managers.CursorManager;
+		stageManager = GetNode<CanvasLayer>("StageManager") as Stages.StageManager;
 		map.LoadMap(MetaData);
 		map.Mode = Mapping.Map.MapMode.VIEW;
 		
@@ -44,7 +46,7 @@ public partial class BattleScene : Node2D
 					break;
 			}
 		};
-		
+		stageManager.DevicePlacementStage();
 		State = BattleSceneState.ACTIVE;
 	}
 	
