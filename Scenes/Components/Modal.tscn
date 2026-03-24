@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cy43lwe0k8g8c"]
 
-[ext_resource type="Script" uid="uid://cv4s6n13t2abn" path="res://Source/Components/Modal.cs" id="1_0wu8u"]
+[ext_resource type="Script" uid="uid://cv4s6n13t2abn" path="res://Source/Components/Modals/Modal.cs" id="1_0wu8u"]
+[ext_resource type="Script" uid="uid://epxg127tw84k" path="res://Source/Components/Modals/Window.cs" id="2_gjki1"]
 
 [node name="Modal" type="Control" unique_id=1121382534]
 layout_mode = 3
@@ -9,9 +10,19 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_force_pass_scroll_events = false
 script = ExtResource("1_0wu8u")
 
-[node name="PanelContainer" type="PanelContainer" parent="." unique_id=2129495601]
+[node name="Background" type="ColorRect" parent="." unique_id=1758546863]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.49803922)
+
+[node name="Window" type="PanelContainer" parent="." unique_id=2129495601]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -24,3 +35,4 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("2_gjki1")

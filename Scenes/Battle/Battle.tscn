@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bn0hkjw183q01" path="res://Assets/Entities.svg" id="5_rremj"]
 [ext_resource type="PackedScene" uid="uid://bmq1lnfx3r3c0" path="res://Scenes/Components/Counter.tscn" id="6_g1sps"]
 [ext_resource type="PackedScene" uid="uid://cy43lwe0k8g8c" path="res://Scenes/Components/Modal.tscn" id="8_07e4u"]
+[ext_resource type="Script" uid="uid://g0jvlqrxnuem" path="res://Source/Battle/TopPanels/PauseMenu.cs" id="9_tmq01"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dcr6b"]
 atlas = ExtResource("5_rremj")
@@ -49,3 +50,24 @@ layout_mode = 2
 Icon = SubResource("AtlasTexture_dcr6b")
 
 [node name="PauseModal" parent="UI" unique_id=1121382534 instance=ExtResource("8_07e4u")]
+visible = false
+
+[node name="PauseMenu" type="VBoxContainer" parent="UI/PauseModal" unique_id=1940655574]
+layout_mode = 0
+size_flags_horizontal = 4
+alignment = 1
+script = ExtResource("9_tmq01")
+
+[node name="Title" type="Label" parent="UI/PauseModal/PauseMenu" unique_id=83404672]
+layout_mode = 2
+text = "Paused"
+horizontal_alignment = 1
+
+[node name="ResumeButton" type="Button" parent="UI/PauseModal/PauseMenu" unique_id=1271140480]
+layout_mode = 2
+text = "Resume"
+
+[node name="ToLevelsButton" type="Button" parent="UI/PauseModal/PauseMenu" unique_id=1855152975]
+layout_mode = 2
+text = "Exit
+"

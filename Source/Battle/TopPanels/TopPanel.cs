@@ -11,9 +11,14 @@ public partial class TopPanel : Control
 	
 	public override void _Ready()
 	{
+		BattleScene battleScene = GetNode<Node2D>("../..") as BattleScene;
 		pauseButton = GetNode<Button>("PauseButton");
 		title = GetNode<Label>("Title");
-		counters = GetNode<Container>("Counters");
+		//counters = GetNode<Container>("Counters");
+		
+		pauseButton.Pressed += () => {
+			battleScene.Pause();
+		};
 	}
 	
 	public void SetTitle(string text)
