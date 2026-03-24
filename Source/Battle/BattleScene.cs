@@ -34,7 +34,6 @@ public partial class BattleScene : Node2D
 					cursorManager.ResetCursor();
 					break;
 			}
-			GD.Print(state);
 		};
 	}
 	

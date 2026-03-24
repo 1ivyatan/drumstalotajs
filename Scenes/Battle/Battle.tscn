@@ -2,13 +2,16 @@
 
 [ext_resource type="PackedScene" uid="uid://cbxsa10nydtms" path="res://Scenes/Map/Map.tscn" id="1_ael4v"]
 [ext_resource type="Script" uid="uid://bck3mdgvd0lvh" path="res://Source/Battle/BattleScene.cs" id="1_gunap"]
-[ext_resource type="Script" uid="uid://h057i2q37q6l" path="res://Source/Battle/TopPanel.cs" id="3_3ihc8"]
+[ext_resource type="Script" uid="uid://h057i2q37q6l" path="res://Source/Battle/TopPanels/TopPanel.cs" id="3_3ihc8"]
 [ext_resource type="Script" uid="uid://bt6kmulugmuxk" path="res://Source/Battle/Stages/StageManager.cs" id="3_odh8s"]
+[ext_resource type="Script" uid="uid://mave1cj4yvuf" path="res://Source/Battle/TopPanels/Counters.cs" id="5_dcr6b"]
 [ext_resource type="Texture2D" uid="uid://bn0hkjw183q01" path="res://Assets/Entities.svg" id="5_rremj"]
+[ext_resource type="PackedScene" uid="uid://bmq1lnfx3r3c0" path="res://Scenes/Components/Counter.tscn" id="6_g1sps"]
+[ext_resource type="PackedScene" uid="uid://cy43lwe0k8g8c" path="res://Scenes/Components/Modal.tscn" id="8_07e4u"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_g1sps"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_dcr6b"]
 atlas = ExtResource("5_rremj")
-region = Rect2(0, 0, 15.553043, 15.508346)
+region = Rect2(16, 0, 16, 16)
 
 [node name="Battle" type="Node2D" unique_id=1457415613]
 script = ExtResource("1_gunap")
@@ -39,16 +42,10 @@ text = "Battle"
 [node name="Counters" type="HBoxContainer" parent="UI/TopPanel" unique_id=77634671]
 layout_mode = 2
 size_flags_horizontal = 8
+script = ExtResource("5_dcr6b")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/TopPanel/Counters" unique_id=248090722]
+[node name="DeviceCounter" parent="UI/TopPanel/Counters" unique_id=1660376766 instance=ExtResource("6_g1sps")]
 layout_mode = 2
+Icon = SubResource("AtlasTexture_dcr6b")
 
-[node name="TextureRect" type="TextureRect" parent="UI/TopPanel/Counters/HBoxContainer" unique_id=226021936]
-layout_mode = 2
-texture = SubResource("AtlasTexture_g1sps")
-expand_mode = 2
-stretch_mode = 3
-
-[node name="Label" type="Label" parent="UI/TopPanel/Counters/HBoxContainer" unique_id=1407882549]
-layout_mode = 2
-text = "0"
+[node name="PauseModal" parent="UI" unique_id=1121382534 instance=ExtResource("8_07e4u")]

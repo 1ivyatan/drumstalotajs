@@ -55,11 +55,19 @@ public partial class MapCamera : Camera2D
 	{
 		if (mouseEvent is InputEventMouseButton mouseClick && mouseClick.Pressed)
 		{
-			switch (mouseClick.ButtonIndex)
+			if (mouseClick.Pressed)
 			{
-				case MouseButton.WheelUp: ZoomToCursor(ZoomFactor); break;
-				case MouseButton.WheelDown: ZoomToCursor(-ZoomFactor); break;
+				switch (mouseClick.ButtonIndex)
+				{
+					case MouseButton.WheelUp: ZoomToCursor(ZoomFactor); break;
+					case MouseButton.WheelDown: ZoomToCursor(-ZoomFactor); break;
+				}
 			}
+		}
+		
+		if (mouseEvent is InputEventMouseMotion mouseMotion && !dragging)
+		{
+			if (State != MapCameraState.IDLE) State = MapCameraState.IDLE;
 		}
 	}
 	
