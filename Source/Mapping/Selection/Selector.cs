@@ -21,6 +21,7 @@ public partial class Selector : Node2D
 	private Sprite2D sprite;
 	
 	private Callable setEntityHoldCall;
+	private Callable rescanAfterExitCall;
 	private Vector2I currentCellPos;
 	private Entities.Entity currentEntity = null;
 	private bool canGround = false;
@@ -36,6 +37,9 @@ public partial class Selector : Node2D
 		movementTimer.SetTimer(.025f, ScanEntities);
 		AddChild(movementTimer);
 		setEntityHoldCall = Callable.From(() => {holdEntity = false;});
+		rescanAfterExitCall = Callable.From(() => { 
+			GD.Print("??????"); ScanEntities();
+		});
 	}
 	
 	public override void _UnhandledInput(InputEvent @event)
@@ -120,7 +124,15 @@ public partial class Selector : Node2D
 		if (entities != null && entities.Length > 0)
 		{
 			currentEntity = entities[0];
-			if (!currentEntity.IsConnected("mouse_exited", setEntityHoldCall)) currentEntity.Connect("mouse_exited", setEntityHoldCall);
+			if (!currentEntity.IsConnected("mouse_exited", setEntityHoldCall))
+			{
+				currentEntity.Connect("mouse_exited", setEntityHoldCall);
+			} 
+			
+			if (!currentEntity.IsConnected("tree_exiting", rescanAfterExitCall))
+			{
+				currentEntity.Connect("tree_exiting", rescanAfterExitCall);
+			}
 			canEntity = true;
 			holdEntity = true;
 			EmitSignal("HoveredEntity", currentEntity);
