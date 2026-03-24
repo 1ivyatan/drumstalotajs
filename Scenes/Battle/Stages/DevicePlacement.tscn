@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dpxfhtfmi263t"]
 
 [ext_resource type="PackedScene" uid="uid://cq3k6qki0pf2e" path="res://Scenes/Battle/Stages/Stage.tscn" id="1_8xrf7"]
+[ext_resource type="Script" uid="uid://do15s8e5hc7vw" path="res://Source/Battle/Stages/DevicePlacement/DevicePlacementStage.cs" id="2_0v3wf"]
 
 [node name="Stage" unique_id=1817604260 instance=ExtResource("1_8xrf7")]
 anchors_preset = 7
@@ -8,6 +9,7 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 grow_vertical = 0
+script = ExtResource("2_0v3wf")
 
 [node name="ToDeviceAdjustmentStage" type="Button" parent="." index="0" unique_id=285438909]
 layout_mode = 1

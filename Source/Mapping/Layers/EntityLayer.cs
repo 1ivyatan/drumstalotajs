@@ -65,7 +65,7 @@ public partial class EntityLayer : Node2D
 		layer.Entities = new Godot.Collections.Dictionary<int, Godot.Collections.Array<Resources.Maps.Layers.Entities.EntityProperties>>();
 		foreach (Entities.Entity entity in Entities)
 		{
-			int id = entity.Id;
+			int id = entity.EntityResource.Id;
 			
 			if (!layer.Entities.ContainsKey(id))
 			{
