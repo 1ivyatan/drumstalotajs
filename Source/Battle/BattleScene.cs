@@ -9,18 +9,22 @@ public partial class BattleScene : Node2D
 	public BattleSceneState State { get; private set; } = BattleSceneState.LOADING;
 	
 	private Mapping.Map map;
+	private Managers.SceneManager sceneManager;
 	private Managers.CursorManager cursorManager;
 	private Components.Modals.Modal pauseModal;
 
 	public override void _Ready()
 	{
 		map = GetNode<Node2D>("Map") as Mapping.Map;
+		sceneManager = GetNode<Node>("../") as Managers.SceneManager;
 		pauseModal = GetNode<Control>("UI/PauseModal") as Components.Modals.Modal;
 		cursorManager = GetNode<Node>("../../CursorManager") as Managers.CursorManager;
 		map.LoadMap(MetaData);
 		map.Mode = Mapping.Map.MapMode.VIEW;
 		
 		pauseModal.Closed += Resume;
+		
+		(pauseModal.GetModalWindow().GetNode<Control>("PauseMenu") as TopPanels.PauseMenu).ToLevels += ExitBattle;
 		
 		map.Camera.StateChange += (Mapping.Camera.MapCamera.MapCameraState state) => {
 			switch (state)
@@ -42,6 +46,11 @@ public partial class BattleScene : Node2D
 		};
 		
 		State = BattleSceneState.ACTIVE;
+	}
+	
+	private void ExitBattle()
+	{
+		sceneManager.LevelsScene();
 	}
 	
 	public void LoadMap(Resources.Maps.Meta mapMeta)

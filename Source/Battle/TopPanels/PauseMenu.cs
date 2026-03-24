@@ -5,6 +5,8 @@ namespace drumstalotajs.Battle.TopPanels;
 
 public partial class PauseMenu : Control
 {
+	[Signal] public delegate void ToLevelsEventHandler();
+	
 	private Button resumeButton;
 	private Button toLevelsButton;
 
@@ -15,6 +17,10 @@ public partial class PauseMenu : Control
 		
 		resumeButton.Pressed += () => {
 			(GetNode("..") as Components.Modals.Window).GetModal().Close();
+		};
+		
+		toLevelsButton.Pressed += () => {
+			EmitSignal(SignalName.ToLevels);
 		};
 	}
 }

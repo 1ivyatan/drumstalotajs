@@ -27,6 +27,11 @@ public partial class Modal : Control
 		ChildEnteredTree += AddToWindow;
 	}
 	
+	public Control GetModalWindow()
+	{
+		return window;
+	}
+	
 	public void Open()
 	{
 		Visible = true;
