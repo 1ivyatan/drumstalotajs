@@ -9,4 +9,9 @@ public partial class DevicePlacementStage : Stage
 	{
 		GD.Print(GetMap());
 	}
+	
+	public bool CheckLimits()
+	{
+		return true;
+	}
 }

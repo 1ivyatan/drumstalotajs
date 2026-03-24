@@ -7,6 +7,8 @@ namespace drumstalotajs.Mapping.Layers;
 
 public partial class EntityLayer : Node2D
 {
+	[Signal] public delegate void EntityEnteredEventHandler(Entities.Entity entity);
+	[Signal] public delegate void EntityExitingEventHandler(Entities.Entity entity);
 	[Export] public Resources.Sets.EntitySet EntitySetResource { get; set; }
 	public OrderedDictionary<int, PackedScene> EntityScenes { get; private set; }
 	public List<Entities.Entity> Entities { get; private set; }
@@ -31,7 +33,9 @@ public partial class EntityLayer : Node2D
 	{
 		if (node is Entities.Entity)
 		{
-			Entities.Add(node as Entities.Entity);
+			Entities.Entity entity = node as Entities.Entity;
+			Entities.Add(entity);
+			EmitSignal(SignalName.EntityEntered, entity);
 		}
 	}
 	
@@ -39,7 +43,9 @@ public partial class EntityLayer : Node2D
 	{
 		if (node is Entities.Entity)
 		{
-			Entities.Remove(node as Entities.Entity);
+			Entities.Entity entity = node as Entities.Entity;
+			EmitSignal(SignalName.EntityExiting, entity);
+			Entities.Remove(entity);
 		}
 	}
 	
@@ -124,32 +130,6 @@ public partial class EntityLayer : Node2D
 		return [];
 	}
 	
-	public Entities.Entity[] Flash(Vector2 position, int limit)
-	{
-		var spaceState = GetWorld2D().DirectSpaceState;
-		PhysicsPointQueryParameters2D query = new PhysicsPointQueryParameters2D();
-		query.Position = GlobalPosition + position;
-		query.CollideWithAreas = true;
-		var intersectedEntities = spaceState.IntersectPoint(query);
-		if (intersectedEntities.Count > 0)
-		{
-			Entities.Entity[] entities = new Entities.Entity[intersectedEntities.Count];
-			for (int i = 0; i < entities.Length; i++)
-			{
-				Node2D collided = (Node2D)intersectedEntities[i]["collider"];	
-				entities[i] = collided as Entities.Entity;
-			}
-			
-			entities = entities.OrderBy(entity => {
-				return position.DistanceTo(entity.Position);
-			}).ToArray();
-			
-			return entities;
-		} else {
-			return null;
-		}
-	}
-	
 	public void RemoveEntity(Entities.Entity entity)
 	{
 		entity.QueueFree();
@@ -165,5 +145,10 @@ public partial class EntityLayer : Node2D
 	public Vector2 CellToLocalPos(Vector2I cellPos)
 	{
 		return (cellPos * TileSize);
+	}
+	
+	public Entities.Entity[] GetEntities(int id)
+	{
+		return Entities.Where(entity => entity.EntityResource.Id == id).ToArray();
 	}
 }

@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://c0vt7wirwr03i"]
+
+[ext_resource type="PackedScene" uid="uid://cv6jxgdeciule" path="res://Scenes/Entities/Entity.tscn" id="1_1f00p"]
+[ext_resource type="Shape2D" uid="uid://d0wtbxdg2ryf1" path="res://Resources/Areas/Tile.tres" id="2_1gv0m"]
+[ext_resource type="Resource" uid="uid://c305vnqsbhgda" path="res://Resources/Entities/Devices/Mortar1.tres" id="2_dvmli"]
+[ext_resource type="Texture2D" uid="uid://bn0hkjw183q01" path="res://Assets/Entities.svg" id="3_dvmli"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eb3jq"]
+atlas = ExtResource("3_dvmli")
+region = Rect2(32, 0, 16, 16)
+
+[node name="Entity" unique_id=93164720 instance=ExtResource("1_1f00p")]
+EntityResource = ExtResource("2_dvmli")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0" unique_id=734417102]
+shape = ExtResource("2_1gv0m")
+
+[node name="Sprite" type="Sprite2D" parent="." index="1" unique_id=1575382064]
+texture = SubResource("AtlasTexture_eb3jq")

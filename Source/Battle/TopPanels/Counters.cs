@@ -5,12 +5,15 @@ namespace drumstalotajs.Battle.TopPanels;
 
 public partial class Counters : Control
 {
-	// Called when the node enters the scene tree for the first time.
+	private Components.Counter deviceCounter;
+	
 	public override void _Ready()
 	{
+		deviceCounter = GetNode<Control>("DeviceCounter") as Components.Counter;
 	}
+	
+	
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
 	}

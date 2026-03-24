@@ -80,6 +80,9 @@ public partial class EditorScene : Node2D
 				case Key.Q:
 					ChangeEntityAzimuth(selectedEntity, keyEvent.ShiftPressed ? ( -aziFactor * 0.1 ) : -aziFactor);
 					break;
+				case Key.E when !keyEvent.Echo && !keyEvent.CtrlPressed:
+					NextEntity(selectedPosition);
+					break;
 			}
 		}
 						
@@ -131,16 +134,18 @@ public partial class EditorScene : Node2D
 			}));
 		}
 	}
-	/*
-	private void NextEntity(Mapping.Layers.EntityLayer entityLayer, Vector2I cellPos)
+	private void NextEntity(Vector2I cellPos)
 	{
+		Mapping.Layers.EntityLayer entityLayer = map.EntityLayer;
 		Vector2 localPosCentered = entityLayer.CellToLocalPos(cellPos, true);
-		Entities.Entity[] entities = entityLayer.Flash(localPosCentered, 1);
+		Entities.Entity[] entities = entityLayer.FlashEntities(localPosCentered, 1);
 		
-		if (entities == null) {
+		if (entities == null || entities.Length == 0)
+		{
 			entityLayer.SpawnEntity(localPosCentered, 1);
-		} else {
-			int id = entities[0].Id;
+		} else
+		{
+			int id = entities[0].EntityResource.Id;
 			int length = entityLayer.EntityScenes.Count;
 			int index = entityLayer.EntityScenes.IndexOf(id);
 			int next = index + 1;
@@ -152,11 +157,25 @@ public partial class EditorScene : Node2D
 				int nextId = entityLayer.EntityScenes.GetAt(next).Key;
 				entityLayer.SpawnEntity(localPosCentered, nextId);
 			}
+			
+			
 		}
-		
-		map.Selector.Reflash();
+		/*
+		if (entities == null) {
+			
+		} else {
+			
+			map.EntityLayer.RemoveEntity(entities[0]);
+			
+			if (next < length)
+			{
+				int nextId = entityLayer.EntityScenes.GetAt(next).Key;
+				entityLayer.SpawnEntity(localPosCentered, nextId);
+			}
+		}*/
 	}
 	
+	/*
 	private void NextTileFromAtlas(Mapping.Layers.Layer layer, Vector2I[] atlas, Vector2I cellPos)
 	{
 		Vector2I currentAtlas = layer.GetCellAtlasCoords(cellPos);

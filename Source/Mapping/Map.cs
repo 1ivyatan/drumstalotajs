@@ -24,6 +24,10 @@ public partial class Map : Node2D
 		Camera = GetNode<Camera2D>("Camera") as Camera.MapCamera;
 		TileSize = GroundLayer.TileSet.TileSize.X;
 		
+		//EntityLayer
+		
+		//EntityEnteredEventHandler(Entities.Entity entity);
+		
 	//	Selector.HoveredGround += (Vector2I cellPos) => { CurrentCellPos = cellPos; };
 		/*Camera.DraggingChange += (MapCamera.DraggingState draggingState) => {
 			switch(draggingState)
