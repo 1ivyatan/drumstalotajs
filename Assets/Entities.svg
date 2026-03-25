@@ -23,9 +23,9 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="px"
-     inkscape:zoom="16.705275"
-     inkscape:cx="30.200042"
-     inkscape:cy="10.685248"
+     inkscape:zoom="23.624826"
+     inkscape:cx="51.365457"
+     inkscape:cy="10.984208"
      inkscape:window-width="1920"
      inkscape:window-height="1008"
      inkscape:window-x="0"
@@ -156,5 +156,12 @@
        cy="0.67504418"
        rx="1.24217"
        ry="0.43837568" />
+    <rect
+       style="opacity:0.503776;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.432113"
+       id="rect1"
+       width="4.2333331"
+       height="4.2333331"
+       x="12.7"
+       y="0" />
   </g>
 </svg>

@@ -6,6 +6,7 @@ namespace drumstalotajs.Mapping;
 public partial class Map : Node2D
 {
 	[Export] private Resources.Maps.Meta metaData;
+	public Resources.Maps.Map MapData { get; private set; }
 	public int TileSize { get; private set; }
 	public Layers.GroundLayer GroundLayer { get; private set; }
 	public Layers.DecorationLayer DecorationLayer { get; private set; }
@@ -71,6 +72,7 @@ public partial class Map : Node2D
 		DecorationLayer.LoadLayer(mapData.DecorationLayer);
 		EntityLayer.LoadLayer(mapData.EntityLayer);
 		Camera.Calibrate(GroundLayer);
+		MapData = mapData;
 		Loaded = true;
 	}
 }

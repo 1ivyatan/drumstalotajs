@@ -3,12 +3,14 @@
 [ext_resource type="PackedScene" uid="uid://boaerq2blgp8k" path="res://Scenes/Entities/Defenses/Sandbags.tscn" id="1_y2ht3"]
 [ext_resource type="Script" uid="uid://bpgu3yw4u1jq7" path="res://Source/Resources/Sets/EntitySet.cs" id="2_ddxi4"]
 [ext_resource type="PackedScene" uid="uid://c0vt7wirwr03i" path="res://Scenes/Entities/Devices/Mortar1.tscn" id="2_mgwkn"]
+[ext_resource type="PackedScene" uid="uid://tfqyoej1iqdt" path="res://Scenes/Entities/Markers/DeviceMarker.tscn" id="3_mgwkn"]
 
 [resource]
 script = ExtResource("2_ddxi4")
 TileSize = 16
 Scenes = Dictionary[int, PackedScene]({
 1: ExtResource("1_y2ht3"),
-2: ExtResource("2_mgwkn")
+2: ExtResource("2_mgwkn"),
+3: ExtResource("3_mgwkn")
 })
 metadata/_custom_type_script = "uid://bpgu3yw4u1jq7"
