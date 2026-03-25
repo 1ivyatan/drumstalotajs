@@ -20,6 +20,11 @@ public partial class Layer : TileMapLayer
 		}
 		return tileAtlas;
 	}
+	
+	public Vector2I GetCellPos(Vector2 localPos)
+	{
+		return LocalToMap(localPos);
+	}
 	/*
 		
 		protected int[] GetSceneTileIds(TileMapLayer layer, int sourceId)

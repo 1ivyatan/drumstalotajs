@@ -49,8 +49,7 @@ public partial class Selector : Node2D
 			EmitSignal("DisappearedSelectedEntity");
 			holdEntity = false;
 			currentEntity = null;
-			movementTimer.Stop();
-			ScanEntities();
+			ForceScanEntities();
 		});
 	}
 	
@@ -65,7 +64,7 @@ public partial class Selector : Node2D
 	
 	private void HandleEntity(InputEventMouse mouseEvent)
 	{
-		GD.Print(IsInstanceValid(currentEntity));
+		//GD.Print(IsInstanceValid(currentEntity));
 		
 		if (mouseEvent is InputEventMouseMotion mouseMotion)
 		{
@@ -133,6 +132,12 @@ public partial class Selector : Node2D
 		{
 			Visible = false;
 		}
+	}
+	
+	public void ForceScanEntities()
+	{
+		movementTimer.Stop();
+		ScanEntities();
 	}
 	
 	private void ScanEntities()

@@ -9,6 +9,7 @@ public partial class EntityLayer : Node2D
 {
 	[Signal] public delegate void EntityEnteredEventHandler(Entities.Entity entity);
 	[Signal] public delegate void EntityExitingEventHandler(Entities.Entity entity);
+	
 	[Export] public Resources.Sets.EntitySet EntitySetResource { get; set; }
 	public OrderedDictionary<int, PackedScene> EntityScenes { get; private set; }
 	public List<Entities.Entity> Entities { get; private set; }

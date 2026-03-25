@@ -54,6 +54,21 @@ public partial class EditorScene : Node2D
 			selectedEntity = null;
 		};
 		
+		map.EntityLayer.EntityEntered += (Entities.Entity entity) => {
+			Vector2I cellPos = map.GroundLayer.GetCellPos(entity.Position);
+			if (cellPos == selectedPosition)
+			{
+				map.Selector.ForceScanEntities();
+			}
+		};
+		
+		map.EntityLayer.EntityExiting += (Entities.Entity entity) => {
+			if (entity == selectedEntity)
+			{
+				entity.TreeExited += map.Selector.ForceScanEntities;
+			}
+		};
+		
 		map.Mode = Mapping.Map.MapMode.EDIT;
 	}
 	
