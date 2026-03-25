@@ -112,6 +112,7 @@ public partial class EntityLayer : Node2D
 				Node2D collider = (Node2D)node["collider"];
 				if (collider is Entities.Entity entity)
 				{
+					GD.Print(entity.Position);
 					entities.Add(entity);
 				}
 			}

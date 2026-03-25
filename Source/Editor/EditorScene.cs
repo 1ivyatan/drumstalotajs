@@ -45,7 +45,12 @@ public partial class EditorScene : Node2D
 		map.Selector.HoveredEntity += (Entities.Entity entity) => {
 			selectedEntity = entity;
 		};
+		
 		map.Selector.UnhoveredEntity += () => {
+			selectedEntity = null;
+		};
+		
+		map.Selector.DisappearedSelectedEntity += () => {
 			selectedEntity = null;
 		};
 		
@@ -152,13 +157,13 @@ public partial class EditorScene : Node2D
 			
 			map.EntityLayer.RemoveEntity(entities[0]);
 			
-			if (next < length)
-			{
-				int nextId = entityLayer.EntityScenes.GetAt(next).Key;
-				entityLayer.SpawnEntity(localPosCentered, nextId);
-			}
+			//if (next < length)
+			//{
+			//	int nextId = entityLayer.EntityScenes.GetAt(next).Key;
+			//	entityLayer.SpawnEntity(localPosCentered, nextId);
+			//}
 			
-			
+			//
 		}
 		/*
 		if (entities == null) {
