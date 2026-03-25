@@ -36,41 +36,48 @@ public partial class Selector : Node2D
 		sprite = GetNode<Sprite2D>("Sprite");
 		map = GetNode<Node2D>("../") as Map;
 		camera = map.GetNode<Camera2D>("Camera") as Camera.MapCamera;
-		//movementTimer = new MovementTimer();
-		//movementTimer.SetTimer(.025f, ScanEntities);
-		//AddChild(movementTimer);
+		movementTimer = new MovementTimer();
+		movementTimer.SetTimer(.025f, ScanEntities);
+		AddChild(movementTimer);
 		
-		/*
 		setEntityHoldCall = Callable.From(() => {
 			currentEntity = null;
+			holdEntity = false;
 		});
+		
 		rescanAfterExitCall = Callable.From(() => {
-			if (IsInstanceValid(currentEntity))
-			{
-				EmitSignal(SignalName.DisappearedSelectedEntity);
-				holdEntity = false;
-				canEntity = false;
-				currentEntity = null;
-				//GD.Print(7777777);
-				//currentEntity = null;
-				//holdEntity = false;
-				//holdEntity = false;
-				//canEntity = false;
-				//currentEntity = null;
-				//GD.Print(holdEntity);
-				ScanEntities();
-			}
-			//GD.Print("??????"); ScanEntities();
-		});*/
+			EmitSignal("DisappearedSelectedEntity");
+			holdEntity = false;
+			currentEntity = null;
+			movementTimer.Stop();
+			ScanEntities();
+		});
 	}
 	
 	public override void _UnhandledInput(InputEvent @event)
 	{
 		if (@event is InputEventMouse mouseEvent && Mode != SelectorMode.LOCK)
-		{/*
+		{
 			HandleEntity(mouseEvent);
 			HandleGround(mouseEvent);
-		*/}
+		}
+	}
+	
+	private void HandleEntity(InputEventMouse mouseEvent)
+	{
+		GD.Print(IsInstanceValid(currentEntity));
+		
+		if (mouseEvent is InputEventMouseMotion mouseMotion)
+		{
+			if (holdEntity) return;
+			movementTimer.RestartTimer();
+		}
+		
+		if (mouseEvent is InputEventMouseButton mouseClick && mouseClick.Pressed && mouseClick.ButtonIndex == MouseButton.Left && movementTimer.IsStopped())
+		{
+			if (IsInstanceValid(currentEntity)) EmitSignal("ClickedEntity", currentEntity);
+			else EmitSignal("UnclickedEntity");
+		}
 	}
 	
 	private bool HasNewCellPosition(InputEventMouse mouseEvent)
@@ -98,24 +105,6 @@ public partial class Selector : Node2D
 		}
 	}
 	
-	private void HandleEntity(InputEventMouse mouseEvent)
-	{
-		//GD.Print(holdEntity);
-		
-		if (mouseEvent is InputEventMouseMotion mouseMotion)
-		{
-			if (holdEntity) return;
-			canEntity = false;
-			movementTimer.RestartTimer();
-		}
-		
-		if (mouseEvent is InputEventMouseButton mouseClick && mouseClick.Pressed && mouseClick.ButtonIndex == MouseButton.Left && movementTimer.IsStopped())
-		{
-			if (canEntity && IsInstanceValid(currentEntity)) EmitSignal("ClickedEntity", currentEntity);
-			else EmitSignal("UnclickedEntity");
-		}
-	}
-	
 	public void RefreshHightlighter()
 	{
 		PlaceHighlighter();
@@ -128,7 +117,7 @@ public partial class Selector : Node2D
 	
 	private void PlaceHighlighter()
 	{
-		if (IsInstanceValid(currentEntity))
+		if (holdEntity && IsInstanceValid(currentEntity))
 		{
 			Position = currentEntity.Position;
 			Rotation = currentEntity.Rotation;
@@ -150,30 +139,53 @@ public partial class Selector : Node2D
 	{
 		Vector2 mouseLocalPos = GetLocalMousePos();
 		Entities.Entity[] entities = AllowedEntities(mouseLocalPos);
-		if (entities != null && entities.Length > 0 && IsInstanceValid(entities[0]))
+		if (entities != null && entities.Length > 0)
 		{
-			currentEntity = entities[0];	
-			if (!currentEntity.IsConnected("mouse_exited", setEntityHoldCall))
+			if (IsInstanceValid(currentEntity))
 			{
-				currentEntity.Connect("mouse_exited", setEntityHoldCall);
-			} 
-			
-			if (!currentEntity.IsConnected("tree_exiting", rescanAfterExitCall))
-			{
-				currentEntity.Connect("tree_exiting", rescanAfterExitCall);
+				DetachSignalsToEntity(currentEntity);
 			}
-			canEntity = true;
-			holdEntity = true;
+			
+			currentEntity = entities[0];
+			AttachSignalsToEntity(currentEntity);
 			EmitSignal("HoveredEntity", currentEntity);
+			holdEntity = true;
 		} else
 		{
+			if (IsInstanceValid(currentEntity))
+			{
+				DetachSignalsToEntity(currentEntity);
+			}
 			currentEntity = null;
-			canEntity = false;
 			holdEntity = false;
 			EmitSignal("UnhoveredEntity");
 		}
-		
-		
 		PlaceHighlighter();
+	}
+	
+	private void AttachSignalsToEntity(Entities.Entity entity)
+	{
+		if (!entity.IsConnected("mouse_exited", setEntityHoldCall))
+		{
+			entity.Connect("mouse_exited", setEntityHoldCall);
+		}
+
+		if (!entity.IsConnected("tree_exiting", rescanAfterExitCall))
+		{
+			entity.Connect("tree_exiting", rescanAfterExitCall);
+		}
+	}
+	
+	private void DetachSignalsToEntity(Entities.Entity entity)
+	{
+		if (entity.IsConnected("mouse_exited", setEntityHoldCall))
+		{
+			entity.Disconnect("mouse_exited", setEntityHoldCall);
+		}
+
+		if (entity.IsConnected("tree_exiting", rescanAfterExitCall))
+		{
+			entity.Disconnect("tree_exiting", rescanAfterExitCall);
+		}
 	}
 }

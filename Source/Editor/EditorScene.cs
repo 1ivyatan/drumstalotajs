@@ -157,11 +157,11 @@ public partial class EditorScene : Node2D
 			
 			map.EntityLayer.RemoveEntity(entities[0]);
 			
-			//if (next < length)
-			//{
-			//	int nextId = entityLayer.EntityScenes.GetAt(next).Key;
-			//	entityLayer.SpawnEntity(localPosCentered, nextId);
-			//}
+			if (next < length)
+			{
+				int nextId = entityLayer.EntityScenes.GetAt(next).Key;
+				entityLayer.SpawnEntity(localPosCentered, nextId);
+			}
 			
 			//
 		}
@@ -207,7 +207,7 @@ public partial class EditorScene : Node2D
 	
 	private void ChangeEntityAzimuth(Entities.Entity entity, double change)
 	{
-		if (entity != null)
+		if (IsInstanceValid(entity))
 		{
 			double newAzimuth = Math.Round(entity.Azimuth + change, 3);
 			entity.Azimuth = newAzimuth;
