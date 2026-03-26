@@ -13,19 +13,19 @@ public partial class DevicePlacementStage : Stage
 	private Mapping.Map map;
 	private List<Vector2> placableEntitySpots;
 	private DeviceSelectionContainer deviceSelectionContainer;
+	private Button toDeviceAdjustmentStageButton;
 	
 	private int selectedDeviceId = -1;
 	
 	public override void _Ready()
 	{
 		deviceSelectionContainer = GetNode<Control>("DeviceSelectionContainer") as DeviceSelectionContainer;
+		toDeviceAdjustmentStageButton = GetNode<Button>("ToDeviceAdjustmentStageButton");
 		map = GetMap();
 		map.Selector.Filter.Layer = SelectionLayer.ENTITY;
 		map.Selector.Filter.EntityIds = [2, 3];
 		placableEntitySpots = new List<Vector2>();
 		deviceSelectionContainer.SetDevices(map, DeviceMarker, map.EntityLayer.EntitySetResource, map.MapData.PlacableEntities);
-		
-		//Resources.Maps.Layers.Entities.PlacableEntityProperties[] placableEntityProperties
 		
 		deviceSelectionContainer.Selected += (int id) => { selectedDeviceId = id; };
 		selectedDeviceId = deviceSelectionContainer.SelectedDeviceId;
@@ -37,6 +37,13 @@ public partial class DevicePlacementStage : Stage
 		}
 		
 		map.Selector.ClickedEntity += ClickedEntity;
+		
+		toDeviceAdjustmentStageButton.Pressed += () => {
+			if (CheckLimits())
+			{
+				GD.Print("pass");
+			}
+		};
 	}
 	
 	private void ClickedEntity(Entities.Entity entity)
@@ -53,6 +60,7 @@ public partial class DevicePlacementStage : Stage
 			Vector2 position = entity.Position;
 			map.EntityLayer.RemoveEntity(entity);
 			map.EntityLayer.SpawnEntity(position, (oldId == DeviceMarker.Id) ? selectedDeviceId : DeviceMarker.Id);
+			toDeviceAdjustmentStageButton.Disabled = !CheckLimits();
 		}
 	}
 	

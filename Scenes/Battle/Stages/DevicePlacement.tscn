@@ -13,7 +13,7 @@ grow_vertical = 0
 script = ExtResource("2_0v3wf")
 DeviceMarker = ExtResource("3_esrl1")
 
-[node name="ToDeviceAdjustmentStage" type="Button" parent="." index="0" unique_id=285438909]
+[node name="ToDeviceAdjustmentStageButton" type="Button" parent="." index="0" unique_id=285438909]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -24,7 +24,7 @@ offset_left = -49.0
 offset_top = -31.0
 grow_horizontal = 0
 grow_vertical = 0
-text = "Place"
+text = "Place devices"
 
 [node name="DeviceSelectionContainer" type="PanelContainer" parent="." index="1" unique_id=2100333374]
 layout_mode = 1
