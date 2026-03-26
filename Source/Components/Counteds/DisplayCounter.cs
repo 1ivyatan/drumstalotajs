@@ -1,9 +1,9 @@
 using Godot;
 using System;
 
-namespace drumstalotajs.Components;
+namespace drumstalotajs.Components.Counteds;
 
-public partial class Counter : Control
+public partial class DisplayCounter : Control
 {
 	[Export] private Texture2D Icon { get; set; }
 	

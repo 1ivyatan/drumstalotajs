@@ -10,7 +10,8 @@ public partial class EntityLayer : Node2D
 	[Signal] public delegate void EntityEnteredEventHandler(Entities.Entity entity);
 	[Signal] public delegate void EntityExitingEventHandler(Entities.Entity entity);
 	
-	[Export] public Resources.Sets.EntitySet EntitySetResource { get; set; }
+	[Export] public Resources.Sets.Entities.EntitySet EntitySetResource { get; set; }
+	
 	public OrderedDictionary<int, PackedScene> EntityScenes { get; private set; }
 	public List<Entities.Entity> Entities { get; private set; }
 	public int TileSize { get; private set; }
@@ -21,9 +22,9 @@ public partial class EntityLayer : Node2D
 		Entities = new List<Entities.Entity>();
 		TileSize = EntitySetResource.TileSize;
 		
-		foreach (var scene in EntitySetResource.Scenes)
+		foreach (var props in EntitySetResource.Entities)
 		{
-			EntityScenes.Add(scene.Key, scene.Value);
+			EntityScenes.Add(props.Id, props.Scene);
 		}
 		
 		ChildEnteredTree += EntitySpawned;
@@ -69,17 +70,17 @@ public partial class EntityLayer : Node2D
 	public Resources.Maps.Layers.EntityLayer ExportTiles()
 	{
 		Resources.Maps.Layers.EntityLayer layer = new Resources.Maps.Layers.EntityLayer();
-		layer.Entities = new Godot.Collections.Dictionary<int, Godot.Collections.Array<Resources.Maps.Layers.Entities.EntityProperties>>();
+		layer.Entities = new Godot.Collections.Dictionary<int, Godot.Collections.Array<Resources.Maps.Layers.Entities.EntityTransform>>();
 		foreach (Entities.Entity entity in Entities)
 		{
 			int id = entity.EntityResource.Id;
 			
 			if (!layer.Entities.ContainsKey(id))
 			{
-				layer.Entities.Add(id, new Godot.Collections.Array<Resources.Maps.Layers.Entities.EntityProperties>());
+				layer.Entities.Add(id, new Godot.Collections.Array<Resources.Maps.Layers.Entities.EntityTransform>());
 			}
 
-			Resources.Maps.Layers.Entities.EntityProperties entityProperties = new Resources.Maps.Layers.Entities.EntityProperties();
+			Resources.Maps.Layers.Entities.EntityTransform entityProperties = new Resources.Maps.Layers.Entities.EntityTransform();
 			entityProperties.Position = entity.Position;
 			entityProperties.Azimuth = entity.Azimuth;
 			layer.Entities[id].Add(entityProperties);

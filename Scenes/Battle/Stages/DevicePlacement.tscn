@@ -2,25 +2,38 @@
 
 [ext_resource type="PackedScene" uid="uid://cq3k6qki0pf2e" path="res://Scenes/Battle/Stages/Stage.tscn" id="1_8xrf7"]
 [ext_resource type="Script" uid="uid://do15s8e5hc7vw" path="res://Source/Battle/Stages/DevicePlacement/DevicePlacementStage.cs" id="2_0v3wf"]
+[ext_resource type="Script" uid="uid://btqq14fqgxml5" path="res://Source/Battle/Stages/DevicePlacement/DeviceSelectionContainer.cs" id="3_loeph"]
+[ext_resource type="PackedScene" uid="uid://d0y7bsfvqm280" path="res://Scenes/Components/Counteds/ButtonCounter.tscn" id="4_nuqpx"]
 
 [node name="Stage" unique_id=1817604260 instance=ExtResource("1_8xrf7")]
-anchors_preset = 7
-anchor_left = 0.5
+anchors_preset = 12
 anchor_top = 1.0
-anchor_right = 0.5
 grow_vertical = 0
 script = ExtResource("2_0v3wf")
 
 [node name="ToDeviceAdjustmentStage" type="Button" parent="." index="0" unique_id=285438909]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
+anchors_preset = 3
+anchor_left = 1.0
 anchor_top = 1.0
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -24.5
+offset_left = -49.0
 offset_top = -31.0
-offset_right = 24.5
-grow_horizontal = 2
+grow_horizontal = 0
 grow_vertical = 0
 text = "Place"
+
+[node name="DeviceSelectionContainer" type="PanelContainer" parent="." index="1" unique_id=2100333374]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+script = ExtResource("3_loeph")
+buttonCounterScene = ExtResource("4_nuqpx")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="DeviceSelectionContainer" index="0" unique_id=1385165412]
+layout_mode = 2

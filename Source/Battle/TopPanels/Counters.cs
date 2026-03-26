@@ -5,16 +5,15 @@ namespace drumstalotajs.Battle.TopPanels;
 
 public partial class Counters : Control
 {
-	private Components.Counter deviceCounter;
+	private Components.Counteds.DisplayCounter deviceCounter;
 	
 	public override void _Ready()
 	{
-		deviceCounter = GetNode<Control>("DeviceCounter") as Components.Counter;
+		deviceCounter = GetNode<Control>("DeviceCounter") as Components.Counteds.DisplayCounter;
 	}
 	
-	
-
-	public override void _Process(double delta)
+	public void AddDevices()
 	{
+		
 	}
 }

@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://bt6kmulugmuxk" path="res://Source/Battle/Stages/StageManager.cs" id="3_odh8s"]
 [ext_resource type="Script" uid="uid://mave1cj4yvuf" path="res://Source/Battle/TopPanels/Counters.cs" id="5_dcr6b"]
 [ext_resource type="Texture2D" uid="uid://bn0hkjw183q01" path="res://Assets/Entities.svg" id="5_rremj"]
-[ext_resource type="PackedScene" uid="uid://bmq1lnfx3r3c0" path="res://Scenes/Components/Counter.tscn" id="6_g1sps"]
+[ext_resource type="PackedScene" uid="uid://bmq1lnfx3r3c0" path="res://Scenes/Components/Counteds/DisplayCounter.tscn" id="6_g1sps"]
 [ext_resource type="PackedScene" uid="uid://cy43lwe0k8g8c" path="res://Scenes/Components/Modal.tscn" id="8_07e4u"]
 [ext_resource type="Script" uid="uid://g0jvlqrxnuem" path="res://Source/Battle/TopPanels/PauseMenu.cs" id="9_tmq01"]
 

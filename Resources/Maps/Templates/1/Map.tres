@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Map" format=3 uid="uid://be6mke5880h6x"]
 
 [ext_resource type="Script" uid="uid://bmm8dxa13vuy3" path="res://Source/Resources/Maps/Layers/DecorationLayer.cs" id="1_kfqxo"]
-[ext_resource type="Script" uid="uid://dfgbkit0nxgkq" path="res://Source/Resources/Maps/Layers/Entities/EntityProperties.cs" id="2_yyfhv"]
+[ext_resource type="Script" uid="uid://dfgbkit0nxgkq" path="res://Source/Resources/Maps/Layers/Entities/EntityTransform.cs" id="2_yyfhv"]
 [ext_resource type="Script" uid="uid://crvy4cj74kipt" path="res://Source/Resources/Maps/Layers/EntityLayer.cs" id="3_6gh52"]
 [ext_resource type="Script" uid="uid://birwcmxuvtt73" path="res://Source/Resources/Maps/Layers/Entities/PlacableEntityProperties.cs" id="3_b5c5c"]
 [ext_resource type="Script" uid="uid://rejpdpv2a55k" path="res://Source/Resources/Maps/Layers/GroundLayer.cs" id="4_kb5is"]
@@ -27,7 +27,7 @@ Position = Vector2(648, 344)
 [sub_resource type="Resource" id="Resource_gtqry"]
 script = ExtResource("3_6gh52")
 Entities = Dictionary[int, Array]({
-1: Array[ExtResource("2_yyfhv")]([SubResource("Resource_l8fbv"), SubResource("Resource_7ckei")])
+1: [SubResource("Resource_l8fbv"), SubResource("Resource_7ckei")]
 })
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_h6jix"]

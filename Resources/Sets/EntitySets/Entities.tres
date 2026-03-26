@@ -1,16 +1,37 @@
 [gd_resource type="Resource" script_class="EntitySet" format=3 uid="uid://byrfeo7ckbos0"]
 
+[ext_resource type="Script" uid="uid://bpgu3yw4u1jq7" path="res://Source/Resources/Sets/Entities/EntitySet.cs" id="1_k5b64"]
 [ext_resource type="PackedScene" uid="uid://boaerq2blgp8k" path="res://Scenes/Entities/Defenses/Sandbags.tscn" id="1_y2ht3"]
-[ext_resource type="Script" uid="uid://bpgu3yw4u1jq7" path="res://Source/Resources/Sets/EntitySet.cs" id="2_ddxi4"]
+[ext_resource type="Script" uid="uid://bnwfblp6ehm3t" path="res://Source/Resources/Sets/Entities/EntityProperties.cs" id="2_kiy1y"]
 [ext_resource type="PackedScene" uid="uid://c0vt7wirwr03i" path="res://Scenes/Entities/Devices/Mortar1.tscn" id="2_mgwkn"]
 [ext_resource type="PackedScene" uid="uid://tfqyoej1iqdt" path="res://Scenes/Entities/Markers/DeviceMarker.tscn" id="3_mgwkn"]
+[ext_resource type="Texture2D" uid="uid://bn0hkjw183q01" path="res://Assets/Entities.svg" id="4_yls6k"]
+
+[sub_resource type="Resource" id="Resource_yls6k"]
+script = ExtResource("2_kiy1y")
+Id = 1
+Scene = ExtResource("1_y2ht3")
+metadata/_custom_type_script = "uid://bnwfblp6ehm3t"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yls6k"]
+atlas = ExtResource("4_yls6k")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="Resource" id="Resource_ae6ql"]
+script = ExtResource("2_kiy1y")
+Id = 2
+Icon = SubResource("AtlasTexture_yls6k")
+Scene = ExtResource("2_mgwkn")
+metadata/_custom_type_script = "uid://bnwfblp6ehm3t"
+
+[sub_resource type="Resource" id="Resource_kiy1y"]
+script = ExtResource("2_kiy1y")
+Id = 3
+Scene = ExtResource("3_mgwkn")
+metadata/_custom_type_script = "uid://bnwfblp6ehm3t"
 
 [resource]
-script = ExtResource("2_ddxi4")
+script = ExtResource("1_k5b64")
 TileSize = 16
-Scenes = Dictionary[int, PackedScene]({
-1: ExtResource("1_y2ht3"),
-2: ExtResource("2_mgwkn"),
-3: ExtResource("3_mgwkn")
-})
+Entities = Array[Resource]([SubResource("Resource_yls6k"), SubResource("Resource_ae6ql"), SubResource("Resource_kiy1y")])
 metadata/_custom_type_script = "uid://bpgu3yw4u1jq7"
