@@ -13,7 +13,7 @@ public partial class DevicePlacementStage : Stage
 	public override void _Ready()
 	{
 		map = GetMap();
-		map.Selector.Filter.Layer = SelectionLayer.ALL;
+		map.Selector.Filter.Layer = SelectionLayer.ENTITY;
 		map.Selector.Filter.EntityIds = [2, 3];
 		//map.Selector.LayerFilter = Selector.SelectionLayer.ENTITY;
 		placableEntitySpots = new List<Entities.Entity>();
