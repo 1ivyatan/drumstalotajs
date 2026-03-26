@@ -99,6 +99,11 @@ public partial class EntityLayer : Node2D
 		}
 	}
 	
+	public Entities.Entity[] GetEntitiesById(int id)
+	{
+		return Entities.Where(e => e.EntityResource.Id == id).ToArray();
+	}
+	
 	public Entities.Entity[] FlashEntities(Vector2 localPos, int limit)
 	{
 		var spaceState = GetWorld2D().DirectSpaceState;

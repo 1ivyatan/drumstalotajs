@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Linq;
 using Godot.Collections;
 
 namespace drumstalotajs.Resources.Maps;
@@ -15,4 +16,9 @@ public partial class Map : Resource
 	[ExportGroup("Placables")]
 	[Export] public Vector2[] PlacablePositions { get; set; }
 	[Export] public Layers.Entities.PlacableEntityProperties[] PlacableEntities { get; set; }
+	
+	public Layers.Entities.PlacableEntityProperties GetPlacableEntityPropertiesById(int id)
+	{
+		return PlacableEntities.First(ep => ep.Id == id);
+	}
 }

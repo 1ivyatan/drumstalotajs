@@ -23,7 +23,9 @@ public partial class DevicePlacementStage : Stage
 		map.Selector.Filter.Layer = SelectionLayer.ENTITY;
 		map.Selector.Filter.EntityIds = [2, 3];
 		placableEntitySpots = new List<Vector2>();
-		deviceSelectionContainer.SetDevices(map.EntityLayer.EntitySetResource, map.MapData.PlacableEntities);
+		deviceSelectionContainer.SetDevices(map, DeviceMarker, map.EntityLayer.EntitySetResource, map.MapData.PlacableEntities);
+		
+		//Resources.Maps.Layers.Entities.PlacableEntityProperties[] placableEntityProperties
 		
 		deviceSelectionContainer.Selected += (int id) => { selectedDeviceId = id; };
 		selectedDeviceId = deviceSelectionContainer.SelectedDeviceId;
@@ -41,8 +43,14 @@ public partial class DevicePlacementStage : Stage
 	{
 		if (placableEntitySpots.Contains(entity.Position) && selectedDeviceId != -1)
 		{
-			Vector2 position = entity.Position;
+			int oldcount = map.EntityLayer.GetEntitiesById(selectedDeviceId).Length;
 			int oldId = entity.EntityResource.Id;
+			int newCount = oldcount + (oldId == DeviceMarker.Id ? 1 : -1);
+			var props = map.MapData.GetPlacableEntityPropertiesById(selectedDeviceId);
+			
+			if (newCount > props.Max) return;
+			
+			Vector2 position = entity.Position;
 			map.EntityLayer.RemoveEntity(entity);
 			map.EntityLayer.SpawnEntity(position, (oldId == DeviceMarker.Id) ? selectedDeviceId : DeviceMarker.Id);
 		}

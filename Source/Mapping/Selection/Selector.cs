@@ -47,7 +47,7 @@ public partial class Selector : Node2D
 		});
 		
 		rescanAfterExitCall = Callable.From(() => {
-			GD.Print(88888888888888887);
+		//	GD.Print(88888888888888887);
 			EmitSignal("DisappearedSelectedEntity");
 			holdEntity = false;
 			currentEntity = null;

@@ -9,10 +9,12 @@ public partial class DeviceSelectionContainer : Container
 	[Signal] public delegate void SelectedEventHandler(int id);
 	
 	[Export] private PackedScene buttonCounterScene;
+	private Resources.Sets.Entities.EntityProperties deviceMarker;
 	
 	private Resources.Maps.Layers.Entities.PlacableEntityProperties[] PlacableEntityProperties;
 	private HBoxContainer buttonContainer;
 	private Components.Counteds.ButtonCounter currentButton;
+	private Mapping.Map map;
 	
 	public int SelectedDeviceId { get; private set; } = -1;
 	
@@ -21,8 +23,10 @@ public partial class DeviceSelectionContainer : Container
 		buttonContainer = GetNode<HBoxContainer>("HBoxContainer");
 	}
 	
-	public void SetDevices(Resources.Sets.Entities.EntitySet entitySet, Resources.Maps.Layers.Entities.PlacableEntityProperties[] placableEntityProperties)
+	public void SetDevices(Mapping.Map map, Resources.Sets.Entities.EntityProperties deviceMarker, Resources.Sets.Entities.EntitySet entitySet, Resources.Maps.Layers.Entities.PlacableEntityProperties[] placableEntityProperties)
 	{
+		this.map = map;
+		this.deviceMarker = deviceMarker;
 		PlacableEntityProperties = placableEntityProperties;
 		
 		foreach (var button in buttonContainer.GetChildren())
@@ -40,6 +44,13 @@ public partial class DeviceSelectionContainer : Container
 			buttonContainer.AddChild(button);
 		}
 		
+		Callable updateSelectedDeviceCall = new Callable(this, nameof(UpdateSelectedDevice));
+		
+		if (!this.map.EntityLayer.IsConnected("EntityEntered", updateSelectedDeviceCall))
+		{
+			this.map.EntityLayer.Connect("EntityEntered", updateSelectedDeviceCall);
+		}
+		
 		SelectedDevice((buttonContainer.GetChild(0) as Components.Counteds.ButtonCounter).TargetEntityId);
 	}
 	
@@ -48,5 +59,12 @@ public partial class DeviceSelectionContainer : Container
 		currentButton = buttonContainer.GetChildren().First(btn => (btn as Components.Counteds.ButtonCounter).TargetEntityId == id) as Components.Counteds.ButtonCounter;
 		SelectedDeviceId = id;
 		EmitSignal(SignalName.Selected, id);
+	}
+	
+	private void UpdateSelectedDevice(Entities.Entity entity)
+	{
+		if (!(entity.EntityResource.Id != deviceMarker.Id || entity.EntityResource.EntityType != Entities.EntityType.DEVICE)) return;
+		var props = map.MapData.GetPlacableEntityPropertiesById(SelectedDeviceId);
+		currentButton.SetCounter(props.Max - map.EntityLayer.GetEntitiesById(SelectedDeviceId).Length);
 	}
 }
