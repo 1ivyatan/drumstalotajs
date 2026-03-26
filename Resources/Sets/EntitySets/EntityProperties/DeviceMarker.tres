@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EntityProperties" format=3 uid="uid://cv57ytdcjgax8"]
+
+[ext_resource type="PackedScene" uid="uid://tfqyoej1iqdt" path="res://Scenes/Entities/Markers/DeviceMarker.tscn" id="1_ln0sg"]
+[ext_resource type="Script" uid="uid://bnwfblp6ehm3t" path="res://Source/Resources/Sets/Entities/EntityProperties.cs" id="1_t3t5f"]
+
+[resource]
+script = ExtResource("1_t3t5f")
+Id = 3
+Scene = ExtResource("1_ln0sg")
+metadata/_custom_type_script = "uid://bnwfblp6ehm3t"

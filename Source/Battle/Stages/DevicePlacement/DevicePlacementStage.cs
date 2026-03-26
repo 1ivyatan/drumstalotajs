@@ -8,9 +8,13 @@ namespace drumstalotajs.Battle.Stages.DevicePlacement;
 
 public partial class DevicePlacementStage : Stage
 {
+	[Export] private Resources.Sets.Entities.EntityProperties DeviceMarker;
+	
 	private Mapping.Map map;
 	private List<Vector2> placableEntitySpots;
 	private DeviceSelectionContainer deviceSelectionContainer;
+	
+	private int selectedDeviceId = -1;
 	
 	public override void _Ready()
 	{
@@ -21,9 +25,8 @@ public partial class DevicePlacementStage : Stage
 		placableEntitySpots = new List<Vector2>();
 		deviceSelectionContainer.SetDevices(map.EntityLayer.EntitySetResource, map.MapData.PlacableEntities);
 		
-		
-		/*
-	[Export] public Layers.Entities.PlacableEntityProperties[] PlacableEntities { get; set; }*/
+		deviceSelectionContainer.Selected += (int id) => { selectedDeviceId = id; };
+		selectedDeviceId = deviceSelectionContainer.SelectedDeviceId;
 		
 		foreach (Vector2 position in map.MapData.PlacablePositions)
 		{
@@ -32,17 +35,17 @@ public partial class DevicePlacementStage : Stage
 		}
 		
 		map.Selector.ClickedEntity += ClickedEntity;
-		//GD.Print(GetMap().MapData.PlacablePositions);
 	}
 	
 	private void ClickedEntity(Entities.Entity entity)
 	{
-		if (placableEntitySpots.Contains(entity.Position))
+		if (placableEntitySpots.Contains(entity.Position) && selectedDeviceId != -1)
 		{
-			Vector2 pos = entity.Position;
-			
+			Vector2 position = entity.Position;
+			int oldId = entity.EntityResource.Id;
+			map.EntityLayer.RemoveEntity(entity);
+			map.EntityLayer.SpawnEntity(position, (oldId == DeviceMarker.Id) ? selectedDeviceId : DeviceMarker.Id);
 		}
-		//if ()
 	}
 	
 	public bool CheckLimits()

@@ -5,16 +5,20 @@ namespace drumstalotajs.Components.Counteds;
 
 public partial class ButtonCounter : Button
 {
-	private int TargetEntityId { get; set; }
+	[Signal] public delegate void CounterPressedEventHandler(int id);
+	
+	public int TargetEntityId { get; private set; }
+	
+	public override void _Ready()
+	{
+		Pressed += () => {
+			EmitSignal(SignalName.CounterPressed, TargetEntityId);
+		};
+	}
 
 	public void SetCounter(int num)
 	{
 		Text = $"{num}";
-	}
-	
-	public void SetDevice()
-	{
-		
 	}
 	
 	public void SetButton(int id, Texture2D texture)
