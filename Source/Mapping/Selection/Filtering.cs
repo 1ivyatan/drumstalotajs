@@ -27,7 +27,13 @@ public partial class Selector : Node2D
 	
 	private Entities.Entity[] AllowedEntities(Vector2 localPos)
 	{
-		Entities.Entity[] flashedEntites = map.EntityLayer.FlashEntities(localPos, 9);
-		return Filter.FilterEntities(flashedEntites);
+		if (Filter.Layer == Filtering.SelectionLayer.ENTITY || Filter.Layer == Filtering.SelectionLayer.ALL)
+		{
+			Entities.Entity[] flashedEntites = map.EntityLayer.FlashEntities(localPos, 9);
+			return Filter.FilterEntities(flashedEntites);
+		} else
+		{
+			return [];
+		}
 	}
 }
