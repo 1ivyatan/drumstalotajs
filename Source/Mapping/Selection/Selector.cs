@@ -38,6 +38,7 @@ public partial class Selector : Node2D
 		camera = map.GetNode<Camera2D>("Camera") as Camera.MapCamera;
 		movementTimer = new MovementTimer();
 		movementTimer.SetTimer(.025f, ScanEntities);
+		Filtering.Filter filter = new Filtering.Filter();
 		AddChild(movementTimer);
 		
 		setEntityHoldCall = Callable.From(() => {
