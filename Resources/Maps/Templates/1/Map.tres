@@ -50,5 +50,6 @@ script = ExtResource("5_rkrtj")
 GroundLayer = SubResource("Resource_xgmi6")
 DecorationLayer = SubResource("Resource_1qriu")
 EntityLayer = SubResource("Resource_gtqry")
+MaxPlacableEntities = 1
 PlacablePositions = PackedVector2Array(500, 400, 200, 400, 600, 330)
 PlacableEntities = Array[Object]([SubResource("Resource_b5c5c")])

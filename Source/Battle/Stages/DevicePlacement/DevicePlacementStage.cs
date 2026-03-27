@@ -50,12 +50,15 @@ public partial class DevicePlacementStage : Stage
 	{
 		if (placableEntitySpots.Contains(entity.Position) && selectedDeviceId != -1)
 		{
-			int oldcount = map.EntityLayer.GetEntitiesById(selectedDeviceId).Length;
+			int oldSelDevicecount = map.EntityLayer.GetEntitiesById(selectedDeviceId).Length;
 			int oldId = entity.EntityResource.Id;
-			int newCount = oldcount + (oldId == DeviceMarker.Id ? 1 : -1);
-			var props = map.MapData.GetPlacableEntityPropertiesById(selectedDeviceId);
+			int oldCount = map.EntityLayer.GetEntitiesByType(Entities.EntityType.DEVICE).Length;
+			int newSelDeviceCount = oldSelDevicecount + (oldId == DeviceMarker.Id ? 1 : -1);
+			int newCount = oldCount + (oldId == DeviceMarker.Id ? 1 : -1);
+			var mapData = map.MapData;
+			var props = map.MapData.GetPlacableEntityProperties(selectedDeviceId);
 			
-			if (newCount > props.Max) return;
+			if (newSelDeviceCount > props.Max || newCount > mapData.MaxPlacableEntities) return;
 			
 			Vector2 position = entity.Position;
 			map.EntityLayer.RemoveEntity(entity);
@@ -66,6 +69,8 @@ public partial class DevicePlacementStage : Stage
 	
 	public bool CheckLimits()
 	{
+		var mapData = map.MapData;
+		
 		return true;
 	}
 }

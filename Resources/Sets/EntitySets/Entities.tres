@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="EntitySet" format=3 uid="uid://byrfeo7ckbos0"]
+[gd_resource type="Resource" format=3 uid="uid://byrfeo7ckbos0"]
 
 [ext_resource type="Script" uid="uid://bpgu3yw4u1jq7" path="res://Source/Resources/Sets/Entities/EntitySet.cs" id="1_k5b64"]
 [ext_resource type="PackedScene" uid="uid://boaerq2blgp8k" path="res://Scenes/Entities/Defenses/Sandbags.tscn" id="1_y2ht3"]

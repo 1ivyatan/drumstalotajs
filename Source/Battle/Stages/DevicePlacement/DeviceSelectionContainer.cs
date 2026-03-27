@@ -63,8 +63,9 @@ public partial class DeviceSelectionContainer : Container
 	
 	private void UpdateSelectedDevice(Entities.Entity entity)
 	{
-		if (!(entity.EntityResource.Id != deviceMarker.Id || entity.EntityResource.EntityType != Entities.EntityType.DEVICE)) return;
-		var props = map.MapData.GetPlacableEntityPropertiesById(SelectedDeviceId);
-		currentButton.SetCounter(props.Max - map.EntityLayer.GetEntitiesById(SelectedDeviceId).Length);
+	//	if (entity == null) return; //!IsInstanceValid(
+	//	if (!(entity.EntityResource.Id != deviceMarker.Id || entity.EntityResource.EntityType != Entities.EntityType.DEVICE)) return;
+	//	var props = map.MapData.GetPlacableEntityProperties(SelectedDeviceId);
+	//	currentButton.SetCounter(props.Max - map.EntityLayer.GetEntitiesById(SelectedDeviceId).Length);
 	}
 }

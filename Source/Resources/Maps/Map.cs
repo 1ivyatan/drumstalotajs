@@ -14,10 +14,12 @@ public partial class Map : Resource
 	[Export] public Layers.EntityLayer EntityLayer { get; set; }
 	
 	[ExportGroup("Placables")]
+	[Export] public int MinPlacableEntities { get; set; } = 0;
+	[Export] public int MaxPlacableEntities { get; set; }
 	[Export] public Vector2[] PlacablePositions { get; set; }
 	[Export] public Layers.Entities.PlacableEntityProperties[] PlacableEntities { get; set; }
 	
-	public Layers.Entities.PlacableEntityProperties GetPlacableEntityPropertiesById(int id)
+	public Layers.Entities.PlacableEntityProperties GetPlacableEntityProperties(int id)
 	{
 		return PlacableEntities.First(ep => ep.Id == id);
 	}
