@@ -13,13 +13,13 @@
         <mxCell id="5zRxGBbKXJb66KljK0ZE-5" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="LevelsScene" vertex="1">
           <mxGeometry height="52" width="160" x="200" y="10" as="geometry" />
         </mxCell>
-        <mxCell id="5zRxGBbKXJb66KljK0ZE-6" parent="5zRxGBbKXJb66KljK0ZE-5" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="# LevelSet: LevelSet" vertex="1">
+        <mxCell id="5zRxGBbKXJb66KljK0ZE-6" parent="5zRxGBbKXJb66KljK0ZE-5" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- LevelSet: LevelSet" vertex="1">
           <mxGeometry height="26" width="160" y="26" as="geometry" />
         </mxCell>
         <mxCell id="5zRxGBbKXJb66KljK0ZE-9" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="BattleScene" vertex="1">
           <mxGeometry height="86" width="160" x="400" y="10" as="geometry" />
         </mxCell>
-        <mxCell id="5zRxGBbKXJb66KljK0ZE-10" parent="5zRxGBbKXJb66KljK0ZE-9" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ field: type" vertex="1">
+        <mxCell id="5zRxGBbKXJb66KljK0ZE-10" parent="5zRxGBbKXJb66KljK0ZE-9" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ LevelMeta: LevelMeta" vertex="1">
           <mxGeometry height="26" width="160" y="26" as="geometry" />
         </mxCell>
         <mxCell id="5zRxGBbKXJb66KljK0ZE-11" parent="5zRxGBbKXJb66KljK0ZE-9" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
@@ -31,7 +31,7 @@
         <mxCell id="5zRxGBbKXJb66KljK0ZE-17" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="LevelMarkerContainer" vertex="1">
           <mxGeometry height="86" width="180" x="190" y="96" as="geometry" />
         </mxCell>
-        <mxCell id="5zRxGBbKXJb66KljK0ZE-18" parent="5zRxGBbKXJb66KljK0ZE-17" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="# LevelSet: LevelSet" vertex="1">
+        <mxCell id="5zRxGBbKXJb66KljK0ZE-18" parent="5zRxGBbKXJb66KljK0ZE-17" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- LevelSet: LevelSet" vertex="1">
           <mxGeometry height="26" width="180" y="26" as="geometry" />
         </mxCell>
         <mxCell id="5zRxGBbKXJb66KljK0ZE-19" parent="5zRxGBbKXJb66KljK0ZE-17" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
