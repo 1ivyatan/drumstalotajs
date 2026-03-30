@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://0bsr3dmk3b0g"]
+
+[ext_resource type="Texture2D" uid="uid://bihyilbkefydv" path="res://Assets/Textures/Logo.svg" id="1_tdy0i"]
+[ext_resource type="Script" uid="uid://r3lgv0vnhfe7" path="res://Source/Start/StartScene.cs" id="1_x3rvt"]
+[ext_resource type="PackedScene" uid="uid://b2lhrg24h1jkc" path="res://Scenes/Components/Modal.tscn" id="2_7adfa"]
+[ext_resource type="Script" uid="uid://csmkojno153iy" path="res://Source/Start/Annotation.cs" id="4_uh10c"]
+
+[node name="Start" type="Control" unique_id=1888125272]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_x3rvt")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1899519722]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Grid" type="HBoxContainer" parent="." unique_id=952733736]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="LogoColumn" type="CenterContainer" parent="Grid" unique_id=423811977]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="Grid/LogoColumn" unique_id=101610485]
+layout_mode = 2
+texture = ExtResource("1_tdy0i")
+
+[node name="MenuColumn" type="CenterContainer" parent="Grid" unique_id=129725979]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Buttons" type="VBoxContainer" parent="Grid/MenuColumn" unique_id=1850280225]
+layout_mode = 2
+
+[node name="Start" type="Button" parent="Grid/MenuColumn/Buttons" unique_id=838659274]
+layout_mode = 2
+text = "Start"
+
+[node name="Annotation" type="Button" parent="Grid/MenuColumn/Buttons" unique_id=316834242]
+layout_mode = 2
+text = "Annotation"
+
+[node name="Quit" type="Button" parent="Grid/MenuColumn/Buttons" unique_id=2046261125]
+layout_mode = 2
+text = "Quit"
+
+[node name="AnnotationModal" parent="." unique_id=120054605 instance=ExtResource("2_7adfa")]
+layout_mode = 1
+
+[node name="Annotation" type="VBoxContainer" parent="AnnotationModal" unique_id=740418487]
+layout_mode = 0
+alignment = 1
+script = ExtResource("4_uh10c")
+_annotationFilePath = "res://Resources/Strings/Annotation.txt"
+
+[node name="Text" type="RichTextLabel" parent="AnnotationModal/Annotation" unique_id=420090975]
+layout_mode = 2
+bbcode_enabled = true
+text = "fsdfsdfsdfsdsfdsdfsdfsdfsd
+"
+fit_content = true
+
+[node name="Close" type="Button" parent="AnnotationModal/Annotation" unique_id=1908494497]
+layout_mode = 2
+text = "Close"

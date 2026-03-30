@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://gno18tio1tc1"]
+
+[ext_resource type="Script" uid="uid://bqyf8mscxyken" path="res://Source/Main.cs" id="1_r150o"]
+[ext_resource type="Script" uid="uid://dfsur52pslkvm" path="res://Source/Managers/Scenes/SceneManager.cs" id="2_idj7w"]
+
+[node name="Main" type="Node" unique_id=1017316100]
+script = ExtResource("1_r150o")
+
+[node name="SceneManager" type="Node" parent="." unique_id=712174652]
+script = ExtResource("2_idj7w")
+ScenesPath = "res://Scenes/"
+
+[node name="AudioManager" type="Node" parent="." unique_id=1009940070]
+
+[node name="SaveManager" type="Node" parent="." unique_id=994388498]
+
+[node name="Overlay" type="CanvasLayer" parent="." unique_id=1415426569]
+
+[node name="ToastManager" type="VBoxContainer" parent="Overlay" unique_id=450725507]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="CursorManager" type="Node" parent="Overlay" unique_id=640786335]

@@ -14,7 +14,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 [application]
 
-config/name="drumstalotajs"
+config/name="Drumstalotajs"
 run/main_scene="uid://gno18tio1tc1"
 config/features=PackedStringArray("4.6", "C#", "GL Compatibility")
 boot_splash/bg_color=Color(0, 0, 0, 1)
@@ -28,6 +28,12 @@ window/size/viewport_height=720
 [dotnet]
 
 project/assembly_name="drumstalotajs"
+
+[importer_defaults]
+
+animation_library={
+&"nodes/root_script": null
+}
 
 [input]
 
