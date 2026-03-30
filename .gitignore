@@ -17,3 +17,12 @@ mono_crash.*.json
 
 # Media editing software
 *~
+
+# Word processing specific ignores
+~$*
+~*.tmp
+
+# Draw.io specific ignores
+~*.bkp
+~$*.bkp
+*.drawio.bkp
