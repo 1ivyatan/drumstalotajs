@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="Entity" format=3 uid="uid://dcx2i7p4fiyt3"]
-
-[ext_resource type="Script" uid="uid://dc80v0qnokepq" path="res://Source/Resources/Entities/Entity.cs" id="1_owkfn"]
-
-[resource]
-script = ExtResource("1_owkfn")
-EntityType = 3
-metadata/_custom_type_script = "uid://dc80v0qnokepq"
