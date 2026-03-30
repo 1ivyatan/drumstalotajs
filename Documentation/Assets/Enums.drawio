@@ -1,0 +1,25 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.6.6 Chrome/144.0.7559.236 Electron/40.8.4 Safari/537.36" version="29.6.6">
+  <diagram name="Page-1" id="Sx90SpMUOM6gmxsjJj__">
+    <mxGraphModel dx="632" dy="382" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="-quJppw6hEab8HLkE4G9-1" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;enumeration&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;SceneState&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;LOADING&lt;br&gt;PAUSED&lt;br&gt;RUNNING&lt;br&gt;&lt;/p&gt;" vertex="1">
+          <mxGeometry height="110" width="110" x="10" y="10" as="geometry" />
+        </mxCell>
+        <mxCell id="-quJppw6hEab8HLkE4G9-2" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;enumeration&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;CursorType&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;ARROW&lt;br&gt;IBEAM&lt;br&gt;ZOOM&lt;br&gt;DRAG&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;WAIT&lt;/p&gt;" vertex="1">
+          <mxGeometry height="120" width="110" x="150" y="10" as="geometry" />
+        </mxCell>
+        <mxCell id="-quJppw6hEab8HLkE4G9-4" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;enumeration&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;AudioState&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;PLAYING&lt;br&gt;PAUSED&lt;/p&gt;" vertex="1">
+          <mxGeometry height="80" width="110" x="290" y="10" as="geometry" />
+        </mxCell>
+        <mxCell id="-quJppw6hEab8HLkE4G9-5" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;enumeration&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;MusicType&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;IDLE&lt;br&gt;FIGHT1&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;FIGHT2&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;FIGHT3&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;VICTORY&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;DEFEAT&lt;/p&gt;" vertex="1">
+          <mxGeometry height="140" width="110" x="290" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="-quJppw6hEab8HLkE4G9-6" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;enumeration&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;MusicType&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;CLICK&lt;br&gt;CRANK&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;FIRE1&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;FIRE2&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;FIRE3&lt;br&gt;EXPLOSION&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;SHRAPNEL&lt;/p&gt;" vertex="1">
+          <mxGeometry height="150" width="110" x="290" y="250" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

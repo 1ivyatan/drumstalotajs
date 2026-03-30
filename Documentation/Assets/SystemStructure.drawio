@@ -1,6 +1,6 @@
 <mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.6.6 Chrome/144.0.7559.236 Electron/40.8.4 Safari/537.36" version="29.6.6">
   <diagram name="Page-1" id="U7XJ2LQ_-TvYTZtiWb9u">
-    <mxGraphModel dx="863" dy="741" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="453" dy="484" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -83,7 +83,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="t60Y3d0RQCN7StDF18su-45" parent="1" style="shape=folder;fontStyle=1;spacingTop=10;tabWidth=30;tabHeight=20;tabPosition=left;html=1;whiteSpace=wrap;align=left;" value="" vertex="1">
-          <mxGeometry height="350" width="140" x="230" y="60" as="geometry" />
+          <mxGeometry height="420" width="140" x="230" y="60" as="geometry" />
         </mxCell>
         <mxCell id="t60Y3d0RQCN7StDF18su-46" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Map" vertex="1">
           <mxGeometry height="30" width="60" x="270" y="80" as="geometry" />
@@ -98,10 +98,13 @@
           <mxGeometry height="50" width="120" x="240" y="230" as="geometry" />
         </mxCell>
         <mxCell id="t60Y3d0RQCN7StDF18su-50" parent="1" style="shape=module;align=left;spacingLeft=20;align=center;verticalAlign=middle;whiteSpace=wrap;html=1;" value="Selector" vertex="1">
-          <mxGeometry height="50" width="120" x="240" y="290" as="geometry" />
+          <mxGeometry height="50" width="120" x="240" y="350" as="geometry" />
         </mxCell>
         <mxCell id="t60Y3d0RQCN7StDF18su-51" parent="1" style="shape=module;align=left;spacingLeft=20;align=center;verticalAlign=middle;whiteSpace=wrap;html=1;" value="Camera" vertex="1">
-          <mxGeometry height="50" width="120" x="240" y="350" as="geometry" />
+          <mxGeometry height="50" width="120" x="240" y="410" as="geometry" />
+        </mxCell>
+        <mxCell id="JmpjhygFHEbtP4VPCJ5h-1" parent="1" style="shape=module;align=left;spacingLeft=20;align=center;verticalAlign=middle;whiteSpace=wrap;html=1;" value="OverlayLayer" vertex="1">
+          <mxGeometry height="50" width="120" x="240" y="290" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
