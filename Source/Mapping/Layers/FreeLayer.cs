@@ -10,6 +10,8 @@ namespace Drumstalotajs.Mapping.Layers;
 
 public abstract partial class FreeLayer : Node2D, ISaveableLayer
 {
+	[Signal] public delegate void ClickedTileEventHandler(Vector2 position, FreeTile tile);
+	[Signal] public delegate void ClickedEmptyTileEventHandler(FreeTile tile);
 	[Export] private FreeLayerTileSet TileSet { get; set; }
 	[Export] public FreeLayerData LayerData { get; set; }
 	
@@ -32,7 +34,34 @@ public abstract partial class FreeLayer : Node2D, ISaveableLayer
 		};
 	}
 	
+	public override void _UnhandledInput(InputEvent @event)
+	{
+		if (@event is InputEventMouse mouseEvent)
+		{
+			if (mouseEvent is InputEventMouseButton mouseClick)
+			{
+				HandleClick(mouseClick);
+			}
+			
+		}
+	}
 	
+	private void HandleClick(InputEventMouseButton mouseClick)
+	{
+		if (mouseClick.Pressed)
+		{
+			/*!!!!!!!!!!!!!!*/
+			Vector2 position = GetLocalMousePosition();
+			FreeTile[] clickedTiles = Flash(position, 9);
+			if (clickedTiles.Length > 0)
+			{
+				EmitSignal(SignalName.ClickedTile, position, clickedTiles[0]);
+			} else
+			{
+				EmitSignal(SignalName.ClickedEmptyTile, position);
+			}
+		}
+	}
 	
 	public void Load(FreeLayerData layerData)
 	{

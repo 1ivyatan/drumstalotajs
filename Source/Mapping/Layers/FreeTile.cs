@@ -14,13 +14,3 @@ public partial class FreeTile : Area2D
 		Position = position;
 	}
 }
-
-/*
-namespace Drumstalotajs.Resources.Mapping.FreeTiles;
-
-[GlobalClass]
-public partial class FreeTile : Resource
-{
-	[Export] public int Id { get; set; }
-}
-*/
