@@ -1,20 +1,6 @@
 [gd_scene format=3 uid="uid://wefs1jaon01t"]
 
-[ext_resource type="Script" uid="uid://c73i3bki1yf07" path="res://Source/Mapping/Layers/Overlays/Marker.cs" id="1_2q728"]
-[ext_resource type="Texture2D" uid="uid://dumv3y5dl2yn3" path="res://Assets/Textures/UI.svg" id="2_1k468"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_2q728"]
-radius = 11.045361
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jxke4"]
-atlas = ExtResource("2_1k468")
-region = Rect2(0, 0, 22, 22)
+[ext_resource type="Script" uid="uid://c73i3bki1yf07" path="res://Source/Mapping/Overlays/Marker.cs" id="1_2q728"]
 
 [node name="Marker" type="Area2D" unique_id=876727255]
 script = ExtResource("1_2q728")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=146936613]
-shape = SubResource("CircleShape2D_2q728")
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=86945188]
-texture = SubResource("AtlasTexture_jxke4")

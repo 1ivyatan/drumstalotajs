@@ -1,9 +1,23 @@
 [gd_resource type="Resource" script_class="FreeLayerTileSet" format=3 uid="uid://3skylip7thui"]
 
 [ext_resource type="Script" uid="uid://c46sa467mio16" path="res://Source/Resources/Sets/LayerTiles/FreeLayerTileSet.cs" id="1_401ul"]
+[ext_resource type="PackedScene" uid="uid://cx0otihi4j6wx" path="res://Scenes/Markers/LevelMarker.tscn" id="1_tf035"]
+[ext_resource type="Texture2D" uid="uid://dumv3y5dl2yn3" path="res://Assets/Textures/UI.svg" id="2_055j7"]
+[ext_resource type="Script" uid="uid://0vrx1oge5hv4" path="res://Source/Resources/Sets/LayerTiles/FreeLayerTileProps.cs" id="3_b0y1p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mnmrl"]
+atlas = ExtResource("2_055j7")
+region = Rect2(0, 0, 22, 22)
+
+[sub_resource type="Resource" id="Resource_npmbi"]
+script = ExtResource("3_b0y1p")
+Id = 1
+Thumbnail = SubResource("AtlasTexture_mnmrl")
+Scene = ExtResource("1_tf035")
+metadata/_custom_type_script = "uid://0vrx1oge5hv4"
 
 [resource]
 script = ExtResource("1_401ul")
 TileSize = 16
-TileSet = Array[Resource]([])
+TileSet = Array[Resource]([SubResource("Resource_npmbi")])
 metadata/_custom_type_script = "uid://c46sa467mio16"

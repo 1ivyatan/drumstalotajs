@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://cx0otihi4j6wx"]
+
+[ext_resource type="PackedScene" uid="uid://wefs1jaon01t" path="res://Scenes/Markers/Marker.tscn" id="1_kva20"]
+[ext_resource type="Texture2D" uid="uid://dumv3y5dl2yn3" path="res://Assets/Textures/UI.svg" id="2_1ddid"]
+[ext_resource type="Resource" uid="uid://cluw7ynq288u" path="res://Resources/Mapping/Overlays/LevelMarker.tres" id="2_c1p7x"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c1p7x"]
+radius = 11.045361
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qmae8"]
+atlas = ExtResource("2_1ddid")
+region = Rect2(0, 0, 22, 22)
+
+[node name="Marker" unique_id=876727255 instance=ExtResource("1_kva20")]
+Resource = ExtResource("2_c1p7x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0" unique_id=925910855]
+shape = SubResource("CircleShape2D_c1p7x")
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="1" unique_id=1454750580]
+texture = SubResource("AtlasTexture_qmae8")

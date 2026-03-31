@@ -1,7 +1,7 @@
 using Godot;
 using System;
 using Drumstalotajs.Resources.Mapping;
-using Drumstalotajs.Mapping.Layers.Overlays;
+using Drumstalotajs.Mapping.Overlays;
 
 namespace Drumstalotajs.Mapping;
 

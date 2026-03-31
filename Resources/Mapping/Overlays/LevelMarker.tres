@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="FreeTile" format=3 uid="uid://cluw7ynq288u"]
+
+[ext_resource type="Script" uid="uid://c3d55mwml70om" path="res://Source/Resources/Mapping/FreeLayers/FreeTile.cs" id="1_oylns"]
+
+[resource]
+script = ExtResource("1_oylns")
+metadata/_custom_type_script = "uid://c3d55mwml70om"
