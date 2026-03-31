@@ -8,6 +8,7 @@ namespace Drumstalotajs.Mapping;
 public partial class Map : Node2D
 {
 	[Export] private MapMeta MapMeta { get; set; }
+	private MapData MapData { get; set; }
 	public OverlayLayer OverlayLayer { get; private set; }
 	
 	public override void _Ready()
@@ -18,6 +19,7 @@ public partial class Map : Node2D
 	public void LoadMap(MapMeta mapMeta)
 	{
 		MapMeta = mapMeta;
-		GD.Print(mapMeta);
+		MapData = mapMeta.LoadMapData();
+		OverlayLayer.Load(MapData.OverlayLayer);
 	}
 }

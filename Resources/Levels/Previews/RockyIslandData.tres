@@ -1,7 +1,21 @@
 [gd_resource type="Resource" script_class="MapData" format=3 uid="uid://cxeimqy7cfsb"]
 
 [ext_resource type="Script" uid="uid://cvke1s82nadpt" path="res://Source/Resources/Mapping/MapData.cs" id="1_f410e"]
+[ext_resource type="Script" uid="uid://ckbxqjkfpjtde" path="res://Source/Resources/Mapping/FreeLayers/FreeTileData.cs" id="1_xmhgv"]
+[ext_resource type="Script" uid="uid://bj0ey6pl57y4l" path="res://Source/Resources/Mapping/FreeLayers/FreeLayerData.cs" id="2_bnic3"]
+
+[sub_resource type="Resource" id="Resource_c5q2u"]
+script = ExtResource("1_xmhgv")
+Id = 1
+Position = Vector2(100, 100)
+metadata/_custom_type_script = "uid://ckbxqjkfpjtde"
+
+[sub_resource type="Resource" id="Resource_83f2b"]
+script = ExtResource("2_bnic3")
+FreeTiles = Array[Object]([SubResource("Resource_c5q2u")])
+metadata/_custom_type_script = "uid://bj0ey6pl57y4l"
 
 [resource]
 script = ExtResource("1_f410e")
+OverlayLayer = SubResource("Resource_83f2b")
 metadata/_custom_type_script = "uid://cvke1s82nadpt"
