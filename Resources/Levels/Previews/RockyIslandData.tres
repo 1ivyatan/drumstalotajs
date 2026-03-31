@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="MapData" format=3 uid="uid://cxeimqy7cfsb"]
+
+[ext_resource type="Script" uid="uid://cvke1s82nadpt" path="res://Source/Resources/Mapping/MapData.cs" id="1_f410e"]
+
+[resource]
+script = ExtResource("1_f410e")
+metadata/_custom_type_script = "uid://cvke1s82nadpt"

@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using Drumstalotajs.Resources.Mapping;
 
 namespace Drumstalotajs.Resources.Sets.LevelSets;
 
@@ -7,4 +8,5 @@ namespace Drumstalotajs.Resources.Sets.LevelSets;
 public partial class LevelSet : Resource
 {
 	[Export] public string Name { get; set; } = "";
+	[Export] public MapMeta BackgroundMapMeta { get; set; }
 }

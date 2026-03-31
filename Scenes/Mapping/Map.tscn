@@ -16,4 +16,4 @@ script = ExtResource("3_ox681")
 
 [node name="OverlayLayer" type="Node2D" parent="." unique_id=116527524]
 script = ExtResource("3_sd0qa")
-FreeTileSet = ExtResource("5_s3wx3")
+TileSet = ExtResource("5_s3wx3")

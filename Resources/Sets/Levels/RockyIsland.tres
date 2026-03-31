@@ -1,8 +1,10 @@
 [gd_resource type="Resource" script_class="LevelSet" format=3 uid="uid://d1b1ye0lu2g6j"]
 
+[ext_resource type="Resource" uid="uid://d0f45qwkwpi13" path="res://Resources/Levels/Previews/RockyIsland.tres" id="1_th3px"]
 [ext_resource type="Script" uid="uid://b56gke8gj78h0" path="res://Source/Resources/Sets/LevelSets/LevelSet.cs" id="1_v46ji"]
 
 [resource]
 script = ExtResource("1_v46ji")
 Name = "Rocky Island"
+BackgroundMapMeta = ExtResource("1_th3px")
 metadata/_custom_type_script = "uid://b56gke8gj78h0"

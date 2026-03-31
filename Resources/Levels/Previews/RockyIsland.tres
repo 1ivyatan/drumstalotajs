@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="MapMeta" format=3 uid="uid://d0f45qwkwpi13"]
+
+[ext_resource type="Script" uid="uid://cdjbewmuh8252" path="res://Source/Resources/Mapping/MapMeta.cs" id="1_gdc6a"]
+
+[resource]
+script = ExtResource("1_gdc6a")
+Name = "Rocky Island"
+MapDataPath = "res://Resources/Levels/Previews/RockyIslandData.tres"
+metadata/_custom_type_script = "uid://cdjbewmuh8252"

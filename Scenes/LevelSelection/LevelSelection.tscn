@@ -39,9 +39,3 @@ text = "sdfsdfsdfsdfsdfsdfsdfsdfsdf"
 [node name="ToBattle" type="Button" parent="Overlay/LevelInfoContainer/VBoxContainer" unique_id=238184154]
 layout_mode = 2
 text = "Battle!"
-
-[node name="Control" type="Control" parent="Overlay" unique_id=79327880]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
