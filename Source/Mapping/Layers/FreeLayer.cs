@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using Drumstalotajs.Resources.Sets.Layers;
 using Drumstalotajs.Resources.Mapping;
@@ -31,11 +32,13 @@ public abstract partial class FreeLayer : Node2D, ISaveableLayer
 		};
 	}
 	
+	
+	
 	public void Load(FreeLayerData layerData)
 	{
 		foreach (var node in GetChildren())
 		{
-			
+			DestroyTile(node as FreeTile);
 		}
 		
 		foreach (var freeTile in layerData.FreeTiles)
@@ -57,5 +60,38 @@ public abstract partial class FreeLayer : Node2D, ISaveableLayer
 	{
 		tile.QueueFree();
 		RemoveChild(tile);
+	}
+	
+	public FreeTile[] Flash(Vector2 position, int limit)
+	{
+		var spaceState = GetWorld2D().DirectSpaceState;
+		PhysicsPointQueryParameters2D query = new PhysicsPointQueryParameters2D();
+		query.Position = GlobalPosition + position;
+		query.CollideWithAreas = true;
+		var intersectedNodes = spaceState.IntersectPoint(query, limit);
+		if (intersectedNodes.Count > 0)
+		{
+			List<FreeTile> freeTiles = new List<FreeTile>();
+			foreach (var node in intersectedNodes)
+			{
+				Node2D collider = (Node2D)node["collider"];
+				if (collider is FreeTile freeTile)
+				{
+					freeTiles.Add(freeTile);
+				}
+			}
+			
+			if (freeTiles.Count > 0)
+			{
+				return freeTiles.OrderBy(freeTile => {
+					return position.DistanceTo(freeTile.Position);
+				}).ToArray();
+			} else
+			{
+				return [];
+			}
+		}
+		
+		return [];
 	}
 }
