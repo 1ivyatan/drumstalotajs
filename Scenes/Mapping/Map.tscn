@@ -4,7 +4,7 @@
 [ext_resource type="TileSet" uid="uid://daumx3mxogaai" path="res://Resources/Mapping/GroundLayer.tres" id="2_wxnmh"]
 [ext_resource type="Script" uid="uid://c2dfk4ojl4g5m" path="res://Source/Mapping/Layers/Tiles/GroundLayer.cs" id="3_ox681"]
 [ext_resource type="Script" uid="uid://bhj5v8iauoocv" path="res://Source/Mapping/Layers/Overlays/OverlayLayer.cs" id="3_sd0qa"]
-[ext_resource type="Resource" uid="uid://cg6rljxjh2pod" path="res://Resources/Sets/Layers/OverlayLayerSet.tres" id="5_s3wx3"]
+[ext_resource type="Resource" uid="uid://3skylip7thui" path="res://Resources/Mapping/OverlayLayer.tres" id="5_s3wx3"]
 
 [node name="Map" type="Node2D" unique_id=236101745]
 script = ExtResource("1_lo67w")
@@ -16,4 +16,4 @@ script = ExtResource("3_ox681")
 
 [node name="OverlayLayer" type="Node2D" parent="." unique_id=116527524]
 script = ExtResource("3_sd0qa")
-OverlayLayerSet = ExtResource("5_s3wx3")
+FreeTileSet = ExtResource("5_s3wx3")

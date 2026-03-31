@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="FreeLayerTileSet" format=3 uid="uid://3skylip7thui"]
+
+[ext_resource type="Script" uid="uid://c46sa467mio16" path="res://Source/Resources/Sets/LayerTiles/FreeLayerTileSet.cs" id="1_401ul"]
+
+[resource]
+script = ExtResource("1_401ul")
+TileSize = 16
+metadata/_custom_type_script = "uid://c46sa467mio16"

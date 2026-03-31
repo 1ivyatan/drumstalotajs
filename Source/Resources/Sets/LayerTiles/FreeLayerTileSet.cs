@@ -4,7 +4,8 @@ using System;
 namespace Drumstalotajs.Resources.Sets.Layers;
 
 [GlobalClass]
-public abstract partial class FreeLayerSet : Resource
+public partial class FreeLayerTileSet : Resource
 {
 	[Export] public int TileSize { get; set; }
+	
 }
