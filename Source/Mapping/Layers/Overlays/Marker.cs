@@ -3,6 +3,6 @@ using System;
 
 namespace Drumstalotajs.Mapping.Layers.Overlays;
 
-public partial class OverlayMarker : FreeLayerTile
+public partial class Marker : FreeTile
 {
 }

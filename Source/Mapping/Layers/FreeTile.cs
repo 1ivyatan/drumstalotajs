@@ -3,6 +3,6 @@ using System;
 
 namespace Drumstalotajs.Mapping.Layers;
 
-public partial class FreeLayerTile : Node2D
+public partial class FreeTile : Area2D
 {
 }

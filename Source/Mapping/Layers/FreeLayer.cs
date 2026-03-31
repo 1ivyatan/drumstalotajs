@@ -13,6 +13,11 @@ public abstract partial class FreeLayer : Node2D, ISaveableLayer
 	
 	public void Load(FreeLayerData layerData)
 	{
+		GD.Print(layerData.FreeTiles);
+	}
+	
+	public void AddFreeTile(int id)
+	{
 		
 	}
 }
