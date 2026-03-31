@@ -16,6 +16,12 @@ public partial class SceneManager : Node
 		SetScene(scene);
 	}
 	
+	public void LevelSelection()
+	{
+		Node scene = LoadScene("LevelSelection");
+		SetScene(scene);
+	}
+	
 	public void PauseScene() { if (State != SceneState.LOADING) State = SceneState.RUNNING; }
 	public void ResumeScene() { if (State != SceneState.LOADING) State = SceneState.RUNNING; }
 	

@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bqyf8mscxyken" path="res://Source/Main.cs" id="1_r150o"]
 [ext_resource type="Script" uid="uid://dfsur52pslkvm" path="res://Source/Managers/Scenes/SceneManager.cs" id="2_idj7w"]
+[ext_resource type="Script" uid="uid://b72yqrmgjed45" path="res://Source/Managers/DataManager.cs" id="3_kln2b"]
+[ext_resource type="Resource" uid="uid://d1b1ye0lu2g6j" path="res://Resources/Sets/Levels/RockyIsland.tres" id="4_rgh2o"]
 
 [node name="Main" type="Node" unique_id=1017316100]
 script = ExtResource("1_r150o")
@@ -12,7 +14,10 @@ ScenesPath = "res://Scenes/"
 
 [node name="AudioManager" type="Node" parent="." unique_id=1009940070]
 
-[node name="SaveManager" type="Node" parent="." unique_id=994388498]
+[node name="DataManager" type="Node" parent="." unique_id=994388498]
+script = ExtResource("3_kln2b")
+LevelSets = Array[Object]([ExtResource("4_rgh2o")])
+SavePath = "user://"
 
 [node name="Overlay" type="CanvasLayer" parent="." unique_id=1415426569]
 

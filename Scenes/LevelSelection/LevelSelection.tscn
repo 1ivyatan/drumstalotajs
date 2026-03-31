@@ -1,3 +1,47 @@
 [gd_scene format=3 uid="uid://6w0if5idroq3"]
 
+[ext_resource type="Script" uid="uid://o3ipva55ayxc" path="res://Source/LevelSelection/LevelSelectionScene.cs" id="1_g1q0k"]
+[ext_resource type="PackedScene" uid="uid://druw1x35jlqnh" path="res://Scenes/Mapping/Map.tscn" id="2_bnw7x"]
+
 [node name="LevelSelection" type="Node2D" unique_id=1846218210]
+script = ExtResource("1_g1q0k")
+
+[node name="Map" parent="." unique_id=236101745 instance=ExtResource("2_bnw7x")]
+
+[node name="Overlay" type="CanvasLayer" parent="." unique_id=1023346357]
+
+[node name="ToStart" type="Button" parent="Overlay" unique_id=604975909]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -8.0
+offset_right = 8.0
+grow_vertical = 0
+text = "Exit"
+
+[node name="LevelInfoContainer" type="PanelContainer" parent="Overlay" unique_id=1394997653]
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -219.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Overlay/LevelInfoContainer" unique_id=705608641]
+layout_mode = 2
+
+[node name="Text" type="RichTextLabel" parent="Overlay/LevelInfoContainer/VBoxContainer" unique_id=404281215]
+layout_mode = 2
+size_flags_vertical = 3
+text = "sdfsdfsdfsdfsdfsdfsdfsdfsdf"
+
+[node name="ToBattle" type="Button" parent="Overlay/LevelInfoContainer/VBoxContainer" unique_id=238184154]
+layout_mode = 2
+text = "Battle!"
+
+[node name="Control" type="Control" parent="Overlay" unique_id=79327880]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0

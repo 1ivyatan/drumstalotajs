@@ -1,0 +1,16 @@
+[gd_resource type="TileSet" format=3 uid="uid://daumx3mxogaai"]
+
+[ext_resource type="Texture2D" uid="uid://b41y65s1dc0vc" path="res://Assets/Textures/Ground.svg" id="1_mq3vr"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bxxgv"]
+texture = ExtResource("1_mq3vr")
+0:0/0 = 0
+1:0/0 = 0
+1:0/0/custom_data_0 = 1.0
+2:0/0 = 0
+2:0/0/custom_data_0 = 5.0
+
+[resource]
+custom_data_layer_0/name = "RelativeHeight"
+custom_data_layer_0/type = 3
+sources/1 = SubResource("TileSetAtlasSource_bxxgv")

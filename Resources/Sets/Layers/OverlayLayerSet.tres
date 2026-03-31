@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="OverlayLayerSet" format=3 uid="uid://cg6rljxjh2pod"]
+
+[ext_resource type="Script" uid="uid://d0qu3lyaa3v3u" path="res://Source/Resources/Sets/Layers/Overlays/OverlayLayerSet.cs" id="1_4uu8e"]
+
+[resource]
+script = ExtResource("1_4uu8e")
+TileSize = 16
+metadata/_custom_type_script = "uid://d0qu3lyaa3v3u"
