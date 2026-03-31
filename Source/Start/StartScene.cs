@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using Drumstalotajs;
+using Drumstalotajs.Utils;
 using Drumstalotajs.Components.Modals;
 
 namespace Drumstalotajs.Start;
@@ -19,6 +20,9 @@ public partial class StartScene : Control
 		_startButton = buttons.GetNode<Button>("Start");
 		_annotationButton = buttons.GetNode<Button>("Annotation");
 		_quitButton = buttons.GetNode<Button>("Quit");
+		_startButton.Pressed += () => {
+			Nodes.GetRoot().SceneManager.LevelSelection();
+		};
 		_annotationButton.Pressed += () => {
 			_modal.Show();
 		};
