@@ -7,5 +7,5 @@ namespace Drumstalotajs.Resources.Sets.Layers;
 public partial class FreeLayerTileSet : Resource
 {
 	[Export] public int TileSize { get; set; }
-	
+	[Export] public FreeLayerTileProps[] TileSet { get; set; }
 }
