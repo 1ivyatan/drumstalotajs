@@ -19,15 +19,14 @@ public partial class LevelSelectionStage : Node2D
 	{
 		LevelSet = Nodes.GetRoot().DataManager.LevelSets[0];
 		Map = GetNode("Map") as Map;
-		
+
 		foreach (var level in LevelSet.Levels)
 		{
-			Map.OverlayLayer.AddTile("LevelMarker", level.Position);
-			var data = await ToSignal(Map.OverlayLayer, SceneLayer.SignalName.SpawnedTile);;
-			var tile = (LevelMarker)data[0];
-			//tile.Initialize(level);
+			LevelMarker tile = await Map.OverlayLayer.AddTile("LevelMarker", level.Position) as LevelMarker;
+			//tile.Initialize();
 			GD.Print(tile);
 		}
+
 		Map.Selector.Filter = new SelectorFilter([Map.OverlayLayer]);
 		Map.Selector.PressedOverlay += (OverlayTile tile) => {
 			GD.Print(tile);

@@ -1,5 +1,7 @@
 using Godot;
 using System;
+using System.IO;
+using System.Threading.Tasks;
 using System.Linq;
 using System.Collections.Generic;
 using Drumstalotajs;
@@ -33,18 +35,15 @@ public partial class SceneLayer : Layer
 			}
 		};
 	}
-	
-	public void AddTile(string name, Vector2I position)
+
+	public async Task<SceneTile> AddTile(string name, Vector2I position)
 	{
 		int id = sceneLayerSet.SceneTiles.FirstOrDefault(s => s.Name == name).Id;
 		SetCell(position, 0, new Vector2I(0, 0), id);
+		var data = await ToSignal(this, SignalName.SpawnedTile);
+		return (SceneTile)data[0];
 	}
 	
-	public SceneTile AddTile(int id, Vector2I position)
-	{
-		SetCell(position, 0, new Vector2I(0, 0), id);
-		return Instances.FirstOrDefault(i => position == LocalToMap(position));
-	}
 	
 	public SceneTile GetTile(Vector2 position)
 	{
