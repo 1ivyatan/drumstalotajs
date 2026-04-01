@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b0ue22qbeaqj4"]
 
-[ext_resource type="Script" uid="uid://cxqx566t3ue8s" path="res://Source/Mapping/Layers/SceneTile.cs" id="1_ka605"]
+[ext_resource type="Script" uid="uid://cxqx566t3ue8s" path="res://Source/Mapping/Tiles/SceneTile.cs" id="1_ka605"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vn3n3"]
 size = Vector2(16, 16)

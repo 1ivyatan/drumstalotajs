@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="MapMeta" format=3 uid="uid://ugr083x5n6uv"]
+
+[ext_resource type="Script" uid="uid://dlx88vfwmjtio" path="res://Source/Resources/Mapping/MapMeta.cs" id="1_stxqi"]
+
+[resource]
+script = ExtResource("1_stxqi")
+Name = "Coastal road"
+metadata/_custom_type_script = "uid://dlx88vfwmjtio"

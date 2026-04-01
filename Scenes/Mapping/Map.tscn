@@ -4,7 +4,8 @@
 [ext_resource type="TileSet" uid="uid://boadgocgq54ey" path="res://Resources/Mapping/Layers/GroundLayer.tres" id="1_wxnmh"]
 [ext_resource type="Script" uid="uid://due6k5hcsaowq" path="res://Source/Mapping/Layers/GroundLayer.cs" id="2_ox681"]
 [ext_resource type="TileSet" uid="uid://bpjqx6y6tiytd" path="res://Resources/Mapping/Layers/OverlayLayer.tres" id="4_s3wx3"]
-[ext_resource type="Script" uid="uid://bhj5v8iauoocv" path="res://Source/Mapping/Layers/Overlays/OverlayLayer.cs" id="5_s3wx3"]
+[ext_resource type="Script" uid="uid://bhj5v8iauoocv" path="res://Source/Mapping/Layers/OverlayLayer.cs" id="5_s3wx3"]
+[ext_resource type="Script" uid="uid://b2tr3ltxreo2t" path="res://Source/Mapping/Selection/Selector.cs" id="6_bdwom"]
 
 [node name="Map" type="Node2D" unique_id=78489391]
 script = ExtResource("1_ox681")
@@ -19,3 +20,4 @@ tile_set = ExtResource("4_s3wx3")
 script = ExtResource("5_s3wx3")
 
 [node name="Selector" type="Node2D" parent="." unique_id=2135434713]
+script = ExtResource("6_bdwom")

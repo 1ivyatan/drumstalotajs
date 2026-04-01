@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bay5hsbrwb2pb"]
 
 [ext_resource type="PackedScene" uid="uid://b0ue22qbeaqj4" path="res://Scenes/Mapping/SceneTile.tscn" id="1_fcrg6"]
-[ext_resource type="Resource" uid="uid://bj5mlai5r7gow" path="res://Resources/Mapping/Overlays/LevelMarker.tres" id="2_jwqew"]
+[ext_resource type="Script" uid="uid://dwtvy4t8kpa2f" path="res://Source/Mapping/Tiles/Overlays/LevelMarker.cs" id="2_igsmk"]
 [ext_resource type="Texture2D" uid="uid://dumv3y5dl2yn3" path="res://Assets/Textures/UI.svg" id="3_igsmk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fcrg6"]
@@ -12,7 +12,7 @@ atlas = ExtResource("3_igsmk")
 region = Rect2(0, 0, 22, 22)
 
 [node name="SceneTile" unique_id=1970020199 instance=ExtResource("1_fcrg6")]
-Resource = ExtResource("2_jwqew")
+script = ExtResource("2_igsmk")
 
 [node name="Hitbox" parent="." index="0" unique_id=1327354069]
 shape = SubResource("CircleShape2D_fcrg6")

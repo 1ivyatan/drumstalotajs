@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-namespace Drumstalotajs.Mapping.Layers.Overlays;
+namespace Drumstalotajs.Mapping.Layers;
 
 public partial class OverlayLayer : SceneLayer
 {
