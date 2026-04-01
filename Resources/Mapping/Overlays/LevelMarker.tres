@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="SceneTile" format=3 uid="uid://bj5mlai5r7gow"]
+
+[ext_resource type="Script" uid="uid://dmvqm5l7uxuvp" path="res://Source/Resources/Mapping/SceneTile.cs" id="1_oylns"]
+
+[resource]
+script = ExtResource("1_oylns")
+Id = 1
+Name = "LevelMarker"
+metadata/_custom_type_script = "uid://dmvqm5l7uxuvp"
