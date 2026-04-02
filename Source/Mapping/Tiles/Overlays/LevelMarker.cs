@@ -4,15 +4,13 @@ using Drumstalotajs.Resources.Levels;
 
 namespace Drumstalotajs.Mapping.Tiles.Overlays;
 
-public partial class LevelMarker : OverlayTile//, IInitializer<int>
+public partial class LevelMarker : OverlayTile, IInitializer<LevelSetProps>
 {
-	public void Init()
-	{
-		GD.Print(3333);
-	}
+	public LevelSetProps Props { get; private set; }
 	
 	public void Initialize(LevelSetProps props)
 	{
-		GD.Print(props.Order);
+		Props = props;
+		//GD.Print(props.Order);
 	}
 }

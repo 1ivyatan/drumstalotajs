@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bvdfg1pskcplm" path="res://Source/LevelSelection/LevelSelectionStage.cs" id="1_bnw7x"]
 [ext_resource type="PackedScene" uid="uid://druw1x35jlqnh" path="res://Scenes/Mapping/Map.tscn" id="1_g1q0k"]
+[ext_resource type="Script" uid="uid://dkxygwgfv24c3" path="res://Source/LevelSelection/LevelInfoContainer.cs" id="3_675ns"]
 
 [node name="LevelSelection" type="Node2D" unique_id=1846218210]
 script = ExtResource("1_bnw7x")
@@ -9,3 +10,33 @@ script = ExtResource("1_bnw7x")
 [node name="Map" parent="." unique_id=78489391 instance=ExtResource("1_g1q0k")]
 
 [node name="Overlay" type="CanvasLayer" parent="." unique_id=1549350012]
+
+[node name="Start" type="Button" parent="Overlay" unique_id=612648406]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -8.0
+offset_right = 8.0
+grow_vertical = 0
+text = "Return"
+
+[node name="LevelInfoContainer" type="PanelContainer" parent="Overlay" unique_id=1961406887]
+visible = false
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+script = ExtResource("3_675ns")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Overlay/LevelInfoContainer" unique_id=378407163]
+layout_mode = 2
+
+[node name="Info" type="RichTextLabel" parent="Overlay/LevelInfoContainer/VBoxContainer" unique_id=214815493]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Battle" type="Button" parent="Overlay/LevelInfoContainer/VBoxContainer" unique_id=26190859]
+layout_mode = 2
+text = "Attack!"
