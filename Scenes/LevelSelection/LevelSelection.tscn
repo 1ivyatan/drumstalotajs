@@ -26,6 +26,7 @@ anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -199.0
 grow_horizontal = 0
 grow_vertical = 2
 script = ExtResource("3_675ns")
@@ -36,6 +37,7 @@ layout_mode = 2
 [node name="Info" type="RichTextLabel" parent="Overlay/LevelInfoContainer/VBoxContainer" unique_id=214815493]
 layout_mode = 2
 size_flags_vertical = 3
+bbcode_enabled = true
 
 [node name="Battle" type="Button" parent="Overlay/LevelInfoContainer/VBoxContainer" unique_id=26190859]
 layout_mode = 2

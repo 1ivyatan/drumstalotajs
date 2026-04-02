@@ -5,4 +5,5 @@
 [resource]
 script = ExtResource("1_stxqi")
 Name = "Coastal road"
+Desc = "Our naval infantry has dealt with first lines of defenders of this shore, but they need fire support to consolidate our gains. You are part of a mortar team and have been sent to assist them."
 metadata/_custom_type_script = "uid://dlx88vfwmjtio"

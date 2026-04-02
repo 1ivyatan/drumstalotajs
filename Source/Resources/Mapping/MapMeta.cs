@@ -7,4 +7,6 @@ namespace Drumstalotajs.Resources.Mapping;
 public partial class MapMeta : Resource
 {
 	[Export] public string Name { get; private set; }
+	[Export] public string Desc { get; private set; }
+	[Export] public string PathToMap { get; private set; }
 }

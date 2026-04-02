@@ -16,7 +16,10 @@ public partial class SceneLayer : TileSet
 		{
 			foreach (SceneTile sceneTile in SceneTiles)
 			{
-				sceneSource.CreateSceneTile(sceneTile.Scene, sceneTile.Id);
+				if (!sceneSource.HasSceneTileId(sceneTile.Id))
+				{
+					sceneSource.CreateSceneTile(sceneTile.Scene, sceneTile.Id);
+				}
 			}
 		}
 	}
