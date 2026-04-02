@@ -14,6 +14,7 @@ ScenesPath = "res://Scenes/"
 
 [node name="DataManager" type="Node" parent="." unique_id=1860538632]
 script = ExtResource("3_kln2b")
+DataPath = "user://"
 LevelSets = Array[Object]([ExtResource("4_rgh2o")])
 
 [node name="AudioManager" type="Node" parent="." unique_id=1009940070]

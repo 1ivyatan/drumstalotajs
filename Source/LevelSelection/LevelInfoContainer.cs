@@ -1,12 +1,14 @@
 using Godot;
 using System;
 using Drumstalotajs.Resources.Levels;
+using Drumstalotajs.Resources.Progress;
 
 public partial class LevelInfoContainer : Control
 {
-	public LevelSetProps Props { get; private set; } = null;
+	private LevelSetProps Props { get; set; } = null;
 	private RichTextLabel info;
 	private Button battle;
+	private LevelProgress LevelProgress { get; set; } = null;
 	
 	public override void _Ready()
 	{
@@ -19,10 +21,16 @@ public partial class LevelInfoContainer : Control
 		};
 	}
 	
-	public void Open(LevelSetProps props)
+	public void SetLevelProgress(LevelProgress levelProgress)
+	{
+		LevelProgress = levelProgress;
+	}
+	
+	public void Open(LevelSetProps props, LevelProgressScore progress)
 	{
 		Props = props;
 		info.Text = $"[b]{props.Meta.Name}[/b]\n\n{props.Meta.Desc}";
+		battle.Disabled = !LevelProgress.IsUnlocked(props);
 		Visible = true;
 	}
 	
