@@ -2,6 +2,9 @@ using Godot;
 using System;
 using Drumstalotajs.Resources.Levels;
 using Drumstalotajs.Resources.Progress;
+using Drumstalotajs.Utils;
+
+namespace Drumstalotajs.LevelSelection;
 
 public partial class LevelInfoContainer : Control
 {
@@ -17,7 +20,10 @@ public partial class LevelInfoContainer : Control
 		battle = container.GetNode<Button>("Battle");
 		
 		battle.Pressed += () => {
-			
+			if (Props != null && LevelProgress.IsUnlocked(Props))
+			{
+				Nodes.GetRoot().SceneManager.Battle(Props);
+			}
 		};
 	}
 	

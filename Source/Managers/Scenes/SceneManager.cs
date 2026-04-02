@@ -1,6 +1,9 @@
 using Godot;
 using System;
+using Drumstalotajs.Battle;
 using Drumstalotajs.Utils;
+using Drumstalotajs.Resources.Levels;
+using Drumstalotajs.Resources.Progress;
 
 namespace Drumstalotajs.Managers.Scenes;
 
@@ -19,6 +22,13 @@ public partial class SceneManager : Node
 	public void LevelSelection()
 	{
 		Node scene = LoadScene("LevelSelection");
+		SetScene(scene);
+	}
+	
+	public void Battle(LevelSetProps props)
+	{
+		BattleScene scene = LoadScene("Battle") as BattleScene;
+		scene.LoadLevel(props);
 		SetScene(scene);
 	}
 	

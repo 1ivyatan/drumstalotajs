@@ -1,4 +1,4 @@
-[gd_resource type="Resource" format=3 uid="uid://bdsaw3lrjxqn"]
+[gd_resource type="Resource" script_class="LevelSet" format=3 uid="uid://bdsaw3lrjxqn"]
 
 [ext_resource type="Script" uid="uid://dlx88vfwmjtio" path="res://Source/Resources/Mapping/MapMeta.cs" id="1_xdqc4"]
 [ext_resource type="Script" uid="uid://bny3hdpvaodgk" path="res://Source/Resources/Levels/LevelSet.cs" id="2_0vukk"]
