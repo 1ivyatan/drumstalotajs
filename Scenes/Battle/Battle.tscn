@@ -21,4 +21,16 @@ layout_mode = 2
 text = "Pause"
 
 [node name="Modal" parent="Overlay" unique_id=120054605 instance=ExtResource("2_gunap")]
-visible = true
+
+[node name="ButtonMenu" type="VBoxContainer" parent="Overlay/Modal" unique_id=1602264010]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Resume" type="Button" parent="Overlay/Modal/ButtonMenu" unique_id=2114224418]
+layout_mode = 2
+text = "Resume"
+
+[node name="ToLevelSelection" type="Button" parent="Overlay/Modal/ButtonMenu" unique_id=2142092784]
+layout_mode = 2
+text = "Retreat"
