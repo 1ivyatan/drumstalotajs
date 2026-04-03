@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="MapMeta" format=3 uid="uid://bf3frqaawy56b"]
+
+[ext_resource type="Script" uid="uid://dlx88vfwmjtio" path="res://Source/Resources/Mapping/MapMeta.cs" id="1_v4lp4"]
+
+[resource]
+script = ExtResource("1_v4lp4")
+Name = "Nests"
+Desc = "Enemy had placed series of machine gun nests"
+metadata/_custom_type_script = "uid://dlx88vfwmjtio"
