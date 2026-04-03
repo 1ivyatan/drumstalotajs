@@ -2,10 +2,18 @@
 
 [ext_resource type="Script" uid="uid://cnfqephyvrwps" path="res://Source/Battle/BattleScene.cs" id="1_ael4v"]
 [ext_resource type="PackedScene" uid="uid://b2lhrg24h1jkc" path="res://Scenes/Components/Modal.tscn" id="2_gunap"]
+[ext_resource type="PackedScene" uid="uid://druw1x35jlqnh" path="res://Scenes/Mapping/Map.tscn" id="2_odh8s"]
 [ext_resource type="Script" uid="uid://b7ef3tcr5ixpe" path="res://Source/Battle/Pause.cs" id="3_3ihc8"]
+[ext_resource type="Script" uid="uid://bka3ko11ax22n" path="res://Source/Battle/Stages/StageManager.cs" id="3_rremj"]
 
 [node name="Battle" type="Node2D" unique_id=1007953308]
 script = ExtResource("1_ael4v")
+
+[node name="Map" parent="." unique_id=78489391 instance=ExtResource("2_odh8s")]
+
+[node name="StageManager" type="CanvasLayer" parent="." unique_id=60139790]
+script = ExtResource("3_rremj")
+StagesPath = "res://Scenes/Battle/Stages/"
 
 [node name="Overlay" type="CanvasLayer" parent="." unique_id=2052912096]
 
