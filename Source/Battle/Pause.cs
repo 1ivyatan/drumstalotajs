@@ -8,51 +8,22 @@ namespace Drumstalotajs.Battle;
 public partial class Pause : Components.Modals.Window
 {
 	private Button _resume;
+	private Button _retreat;
 	
 	public override void _Ready()
 	{
 		var sceneManager = Nodes.GetRoot().SceneManager;
 		_resume = GetNode<Button>("Resume");
+		_retreat = GetNode<Button>("ToLevelSelection");
 		
 		_resume.Pressed += () =>
 		{
 			sceneManager.ResumeScene();
 		};
-	}
-}
-
-/*
-
-
-using Godot;
-using System;
-using Drumstalotajs;
-using Drumstalotajs.Utils;
-
-namespace Drumstalotajs.Start;
-
-public partial class Annotation : Components.Modals.Window
-{
-	[Export] private string _annotationFilePath;
-	
-	private Button _close;
-	private RichTextLabel _text;
-	
-	public override void _Ready()
-	{
-		_close = GetNode<Button>("Close");
-		_text = GetNode<RichTextLabel>("Text");
 		
-		var annFile = Files.SafeLoadFile(_annotationFilePath,  FileAccess.ModeFlags.Read);
-		if (annFile != null)
+		_retreat.Pressed += () =>
 		{
-			_text.Text = annFile.GetAsText();
-		}
-		
-		_close.Pressed += () => {
-			GetModal().HideModal();
+			sceneManager.LevelSelection();
 		};
 	}
 }
-
-*/
