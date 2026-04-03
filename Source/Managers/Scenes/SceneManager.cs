@@ -9,9 +9,18 @@ namespace Drumstalotajs.Managers.Scenes;
 
 public partial class SceneManager : Node
 {
+	[Signal] public delegate void StateChangedEventHandler(SceneState state);
 	[Export] private string ScenesPath;
 	public Node CurrentScene { get; private set; } = null;
-	public SceneState State { get; private set; } = SceneState.RUNNING;
+	public SceneState State
+	{ 
+		get; 
+		private set
+		{
+			field = value;
+			EmitSignal(SignalName.StateChanged, (int)field);
+		}
+	} = SceneState.RUNNING;
 	
 	public void Start()
 	{
@@ -32,7 +41,7 @@ public partial class SceneManager : Node
 		SetScene(scene);
 	}
 	
-	public void PauseScene() { if (State != SceneState.LOADING) State = SceneState.RUNNING; }
+	public void PauseScene() { if (State != SceneState.LOADING) State = SceneState.PAUSED; }
 	public void ResumeScene() { if (State != SceneState.LOADING) State = SceneState.RUNNING; }
 	
 	private Node LoadScene(string name)

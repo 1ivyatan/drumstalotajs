@@ -2,35 +2,37 @@
 
 [ext_resource type="Script" uid="uid://cnfqephyvrwps" path="res://Source/Battle/BattleScene.cs" id="1_ael4v"]
 [ext_resource type="PackedScene" uid="uid://b2lhrg24h1jkc" path="res://Scenes/Components/Modal.tscn" id="2_gunap"]
+[ext_resource type="Script" uid="uid://b7ef3tcr5ixpe" path="res://Source/Battle/Pause.cs" id="3_3ihc8"]
 
 [node name="Battle" type="Node2D" unique_id=1007953308]
 script = ExtResource("1_ael4v")
 
 [node name="Overlay" type="CanvasLayer" parent="." unique_id=2052912096]
 
-[node name="PanelContainer" type="PanelContainer" parent="Overlay" unique_id=1846168508]
+[node name="Topnav" type="PanelContainer" parent="Overlay" unique_id=1846168508]
 anchors_preset = 10
 anchor_right = 1.0
 grow_horizontal = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Overlay/PanelContainer" unique_id=26293952]
+[node name="HBoxContainer" type="HBoxContainer" parent="Overlay/Topnav" unique_id=26293952]
 layout_mode = 2
 
-[node name="Pause" type="Button" parent="Overlay/PanelContainer/HBoxContainer" unique_id=684744572]
+[node name="Pause" type="Button" parent="Overlay/Topnav/HBoxContainer" unique_id=684744572]
 layout_mode = 2
 text = "Pause"
 
-[node name="Modal" parent="Overlay" unique_id=120054605 instance=ExtResource("2_gunap")]
+[node name="PauseMenu" parent="Overlay" unique_id=120054605 instance=ExtResource("2_gunap")]
 
-[node name="ButtonMenu" type="VBoxContainer" parent="Overlay/Modal" unique_id=1602264010]
+[node name="ButtonMenu" type="VBoxContainer" parent="Overlay/PauseMenu" unique_id=1602264010]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("3_3ihc8")
 
-[node name="Resume" type="Button" parent="Overlay/Modal/ButtonMenu" unique_id=2114224418]
+[node name="Resume" type="Button" parent="Overlay/PauseMenu/ButtonMenu" unique_id=2114224418]
 layout_mode = 2
 text = "Resume"
 
-[node name="ToLevelSelection" type="Button" parent="Overlay/Modal/ButtonMenu" unique_id=2142092784]
+[node name="ToLevelSelection" type="Button" parent="Overlay/PauseMenu/ButtonMenu" unique_id=2142092784]
 layout_mode = 2
 text = "Retreat"
