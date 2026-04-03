@@ -20,7 +20,7 @@ public partial class LevelInfoContainer : Control
 		battle = container.GetNode<Button>("Battle");
 		
 		battle.Pressed += () => {
-			if (Props != null && LevelProgress.IsUnlocked(Props))
+			if (Props != null && LevelProgress.GetProgressState(Props) != ProgressState.Locked)
 			{
 				Nodes.GetRoot().SceneManager.Battle(Props);
 			}
@@ -34,9 +34,11 @@ public partial class LevelInfoContainer : Control
 	
 	public void Open(LevelSetProps props, LevelProgressScore progress)
 	{
+		/*
+	public ProgressState GetProgressState(LevelSetProps levelProps)*/
 		Props = props;
 		info.Text = $"[b]{props.Meta.Name}[/b]\n\n{props.Meta.Desc}";
-		battle.Disabled = !LevelProgress.IsUnlocked(props);
+		battle.Disabled = LevelProgress.GetProgressState(props) == ProgressState.Locked;
 		Visible = true;
 	}
 	
