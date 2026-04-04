@@ -14,7 +14,7 @@ namespace Drumstalotajs.Battle;
 
 public partial class BattleScene : Node2D
 {
-	private Map Map { get; set; }
+	public Map Map { get; private set; }
 	private StageManager StageManager { get; set; }
 	private Modal _pauseModal;
 	private Button _pause;
