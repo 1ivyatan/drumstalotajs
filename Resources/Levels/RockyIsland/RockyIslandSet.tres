@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://dlx88vfwmjtio" path="res://Source/Resources/Mapping/MapMeta.cs" id="1_xdqc4"]
 [ext_resource type="Script" uid="uid://bny3hdpvaodgk" path="res://Source/Resources/Levels/LevelSet.cs" id="2_0vukk"]
 [ext_resource type="Script" uid="uid://cu6jpykh0ct4a" path="res://Source/Resources/Levels/LevelSetProps.cs" id="2_r3ulx"]
-[ext_resource type="Resource" uid="uid://ugr083x5n6uv" path="res://Resources/Levels/RockyIsland/1.tres" id="2_w5203"]
-[ext_resource type="Resource" uid="uid://bf3frqaawy56b" path="res://Resources/Levels/RockyIsland/2.tres" id="4_w5203"]
+[ext_resource type="Resource" uid="uid://ugr083x5n6uv" path="res://Resources/Levels/RockyIsland/1/Meta.tres" id="2_w5203"]
+[ext_resource type="Resource" uid="uid://bf3frqaawy56b" path="res://Resources/Levels/RockyIsland/2/Meta.tres" id="4_w5203"]
 
 [sub_resource type="Resource" id="Resource_r3ulx"]
 script = ExtResource("1_xdqc4")

@@ -1,9 +1,10 @@
 [gd_resource type="Resource" script_class="MapMeta" format=3 uid="uid://ugr083x5n6uv"]
 
-[ext_resource type="Script" uid="uid://dlx88vfwmjtio" path="res://Source/Resources/Mapping/MapMeta.cs" id="1_stxqi"]
+[ext_resource type="Script" uid="uid://dlx88vfwmjtio" path="res://Source/Resources/Mapping/MapMeta.cs" id="1_soi6k"]
 
 [resource]
-script = ExtResource("1_stxqi")
+script = ExtResource("1_soi6k")
 Name = "Coastal road"
 Desc = "Our naval infantry has dealt with first lines of defenders of this shore, but they need fire support to consolidate our gains. You are part of a mortar team and have been sent to assist them."
+PathToMap = "res://Resources/Levels/RockyIsland/1/Map.tres"
 metadata/_custom_type_script = "uid://dlx88vfwmjtio"

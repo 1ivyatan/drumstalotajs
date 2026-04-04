@@ -2,16 +2,19 @@ using Godot;
 using System;
 using Drumstalotajs;
 using Drumstalotajs.Utils;
+using Drumstalotajs.Battle.Counting;
 
 namespace Drumstalotajs.Battle;
 
 public partial class Topnav : Node
 {
+	public Counters Counters { get; private set; }
 	private Button _pause;
 	private Label _title;
 	
 	public override void _Ready()
 	{
+		Counters = GetNode("Counters") as Counters;
 		var sceneManager = Nodes.GetRoot().SceneManager;
 		_title = GetNode<Label>("Title");
 		_pause = GetNode<Button>("Pause");
@@ -20,6 +23,7 @@ public partial class Topnav : Node
 			sceneManager.PauseScene();
 		};
 	}
+	
 	
 	public void SetTitle(string text)
 	{

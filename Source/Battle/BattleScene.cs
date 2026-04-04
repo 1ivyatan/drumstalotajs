@@ -10,6 +10,7 @@ using Drumstalotajs.Managers.Scenes;
 using Drumstalotajs.Managers;
 using Drumstalotajs.Utils;
 using Drumstalotajs.Battle.Stages;
+using Drumstalotajs.Scores;
 
 namespace Drumstalotajs.Battle;
 
@@ -19,6 +20,7 @@ public partial class BattleScene : Node2D
 	public StageManager StageManager { get; private set; }
 	public Topnav Topnav { get; private set; }
 	public MapMeta MapMeta { get; private set; } = null;
+	public Score Score { get; private set; } = null;
 	
 	private Modal _pauseModal;
 	private Button _pause;
@@ -48,11 +50,12 @@ public partial class BattleScene : Node2D
 		if (MapMeta != null)
 		{
 			Map.Load(MapMeta);
+			Score = Map.PrepareScore();
+			Topnav.Counters.TimeLeft.SetTime(Score);
+			sceneManager.Connect("StateChanged", _sceneChangeCall);
+			StageManager.DevicePlacement();
 		}
 		
-		//_mapResource = 
-		sceneManager.Connect("StateChanged", _sceneChangeCall);
-		StageManager.DevicePlacement();
 	}
 	
 	public override void _ExitTree()
