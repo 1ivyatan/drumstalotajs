@@ -4,6 +4,7 @@ using Drumstalotajs;
 using Drumstalotajs.Mapping;
 using Drumstalotajs.Resources.Levels;
 using Drumstalotajs.Resources.Progress;
+using Drumstalotajs.Resources.Mapping;
 using Drumstalotajs.Components.Modals;
 using Drumstalotajs.Managers.Scenes;
 using Drumstalotajs.Managers;
@@ -14,9 +15,11 @@ namespace Drumstalotajs.Battle;
 
 public partial class BattleScene : Node2D
 {
-	public Map Map { get; private set; }
+	public Mapping.Map Map { get; private set; }
 	public StageManager StageManager { get; private set; }
 	public Topnav Topnav { get; private set; }
+	public MapMeta MapMeta { get; private set; } = null;
+	
 	private Modal _pauseModal;
 	private Button _pause;
 	private Callable _sceneChangeCall;
@@ -24,7 +27,7 @@ public partial class BattleScene : Node2D
 	public override void _Ready()
 	{
 		var sceneManager = Nodes.GetRoot().SceneManager;
-		Map = GetNode("Map") as Map;
+		Map = GetNode("Map") as Mapping.Map;
 		StageManager = GetNode("StageManager") as StageManager;
 		Node overlay = GetNode("Overlay");
 		Topnav = overlay.GetNode("Topnav") as Topnav;
@@ -41,6 +44,13 @@ public partial class BattleScene : Node2D
 				default: break;
 			}
 		});
+		
+		if (MapMeta != null)
+		{
+			Map.Load(MapMeta);
+		}
+		
+		//_mapResource = 
 		sceneManager.Connect("StateChanged", _sceneChangeCall);
 		StageManager.DevicePlacement();
 	}
@@ -53,7 +63,7 @@ public partial class BattleScene : Node2D
 	
 	public void LoadLevel(LevelSetProps props)
 	{
-		
+		MapMeta = props.Meta;
 	}
 		
 	
