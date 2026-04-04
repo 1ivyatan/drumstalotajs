@@ -1,16 +1,20 @@
 using Godot;
 using System;
 using Drumstalotajs.Utils;
+using Drumstalotajs.Mapping;
 using Drumstalotajs.Mapping.Selection;
 
 namespace Drumstalotajs.Battle.Stages;
 
 public partial class DevicePlacement : Control
 {
+	private Map _map;
+	
 	public override void _Ready()
 	{
-		var map = Nodes.GetSceneRoot().Map;
 		BattleScene root = Nodes.GetSceneRoot();
-		root.Map.Selector.Filter = new SelectorFilter([map.OverlayLayer]);
+		_map = root.Map;
+		_map.Selector.Filter = new SelectorFilter([_map.OverlayLayer]);
+		root.Topnav.SetTitle("Device placement");
 	}
 }

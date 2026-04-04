@@ -16,7 +16,7 @@ public partial class BattleScene : Node2D
 {
 	public Map Map { get; private set; }
 	public StageManager StageManager { get; private set; }
-	private Topnav _topnav;
+	public Topnav Topnav { get; private set; }
 	private Modal _pauseModal;
 	private Button _pause;
 	private Callable _sceneChangeCall;
@@ -27,7 +27,7 @@ public partial class BattleScene : Node2D
 		Map = GetNode("Map") as Map;
 		StageManager = GetNode("StageManager") as StageManager;
 		Node overlay = GetNode("Overlay");
-		_topnav = overlay.GetNode("Topnav") as Topnav;
+		Topnav = overlay.GetNode("Topnav") as Topnav;
 		_pauseModal = overlay.GetNode("PauseMenu") as Modal;
 		_sceneChangeCall = Callable.From<Managers.Scenes.SceneState>(state => {
 			switch (state)
