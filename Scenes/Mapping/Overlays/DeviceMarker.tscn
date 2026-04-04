@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://cb0f78vc8xv76"]
+
+[ext_resource type="PackedScene" uid="uid://b0ue22qbeaqj4" path="res://Scenes/Mapping/SceneTile.tscn" id="1_6187o"]
+[ext_resource type="Texture2D" uid="uid://dumv3y5dl2yn3" path="res://Assets/Textures/UI.svg" id="2_6e7ls"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_po2hh"]
+atlas = ExtResource("2_6e7ls")
+region = Rect2(0, 22, 18, 19)
+
+[node name="DeviceMarker" unique_id=1970020199 instance=ExtResource("1_6187o")]
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="1" unique_id=1368379593]
+texture = SubResource("AtlasTexture_po2hh")

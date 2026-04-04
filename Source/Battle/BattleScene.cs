@@ -15,7 +15,8 @@ namespace Drumstalotajs.Battle;
 public partial class BattleScene : Node2D
 {
 	public Map Map { get; private set; }
-	private StageManager StageManager { get; set; }
+	public StageManager StageManager { get; private set; }
+	private Topnav _topnav;
 	private Modal _pauseModal;
 	private Button _pause;
 	private Callable _sceneChangeCall;
@@ -26,8 +27,8 @@ public partial class BattleScene : Node2D
 		Map = GetNode("Map") as Map;
 		StageManager = GetNode("StageManager") as StageManager;
 		Node overlay = GetNode("Overlay");
+		_topnav = overlay.GetNode("Topnav") as Topnav;
 		_pauseModal = overlay.GetNode("PauseMenu") as Modal;
-		_pause = overlay.GetNode<Button>("Topnav/HBoxContainer/Pause");
 		_sceneChangeCall = Callable.From<Managers.Scenes.SceneState>(state => {
 			switch (state)
 			{
@@ -41,10 +42,6 @@ public partial class BattleScene : Node2D
 			}
 		});
 		sceneManager.Connect("StateChanged", _sceneChangeCall);
-		_pause.Pressed += () =>
-		{
-			sceneManager.PauseScene();
-		};
 		StageManager.DevicePlacement();
 	}
 	
