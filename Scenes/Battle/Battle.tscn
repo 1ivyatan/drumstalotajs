@@ -63,9 +63,15 @@ layout_mode = 2
 script = ExtResource("9_diuyf")
 Icon = SubResource("AtlasTexture_gibtw")
 
+[node name="VSeparator" type="VSeparator" parent="Overlay/Topnav/Counters" unique_id=243909732]
+layout_mode = 2
+
 [node name="PlayerDeviceCounter" parent="Overlay/Topnav/Counters" unique_id=1319832494 instance=ExtResource("8_cmwrv")]
 layout_mode = 2
 Icon = SubResource("AtlasTexture_diuyf")
+
+[node name="VSeparator2" type="VSeparator" parent="Overlay/Topnav/Counters" unique_id=1910154053]
+layout_mode = 2
 
 [node name="EnemyTargetCount" parent="Overlay/Topnav/Counters" unique_id=1711471450 instance=ExtResource("8_cmwrv")]
 layout_mode = 2
