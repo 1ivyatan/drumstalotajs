@@ -27,4 +27,12 @@ public partial class StartScene : Control
 			_modal.Show();
 		};
 	}
+	
+	public override void _Input(InputEvent @event)
+	{
+		if (@event.IsActionPressed("open_editor"))
+		{
+			Nodes.GetRoot().SceneManager.Editor();
+		}
+	}
 }

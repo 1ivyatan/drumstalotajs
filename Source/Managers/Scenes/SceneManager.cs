@@ -41,6 +41,12 @@ public partial class SceneManager : Node
 		SetScene(scene);
 	}
 	
+	public void Editor()
+	{
+		Node scene = LoadScene("Editor");
+		SetScene(scene);
+	}
+	
 	public void PauseScene() { if (State != SceneState.LOADING) State = SceneState.PAUSED; }
 	public void ResumeScene() { if (State != SceneState.LOADING) State = SceneState.RUNNING; }
 	
