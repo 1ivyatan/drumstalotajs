@@ -53,7 +53,7 @@ public partial class BattleScene : Node2D
 		});
 		
 		_tickedCall = Callable.From<double>(remaining => {
-			Topnav.Counters.TimeLeft.SetTime(remaining);
+			Topnav.Counters.TimerDisplay.SetTime(remaining);
 		});
 		
 		if (MapMeta != null)

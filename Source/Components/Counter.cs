@@ -7,8 +7,8 @@ public partial class Counter : Node
 {
 	[Export] private Texture2D Icon { get; set; }
 	
-	private TextureRect _icon;
-	private Label _counter;
+	protected TextureRect _icon;
+	protected Label _counter;
 	
 	public override void _Ready()
 	{

@@ -24,7 +24,6 @@ public partial class Topnav : Node
 		};
 	}
 	
-	
 	public void SetTitle(string text)
 	{
 		_title.Text = text;

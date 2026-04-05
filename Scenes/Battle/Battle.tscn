@@ -8,8 +8,21 @@
 [ext_resource type="Script" uid="uid://1fbawv2o8xno" path="res://Source/Scores/BattleScoreManager.cs" id="3_tmq01"]
 [ext_resource type="Script" uid="uid://btkp7s5r0ghlj" path="res://Source/Battle/Topnav.cs" id="4_g1sps"]
 [ext_resource type="Script" uid="uid://cyllrcx25ahwo" path="res://Source/Battle/Counting/Counters.cs" id="5_dcr6b"]
-[ext_resource type="Script" uid="uid://bm8cx5a4t7lxw" path="res://Source/Battle/Counting/TimeLeft.cs" id="6_07e4u"]
 [ext_resource type="PackedScene" uid="uid://dnasbla8y237b" path="res://Scenes/Components/Counter.tscn" id="8_cmwrv"]
+[ext_resource type="Script" uid="uid://3gj7as1ru6qk" path="res://Source/Components/TimerDisplay.cs" id="9_diuyf"]
+[ext_resource type="Texture2D" uid="uid://dumv3y5dl2yn3" path="res://Assets/Textures/UI.svg" id="9_ukbm8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gibtw"]
+atlas = ExtResource("9_ukbm8")
+region = Rect2(24, 23, 19, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_diuyf"]
+atlas = ExtResource("9_ukbm8")
+region = Rect2(44, 0, 21, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ukbm8"]
+atlas = ExtResource("9_ukbm8")
+region = Rect2(44, 21, 21, 22)
 
 [node name="Battle" type="Node2D" unique_id=1007953308]
 script = ExtResource("1_ael4v")
@@ -45,16 +58,18 @@ size_flags_horizontal = 8
 alignment = 2
 script = ExtResource("5_dcr6b")
 
-[node name="TimeLeft" type="Label" parent="Overlay/Topnav/Counters" unique_id=419819900]
+[node name="TimerDisplay" parent="Overlay/Topnav/Counters" unique_id=1657650171 instance=ExtResource("8_cmwrv")]
 layout_mode = 2
-text = "00:00"
-script = ExtResource("6_07e4u")
+script = ExtResource("9_diuyf")
+Icon = SubResource("AtlasTexture_gibtw")
 
-[node name="PlayerDeviceCounter" parent="Overlay/Topnav/Counters" unique_id=1657650171 instance=ExtResource("8_cmwrv")]
+[node name="PlayerDeviceCounter" parent="Overlay/Topnav/Counters" unique_id=1319832494 instance=ExtResource("8_cmwrv")]
 layout_mode = 2
+Icon = SubResource("AtlasTexture_diuyf")
 
 [node name="EnemyTargetCount" parent="Overlay/Topnav/Counters" unique_id=1711471450 instance=ExtResource("8_cmwrv")]
 layout_mode = 2
+Icon = SubResource("AtlasTexture_ukbm8")
 
 [node name="Title" type="Label" parent="Overlay/Topnav" unique_id=1537213512]
 layout_mode = 2
