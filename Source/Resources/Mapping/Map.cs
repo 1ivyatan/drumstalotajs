@@ -9,9 +9,4 @@ public partial class Map : Resource
 {
 	[ExportGroup("Scoring")]
 	[Export] public double TimeLimit { get; private set; }
-	
-	public Score PrepareScore()
-	{
-		return new Score(TimeLimit);
-	}
 }

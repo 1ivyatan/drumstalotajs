@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://druw1x35jlqnh" path="res://Scenes/Mapping/Map.tscn" id="2_odh8s"]
 [ext_resource type="Script" uid="uid://b7ef3tcr5ixpe" path="res://Source/Battle/Pause.cs" id="3_3ihc8"]
 [ext_resource type="Script" uid="uid://bka3ko11ax22n" path="res://Source/Battle/Stages/StageManager.cs" id="3_rremj"]
+[ext_resource type="Script" uid="uid://1fbawv2o8xno" path="res://Source/Scores/BattleScoreManager.cs" id="3_tmq01"]
 [ext_resource type="Script" uid="uid://btkp7s5r0ghlj" path="res://Source/Battle/Topnav.cs" id="4_g1sps"]
 [ext_resource type="Script" uid="uid://cyllrcx25ahwo" path="res://Source/Battle/Counting/Counters.cs" id="5_dcr6b"]
 [ext_resource type="Script" uid="uid://bm8cx5a4t7lxw" path="res://Source/Battle/Counting/TimeLeft.cs" id="6_07e4u"]
@@ -13,6 +14,12 @@
 script = ExtResource("1_ael4v")
 
 [node name="Map" parent="." unique_id=78489391 instance=ExtResource("2_odh8s")]
+
+[node name="BattleScoreManager" type="Node" parent="." unique_id=1097807988]
+script = ExtResource("3_tmq01")
+
+[node name="Timer" type="Timer" parent="BattleScoreManager" unique_id=1364914853]
+process_callback = 0
 
 [node name="StageManager" type="CanvasLayer" parent="." unique_id=60139790]
 script = ExtResource("3_rremj")

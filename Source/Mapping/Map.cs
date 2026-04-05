@@ -16,8 +16,8 @@ public partial class Map : Node2D
 	public OverlayLayer OverlayLayer { get; private set; }
 	public Selector Selector { get; private set; }
 	
-	private Resources.Mapping.Map _mapData = null;
-	private Resources.Mapping.MapMeta _mapMeta = null;
+	public Resources.Mapping.Map MapData { get; private set; } = null;
+	public Resources.Mapping.MapMeta MapMeta { get; private set; } = null;
 	
 	public override void _Ready()
 	{
@@ -28,17 +28,8 @@ public partial class Map : Node2D
 	public void Load(MapMeta mapMeta)
 	{
 		State = MapState.Loading;
-		_mapMeta = mapMeta;
-		_mapData = mapMeta.LoadMap();
+		MapMeta = mapMeta;
+		MapData = mapMeta.LoadMap();
 		State = MapState.Done;
-	}
-	
-	public Score PrepareScore()
-	{
-		if (_mapData != null)
-		{
-			return _mapData.PrepareScore();
-		}
-		return null;
 	}
 }
