@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dnasbla8y237b"]
+
+[ext_resource type="Script" uid="uid://sc2tkc7v8ynx" path="res://Source/Components/Counter.cs" id="1_r5n7t"]
+
+[node name="Counter" type="HFlowContainer" unique_id=1657650171]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_r5n7t")
+
+[node name="Icon" type="TextureRect" parent="." unique_id=455288277]
+layout_mode = 2
+
+[node name="Counter" type="Label" parent="." unique_id=1580963442]
+layout_mode = 2
+text = "0"

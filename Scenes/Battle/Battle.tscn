@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://btkp7s5r0ghlj" path="res://Source/Battle/Topnav.cs" id="4_g1sps"]
 [ext_resource type="Script" uid="uid://cyllrcx25ahwo" path="res://Source/Battle/Counting/Counters.cs" id="5_dcr6b"]
 [ext_resource type="Script" uid="uid://bm8cx5a4t7lxw" path="res://Source/Battle/Counting/TimeLeft.cs" id="6_07e4u"]
+[ext_resource type="PackedScene" uid="uid://dnasbla8y237b" path="res://Scenes/Components/Counter.tscn" id="8_cmwrv"]
 
 [node name="Battle" type="Node2D" unique_id=1007953308]
 script = ExtResource("1_ael4v")
@@ -48,6 +49,12 @@ script = ExtResource("5_dcr6b")
 layout_mode = 2
 text = "00:00"
 script = ExtResource("6_07e4u")
+
+[node name="PlayerDeviceCounter" parent="Overlay/Topnav/Counters" unique_id=1657650171 instance=ExtResource("8_cmwrv")]
+layout_mode = 2
+
+[node name="EnemyTargetCount" parent="Overlay/Topnav/Counters" unique_id=1711471450 instance=ExtResource("8_cmwrv")]
+layout_mode = 2
 
 [node name="Title" type="Label" parent="Overlay/Topnav" unique_id=1537213512]
 layout_mode = 2

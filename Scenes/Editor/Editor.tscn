@@ -1,6 +1,32 @@
 [gd_scene format=3 uid="uid://cvu32hyiedc0f"]
 
 [ext_resource type="Script" uid="uid://cwkhkfp23hwbb" path="res://Source/Editor/EditorScene.cs" id="1_tw15f"]
+[ext_resource type="PackedScene" uid="uid://druw1x35jlqnh" path="res://Scenes/Mapping/Map.tscn" id="2_wl3go"]
 
 [node name="Editor" type="Node2D" unique_id=1447607131]
 script = ExtResource("1_tw15f")
+
+[node name="Map" parent="." unique_id=78489391 instance=ExtResource("2_wl3go")]
+
+[node name="Overlay" type="CanvasLayer" parent="." unique_id=582030714]
+
+[node name="Topnav" type="PanelContainer" parent="Overlay" unique_id=2003242073]
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="Title" type="Label" parent="Overlay/Topnav" unique_id=1013530357]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Editor"
+
+[node name="Exit" type="Button" parent="Overlay/Topnav" unique_id=225755349]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Exit
+"
+
+[node name="Export" type="Button" parent="Overlay/Topnav" unique_id=319372866]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Export"
