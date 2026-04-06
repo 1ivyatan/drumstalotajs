@@ -14,12 +14,12 @@ public partial class SceneLayer : Layer
 	[Signal] public delegate void SpawnedTileEventHandler(SceneTile tile);
 	
 	public List<SceneTile> Instances { get; private set; }
-	private Resources.Layers.SceneLayer sceneLayerSet;
+	private Resources.Layers.SceneLayer _sceneLayerSet;
 	
 	public override void _Ready()
 	{
-		sceneLayerSet = TileSet as Resources.Layers.SceneLayer;
-		sceneLayerSet.PrepareAtlas();
+		_sceneLayerSet = TileSet as Resources.Layers.SceneLayer;
+		_sceneLayerSet.PrepareAtlas();
 		Instances = new List<SceneTile>();
 		ChildEnteredTree += (Node node) => {
 			if (node is SceneTile tile)
@@ -38,12 +38,16 @@ public partial class SceneLayer : Layer
 
 	public async Task<SceneTile> AddTile(string name, Vector2I position)
 	{
-		int id = sceneLayerSet.SceneTiles.FirstOrDefault(s => s.Name == name).Id;
+		int id = _sceneLayerSet.SceneTiles.FirstOrDefault(s => s.Name == name).Id;
 		SetCell(position, 0, new Vector2I(0, 0), id);
 		var data = await ToSignal(this, SignalName.SpawnedTile);
 		return (SceneTile)data[0];
 	}
 	
+	public Resources.Mapping.SceneTile[] GetSceneTileAtlas()
+	{
+		return _sceneLayerSet.SceneTiles;
+	}
 	
 	public SceneTile GetTile(Vector2 position)
 	{
