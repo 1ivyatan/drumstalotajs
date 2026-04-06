@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://cwkhkfp23hwbb" path="res://Source/Editor/EditorScene.cs" id="1_tw15f"]
 [ext_resource type="PackedScene" uid="uid://druw1x35jlqnh" path="res://Scenes/Mapping/Map.tscn" id="2_wl3go"]
 [ext_resource type="Script" uid="uid://pojx0xwn06tw" path="res://Source/Components/TileSelectorFolder.cs" id="3_4aan4"]
-[ext_resource type="PackedScene" uid="uid://crtaodpir57ou" path="res://Scenes/Components/TilePicker.tscn" id="3_s7bqi"]
 
 [node name="Editor" type="Node2D" unique_id=1447607131]
 script = ExtResource("1_tw15f")
@@ -41,6 +40,3 @@ grow_vertical = 2
 title = "Scene tiles"
 title_position = 1
 script = ExtResource("3_4aan4")
-
-[node name="TilePicker" parent="Overlay/TileSelectorFolder" unique_id=310915337 instance=ExtResource("3_s7bqi")]
-layout_mode = 2

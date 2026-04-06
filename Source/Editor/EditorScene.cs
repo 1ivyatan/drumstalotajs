@@ -16,7 +16,6 @@ public partial class EditorScene : Node2D
 	private Map Map { get; set; }
 
 	private TileSelectorFolder _tileSelectorFolder;
-	//_tileSelector
 	
 	private Callable _exitPressedCall;
 	private Callable _exportPressedCall;
@@ -32,6 +31,10 @@ public partial class EditorScene : Node2D
 		Map.Mode = MapMode.Edit;
 		Map.Selector.Filter = new SelectorFilter(sceneLayers);
 		_tileSelectorFolder.Load(sceneLayers);
+		
+		_tileSelectorFolder.SelectedTile += (string name) => {
+			GD.Print(name);
+		};
 		
 		exit.Pressed += () =>
 		{
