@@ -6,7 +6,7 @@ namespace Drumstalotajs.Components;
 
 public partial class TileSelectorFolder : Control
 {
-	[Signal] public delegate void SelectedTileEventHandler(string name);
+	[Signal] public delegate void SelectedTileEventHandler(SceneLayer layer, string name);
 	
 	public void Load(SceneLayer[] layers)
 	{
@@ -20,8 +20,8 @@ public partial class TileSelectorFolder : Control
 				picker.AddItem(tile.Name);
 			}
 			
-			picker.SelectedTile += (string name) => {
-				EmitSignal(SignalName.SelectedTile, name);
+			picker.SelectedTile += (SceneLayer layer, string name) => {
+				EmitSignal(SignalName.SelectedTile, layer, name);
 			};
 			
 			count++;

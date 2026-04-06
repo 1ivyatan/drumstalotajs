@@ -32,7 +32,7 @@ public partial class EditorScene : Node2D
 		Map.Selector.Filter = new SelectorFilter(sceneLayers);
 		_tileSelectorFolder.Load(sceneLayers);
 		
-		_tileSelectorFolder.SelectedTile += (string name) => {
+		_tileSelectorFolder.SelectedTile += (SceneLayer layer, string name) => {
 			GD.Print(name);
 		};
 		
