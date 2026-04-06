@@ -14,11 +14,20 @@ public partial class EditorScene : Node2D
 {
 	private Map Map { get; set; }
 	
+	private Callable _exitPressedCall;
+	private Callable _exportPressedCall;
+	private Callable _pressedMapCall;
+	
 	public override void _Ready()
 	{
 		Map = GetNode("Map") as Map;
 		Button exit = GetNode<Button>("Overlay/Topnav/Exit");
 		Button export = GetNode<Button>("Overlay/Topnav/Export");
+		
+		Map.Mode = MapMode.Edit;
+		Map.Selector.Filter = new SelectorFilter([Map.OverlayLayer]);
+		
+		
 		
 		exit.Pressed += () =>
 		{
@@ -30,6 +39,7 @@ public partial class EditorScene : Node2D
 			Export();
 		};
 	}
+	
 	
 	private void Export()
 	{

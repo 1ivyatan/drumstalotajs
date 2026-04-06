@@ -8,29 +8,13 @@ namespace Drumstalotajs.Mapping.Selection;
 
 public partial class Selector : Node2D
 {
-	[Signal] public delegate void PressedOverlayEventHandler(OverlayTile tile);
-	[Signal] public delegate void PressedEmptyEventHandler();
-	
 	public SelectorFilter Filter { get; set; }
-	private Map map { get; set; }
+	public SelectorMode Mode { get; set; } = SelectorMode.Locked;
+	private Map _map { get; set; }
 	
 	public override void _Ready()
 	{
-		map = GetParent() as Map;
-	}
-	
-	public override void _UnhandledInput(InputEvent @event)
-	{
-		if (@event is InputEventMouse mouse)
-		{
-			if (mouse is InputEventMouseButton mouseClick)
-			{
-				if (mouseClick.Pressed)
-				{
-					Flash(GetLocalMousePosition());
-				}
-			}
-		}
+		_map = GetParent() as Map;
 	}
 	
 	public void Flash(Vector2 localPosition)
@@ -57,7 +41,4 @@ public partial class Selector : Node2D
 			EmitSignal(SignalName.PressedEmpty);
 		}
 	}
-}/*
-namespace Drumstalotajs.Mapping.Layers;
-
-public partial class GroundLayer : Layer*/
+}

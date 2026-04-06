@@ -14,6 +14,7 @@ public partial class DevicePlacement : Control
 	{
 		BattleScene root = Nodes.GetSceneRoot();
 		_map = root.Map;
+		_map.Mode = MapMode.HiddenInteractable;
 		_map.Selector.Filter = new SelectorFilter([_map.OverlayLayer]);
 		root.Topnav.SetTitle("Device placement");
 	}
