@@ -50,8 +50,9 @@ public partial class SceneLayer : Layer
 		return Instances.FirstOrDefault(i => position == LocalToMap(position));
 	}
 	
-	public SceneTile[] Flash(Vector2 localPosition, int limit)
+	public Godot.Collections.Array<SceneTile> Flash(Vector2 localPosition, int limit)
 	{
+		Godot.Collections.Array<SceneTile> tiles = new Godot.Collections.Array<SceneTile>(); 
 		var spaceState = GetWorld2D().DirectSpaceState;
 		PhysicsPointQueryParameters2D query = new PhysicsPointQueryParameters2D();
 		query.Position = GlobalPosition + localPosition;
@@ -59,7 +60,6 @@ public partial class SceneLayer : Layer
 		var intersectedNodes = spaceState.IntersectPoint(query, limit);
 		if (intersectedNodes.Count > 0)
 		{
-			List<SceneTile> tiles = new List<SceneTile>(); 
 			foreach (var node in intersectedNodes)
 			{
 				Node2D collider = (Node2D)node["collider"];
@@ -70,44 +70,12 @@ public partial class SceneLayer : Layer
 			}
 			if (tiles.Count > 0)
 			{
-				return tiles.OrderBy(tile => {
+				tiles.OrderBy(tile => {
 					return localPosition.DistanceTo(tile.Position);
-				}).ToArray();
-			} else
-			{
-				return [];
-			}
-		}
-		return [];
-	}
-	/*
-		var spaceState = GetWorld2D().DirectSpaceState;
-		PhysicsPointQueryParameters2D query = new PhysicsPointQueryParameters2D();
-		query.Position = GlobalPosition + localPos;
-		query.CollideWithAreas = true;
-		var intersectedNodes = spaceState.IntersectPoint(query, limit);
-		if (intersectedNodes.Count > 0)
-		{
-			List<Entities.Entity> entities = new List<Entities.Entity>(); 
-			foreach (var node in intersectedNodes)
-			{
-				Node2D collider = (Node2D)node["collider"];
-				if (collider is Entities.Entity entity)
-				{
-					entities.Add(entity);
-				}
-			}
-			
-			if (entities.Count > 0)
-			{
-				return entities.OrderBy(entity => {
-					return localPos.DistanceTo(entity.Position);
-				}).ToArray();
-			} else
-			{
-				return [];
+				});
 			}
 		}
 		
-		return [];*/
+		return tiles;
+	}
 }

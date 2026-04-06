@@ -3,8 +3,6 @@ using System;
 
 namespace Drumstalotajs.Mapping.Selection;
 
-//public partial class Utils : Node
-
 public partial class Selector : Node2D
 {
 	public Vector2 GetMousePosition()

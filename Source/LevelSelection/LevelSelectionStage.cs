@@ -40,11 +40,16 @@ public partial class LevelSelectionStage : Node2D
 		};
 
 		Map.Selector.Filter = new SelectorFilter([Map.OverlayLayer]);
-		Map.Selector.PressedOverlay += (OverlayTile tile) => {
-			LevelInfoContainer.Open((tile as LevelMarker).Props, LevelProgress.GetScore((tile as LevelMarker).Props));
+		
+		Map.Selector.ClickedSceneTiles += (FilteredTiles tiles) => {
+			if (tiles.ContainsKey(Map.OverlayLayer) && tiles[Map.OverlayLayer].Count > 0)
+			{
+				var tileProps = (tiles[Map.OverlayLayer][0] as LevelMarker).Props;
+				LevelInfoContainer.Open(tileProps, LevelProgress.GetScore(tileProps));
+			}
 		};
 
-		Map.Selector.PressedEmpty += () => {
+		Map.Selector.ClickedEmpty += () => {
 			if (LevelInfoContainer.Visible)
 			{
 				LevelInfoContainer.Close();

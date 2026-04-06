@@ -2,15 +2,13 @@ using Godot;
 using System;
 using Drumstalotajs.Mapping;
 using Drumstalotajs.Mapping.Layers;
+using Drumstalotajs.Mapping.Tiles;
 using Drumstalotajs.Mapping.Tiles.Overlays;
 
 namespace Drumstalotajs.Mapping.Selection;
 
 public partial class Selector : Node2D
 {
-	[Signal] public delegate void HoveredTileEventHandler(Vector2I position);
-	[Signal] public delegate void PressedOverlayEventHandler(OverlayTile tile);
-	[Signal] public delegate void PressedEmptyEventHandler();
 	
 	private Vector2I _currentPosition;
 	
@@ -42,4 +40,5 @@ public partial class Selector : Node2D
 			Flash(GetMousePosition());
 		}
 	}
+	
 }
