@@ -40,15 +40,9 @@ public partial class EditorScene : Node2D
 					else await (_selectedTileData.Layer as SceneLayer).AddTile(
 						pos, _selectedTileData.Name
 					);
-					
-					/*if (isTile) Map.AddTile(_selectedTileData.Layer, Map.MouseToCellPosition(),  Types.StringToVector2I(_selectedTileData.Name));
-					else Map.AddSceneTile((_selectedTileData.Layer as SceneLayer), Map.MouseToCellPosition(), _selectedTileData.Name);*/
 				} else if (_mouseLeftPressed)
 				{
-					if (isTile) _selectedTileData.Layer.RemoveTile(pos);
-					//else 
-					/*if (isTile) Map.RemoveTile(_selectedTileData.Layer, Map.MouseToCellPosition());
-					else Map.RemoveSceneTile((_selectedTileData.Layer as SceneLayer), Map.MouseToCellPosition());*/
+					_selectedTileData.Layer.RemoveTile(pos);
 				}
 			}
 		}

@@ -12,6 +12,7 @@ namespace Drumstalotajs.Mapping.Layers;
 public partial class SceneLayer : Layer, ILayer<Resources.Mapping.SceneTile>
 {
 	[Signal] public delegate void SpawnedTileEventHandler(SceneTile tile);
+	[Signal] public delegate void DestroyedTileEventHandler(SceneTile tile);
 	
 	public List<SceneTile> Instances { get; private set; }
 	private Resources.Layers.SceneLayer _sceneLayerSet;
@@ -32,6 +33,7 @@ public partial class SceneLayer : Layer, ILayer<Resources.Mapping.SceneTile>
 			if (node is SceneTile tile)
 			{
 				Instances.Remove(tile);
+				EmitSignal(SignalName.DestroyedTile, tile);
 			}
 		};
 	}
@@ -42,6 +44,11 @@ public partial class SceneLayer : Layer, ILayer<Resources.Mapping.SceneTile>
 		SetCell(position, 0, new Vector2I(0, 0), id);
 		var data = await ToSignal(this, SignalName.SpawnedTile);
 		return (SceneTile)data[0];
+	}
+	
+	public void RemoveTile(Vector2I position)
+	{
+		EraseCell(position);
 	}
 	
 	new public Resources.Mapping.SceneTile[] GetAtlas()
