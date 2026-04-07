@@ -48,44 +48,11 @@ public partial class Map : Node2D
 		Selector = GetNode("Selector") as Selector;
 	}
 	
-	public void AddTile(Layer layer, Vector2I position, Vector2I atlasCoords)
-	{
-		layer.SetCell(position, 0, atlasCoords, 0);
-	}
-	
-	public void RemoveTile(Layer layer, Vector2I position)
-	{
-		layer.EraseCell(position);
-	}
-	
-	public void AddSceneTile(SceneLayer layer, Vector2I position, string name)
-	{
-		
-	}
-	
-	public void RemoveSceneTile(SceneLayer layer, Vector2I position)
-	{
-		
-	}
-	
 	public void Load(MapMeta mapMeta)
 	{
 		State = MapState.Loading;
 		MapMeta = mapMeta;
 		MapData = mapMeta.LoadMap();
 		State = MapState.Done;
-	}
-	
-	public Vector2 MouseToLocalPosition()
-	{
-		/* vvvvvvvvvvvvvv */ //GroundLayer
-		return GetLocalMousePosition();
-	}
-	
-	public Vector2I MouseToCellPosition()
-	{
-		/* vvvvvvvvvvvvvv */ //GroundLayer
-		Vector2 localPos = MouseToLocalPosition();
-		return GroundLayer.LocalToMap(localPos);
 	}
 }

@@ -19,6 +19,17 @@ public partial class Layer : TileMapLayer, ILayer<Vector2I>
 		return tileAtlas;
 	}
 	
+	public void AddTile(Vector2I position, Vector2I atlasCoords)
+	{
+		SetCell(position, 0, atlasCoords, 0);
+	}
+	
+	public void RemoveTile(Vector2I position)
+	{
+		EraseCell(position);
+	}
+	
+	
 	/*
 	new public async Task<SceneTile> AddTile(string name, Vector2I position)
 	{

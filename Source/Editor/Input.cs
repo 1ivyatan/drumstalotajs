@@ -32,12 +32,21 @@ public partial class EditorScene : Node2D
 				
 				if (_mouseRightPressed)
 				{
-					if (isTile) Map.AddTile(_selectedTileData.Layer, Map.MouseToCellPosition(),  Types.StringToVector2I(_selectedTileData.Name));
-					else Map.AddSceneTile((_selectedTileData.Layer as SceneLayer), Map.MouseToCellPosition(), _selectedTileData.Name);
+					if (isTile) _selectedTileData.Layer.AddTile(
+						Map.Selector.GetMousePositionTile(),
+						Types.StringToVector2I(_selectedTileData.Name)
+					);
+					
+					/*if (isTile) Map.AddTile(_selectedTileData.Layer, Map.MouseToCellPosition(),  Types.StringToVector2I(_selectedTileData.Name));
+					else Map.AddSceneTile((_selectedTileData.Layer as SceneLayer), Map.MouseToCellPosition(), _selectedTileData.Name);*/
 				} else if (_mouseLeftPressed)
 				{
-					if (isTile) Map.RemoveTile(_selectedTileData.Layer, Map.MouseToCellPosition());
-					else Map.RemoveSceneTile((_selectedTileData.Layer as SceneLayer), Map.MouseToCellPosition());
+					if (isTile) _selectedTileData.Layer.RemoveTile(
+						Map.Selector.GetMousePositionTile()
+					);
+					
+					/*if (isTile) Map.RemoveTile(_selectedTileData.Layer, Map.MouseToCellPosition());
+					else Map.RemoveSceneTile((_selectedTileData.Layer as SceneLayer), Map.MouseToCellPosition());*/
 				}
 			}
 		}

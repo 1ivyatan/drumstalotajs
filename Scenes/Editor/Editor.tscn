@@ -47,3 +47,8 @@ _tilePickerScene = ExtResource("4_4aan4")
 [node name="VBoxContainer" type="VBoxContainer" parent="Overlay/TilePickerContainer" unique_id=1951866293]
 visible = false
 layout_mode = 2
+
+[node name="DeselectButton" type="Button" parent="Overlay/TilePickerContainer/VBoxContainer" unique_id=2059067307]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Deselect"
