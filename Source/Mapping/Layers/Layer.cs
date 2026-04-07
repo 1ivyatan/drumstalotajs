@@ -18,4 +18,19 @@ public partial class Layer : TileMapLayer, ILayer<Vector2I>
 		}
 		return tileAtlas;
 	}
+	
+	public void AddTile(Vector2I atlasCoords, Vector2I position)
+	{
+		SetCell(position, 0, atlasCoords, 0);
+	}
+	
+	/*
+	new public async Task<SceneTile> AddTile(string name, Vector2I position)
+	{
+		int id = _sceneLayerSet.SceneTiles.FirstOrDefault(s => s.Name == name).Id;
+		SetCell(position, 0, new Vector2I(0, 0), id);
+		var data = await ToSignal(this, SignalName.SpawnedTile);
+		return (SceneTile)data[0];
+	}*/
+	
 }

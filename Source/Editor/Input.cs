@@ -27,12 +27,20 @@ public partial class EditorScene : Node2D
 				_mouseRightPressed = mouseButton.Pressed && mouseButton.ButtonIndex == MouseButton.Right;
 			}
 			
+			/*fix this!!!!*/
 			if (_mouseRightPressed && _selectedTileData != null)
 			{
-				GD.Print("drag!");
+				if (Types.ValidVector2I(_selectedTileData.Name))
+				{
+					Map.AddTile(_selectedTileData.Layer, Types.StringToVector2I(_selectedTileData.Name));
+					
+				} else
+				{
+					Map.AddSceneTile(_selectedTileData.Layer, _selectedTileData.Name);
+				}
 			} else if (_mouseLeftPressed && _selectedTileData != null)
 			{
-				GD.Print("deleting!");
+				//GD.Print("deleting!");
 			}
 		}
 	}

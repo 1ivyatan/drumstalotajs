@@ -17,6 +17,7 @@ public partial class TilePickerContainer : Control
 		foreach (Layer layer in layers)
 		{
 			TilePicker picker = _tilePickerScene.Instantiate() as TilePicker;
+			picker.SetLayer(layer);
 			
 			if (layer is SceneLayer)
 			{

@@ -48,6 +48,16 @@ public partial class Map : Node2D
 		Selector = GetNode("Selector") as Selector;
 	}
 	
+	public void AddTile(Layer layer, Vector2I atlasCoords)
+	{
+		
+	}
+	
+	public void AddSceneTile(Layer layer, string name)
+	{
+		
+	}
+	
 	public void Load(MapMeta mapMeta)
 	{
 		State = MapState.Loading;
