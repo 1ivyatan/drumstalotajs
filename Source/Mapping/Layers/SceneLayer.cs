@@ -9,7 +9,7 @@ using Drumstalotajs.Mapping.Tiles;
 
 namespace Drumstalotajs.Mapping.Layers;
 
-public partial class SceneLayer : Layer
+public partial class SceneLayer : Layer, ILayer<Resources.Mapping.SceneTile>
 {
 	[Signal] public delegate void SpawnedTileEventHandler(SceneTile tile);
 	
@@ -42,6 +42,11 @@ public partial class SceneLayer : Layer
 		SetCell(position, 0, new Vector2I(0, 0), id);
 		var data = await ToSignal(this, SignalName.SpawnedTile);
 		return (SceneTile)data[0];
+	}
+	
+	new public Resources.Mapping.SceneTile[] GetAtlas()
+	{
+		return _sceneLayerSet.SceneTiles;
 	}
 	
 	public Resources.Mapping.SceneTile[] GetSceneTileAtlas()

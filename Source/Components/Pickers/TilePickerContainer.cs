@@ -6,18 +6,30 @@ namespace Drumstalotajs.Components.Pickers;
 
 public partial class TilePickerContainer : Control
 {
+	[Export] private PackedScene _tilePickerScene;
+	
 	[Signal] public delegate void SelectedTileEventHandler(SelectedTileData selectedTile);
 	
-	public void Load(SceneLayer[] layers)
+	public void Load(Layer[] layers)
 	{
+		VBoxContainer container = GetNode<VBoxContainer>("VBoxContainer");
 		int count = 0;
-		foreach (SceneLayer layer in layers)
+		foreach (Layer layer in layers)
 		{
-			TilePicker picker = new TilePicker();
+			TilePicker picker = _tilePickerScene.Instantiate() as TilePicker;
 			
-			foreach (var tile in layer.GetSceneTileAtlas())
+			if (layer is SceneLayer)
 			{
-				picker.AddItem(tile.Name);
+				foreach (var tile in (layer as SceneLayer).GetAtlas())
+				{
+					picker.AddItem(tile.Name);
+				}
+			} else
+			{
+				foreach (var tile in layer.GetAtlas())
+				{
+					picker.AddItem(tile.ToString());
+				}
 			}
 			
 			picker.SelectedTile += (SelectedTileData selectedTile) => {
@@ -28,10 +40,10 @@ public partial class TilePickerContainer : Control
 			
 			if (count > 1)
 			{ 
-				AddChild(new HSeparator());
+				container.AddChild(new HSeparator());
 			}
 			
-			AddChild(picker);
+			container.AddChild(picker);
 		}
 	}
 }

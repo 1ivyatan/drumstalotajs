@@ -8,7 +8,7 @@ public partial class TilePicker : ItemList
 {
 	[Signal] public delegate void SelectedTileEventHandler(SelectedTileData selectedTile);
 	
-	private SceneLayer Layer { get; set; }
+	private Layer Layer { get; set; }
 	
 	public override void _Ready()
 	{
@@ -18,7 +18,7 @@ public partial class TilePicker : ItemList
 		};
 	}
 	
-	public void SetLayer(SceneLayer layer)
+	public void SetLayer(Layer layer)
 	{
 		Layer = layer;
 	}

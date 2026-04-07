@@ -28,13 +28,13 @@ public partial class EditorScene : Node2D
 		_tilePickerContainer = GetNode("Overlay/TilePickerContainer") as TilePickerContainer;
 		Button exit = GetNode<Button>("Overlay/Topnav/Exit");
 		Button export = GetNode<Button>("Overlay/Topnav/Export");
-		SceneLayer[] sceneLayers = [Map.OverlayLayer];
+		Layer[] sceneLayers = [Map.GroundLayer, Map.OverlayLayer];
 		Map.Mode = MapMode.Edit;
 		Map.Selector.Filter = new SelectorFilter(sceneLayers);
 		_tilePickerContainer.Load(sceneLayers);
 		
 		_tilePickerContainer.SelectedTile += (SelectedTileData selectedTile) => {
-			GD.Print(selectedTile);
+			GD.Print(selectedTile.Name);
 		};
 		
 		exit.Pressed += () =>
