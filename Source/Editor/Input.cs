@@ -16,7 +16,7 @@ public partial class EditorScene : Node2D
 	private bool _mouseRightPressed = false;
 	private SelectedTileData _selectedTileData = null;
 	
-	public override void _UnhandledInput(InputEvent @event)
+	public async override void _UnhandledInput(InputEvent @event)
 	{
 		if (@event is InputEventMouse mouseEvent)
 		{
@@ -29,22 +29,24 @@ public partial class EditorScene : Node2D
 			if (_selectedTileData != null)
 			{
 				bool isTile = Types.ValidVector2I(_selectedTileData.Name);
+				Vector2I pos = Map.Selector.GetMousePositionTile();
 				
 				if (_mouseRightPressed)
 				{
 					if (isTile) _selectedTileData.Layer.AddTile(
-						Map.Selector.GetMousePositionTile(),
+						pos,
 						Types.StringToVector2I(_selectedTileData.Name)
+					);
+					else await (_selectedTileData.Layer as SceneLayer).AddTile(
+						pos, _selectedTileData.Name
 					);
 					
 					/*if (isTile) Map.AddTile(_selectedTileData.Layer, Map.MouseToCellPosition(),  Types.StringToVector2I(_selectedTileData.Name));
 					else Map.AddSceneTile((_selectedTileData.Layer as SceneLayer), Map.MouseToCellPosition(), _selectedTileData.Name);*/
 				} else if (_mouseLeftPressed)
 				{
-					if (isTile) _selectedTileData.Layer.RemoveTile(
-						Map.Selector.GetMousePositionTile()
-					);
-					
+					if (isTile) _selectedTileData.Layer.RemoveTile(pos);
+					//else 
 					/*if (isTile) Map.RemoveTile(_selectedTileData.Layer, Map.MouseToCellPosition());
 					else Map.RemoveSceneTile((_selectedTileData.Layer as SceneLayer), Map.MouseToCellPosition());*/
 				}

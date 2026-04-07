@@ -36,7 +36,7 @@ public partial class SceneLayer : Layer, ILayer<Resources.Mapping.SceneTile>
 		};
 	}
 
-	public async Task<SceneTile> AddTile(string name, Vector2I position)
+	public async Task<SceneTile> AddTile(Vector2I position, string name)
 	{
 		int id = _sceneLayerSet.SceneTiles.FirstOrDefault(s => s.Name == name).Id;
 		SetCell(position, 0, new Vector2I(0, 0), id);

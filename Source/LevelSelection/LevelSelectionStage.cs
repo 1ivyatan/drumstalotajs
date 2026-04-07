@@ -29,7 +29,7 @@ public partial class LevelSelectionStage : Node2D
 
 		foreach (var level in LevelSet.Levels)
 		{
-			LevelMarker tile = await Map.OverlayLayer.AddTile("LevelMarker", level.Position) as LevelMarker;
+			LevelMarker tile = await Map.OverlayLayer.AddTile(level.Position, "LevelMarker") as LevelMarker;
 			tile.Initialize(level);
 		}
 		
