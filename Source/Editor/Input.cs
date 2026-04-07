@@ -12,31 +12,29 @@ namespace Drumstalotajs.Editor;
 
 public partial class EditorScene : Node2D
 {
-	private bool _pressed = false;
-	private bool _echo = false;
+	private bool _mouseLeftPressed = false;
+	private bool _mouseRightPressed = false;
+	private SelectedTileData _selectedTileData = null;
 	//private SceneTile _paintingTile = false;
 	
 	public override void _UnhandledInput(InputEvent @event)
 	{
-		if (@event is InputEventKey keyboardEvent)
+		if (@event is InputEventMouse mouseEvent)
 		{
-			_pressed = keyboardEvent.Pressed;
-			_echo = keyboardEvent.Echo;
-		} 
-		
-		if (@event is InputEventAction actionEvent)
-		{
-			if (@event.IsActionPressed("editor_next_overlay"))
+			if (mouseEvent is InputEventMouseButton mouseButton)
 			{
-				if (_pressed && !_echo)
-				{
-					//_paintingTile = 
-				}
-				
-			//	NextSceneTile(Map.OverlayLayer, Map.Selector.GetMousePositionTile());
+				_mouseLeftPressed = mouseButton.Pressed && mouseButton.ButtonIndex == MouseButton.Left;
+				_mouseRightPressed = mouseButton.Pressed && mouseButton.ButtonIndex == MouseButton.Right;
+			}
+			
+			if (_mouseRightPressed && _selectedTileData != null)
+			{
+				GD.Print("drag!");
+			} else if (_mouseLeftPressed && _selectedTileData != null)
+			{
+				GD.Print("deleting!");
 			}
 		}
-	//	GD.Print($"{_pressed} - {_echo}");
 	}
 	
 	private void NextSceneTile(SceneLayer layer, Vector2I cellPosition)

@@ -34,7 +34,7 @@ public partial class EditorScene : Node2D
 		_tilePickerContainer.Load(sceneLayers);
 		
 		_tilePickerContainer.SelectedTile += (SelectedTileData selectedTile) => {
-			GD.Print(selectedTile.Name);
+			_selectedTileData = selectedTile;
 		};
 		
 		exit.Pressed += () =>
