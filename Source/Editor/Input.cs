@@ -15,7 +15,6 @@ public partial class EditorScene : Node2D
 	private bool _mouseLeftPressed = false;
 	private bool _mouseRightPressed = false;
 	private SelectedTileData _selectedTileData = null;
-	//private SceneTile _paintingTile = false;
 	
 	public override void _UnhandledInput(InputEvent @event)
 	{
@@ -27,20 +26,19 @@ public partial class EditorScene : Node2D
 				_mouseRightPressed = mouseButton.Pressed && mouseButton.ButtonIndex == MouseButton.Right;
 			}
 			
-			/*fix this!!!!*/
-			if (_mouseRightPressed && _selectedTileData != null)
+			if (_selectedTileData != null)
 			{
-				if (Types.ValidVector2I(_selectedTileData.Name))
+				bool isTile = Types.ValidVector2I(_selectedTileData.Name);
+				
+				if (_mouseRightPressed)
 				{
-					Map.AddTile(_selectedTileData.Layer, Types.StringToVector2I(_selectedTileData.Name));
-					
-				} else
+					if (isTile) Map.AddTile(_selectedTileData.Layer, Map.MouseToCellPosition(),  Types.StringToVector2I(_selectedTileData.Name));
+					else Map.AddSceneTile((_selectedTileData.Layer as SceneLayer), Map.MouseToCellPosition(), _selectedTileData.Name);
+				} else if (_mouseLeftPressed)
 				{
-					Map.AddSceneTile(_selectedTileData.Layer, _selectedTileData.Name);
+					if (isTile) Map.RemoveTile(_selectedTileData.Layer, Map.MouseToCellPosition());
+					else Map.RemoveSceneTile((_selectedTileData.Layer as SceneLayer), Map.MouseToCellPosition());
 				}
-			} else if (_mouseLeftPressed && _selectedTileData != null)
-			{
-				//GD.Print("deleting!");
 			}
 		}
 	}
