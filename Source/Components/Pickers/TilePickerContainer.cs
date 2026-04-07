@@ -2,11 +2,11 @@ using Godot;
 using System;
 using Drumstalotajs.Mapping.Layers;
 
-namespace Drumstalotajs.Components;
+namespace Drumstalotajs.Components.Pickers;
 
-public partial class TileSelectorFolder : Control
+public partial class TilePickerContainer : Control
 {
-	[Signal] public delegate void SelectedTileEventHandler(SceneLayer layer, string name);
+	[Signal] public delegate void SelectedTileEventHandler(SelectedTileData selectedTile);
 	
 	public void Load(SceneLayer[] layers)
 	{
@@ -20,8 +20,8 @@ public partial class TileSelectorFolder : Control
 				picker.AddItem(tile.Name);
 			}
 			
-			picker.SelectedTile += (SceneLayer layer, string name) => {
-				EmitSignal(SignalName.SelectedTile, layer, name);
+			picker.SelectedTile += (SelectedTileData selectedTile) => {
+				EmitSignal(SignalName.SelectedTile, selectedTile);
 			};
 			
 			count++;

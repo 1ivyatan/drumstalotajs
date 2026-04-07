@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://crtaodpir57ou"]
 
-[ext_resource type="Script" uid="uid://dwybd1andswxr" path="res://Source/Components/TilePicker.cs" id="1_qv4pa"]
+[ext_resource type="Script" uid="uid://dwybd1andswxr" path="res://Source/Components/Pickers/TilePicker.cs" id="1_qv4pa"]
 
 [node name="TilePicker" type="ItemList" unique_id=310915337]
 anchors_preset = 15
