@@ -40,36 +40,33 @@ public partial class EditorScene : Node2D
 				bool isTile = Types.ValidVector2I(_selectedTileData.Name);
 				Vector2I pos = Map.Selector.GetMousePositionTile();
 				
-				if (_mouseRightPressed)
-				{
-					if (isTile) _selectedTileData.Layer.AddTile(
-						pos,
-						Types.StringToVector2I(_selectedTileData.Name)
-					);
-					else await (_selectedTileData.Layer as SceneLayer).AddTile(
-						pos, _selectedTileData.Name
-					);
-				} else if (_mouseLeftPressed)
-				{
-					_selectedTileData.Layer.RemoveTile(pos);
-				}
+				
 			}*/
 		}
 		
-		switch ()
+		switch (Mode)
 		{
-			
+			case EditMode.Insert:
+				if (_selectedTileData != null)
+				{
+					bool isTile = Types.ValidVector2I(_selectedTileData.Name);
+					Vector2I pos = Map.Selector.GetMousePositionTile();					
+					if (_mouseRightPressed)
+					{
+						if (isTile) _selectedTileData.Layer.AddTile(
+							pos,
+							Types.StringToVector2I(_selectedTileData.Name)
+						);
+						else await (_selectedTileData.Layer as SceneLayer).AddTile(
+							pos, _selectedTileData.Name
+						);
+					} else if (_mouseLeftPressed)
+					{
+						_selectedTileData.Layer.RemoveTile(pos);
+					}
+				}
+				break;
+			default: break;
 		}
-		
-		
-		
-	}
-	
-	private void NextSceneTile(SceneLayer layer, Vector2I cellPosition)
-	{
-		Vector2 localPosCentered = layer.MapToLocal(cellPosition);
-		var tiles = layer.Flash(localPosCentered, 1);
-		
-		GD.Print(tiles);
 	}
 }
