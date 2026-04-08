@@ -44,13 +44,24 @@ public partial class EditorScene : Node2D
 			}*/
 		}
 		
+		Vector2I pos = Map.Selector.GetMousePositionTile();
+		
 		switch (Mode)
 		{
+			case EditMode.Edit:
+				
+				if (_mouseRightPressed)
+				{
+					_tileEditContainer.Open(pos);
+				} else if (_mouseLeftPressed)
+				{
+					_tileEditContainer.Close();
+				}
+				break;
 			case EditMode.Insert:
 				if (_selectedTileData != null)
 				{
 					bool isTile = Types.ValidVector2I(_selectedTileData.Name);
-					Vector2I pos = Map.Selector.GetMousePositionTile();					
 					if (_mouseRightPressed)
 					{
 						if (isTile) _selectedTileData.Layer.AddTile(

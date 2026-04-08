@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://pojx0xwn06tw" path="res://Source/Components/Pickers/TilePickerContainer.cs" id="3_4aan4"]
 [ext_resource type="PackedScene" uid="uid://crtaodpir57ou" path="res://Scenes/Components/TilePicker.tscn" id="4_4aan4"]
 [ext_resource type="Script" uid="uid://dnk0ngkfwtw36" path="res://Source/Editor/ModeContainer.cs" id="5_shl5k"]
+[ext_resource type="Script" uid="uid://csfwss1usmoqp" path="res://Source/Editor/TileEditing/TileEditContainer.cs" id="6_u75kh"]
 
 [node name="Editor" type="Node2D" unique_id=1447607131]
 script = ExtResource("1_tw15f")
@@ -62,3 +63,26 @@ script = ExtResource("5_shl5k")
 [node name="Label" type="Label" parent="Overlay/ModeContainer" unique_id=1923550446]
 layout_mode = 2
 text = "Mode: Idle"
+
+[node name="TileEditContainer" type="PanelContainer" parent="Overlay" unique_id=550028075]
+visible = false
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+script = ExtResource("6_u75kh")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Overlay/TileEditContainer" unique_id=269399559]
+layout_mode = 2
+
+[node name="GroundEditor" type="VBoxContainer" parent="Overlay/TileEditContainer/VBoxContainer" unique_id=166869587]
+layout_mode = 2
+
+[node name="EntityEditor" type="VBoxContainer" parent="Overlay/TileEditContainer/VBoxContainer" unique_id=653820881]
+layout_mode = 2

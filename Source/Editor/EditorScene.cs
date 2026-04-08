@@ -9,6 +9,7 @@ using Drumstalotajs.Mapping.Layers;
 using Drumstalotajs.Resources.Progress;
 using Drumstalotajs.Components;
 using Drumstalotajs.Components.Pickers;
+using Drumstalotajs.Editor.TileEditing;
 
 namespace Drumstalotajs.Editor;
 
@@ -24,6 +25,7 @@ public partial class EditorScene : Node2D
 	private Map Map { get; set; }
 	private TilePickerContainer _tilePickerContainer;
 	private ModeContainer _modeContainer;
+	private TileEditContainer _tileEditContainer;
 	
 	private Callable _exitPressedCall;
 	private Callable _exportPressedCall;
@@ -34,6 +36,7 @@ public partial class EditorScene : Node2D
 		Map = GetNode("Map") as Map;
 		_tilePickerContainer = GetNode("Overlay/TilePickerContainer") as TilePickerContainer;
 		_modeContainer = GetNode("Overlay/ModeContainer") as ModeContainer;
+		_tileEditContainer = GetNode("Overlay/TileEditContainer") as TileEditContainer;
 		Button exit = GetNode<Button>("Overlay/Topnav/Exit");
 		Button export = GetNode<Button>("Overlay/Topnav/Export");
 		Layer[] sceneLayers = [Map.GroundLayer, Map.OverlayLayer];

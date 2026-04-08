@@ -46,11 +46,6 @@ public partial class SceneLayer : Layer, ILayer<Resources.Mapping.SceneTile>
 		return (SceneTile)data[0];
 	}
 	
-	public void RemoveTile(Vector2I position)
-	{
-		EraseCell(position);
-	}
-	
 	new public Resources.Mapping.SceneTile[] GetAtlas()
 	{
 		return _sceneLayerSet.SceneTiles;
