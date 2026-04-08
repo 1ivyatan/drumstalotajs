@@ -5,7 +5,7 @@ using Drumstalotajs.Mapping;
 
 namespace Drumstalotajs.Editor.TileEditing;
 
-public partial class GroundEditor : Control
+public partial class GroundEditor : Control, ITileEditorWindow<Vector2I>
 {
 	private Map _map;
 	private Label _relHeight;
