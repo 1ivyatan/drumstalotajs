@@ -21,8 +21,8 @@ public partial class EditorScene : Node2D
 			_modeContainer.SetModeText(value);
 		}
 	} = EditMode.Idle;
+	public Map Map { get; private set; }
 	
-	private Map Map { get; set; }
 	private TilePickerContainer _tilePickerContainer;
 	private ModeContainer _modeContainer;
 	private TileEditContainer _tileEditContainer;

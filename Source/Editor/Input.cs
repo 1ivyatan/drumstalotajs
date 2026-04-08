@@ -33,15 +33,6 @@ public partial class EditorScene : Node2D
 				_mouseLeftPressed = mouseButton.Pressed && mouseButton.ButtonIndex == MouseButton.Left;
 				_mouseRightPressed = mouseButton.Pressed && mouseButton.ButtonIndex == MouseButton.Right;
 			}
-			
-			/*
-			if (_selectedTileData != null)
-			{
-				bool isTile = Types.ValidVector2I(_selectedTileData.Name);
-				Vector2I pos = Map.Selector.GetMousePositionTile();
-				
-				
-			}*/
 		}
 		
 		Vector2I pos = Map.Selector.GetMousePositionTile();

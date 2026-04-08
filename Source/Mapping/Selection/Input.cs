@@ -35,7 +35,7 @@ public partial class Selector : Node2D
 	
 	private void HandleClick(InputEventMouseButton inputEventMouse)
 	{
-		if (inputEventMouse.Pressed)
+		if (inputEventMouse.Pressed && inputEventMouse.ButtonIndex == MouseButton.Left)
 		{
 			Flash(GetMousePosition());
 		}

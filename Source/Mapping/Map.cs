@@ -55,4 +55,9 @@ public partial class Map : Node2D
 		MapData = mapMeta.LoadMap();
 		State = MapState.Done;
 	}
+	
+	public bool IsEmptyTile(Vector2I position)
+	{
+		return GroundLayer.GetCellAtlasCoords(position) == new Vector2I(-1, -1);
+	}
 }
