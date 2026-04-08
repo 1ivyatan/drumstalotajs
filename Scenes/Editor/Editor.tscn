@@ -91,6 +91,23 @@ script = ExtResource("7_ghgdu")
 layout_mode = 2
 text = "Ground tile"
 
+[node name="HeightEditor" type="HBoxContainer" parent="Overlay/TileEditContainer/VBoxContainer/GroundEditor" unique_id=1045778120]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Overlay/TileEditContainer/VBoxContainer/GroundEditor/HeightEditor" unique_id=1267177200]
+layout_mode = 2
+text = "Height:"
+
+[node name="RelHeight" type="Label" parent="Overlay/TileEditContainer/VBoxContainer/GroundEditor/HeightEditor" unique_id=1043979374]
+layout_mode = 2
+text = "0+"
+
+[node name="HeightChanger" type="SpinBox" parent="Overlay/TileEditContainer/VBoxContainer/GroundEditor/HeightEditor" unique_id=1187902002]
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="Overlay/TileEditContainer/VBoxContainer" unique_id=395443004]
+layout_mode = 2
+
 [node name="EntityEditor" type="VBoxContainer" parent="Overlay/TileEditContainer/VBoxContainer" unique_id=653820881]
 layout_mode = 2
 script = ExtResource("8_wwjnl")
@@ -98,3 +115,13 @@ script = ExtResource("8_wwjnl")
 [node name="Title" type="Label" parent="Overlay/TileEditContainer/VBoxContainer/EntityEditor" unique_id=320374243]
 layout_mode = 2
 text = "Entity tile"
+
+[node name="AzimuthEditor" type="HBoxContainer" parent="Overlay/TileEditContainer/VBoxContainer/EntityEditor" unique_id=1296994058]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Overlay/TileEditContainer/VBoxContainer/EntityEditor/AzimuthEditor" unique_id=430193299]
+layout_mode = 2
+text = "Azimuth:"
+
+[node name="AzimuthEditor" type="SpinBox" parent="Overlay/TileEditContainer/VBoxContainer/EntityEditor/AzimuthEditor" unique_id=1082230495]
+layout_mode = 2
