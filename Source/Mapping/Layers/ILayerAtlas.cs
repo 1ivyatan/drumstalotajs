@@ -3,7 +3,7 @@ using System;
 
 namespace Drumstalotajs.Mapping.Layers;
 
-public interface ILayer<T>
+public interface ILayerAtlas<T>
 {
 	public T[] GetAtlas();
 }

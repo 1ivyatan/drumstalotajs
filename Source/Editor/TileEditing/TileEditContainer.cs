@@ -22,7 +22,7 @@ public partial class TileEditContainer : Control
 	{
 		_map = Nodes.GetSceneRoot().Map;
 		if (_map.IsEmptyTile(position)) return;
-		
+		_groundEditor.Load(position);
 		
 		
 		Visible = true;

@@ -104,6 +104,11 @@ text = "0+"
 
 [node name="HeightChanger" type="SpinBox" parent="Overlay/TileEditContainer/VBoxContainer/GroundEditor/HeightEditor" unique_id=1187902002]
 layout_mode = 2
+min_value = -50.0
+max_value = 50.0
+page = 0.5
+allow_greater = true
+allow_lesser = true
 
 [node name="HSeparator" type="HSeparator" parent="Overlay/TileEditContainer/VBoxContainer" unique_id=395443004]
 layout_mode = 2

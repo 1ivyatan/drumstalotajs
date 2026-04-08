@@ -6,7 +6,11 @@
 texture = ExtResource("1_1s4qu")
 0:0/0 = 0
 1:0/0 = 0
+1:0/0/custom_data_0 = 0.5
 2:0/0 = 0
+2:0/0/custom_data_0 = 2.5
 
 [resource]
+custom_data_layer_0/name = "RelativeHeight"
+custom_data_layer_0/type = 3
 sources/0 = SubResource("TileSetAtlasSource_0p7wa")

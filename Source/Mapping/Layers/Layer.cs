@@ -3,7 +3,7 @@ using System;
 
 namespace Drumstalotajs.Mapping.Layers;
 
-public partial class Layer : TileMapLayer, ILayer<Vector2I>
+public partial class Layer : TileMapLayer, ILayerAtlas<Vector2I>
 {
 	public Vector2I[] GetAtlas()
 	{
@@ -17,6 +17,11 @@ public partial class Layer : TileMapLayer, ILayer<Vector2I>
 			tileAtlas[i] = coords;
 		}
 		return tileAtlas;
+	}
+	
+	public void Load()
+	{
+		
 	}
 	
 	public void AddTile(Vector2I position, Vector2I atlasCoords)
