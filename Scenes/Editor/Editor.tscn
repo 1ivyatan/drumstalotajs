@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://druw1x35jlqnh" path="res://Scenes/Mapping/Map.tscn" id="2_wl3go"]
 [ext_resource type="Script" uid="uid://pojx0xwn06tw" path="res://Source/Components/Pickers/TilePickerContainer.cs" id="3_4aan4"]
 [ext_resource type="PackedScene" uid="uid://crtaodpir57ou" path="res://Scenes/Components/TilePicker.tscn" id="4_4aan4"]
+[ext_resource type="Script" uid="uid://dnk0ngkfwtw36" path="res://Source/Editor/ModeContainer.cs" id="5_shl5k"]
 
 [node name="Editor" type="Node2D" unique_id=1447607131]
 script = ExtResource("1_tw15f")
@@ -48,7 +49,16 @@ _tilePickerScene = ExtResource("4_4aan4")
 visible = false
 layout_mode = 2
 
-[node name="DeselectButton" type="Button" parent="Overlay/TilePickerContainer/VBoxContainer" unique_id=2059067307]
+[node name="ModeContainer" type="PanelContainer" parent="Overlay" unique_id=1804932996]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+script = ExtResource("5_shl5k")
+
+[node name="Label" type="Label" parent="Overlay/ModeContainer" unique_id=1923550446]
 layout_mode = 2
-size_flags_vertical = 3
-text = "Deselect"
+text = "Mode: Idle"

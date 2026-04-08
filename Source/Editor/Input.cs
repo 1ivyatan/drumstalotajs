@@ -18,6 +18,14 @@ public partial class EditorScene : Node2D
 	
 	public async override void _UnhandledInput(InputEvent @event)
 	{
+		if (@event.IsActionPressed("editor_to_insert"))
+		{
+			Mode = EditMode.Insert;
+		} else if (@event.IsActionPressed("editor_to_edit"))
+		{
+			Mode = EditMode.Edit;
+		}
+		
 		if (@event is InputEventMouse mouseEvent)
 		{
 			if (mouseEvent is InputEventMouseButton mouseButton)
@@ -26,6 +34,7 @@ public partial class EditorScene : Node2D
 				_mouseRightPressed = mouseButton.Pressed && mouseButton.ButtonIndex == MouseButton.Right;
 			}
 			
+			/*
 			if (_selectedTileData != null)
 			{
 				bool isTile = Types.ValidVector2I(_selectedTileData.Name);
@@ -44,8 +53,16 @@ public partial class EditorScene : Node2D
 				{
 					_selectedTileData.Layer.RemoveTile(pos);
 				}
-			}
+			}*/
 		}
+		
+		switch ()
+		{
+			
+		}
+		
+		
+		
 	}
 	
 	private void NextSceneTile(SceneLayer layer, Vector2I cellPosition)

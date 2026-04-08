@@ -14,9 +14,16 @@ namespace Drumstalotajs.Editor;
 
 public partial class EditorScene : Node2D
 {
+	public EditMode Mode { get; 
+		set {
+			field = value;
+			_modeContainer.SetModeText(value);
+		}
+	} = EditMode.Idle;
+	
 	private Map Map { get; set; }
-
 	private TilePickerContainer _tilePickerContainer;
+	private ModeContainer _modeContainer;
 	
 	private Callable _exitPressedCall;
 	private Callable _exportPressedCall;
@@ -26,6 +33,7 @@ public partial class EditorScene : Node2D
 	{
 		Map = GetNode("Map") as Map;
 		_tilePickerContainer = GetNode("Overlay/TilePickerContainer") as TilePickerContainer;
+		_modeContainer = GetNode("Overlay/ModeContainer") as ModeContainer;
 		Button exit = GetNode<Button>("Overlay/Topnav/Exit");
 		Button export = GetNode<Button>("Overlay/Topnav/Export");
 		Layer[] sceneLayers = [Map.GroundLayer, Map.OverlayLayer];
