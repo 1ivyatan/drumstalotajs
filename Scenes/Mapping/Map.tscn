@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://i6ilfm4xly2" path="res://Source/Mapping/Map.cs" id="1_ox681"]
 [ext_resource type="TileSet" uid="uid://boadgocgq54ey" path="res://Resources/Mapping/Layers/GroundLayer.tres" id="1_wxnmh"]
 [ext_resource type="Script" uid="uid://due6k5hcsaowq" path="res://Source/Mapping/Layers/GroundLayer.cs" id="2_ox681"]
+[ext_resource type="TileSet" uid="uid://dw0lrkv20jp2i" path="res://Resources/Mapping/Layers/EntityLayer.tres" id="4_f0kan"]
 [ext_resource type="TileSet" uid="uid://bpjqx6y6tiytd" path="res://Resources/Mapping/Layers/OverlayLayer.tres" id="4_s3wx3"]
 [ext_resource type="Script" uid="uid://n71qn2l0cdqe" path="res://Source/Mapping/Layers/EntityLayer.cs" id="5_ccdcv"]
 [ext_resource type="Script" uid="uid://bhj5v8iauoocv" path="res://Source/Mapping/Layers/OverlayLayer.cs" id="5_s3wx3"]
@@ -17,6 +18,7 @@ tile_set = ExtResource("1_wxnmh")
 script = ExtResource("2_ox681")
 
 [node name="EntityLayer" type="TileMapLayer" parent="." unique_id=1780296855]
+tile_set = ExtResource("4_f0kan")
 script = ExtResource("5_ccdcv")
 
 [node name="OverlayLayer" type="TileMapLayer" parent="." unique_id=1556069844]
