@@ -35,6 +35,7 @@ public partial class Map : Node2D
 	public MapState State { get; private set; } = MapState.Empty;
 	
 	public GroundLayer GroundLayer { get; private set; }
+	public EntityLayer EntityLayer { get; private set; }
 	public OverlayLayer OverlayLayer { get; private set; }
 	public Selector Selector { get; private set; }
 	
@@ -44,6 +45,7 @@ public partial class Map : Node2D
 	public override void _Ready()
 	{
 		OverlayLayer = GetNode("OverlayLayer") as OverlayLayer;
+		EntityLayer = GetNode("EntityLayer") as EntityLayer;
 		GroundLayer = GetNode("GroundLayer") as GroundLayer;
 		Selector = GetNode("Selector") as Selector;
 	}

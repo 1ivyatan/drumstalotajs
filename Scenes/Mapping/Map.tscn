@@ -15,6 +15,8 @@ tile_map_data = PackedByteArray("AAABAAEAAAAAAAAAAAABAAIAAAAAAAAAAAABAAMAAAAAAAA
 tile_set = ExtResource("1_wxnmh")
 script = ExtResource("2_ox681")
 
+[node name="EntityLayer" type="TileMapLayer" parent="." unique_id=1780296855]
+
 [node name="OverlayLayer" type="TileMapLayer" parent="." unique_id=1556069844]
 tile_set = ExtResource("4_s3wx3")
 script = ExtResource("5_s3wx3")
