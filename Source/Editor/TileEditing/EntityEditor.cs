@@ -5,7 +5,7 @@ using Drumstalotajs.Mapping;
 
 namespace Drumstalotajs.Editor.TileEditing;
 
-public partial class EntityEditor : Control
+public partial class EntityEditor : Control//, ITileEditorWindow<SceneTile>
 {
 	private Map _map;
 	
@@ -14,6 +14,5 @@ public partial class EntityEditor : Control
 		_map = Nodes.GetMap();
 		
 		
-		GD.Print(_map);
 	}
 }
