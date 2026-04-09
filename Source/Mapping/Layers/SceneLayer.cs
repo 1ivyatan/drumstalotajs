@@ -9,12 +9,13 @@ using Drumstalotajs.Mapping.Tiles;
 
 namespace Drumstalotajs.Mapping.Layers;
 
-public partial class SceneLayer : Layer, ILayerAtlas<Resources.Mapping.SceneTileProps>
+public abstract partial class SceneLayer : Layer, ILayer<Resources.Mapping.SceneTileProps>
 {
 	[Signal] public delegate void SpawnedTileEventHandler(SceneTile tile);
 	[Signal] public delegate void DestroyedTileEventHandler(SceneTile tile);
 	
 	public List<SceneTile> Instances { get; private set; }
+	//public ISceneLayer<EntityTile> AsISceneLayer => (ISceneLayer<EntityTile>)this;
 	private Resources.Mapping.SceneLayer _sceneLayerSet;
 
 	public override void _Ready()
@@ -47,11 +48,6 @@ public partial class SceneLayer : Layer, ILayerAtlas<Resources.Mapping.SceneTile
 	}
 	
 	new public Resources.Mapping.SceneTileProps[] GetAtlas()
-	{
-		return _sceneLayerSet.SceneTiles;
-	}
-	
-	public Resources.Mapping.SceneTileProps[] GetSceneTileAtlas()
 	{
 		return _sceneLayerSet.SceneTiles;
 	}

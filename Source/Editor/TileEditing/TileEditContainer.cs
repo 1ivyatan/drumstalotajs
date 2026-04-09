@@ -28,8 +28,9 @@ public partial class TileEditContainer : Control
 		}
 		_groundEditor.Load(position);
 		
-		GD.Print(_map.EntityLayer.AsISceneLayer.Flasher(_map.Selector.GetMousePosition(), 9));
-		GD.Print(_map.OverlayLayer.AsISceneLayer.Flasher(_map.Selector.GetMousePosition(), 9));
+	//	GD.Print(_map.EntityLayer.AsISceneLayer.Flasher(_map.Selector.GetMousePosition(), 9));
+	//	GD.Print(_map.OverlayLayer.AsISceneLayer.Flasher(_map.Selector.GetMousePosition(), 9));
+		
 		Visible = true;
 	}
 	
