@@ -5,4 +5,5 @@ using Drumstalotajs.Resources.Mapping;
 [GlobalClass]
 public partial class EntityLayer : SceneLayer
 {
+	
 }
