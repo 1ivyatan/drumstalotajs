@@ -9,7 +9,7 @@ using Drumstalotajs.Mapping.Tiles;
 
 namespace Drumstalotajs.Mapping.Layers;
 
-public partial class SceneLayer<[MustBeVariant]TSceneTile, [MustBeVariant]TSceneTileProps>
+public partial class Kogasa<[MustBeVariant]TSceneTile, [MustBeVariant]TSceneTileProps>
 	: Layer where TSceneTile : SceneTile,
 	  ILayer<TSceneTileProps> where TSceneTileProps : Resources.Mapping.SceneTileProps
 {
