@@ -14,7 +14,7 @@ public partial class GroundEditor : Control, ITileEditorWindow<Vector2I>
 	
 	public override void _Ready()
 	{
-		_map = Nodes.GetSceneRoot().Map;
+		_map = Nodes.GetMap();
 		var heightEditor = GetNode("HeightEditor");
 		_relHeight = heightEditor.GetNode<Label>("RelHeight");
 		_heightChanger = heightEditor.GetNode<SpinBox>("HeightChanger");
@@ -26,7 +26,6 @@ public partial class GroundEditor : Control, ITileEditorWindow<Vector2I>
 	
 	public void Load(Vector2I position)
 	{
-		_map = Nodes.GetSceneRoot().Map;
 		_selectedPosition = position;
 		_relHeight.Text = $"{_map.GroundLayer.GetUnaddedHeight(position)}+";
 		_heightChanger.Value = _map.GroundLayer.GetAddedHeight(position);
