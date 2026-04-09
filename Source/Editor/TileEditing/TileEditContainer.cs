@@ -21,7 +21,11 @@ public partial class TileEditContainer : Control
 	public void Open(Vector2I position)
 	{
 		_map = Nodes.GetSceneRoot().Map;
-		if (_map.IsEmptyTile(position)) return;
+		if (_map.IsEmptyTile(position))
+		{
+			Close();
+			return;
+		}
 		_groundEditor.Load(position);
 		
 		
