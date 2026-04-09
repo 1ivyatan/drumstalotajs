@@ -3,7 +3,7 @@ using System;
 
 namespace Drumstalotajs.Mapping.Layers;
 
-public partial class Layer : TileMapLayer, ILayerAtlas<Vector2I>
+public partial class Layer : TileMapLayer, ILayer<Vector2I>
 {
 	public Vector2I[] GetAtlas()
 	{

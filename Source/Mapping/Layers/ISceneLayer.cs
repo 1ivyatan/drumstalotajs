@@ -7,7 +7,7 @@ namespace Drumstalotajs.Mapping.Layers;
 
 public interface ISceneLayer<[MustBeVariant] T> where T : SceneTile
 {
-	public Godot.Collections.Array<T> Flasher(Vector2 localPosition, int limit)
+	public Godot.Collections.Array<T> Flash(Vector2 localPosition, int limit)
 	{
 		Layer layer = this as Layer;
 		Godot.Collections.Array<T> tiles = new Godot.Collections.Array<T>(); 

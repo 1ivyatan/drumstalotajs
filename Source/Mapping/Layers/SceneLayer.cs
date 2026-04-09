@@ -9,13 +9,15 @@ using Drumstalotajs.Mapping.Tiles;
 
 namespace Drumstalotajs.Mapping.Layers;
 
-public partial class SceneLayer : Layer, ILayerAtlas<Resources.Mapping.SceneTileProps>
+public partial class SceneLayer : Layer, ILayer<Resources.Mapping.SceneTileProps>
 {
 	[Signal] public delegate void SpawnedTileEventHandler(SceneTile tile);
 	[Signal] public delegate void DestroyedTileEventHandler(SceneTile tile);
 	
 	public List<SceneTile> Instances { get; private set; }
 	private Resources.Mapping.SceneLayer _sceneLayerSet;
+
+/*public ISceneLayer<OverlayTile> AsISceneLayer => (ISceneLayer<OverlayTile>)this;*/
 
 	public override void _Ready()
 	{
@@ -63,6 +65,7 @@ public partial class SceneLayer : Layer, ILayerAtlas<Resources.Mapping.SceneTile
 	
 	public Godot.Collections.Array<SceneTile> Flash(Vector2 localPosition, int limit)
 	{
+		
 		Godot.Collections.Array<SceneTile> tiles = new Godot.Collections.Array<SceneTile>(); 
 		var spaceState = GetWorld2D().DirectSpaceState;
 		PhysicsPointQueryParameters2D query = new PhysicsPointQueryParameters2D();
