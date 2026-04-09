@@ -11,6 +11,5 @@ public partial class LevelMarker : OverlayTile, IInitializer<LevelSetProps>
 	public void Initialize(LevelSetProps props)
 	{
 		Props = props;
-		//GD.Print(props.Order);
 	}
 }

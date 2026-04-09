@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://cxv6qmc4aph5t"]
+
+[ext_resource type="PackedScene" uid="uid://b0ue22qbeaqj4" path="res://Scenes/Mapping/SceneTile.tscn" id="1_shycx"]
+[ext_resource type="Texture2D" uid="uid://3bo7ohc0pi27" path="res://Assets/Textures/Entities.svg" id="2_h8hpt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8fl7a"]
+atlas = ExtResource("2_h8hpt")
+region = Rect2(0, 0, 16, 16)
+
+[node name="Sandbags" unique_id=1970020199 instance=ExtResource("1_shycx")]
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="1" unique_id=616126155]
+texture = SubResource("AtlasTexture_8fl7a")

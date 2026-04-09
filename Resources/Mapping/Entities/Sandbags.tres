@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="SceneTile" format=3 uid="uid://dllt1gn2qan5m"]
+
+[ext_resource type="Script" uid="uid://dmvqm5l7uxuvp" path="res://Source/Resources/Mapping/SceneTile.cs" id="1_6mdwu"]
+
+[resource]
+script = ExtResource("1_6mdwu")
+Id = 1
+Name = "Sandbags"
+metadata/_custom_type_script = "uid://dmvqm5l7uxuvp"
