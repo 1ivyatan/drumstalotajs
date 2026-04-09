@@ -39,7 +39,7 @@ public partial class EditorScene : Node2D
 		_tileEditContainer = GetNode("Overlay/TileEditContainer") as TileEditContainer;
 		Button exit = GetNode<Button>("Overlay/Topnav/Exit");
 		Button export = GetNode<Button>("Overlay/Topnav/Export");
-		Layer[] sceneLayers = [Map.GroundLayer, Map.OverlayLayer];
+		Layer[] sceneLayers = [Map.GroundLayer, Map.EntityLayer, Map.OverlayLayer];
 		Map.Mode = MapMode.Edit;
 		Map.Selector.Filter = new SelectorFilter(sceneLayers);
 		_tilePickerContainer.Load(sceneLayers);
