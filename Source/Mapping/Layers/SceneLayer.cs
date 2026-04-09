@@ -15,11 +15,11 @@ public partial class SceneLayer : Layer, ILayerAtlas<Resources.Mapping.SceneTile
 	[Signal] public delegate void DestroyedTileEventHandler(SceneTile tile);
 	
 	public List<SceneTile> Instances { get; private set; }
-	private Resources.Layers.SceneLayer _sceneLayerSet;
-	
+	private Resources.Mapping.SceneLayer _sceneLayerSet;
+
 	public override void _Ready()
 	{
-		_sceneLayerSet = TileSet as Resources.Layers.SceneLayer;
+		_sceneLayerSet = TileSet as Resources.Mapping.SceneLayer;
 		_sceneLayerSet.PrepareAtlas();
 		Instances = new List<SceneTile>();
 		ChildEnteredTree += (Node node) => {

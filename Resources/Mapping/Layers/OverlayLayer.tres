@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bay5hsbrwb2pb" path="res://Scenes/Mapping/Overlays/LevelMarker.tscn" id="1_oywtg"]
 [ext_resource type="Script" uid="uid://dmvqm5l7uxuvp" path="res://Source/Resources/Mapping/SceneTile.cs" id="2_j61nj"]
 [ext_resource type="Resource" uid="uid://uljlkrd80pke" path="res://Resources/Mapping/Overlays/DeviceMarker.tres" id="3_1d0n7"]
-[ext_resource type="Script" uid="uid://brt5oe616j3sx" path="res://Source/Resources/Layers/SceneLayer.cs" id="3_nauga"]
+[ext_resource type="Script" uid="uid://brt5oe616j3sx" path="res://Source/Resources/Mapping/SceneLayer.cs" id="3_nauga"]
 
 [sub_resource type="Resource" id="Resource_1d0n7"]
 script = ExtResource("2_j61nj")

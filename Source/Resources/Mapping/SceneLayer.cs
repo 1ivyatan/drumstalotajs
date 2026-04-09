@@ -2,7 +2,7 @@ using Godot;
 using System;
 using Drumstalotajs.Resources.Mapping;
 
-namespace Drumstalotajs.Resources.Layers;
+namespace Drumstalotajs.Resources.Mapping;
 
 [GlobalClass]
 public partial class SceneLayer : TileSet
