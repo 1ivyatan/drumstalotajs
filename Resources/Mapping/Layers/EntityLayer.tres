@@ -1,20 +1,21 @@
-[gd_resource type="TileSet" script_class="SceneLayer" format=3 uid="uid://dw0lrkv20jp2i"]
+[gd_resource type="TileSet" script_class="EntityLayer" format=3 uid="uid://v8yobmeqnupi"]
 
-[ext_resource type="Script" uid="uid://brt5oe616j3sx" path="res://Source/Resources/Mapping/SceneLayer.cs" id="1_7yto1"]
 [ext_resource type="PackedScene" uid="uid://cxv6qmc4aph5t" path="res://Scenes/Mapping/Entities/Sandbags.tscn" id="1_xk6no"]
-[ext_resource type="Script" uid="uid://dmvqm5l7uxuvp" path="res://Source/Resources/Mapping/SceneTile.cs" id="2_hxiub"]
+[ext_resource type="Script" uid="uid://j7rdwskdgxu1" path="res://Source/Resources/Mapping/EntityTileProps.cs" id="2_xk6no"]
+[ext_resource type="Script" uid="uid://dd88dvb3uuht4" path="res://Source/Resources/Mapping/EntityLayer.cs" id="3_hxiub"]
 
 [sub_resource type="Resource" id="Resource_ervjf"]
-script = ExtResource("2_hxiub")
+script = ExtResource("2_xk6no")
+Type = 1
 Id = 1
 Name = "Sandbags"
 Scene = ExtResource("1_xk6no")
-metadata/_custom_type_script = "uid://dmvqm5l7uxuvp"
+metadata/_custom_type_script = "uid://j7rdwskdgxu1"
 
-[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_xk6no"]
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_h1mmq"]
 
 [resource]
-sources/0 = SubResource("TileSetScenesCollectionSource_xk6no")
-script = ExtResource("1_7yto1")
-SceneTiles = Array[Object]([SubResource("Resource_ervjf")])
-metadata/_custom_type_script = "uid://brt5oe616j3sx"
+sources/0 = SubResource("TileSetScenesCollectionSource_h1mmq")
+script = ExtResource("3_hxiub")
+SceneTiles = Array[Resource]([SubResource("Resource_ervjf")])
+metadata/_custom_type_script = "uid://dd88dvb3uuht4"

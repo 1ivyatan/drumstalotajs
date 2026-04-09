@@ -3,7 +3,8 @@ using System;
 
 namespace Drumstalotajs.Resources.Mapping;
 
-public partial class EntityTile : SceneTile
+[GlobalClass]
+public partial class EntityTileProps: SceneTileProps
 {
 	[Export] public EntityType Type { get; private set; }
 }

@@ -4,7 +4,7 @@ using System;
 namespace Drumstalotajs.Resources.Mapping;
 
 [GlobalClass]
-public partial class SceneTile : Resource
+public partial class SceneTileProps : Resource
 {
 	[Export] public int Id { get; private set; }
 	[Export] public string Name { get; private set; }
