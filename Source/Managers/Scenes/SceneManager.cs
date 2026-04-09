@@ -10,12 +10,6 @@ public partial class SceneManager : Node
 	public Node CurrentScene { get; private set; } = null;
 	public SceneState State { get; private set; } = SceneState.RUNNING;
 	
-	public void Start()
-	{
-		Node scene = LoadScene("Start");
-		SetScene(scene);
-	}
-	
 	public void PauseScene() { if (State != SceneState.LOADING) State = SceneState.RUNNING; }
 	public void ResumeScene() { if (State != SceneState.LOADING) State = SceneState.RUNNING; }
 	

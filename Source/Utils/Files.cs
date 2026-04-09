@@ -4,7 +4,7 @@ using System;
 namespace Drumstalotajs.Utils;
 
 public static class Files
-{
+{	
 	public static T SafeLoadResource<T>(string path) where T : Resource
 	{
 		if (ResourceLoader.Exists(path))
