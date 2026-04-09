@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" script_class="SceneLayer" format=3 uid="uid://bpjqx6y6tiytd"]
+[gd_resource type="TileSet" format=3 uid="uid://bpjqx6y6tiytd"]
 
 [ext_resource type="PackedScene" uid="uid://bay5hsbrwb2pb" path="res://Scenes/Mapping/Overlays/LevelMarker.tscn" id="1_oywtg"]
 [ext_resource type="Script" uid="uid://dmvqm5l7uxuvp" path="res://Source/Resources/Mapping/SceneTileProps.cs" id="2_nauga"]

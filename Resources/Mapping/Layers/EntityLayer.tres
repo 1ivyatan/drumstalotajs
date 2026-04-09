@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" script_class="EntityLayer" format=3 uid="uid://v8yobmeqnupi"]
+[gd_resource type="TileSet" format=3 uid="uid://v8yobmeqnupi"]
 
 [ext_resource type="PackedScene" uid="uid://cxv6qmc4aph5t" path="res://Scenes/Mapping/Entities/Sandbags.tscn" id="1_xk6no"]
 [ext_resource type="Script" uid="uid://j7rdwskdgxu1" path="res://Source/Resources/Mapping/EntityTileProps.cs" id="2_xk6no"]
