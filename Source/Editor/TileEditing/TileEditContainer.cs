@@ -13,14 +13,13 @@ public partial class TileEditContainer : Control
 	
 	public override void _Ready()
 	{
-		_map = Nodes.GetSceneRoot().Map;
+		_map = Nodes.GetMap();
 		_groundEditor = GetNode("VBoxContainer/GroundEditor") as GroundEditor;
 		_entityEditor = GetNode("VBoxContainer/EntityEditor") as EntityEditor;
 	}
 	
 	public void Open(Vector2I position)
 	{
-		_map = Nodes.GetSceneRoot().Map;
 		if (_map.IsEmptyTile(position))
 		{
 			Close();
