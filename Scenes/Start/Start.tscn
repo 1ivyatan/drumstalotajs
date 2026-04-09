@@ -62,6 +62,7 @@ text = "Quit"
 layout_mode = 1
 
 [node name="Annotation" type="VBoxContainer" parent="AnnotationModal" unique_id=740418487]
+custom_minimum_size = Vector2(320, 0)
 layout_mode = 0
 alignment = 1
 script = ExtResource("4_uh10c")
