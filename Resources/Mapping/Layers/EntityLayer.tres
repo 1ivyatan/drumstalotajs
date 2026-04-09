@@ -11,7 +11,10 @@ Name = "Sandbags"
 Scene = ExtResource("1_xk6no")
 metadata/_custom_type_script = "uid://dmvqm5l7uxuvp"
 
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_xk6no"]
+
 [resource]
+sources/0 = SubResource("TileSetScenesCollectionSource_xk6no")
 script = ExtResource("1_7yto1")
 SceneTiles = Array[Object]([SubResource("Resource_ervjf")])
 metadata/_custom_type_script = "uid://brt5oe616j3sx"
