@@ -5,6 +5,7 @@ using Drumstalotajs.Components.Modals;
 using Drumstalotajs.Editor.Components;
 using Drumstalotajs.Mapping;
 using Drumstalotajs.Mapping.Cameras;
+using Drumstalotajs.Mapping.Layers;
 using Drumstalotajs.Utils;
 
 namespace Drumstalotajs.Editor;
@@ -19,7 +20,9 @@ public partial class EditorScene : Node2D
 	
 	public override void _Ready()
 	{
+		LayerBase[] layers = [ Map.GroundLayer ];
 		Map.Mode = MapMode.Edit;
+		_tileSelectionContainer.Load(layers);
 		_topnav.SetTitle("Editor");
 		_topnav.SelectedExit += () => { Nodes.GetRoot().SceneManager.Start(); };
 		_topnav.SelectedCalibration += () => {

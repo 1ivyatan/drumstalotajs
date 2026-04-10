@@ -43,7 +43,7 @@ item_0/id = 0
 item_1/id = 1
 item_1/separator = true
 
-[node name="TileSelectionContainer" type="FoldableContainer" parent="Overlay" unique_id=897851003]
+[node name="TileSelectionContainer" type="FoldableContainer" parent="Overlay" unique_id=897851003 node_paths=PackedStringArray("_container")]
 visible = false
 anchors_preset = 9
 anchor_bottom = 1.0
@@ -53,6 +53,7 @@ folded = true
 title = "Tiles"
 title_position = 1
 script = ExtResource("5_shl5k")
+_container = NodePath("ScrollContainer/VBoxContainer")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Overlay/TileSelectionContainer" unique_id=1554248964]
 visible = false
