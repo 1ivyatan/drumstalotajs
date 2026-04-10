@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using Drumstalotajs.Editor;
 using Drumstalotajs;
 
 namespace Drumstalotajs.Editor.Components;
@@ -7,11 +8,12 @@ namespace Drumstalotajs.Editor.Components;
 public partial class Topnav : Drumstalotajs.Components.Panels.Topnav
 {
 	[Signal] public delegate void SelectedExitEventHandler();
+	[Signal] public delegate void SelectedModeEventHandler(EditorMode mode);
 	[Export] private MenuBar _menu;
 	private PopupMenu _fileMenu;
 	private PopupMenu _viewMenu;
 	private Callable _fileMenuCall;
-	private Callable _fileViewCall;
+	private Callable _viewMenuModeCall;
 	
 	public override void _Ready()
 	{
@@ -30,12 +32,12 @@ public partial class Topnav : Drumstalotajs.Components.Panels.Topnav
 		
 		var viewModeMenu = new PopupMenu();
 		viewModeMenu.Name = "Mode";
-		viewModeMenu.AddRadioCheckItem("View");
-		viewModeMenu.AddRadioCheckItem("Insert");
-		viewModeMenu.AddRadioCheckItem("Edit");
+		viewModeMenu.AddRadioCheckItem("View", (int)EditorMode.View);
+		viewModeMenu.AddRadioCheckItem("Insert", (int)EditorMode.Insert);
+		viewModeMenu.AddRadioCheckItem("Edit", (int)EditorMode.Edit);
+		viewModeMenu.SetItemChecked((int)EditorMode.View, true);
 		_viewMenu.AddChild(viewModeMenu);
 		_viewMenu.AddSubmenuNodeItem("Mode", viewModeMenu);
-		
 		_fileMenuCall = Callable.From((int id) => {
 			switch (id)
 			{
@@ -45,16 +47,25 @@ public partial class Topnav : Drumstalotajs.Components.Panels.Topnav
 				default: break;
 			}
 		});
-		_fileViewCall = Callable.From((int id) => {
-			
+		_viewMenuModeCall = Callable.From((int id) => {
+			foreach (var mode in Enum.GetValues(typeof(EditorMode)))
+			{
+				if (viewModeMenu.IsItemChecked((int)mode))
+				{
+					viewModeMenu.SetItemChecked((int)mode, false);
+					break;
+				}
+			}
+			viewModeMenu.SetItemChecked((int)id, true);
+			EmitSignal(SignalName.SelectedMode, id);
 		});
 		_fileMenu.Connect(PopupMenu.SignalName.IdPressed, _fileMenuCall);
-		_viewMenu.Connect(PopupMenu.SignalName.IdPressed, _fileViewCall);
+		viewModeMenu.Connect(PopupMenu.SignalName.IdPressed, _viewMenuModeCall);
 	}
 	
 	private void Cleanup()
 	{
 		_fileMenu.Disconnect(PopupMenu.SignalName.IdPressed, _fileMenuCall);
-		_viewMenu.Disconnect(PopupMenu.SignalName.IdPressed, _fileViewCall);
+		_viewMenu.Disconnect(PopupMenu.SignalName.IdPressed, _viewMenuModeCall);
 	}
 }
