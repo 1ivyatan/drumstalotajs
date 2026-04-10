@@ -2,8 +2,25 @@
 
 [ext_resource type="Script" uid="uid://hs8xi0o7k56e" path="res://Source/Editor/EditorScene.cs" id="1_tw15f"]
 [ext_resource type="PackedScene" uid="uid://druw1x35jlqnh" path="res://Scenes/Mapping/Map.tscn" id="2_wl3go"]
+[ext_resource type="PackedScene" uid="uid://bqh5apppkldxo" path="res://Scenes/Components/Topnav.tscn" id="3_s7bqi"]
+[ext_resource type="Script" uid="uid://u8lp17a6dm3v" path="res://Source/Editor/Components/Topnav.cs" id="4_4aan4"]
 
-[node name="Editor" type="Node2D" unique_id=238378600]
+[node name="Editor" type="Node2D" unique_id=238378600 node_paths=PackedStringArray("_topnav", "Map")]
 script = ExtResource("1_tw15f")
+_topnav = NodePath("Overlay/Topnav")
+Map = NodePath("Map")
 
 [node name="Map" parent="." unique_id=395374990 instance=ExtResource("2_wl3go")]
+
+[node name="Overlay" type="CanvasLayer" parent="." unique_id=1047421150]
+
+[node name="Topnav" parent="Overlay" unique_id=2111940079 instance=ExtResource("3_s7bqi")]
+script = ExtResource("4_4aan4")
+
+[node name="Menu" type="MenuBar" parent="Overlay/Topnav" unique_id=310447048]
+layout_mode = 2
+
+[node name="File" type="PopupMenu" parent="Overlay/Topnav/Menu" unique_id=366426532]
+oversampling_override = 1.0
+
+[node name="View" type="PopupMenu" parent="Overlay/Topnav/Menu" unique_id=1103629704]

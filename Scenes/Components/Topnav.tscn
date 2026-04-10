@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bqh5apppkldxo"]
+
+[ext_resource type="Script" uid="uid://dkn2ycrhfe8wj" path="res://Source/Components/Panels/Topnav.cs" id="1_wxygq"]
+
+[node name="Topnav" type="PanelContainer" unique_id=2111940079 node_paths=PackedStringArray("_title")]
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+script = ExtResource("1_wxygq")
+_title = NodePath("Title")
+
+[node name="Title" type="Label" parent="." unique_id=497808816]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "TItle"
