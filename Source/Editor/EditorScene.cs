@@ -22,6 +22,9 @@ public partial class EditorScene : Node2D
 		Map.Mode = MapMode.Edit;
 		_topnav.SetTitle("Editor");
 		_topnav.SelectedExit += () => { Nodes.GetRoot().SceneManager.Start(); };
+		_topnav.SelectedCalibration += () => {
+			Map.Camera.Calibrate();
+		};
 		_topnav.SelectedMode += (EditorMode mode) => { 
 			Mode = mode;
 			switch (mode)
