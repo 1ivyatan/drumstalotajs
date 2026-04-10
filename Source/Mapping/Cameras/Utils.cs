@@ -21,29 +21,29 @@ public partial class Camera : Camera2D
 		return result;
 	}
 	
-	public void SetCalibratingGroundLayer(GroundLayer layer)
+	public void SetCalibratingAtlasLayer(AtlasLayer layer)
 	{
-		_calibratingGroundLayer = layer;
+		_calibratingAtlasLayer = layer;
 	}
 	
 	public void Calibrate()
 	{
-		Rect2 usedRect = _calibratingGroundLayer.GetUsedRect();
-		int tileSize = _calibratingGroundLayer.TileSize;
+		Rect2 usedRect = _calibratingAtlasLayer.GetUsedRect();
+		int tileSize = _calibratingAtlasLayer.TileSize;
 		LimitLeft = (int)(usedRect.Position.X * tileSize);
 		LimitRight = (int)((usedRect.Position.X + usedRect.Size.X) * tileSize);
 		LimitTop = (int)(usedRect.Position.Y * tileSize);
 		LimitBottom = (int)((usedRect.Size.Y * tileSize) + (usedRect.Position.Y * tileSize));
-		GlobalPosition = usedRect.Position + usedRect.GetCenter() * _calibratingGroundLayer.TileSize;
+		GlobalPosition = usedRect.Position + usedRect.GetCenter() * _calibratingAtlasLayer.TileSize;
 	}
 	
 	public void FitCamera()
 	{
 		Vector2 viewportSize = GetViewport().GetVisibleRect().Size;
-		Rect2 usedRect = _calibratingGroundLayer.GetUsedRect();
+		Rect2 usedRect = _calibratingAtlasLayer.GetUsedRect();
 		Rect2 worldRect = new Rect2(
-			_calibratingGroundLayer.MapToLocal(new Vector2I((int)usedRect.Position.X, (int)usedRect.Position.Y)),
-			usedRect.Size * _calibratingGroundLayer.TileSet.TileSize
+			_calibratingAtlasLayer.MapToLocal(new Vector2I((int)usedRect.Position.X, (int)usedRect.Position.Y)),
+			usedRect.Size * _calibratingAtlasLayer.TileSet.TileSize
 		);
 		float zoomX = viewportSize.X / worldRect.Size.X;
 		float zoomY = viewportSize.Y / worldRect.Size.Y;

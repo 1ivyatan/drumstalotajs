@@ -14,7 +14,7 @@ public partial class Camera : Camera2D
 	public CameraMode Mode { get; set; } = CameraMode.Lock;
 	public CameraState State { get; private set { field = value; } } = CameraState.Idle;
 	
-	private GroundLayer _calibratingGroundLayer;
+	private AtlasLayer _calibratingAtlasLayer;
 	private bool _dragging = false;
 	private Vector2 _dragAnchorWorld;
 	

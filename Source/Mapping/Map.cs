@@ -15,7 +15,7 @@ public partial class Map : Node2D
 	public override void _Ready()
 	{
 		/* vvvvv */
-		Camera.SetCalibratingGroundLayer(GroundLayer);
+		Camera.SetCalibratingAtlasLayer(GroundLayer);
 		Camera.Mode = CameraMode.View;
 		Camera.Calibrate();
 	}
