@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://crtaodpir57ou"]
+
+[ext_resource type="Script" uid="uid://dbadymxfuv33o" path="res://Source/Components/Pickers/LayerTilePicker.cs" id="1_ppdw2"]
+
+[node name="LayerTilePicker" type="ItemList" unique_id=1581430664]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 8.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+auto_width = true
+auto_height = true
+script = ExtResource("1_ppdw2")

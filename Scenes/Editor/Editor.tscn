@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bqh5apppkldxo" path="res://Scenes/Components/Topnav.tscn" id="3_s7bqi"]
 [ext_resource type="Script" uid="uid://u8lp17a6dm3v" path="res://Source/Editor/Components/Topnav.cs" id="4_4aan4"]
 [ext_resource type="Script" uid="uid://reee6xn8u0c4" path="res://Source/Editor/Components/TileSelectionContainer.cs" id="5_shl5k"]
+[ext_resource type="PackedScene" uid="uid://crtaodpir57ou" path="res://Scenes/Components/LayerTilePicker.tscn" id="6_u75kh"]
 
 [node name="Editor" type="Node2D" unique_id=238378600 node_paths=PackedStringArray("Map", "_topnav", "_tileSelectionContainer")]
 script = ExtResource("1_tw15f")
@@ -53,18 +54,14 @@ folded = true
 title = "Tiles"
 title_position = 1
 script = ExtResource("5_shl5k")
+_layerTilePicker = ExtResource("6_u75kh")
 _container = NodePath("ScrollContainer/VBoxContainer")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Overlay/TileSelectionContainer" unique_id=1554248964]
 visible = false
 layout_mode = 2
+horizontal_scroll_mode = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Overlay/TileSelectionContainer/ScrollContainer" unique_id=1147592701]
 layout_mode = 2
 alignment = 1
-
-[node name="Deselect" type="Button" parent="Overlay/TileSelectionContainer/ScrollContainer/VBoxContainer" unique_id=1683457449]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-text = "Deselect"
