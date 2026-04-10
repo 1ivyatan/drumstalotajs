@@ -13,7 +13,7 @@ public partial class LayerTilePicker : ItemList
 {
 	[Signal] public delegate void SelectedTileEventHandler(PickedTileData pickedTile);
 	
-	private LayerBase Layer { get; set; }
+	public LayerBase Layer { get; private set; }
 	
 	public override void _Ready()
 	{

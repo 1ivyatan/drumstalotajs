@@ -53,7 +53,8 @@ public partial class EditorScene : Node2D
 		_topnav.SelectedMode += (EditorMode mode) => { 
 			Mode = mode;
 		};
-		
+		/*
+			picker.SelectedTile += (PickedTileData pickedTile) => {*/
 		/*cccccc*/
 		Map.Camera.Calibrate();
 	}
