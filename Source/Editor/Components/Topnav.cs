@@ -6,6 +6,7 @@ namespace Drumstalotajs.Editor.Components;
 
 public partial class Topnav : Drumstalotajs.Components.Panels.Topnav
 {
+	[Signal] public delegate void SelectedExitEventHandler();
 	[Export] private MenuBar _menu;
 	private PopupMenu _fileMenu;
 	private PopupMenu _viewMenu;
@@ -36,7 +37,13 @@ public partial class Topnav : Drumstalotajs.Components.Panels.Topnav
 		_viewMenu.AddSubmenuNodeItem("Mode", viewModeMenu);
 		
 		_fileMenuCall = Callable.From((int id) => {
-			
+			switch (id)
+			{
+				case 2: /* exit */
+					EmitSignal(SignalName.SelectedExit);
+					break;
+				default: break;
+			}
 		});
 		_fileViewCall = Callable.From((int id) => {
 			
