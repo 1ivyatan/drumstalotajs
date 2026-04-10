@@ -6,11 +6,11 @@
 [ext_resource type="Script" uid="uid://u8lp17a6dm3v" path="res://Source/Editor/Components/Topnav.cs" id="4_4aan4"]
 [ext_resource type="Script" uid="uid://reee6xn8u0c4" path="res://Source/Editor/Components/TileSelectionContainer.cs" id="5_shl5k"]
 
-[node name="Editor" type="Node2D" unique_id=238378600 node_paths=PackedStringArray("_topnav", "_tileSelectionContainer", "Map")]
+[node name="Editor" type="Node2D" unique_id=238378600 node_paths=PackedStringArray("Map", "_topnav", "_tileSelectionContainer")]
 script = ExtResource("1_tw15f")
+Map = NodePath("Map")
 _topnav = NodePath("Overlay/Topnav")
 _tileSelectionContainer = NodePath("Overlay/TileSelectionContainer")
-Map = NodePath("Map")
 
 [node name="Map" parent="." unique_id=395374990 instance=ExtResource("2_wl3go")]
 
@@ -36,6 +36,12 @@ item_2/id = 2
 
 [node name="View" type="PopupMenu" parent="Overlay/Topnav/Menu" unique_id=1103629704]
 oversampling_override = 1.0
+size = Vector2i(175, 100)
+item_count = 2
+item_0/text = "Calibrate Camera"
+item_0/id = 0
+item_1/id = 1
+item_1/separator = true
 
 [node name="TileSelectionContainer" type="FoldableContainer" parent="Overlay" unique_id=897851003]
 visible = false

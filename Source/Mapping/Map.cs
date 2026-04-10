@@ -9,6 +9,7 @@ namespace Drumstalotajs.Mapping;
 
 public partial class Map : Node2D
 {
+	public MapMode Mode { get; set; } = MapMode.Lock;
 	[Export] public GroundLayer GroundLayer { get; private set; }
 	[Export] public Camera Camera { get; private set; }
 	

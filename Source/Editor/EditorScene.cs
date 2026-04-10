@@ -11,13 +11,15 @@ namespace Drumstalotajs.Editor;
 
 public partial class EditorScene : Node2D
 {
+	[Export] public Map Map { get; private set; }
+	public EditorMode Mode { get; private set; } = EditorMode.View;
+	
 	[Export] private Topnav _topnav;
 	[Export] private TileSelectionContainer _tileSelectionContainer;
-	[Export] public Map Map;
-	public EditorMode Mode { get; private set; } = EditorMode.View;
 	
 	public override void _Ready()
 	{
+		Map.Mode = MapMode.Edit;
 		_topnav.SetTitle("Editor");
 		_topnav.SelectedExit += () => { Nodes.GetRoot().SceneManager.Start(); };
 		_topnav.SelectedMode += (EditorMode mode) => { 
@@ -36,20 +38,10 @@ public partial class EditorScene : Node2D
 				default: break;
 			}
 		};
+		
 		/*cccccc*/
 		Map.Camera.SetCalibratingAtlasLayer(Map.GroundLayer);
 		Map.Camera.Mode = CameraMode.View;
 		Map.Camera.Calibrate();
-	}
-	
-	public async override void _UnhandledInput(InputEvent @event)
-	{
-		switch (Mode)
-		{
-			case EditorMode.Insert:
-				
-				break;
-			default: break;
-		}
 	}
 }
