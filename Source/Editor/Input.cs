@@ -28,7 +28,20 @@ public partial class EditorScene : Node2D
 		switch (Mode)
 		{
 			case EditorMode.Insert:
-				
+				if (_mouseLeftPressed)
+				{
+					Map.AddTile(
+						_tileSelectionContainer.PickedTileData.Layer,
+						_tileSelectionContainer.PickedTileData.Name,
+						Map.GetCellPosFromMouse()
+					);
+				} else if (_mouseRightPressed)
+				{
+					Map.RemoveTile(
+						_tileSelectionContainer.PickedTileData.Layer,
+						Map.GetCellPosFromMouse()
+					);
+				}
 				break;
 			default: break;
 		}

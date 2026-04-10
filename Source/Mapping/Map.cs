@@ -14,8 +14,19 @@ public partial class Map : Node2D
 	[Export] public GroundLayer GroundLayer { get; private set; }
 	[Export] public Camera Camera { get; private set; }
 	
-	public override void _Ready()
+	public void AddTile(LayerBase layer, string tileName, Vector2I position)
 	{
-		/* vvvvv */
+		if (layer is GroundLayer && Types.ValidVector2I(tileName))
+		{
+			(layer as GroundLayer).AddTile(position, Types.StringToVector2I(tileName));
+		}
+	}
+	
+	public void RemoveTile(LayerBase layer, Vector2I position)
+	{
+		if (layer is GroundLayer)
+		{
+			(layer as GroundLayer).RemoveTile(position);
+		}
 	}
 }
