@@ -1,10 +1,12 @@
 using Godot;
 using System;
+using Drumstalotajs;
+using Drumstalotajs.Mapping;
 
 namespace Drumstalotajs.Utils;
 
 public static class Nodes
-{/*
+{
 	public static Map GetMap()
 	{
 		var main = GetSceneRoot();
@@ -15,9 +17,8 @@ public static class Nodes
 				return node as Map;
 			}
 		}
-		
 		return null;
-	}*/
+	}
 
 	public static Main GetRoot()
 	{
