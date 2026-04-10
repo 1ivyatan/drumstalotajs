@@ -21,7 +21,7 @@ public partial class Camera : Camera2D
 		return result;
 	}
 	
-	public void SetCalibratingGroundLayer(Layer<GroundLayer> layer)
+	public void SetCalibratingGroundLayer(GroundLayer layer)
 	{
 		_calibratingGroundLayer = layer;
 	}

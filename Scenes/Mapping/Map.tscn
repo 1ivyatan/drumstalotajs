@@ -28,3 +28,6 @@ script = ExtResource("2_wxnmh")
 
 [node name="Camera" type="Camera2D" parent="." unique_id=305909471]
 script = ExtResource("4_ox681")
+MinZoom = 1.0
+MaxZoom = 2.0
+ZoomFactor = 0.1

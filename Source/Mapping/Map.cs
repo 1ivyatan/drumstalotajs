@@ -9,11 +9,14 @@ namespace Drumstalotajs.Mapping;
 
 public partial class Map : Node2D
 {
-	[Export] public Layer<GroundLayer> GroundLayer { get; private set; }
+	[Export] public GroundLayer GroundLayer { get; private set; }
 	[Export] public Camera Camera { get; private set; }
 	
 	public override void _Ready()
 	{
+		/* vvvvv */
 		Camera.SetCalibratingGroundLayer(GroundLayer);
+		Camera.Mode = CameraMode.View;
+		Camera.Calibrate();
 	}
 }
