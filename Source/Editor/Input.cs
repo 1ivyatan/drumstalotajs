@@ -56,7 +56,10 @@ public partial class EditorScene : Node2D
 				if (_mouseMoving) return;
 				if (_mouseRightPressed)
 				{
-					GD.Print("rclick");
+					_tileEditingContainer.Load(Map.GetCellPosFromMouse());
+				} else if (_mouseLeftPressed)
+				{
+					_tileEditingContainer.Close();
 				}
 				
 				break;
