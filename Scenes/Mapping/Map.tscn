@@ -17,9 +17,10 @@ custom_data_layer_0/name = "RelativeHeight"
 custom_data_layer_0/type = 3
 sources/0 = SubResource("TileSetAtlasSource_ox681")
 
-[node name="Map" type="Node2D" unique_id=395374990 node_paths=PackedStringArray("GroundLayer", "Camera")]
+[node name="Map" type="Node2D" unique_id=395374990 node_paths=PackedStringArray("GroundLayer", "Selector", "Camera")]
 script = ExtResource("1_lo67w")
 GroundLayer = NodePath("GroundLayer")
+Selector = NodePath("Selector")
 Camera = NodePath("Camera")
 
 [node name="GroundLayer" type="TileMapLayer" parent="." unique_id=109600232]

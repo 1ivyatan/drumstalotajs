@@ -82,7 +82,7 @@ horizontal_scroll_mode = 0
 layout_mode = 2
 alignment = 1
 
-[node name="TileEditingContainer" type="PanelContainer" parent="Overlay/Container/Body" unique_id=1081003154]
+[node name="TileEditingContainer" type="PanelContainer" parent="Overlay/Container/Body" unique_id=1081003154 node_paths=PackedStringArray("_map")]
 visible = false
 layout_mode = 1
 anchors_preset = 11
@@ -93,6 +93,7 @@ offset_left = -120.0
 grow_horizontal = 0
 grow_vertical = 2
 script = ExtResource("7_ghgdu")
+_map = NodePath("../../../../Map")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Overlay/Container/Body/TileEditingContainer" unique_id=1086735869]
 layout_mode = 2
