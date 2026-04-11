@@ -16,9 +16,9 @@ public partial class Map : Node2D
 	
 	public void AddTile(LayerBase layer, string tileName, Vector2I position)
 	{
-		if (layer is GroundLayer && Types.ValidVector2I(tileName))
+		if (layer is GroundLayer && Types.Vector2I.ValidVector2I(tileName))
 		{
-			(layer as GroundLayer).AddTile(position, Types.StringToVector2I(tileName));
+			(layer as GroundLayer).AddTile(position, Types.Vector2I.StringToVector2I(tileName));
 		}
 	}
 	

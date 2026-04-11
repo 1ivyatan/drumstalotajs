@@ -6,27 +6,35 @@ namespace Drumstalotajs.Utils;
 
 public static class Types
 {
-	private static string Vector2IFormat = @"^\(([0-9]+)\, ([0-9]+)\)$";
-
-	public static bool ValidVector2I(string coords)
+	public static class Vector2I
 	{
-		if (Regex.IsMatch(coords, Vector2IFormat))
+		private static string Vector2IFormat = @"^\(([0-9]+)\, ([0-9]+)\)$";
+		public static Godot.Vector2I Negative => new Godot.Vector2I(-1, -1);
+
+		public static bool ValidVector2I(string coords)
 		{
-			Variant variant = GD.StrToVar($"Vector2i{coords}");
-			return variant.VariantType == Variant.Type.Vector2I || variant.VariantType == Variant.Type.Vector2;
+			if (Regex.IsMatch(coords, Vector2IFormat))
+			{
+				Variant variant = GD.StrToVar($"Vector2i{coords}");
+				return variant.VariantType == Variant.Type.Vector2I || 	variant.VariantType == Variant.Type.Vector2;
+			}
+			return false;
 		}
-		return false;
+	
+		public static Godot.Vector2I StringToVector2I(string coords)
+		{
+			if (ValidVector2I(coords))
+			{
+				Variant variant = GD.StrToVar($"Vector2i{coords}");
+				return variant.AsVector2I();
+			} else
+			{
+				return Godot.Vector2I.Zero;
+			}
+		}
+		
 	}
 	
-	public static Vector2I StringToVector2I(string coords)
-	{
-		if (ValidVector2I(coords))
-		{
-			Variant variant = GD.StrToVar($"Vector2i{coords}");
-			return variant.AsVector2I();
-		} else
-		{
-			return Vector2I.Zero;
-		}
-	}
+	
+	
 }

@@ -27,8 +27,9 @@ tile_map_data = PackedByteArray("AAADAAQAAAAAAAAAAAADAAUAAAAAAAAAAAADAAYAAAAAAAA
 tile_set = SubResource("TileSet_s3wx3")
 script = ExtResource("2_wxnmh")
 
-[node name="Selector" type="Node2D" parent="." unique_id=1750489280]
+[node name="Selector" type="Node2D" parent="." unique_id=1750489280 node_paths=PackedStringArray("_map")]
 script = ExtResource("4_s3wx3")
+_map = NodePath("..")
 
 [node name="Camera" type="Camera2D" parent="." unique_id=305909471]
 script = ExtResource("4_ox681")

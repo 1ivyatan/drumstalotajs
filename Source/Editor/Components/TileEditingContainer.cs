@@ -14,6 +14,7 @@ public partial class TileEditingContainer : Control
 	
 	public void Load(Vector2I position)
 	{
+		
 		Visible = true;
 	}
 	
