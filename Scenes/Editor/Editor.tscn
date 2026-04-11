@@ -10,21 +10,29 @@
 [node name="Editor" type="Node2D" unique_id=238378600 node_paths=PackedStringArray("Map", "_topnav", "_tileSelectionContainer")]
 script = ExtResource("1_tw15f")
 Map = NodePath("Map")
-_topnav = NodePath("Overlay/Topnav")
-_tileSelectionContainer = NodePath("Overlay/TileSelectionContainer")
+_topnav = NodePath("Overlay/Container/Topnav")
+_tileSelectionContainer = NodePath("Overlay/Container/Body/TileSelectionContainer")
 
 [node name="Map" parent="." unique_id=395374990 instance=ExtResource("2_wl3go")]
 
 [node name="Overlay" type="CanvasLayer" parent="." unique_id=1047421150]
 
-[node name="Topnav" parent="Overlay" unique_id=2111940079 node_paths=PackedStringArray("_menu") instance=ExtResource("3_s7bqi")]
+[node name="Container" type="VBoxContainer" parent="Overlay" unique_id=1870062232]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Topnav" parent="Overlay/Container" unique_id=2111940079 node_paths=PackedStringArray("_menu") instance=ExtResource("3_s7bqi")]
+layout_mode = 2
 script = ExtResource("4_4aan4")
 _menu = NodePath("Menu")
 
-[node name="Menu" type="MenuBar" parent="Overlay/Topnav" unique_id=310447048]
+[node name="Menu" type="MenuBar" parent="Overlay/Container/Topnav" unique_id=310447048]
 layout_mode = 2
 
-[node name="File" type="PopupMenu" parent="Overlay/Topnav/Menu" unique_id=366426532]
+[node name="File" type="PopupMenu" parent="Overlay/Container/Topnav/Menu" unique_id=366426532]
 oversampling_override = 1.0
 item_count = 3
 item_0/text = "Export"
@@ -35,7 +43,7 @@ item_1/separator = true
 item_2/text = "Exit"
 item_2/id = 2
 
-[node name="View" type="PopupMenu" parent="Overlay/Topnav/Menu" unique_id=1103629704]
+[node name="View" type="PopupMenu" parent="Overlay/Container/Topnav/Menu" unique_id=1103629704]
 oversampling_override = 1.0
 size = Vector2i(175, 100)
 item_count = 2
@@ -44,11 +52,17 @@ item_0/id = 0
 item_1/id = 1
 item_1/separator = true
 
-[node name="TileSelectionContainer" type="FoldableContainer" parent="Overlay" unique_id=897851003 node_paths=PackedStringArray("_container")]
+[node name="Body" type="Control" parent="Overlay/Container" unique_id=446498435]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 1
+
+[node name="TileSelectionContainer" type="FoldableContainer" parent="Overlay/Container/Body" unique_id=897851003 node_paths=PackedStringArray("_container")]
 visible = false
+layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
-offset_right = 100.0
+offset_right = 61.0
 grow_vertical = 2
 folded = true
 title = "Tiles"
@@ -57,11 +71,11 @@ script = ExtResource("5_shl5k")
 _layerTilePicker = ExtResource("6_u75kh")
 _container = NodePath("ScrollContainer/VBoxContainer")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Overlay/TileSelectionContainer" unique_id=1554248964]
+[node name="ScrollContainer" type="ScrollContainer" parent="Overlay/Container/Body/TileSelectionContainer" unique_id=1554248964]
 visible = false
 layout_mode = 2
 horizontal_scroll_mode = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Overlay/TileSelectionContainer/ScrollContainer" unique_id=1147592701]
+[node name="VBoxContainer" type="VBoxContainer" parent="Overlay/Container/Body/TileSelectionContainer/ScrollContainer" unique_id=1147592701]
 layout_mode = 2
 alignment = 1
