@@ -13,6 +13,7 @@ public partial class EditorScene : Node2D
 {
 	private bool _mouseLeftPressed = false;
 	private bool _mouseRightPressed = false;
+	private bool _mouseMoving = false;
 	
 	public async override void _UnhandledInput(InputEvent @event)
 	{
@@ -22,6 +23,14 @@ public partial class EditorScene : Node2D
 			{
 				_mouseLeftPressed = mouseButton.Pressed && mouseButton.ButtonIndex == MouseButton.Left;
 				_mouseRightPressed = mouseButton.Pressed && mouseButton.ButtonIndex == MouseButton.Right;
+			}
+		
+			if (mouseEvent is InputEventMouseMotion mouseMotion)
+			{
+				_mouseMoving = true;
+			} else
+			{
+				_mouseMoving = false;
 			}
 		}
 		
@@ -42,6 +51,14 @@ public partial class EditorScene : Node2D
 						Map.GetCellPosFromMouse()
 					);
 				}
+				break;
+			case EditorMode.Edit:
+				if (_mouseMoving) return;
+				if (_mouseRightPressed)
+				{
+					GD.Print("rclick");
+				}
+				
 				break;
 			default: break;
 		}

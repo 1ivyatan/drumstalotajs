@@ -37,6 +37,7 @@ public partial class EditorScene : Node2D
 	
 	[Export] private Topnav _topnav;
 	[Export] private TileSelectionContainer _tileSelectionContainer;
+	[Export] private TileEditingContainer _tileEditingContainer;
 	
 	public override void _Ready()
 	{
