@@ -34,7 +34,7 @@ public partial class AtlasLayer : Layer<Vector2I>
 		EraseCell(position);
 	}
 	
-	public override Tile[] Flash(Vector2I position)
+	public override Godot.Collections.Array<Tile> Flash(Vector2I position)
 	{
 		if (GetCellAtlasCoords(position) == Types.Vector2I.Negative) return [];
 		

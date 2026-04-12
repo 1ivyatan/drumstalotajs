@@ -6,6 +6,7 @@ using Drumstalotajs.Editor.Components;
 using Drumstalotajs.Mapping;
 using Drumstalotajs.Mapping.Cameras;
 using Drumstalotajs.Mapping.Layers;
+using Drumstalotajs.Mapping.Selection;
 using Drumstalotajs.Utils;
 
 namespace Drumstalotajs.Editor;
@@ -45,6 +46,7 @@ public partial class EditorScene : Node2D
 		Map.Mode = MapMode.Edit;
 		Map.Camera.SetCalibratingAtlasLayer(Map.GroundLayer);
 		Map.Camera.Mode = CameraMode.View;
+		Map.Selector.Filter = new SelectorFilter(layers);
 		_tileSelectionContainer.Load(layers);
 		_topnav.SetTitle("Editor");
 		_topnav.SelectedExit += () => { Nodes.GetRoot().SceneManager.Start(); };

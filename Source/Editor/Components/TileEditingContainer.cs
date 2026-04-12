@@ -19,9 +19,9 @@ public partial class TileEditingContainer : Control
 	public void Load(Vector2I position)
 	{
 		FilteredTiles tiles = _map.Selector.GetTiles(position);
+			GD.Print(tiles);
 		if (tiles.Count > 0)
 		{
-			GD.Print(tiles);
 			Visible = true;
 		} else
 		{
