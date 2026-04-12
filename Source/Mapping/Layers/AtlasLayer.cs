@@ -4,7 +4,7 @@ using Drumstalotajs.Utils;
 
 namespace Drumstalotajs.Mapping.Layers;
 
-public partial class AtlasLayer : Layer<Vector2I>
+public partial class AtlasLayer : Layer<Vector2I, AtlasTile>
 {
 	public override Vector2I[] GetAtlas()
 	{
@@ -34,7 +34,7 @@ public partial class AtlasLayer : Layer<Vector2I>
 		EraseCell(position);
 	}
 	
-	public override Godot.Collections.Array<Tile> Flash(Vector2I position)
+	public override Godot.Collections.Array<AtlasTile> Flash(Vector2I position)
 	{
 		if (GetCellAtlasCoords(position) == Types.Vector2I.Negative) return [];
 		

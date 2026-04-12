@@ -18,7 +18,10 @@ public struct SelectorFilter
 		FilteredTiles tiles = new FilteredTiles();
 		foreach (var layer in Layers)
 		{
-			tiles[layer] = layer.Flash(position);
+			if (layer is AtlasLayer)
+			{
+				tiles[layer] = (Godot.Collections.Array)(layer as AtlasLayer).Flash(position);
+			}
 		}
 		return tiles;
 	}
