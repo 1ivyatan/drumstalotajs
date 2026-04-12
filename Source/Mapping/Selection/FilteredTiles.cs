@@ -1,5 +1,4 @@
-//global using FilteredTiles = Godot.Collections.Dictionary<Drumstalotajs.Mapping.Layers.LayerBase, >;
-
-/*global using FilteredTiles = Godot.Collections.Dictionary<Drumstalotajs.Mapping.Layers.SceneLayer, Godot.Collections.Array<Drumstalotajs.Mapping.Tiles.SceneTile>>;
-
-namespace Drumstalotajs.Mapping.Selection;*/
+global using FilteredTiles = Godot.Collections.Dictionary<
+	Drumstalotajs.Mapping.Layers.LayerBase, 
+	Godot.Variant
+>;

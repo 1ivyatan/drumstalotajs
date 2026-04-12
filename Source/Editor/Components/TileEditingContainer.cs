@@ -3,6 +3,7 @@ using System;
 using Drumstalotajs;
 using Drumstalotajs.Editor;
 using Drumstalotajs.Mapping;
+using Drumstalotajs.Utils;
 
 namespace Drumstalotajs.Editor.Components;
 
@@ -17,8 +18,14 @@ public partial class TileEditingContainer : Control
 	
 	public void Load(Vector2I position)
 	{
-		_map.Selector.GetTiles(position);
-		Visible = true;
+		FilteredTiles tiles = _map.Selector.GetTiles(position);
+		if (tiles.Count > 0)
+		{
+			Visible = true;
+		} else
+		{
+			Close();
+		}
 	}
 	
 	public void Close()

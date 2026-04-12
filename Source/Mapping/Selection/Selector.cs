@@ -8,10 +8,13 @@ public partial class Selector : Node2D
 {
 	[Export] private Map _map;
 	
-	public void GetTiles(Vector2I position)
+	public FilteredTiles GetTiles(Vector2I position)
 	{
-		if (_map.GroundLayer.GetCellAtlasCoords(position) == Types.Vector2I.Negative) return;
+		if (_map.GroundLayer.GetCellAtlasCoords(position) == Types.Vector2I.Negative)
+		{
+			return new FilteredTiles{};
+		}
 		
-		GD.Print("yeeeeeeees");
+		return new FilteredTiles{};
 	}
 }
