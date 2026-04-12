@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using Drumstalotajs.Utils;
 
 namespace Drumstalotajs.Mapping.Layers;
 
@@ -31,5 +32,12 @@ public partial class AtlasLayer : Layer<Vector2I>
 	public override void RemoveTile(Vector2I position)
 	{
 		EraseCell(position);
+	}
+	
+	public override Tile[] Flash(Vector2I position)
+	{
+		if (GetCellAtlasCoords(position) == Types.Vector2I.Negative) return [];
+		
+		return [ new AtlasTile(this, position) ];
 	}
 }

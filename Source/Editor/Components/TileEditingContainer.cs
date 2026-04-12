@@ -21,6 +21,7 @@ public partial class TileEditingContainer : Control
 		FilteredTiles tiles = _map.Selector.GetTiles(position);
 		if (tiles.Count > 0)
 		{
+			GD.Print(tiles);
 			Visible = true;
 		} else
 		{

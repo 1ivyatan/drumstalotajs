@@ -10,11 +10,12 @@ public partial class Selector : Node2D
 	
 	public FilteredTiles GetTiles(Vector2I position)
 	{
-		if (_map.GroundLayer.GetCellAtlasCoords(position) == Types.Vector2I.Negative)
+		FilteredTiles tiles = new FilteredTiles();
+		if (_map.GroundLayer.GetCellAtlasCoords(position) != Types.Vector2I.Negative)
 		{
-			return new FilteredTiles{};
+			
 		}
 		
-		return new FilteredTiles{};
+		return tiles;
 	}
 }
