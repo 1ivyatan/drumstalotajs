@@ -7,6 +7,7 @@ namespace Drumstalotajs.Mapping.Layers;
 public partial class GroundLayer : AtlasLayer
 {
 	public AddedGroundHeightAtlas AddedHeights { get; private set; }
+	public double BaseHeight { get; private set; } = 0;
 	
 	public override void _Ready()
 	{
@@ -17,6 +18,11 @@ public partial class GroundLayer : AtlasLayer
 	{
 		if (GetCellAtlasCoords(position) == Types.Vector2I.Negative) return [];
 		return [ new GroundTile(this, position) ];
+	}
+	
+	public double GetBaseHeight()
+	{
+		return BaseHeight;
 	}
 	
 	public double GetAddedHeight(Vector2I position)

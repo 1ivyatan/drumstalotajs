@@ -10,7 +10,9 @@
 texture = ExtResource("2_sd0qa")
 0:0/0 = 0
 1:0/0 = 0
+1:0/0/custom_data_0 = 1.0
 2:0/0 = 0
+2:0/0/custom_data_0 = 3.0
 
 [sub_resource type="TileSet" id="TileSet_s3wx3"]
 custom_data_layer_0/name = "RelativeHeight"
