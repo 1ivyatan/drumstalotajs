@@ -17,11 +17,20 @@ public partial class GroundProperties : TileProperties
 		_heightSpinner.Connect(SpinBox.SignalName.ValueChanged, new Callable(this, nameof(SetAddedHeight)));;
 	}
 	
+	/*
+	public double GetGetAddedHeightAddedHeight(Vector2I position)
+	{
+		return AddedHeights.ContainsKey(position) ? AddedHeights[position] : 0;
+	}
+	
+	public void SetAddedHeight(Vector2I position, double value)*/
+	
 	public override void Load(Tile tile)
 	{
 		if (tile is GroundTile groundTile)
 		{
 			_groundTile = groundTile;
+			_heightSpinner.Value = _map.GroundLayer.GetAddedHeight(groundTile.CellPosition);
 			Visible = true;
 		} else
 		{
@@ -39,7 +48,7 @@ public partial class GroundProperties : TileProperties
 	{
 		if (IsInstanceValid(_groundTile))
 		{
-			GD.Print(value);
+			_map.GroundLayer.SetAddedHeight(_groundTile.CellPosition, value);
 		}
 	}
 }

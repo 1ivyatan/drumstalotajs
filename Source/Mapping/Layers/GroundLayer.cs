@@ -6,10 +6,26 @@ namespace Drumstalotajs.Mapping.Layers;
 
 public partial class GroundLayer : AtlasLayer
 {
+	public AddedGroundHeightAtlas AddedHeights { get; private set; }
+	
+	public override void _Ready()
+	{
+		AddedHeights = new AddedGroundHeightAtlas();
+	}
+	
 	public override Godot.Collections.Array<AtlasTile> Flash(Vector2I position)
 	{
 		if (GetCellAtlasCoords(position) == Types.Vector2I.Negative) return [];
-		
 		return [ new GroundTile(this, position) ];
+	}
+	
+	public double GetAddedHeight(Vector2I position)
+	{
+		return AddedHeights.ContainsKey(position) ? AddedHeights[position] : 0;
+	}
+	
+	public void SetAddedHeight(Vector2I position, double value)
+	{
+		AddedHeights[position] = value;
 	}
 }

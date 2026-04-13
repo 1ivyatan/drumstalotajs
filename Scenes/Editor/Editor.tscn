@@ -112,9 +112,10 @@ text = "Tile properties"
 [node name="HSeparator" type="HSeparator" parent="Overlay/Container/Body/TileEditingContainer/ScrollContainer/VBoxContainer" unique_id=1035314860]
 layout_mode = 2
 
-[node name="GroundProperties" type="VBoxContainer" parent="Overlay/Container/Body/TileEditingContainer/ScrollContainer/VBoxContainer" unique_id=1371626734 node_paths=PackedStringArray("_heightText", "_heightSpinner")]
+[node name="GroundProperties" type="VBoxContainer" parent="Overlay/Container/Body/TileEditingContainer/ScrollContainer/VBoxContainer" unique_id=1371626734 node_paths=PackedStringArray("_map", "_heightText", "_heightSpinner")]
 layout_mode = 2
 script = ExtResource("8_wwjnl")
+_map = NodePath("../../../../../../../Map")
 _heightText = NodePath("HeightEditor/Height")
 _heightSpinner = NodePath("HeightEditor/Spinner")
 
