@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://reee6xn8u0c4" path="res://Source/Editor/Components/TileSelectionContainer.cs" id="5_shl5k"]
 [ext_resource type="PackedScene" uid="uid://crtaodpir57ou" path="res://Scenes/Components/LayerTilePicker.tscn" id="6_u75kh"]
 [ext_resource type="Script" uid="uid://nq0qckavhcnr" path="res://Source/Editor/Components/TileEditingContainer.cs" id="7_ghgdu"]
+[ext_resource type="Script" uid="uid://6751jxcko5cv" path="res://Source/Editor/Components/GroundProperties.cs" id="8_wwjnl"]
 
 [node name="Editor" type="Node2D" unique_id=238378600 node_paths=PackedStringArray("Map", "_topnav", "_tileSelectionContainer", "_tileEditingContainer")]
 script = ExtResource("1_tw15f")
@@ -82,7 +83,7 @@ horizontal_scroll_mode = 0
 layout_mode = 2
 alignment = 1
 
-[node name="TileEditingContainer" type="PanelContainer" parent="Overlay/Container/Body" unique_id=1081003154 node_paths=PackedStringArray("_map")]
+[node name="TileEditingContainer" type="PanelContainer" parent="Overlay/Container/Body" unique_id=1081003154 node_paths=PackedStringArray("_map", "_groundProperties")]
 visible = false
 layout_mode = 1
 anchors_preset = 11
@@ -94,6 +95,7 @@ grow_horizontal = 0
 grow_vertical = 2
 script = ExtResource("7_ghgdu")
 _map = NodePath("../../../../Map")
+_groundProperties = NodePath("ScrollContainer/VBoxContainer/GroundProperties")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Overlay/Container/Body/TileEditingContainer" unique_id=1086735869]
 layout_mode = 2
@@ -110,8 +112,11 @@ text = "Tile properties"
 [node name="HSeparator" type="HSeparator" parent="Overlay/Container/Body/TileEditingContainer/ScrollContainer/VBoxContainer" unique_id=1035314860]
 layout_mode = 2
 
-[node name="GroundProperties" type="VBoxContainer" parent="Overlay/Container/Body/TileEditingContainer/ScrollContainer/VBoxContainer" unique_id=1371626734]
+[node name="GroundProperties" type="VBoxContainer" parent="Overlay/Container/Body/TileEditingContainer/ScrollContainer/VBoxContainer" unique_id=1371626734 node_paths=PackedStringArray("_heightText", "_heightSpinner")]
 layout_mode = 2
+script = ExtResource("8_wwjnl")
+_heightText = NodePath("HeightEditor/Height")
+_heightSpinner = NodePath("HeightEditor/Spinner")
 
 [node name="Title" type="Label" parent="Overlay/Container/Body/TileEditingContainer/ScrollContainer/VBoxContainer/GroundProperties" unique_id=2123031609]
 layout_mode = 2

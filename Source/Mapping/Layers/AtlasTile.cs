@@ -13,6 +13,7 @@ public partial class AtlasTile : Tile
 		if (layer.GetCellAtlasCoords(position) == Types.Vector2I.Negative)
 			return;
 		
+		CellPosition = position;
 		TileData = layer.GetCellTileData(position);
 	}
 }
