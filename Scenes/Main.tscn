@@ -2,9 +2,12 @@
 
 [ext_resource type="Script" uid="uid://bqyf8mscxyken" path="res://Source/Main.cs" id="1_r150o"]
 [ext_resource type="Script" uid="uid://dfsur52pslkvm" path="res://Source/Managers/Scenes/SceneManager.cs" id="2_idj7w"]
+[ext_resource type="Script" uid="uid://bgkf7731fkrvn" path="res://Source/Managers/Toasts/ToastManager.cs" id="3_kln2b"]
 
-[node name="Main" type="Node" unique_id=1017316100]
+[node name="Main" type="Node" unique_id=1017316100 node_paths=PackedStringArray("SceneManager", "ToastManager")]
 script = ExtResource("1_r150o")
+SceneManager = NodePath("SceneManager")
+ToastManager = NodePath("Overlay/ToastManager")
 
 [node name="SceneManager" type="Node" parent="." unique_id=712174652]
 script = ExtResource("2_idj7w")
@@ -27,5 +30,7 @@ offset_top = -40.0
 offset_right = 20.0
 grow_horizontal = 2
 grow_vertical = 0
+script = ExtResource("3_kln2b")
+ToastFadeTime = 5.0
 
 [node name="CursorManager" type="Node" parent="Overlay" unique_id=640786335]

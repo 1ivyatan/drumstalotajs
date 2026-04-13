@@ -10,6 +10,7 @@ public partial class Topnav : Drumstalotajs.Components.Panels.Topnav
 	[Signal] public delegate void SelectedExitEventHandler();
 	[Signal] public delegate void SelectedCalibrationEventHandler();
 	[Signal] public delegate void SelectedModeEventHandler(EditorMode mode);
+	[Signal] public delegate void SelectedExportEventHandler();
 	[Export] private MenuBar _menu;
 	private PopupMenu _fileMenu;
 	private PopupMenu _viewMenu;
@@ -43,6 +44,9 @@ public partial class Topnav : Drumstalotajs.Components.Panels.Topnav
 		_fileMenuCall = Callable.From((int id) => {
 			switch (id)
 			{
+				case 0: /* export */
+					EmitSignal(SignalName.SelectedExport);
+					break;
 				case 2: /* exit */
 					EmitSignal(SignalName.SelectedExit);
 					break;

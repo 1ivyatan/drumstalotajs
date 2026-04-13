@@ -56,6 +56,9 @@ public partial class EditorScene : Node2D
 		_topnav.SelectedMode += (EditorMode mode) => { 
 			Mode = mode;
 		};
+		_topnav.SelectedExport += () => {
+			Nodes.GetRoot().ToastManager.Spawn("Done exporting");
+		};
 		/*
 			picker.SelectedTile += (PickedTileData pickedTile) => {*/
 		/*cccccc*/
