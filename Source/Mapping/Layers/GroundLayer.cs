@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using Drumstalotajs.Utils;
+using Drumstalotajs.Resources.Mapping;
 
 namespace Drumstalotajs.Mapping.Layers;
 
@@ -18,6 +19,12 @@ public partial class GroundLayer : AtlasLayer
 	{
 		if (GetCellAtlasCoords(position) == Types.Vector2I.Negative) return [];
 		return [ new GroundTile(this, position) ];
+	}
+	
+	/*!!!!!!*/
+	public override AtlasLayerData Axport()
+	{
+		return null;
 	}
 	
 	public double GetBaseHeight()

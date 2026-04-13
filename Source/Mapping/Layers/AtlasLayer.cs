@@ -1,10 +1,11 @@
 using Godot;
 using System;
 using Drumstalotajs.Utils;
+using Drumstalotajs.Resources.Mapping;
 
 namespace Drumstalotajs.Mapping.Layers;
 
-public partial class AtlasLayer : Layer<Vector2I, AtlasTile>
+public partial class AtlasLayer : Layer<Vector2I, AtlasTile, AtlasLayerData>
 {
 	public override Vector2I[] GetAtlas()
 	{
@@ -27,6 +28,11 @@ public partial class AtlasLayer : Layer<Vector2I, AtlasTile>
 	public override void Export()
 	{
 		
+	}
+	
+	public override AtlasLayerData Axport()
+	{
+		return null;
 	}
 	
 	public override void AddTile(Vector2I position, Vector2I atlas)
