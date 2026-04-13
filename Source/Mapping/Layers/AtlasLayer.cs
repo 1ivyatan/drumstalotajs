@@ -24,6 +24,11 @@ public partial class AtlasLayer : Layer<Vector2I, AtlasTile>
 		return [];
 	}
 	
+	public override void Export()
+	{
+		
+	}
+	
 	public override void AddTile(Vector2I position, Vector2I atlas)
 	{
 		SetCell(position, 0, atlas, 0);

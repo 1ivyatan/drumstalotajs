@@ -34,4 +34,9 @@ public partial class GroundLayer : AtlasLayer
 	{
 		AddedHeights[position] = value;
 	}
+	
+	public override void Export()
+	{
+		GD.Print("hahaha");
+	}
 }

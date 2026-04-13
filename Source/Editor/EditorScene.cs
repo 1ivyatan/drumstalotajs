@@ -57,6 +57,7 @@ public partial class EditorScene : Node2D
 			Mode = mode;
 		};
 		_topnav.SelectedExport += () => {
+			Map.Export();
 			Nodes.GetRoot().ToastManager.Spawn("Done exporting");
 		};
 		/*

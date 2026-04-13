@@ -16,4 +16,9 @@ public partial class AtlasTile : Tile
 		CellPosition = position;
 		TileData = layer.GetCellTileData(position);
 	}
+	
+	public void Export()
+	{
+		
+	}
 }

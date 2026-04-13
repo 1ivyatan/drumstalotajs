@@ -32,4 +32,9 @@ public partial class Map : Node2D
 			(layer as GroundLayer).RemoveTile(position);
 		}
 	}
+	
+	public void Export()
+	{
+		GroundLayer.Export();
+	}
 }
