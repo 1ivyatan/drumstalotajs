@@ -7,9 +7,9 @@ namespace Drumstalotajs.Resources.Mapping;
 [GlobalClass]
 public partial class GroundLayerData : AtlasLayerData
 {
-	//[Export] public Godot.Collections.Dictionary<Vector2I, > AddedHeights { get; private set; }
+	[Export] public AddedGroundHeightAtlas AddedHeights { get; private set; }
 	public GroundLayerData(GroundLayer layer) : base(layer)
 	{
-		
+		AddedHeights = layer.AddedHeights;
 	}
 }
