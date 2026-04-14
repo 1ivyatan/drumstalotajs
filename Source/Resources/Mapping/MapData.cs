@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using Drumstalotajs.Mapping;
 
 namespace Drumstalotajs.Resources.Mapping;
 
@@ -9,8 +10,8 @@ public partial class MapData : Resource
 	[ExportGroup("AtlasLayers")]
 	[Export] public GroundLayerData GroundLayerData { get; private set; }
 	
-	public MapData(GroundLayerData groundLayerData)
+	public MapData(Map map)
 	{
-		GroundLayerData = groundLayerData;
+		GroundLayerData = map.GroundLayer.Export();
 	}
 }

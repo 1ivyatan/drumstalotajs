@@ -13,6 +13,7 @@ namespace Drumstalotajs.Editor;
 
 public partial class EditorScene : Node2D
 {
+	[Export(PropertyHint.Dir)] private string _exportPath;
 	[Export] public Map Map { get; private set; }
 	public EditorMode Mode { get; 
 		private set {
@@ -57,7 +58,8 @@ public partial class EditorScene : Node2D
 			Mode = mode;
 		};
 		_topnav.SelectedExport += () => {
-			Map.Export();
+			var export = Map.Export();
+			ResourceSaver.Save(export, $"{_exportPath}/Map.tres");
 			Nodes.GetRoot().ToastManager.Spawn("Done exporting");
 		};
 		/*

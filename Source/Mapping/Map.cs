@@ -34,8 +34,8 @@ public partial class Map : Node2D
 		}
 	}
 	
-	public void Export()
+	public MapData Export()
 	{
-		GroundLayer.Export();
+		return new MapData(this);
 	}
 }
