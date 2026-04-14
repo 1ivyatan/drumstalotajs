@@ -23,7 +23,6 @@ public partial class GroundLayer : AtlasLayer
 	
 	public override GroundLayerData Export()
 	{
-		GD.Print("hahaha");
 		return new GroundLayerData(this);
 	}
 	
