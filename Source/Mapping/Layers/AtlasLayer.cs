@@ -25,14 +25,9 @@ public partial class AtlasLayer : Layer<Vector2I, AtlasTile, AtlasLayerData>
 		return [];
 	}
 	
-	public override void Export()
+	public override AtlasLayerData Export()
 	{
-		
-	}
-	
-	public override AtlasLayerData Axport()
-	{
-		return null;
+		return new AtlasLayerData(this);
 	}
 	
 	public override void AddTile(Vector2I position, Vector2I atlas)

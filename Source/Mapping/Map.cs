@@ -5,6 +5,7 @@ using Drumstalotajs.Utils;
 using Drumstalotajs.Mapping.Layers;
 using Drumstalotajs.Mapping.Cameras;
 using Drumstalotajs.Mapping.Selection;
+using Drumstalotajs.Resources.Mapping;
 
 namespace Drumstalotajs.Mapping;
 

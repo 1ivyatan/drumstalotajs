@@ -21,10 +21,10 @@ public partial class GroundLayer : AtlasLayer
 		return [ new GroundTile(this, position) ];
 	}
 	
-	/*!!!!!!*/
-	public override AtlasLayerData Axport()
+	public override GroundLayerData Export()
 	{
-		return null;
+		GD.Print("hahaha");
+		return new GroundLayerData(this);
 	}
 	
 	public double GetBaseHeight()
@@ -40,10 +40,5 @@ public partial class GroundLayer : AtlasLayer
 	public void SetAddedHeight(Vector2I position, double value)
 	{
 		AddedHeights[position] = value;
-	}
-	
-	public override void Export()
-	{
-		GD.Print("hahaha");
 	}
 }
