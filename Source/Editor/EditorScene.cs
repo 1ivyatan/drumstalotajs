@@ -15,6 +15,8 @@ public partial class EditorScene : Node2D
 {
 	[Export(PropertyHint.Dir)] private string _exportPath;
 	[Export(PropertyHint.File, "*.tres")] private string _emptyMapPath;
+	[Export] private FileDialog _openDialog;
+	[Export] private EditorSaveManager EditorSaveManager { get; set; }
 	[Export] public Map Map { get; private set; }
 	
 	private bool _edited = false;
@@ -61,23 +63,37 @@ public partial class EditorScene : Node2D
 		_topnav.SelectedMode += (EditorMode mode) => { 
 			Mode = mode;
 		};
-		_topnav.SelectedExport += Export;
+
+		_topnav.SelectedExport += Save;
 		_topnav.SelectedNew += LoadNew;
-		Map.Edited += () => { _edited = true; };
+		_topnav.SelectedOpen += Open;
+		EditorSaveManager.SaveLoaded += (string name) => {
+			SetTitle();
+			_edited = false;
+		};
+		Map.Edited += () => { 
+			SetTitle();
+			_edited = true;
+		};
 		LoadNew();
-		
 		/*
 			picker.SelectedTile += (PickedTileData pickedTile) => {*/
 		/*cccccc*/
 	}
 	
-	private void Export()
+	private void Open()
 	{
-		string path = $"{_exportPath}/Map.tres";
-		var export = Map.Export();
-		ResourceSaver.Save(export, path);
-		Nodes.GetRoot().ToastManager.Spawn($"Done exporting, file is {path}");
-		_edited = false;
+		EditorSaveManager.OpenPrompt();
+	}
+	
+	private void Save()
+	{
+		EditorSaveManager.SavePrompt();
+	}
+	
+	private void SetTitle()
+	{
+		_topnav.SetTitle($"Editor - {EditorSaveManager.SaveName}");
 	}
 	
 	private void LoadNew()
@@ -88,8 +104,9 @@ public partial class EditorScene : Node2D
 			return;
 		} else
 		{
+			Map.Load(EditorSaveManager.TemplateMap);
+			SetTitle();
 			_edited = false;
-			Map.Load(_emptyMapPath);
 		}
 	}
 }

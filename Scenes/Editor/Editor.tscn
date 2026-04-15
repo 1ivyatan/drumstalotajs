@@ -8,11 +8,14 @@
 [ext_resource type="PackedScene" uid="uid://crtaodpir57ou" path="res://Scenes/Components/LayerTilePicker.tscn" id="6_u75kh"]
 [ext_resource type="Script" uid="uid://nq0qckavhcnr" path="res://Source/Editor/Components/TileEditingContainer.cs" id="7_ghgdu"]
 [ext_resource type="Script" uid="uid://6751jxcko5cv" path="res://Source/Editor/Components/GroundProperties.cs" id="8_wwjnl"]
+[ext_resource type="Script" uid="uid://c7axmpmfchd0g" path="res://Source/Editor/EditorSaveManager.cs" id="9_ufwpj"]
 
-[node name="Editor" type="Node2D" unique_id=238378600 node_paths=PackedStringArray("Map", "_topnav", "_tileSelectionContainer", "_tileEditingContainer")]
+[node name="Editor" type="Node2D" unique_id=238378600 node_paths=PackedStringArray("_openDialog", "EditorSaveManager", "Map", "_topnav", "_tileSelectionContainer", "_tileEditingContainer")]
 script = ExtResource("1_tw15f")
 _exportPath = "res://Exports/"
 _emptyMapPath = "uid://328kpsphixi"
+_openDialog = NodePath("EditorSaveManager/OpenDialog")
+EditorSaveManager = NodePath("EditorSaveManager")
 Map = NodePath("Map")
 _topnav = NodePath("Overlay/Container/Topnav")
 _tileSelectionContainer = NodePath("Overlay/Container/Body/TileSelectionContainer")
@@ -44,7 +47,7 @@ item_0/text = "New"
 item_0/id = 3
 item_1/text = "Open"
 item_1/id = 4
-item_2/text = "Export"
+item_2/text = "Save"
 item_2/id = 0
 item_3/id = 1
 item_3/disabled = true
@@ -138,3 +141,24 @@ text = "0+"
 
 [node name="Spinner" type="SpinBox" parent="Overlay/Container/Body/TileEditingContainer/ScrollContainer/VBoxContainer/GroundProperties/HeightEditor" unique_id=2039273848]
 layout_mode = 2
+
+[node name="EditorSaveManager" type="Node" parent="." unique_id=1984580574 node_paths=PackedStringArray("_openDialog", "_saveDialog", "_map")]
+script = ExtResource("9_ufwpj")
+TemplateMap = "uid://328kpsphixi"
+_openDialog = NodePath("OpenDialog")
+_saveDialog = NodePath("SaveDialog")
+_map = NodePath("../Map")
+
+[node name="OpenDialog" type="FileDialog" parent="EditorSaveManager" unique_id=140600461]
+title = "Open a File"
+file_mode = 0
+display_mode = 1
+access = 2
+filters = PackedStringArray("*.tres")
+use_native_dialog = true
+
+[node name="SaveDialog" type="FileDialog" parent="EditorSaveManager" unique_id=213967380]
+display_mode = 1
+access = 2
+filters = PackedStringArray("*.tres")
+use_native_dialog = true

@@ -12,6 +12,7 @@ public partial class Topnav : Drumstalotajs.Components.Panels.Topnav
 	[Signal] public delegate void SelectedModeEventHandler(EditorMode mode);
 	[Signal] public delegate void SelectedExportEventHandler();
 	[Signal] public delegate void SelectedNewEventHandler();
+	[Signal] public delegate void SelectedOpenEventHandler();
 	[Export] private MenuBar _menu;
 	private PopupMenu _fileMenu;
 	private PopupMenu _viewMenu;
@@ -47,6 +48,9 @@ public partial class Topnav : Drumstalotajs.Components.Panels.Topnav
 			{
 				case 3: /* new */
 					EmitSignal(SignalName.SelectedNew);
+					break;
+				case 4: /* open */
+					EmitSignal(SignalName.SelectedOpen);
 					break;
 				case 0: /* export */
 					EmitSignal(SignalName.SelectedExport);
