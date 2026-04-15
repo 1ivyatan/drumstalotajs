@@ -12,6 +12,7 @@
 [node name="Editor" type="Node2D" unique_id=238378600 node_paths=PackedStringArray("Map", "_topnav", "_tileSelectionContainer", "_tileEditingContainer")]
 script = ExtResource("1_tw15f")
 _exportPath = "res://Exports/"
+_emptyMapPath = "uid://328kpsphixi"
 Map = NodePath("Map")
 _topnav = NodePath("Overlay/Container/Topnav")
 _tileSelectionContainer = NodePath("Overlay/Container/Body/TileSelectionContainer")

@@ -30,16 +30,22 @@ public partial class AtlasLayer : Layer<Vector2I, AtlasTile, AtlasLayerData>
 		return new AtlasLayerData(this);
 	}
 	
+	public override void Load(AtlasLayerData layerData)
+	{
+		Clear();
+		SetPattern(layerData.Offset, layerData.Tiles);
+	}
+	
 	public override void AddTile(Vector2I position, Vector2I atlas)
 	{
 		SetCell(position, 0, atlas, 0);
-		EmitSignal(SignalName.Changed);
+		EmitSignal(SignalName.ChangedLayer);
 	}
 	
 	public override void RemoveTile(Vector2I position)
 	{
 		EraseCell(position);
-		EmitSignal(SignalName.Changed);
+		EmitSignal(SignalName.ChangedLayer);
 	}
 	
 	public override Godot.Collections.Array<AtlasTile> Flash(Vector2I position)

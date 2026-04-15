@@ -37,12 +37,14 @@ public partial class EditorScene : Node2D
 		switch (Mode)
 		{
 			case EditorMode.Insert:
+				if ((_mouseLeftPressed || _mouseRightPressed) && _tileSelectionContainer.PickedTileData == null)
+				{
+					Nodes.GetRoot().ToastManager.Spawn("Pick a tile");
+					return;
+				}
+				
 				if (_mouseLeftPressed)
 				{
-					//if ()
-					
-					GD.Print(_tileSelectionContainer.PickedTileData);
-					
 					Map.AddTile(
 						_tileSelectionContainer.PickedTileData.Layer,
 						_tileSelectionContainer.PickedTileData.Name,

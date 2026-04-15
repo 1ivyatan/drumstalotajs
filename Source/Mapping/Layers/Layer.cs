@@ -11,4 +11,5 @@ public abstract partial class Layer<[MustBeVariant] TAtlasType, [MustBeVariant] 
 	public abstract void RemoveTile(Vector2I position);
 	public abstract Godot.Collections.Array<TTile> Flash(Vector2I position);
 	public abstract TLayerResource Export();
+	public abstract void Load(TLayerResource layerData);
 }

@@ -8,7 +8,9 @@ namespace Drumstalotajs.Resources.Mapping;
 public partial class MapData : Resource
 {
 	[ExportGroup("AtlasLayers")]
-	[Export] public GroundLayerData GroundLayerData { get; private set; }
+	[Export] public GroundLayerData GroundLayerData { get; set; }
+	
+	public MapData() {}
 	
 	public MapData(Map map)
 	{

@@ -5,6 +5,6 @@ namespace Drumstalotajs.Mapping.Layers;
 
 public abstract partial class LayerBase : TileMapLayer
 {
-	[Signal] public delegate void ChangedEventHandler();
+	[Signal] public delegate void ChangedLayerEventHandler();
 	public int TileSize { get => TileSet.TileSize.X; }
 }

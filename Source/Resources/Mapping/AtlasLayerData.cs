@@ -8,8 +8,10 @@ namespace Drumstalotajs.Resources.Mapping;
 [GlobalClass]
 public partial class AtlasLayerData : LayerData
 {
-	[Export] public Vector2I Offset { get; private set; }
-	[Export] public TileMapPattern Tiles { get; private set; }
+	[Export] public Vector2I Offset { get; set; }
+	[Export] public TileMapPattern Tiles { get; set; }
+	
+	public AtlasLayerData() {}
 	
 	public AtlasLayerData(AtlasLayer layer)
 	{

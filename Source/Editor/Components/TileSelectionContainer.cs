@@ -13,7 +13,7 @@ public partial class TileSelectionContainer : Control
 {
 	[Signal] public delegate void SelectedTileEventHandler(PickedTileData pickedTile);
 	
-	public PickedTileData PickedTileData { get; private set; }
+	public PickedTileData PickedTileData { get; private set; } = null;
 	
 	[Export] private PackedScene _layerTilePicker;
 	[Export] private Control _container;

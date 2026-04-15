@@ -14,6 +14,7 @@ namespace Drumstalotajs.Editor;
 public partial class EditorScene : Node2D
 {
 	[Export(PropertyHint.Dir)] private string _exportPath;
+	[Export(PropertyHint.File, "*.tres")] private string _emptyMapPath;
 	[Export] public Map Map { get; private set; }
 	
 	private bool _edited = false;
@@ -63,10 +64,11 @@ public partial class EditorScene : Node2D
 		_topnav.SelectedExport += Export;
 		_topnav.SelectedNew += LoadNew;
 		Map.Edited += () => { _edited = true; };
+		LoadNew();
+		
 		/*
 			picker.SelectedTile += (PickedTileData pickedTile) => {*/
 		/*cccccc*/
-		Map.Camera.Calibrate();
 	}
 	
 	private void Export()
@@ -74,13 +76,20 @@ public partial class EditorScene : Node2D
 		string path = $"{_exportPath}/Map.tres";
 		var export = Map.Export();
 		ResourceSaver.Save(export, path);
-		Nodes.GetRoot().ToastManager.Spawn("Done exporting, file is {path}");
+		Nodes.GetRoot().ToastManager.Spawn($"Done exporting, file is {path}");
 		_edited = false;
 	}
 	
 	private void LoadNew()
 	{
-		GD.Print(_edited);
-		//_edited = false;
+		if (_edited)
+		{
+			Nodes.GetRoot().ToastManager.Spawn("Not exported, please export.");
+			return;
+		} else
+		{
+			_edited = false;
+			Map.Load(_emptyMapPath);
+		}
 	}
 }

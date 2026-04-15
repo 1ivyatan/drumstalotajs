@@ -22,7 +22,7 @@ public partial class Map : Node2D
 	
 	public override void _Ready()
 	{
-		GroundLayer.Changed += EmitEdit;
+		GroundLayer.ChangedLayer += EmitEdit;
 	}
 	
 	private void EmitEdit()
@@ -56,10 +56,19 @@ public partial class Map : Node2D
 		return new MapData(this);
 	}
 	
-	public void Load(MapData data)
+	public void Load(String path)
 	{
 		State = MapState.Loading;
-		GroundLayer.Clear();
+		
+		if (Files.Exists<MapData>(path))
+		{
+			var mapData = Files.SafeLoadResource<MapData>(path);
+			GroundLayer.Load(mapData.GroundLayerData);
+			Camera.Calibrate();
+		} else
+		{
+		}
+		
 		State = MapState.Done;
 	}
 }

@@ -26,6 +26,17 @@ public partial class GroundLayer : AtlasLayer
 		return new GroundLayerData(this);
 	}
 	
+	public override void Load(AtlasLayerData layerData)
+	{
+		if (layerData is GroundLayerData groundLayerData)
+		{
+			Clear();
+			SetPattern(groundLayerData.Offset, groundLayerData.Tiles);
+			BaseHeight = groundLayerData.BaseHeight;
+			AddedHeights = groundLayerData.AddedHeights;
+		}
+	}
+	
 	public double GetBaseHeight()
 	{
 		return BaseHeight;
@@ -39,6 +50,6 @@ public partial class GroundLayer : AtlasLayer
 	public void SetAddedHeight(Vector2I position, double value)
 	{
 		AddedHeights[position] = value;
-		EmitSignal(SignalName.Changed);
+		EmitSignal(SignalName.ChangedLayer);
 	}
 }
