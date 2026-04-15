@@ -11,6 +11,8 @@ namespace Drumstalotajs.Mapping;
 
 public partial class Map : Node2D
 {
+	[Signal] public delegate void EditedEventHandler();
+	
 	public MapMode Mode { get; set; } = MapMode.Lock;
 	public MapState State { get; set; } = MapState.Empty;
 	
@@ -18,11 +20,25 @@ public partial class Map : Node2D
 	[Export] public Selector Selector { get; private set; }
 	[Export] public Camera Camera { get; private set; }
 	
+	public override void _Ready()
+	{
+		GroundLayer.Changed += EmitEdit;
+	}
+	
+	private void EmitEdit()
+	{
+		if (State != MapState.Loading && Mode == MapMode.Edit)
+		{
+			EmitSignal(SignalName.Edited);
+		}
+	}
+	
 	public void AddTile(LayerBase layer, string tileName, Vector2I position)
 	{
 		if (layer is GroundLayer && Types.Vector2I.ValidVector2I(tileName))
 		{
 			(layer as GroundLayer).AddTile(position, Types.Vector2I.StringToVector2I(tileName));
+			EmitEdit();
 		}
 	}
 	
@@ -31,11 +47,19 @@ public partial class Map : Node2D
 		if (layer is GroundLayer)
 		{
 			(layer as GroundLayer).RemoveTile(position);
+			EmitEdit();
 		}
 	}
 	
 	public MapData Export()
 	{
 		return new MapData(this);
+	}
+	
+	public void Load(MapData data)
+	{
+		State = MapState.Loading;
+		GroundLayer.Clear();
+		State = MapState.Done;
 	}
 }

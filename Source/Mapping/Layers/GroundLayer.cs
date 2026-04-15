@@ -6,7 +6,7 @@ using Drumstalotajs.Resources.Mapping;
 namespace Drumstalotajs.Mapping.Layers;
 
 public partial class GroundLayer : AtlasLayer
-{
+{	
 	public AddedGroundHeightAtlas AddedHeights { get; private set; }
 	public double BaseHeight { get; private set; } = 0;
 	
@@ -39,5 +39,6 @@ public partial class GroundLayer : AtlasLayer
 	public void SetAddedHeight(Vector2I position, double value)
 	{
 		AddedHeights[position] = value;
+		EmitSignal(SignalName.Changed);
 	}
 }

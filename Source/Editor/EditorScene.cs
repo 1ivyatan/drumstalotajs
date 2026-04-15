@@ -15,6 +15,9 @@ public partial class EditorScene : Node2D
 {
 	[Export(PropertyHint.Dir)] private string _exportPath;
 	[Export] public Map Map { get; private set; }
+	
+	private bool _edited = false;
+	
 	public EditorMode Mode { get; 
 		private set {
 			field = value;
@@ -57,14 +60,27 @@ public partial class EditorScene : Node2D
 		_topnav.SelectedMode += (EditorMode mode) => { 
 			Mode = mode;
 		};
-		_topnav.SelectedExport += () => {
-			var export = Map.Export();
-			ResourceSaver.Save(export, $"{_exportPath}/Map.tres");
-			Nodes.GetRoot().ToastManager.Spawn("Done exporting");
-		};
+		_topnav.SelectedExport += Export;
+		_topnav.SelectedNew += LoadNew;
+		Map.Edited += () => { _edited = true; };
 		/*
 			picker.SelectedTile += (PickedTileData pickedTile) => {*/
 		/*cccccc*/
 		Map.Camera.Calibrate();
+	}
+	
+	private void Export()
+	{
+		string path = $"{_exportPath}/Map.tres";
+		var export = Map.Export();
+		ResourceSaver.Save(export, path);
+		Nodes.GetRoot().ToastManager.Spawn("Done exporting, file is {path}");
+		_edited = false;
+	}
+	
+	private void LoadNew()
+	{
+		GD.Print(_edited);
+		//_edited = false;
 	}
 }

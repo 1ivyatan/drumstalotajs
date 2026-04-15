@@ -39,6 +39,10 @@ public partial class EditorScene : Node2D
 			case EditorMode.Insert:
 				if (_mouseLeftPressed)
 				{
+					//if ()
+					
+					GD.Print(_tileSelectionContainer.PickedTileData);
+					
 					Map.AddTile(
 						_tileSelectionContainer.PickedTileData.Layer,
 						_tileSelectionContainer.PickedTileData.Name,

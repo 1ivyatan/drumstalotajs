@@ -33,11 +33,13 @@ public partial class AtlasLayer : Layer<Vector2I, AtlasTile, AtlasLayerData>
 	public override void AddTile(Vector2I position, Vector2I atlas)
 	{
 		SetCell(position, 0, atlas, 0);
+		EmitSignal(SignalName.Changed);
 	}
 	
 	public override void RemoveTile(Vector2I position)
 	{
 		EraseCell(position);
+		EmitSignal(SignalName.Changed);
 	}
 	
 	public override Godot.Collections.Array<AtlasTile> Flash(Vector2I position)

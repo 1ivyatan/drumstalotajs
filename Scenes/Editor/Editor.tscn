@@ -11,7 +11,7 @@
 
 [node name="Editor" type="Node2D" unique_id=238378600 node_paths=PackedStringArray("Map", "_topnav", "_tileSelectionContainer", "_tileEditingContainer")]
 script = ExtResource("1_tw15f")
-_exportPath = "res://Exports"
+_exportPath = "res://Exports/"
 Map = NodePath("Map")
 _topnav = NodePath("Overlay/Container/Topnav")
 _tileSelectionContainer = NodePath("Overlay/Container/Body/TileSelectionContainer")
@@ -38,14 +38,18 @@ layout_mode = 2
 
 [node name="File" type="PopupMenu" parent="Overlay/Container/Topnav/Menu" unique_id=366426532]
 oversampling_override = 1.0
-item_count = 3
-item_0/text = "Export"
-item_0/id = 0
-item_1/id = 1
-item_1/disabled = true
-item_1/separator = true
-item_2/text = "Exit"
-item_2/id = 2
+item_count = 5
+item_0/text = "New"
+item_0/id = 3
+item_1/text = "Open"
+item_1/id = 4
+item_2/text = "Export"
+item_2/id = 0
+item_3/id = 1
+item_3/disabled = true
+item_3/separator = true
+item_4/text = "Exit"
+item_4/id = 2
 
 [node name="View" type="PopupMenu" parent="Overlay/Container/Topnav/Menu" unique_id=1103629704]
 oversampling_override = 1.0
@@ -84,7 +88,7 @@ horizontal_scroll_mode = 0
 layout_mode = 2
 alignment = 1
 
-[node name="TileEditingContainer" type="PanelContainer" parent="Overlay/Container/Body" unique_id=1081003154 node_paths=PackedStringArray("_map")]
+[node name="TileEditingContainer" type="PanelContainer" parent="Overlay/Container/Body" unique_id=1081003154 node_paths=PackedStringArray("_map", "_groundProperties")]
 visible = false
 layout_mode = 1
 anchors_preset = 11
@@ -96,6 +100,7 @@ grow_horizontal = 0
 grow_vertical = 2
 script = ExtResource("7_ghgdu")
 _map = NodePath("../../../../Map")
+_groundProperties = NodePath("ScrollContainer/VBoxContainer/GroundProperties")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Overlay/Container/Body/TileEditingContainer" unique_id=1086735869]
 layout_mode = 2
