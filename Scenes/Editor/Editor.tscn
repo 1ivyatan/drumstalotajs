@@ -10,11 +10,8 @@
 [ext_resource type="Script" uid="uid://6751jxcko5cv" path="res://Source/Editor/Components/GroundProperties.cs" id="8_wwjnl"]
 [ext_resource type="Script" uid="uid://c7axmpmfchd0g" path="res://Source/Editor/EditorSaveManager.cs" id="9_ufwpj"]
 
-[node name="Editor" type="Node2D" unique_id=238378600 node_paths=PackedStringArray("_openDialog", "EditorSaveManager", "Map", "_topnav", "_tileSelectionContainer", "_tileEditingContainer")]
+[node name="Editor" type="Node2D" unique_id=238378600 node_paths=PackedStringArray("EditorSaveManager", "Map", "_topnav", "_tileSelectionContainer", "_tileEditingContainer")]
 script = ExtResource("1_tw15f")
-_exportPath = "res://Exports/"
-_emptyMapPath = "uid://328kpsphixi"
-_openDialog = NodePath("EditorSaveManager/OpenDialog")
 EditorSaveManager = NodePath("EditorSaveManager")
 Map = NodePath("Map")
 _topnav = NodePath("Overlay/Container/Topnav")

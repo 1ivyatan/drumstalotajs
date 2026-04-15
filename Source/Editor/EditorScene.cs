@@ -13,9 +13,6 @@ namespace Drumstalotajs.Editor;
 
 public partial class EditorScene : Node2D
 {
-	[Export(PropertyHint.Dir)] private string _exportPath;
-	[Export(PropertyHint.File, "*.tres")] private string _emptyMapPath;
-	[Export] private FileDialog _openDialog;
 	[Export] private EditorSaveManager EditorSaveManager { get; set; }
 	[Export] public Map Map { get; private set; }
 	

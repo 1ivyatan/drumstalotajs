@@ -29,7 +29,6 @@ public partial class EditorSaveManager : Node
 	
 	private void Open(string path)
 	{
-		GD.Print(path);
 		SaveName = Path.GetFileNameWithoutExtension(path);
 		_map.Load(ProjectSettings.LocalizePath(path.Replace("\\", "/")));
 		EmitSignal(SignalName.SaveLoaded, SaveName);
@@ -38,9 +37,10 @@ public partial class EditorSaveManager : Node
 	private void Save(string path)
 	{
 		var export = _map.Export();
-		ResourceSaver.Save(export, ProjectSettings.LocalizePath(path.Replace("\\", "/")));
-		SaveName = Path.GetFileNameWithoutExtension(path);
-		Nodes.GetRoot().ToastManager.Spawn($"Done exporting, file is {Path.GetFileName(path)}");
+		var editedPath = ProjectSettings.LocalizePath((path + ( !path.Contains(fileFormat) ? ".tres" : "" )).Replace("\\", "/"));
+		ResourceSaver.Save(export, editedPath);
+		SaveName = Path.GetFileNameWithoutExtension(editedPath);
+		Nodes.GetRoot().ToastManager.Spawn($"Done exporting, file is {Path.GetFileName(editedPath)}");
 		EmitSignal(SignalName.SaveLoaded, SaveName);
 	}
 	

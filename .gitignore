@@ -27,3 +27,6 @@ mono_crash.*.json
 ~$*.bkp
 *.drawio.bkp
 .$*.bkp
+
+# Drumstalotajs specific ignores
+Exports/*
