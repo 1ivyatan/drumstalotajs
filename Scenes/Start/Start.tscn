@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://b2lhrg24h1jkc" path="res://Scenes/Components/Modal.tscn" id="2_7adfa"]
 [ext_resource type="Script" uid="uid://csmkojno153iy" path="res://Source/Start/Annotation.cs" id="4_uh10c"]
 
-[node name="Start" type="Control" unique_id=1888125272]
+[node name="Start" type="Control" unique_id=1888125272 node_paths=PackedStringArray("_startButton", "_aboutButton", "_editorButton", "_quitButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,6 +13,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_x3rvt")
+_startButton = NodePath("Grid/MenuColumn/Buttons/Start")
+_aboutButton = NodePath("Grid/MenuColumn/Buttons/About")
+_editorButton = NodePath("Grid/MenuColumn/Buttons/Editor")
+_quitButton = NodePath("Grid/MenuColumn/Buttons/Quit")
 
 [node name="Background" type="TextureRect" parent="." unique_id=1899519722]
 layout_mode = 1
