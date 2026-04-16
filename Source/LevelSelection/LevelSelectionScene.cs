@@ -16,11 +16,15 @@ public partial class LevelSelectionScene : Node2D
 	
 	/* !!!!!! */
 	[Export] public LevelSet _levelSet { get; private set; }
+	[Export] private Button _startButton;
 	
 	public override void _Ready()
 	{
+		_startButton.Pressed += () => {Nodes.GetRoot().SceneManager.Start();}; 
+		
 		Map.Mode = MapMode.Lock;
 		Map.Load(_levelSet.BackgroundMapPath);
 		Map.Camera.Mode = CameraMode.DragOnly;
 	}
+	
 }

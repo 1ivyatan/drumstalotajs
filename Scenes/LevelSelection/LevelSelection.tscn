@@ -4,9 +4,21 @@
 [ext_resource type="Resource" uid="uid://bmuvam4iac45v" path="res://Resources/LevelSets/RockyIsland.tres" id="2_675ns"]
 [ext_resource type="PackedScene" uid="uid://druw1x35jlqnh" path="res://Scenes/Mapping/Map.tscn" id="2_bnw7x"]
 
-[node name="LevelSelection" type="Node2D" unique_id=1846218210 node_paths=PackedStringArray("Map")]
+[node name="LevelSelection" type="Node2D" unique_id=1846218210 node_paths=PackedStringArray("Map", "_startButton")]
 script = ExtResource("1_g1q0k")
 Map = NodePath("Map")
 _levelSet = ExtResource("2_675ns")
+_startButton = NodePath("Overlay/ToStart")
 
 [node name="Map" parent="." unique_id=395374990 instance=ExtResource("2_bnw7x")]
+
+[node name="Overlay" type="CanvasLayer" parent="." unique_id=1303584272]
+
+[node name="ToStart" type="Button" parent="Overlay" unique_id=1123637316]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -8.0
+offset_right = 8.0
+grow_vertical = 0
+text = "< Return"
