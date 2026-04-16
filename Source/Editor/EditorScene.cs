@@ -46,7 +46,6 @@ public partial class EditorScene : Node2D
 	{
 		LayerBase[] layers = [ Map.GroundLayer ];
 		Map.Mode = MapMode.Edit;
-		Map.Camera.SetCalibratingAtlasLayer(Map.GroundLayer);
 		Map.Camera.Mode = CameraMode.View;
 		Map.Selector.Filter = new SelectorFilter(layers);
 		_tileSelectionContainer.Load(layers);

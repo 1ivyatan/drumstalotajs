@@ -33,6 +33,7 @@ public partial class Map : Node2D
 	
 	public override void _Ready()
 	{
+		Camera.SetCalibratingAtlasLayer(GroundLayer);
 		GroundLayer.ChangedLayer += EmitEdit;
 	}
 	

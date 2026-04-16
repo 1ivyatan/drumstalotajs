@@ -20,16 +20,19 @@ public partial class Camera : Camera2D
 	
 	public override void _UnhandledInput(InputEvent @event)
 	{
-		switch (Mode)
+		if (@event is InputEventMouse mouseEvent)
 		{
-			case CameraMode.View: 
-				if (@event is InputEventMouse mouseEvent)
-				{
+			switch (Mode)
+			{
+				case CameraMode.View: 
 					HandleZoom(mouseEvent);
 					HandleDrag(mouseEvent);
-				}
-				break;
-			default: break;
+					break;
+				case CameraMode.DragOnly:
+					HandleDrag(mouseEvent);
+					break;
+				default: break;
+			}
 		}
 	}
 	

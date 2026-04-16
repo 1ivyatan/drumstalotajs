@@ -1,10 +1,12 @@
 [gd_scene format=3 uid="uid://6w0if5idroq3"]
 
 [ext_resource type="Script" uid="uid://o3ipva55ayxc" path="res://Source/LevelSelection/LevelSelectionScene.cs" id="1_g1q0k"]
+[ext_resource type="Resource" uid="uid://bmuvam4iac45v" path="res://Resources/LevelSets/RockyIsland.tres" id="2_675ns"]
 [ext_resource type="PackedScene" uid="uid://druw1x35jlqnh" path="res://Scenes/Mapping/Map.tscn" id="2_bnw7x"]
 
 [node name="LevelSelection" type="Node2D" unique_id=1846218210 node_paths=PackedStringArray("Map")]
 script = ExtResource("1_g1q0k")
 Map = NodePath("Map")
+_levelSet = ExtResource("2_675ns")
 
 [node name="Map" parent="." unique_id=395374990 instance=ExtResource("2_bnw7x")]

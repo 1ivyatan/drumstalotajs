@@ -3,4 +3,4 @@ using System;
 
 namespace Drumstalotajs.Mapping.Cameras;
 
-public enum CameraMode { Lock, View }
+public enum CameraMode { Lock, DragOnly, View }

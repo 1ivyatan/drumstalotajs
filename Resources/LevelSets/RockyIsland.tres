@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="LevelSet" format=3 uid="uid://bmuvam4iac45v"]
+
+[ext_resource type="Script" uid="uid://cgcbahikyrhrx" path="res://Source/Resources/LevelSets/LevelSet.cs" id="1_0ldjb"]
+
+[resource]
+script = ExtResource("1_0ldjb")
+BackgroundMapPath = "uid://3buhyynhk5li"
+metadata/_custom_type_script = "uid://cgcbahikyrhrx"
