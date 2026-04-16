@@ -31,6 +31,21 @@ public partial class Topnav : Drumstalotajs.Components.Panels.Topnav
 		Cleanup();
 	}
 	
+	public void SetMode(EditorMode newMode)
+	{
+		foreach (EditorMode mode in Enum.GetValues(typeof(EditorMode)))
+		{
+			if (!_viewMenuMode.IsItemChecked((int)mode) && newMode == mode)
+			{
+				_viewMenuMode.SetItemChecked((int)newMode, true);
+				EmitSignal(SignalName.SelectedMode, (int)newMode);
+			} else if (_viewMenuMode.IsItemChecked((int)mode) && newMode != mode)
+			{
+				_viewMenuMode.SetItemChecked((int)mode, false);
+			} else continue;
+		}
+	}
+	
 	private void Initialize()
 	{
 		_fileMenu = _menu.GetNode<PopupMenu>("File");

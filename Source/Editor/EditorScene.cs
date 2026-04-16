@@ -57,12 +57,15 @@ public partial class EditorScene : Node2D
 		_topnav.SelectedMode += (EditorMode mode) => { 
 			Mode = mode;
 		};
-
 		_topnav.SelectedExport += Save;
 		_topnav.SelectedNew += LoadNew;
 		_topnav.SelectedOpen += Open;
-		EditorSaveManager.SaveLoaded += (string name) => {
+		EditorSaveManager.Saved += (string name) => {
 			SetTitle(false);
+		};
+		EditorSaveManager.Loaded += (string name) => {
+			SetTitle(false);
+			_topnav.SetMode(EditorMode.View);
 		};
 		Map.Edited += () => { 
 			SetTitle(true);

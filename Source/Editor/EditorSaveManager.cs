@@ -12,7 +12,8 @@ namespace Drumstalotajs.Editor;
 
 public partial class EditorSaveManager : Node
 {
-	[Signal] public delegate void SaveLoadedEventHandler(string filename);
+	[Signal] public delegate void SavedEventHandler(string filename);
+	[Signal] public delegate void LoadedEventHandler(string filename);
 	
 	[Export] private string fileFormat = ".tres";
 	[Export(PropertyHint.File, "*.tres")] public string TemplateMap { get; private set; }
@@ -39,7 +40,7 @@ public partial class EditorSaveManager : Node
 		SaveName = Path.GetFileNameWithoutExtension(path);
 		_map.Load(ProjectSettings.LocalizePath(path.Replace("\\", "/")));
 		Edited = false;
-		EmitSignal(SignalName.SaveLoaded, SaveName);
+		EmitSignal(SignalName.Loaded, SaveName);
 	}
 	
 	private void Save(string path)
@@ -50,7 +51,7 @@ public partial class EditorSaveManager : Node
 		SaveName = Path.GetFileNameWithoutExtension(editedPath);
 		Edited = false;
 		Nodes.GetRoot().ToastManager.Spawn($"Done exporting, file is {Path.GetFileName(editedPath)}");
-		EmitSignal(SignalName.SaveLoaded, SaveName);
+		EmitSignal(SignalName.Saved , SaveName);
 	}
 	
 	public void OpenPrompt()
@@ -67,6 +68,6 @@ public partial class EditorSaveManager : Node
 	{
 		_map.Load(TemplateMap);
 		Edited = false;
-		EmitSignal(SignalName.SaveLoaded, SaveName);
+		EmitSignal(SignalName.Loaded, SaveName);
 	}
 }
