@@ -12,10 +12,9 @@ public partial class Map : Node2D
 	/* Must fix this */
 	public Vector2 GetLocalMousePos()
 	{
-		GD.Print(GetGlobalMousePosition());
-		GD.Print(GetViewport().GetMousePosition());
 		Vector2 mouseScreenPos = GetViewport().GetMousePosition();
 		Vector2 mouseWorldPos = Camera.ScreenToWorld(mouseScreenPos);
+	//	GD.Print(Camera.ScreenToWorld(mouseScreenPos));
 		return GroundLayer.ToLocal(mouseWorldPos);
 	}
 	

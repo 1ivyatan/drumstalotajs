@@ -3,8 +3,10 @@
 [ext_resource type="Script" uid="uid://i6ilfm4xly2" path="res://Source/Mapping/Map.cs" id="1_lo67w"]
 [ext_resource type="Texture2D" uid="uid://b41y65s1dc0vc" path="res://Assets/Textures/Ground.svg" id="2_sd0qa"]
 [ext_resource type="Script" uid="uid://due6k5hcsaowq" path="res://Source/Mapping/Layers/GroundLayer.cs" id="2_wxnmh"]
+[ext_resource type="Texture2D" uid="uid://ct8pvrly53s8v" path="res://Assets/Textures/Decoration.svg" id="4_bdwom"]
 [ext_resource type="Script" uid="uid://cge0dywxbdq6t" path="res://Source/Mapping/Cameras/Camera.cs" id="4_ox681"]
 [ext_resource type="Script" uid="uid://b2tr3ltxreo2t" path="res://Source/Mapping/Selection/Selector.cs" id="4_s3wx3"]
+[ext_resource type="Script" uid="uid://ctd0lalv3ohx6" path="res://Source/Mapping/Layers/DecorationLayer.cs" id="5_f0kan"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ox681"]
 texture = ExtResource("2_sd0qa")
@@ -19,15 +21,29 @@ custom_data_layer_0/name = "RelativeHeight"
 custom_data_layer_0/type = 3
 sources/0 = SubResource("TileSetAtlasSource_ox681")
 
-[node name="Map" type="Node2D" unique_id=395374990 node_paths=PackedStringArray("GroundLayer", "Selector", "Camera")]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f0kan"]
+texture = ExtResource("4_bdwom")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_ccdcv"]
+sources/0 = SubResource("TileSetAtlasSource_f0kan")
+
+[node name="Map" type="Node2D" unique_id=395374990 node_paths=PackedStringArray("GroundLayer", "DecorationLayer", "Selector", "Camera")]
 script = ExtResource("1_lo67w")
 GroundLayer = NodePath("GroundLayer")
+DecorationLayer = NodePath("DecorationLayer")
 Selector = NodePath("Selector")
 Camera = NodePath("Camera")
 
 [node name="GroundLayer" type="TileMapLayer" parent="." unique_id=109600232]
 tile_set = SubResource("TileSet_s3wx3")
 script = ExtResource("2_wxnmh")
+
+[node name="DecorationLayer" type="TileMapLayer" parent="." unique_id=714585845]
+tile_set = SubResource("TileSet_ccdcv")
+script = ExtResource("5_f0kan")
 
 [node name="Selector" type="Node2D" parent="." unique_id=1750489280 node_paths=PackedStringArray("_map")]
 script = ExtResource("4_s3wx3")

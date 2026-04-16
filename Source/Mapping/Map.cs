@@ -28,6 +28,7 @@ public partial class Map : Node2D
 	public MapState State { get; private set; } = MapState.Empty;
 	
 	[Export] public GroundLayer GroundLayer { get; private set; }
+	[Export] public DecorationLayer DecorationLayer { get; private set; }
 	[Export] public Selector Selector { get; private set; }
 	[Export] public Camera Camera { get; private set; }
 	
@@ -47,18 +48,44 @@ public partial class Map : Node2D
 	
 	public void AddTile(LayerBase layer, string tileName, Vector2I position)
 	{
-		if (layer is GroundLayer && Types.Vector2I.ValidVector2I(tileName))
+		bool added = false;
+		if (layer is AtlasLayer atlasLayer && Types.Vector2I.ValidVector2I(tileName))
 		{
-			(layer as GroundLayer).AddTile(position, Types.Vector2I.StringToVector2I(tileName));
+			Vector2I name = Types.Vector2I.StringToVector2I(tileName);
+			
+			if (layer is GroundLayer groundLayer)
+			{
+				groundLayer.AddTile(position, name);
+				added = true;
+			} else if (layer is DecorationLayer decorationLayer)
+			{
+				decorationLayer.AddTile(position, name);
+				added = true;
+			}
+		}
+		
+		if (added)
+		{
 			EmitEdit();
 		}
 	}
 	
 	public void RemoveTile(LayerBase layer, Vector2I position)
 	{
-		if (layer is GroundLayer)
+		bool added = false;
+		
+		if (layer is GroundLayer groundLayer)
 		{
-			(layer as GroundLayer).RemoveTile(position);
+			groundLayer.RemoveTile(position);
+			added = true;
+		} else if (layer is DecorationLayer decorationLayer)
+		{
+			decorationLayer.RemoveTile(position);
+			added = true;
+		}
+		
+		if (added)
+		{
 			EmitEdit();
 		}
 	}
@@ -75,7 +102,8 @@ public partial class Map : Node2D
 		if (Files.Exists<MapData>(path))
 		{
 			var mapData = Files.SafeLoadResource<MapData>(path);
-			GroundLayer.Load(mapData.GroundLayerData);
+			if (mapData.GroundLayerData != null) GroundLayer.Load(mapData.GroundLayerData);
+			if (mapData.DecorationLayerData != null) DecorationLayer.Load(mapData.DecorationLayerData);
 			Camera.Calibrate();
 		} else
 		{

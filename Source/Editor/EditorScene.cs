@@ -44,7 +44,7 @@ public partial class EditorScene : Node2D
 	
 	public override void _Ready()
 	{
-		LayerBase[] layers = [ Map.GroundLayer ];
+		LayerBase[] layers = [ Map.GroundLayer, Map.DecorationLayer ];
 		Map.Mode = MapMode.Edit;
 		Map.Camera.Mode = CameraMode.View;
 		Map.Selector.Filter = new SelectorFilter(layers);
