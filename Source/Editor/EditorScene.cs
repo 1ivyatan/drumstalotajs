@@ -16,8 +16,6 @@ public partial class EditorScene : Node2D
 	[Export] private EditorSaveManager EditorSaveManager { get; set; }
 	[Export] public Map Map { get; private set; }
 	
-	private bool _edited = false;
-	
 	public EditorMode Mode { get; 
 		private set {
 			field = value;
@@ -65,12 +63,10 @@ public partial class EditorScene : Node2D
 		_topnav.SelectedNew += LoadNew;
 		_topnav.SelectedOpen += Open;
 		EditorSaveManager.SaveLoaded += (string name) => {
-			SetTitle();
-			_edited = false;
+			SetTitle(false);
 		};
 		Map.Edited += () => { 
-			SetTitle();
-			_edited = true;
+			SetTitle(true);
 		};
 		LoadNew();
 		/*
@@ -80,6 +76,11 @@ public partial class EditorScene : Node2D
 	
 	private void Open()
 	{
+		if (EditorSaveManager.Edited)
+		{
+			Nodes.GetRoot().ToastManager.Spawn("Not exported, please export.");
+			return;
+		}
 		EditorSaveManager.OpenPrompt();
 	}
 	
@@ -88,22 +89,18 @@ public partial class EditorScene : Node2D
 		EditorSaveManager.SavePrompt();
 	}
 	
-	private void SetTitle()
+	private void SetTitle(bool edited)
 	{
-		_topnav.SetTitle($"Editor - {EditorSaveManager.SaveName}");
+		_topnav.SetTitle("Editor - " + (edited ? "*" : "") + $"{EditorSaveManager.SaveName}");
 	}
 	
 	private void LoadNew()
 	{
-		if (_edited)
+		if (EditorSaveManager.Edited)
 		{
 			Nodes.GetRoot().ToastManager.Spawn("Not exported, please export.");
 			return;
-		} else
-		{
-			Map.Load(EditorSaveManager.TemplateMap);
-			SetTitle();
-			_edited = false;
 		}
+		EditorSaveManager.OpenNew();
 	}
 }
