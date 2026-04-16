@@ -23,14 +23,13 @@ public partial class StartScene : Control
 			_editorButton.Visible = false;
 			_editorButton.Disabled = true;
 		}
-		_aboutButton.Pressed += () => {
-			_modal.Show();
-		};
+		_aboutButton.Pressed += () => { _modal.Show(); };
 		_editorButton.Pressed += () => {
 			if (OS.HasFeature("editor"))
 			{
 				Nodes.GetRoot().SceneManager.Editor();
 			}
 		};
+		_startButton.Pressed += () => {Nodes.GetRoot().SceneManager.LevelSelection();};
 	}
 }

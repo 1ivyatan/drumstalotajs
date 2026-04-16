@@ -13,8 +13,19 @@ public partial class Map : Node2D
 {
 	[Signal] public delegate void EditedEventHandler();
 	
-	public MapMode Mode { get; set; } = MapMode.Lock;
-	public MapState State { get; set; } = MapState.Empty;
+	public MapMode Mode { 
+		get; 
+		set {
+			field = value;
+			switch (field)
+			{
+				case MapMode.Lock:
+					Camera.Mode = CameraMode.Lock;
+					break;
+			}
+		}
+	} = MapMode.Lock;
+	public MapState State { get; private set; } = MapState.Empty;
 	
 	[Export] public GroundLayer GroundLayer { get; private set; }
 	[Export] public Selector Selector { get; private set; }

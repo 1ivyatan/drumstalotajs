@@ -17,4 +17,10 @@ public partial class SceneManager : Node
 		Node scene = LoadScene("Editor");
 		SetScene(scene);
 	}
+	
+	public void LevelSelection()
+	{
+		Node scene = LoadScene("LevelSelection");
+		SetScene(scene);
+	}
 }
