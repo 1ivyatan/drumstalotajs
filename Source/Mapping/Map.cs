@@ -57,11 +57,16 @@ public partial class Map : Node2D
 			{
 				groundLayer.AddTile(position, name);
 				added = true;
-			} else if (layer is DecorationLayer decorationLayer)
+			} else
 			{
-				decorationLayer.AddTile(position, name);
-				added = true;
-			}
+				if (GroundLayer.GetCellAtlasCoords(name) == Types.Vector2I.Negative) return;
+				
+				if (layer is DecorationLayer decorationLayer)
+				{
+					decorationLayer.AddTile(position, name);
+					added = true;
+				}
+			} 
 		}
 		
 		if (added)
@@ -72,19 +77,28 @@ public partial class Map : Node2D
 	
 	public void RemoveTile(LayerBase layer, Vector2I position)
 	{
-		bool added = false;
+		bool removed = false;
 		
-		if (layer is GroundLayer groundLayer)
+		if (layer is AtlasLayer atlasLayer)
 		{
-			groundLayer.RemoveTile(position);
-			added = true;
-		} else if (layer is DecorationLayer decorationLayer)
-		{
-			decorationLayer.RemoveTile(position);
-			added = true;
+			if (atlasLayer is GroundLayer groundLayer)
+			{
+				if (DecorationLayer.GetCellAtlasCoords(position) == Types.Vector2I.Negative)
+				{
+					groundLayer.RemoveTile(position);
+					removed = true;
+				}
+			} else
+			{
+				if (atlasLayer is DecorationLayer decorationLayer)
+				{
+					decorationLayer.RemoveTile(position);
+					removed = true;
+				}
+			}
 		}
 		
-		if (added)
+		if (removed)
 		{
 			EmitEdit();
 		}

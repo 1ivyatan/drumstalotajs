@@ -5,7 +5,6 @@ using Drumstalotajs.Editor;
 using Drumstalotajs.Mapping;
 using Drumstalotajs.Mapping.Layers;
 using Drumstalotajs.Utils;
-
 namespace Drumstalotajs.Editor.Components;
 
 public partial class TileEditingContainer : Control
@@ -24,6 +23,8 @@ public partial class TileEditingContainer : Control
 		if (tiles.Count > 0)
 		{
 			bool hasGround = false;
+			bool hasDecoration = false;
+			
 			foreach (var layerTiles in tiles)
 			{
 				if (layerTiles.Value.Count == 0) continue;
@@ -32,6 +33,9 @@ public partial class TileEditingContainer : Control
 				{
 					_groundProperties.Load((GroundTile)layerTiles.Value[0]);
 					hasGround = true;
+				} else if (layerTiles.Key is DecorationLayer)
+				{
+					hasDecoration = true;
 				}
 			}
 			
