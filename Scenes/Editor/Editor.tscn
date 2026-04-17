@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://6751jxcko5cv" path="res://Source/Editor/Components/GroundProperties.cs" id="8_wwjnl"]
 [ext_resource type="Script" uid="uid://dy7e5fik70oig" path="res://Source/Editor/Components/DecorationProperties.cs" id="9_3kjjy"]
 [ext_resource type="Script" uid="uid://c7axmpmfchd0g" path="res://Source/Editor/EditorSaveManager.cs" id="9_ufwpj"]
+[ext_resource type="Script" uid="uid://k3nn212mkkda" path="res://Source/Editor/Components/RotationButtons.cs" id="10_brbfr"]
 
 [node name="Editor" type="Node2D" unique_id=238378600 node_paths=PackedStringArray("EditorSaveManager", "Map", "_topnav", "_tileSelectionContainer", "_tileEditingContainer")]
 script = ExtResource("1_tw15f")
@@ -141,13 +142,39 @@ text = "0+"
 [node name="Spinner" type="SpinBox" parent="Overlay/Container/Body/TileEditingContainer/ScrollContainer/VBoxContainer/GroundProperties/HeightEditor" unique_id=2039273848]
 layout_mode = 2
 
-[node name="DecorationProperties" type="VBoxContainer" parent="Overlay/Container/Body/TileEditingContainer/ScrollContainer/VBoxContainer" unique_id=206001124]
+[node name="DecorationProperties" type="VBoxContainer" parent="Overlay/Container/Body/TileEditingContainer/ScrollContainer/VBoxContainer" unique_id=206001124 node_paths=PackedStringArray("_map", "_rotateButtons")]
 layout_mode = 2
 script = ExtResource("9_3kjjy")
+_map = NodePath("../../../../../../../Map")
+_rotateButtons = NodePath("RotationButtons")
 
 [node name="Title" type="Label" parent="Overlay/Container/Body/TileEditingContainer/ScrollContainer/VBoxContainer/DecorationProperties" unique_id=209061714]
 layout_mode = 2
 text = "Decoration"
+
+[node name="RotationButtons" type="HBoxContainer" parent="Overlay/Container/Body/TileEditingContainer/ScrollContainer/VBoxContainer/DecorationProperties" unique_id=898918403 node_paths=PackedStringArray("_q1", "_q2", "_q3", "_q4")]
+layout_mode = 2
+script = ExtResource("10_brbfr")
+_q1 = NodePath("0_360")
+_q2 = NodePath("90")
+_q3 = NodePath("180")
+_q4 = NodePath("270")
+
+[node name="0_360" type="Button" parent="Overlay/Container/Body/TileEditingContainer/ScrollContainer/VBoxContainer/DecorationProperties/RotationButtons" unique_id=273755318]
+layout_mode = 2
+text = "0"
+
+[node name="90" type="Button" parent="Overlay/Container/Body/TileEditingContainer/ScrollContainer/VBoxContainer/DecorationProperties/RotationButtons" unique_id=1439761380]
+layout_mode = 2
+text = "90"
+
+[node name="180" type="Button" parent="Overlay/Container/Body/TileEditingContainer/ScrollContainer/VBoxContainer/DecorationProperties/RotationButtons" unique_id=1431722350]
+layout_mode = 2
+text = "180"
+
+[node name="270" type="Button" parent="Overlay/Container/Body/TileEditingContainer/ScrollContainer/VBoxContainer/DecorationProperties/RotationButtons" unique_id=1647235326]
+layout_mode = 2
+text = "270"
 
 [node name="EditorSaveManager" type="Node" parent="." unique_id=1984580574 node_paths=PackedStringArray("_openDialog", "_saveDialog", "_map")]
 script = ExtResource("9_ufwpj")

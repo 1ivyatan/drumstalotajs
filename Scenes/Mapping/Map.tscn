@@ -26,6 +26,9 @@ texture = ExtResource("4_bdwom")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_ccdcv"]
 sources/0 = SubResource("TileSetAtlasSource_f0kan")
