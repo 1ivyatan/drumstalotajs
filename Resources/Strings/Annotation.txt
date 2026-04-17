@@ -1,1 +1,12 @@
-huuuuuuuuuuuuuuuuuuuh?????
+[p align=c][b]Drumstalotājs[/b][/p]
+[p align=c][i]～ The Crumbler[/i][/p]
+[ul]You all have been sent to aid recapturing the island from the enemy[/ul]
+[ul]You lead mortar and artillery teams to coordinate strikes[/ul]
+[ul]Each position and point differ by devices, targets and placements, think tactically![/ul]
+[hr]
+[p align=c][b]Credits & Notes[/b][/p]
+[ul]Programming, documentation - Leons Pīgoznis ([url=https://github.com/1ivyatan][color=web_gray]@1ivyatan[/color][/url])[/ul]
+[ul]Assets, sounds - Gustavs Lācis ([url=https://github.com/eclipsevoidd][color=web_gray]@eclipsevoidd[/color][/url])[/ul]
+[ul]Project made as part of qualification exam of Liepāja State Technical School ([url=https://www.lvt.lv/][color=web_gray]Website[/color][/url])   [/ul]
+[p align=c][b]Links[/b][/p]
+[ul]Repository ([url=https://github.com/1ivyatan/drumstalotajs][color=web_gray]GitHub[/color][/url])[/ul]

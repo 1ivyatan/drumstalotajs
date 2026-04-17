@@ -70,20 +70,29 @@ text = "Quit"
 [node name="AnnotationModal" parent="." unique_id=120054605 instance=ExtResource("2_7adfa")]
 layout_mode = 1
 
-[node name="Annotation" type="VBoxContainer" parent="AnnotationModal" unique_id=740418487]
-custom_minimum_size = Vector2(320, 0)
+[node name="AnnotationContainer" type="ScrollContainer" parent="AnnotationModal" unique_id=1894487735 node_paths=PackedStringArray("_close", "_text")]
+custom_minimum_size = Vector2(500, 240)
 layout_mode = 0
-alignment = 1
+offset_right = 40.0
+offset_bottom = 40.0
 script = ExtResource("4_uh10c")
 _annotationFilePath = "res://Resources/Strings/Annotation.txt"
+_close = NodePath("Annotation/Close")
+_text = NodePath("Annotation/Text")
 
-[node name="Text" type="RichTextLabel" parent="AnnotationModal/Annotation" unique_id=420090975]
+[node name="Annotation" type="VBoxContainer" parent="AnnotationModal/AnnotationContainer" unique_id=740418487]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Text" type="RichTextLabel" parent="AnnotationModal/AnnotationContainer/Annotation" unique_id=420090975]
 layout_mode = 2
 bbcode_enabled = true
 text = "fsdfsdfsdfsdsfdsdfsdfsdfsd
 "
 fit_content = true
 
-[node name="Close" type="Button" parent="AnnotationModal/Annotation" unique_id=1908494497]
+[node name="Close" type="Button" parent="AnnotationModal/AnnotationContainer/Annotation" unique_id=1908494497]
 layout_mode = 2
 text = "Close"
