@@ -24,14 +24,17 @@ public partial class EditorScene : Node2D
 				case EditorMode.View:
 					Map.Camera.Mode = CameraMode.View;
 					_tileSelectionContainer.Visible = false;
+					_tileEditingContainer.Visible = false;
 					break;
 				case EditorMode.Edit:
 					Map.Camera.Mode = CameraMode.View;
 					_tileSelectionContainer.Visible = false;
+					_tileEditingContainer.Visible = false;
 					break;
 				case EditorMode.Insert:
 					Map.Camera.Mode = CameraMode.Lock;
 					_tileSelectionContainer.Visible = true;
+					_tileEditingContainer.Visible = false;
 					break;
 				default: break;
 			}

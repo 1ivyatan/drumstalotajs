@@ -11,6 +11,7 @@ public partial class TileEditingContainer : Control
 {
 	[Export] private Map _map;
 	[Export] private GroundProperties _groundProperties;
+	[Export] private DecorationProperties _decorationProperties;
 	
 	public override void _Ready()
 	{
@@ -35,11 +36,13 @@ public partial class TileEditingContainer : Control
 					hasGround = true;
 				} else if (layerTiles.Key is DecorationLayer)
 				{
+					_decorationProperties.Load((DecorationTile)layerTiles.Value[0]);
 					hasDecoration = true;
 				}
 			}
 			
 			if (!hasGround) _groundProperties.Close();
+			if (!hasDecoration) _decorationProperties.Close();
 			
 			Visible = true;
 		} else

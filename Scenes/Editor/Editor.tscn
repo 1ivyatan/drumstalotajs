@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://crtaodpir57ou" path="res://Scenes/Components/LayerTilePicker.tscn" id="6_u75kh"]
 [ext_resource type="Script" uid="uid://nq0qckavhcnr" path="res://Source/Editor/Components/TileEditingContainer.cs" id="7_ghgdu"]
 [ext_resource type="Script" uid="uid://6751jxcko5cv" path="res://Source/Editor/Components/GroundProperties.cs" id="8_wwjnl"]
+[ext_resource type="Script" uid="uid://dy7e5fik70oig" path="res://Source/Editor/Components/DecorationProperties.cs" id="9_3kjjy"]
 [ext_resource type="Script" uid="uid://c7axmpmfchd0g" path="res://Source/Editor/EditorSaveManager.cs" id="9_ufwpj"]
 
 [node name="Editor" type="Node2D" unique_id=238378600 node_paths=PackedStringArray("EditorSaveManager", "Map", "_topnav", "_tileSelectionContainer", "_tileEditingContainer")]
@@ -89,7 +90,7 @@ horizontal_scroll_mode = 0
 layout_mode = 2
 alignment = 1
 
-[node name="TileEditingContainer" type="PanelContainer" parent="Overlay/Container/Body" unique_id=1081003154 node_paths=PackedStringArray("_map", "_groundProperties")]
+[node name="TileEditingContainer" type="PanelContainer" parent="Overlay/Container/Body" unique_id=1081003154 node_paths=PackedStringArray("_map", "_groundProperties", "_decorationProperties")]
 visible = false
 layout_mode = 1
 anchors_preset = 11
@@ -102,6 +103,7 @@ grow_vertical = 2
 script = ExtResource("7_ghgdu")
 _map = NodePath("../../../../Map")
 _groundProperties = NodePath("ScrollContainer/VBoxContainer/GroundProperties")
+_decorationProperties = NodePath("ScrollContainer/VBoxContainer/DecorationProperties")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Overlay/Container/Body/TileEditingContainer" unique_id=1086735869]
 layout_mode = 2
@@ -138,6 +140,14 @@ text = "0+"
 
 [node name="Spinner" type="SpinBox" parent="Overlay/Container/Body/TileEditingContainer/ScrollContainer/VBoxContainer/GroundProperties/HeightEditor" unique_id=2039273848]
 layout_mode = 2
+
+[node name="DecorationProperties" type="VBoxContainer" parent="Overlay/Container/Body/TileEditingContainer/ScrollContainer/VBoxContainer" unique_id=206001124]
+layout_mode = 2
+script = ExtResource("9_3kjjy")
+
+[node name="Title" type="Label" parent="Overlay/Container/Body/TileEditingContainer/ScrollContainer/VBoxContainer/DecorationProperties" unique_id=209061714]
+layout_mode = 2
+text = "Decoration"
 
 [node name="EditorSaveManager" type="Node" parent="." unique_id=1984580574 node_paths=PackedStringArray("_openDialog", "_saveDialog", "_map")]
 script = ExtResource("9_ufwpj")
