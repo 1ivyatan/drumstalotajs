@@ -19,12 +19,23 @@ public partial class Map : Node2D
 			field = value;
 			switch (field)
 			{
+				case MapMode.Edit:
+					Selector.Mode = SelectorMode.Interactable;
+					break;
+				case MapMode.View:
+					Selector.Mode = SelectorMode.Interactable;
+					break;
+				case MapMode.HiddenView:
+					Selector.Mode = SelectorMode.HiddenInteractable;
+					break;
 				case MapMode.Lock:
 					Camera.Mode = CameraMode.Lock;
+					Selector.Mode = SelectorMode.Lock;
 					break;
 			}
 		}
 	} = MapMode.Lock;
+	
 	public MapState State { get; private set; } = MapState.Empty;
 	
 	[Export] public GroundLayer GroundLayer { get; private set; }

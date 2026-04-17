@@ -25,16 +25,19 @@ public partial class EditorScene : Node2D
 					Map.Camera.Mode = CameraMode.View;
 					_tileSelectionContainer.Visible = false;
 					_tileEditingContainer.Visible = false;
+					Map.Selector.Mode = SelectorMode.Lock;
 					break;
 				case EditorMode.Edit:
 					Map.Camera.Mode = CameraMode.View;
 					_tileSelectionContainer.Visible = false;
 					_tileEditingContainer.Visible = false;
+					Map.Selector.Mode = SelectorMode.Interactable;
 					break;
 				case EditorMode.Insert:
 					Map.Camera.Mode = CameraMode.Lock;
 					_tileSelectionContainer.Visible = true;
 					_tileEditingContainer.Visible = false;
+					Map.Selector.Mode = SelectorMode.Interactable;
 					break;
 				default: break;
 			}
@@ -50,6 +53,7 @@ public partial class EditorScene : Node2D
 		LayerBase[] layers = [ Map.GroundLayer, Map.DecorationLayer ];
 		Map.Mode = MapMode.Edit;
 		Map.Camera.Mode = CameraMode.View;
+		Map.Selector.Mode = SelectorMode.Lock;
 		Map.Selector.Filter = new SelectorFilter(layers);
 		_tileSelectionContainer.Load(layers);
 		_topnav.SetTitle("Editor");

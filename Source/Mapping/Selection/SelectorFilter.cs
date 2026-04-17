@@ -25,4 +25,6 @@ public struct SelectorFilter
 		}
 		return tiles;
 	}
+	
+	public static SelectorFilter Empty => new SelectorFilter([]);
 }
