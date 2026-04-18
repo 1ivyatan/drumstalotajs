@@ -8,7 +8,5 @@ namespace Drumstalotajs.Resources.Mapping;
 public partial class DecorationLayerData : AtlasLayerData
 {
 	public DecorationLayerData() : base() {}
-	public DecorationLayerData(DecorationLayer layer) : base(layer)
-	{
-	}
+	public DecorationLayerData(DecorationLayer layer) : base(layer) {}
 }
