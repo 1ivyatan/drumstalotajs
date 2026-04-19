@@ -1,0 +1,61 @@
+using Godot;
+using System;
+using Drumstalotajs;
+using Drumstalotajs.Utils;
+using Drumstalotajs.Mapping;
+using Drumstalotajs.Mapping.Tiles;
+using Drumstalotajs.Resources.Mapping;
+
+namespace Drumstalotajs.Mapping.Layers;
+
+public partial class AtlasLayer : Layer<Vector2I, AtlasTile, AtlasLayerData>
+{
+	public override Vector2I[] GetAtlas()
+	{
+		if (TileSet != null)
+		{
+			TileSetAtlasSource source = TileSet.GetSource(0) as TileSetAtlasSource;
+			if (source != null)
+			{
+				int count = source.GetTilesCount();
+				Vector2I[] tileAtlas = new Vector2I[count];
+				for (int i = 0; i < count; i++)
+				{
+					Vector2I coords = source.GetTileId(i);
+					tileAtlas[i] = coords;
+				}
+				return tileAtlas;
+			}
+		}
+		return [];
+	}
+	
+	public override void AddTile(Vector2I position, Vector2I atlas)
+	{
+		SetCell(position, 0, atlas, 0);
+		EmitSignal(SignalName.ChangedLayer);
+	}
+	
+	public override void RemoveTile(Vector2I position)
+	{
+		EraseCell(position);
+		EmitSignal(SignalName.ChangedLayer);
+	}
+	
+	public override Godot.Collections.Array<AtlasTile> Flash(Vector2I position)
+	{
+		if (GetCellAtlasCoords(position) == Types.Vector2I.Negative) return [];
+		return [ new AtlasTile(this, position) ];
+	}
+	
+	public override AtlasLayerData Export()
+	{
+		return new AtlasLayerData(this);
+	}
+	
+	public override void Load(AtlasLayerData layerData)
+	{
+		Clear();
+		SetPattern(layerData.Offset, layerData.Tiles);
+	}
+}
