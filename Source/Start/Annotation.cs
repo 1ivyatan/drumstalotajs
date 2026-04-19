@@ -1,4 +1,4 @@
-using Godot;
+/*using Godot;
 using System;
 using Drumstalotajs;
 using Drumstalotajs.Utils;
@@ -8,9 +8,8 @@ namespace Drumstalotajs.Start;
 public partial class Annotation : Components.Modals.Window
 {
 	[Export] private string _annotationFilePath;
-	
-	private Button _close;
-	private RichTextLabel _text;
+	[Export] private Button _close;
+	[Export] private RichTextLabel _text;
 	
 	public override void _Ready()
 	{
@@ -28,3 +27,4 @@ public partial class Annotation : Components.Modals.Window
 		};
 	}
 }
+*/

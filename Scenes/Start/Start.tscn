@@ -2,10 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://bihyilbkefydv" path="res://Assets/Textures/Logo.svg" id="1_tdy0i"]
 [ext_resource type="Script" uid="uid://r3lgv0vnhfe7" path="res://Source/Start/StartScene.cs" id="1_x3rvt"]
-[ext_resource type="PackedScene" uid="uid://b2lhrg24h1jkc" path="res://Scenes/Components/Modal.tscn" id="2_7adfa"]
-[ext_resource type="Script" uid="uid://csmkojno153iy" path="res://Source/Start/Annotation.cs" id="4_uh10c"]
 
-[node name="Start" type="Control" unique_id=1888125272]
+[node name="Start" type="Control" unique_id=1888125272 node_paths=PackedStringArray("_startButton", "_aboutButton", "_editorButton", "_quitButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,6 +11,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_x3rvt")
+_startButton = NodePath("Grid/MenuColumn/Buttons/Start")
+_aboutButton = NodePath("Grid/MenuColumn/Buttons/Editor")
+_editorButton = NodePath("Grid/MenuColumn/Buttons/Editor")
+_quitButton = NodePath("Grid/MenuColumn/Buttons/Quit")
 
 [node name="Background" type="TextureRect" parent="." unique_id=1899519722]
 layout_mode = 1
@@ -62,24 +64,3 @@ text = "About
 [node name="Quit" type="Button" parent="Grid/MenuColumn/Buttons" unique_id=2046261125]
 layout_mode = 2
 text = "Quit"
-
-[node name="AnnotationModal" parent="." unique_id=120054605 instance=ExtResource("2_7adfa")]
-layout_mode = 1
-
-[node name="Annotation" type="VBoxContainer" parent="AnnotationModal" unique_id=740418487]
-custom_minimum_size = Vector2(320, 0)
-layout_mode = 0
-alignment = 1
-script = ExtResource("4_uh10c")
-_annotationFilePath = "res://Resources/Strings/Annotation.txt"
-
-[node name="Text" type="RichTextLabel" parent="AnnotationModal/Annotation" unique_id=420090975]
-layout_mode = 2
-bbcode_enabled = true
-text = "fsdfsdfsdfsdsfdsdfsdfsdfsd
-"
-fit_content = true
-
-[node name="Close" type="Button" parent="AnnotationModal/Annotation" unique_id=1908494497]
-layout_mode = 2
-text = "Close"
