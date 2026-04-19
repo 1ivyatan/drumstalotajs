@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bihyilbkefydv" path="res://Assets/Textures/Logo.svg" id="1_tdy0i"]
 [ext_resource type="Script" uid="uid://r3lgv0vnhfe7" path="res://Source/Start/StartScene.cs" id="1_x3rvt"]
 
-[node name="Start" type="Control" unique_id=1888125272 node_paths=PackedStringArray("_startButton", "_aboutButton", "_editorButton", "_quitButton")]
+[node name="Start" type="Control" unique_id=1888125272 node_paths=PackedStringArray("_annotation", "_start", "_editor", "_about")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,10 +11,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_x3rvt")
-_startButton = NodePath("Grid/MenuColumn/Buttons/Start")
-_aboutButton = NodePath("Grid/MenuColumn/Buttons/Editor")
-_editorButton = NodePath("Grid/MenuColumn/Buttons/Editor")
-_quitButton = NodePath("Grid/MenuColumn/Buttons/Quit")
+_annotationFilePath = "res://Resources/Annotation.txt"
+_annotation = NodePath("Annotation")
+_start = NodePath("Grid/MenuColumn/Buttons/Start")
+_editor = NodePath("Grid/MenuColumn/Buttons/Editor")
+_about = NodePath("Grid/MenuColumn/Buttons/About")
 
 [node name="Background" type="TextureRect" parent="." unique_id=1899519722]
 layout_mode = 1
@@ -56,11 +57,19 @@ text = "Start"
 layout_mode = 2
 text = "Editor"
 
-[node name="About" type="Button" parent="Grid/MenuColumn/Buttons" unique_id=316834242]
+[node name="About" type="Button" parent="Grid/MenuColumn/Buttons" unique_id=2046261125]
 layout_mode = 2
-text = "About
-"
+text = "About"
 
-[node name="Quit" type="Button" parent="Grid/MenuColumn/Buttons" unique_id=2046261125]
-layout_mode = 2
-text = "Quit"
+[node name="Annotation" type="AcceptDialog" parent="." unique_id=379908606]
+oversampling_override = 1.0
+title = "About"
+position = Vector2i(340, 150)
+size = Vector2i(600, 100)
+unresizable = true
+always_on_top = true
+popup_window = true
+popup_wm_hint = true
+min_size = Vector2i(600, 0)
+ok_button_text = "I acknowledge"
+dialog_autowrap = true
