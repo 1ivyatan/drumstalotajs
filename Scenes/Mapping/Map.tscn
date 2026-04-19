@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://druw1x35jlqnh"]
+
+[ext_resource type="Script" uid="uid://bpl14ex8xot3w" path="res://Source/Mapping/Map.cs" id="1_lo67w"]
+
+[node name="Map" type="Node2D" unique_id=1338299763]
+script = ExtResource("1_lo67w")
+
+[node name="Ground" type="TileMapLayer" parent="." unique_id=1439789346]
+
+[node name="Decorations" type="TileMapLayer" parent="." unique_id=884655678]
+
+[node name="Entities" type="TileMapLayer" parent="." unique_id=56824911]
+
+[node name="Overlays" type="TileMapLayer" parent="." unique_id=201889829]
+
+[node name="Projectiles" type="Node2D" parent="." unique_id=1337390122]
+
+[node name="Selector" type="Node2D" parent="." unique_id=509430252]
+
+[node name="Camera" type="Camera2D" parent="." unique_id=1651776793]

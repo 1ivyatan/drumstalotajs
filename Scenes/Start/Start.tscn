@@ -59,7 +59,7 @@ text = "Editor"
 
 [node name="About" type="Button" parent="Grid/MenuColumn/Buttons" unique_id=2046261125]
 layout_mode = 2
-text = "About"
+text = "About "
 
 [node name="Annotation" type="AcceptDialog" parent="." unique_id=379908606]
 oversampling_override = 1.0
