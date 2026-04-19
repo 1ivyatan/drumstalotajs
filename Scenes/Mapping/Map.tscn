@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://bpl14ex8xot3w" path="res://Source/Mapping/Map.cs" id="1_lo67w"]
 [ext_resource type="Texture2D" uid="uid://mq733urrxchv" path="res://Assets/Textures/ground.png" id="2_sd0qa"]
 [ext_resource type="Script" uid="uid://ca5u50ihjrgyu" path="res://Source/Mapping/Layers/GroundLayer.cs" id="2_wxnmh"]
+[ext_resource type="Script" uid="uid://b8h1yod2phq3x" path="res://Source/Mapping/Layers/AtlasLayer.cs" id="4_ox681"]
+[ext_resource type="Texture2D" uid="uid://bnqr0norghi6e" path="res://Assets/Textures/decoration.png" id="4_s3wx3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ox681"]
 texture = ExtResource("2_sd0qa")
@@ -35,6 +37,17 @@ custom_data_layer_0/name = "RelativeHeight"
 custom_data_layer_0/type = 3
 sources/0 = SubResource("TileSetAtlasSource_ox681")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s3wx3"]
+texture = ExtResource("4_s3wx3")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_f0kan"]
+tile_size = Vector2i(32, 32)
+sources/1 = SubResource("TileSetAtlasSource_s3wx3")
+
 [node name="Map" type="Node2D" unique_id=1338299763]
 script = ExtResource("1_lo67w")
 
@@ -43,6 +56,8 @@ tile_set = SubResource("TileSet_wxnmh")
 script = ExtResource("2_wxnmh")
 
 [node name="Decorations" type="TileMapLayer" parent="." unique_id=884655678]
+tile_set = SubResource("TileSet_f0kan")
+script = ExtResource("4_ox681")
 
 [node name="Entities" type="TileMapLayer" parent="." unique_id=56824911]
 

@@ -6,7 +6,9 @@ using Drumstalotajs.Mapping.Layers;
 
 namespace Drumstalotajs.Mapping.Tiles;
 
-public partial class SceneTile : Tile
+public partial class OverlayTile : SceneTile
 {
-	public SceneTile(Vector2I position) : base(position) {}
+	public OverlayTile(Vector2I position, double radians) : base(position) {
+		
+	}
 }
