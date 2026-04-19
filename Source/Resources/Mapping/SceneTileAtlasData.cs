@@ -6,7 +6,7 @@ using Drumstalotajs.Mapping.Layers;
 namespace Drumstalotajs.Resources.Mapping;
 
 [GlobalClass]
-public partial class SceneTileData : Resource
+public partial class SceneTileAtlasData : Resource
 {
 	[Export] public int Id { get; private set; }
 	[Export] public string Name { get; private set; }
