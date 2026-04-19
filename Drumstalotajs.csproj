@@ -1,0 +1,16 @@
+<Project Sdk="Godot.NET.Sdk/4.6.0">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <EnableDynamicLoading>true</EnableDynamicLoading>
+    <RootNamespace>Drumstalotajs</RootNamespace>
+    <!-- Keep this false to prevent automatic inclusion of everything -->
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="Source/**/*.cs" Exclude="Source/Templates/**/*.cs" />
+    <None Remove="Source/Templates/**" />
+    <Content Remove="Source/Templates/**" />
+    <EmbeddedResource Remove="Source/Templates/**" />
+  </ItemGroup>
+</Project>

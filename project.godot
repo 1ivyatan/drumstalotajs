@@ -27,7 +27,8 @@ window/size/viewport_height=720
 
 [dotnet]
 
-project/assembly_name="drumstalotajs"
+project/assembly_name="Drumstalotajs"
+project/solution_directory="Source"
 
 [importer_defaults]
 
