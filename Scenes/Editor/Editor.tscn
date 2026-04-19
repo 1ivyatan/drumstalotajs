@@ -7,3 +7,5 @@
 script = ExtResource("1_tw15f")
 
 [node name="Map" parent="." unique_id=1338299763 instance=ExtResource("2_wl3go")]
+
+[node name="Overlay" type="CanvasLayer" parent="." unique_id=31358238]
