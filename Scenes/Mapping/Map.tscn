@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://cge0dywxbdq6t" path="res://Source/Mapping/Cameras/Camera.cs" id="4_ox681"]
 [ext_resource type="Script" uid="uid://b2tr3ltxreo2t" path="res://Source/Mapping/Selection/Selector.cs" id="4_s3wx3"]
 [ext_resource type="Script" uid="uid://ctd0lalv3ohx6" path="res://Source/Mapping/Layers/DecorationLayer.cs" id="5_f0kan"]
+[ext_resource type="Script" uid="uid://djfh18pf6bwci" path="res://Source/Mapping/Layers/OverlayLayer.cs" id="6_ajbla"]
 [ext_resource type="Texture2D" uid="uid://dgff4of0xrjhn" path="res://Assets/Textures/UI.svg" id="7_ccdcv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ox681"]
@@ -34,6 +35,11 @@ texture = ExtResource("4_bdwom")
 [sub_resource type="TileSet" id="TileSet_ccdcv"]
 sources/0 = SubResource("TileSetAtlasSource_f0kan")
 
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_ajbla"]
+
+[sub_resource type="TileSet" id="TileSet_56oc8"]
+sources/0 = SubResource("TileSetScenesCollectionSource_ajbla")
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_ajbla"]
 atlas = ExtResource("7_ccdcv")
 region = Rect2(0, 0, 18, 18)
@@ -52,6 +58,11 @@ script = ExtResource("2_wxnmh")
 [node name="DecorationLayer" type="TileMapLayer" parent="." unique_id=714585845]
 tile_set = SubResource("TileSet_ccdcv")
 script = ExtResource("5_f0kan")
+
+[node name="OverlayLayer" type="TileMapLayer" parent="." unique_id=562605975]
+tile_set = SubResource("TileSet_56oc8")
+script = ExtResource("6_ajbla")
+Atlas = Array[Object]([])
 
 [node name="Selector" type="Node2D" parent="." unique_id=1750489280 node_paths=PackedStringArray("_map")]
 visible = false

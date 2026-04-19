@@ -81,7 +81,32 @@ public partial class SceneLayer : Layer<string, SceneTile, SceneLayerData>
 	
 	public override Godot.Collections.Array<SceneTile> Flash(Vector2I position)
 	{
-		return null;
+		Godot.Collections.Array<SceneTile> tiles = new Godot.Collections.Array<SceneTile>();
+		var spaceState = GetWorld2D().DirectSpaceState;
+		PhysicsPointQueryParameters2D query = new PhysicsPointQueryParameters2D();
+		query.Position = GlobalPosition + position;
+		query.CollideWithAreas = true;
+		var intersectedNodes = spaceState.IntersectPoint(query, 9);
+		
+		if (intersectedNodes.Count > 0)
+		{
+			foreach (var node in intersectedNodes)
+			{
+				Node2D collider = (Node2D)node["collider"];
+				if (collider is SceneTile tile)
+				{
+					tiles.Add(tile);
+				}
+			}
+			
+			if (tiles.Count > 0)
+			{
+				tiles.OrderBy(tile => {
+					return ((Vector2)position).DistanceTo(tile.Position);
+				});
+			}
+		}
+		return tiles;
 	}
 	
 	public override SceneLayerData Export()
