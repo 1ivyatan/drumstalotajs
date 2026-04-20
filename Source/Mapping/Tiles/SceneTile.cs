@@ -8,4 +8,15 @@ namespace Drumstalotajs.Mapping.Tiles;
 
 public partial class SceneTile : Tile
 {
+	protected void Die()
+	{
+		if (GetParent() is TileMapLayer layer)
+		{
+			layer.EraseCell(layer.LocalToMap(Position));
+		} else
+		{
+			QueueFree();
+			GetParent().RemoveChild(this);
+		}
+	}
 }

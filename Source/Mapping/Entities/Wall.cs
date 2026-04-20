@@ -8,4 +8,13 @@ namespace Drumstalotajs.Mapping.Entities;
 
 public partial class Wall : Entity
 {
+	public double Height { get; private set; } = 0;
+	
+	public override void _Ready()
+	{
+		if (Properties != null && Properties is WallPropertiesData wallProperties)
+		{
+			Height = wallProperties.Height;
+		}
+	}
 }

@@ -13,26 +13,24 @@ public partial class Map : Node2D
 	
 	public override void _Ready()
 	{
-		var test = new OverlayLayerTileData();
+		var test = new EntityLayerTileData();
 		test.Id = 1;
-		test.Radians = 1;
+		test.Azimuth = 1;
 		test.Position = new Vector2I(5, 5);
-		OverlayLayer.AddTile(test);
+		EntityLayer.AddTile(test);
 		/*
 	public async void AddTile(SceneLayerTileData atlas)*/
 	}
 	
 	public override void _UnhandledInput(InputEvent @event)
 	{
-		/*
 		if (@event is InputEventMouseButton)
 		{
-			var h = OverlayLayer.Flash(new Vector2I(5, 5));
-			
-			if (h.Count > 0)
+			var ins = EntityLayer.GetInstance(new Vector2I(5, 5));
+			if (ins != null)
 			{
-				GD.Print(h[0].cat);
+				
 			}
-		}*/
+		}
 	}
 }

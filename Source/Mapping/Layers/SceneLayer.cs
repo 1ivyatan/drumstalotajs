@@ -27,6 +27,12 @@ public partial class SceneLayer : Layer<string, SceneTile, SceneLayerData>
 		ChildExitingTree += TileExitingAction;
 	}
 	
+	public SceneTile GetInstance(Vector2I position)
+	{
+		var list = Instances.Where(i => LocalToMap(i.Position) == position);
+		return list.Count() > 0 ? list.ToArray()[0] : null;
+	}
+	
 	private void PrepareAtlas(SceneLayerAtlasData[] atlas)
 	{
 		TileSetSource source;

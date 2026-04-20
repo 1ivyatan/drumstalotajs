@@ -4,6 +4,4 @@ using Drumstalotajs;
 
 namespace Drumstalotajs.Mapping.Tiles;
 
-public partial class Tile : Node2D
-{
-}
+public partial class Tile : Node2D { }

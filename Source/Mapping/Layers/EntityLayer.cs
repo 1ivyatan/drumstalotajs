@@ -19,6 +19,18 @@ public partial class EntityLayer : SceneLayer
 		return new Array<Entity>(arr.Select(t => t as Entity));
 	}
 	
+	public async void AddTile(EntityLayerTileData atlas)
+	{
+		SetCell(atlas.Position, 0, Vector2I.Zero, atlas.Id);
+		var nodes = await ToSignal(this, SignalName.TileSpawned);
+		if (nodes.Length > 0 && nodes[0].VariantType == Variant.Type.Object)
+		{
+			var tile = (Entity)nodes[0];
+			tile.Azimuth = (float)atlas.Azimuth;
+		}
+		EmitSignal(SignalName.ChangedLayer);
+	}
+	
 	new public EntityLayerData Export()
 	{
 		return new EntityLayerData(this);
