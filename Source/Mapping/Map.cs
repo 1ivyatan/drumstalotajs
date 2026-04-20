@@ -11,6 +11,20 @@ public partial class Map : Node2D
 	
 	public override void _Ready()
 	{
-		OverlayLayer.AddTile(new Vector2I(5, 5), "LevelMarker");
+	//	OverlayLayer.AddTile(new Vector2I(5, 5), "LevelMarker");
+	}
+	
+	public override void _UnhandledInput(InputEvent @event)
+	{
+		/*
+		if (@event is InputEventMouseButton)
+		{
+			var h = OverlayLayer.Flash(new Vector2I(5, 5));
+			
+			if (h.Count > 0)
+			{
+				GD.Print(h[0].cat);
+			}
+		}*/
 	}
 }

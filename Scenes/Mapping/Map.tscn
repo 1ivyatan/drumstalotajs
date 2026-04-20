@@ -93,4 +93,4 @@ Atlas = Array[Object]([SubResource("Resource_ccdcv")])
 
 [node name="Selector" type="Node2D" parent="." unique_id=509430252]
 
-[node name="Camera" type="Camera2D" parent="." unique_id=1651776793]
+[node name="Camera" type="Camera2D" parent="." unique_id=221812195]

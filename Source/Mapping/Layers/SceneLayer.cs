@@ -113,7 +113,7 @@ public partial class SceneLayer : Layer<string, SceneTile, SceneLayerData>
 		Array<SceneTile> tiles = new Array<SceneTile>();
 		var spaceState = GetWorld2D().DirectSpaceState;
 		PhysicsPointQueryParameters2D query = new PhysicsPointQueryParameters2D();
-		query.Position = GlobalPosition + position;
+		query.Position = GlobalPosition + MapToLocal(position);
 		query.CollideWithAreas = true;
 		var intersectedNodes = spaceState.IntersectPoint(query, 9);
 		if (intersectedNodes.Count > 0)
