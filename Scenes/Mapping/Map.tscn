@@ -9,9 +9,9 @@
 [ext_resource type="Script" uid="uid://cf72gthhptrym" path="res://Source/Mapping/Layers/OverlayLayer.cs" id="6_bdwom"]
 [ext_resource type="Texture2D" uid="uid://bscapcc3qlnqv" path="res://Assets/Textures/entity.png" id="7_7ig3r"]
 [ext_resource type="PackedScene" uid="uid://bay5hsbrwb2pb" path="res://Scenes/Mapping/Overlays/LevelMarker.tscn" id="7_ajbla"]
-[ext_resource type="Script" uid="uid://7qxwheiwlsgl" path="res://Source/Resources/Mapping/EntityLayerAtlasData.cs" id="7_awdyq"]
+[ext_resource type="Script" uid="uid://7qxwheiwlsgl" path="res://Source/Resources/Mapping/Layers/EntityLayerAtlasData.cs" id="7_awdyq"]
 [ext_resource type="Texture2D" uid="uid://2io65q52gq16" path="res://Assets/Textures/overlay.png" id="7_ccdcv"]
-[ext_resource type="Script" uid="uid://bn1u57sn0woiq" path="res://Source/Resources/Mapping/SceneLayerAtlasData.cs" id="7_f0kan"]
+[ext_resource type="Script" uid="uid://bn1u57sn0woiq" path="res://Source/Resources/Mapping/Layers/SceneLayerAtlasData.cs" id="7_f0kan"]
 [ext_resource type="PackedScene" uid="uid://cf0tu2qcva34g" path="res://Scenes/Mapping/Entities/Sandbags.tscn" id="7_p3cor"]
 [ext_resource type="Script" uid="uid://cp6mf7hu5xvce" path="res://Source/Mapping/Projectiles/ProjectileLayer.cs" id="14_bc3k3"]
 

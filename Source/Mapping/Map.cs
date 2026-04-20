@@ -15,7 +15,9 @@ public partial class Map : Node2D
 	[Export] public OverlayLayer OverlayLayer { get; private set; }
 	[Export] public ProjectileLayer ProjectileLayer { get; private set; }
 	
-	public MapStatus Status { get; private set; }
+	public MapStatus Status { get; private set; } = MapStatus.Initialized;
+	
+	//public void 
 	/*public override void _Ready()
 	{
 		var test = new EntityLayerTileData();

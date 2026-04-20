@@ -7,7 +7,7 @@ using Drumstalotajs;
 using Drumstalotajs.Utilities;
 using Drumstalotajs.Mapping;
 using Drumstalotajs.Mapping.Tiles;
-using Drumstalotajs.Resources.Mapping;
+using Drumstalotajs.Resources.Mapping.Layers;
 
 namespace Drumstalotajs.Mapping.Layers;
 

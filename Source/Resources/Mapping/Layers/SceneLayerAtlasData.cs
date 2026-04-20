@@ -5,7 +5,7 @@ using Drumstalotajs;
 using Drumstalotajs.Mapping;
 using Drumstalotajs.Mapping.Layers;
 
-namespace Drumstalotajs.Resources.Mapping;
+namespace Drumstalotajs.Resources.Mapping.Layers;
 
 [GlobalClass]
 public partial class SceneLayerAtlasData : Resource

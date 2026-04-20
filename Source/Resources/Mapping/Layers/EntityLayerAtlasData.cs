@@ -7,7 +7,7 @@ using Drumstalotajs.Mapping.Layers;
 using Drumstalotajs.Mapping.Entities;
 using Drumstalotajs.Resources.Mapping.Entities;
 
-namespace Drumstalotajs.Resources.Mapping;
+namespace Drumstalotajs.Resources.Mapping.Layers;
 
 [GlobalClass]
 public partial class EntityLayerAtlasData : SceneLayerAtlasData
