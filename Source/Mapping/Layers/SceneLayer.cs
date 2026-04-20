@@ -106,7 +106,7 @@ public partial class SceneLayer : Layer<string, SceneTile, SceneLayerData>
 			foreach (var node in intersectedNodes)
 			{
 				Node2D collider = (Node2D)node["collider"];
-				if (collider is SceneTile tile)
+				if (collider is SceneTile tile && tile.GetParent() == this)
 				{
 					tiles.Add(tile);
 				}

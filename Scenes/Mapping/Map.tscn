@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://ca5u50ihjrgyu" path="res://Source/Mapping/Layers/GroundLayer.cs" id="2_wxnmh"]
 [ext_resource type="Script" uid="uid://b8h1yod2phq3x" path="res://Source/Mapping/Layers/AtlasLayer.cs" id="4_ox681"]
 [ext_resource type="Texture2D" uid="uid://bnqr0norghi6e" path="res://Assets/Textures/decoration.png" id="4_s3wx3"]
+[ext_resource type="Script" uid="uid://cf72gthhptrym" path="res://Source/Mapping/Layers/OverlayLayer.cs" id="6_bdwom"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ox681"]
 texture = ExtResource("2_sd0qa")
@@ -62,6 +63,7 @@ script = ExtResource("4_ox681")
 [node name="Entities" type="TileMapLayer" parent="." unique_id=56824911]
 
 [node name="Overlays" type="TileMapLayer" parent="." unique_id=201889829]
+script = ExtResource("6_bdwom")
 
 [node name="Projectiles" type="Node2D" parent="." unique_id=1337390122]
 
