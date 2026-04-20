@@ -9,10 +9,9 @@ namespace Drumstalotajs.Mapping.Entities;
 public partial class Entity : SceneTile
 {
 	[Export] public EntityPropertiesData Properties { get; private set; }
-	public double Azimuth { get; 
-		/*!!!!!!!*/
+	public double Azimuth { get;
 		set {
-			field = value;
+			field = ((value % 360) + 360) % 360;
 		}
 	}
 	public double Integrity { get; 
@@ -22,6 +21,7 @@ public partial class Entity : SceneTile
 		}
 	} = 100;
 	
+	/* simplistic, inheritor will do this  in more sophisiscated ways */
 	public void DecreaseIntegrity(double factor)
 	{
 		Integrity -= factor;
