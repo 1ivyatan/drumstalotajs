@@ -40,7 +40,7 @@ public partial class SceneLayer : Layer<string, SceneTile, SceneLayerData>
 		if (TileSet == null || TileSet.GetSourceCount() == 0)
 		{
 			var tileset = TileSet ?? new TileSet();
-			tileset.TileSize = Constants.Vector2I.TileSize;
+			tileset.TileSize = Constants.Mapping.TileSize;
 			var newSceneSource = new TileSetScenesCollectionSource();
 			tileset.AddSource(newSceneSource, 0);
 			TileSet = tileset;

@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://2io65q52gq16" path="res://Assets/Textures/overlay.png" id="7_ccdcv"]
 [ext_resource type="Script" uid="uid://bn1u57sn0woiq" path="res://Source/Resources/Mapping/SceneLayerAtlasData.cs" id="7_f0kan"]
 [ext_resource type="PackedScene" uid="uid://cf0tu2qcva34g" path="res://Scenes/Mapping/Entities/Sandbags.tscn" id="7_p3cor"]
+[ext_resource type="Script" uid="uid://cp6mf7hu5xvce" path="res://Source/Mapping/Projectiles/ProjectileLayer.cs" id="14_bc3k3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ox681"]
 texture = ExtResource("2_sd0qa")
@@ -92,6 +93,12 @@ Thumbnail = SubResource("AtlasTexture_ajbla")
 Scene = ExtResource("7_ajbla")
 metadata/_custom_type_script = "uid://bn1u57sn0woiq"
 
+[sub_resource type="Resource" id="Resource_p3cor"]
+script = ExtResource("7_f0kan")
+Id = 2
+Name = "DevicePlacement"
+metadata/_custom_type_script = "uid://bn1u57sn0woiq"
+
 [node name="Map" type="Node2D" unique_id=1338299763 node_paths=PackedStringArray("OverlayLayer", "EntityLayer")]
 script = ExtResource("1_lo67w")
 OverlayLayer = NodePath("Overlays")
@@ -113,9 +120,10 @@ Atlas = Array[Object]([SubResource("Resource_7ig3r")])
 [node name="Overlays" type="TileMapLayer" parent="." unique_id=201889829]
 tile_set = SubResource("TileSet_ajbla")
 script = ExtResource("6_bdwom")
-Atlas = Array[Object]([SubResource("Resource_ccdcv")])
+Atlas = Array[Object]([SubResource("Resource_ccdcv"), SubResource("Resource_p3cor")])
 
 [node name="Projectiles" type="Node2D" parent="." unique_id=1337390122]
+script = ExtResource("14_bc3k3")
 
 [node name="Selector" type="Node2D" parent="." unique_id=509430252]
 
