@@ -1,7 +1,9 @@
 Basics
+ - Project information in @Drumstalotajs.csproj
  - The project is a Godot C# project.
  - .NET version 10.0
  - Godot version 4.6
 
 Namespace & source code
- - All code and scripts reside in @Source directory on the root directory
+ - All code and scripts reside in @Source directory
+ - When adding a namespace in code, do not include "Source"

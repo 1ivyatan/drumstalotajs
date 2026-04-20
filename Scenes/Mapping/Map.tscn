@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://ca5u50ihjrgyu" path="res://Source/Mapping/Layers/GroundLayer.cs" id="2_wxnmh"]
 [ext_resource type="Script" uid="uid://b8h1yod2phq3x" path="res://Source/Mapping/Layers/AtlasLayer.cs" id="4_ox681"]
 [ext_resource type="Texture2D" uid="uid://bnqr0norghi6e" path="res://Assets/Textures/decoration.png" id="4_s3wx3"]
+[ext_resource type="Script" uid="uid://bm3dpuj7mvuur" path="res://Source/Mapping/Layers/EntityLayer.cs" id="6_56oc8"]
 [ext_resource type="Script" uid="uid://cf72gthhptrym" path="res://Source/Mapping/Layers/OverlayLayer.cs" id="6_bdwom"]
 [ext_resource type="PackedScene" uid="uid://bay5hsbrwb2pb" path="res://Scenes/Mapping/Overlays/LevelMarker.tscn" id="7_ajbla"]
 [ext_resource type="Texture2D" uid="uid://2io65q52gq16" path="res://Assets/Textures/overlay.png" id="7_ccdcv"]
@@ -83,6 +84,8 @@ tile_set = SubResource("TileSet_f0kan")
 script = ExtResource("4_ox681")
 
 [node name="Entities" type="TileMapLayer" parent="." unique_id=56824911]
+script = ExtResource("6_56oc8")
+Atlas = Array[Object]([])
 
 [node name="Overlays" type="TileMapLayer" parent="." unique_id=201889829]
 tile_set = SubResource("TileSet_ajbla")

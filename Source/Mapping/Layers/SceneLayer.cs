@@ -100,7 +100,7 @@ public partial class SceneLayer : Layer<string, SceneTile, SceneLayerData>
 	
 	public override SceneLayerData Export()
 	{
-		return null;
+		return new SceneLayerData(this);
 	}
 	
 	public override void Load(SceneLayerData layerData)
