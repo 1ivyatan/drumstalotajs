@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-namespace Drumstalotajs.Utils;
+namespace Drumstalotajs.Utilities;
 
 public static class Nodes
 {/*

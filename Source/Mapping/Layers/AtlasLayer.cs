@@ -1,7 +1,7 @@
 using Godot;
 using System;
 using Drumstalotajs;
-using Drumstalotajs.Utils;
+using Drumstalotajs.Utilities;
 using Drumstalotajs.Mapping;
 using Drumstalotajs.Mapping.Tiles;
 using Drumstalotajs.Resources.Mapping;
@@ -45,7 +45,7 @@ public partial class AtlasLayer : Layer<Vector2I, AtlasTile, AtlasLayerData>
 	public void RotateTile(Vector2I position, double degrees)
 	{
 		Vector2I atlasCoords = GetCellAtlasCoords(position);
-		if (atlasCoords == Types.Vector2I.Negative) return;
+		if (atlasCoords == Constants.Vector2I.Negative) return;
 		int bitwise = 0;
 		int quadrant = Calculations.GetQuadrant(degrees);
 		
@@ -66,7 +66,7 @@ public partial class AtlasLayer : Layer<Vector2I, AtlasTile, AtlasLayerData>
 	
 	public override Godot.Collections.Array<AtlasTile> Flash(Vector2I position)
 	{
-		if (GetCellAtlasCoords(position) == Types.Vector2I.Negative) return [];
+		if (GetCellAtlasCoords(position) == Constants.Vector2I.Negative) return [];
 		return [ new AtlasTile(this, position) ];
 	}
 	

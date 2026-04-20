@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dankeweh6q1bb"]
+
+[ext_resource type="Script" uid="uid://bxlhkncpkslhl" path="res://Source/Mapping/Tiles/OverlayTile.cs" id="1_fs2u7"]
+
+[node name="BaseOverlay" type="Area2D" unique_id=1900493059]
+script = ExtResource("1_fs2u7")

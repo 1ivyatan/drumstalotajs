@@ -1,6 +1,6 @@
 using Godot;
 using System;
-using Drumstalotajs.Utils;
+using Drumstalotajs.Utilities;
 
 namespace Drumstalotajs.Managers.Scenes;
 

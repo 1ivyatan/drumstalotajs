@@ -1,7 +1,7 @@
 using Godot;
 using System;
 using Drumstalotajs;
-using Drumstalotajs.Utils;
+using Drumstalotajs.Utilities;
 using Drumstalotajs.Mapping.Layers;
 
 namespace Drumstalotajs.Mapping.Tiles;
@@ -15,7 +15,7 @@ public partial class AtlasTile : Tile
 	{
 		CellPosition = position;
 		
-		if (layer.GetCellAtlasCoords(position) != Types.Vector2I.Negative)
+		if (layer.GetCellAtlasCoords(position) != Constants.Vector2I.Negative)
 		{
 			TileData = layer.GetCellTileData(position);
 		}

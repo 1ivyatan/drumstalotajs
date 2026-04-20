@@ -1,7 +1,7 @@
 using Godot;
 using System;
 using Drumstalotajs;
-using Drumstalotajs.Utils;
+using Drumstalotajs.Utilities;
 using Drumstalotajs.Mapping;
 using Drumstalotajs.Mapping.Tiles;
 using Drumstalotajs.Resources.Mapping;
@@ -20,7 +20,7 @@ public partial class GroundLayer : AtlasLayer
 	
 	public override Godot.Collections.Array<AtlasTile> Flash(Vector2I position)
 	{
-		if (GetCellAtlasCoords(position) == Types.Vector2I.Negative) return [];
+		if (GetCellAtlasCoords(position) == Constants.Vector2I.Negative) return [];
 		return [ new GroundTile(this, position) ];
 	}
 	

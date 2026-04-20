@@ -2,14 +2,13 @@ using Godot;
 using System;
 using System.Text.RegularExpressions;
 
-namespace Drumstalotajs.Utils;
+namespace Drumstalotajs.Utilities;
 
 public static class Types
 {
 	public static class Vector2I
 	{
 		private static string Vector2IFormat = @"^\(([0-9]+)\, ([0-9]+)\)$";
-		public static Godot.Vector2I Negative => new Godot.Vector2I(-1, -1);
 
 		public static bool ValidVector2I(string coords)
 		{

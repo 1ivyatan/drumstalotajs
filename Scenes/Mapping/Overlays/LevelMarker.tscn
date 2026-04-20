@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bay5hsbrwb2pb"]
+
+[ext_resource type="PackedScene" uid="uid://dankeweh6q1bb" path="res://Scenes/Mapping/Overlays/BaseOverlay.tscn" id="1_fcrg6"]
+[ext_resource type="Texture2D" uid="uid://2io65q52gq16" path="res://Assets/Textures/overlay.png" id="2_jwqew"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_igsmk"]
+atlas = ExtResource("2_jwqew")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jwqew"]
+size = Vector2(64, 64)
+
+[node name="LevelMarker" unique_id=1900493059 instance=ExtResource("1_fcrg6")]
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="0" unique_id=207893828]
+texture = SubResource("AtlasTexture_igsmk")
+
+[node name="Collision" type="CollisionShape2D" parent="." index="1" unique_id=1661338104]
+shape = SubResource("RectangleShape2D_jwqew")

@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Drumstalotajs;
-using Drumstalotajs.Utils;
+using Drumstalotajs.Utilities;
 using Drumstalotajs.Mapping;
 using Drumstalotajs.Mapping.Tiles;
 using Drumstalotajs.Resources.Mapping;
@@ -29,7 +29,22 @@ public partial class SceneLayer : Layer<string, SceneTile, SceneLayerData>
 	
 	private void PrepareAtlas(SceneLayerAtlasData[] atlas)
 	{
-		TileSetSource source = TileSet.GetSource(0);
+		TileSetSource source;
+		
+		if (TileSet == null || TileSet.GetSourceCount() == 0)
+		{
+			var tileset = TileSet ?? new TileSet();
+			tileset.TileSize = Constants.Vector2I.TileSize;
+			var newSceneSource = new TileSetScenesCollectionSource();
+			tileset.AddSource(newSceneSource, 0);
+			TileSet = tileset;
+			source = newSceneSource;
+		}
+		else
+		{
+			source = TileSet.GetSource(0);
+		}
+		
 		if (source is TileSetScenesCollectionSource sceneSource)
 		{
 			foreach (var tile in atlas)
