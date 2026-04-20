@@ -3,15 +3,20 @@ using System;
 using Drumstalotajs;
 using Drumstalotajs.Mapping.Layers;
 using Drumstalotajs.Resources.Mapping;
+using Drumstalotajs.Mapping.Projectiles;
 
 namespace Drumstalotajs.Mapping;
 
 public partial class Map : Node2D
 {
-	[Export] public OverlayLayer OverlayLayer { get; private set; }
+	[Export] public GroundLayer GroundLayer { get; private set; }
+	[Export] public AtlasLayer DecorationLayer { get; private set; }
 	[Export] public EntityLayer EntityLayer { get; private set; }
+	[Export] public OverlayLayer OverlayLayer { get; private set; }
+	[Export] public ProjectileLayer ProjectileLayer { get; private set; }
 	
-	public override void _Ready()
+	public MapStatus Status { get; private set; }
+	/*public override void _Ready()
 	{
 		var test = new EntityLayerTileData();
 		test.Id = 1;
@@ -31,5 +36,5 @@ public partial class Map : Node2D
 				GD.Print(ins.Integrity);
 			}
 		}
-	}
+	}*/
 }

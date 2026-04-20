@@ -99,10 +99,13 @@ Id = 2
 Name = "DevicePlacement"
 metadata/_custom_type_script = "uid://bn1u57sn0woiq"
 
-[node name="Map" type="Node2D" unique_id=1338299763 node_paths=PackedStringArray("OverlayLayer", "EntityLayer")]
+[node name="Map" type="Node2D" unique_id=1338299763 node_paths=PackedStringArray("GroundLayer", "DecorationLayer", "EntityLayer", "OverlayLayer", "ProjectileLayer")]
 script = ExtResource("1_lo67w")
-OverlayLayer = NodePath("Overlays")
+GroundLayer = NodePath("Ground")
+DecorationLayer = NodePath("Decorations")
 EntityLayer = NodePath("Entities")
+OverlayLayer = NodePath("Overlays")
+ProjectileLayer = NodePath("Projectiles")
 
 [node name="Ground" type="TileMapLayer" parent="." unique_id=1439789346]
 tile_set = SubResource("TileSet_wxnmh")
