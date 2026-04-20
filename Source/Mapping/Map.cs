@@ -2,6 +2,7 @@ using Godot;
 using System;
 using Drumstalotajs;
 using Drumstalotajs.Mapping.Layers;
+using Drumstalotajs.Resources.Mapping;
 
 namespace Drumstalotajs.Mapping;
 
@@ -12,7 +13,12 @@ public partial class Map : Node2D
 	
 	public override void _Ready()
 	{
-		EntityLayer.AddTile(new Vector2I(5, 5), "Sandbags");
+		var test = new SceneLayerTileData();
+		test.Id = 1;
+		test.Position = new Vector2I(5, 5);
+		EntityLayer.AddTile(test);
+		/*
+	public async void AddTile(SceneLayerTileData atlas)*/
 	}
 	
 	public override void _UnhandledInput(InputEvent @event)

@@ -1,7 +1,14 @@
 [gd_scene format=3 uid="uid://cf0tu2qcva34g"]
 
 [ext_resource type="PackedScene" uid="uid://dsfv0ewuipia8" path="res://Scenes/Mapping/Entities/EntityBase.tscn" id="1_qwjmi"]
+[ext_resource type="Script" uid="uid://c1nuh68dhr7ej" path="res://Source/Mapping/Entities/Wall.cs" id="2_8fl7a"]
 [ext_resource type="Texture2D" uid="uid://bscapcc3qlnqv" path="res://Assets/Textures/entity.png" id="2_h8hpt"]
+[ext_resource type="Script" uid="uid://btef5gw2dfffc" path="res://Source/Resources/Mapping/Entities/WallPropertiesData.cs" id="3_v75iw"]
+
+[sub_resource type="Resource" id="Resource_wtmjp"]
+script = ExtResource("3_v75iw")
+Height = 0.5
+metadata/_custom_type_script = "uid://btef5gw2dfffc"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h8hpt"]
 size = Vector2(32, 32)
@@ -11,6 +18,8 @@ atlas = ExtResource("2_h8hpt")
 region = Rect2(0, 0, 32, 32)
 
 [node name="Sandbags" unique_id=116583695 instance=ExtResource("1_qwjmi")]
+script = ExtResource("2_8fl7a")
+Properties = SubResource("Resource_wtmjp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0" unique_id=570275927]
 shape = SubResource("RectangleShape2D_h8hpt")

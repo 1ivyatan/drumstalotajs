@@ -6,7 +6,6 @@ using Drumstalotajs.Resources.Mapping.Entities;
 
 namespace Drumstalotajs.Mapping.Entities;
 
-public partial class Entity : SceneTile
+public partial class Wall : Entity
 {
-	[Export] public EntityPropertiesData Properties { get; private set; }
 }

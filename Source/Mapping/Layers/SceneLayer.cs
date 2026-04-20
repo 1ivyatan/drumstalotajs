@@ -61,7 +61,7 @@ public partial class SceneLayer : Layer<string, SceneTile, SceneLayerData>
 	{
 		if (node is SceneTile sceneTile)
 		{
-			Instances.Add(sceneTile);
+			if (!Instances.Contains(sceneTile)) Instances.Add(sceneTile);
 			EmitSignal(SignalName.TileSpawned, sceneTile);
 		}
 	}
@@ -70,7 +70,7 @@ public partial class SceneLayer : Layer<string, SceneTile, SceneLayerData>
 	{
 		if (node is SceneTile sceneTile)
 		{
-			Instances.Remove(sceneTile);
+			if (Instances.Contains(sceneTile)) Instances.Remove(sceneTile);
 			EmitSignal(SignalName.TileExiting, sceneTile);
 		}
 	}
@@ -88,7 +88,13 @@ public partial class SceneLayer : Layer<string, SceneTile, SceneLayerData>
 	public override void AddTile(Vector2I position, string atlas)
 	{
 		int id = Atlas.FirstOrDefault(a => a.Name == atlas).Id;
-		SetCell(position, 0, new Vector2I(0, 0), id);
+		SetCell(position, 0, Vector2I.Zero, id);
+		EmitSignal(SignalName.ChangedLayer);
+	}
+	
+	public async void AddTile(SceneLayerTileData atlas)
+	{
+		SetCell(atlas.Position, 0, Vector2I.Zero, atlas.Id);
 		EmitSignal(SignalName.ChangedLayer);
 	}
 	

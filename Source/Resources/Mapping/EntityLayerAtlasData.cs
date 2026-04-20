@@ -5,6 +5,7 @@ using Drumstalotajs;
 using Drumstalotajs.Mapping;
 using Drumstalotajs.Mapping.Layers;
 using Drumstalotajs.Mapping.Entities;
+using Drumstalotajs.Resources.Mapping.Entities;
 
 namespace Drumstalotajs.Resources.Mapping;
 
@@ -12,4 +13,5 @@ namespace Drumstalotajs.Resources.Mapping;
 public partial class EntityLayerAtlasData : SceneLayerAtlasData
 {
 	[Export] public EntityType Type { get; private set; }
+	//[Export] public EntityPropertiesData Properties { get; private set; }
 }
