@@ -13,10 +13,11 @@ public partial class Map : Node2D
 	
 	public override void _Ready()
 	{
-		var test = new SceneLayerTileData();
+		var test = new OverlayLayerTileData();
 		test.Id = 1;
+		test.Radians = 1;
 		test.Position = new Vector2I(5, 5);
-		EntityLayer.AddTile(test);
+		OverlayLayer.AddTile(test);
 		/*
 	public async void AddTile(SceneLayerTileData atlas)*/
 	}
