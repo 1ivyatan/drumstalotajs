@@ -17,7 +17,17 @@ public partial class Map : Node2D
 	
 	public MapStatus Status { get; private set; } = MapStatus.Initialized;
 	
-	//public void 
+	public MapResource Export()
+	{
+		return null;
+	}
+	
+	public void Load(MapResource mapResource)
+	{
+		Status = MapStatus.Loading;
+		
+		Status = MapStatus.Done;
+	}
 	/*public override void _Ready()
 	{
 		var test = new EntityLayerTileData();
