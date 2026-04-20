@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cf0tu2qcva34g"]
+
+[ext_resource type="PackedScene" uid="uid://dsfv0ewuipia8" path="res://Scenes/Mapping/Entities/EntityBase.tscn" id="1_qwjmi"]
+[ext_resource type="Texture2D" uid="uid://bscapcc3qlnqv" path="res://Assets/Textures/entity.png" id="2_h8hpt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h8hpt"]
+size = Vector2(32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8fl7a"]
+atlas = ExtResource("2_h8hpt")
+region = Rect2(0, 0, 32, 32)
+
+[node name="Sandbags" unique_id=116583695 instance=ExtResource("1_qwjmi")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0" unique_id=570275927]
+shape = SubResource("RectangleShape2D_h8hpt")
+
+[node name="Sprite" type="Sprite2D" parent="." index="1" unique_id=437603024]
+texture = SubResource("AtlasTexture_8fl7a")

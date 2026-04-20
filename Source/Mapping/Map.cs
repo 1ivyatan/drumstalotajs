@@ -8,10 +8,11 @@ namespace Drumstalotajs.Mapping;
 public partial class Map : Node2D
 {
 	[Export] public OverlayLayer OverlayLayer { get; private set; }
+	[Export] public EntityLayer EntityLayer { get; private set; }
 	
 	public override void _Ready()
 	{
-	//	OverlayLayer.AddTile(new Vector2I(5, 5), "LevelMarker");
+		EntityLayer.AddTile(new Vector2I(5, 5), "Sandbags");
 	}
 	
 	public override void _UnhandledInput(InputEvent @event)
