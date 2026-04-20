@@ -18,6 +18,12 @@ public partial class OverlayLayer : SceneLayer
 		return new Array<OverlayTile>(arr.Select(t => t as OverlayTile));
 	}
 	
+	new public OverlayTile GetInstance(Vector2I position)
+	{
+		var tile = base.GetInstance(position);
+		return tile as OverlayTile;
+	}
+	
 	public async void AddTile(OverlayLayerTileData atlas)
 	{
 		SetCell(atlas.Position, 0, Vector2I.Zero, atlas.Id);

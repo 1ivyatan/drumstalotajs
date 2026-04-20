@@ -13,15 +13,17 @@ public partial class Entity : SceneTile
 		/*!!!!!!!*/
 		set {
 			field = value;
-			
-			if (field < 0) Die();
 		}
 	}
 	public double Integrity { get; 
 		private set { 
 			field = Mathf.Clamp(value, 0, 100);
+			if (field <= 0) Die();
 		}
 	} = 100;
 	
-	
+	public void DecreaseIntegrity(double factor)
+	{
+		Integrity -= factor;
+	}
 }

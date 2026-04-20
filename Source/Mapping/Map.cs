@@ -18,8 +18,6 @@ public partial class Map : Node2D
 		test.Azimuth = 1;
 		test.Position = new Vector2I(5, 5);
 		EntityLayer.AddTile(test);
-		/*
-	public async void AddTile(SceneLayerTileData atlas)*/
 	}
 	
 	public override void _UnhandledInput(InputEvent @event)
@@ -29,7 +27,8 @@ public partial class Map : Node2D
 			var ins = EntityLayer.GetInstance(new Vector2I(5, 5));
 			if (ins != null)
 			{
-				
+				ins.DecreaseIntegrity(10);
+				GD.Print(ins.Integrity);
 			}
 		}
 	}

@@ -19,6 +19,12 @@ public partial class EntityLayer : SceneLayer
 		return new Array<Entity>(arr.Select(t => t as Entity));
 	}
 	
+	new public Entity GetInstance(Vector2I position)
+	{
+		var tile = base.GetInstance(position);
+		return tile as Entity;
+	}
+	
 	public async void AddTile(EntityLayerTileData atlas)
 	{
 		SetCell(atlas.Position, 0, Vector2I.Zero, atlas.Id);
