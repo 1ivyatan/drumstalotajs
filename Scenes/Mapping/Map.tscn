@@ -64,6 +64,7 @@ script = ExtResource("4_ox681")
 
 [node name="Overlays" type="TileMapLayer" parent="." unique_id=201889829]
 script = ExtResource("6_bdwom")
+Atlas = Array[Object]([null])
 
 [node name="Projectiles" type="Node2D" parent="." unique_id=1337390122]
 
