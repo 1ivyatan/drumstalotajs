@@ -9,6 +9,7 @@ namespace Drumstalotajs.Editor.Components;
 public partial class EditorTopnav : Topnav
 {
 	[Signal] public delegate void SelectedSaveEventHandler();
+	[Signal] public delegate void SelectedPropertiesEventHandler();
 	[Export] private PopupMenu _fileMenu;
 	[Export] private PopupMenu _viewMenu;
 	private PopupMenu _viewModeMenu;
@@ -31,6 +32,10 @@ public partial class EditorTopnav : Topnav
 				/* save */
 				case 2:
 					EmitSignal(SignalName.SelectedSave);
+					break;
+				/* properties */
+				case 4:
+					EmitSignal(SignalName.SelectedProperties);
 					break;
 			}
 		});

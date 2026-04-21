@@ -5,11 +5,14 @@
 [ext_resource type="PackedScene" uid="uid://bqh5apppkldxo" path="res://Scenes/Components/Topnav.tscn" id="3_s7bqi"]
 [ext_resource type="Script" uid="uid://8jpei68xm1ae" path="res://Source/Editor/Components/EditorTopnav.cs" id="4_4aan4"]
 [ext_resource type="Script" uid="uid://dqtrbg5atrot6" path="res://Source/Editor/Components/EditorSaveManager.cs" id="5_shl5k"]
+[ext_resource type="PackedScene" uid="uid://bh1kqu22s4f57" path="res://Scenes/Components/Modal.tscn" id="5_u75kh"]
+[ext_resource type="Script" uid="uid://cxefhw1doun6c" path="res://Source/Editor/Components/MetaEditor.cs" id="6_ghgdu"]
 
-[node name="Editor" type="Node2D" unique_id=238378600 node_paths=PackedStringArray("Map", "EditorTopnav")]
+[node name="Editor" type="Node2D" unique_id=238378600 node_paths=PackedStringArray("Map", "EditorTopnav", "MetaEditor")]
 script = ExtResource("1_tw15f")
 Map = NodePath("Map")
 EditorTopnav = NodePath("Overlay/Container/Topnav")
+MetaEditor = NodePath("Overlay/MetaEditor")
 
 [node name="Map" parent="." unique_id=1338299763 instance=ExtResource("2_wl3go")]
 
@@ -62,6 +65,9 @@ item_1/separator = true
 [node name="Body" type="Control" parent="Overlay/Container" unique_id=1759704946]
 layout_mode = 2
 size_flags_vertical = 3
+
+[node name="MetaEditor" parent="Overlay" unique_id=1373965991 instance=ExtResource("5_u75kh")]
+script = ExtResource("6_ghgdu")
 
 [node name="EditorSaveManager" type="Node" parent="." unique_id=907072181]
 script = ExtResource("5_shl5k")

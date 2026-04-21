@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bh1kqu22s4f57"]
+
+[ext_resource type="Script" uid="uid://6fpwfr2cr8lf" path="res://Source/Components/Modals/Modal.cs" id="1_0wu8u"]
+
+[node name="Modal" type="Window" unique_id=1373965991]
+oversampling_override = 1.0
+title = "Metadata"
+initial_position = 2
+wrap_controls = true
+transient = true
+transient_to_focused = true
+exclusive = true
+unresizable = true
+always_on_top = true
+popup_window = true
+popup_wm_hint = true
+minimize_disabled = true
+maximize_disabled = true
+script = ExtResource("1_0wu8u")

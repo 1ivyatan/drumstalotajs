@@ -1,3 +1,3 @@
 namespace Drumstalotajs.Editor;
 
-public enum EditorMode { View, Insert, Edit }
+public enum EditorMode { View, Insert, Edit, Metadata }

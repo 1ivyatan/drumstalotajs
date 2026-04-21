@@ -10,6 +10,8 @@ public partial class EditorScene : Node2D
 {
 	[Export] public Map Map { get; private set; }
 	[Export] public EditorTopnav EditorTopnav { get; private set; }
+	[Export] public MetaEditor MetaEditor { get; private set; }
+	
 	public EditorMode Mode { get;
 		set {
 			field = value;
@@ -22,6 +24,9 @@ public partial class EditorScene : Node2D
 					
 					break;
 				case EditorMode.Edit:
+					
+					break;
+				case EditorMode.Metadata:
 					
 					break;
 				default: break;
@@ -37,11 +42,17 @@ public partial class EditorScene : Node2D
 		//test.Position = new Vector2I(5, 5);
 		//OverlayLayer.AddTile(test);
 		EditorTopnav.SelectedSave += Save;
+		EditorTopnav.SelectedProperties += OpenProperties;
 		UpdateTitle(); //!!!!!!!
 		Mode = EditorMode.View;
 	}
 	
 	private void Save()
+	{
+		
+	}
+	
+	private void OpenProperties()
 	{
 		
 	}
