@@ -12,5 +12,13 @@ public partial class SceneLayerData : LayerData
 	[Export] public Array<SceneLayerTileData> Tiles;
 	
 	public SceneLayerData () {}
-	public SceneLayerData (SceneLayer layer) {}
+	public SceneLayerData (SceneLayer layer)
+	{
+		Tiles = new Array<SceneLayerTileData>();
+		foreach (var instance in layer.Instances)
+		{
+			SceneLayerTileData data = new SceneLayerTileData(layer, instance);
+			Tiles.Add(data);
+		}
+	}
 }

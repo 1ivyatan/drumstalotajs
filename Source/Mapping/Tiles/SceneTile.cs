@@ -8,6 +8,8 @@ namespace Drumstalotajs.Mapping.Tiles;
 
 public partial class SceneTile : Tile
 {
+	public int TileId { get; set; } = -1;
+
 	protected void Die()
 	{
 		if (GetParent() is TileMapLayer layer)

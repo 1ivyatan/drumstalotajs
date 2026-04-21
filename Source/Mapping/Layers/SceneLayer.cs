@@ -91,16 +91,28 @@ public partial class SceneLayer : Layer<string, SceneTile, SceneLayerData>
 		return Atlas;
 	}
 	
-	public override void AddTile(Vector2I position, string atlas)
+	public async override void AddTile(Vector2I position, string atlas)
 	{
 		int id = Atlas.FirstOrDefault(a => a.Name == atlas).Id;
 		SetCell(position, 0, Vector2I.Zero, id);
+		var nodes = await ToSignal(this, SignalName.TileSpawned);
+		if (nodes.Length > 0 && nodes[0].VariantType == Variant.Type.Object)
+		{
+			var tile = (SceneTile)nodes[0];
+			tile.TileId = id;
+		}
 		EmitSignal(SignalName.ChangedLayer);
 	}
 	
 	public async void AddTile(SceneLayerTileData atlas)
 	{
 		SetCell(atlas.Position, 0, Vector2I.Zero, atlas.Id);
+		var nodes = await ToSignal(this, SignalName.TileSpawned);
+		if (nodes.Length > 0 && nodes[0].VariantType == Variant.Type.Object)
+		{
+			var tile = (SceneTile)nodes[0];
+			tile.TileId = atlas.Id;
+		}
 		EmitSignal(SignalName.ChangedLayer);
 	}
 	

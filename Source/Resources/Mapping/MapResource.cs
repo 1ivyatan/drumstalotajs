@@ -21,5 +21,7 @@ public partial class MapResource : Resource
 	{
 		GroundLayer = map.GroundLayer.Export();
 		DecorationLayer = map.DecorationLayer.Export();
+		EntityLayer = map.EntityLayer.Export();
+		OverlayLayer = map.OverlayLayer.Export();
 	}
 }

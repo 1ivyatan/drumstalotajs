@@ -6,6 +6,7 @@ using Drumstalotajs.Resources.Mapping;
 using Drumstalotajs.Mapping.Projectiles;
 using Drumstalotajs.Mapping.Selection;
 using Drumstalotajs.Mapping.Cameras;
+using Drumstalotajs.Resources.Mapping.Layers;
 
 namespace Drumstalotajs.Mapping;
 
@@ -74,25 +75,27 @@ public partial class Map : Node2D
 		
 		State = MapState.Done;
 	}
-	/*public override void _Ready()
+	
+	/* test!!!!! */
+	public override void _Ready()
 	{
-		var test = new EntityLayerTileData();
+		var test = new OverlayLayerTileData();
 		test.Id = 1;
-		test.Azimuth = 1;
+		//test.Azimuth = 1;
 		test.Position = new Vector2I(5, 5);
-		EntityLayer.AddTile(test);
+		OverlayLayer.AddTile(test);
 	}
 	
 	public override void _UnhandledInput(InputEvent @event)
 	{
 		if (@event is InputEventMouseButton)
 		{
-			var ins = EntityLayer.GetInstance(new Vector2I(5, 5));
+			var ins = OverlayLayer.GetInstance(new Vector2I(5, 5));
 			if (ins != null)
 			{
-				ins.DecreaseIntegrity(10);
-				GD.Print(ins.Integrity);
+				
+				Export();
 			}
 		}
-	}*/
+	}
 }
