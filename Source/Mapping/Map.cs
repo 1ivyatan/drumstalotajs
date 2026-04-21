@@ -4,6 +4,8 @@ using Drumstalotajs;
 using Drumstalotajs.Mapping.Layers;
 using Drumstalotajs.Resources.Mapping;
 using Drumstalotajs.Mapping.Projectiles;
+using Drumstalotajs.Mapping.Selection;
+using Drumstalotajs.Mapping.Cameras;
 
 namespace Drumstalotajs.Mapping;
 
@@ -17,6 +19,8 @@ public partial class Map : Node2D
 	[Export] public EntityLayer EntityLayer { get; private set; }
 	[Export] public OverlayLayer OverlayLayer { get; private set; }
 	[Export] public ProjectileLayer ProjectileLayer { get; private set; }
+	[Export] public Selector Selector { get; private set; }
+	[Export] public Camera Camera { get; private set; }
 	
 	public MapState State { get; 
 		private set {
@@ -27,6 +31,7 @@ public partial class Map : Node2D
 	
 	public MapMode Mode { get;
 		set {
+			if (State == MapState.Loading || State == MapState.Initialized) return;
 			field = value;
 			switch (field)
 			{

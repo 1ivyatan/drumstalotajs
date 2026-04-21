@@ -14,6 +14,8 @@
 [ext_resource type="Script" uid="uid://bn1u57sn0woiq" path="res://Source/Resources/Mapping/Layers/SceneLayerAtlasData.cs" id="7_f0kan"]
 [ext_resource type="PackedScene" uid="uid://cf0tu2qcva34g" path="res://Scenes/Mapping/Entities/Sandbags.tscn" id="7_p3cor"]
 [ext_resource type="Script" uid="uid://cp6mf7hu5xvce" path="res://Source/Mapping/Projectiles/ProjectileLayer.cs" id="14_bc3k3"]
+[ext_resource type="Script" uid="uid://ciiiu3aq8tm4l" path="res://Source/Mapping/Selection/Selector.cs" id="15_0ild7"]
+[ext_resource type="Script" uid="uid://blbxol7imiof6" path="res://Source/Mapping/Cameras/Camera.cs" id="16_mukcc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ox681"]
 texture = ExtResource("2_sd0qa")
@@ -99,13 +101,15 @@ Id = 2
 Name = "DevicePlacement"
 metadata/_custom_type_script = "uid://bn1u57sn0woiq"
 
-[node name="Map" type="Node2D" unique_id=1338299763 node_paths=PackedStringArray("GroundLayer", "DecorationLayer", "EntityLayer", "OverlayLayer", "ProjectileLayer")]
+[node name="Map" type="Node2D" unique_id=1338299763 node_paths=PackedStringArray("GroundLayer", "DecorationLayer", "EntityLayer", "OverlayLayer", "ProjectileLayer", "Selector", "Camera")]
 script = ExtResource("1_lo67w")
 GroundLayer = NodePath("Ground")
 DecorationLayer = NodePath("Decorations")
 EntityLayer = NodePath("Entities")
 OverlayLayer = NodePath("Overlays")
 ProjectileLayer = NodePath("Projectiles")
+Selector = NodePath("Selector")
+Camera = NodePath("Camera")
 
 [node name="Ground" type="TileMapLayer" parent="." unique_id=1439789346]
 tile_set = SubResource("TileSet_wxnmh")
@@ -129,5 +133,7 @@ Atlas = Array[Object]([SubResource("Resource_ccdcv"), SubResource("Resource_p3co
 script = ExtResource("14_bc3k3")
 
 [node name="Selector" type="Node2D" parent="." unique_id=509430252]
+script = ExtResource("15_0ild7")
 
 [node name="Camera" type="Camera2D" parent="." unique_id=221812195]
+script = ExtResource("16_mukcc")
