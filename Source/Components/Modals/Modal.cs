@@ -43,4 +43,9 @@ public partial class Modal : Control
 		Visible = false;
 		_window.Hide();
 	}
+	
+	public dynamic GetWindowContent(int index)
+	{
+		return _window.GetChild(index);
+	}
 }

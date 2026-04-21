@@ -11,7 +11,7 @@ public partial class EditorScene : Node2D
 {
 	[Export] public Map Map { get; private set; }
 	[Export] public EditorTopnav EditorTopnav { get; private set; }
-	[Export] private Modal MetaEditor { get; set; }
+	[Export] private EditorSaveManager EditorSaveManager { get; set; }
 	
 	public EditorMode Mode { get;
 		set {
@@ -29,7 +29,7 @@ public partial class EditorScene : Node2D
 					break;
 				default: break;
 			}
-			/* ???? */
+			/* topnav change vvvv */
 		}
 	}
 	
@@ -41,8 +41,6 @@ public partial class EditorScene : Node2D
 		//test.Position = new Vector2I(5, 5);
 		//OverlayLayer.AddTile(test);
 		EditorTopnav.SelectedSave += Save;
-		EditorTopnav.SelectedProperties += OpenProperties;
-		MetaEditor.Exiting += CloseProperties;
 		UpdateTitle(); //!!!!!!!
 		Mode = EditorMode.View;
 	}
@@ -50,16 +48,11 @@ public partial class EditorScene : Node2D
 	private void Save()
 	{
 		
-	}
-	
-	private void OpenProperties()
-	{
-		MetaEditor.Popup();
-	}
-	
-	private void CloseProperties()
-	{
-		MetaEditor.Close();
+		var export = Map.Export();
+		GD.Print(export.GroundLayer.Tiles.IsEmpty());
+		var err = ResourceSaver.Save(export, "res://test.tres");
+		GD.Print(err);
+		//EditorSaveManager.AttemptSave("res://Exp");
 	}
 	
 	private void UpdateTitle()

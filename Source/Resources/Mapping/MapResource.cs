@@ -11,11 +11,11 @@ namespace Drumstalotajs.Resources.Mapping;
 public partial class MapResource : Resource
 {
 	[ExportGroup("Layers")]
-	[Export] GroundLayerData GroundLayer { get; set; } = null;
-	[Export] AtlasLayerData DecorationLayer { get; set; } = null;
-	[Export] EntityLayerData EntityLayer { get; set; } = null;
-	[Export] OverlayLayerData OverlayLayer { get; set; } = null;
-
+	[Export] public GroundLayerData GroundLayer { get; set; } = null;
+	[Export] public AtlasLayerData DecorationLayer { get; set; } = null;
+	[Export] public EntityLayerData EntityLayer { get; set; } = null;
+	[Export] public OverlayLayerData OverlayLayer { get; set; } = null;
+	
 	public MapResource () {}
 	public MapResource (Map map)
 	{
