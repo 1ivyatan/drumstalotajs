@@ -75,27 +75,4 @@ public partial class Map : Node2D
 		
 		State = MapState.Done;
 	}
-	
-	/* test!!!!! */
-	public override void _Ready()
-	{
-		var test = new OverlayLayerTileData();
-		test.Id = 1;
-		//test.Azimuth = 1;
-		test.Position = new Vector2I(5, 5);
-		OverlayLayer.AddTile(test);
-	}
-	
-	public override void _UnhandledInput(InputEvent @event)
-	{
-		if (@event is InputEventMouseButton)
-		{
-			var ins = OverlayLayer.GetInstance(new Vector2I(5, 5));
-			if (ins != null)
-			{
-				
-				Export();
-			}
-		}
-	}
 }

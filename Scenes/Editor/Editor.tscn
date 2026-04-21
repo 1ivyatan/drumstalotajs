@@ -2,10 +2,21 @@
 
 [ext_resource type="Script" uid="uid://hs8xi0o7k56e" path="res://Source/Editor/EditorScene.cs" id="1_tw15f"]
 [ext_resource type="PackedScene" uid="uid://druw1x35jlqnh" path="res://Scenes/Mapping/Map.tscn" id="2_wl3go"]
+[ext_resource type="PackedScene" uid="uid://bqh5apppkldxo" path="res://Scenes/Components/Topnav.tscn" id="3_s7bqi"]
+[ext_resource type="Script" uid="uid://8jpei68xm1ae" path="res://Source/Editor/Components/EditorTopnav.cs" id="4_4aan4"]
+[ext_resource type="Script" uid="uid://dqtrbg5atrot6" path="res://Source/Editor/Components/EditorSaveManager.cs" id="5_shl5k"]
 
-[node name="Editor" type="Node2D" unique_id=238378600]
+[node name="Editor" type="Node2D" unique_id=238378600 node_paths=PackedStringArray("Map", "EditorTopnav")]
 script = ExtResource("1_tw15f")
+Map = NodePath("Map")
+EditorTopnav = NodePath("Overlay/Topnav")
 
 [node name="Map" parent="." unique_id=1338299763 instance=ExtResource("2_wl3go")]
 
 [node name="Overlay" type="CanvasLayer" parent="." unique_id=31358238]
+
+[node name="Topnav" parent="Overlay" unique_id=118245835 instance=ExtResource("3_s7bqi")]
+script = ExtResource("4_4aan4")
+
+[node name="EditorSaveManager" type="Node" parent="." unique_id=907072181]
+script = ExtResource("5_shl5k")
