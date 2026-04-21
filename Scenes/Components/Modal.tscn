@@ -6,6 +6,7 @@
 oversampling_override = 1.0
 title = "Metadata"
 initial_position = 2
+visible = false
 wrap_controls = true
 transient = true
 transient_to_focused = true
