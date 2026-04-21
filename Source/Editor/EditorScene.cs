@@ -47,12 +47,7 @@ public partial class EditorScene : Node2D
 	
 	private void Save()
 	{
-		
-		var export = Map.Export();
-		GD.Print(export.GroundLayer.Tiles.IsEmpty());
-		var err = ResourceSaver.Save(export, "res://test.tres");
-		GD.Print(err);
-		//EditorSaveManager.AttemptSave("res://Exp");
+		EditorSaveManager.SaveDialog("res://Exp");
 	}
 	
 	private void UpdateTitle()
