@@ -36,8 +36,14 @@ public partial class EditorScene : Node2D
 		//test.Azimuth = 1;
 		//test.Position = new Vector2I(5, 5);
 		//OverlayLayer.AddTile(test);
+		EditorTopnav.SelectedSave += Save;
 		UpdateTitle(); //!!!!!!!
 		Mode = EditorMode.View;
+	}
+	
+	private void Save()
+	{
+		
 	}
 	
 	private void UpdateTitle()
