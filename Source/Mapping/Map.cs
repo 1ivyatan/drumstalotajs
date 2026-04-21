@@ -55,7 +55,17 @@ public partial class Map : Node2D
 	
 	public MapResource Export()
 	{
-		return null;
+		return new MapResource(this);
+	}
+	
+	public void Load(MapMeta mapMeta)
+	{
+		
+	}
+	
+	public void Load(string mapResourcePath)
+	{
+		
 	}
 	
 	public void Load(MapResource mapResource)
