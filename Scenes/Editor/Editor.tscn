@@ -5,15 +5,13 @@
 [ext_resource type="PackedScene" uid="uid://bqh5apppkldxo" path="res://Scenes/Components/Topnav.tscn" id="3_s7bqi"]
 [ext_resource type="Script" uid="uid://8jpei68xm1ae" path="res://Source/Editor/Components/EditorTopnav.cs" id="4_4aan4"]
 [ext_resource type="Script" uid="uid://dqtrbg5atrot6" path="res://Source/Editor/Components/EditorSaveManager.cs" id="5_shl5k"]
-[ext_resource type="PackedScene" uid="uid://bh1kqu22s4f57" path="res://Scenes/Components/Modal.tscn" id="5_u75kh"]
-[ext_resource type="Script" uid="uid://cc7v2qtyr6xtf" path="res://Source/Editor/Components/MetaEditorContainer.cs" id="5_wwjnl"]
-[ext_resource type="Script" uid="uid://cxefhw1doun6c" path="res://Source/Editor/Components/MetaEditor.cs" id="6_ghgdu"]
+[ext_resource type="PackedScene" uid="uid://cwg3c3xndjp21" path="res://Scenes/Components/Modal.tscn" id="5_u75kh"]
 
-[node name="Editor" type="Node2D" unique_id=238378600 node_paths=PackedStringArray("Map", "EditorTopnav", "MetaEditorContainer")]
+[node name="Editor" type="Node2D" unique_id=238378600 node_paths=PackedStringArray("Map", "EditorTopnav", "MetaEditor")]
 script = ExtResource("1_tw15f")
 Map = NodePath("Map")
 EditorTopnav = NodePath("Overlay/Container/Topnav")
-MetaEditorContainer = NodePath("Overlay/MetaEditorContainer")
+MetaEditor = NodePath("Overlay/MetaEditor")
 
 [node name="Map" parent="." unique_id=1338299763 instance=ExtResource("2_wl3go")]
 
@@ -67,44 +65,33 @@ item_1/separator = true
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="MetaEditorContainer" type="Control" parent="Overlay" unique_id=1597940594 node_paths=PackedStringArray("MetaEditor")]
-visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("5_wwjnl")
-MetaEditor = NodePath("MetaEditor")
+[node name="MetaEditor" parent="Overlay" unique_id=1860603709 instance=ExtResource("5_u75kh")]
+Title = "Metadata"
 
-[node name="MetaEditor" parent="Overlay/MetaEditorContainer" unique_id=1373965991 instance=ExtResource("5_u75kh")]
-size = Vector2i(110, 100)
-script = ExtResource("6_ghgdu")
-
-[node name="Container" type="VBoxContainer" parent="Overlay/MetaEditorContainer/MetaEditor" unique_id=809359975]
+[node name="Container" type="VBoxContainer" parent="Overlay/MetaEditor" unique_id=704485191]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="NameContainer" type="HBoxContainer" parent="Overlay/MetaEditorContainer/MetaEditor/Container" unique_id=1366323616]
+[node name="TitleContainer" type="HBoxContainer" parent="Overlay/MetaEditor/Container" unique_id=427705822]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Overlay/MetaEditorContainer/MetaEditor/Container/NameContainer" unique_id=51667010]
+[node name="Label" type="Label" parent="Overlay/MetaEditor/Container/TitleContainer" unique_id=416060542]
 layout_mode = 2
 text = "Title:"
 
-[node name="Editor" type="LineEdit" parent="Overlay/MetaEditorContainer/MetaEditor/Container/NameContainer" unique_id=675073614]
+[node name="Line" type="LineEdit" parent="Overlay/MetaEditor/Container/TitleContainer" unique_id=1154678854]
 layout_mode = 2
 
-[node name="ResetContainer" type="CenterContainer" parent="Overlay/MetaEditorContainer/MetaEditor/Container" unique_id=1332492565]
+[node name="ResetContainer" type="CenterContainer" parent="Overlay/MetaEditor/Container" unique_id=1046922588]
 layout_mode = 2
 
-[node name="Reset" type="Button" parent="Overlay/MetaEditorContainer/MetaEditor/Container/ResetContainer" unique_id=1375299682]
+[node name="Reset" type="Button" parent="Overlay/MetaEditor/Container/ResetContainer" unique_id=1903883609]
 layout_mode = 2
-text = "Reset"
+text = "Clear all"
 
 [node name="EditorSaveManager" type="Node" parent="." unique_id=907072181]
 script = ExtResource("5_shl5k")

@@ -3,6 +3,7 @@ using System;
 using Drumstalotajs;
 using Drumstalotajs.Mapping;
 using Drumstalotajs.Editor.Components;
+using Drumstalotajs.Components.Modals;
 
 namespace Drumstalotajs.Editor;
 
@@ -10,7 +11,7 @@ public partial class EditorScene : Node2D
 {
 	[Export] public Map Map { get; private set; }
 	[Export] public EditorTopnav EditorTopnav { get; private set; }
-	[Export] private MetaEditorContainer MetaEditorContainer { get; set; }
+	[Export] private Modal MetaEditor { get; set; }
 	
 	public EditorMode Mode { get;
 		set {
@@ -41,7 +42,7 @@ public partial class EditorScene : Node2D
 		//OverlayLayer.AddTile(test);
 		EditorTopnav.SelectedSave += Save;
 		EditorTopnav.SelectedProperties += OpenProperties;
-		MetaEditorContainer.Exiting += CloseProperties;
+		MetaEditor.Exiting += CloseProperties;
 		UpdateTitle(); //!!!!!!!
 		Mode = EditorMode.View;
 	}
@@ -53,13 +54,12 @@ public partial class EditorScene : Node2D
 	
 	private void OpenProperties()
 	{
-		MetaEditorContainer.Open();
-		
+		MetaEditor.Popup();
 	}
 	
 	private void CloseProperties()
 	{
-		MetaEditorContainer.Close();
+		MetaEditor.Close();
 	}
 	
 	private void UpdateTitle()

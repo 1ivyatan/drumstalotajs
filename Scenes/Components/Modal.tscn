@@ -1,10 +1,30 @@
-[gd_scene format=3 uid="uid://bh1kqu22s4f57"]
+[gd_scene format=3 uid="uid://cwg3c3xndjp21"]
 
-[ext_resource type="Script" uid="uid://6fpwfr2cr8lf" path="res://Source/Components/Modals/Modal.cs" id="1_0wu8u"]
+[ext_resource type="Script" uid="uid://6fpwfr2cr8lf" path="res://Source/Components/Modals/Modal.cs" id="1_dpcp5"]
 
-[node name="Modal" type="Window" unique_id=1373965991]
+[node name="Moda" type="Control" unique_id=1860603709 node_paths=PackedStringArray("_tint", "_window")]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dpcp5")
+_tint = NodePath("Bg")
+_window = NodePath("Window")
+
+[node name="Bg" type="ColorRect" parent="." unique_id=1733826313]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.54901963)
+
+[node name="Window" type="Window" parent="." unique_id=718664605]
 oversampling_override = 1.0
-title = "Metadata"
 initial_position = 2
 visible = false
 wrap_controls = true
@@ -17,4 +37,3 @@ popup_window = true
 popup_wm_hint = true
 minimize_disabled = true
 maximize_disabled = true
-script = ExtResource("1_0wu8u")

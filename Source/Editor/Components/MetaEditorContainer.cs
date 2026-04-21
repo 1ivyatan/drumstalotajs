@@ -1,6 +1,6 @@
 using Godot;
 using System;
-using Drumstalotajs;
+/* using Drumstalotajs;
 using Drumstalotajs.Editor;
 using Drumstalotajs.Components;
 
@@ -30,3 +30,4 @@ public partial class MetaEditorContainer : Control
 		MetaEditor.Hide();
 	}
 }
+*/
