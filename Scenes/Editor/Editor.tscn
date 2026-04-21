@@ -9,14 +9,59 @@
 [node name="Editor" type="Node2D" unique_id=238378600 node_paths=PackedStringArray("Map", "EditorTopnav")]
 script = ExtResource("1_tw15f")
 Map = NodePath("Map")
-EditorTopnav = NodePath("Overlay/Topnav")
+EditorTopnav = NodePath("Overlay/Container/Topnav")
 
 [node name="Map" parent="." unique_id=1338299763 instance=ExtResource("2_wl3go")]
 
 [node name="Overlay" type="CanvasLayer" parent="." unique_id=31358238]
 
-[node name="Topnav" parent="Overlay" unique_id=118245835 instance=ExtResource("3_s7bqi")]
+[node name="Container" type="VBoxContainer" parent="Overlay" unique_id=1405066980]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Topnav" parent="Overlay/Container" unique_id=118245835 node_paths=PackedStringArray("_fileMenu", "_viewMenu") instance=ExtResource("3_s7bqi")]
+layout_mode = 2
 script = ExtResource("4_4aan4")
+_fileMenu = NodePath("Menu/File")
+_viewMenu = NodePath("Menu/View")
+
+[node name="Menu" type="MenuBar" parent="Overlay/Container/Topnav" unique_id=563346237]
+layout_mode = 2
+
+[node name="File" type="PopupMenu" parent="Overlay/Container/Topnav/Menu" unique_id=1217355390]
+oversampling_override = 1.0
+size = Vector2i(121, 151)
+item_count = 7
+item_0/text = "New"
+item_0/id = 0
+item_1/text = "Open"
+item_1/id = 1
+item_2/text = "Save"
+item_2/id = 2
+item_3/id = 3
+item_3/separator = true
+item_4/text = "Properties"
+item_4/id = 4
+item_5/id = 5
+item_5/separator = true
+item_6/text = "Close"
+item_6/id = 6
+
+[node name="View" type="PopupMenu" parent="Overlay/Container/Topnav/Menu" unique_id=356847103]
+oversampling_override = 1.0
+size = Vector2i(173, 100)
+item_count = 2
+item_0/text = "Calibrate camera"
+item_0/id = 0
+item_1/id = 1
+item_1/separator = true
+
+[node name="Body" type="Control" parent="Overlay/Container" unique_id=1759704946]
+layout_mode = 2
+size_flags_vertical = 3
 
 [node name="EditorSaveManager" type="Node" parent="." unique_id=907072181]
 script = ExtResource("5_shl5k")
