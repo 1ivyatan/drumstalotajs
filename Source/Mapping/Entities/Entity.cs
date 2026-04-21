@@ -15,11 +15,13 @@ public partial class Entity : SceneTile
 		}
 	}
 	public double Integrity { get; 
-		private set { 
+		set { 
 			field = Mathf.Clamp(value, 0, 100);
 			if (field <= 0) Die();
 		}
 	} = 100;
+	
+	public bool Player { get; set; } = false;
 	
 	/* simplistic, inheritor will do this  in more sophisiscated ways */
 	public void DecreaseIntegrity(double factor)

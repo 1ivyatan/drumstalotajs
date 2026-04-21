@@ -11,4 +11,6 @@ namespace Drumstalotajs.Resources.Mapping.Layers;
 public partial class EntityLayerTileData : SceneLayerTileData
 {
 	[Export] public double Azimuth { get; set; }
+	[Export] public double Integrity { get; set; }
+	[Export] public bool Player { get; set; }
 }
