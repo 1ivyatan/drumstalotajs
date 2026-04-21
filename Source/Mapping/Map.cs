@@ -9,13 +9,44 @@ namespace Drumstalotajs.Mapping;
 
 public partial class Map : Node2D
 {
+	[Signal] public delegate void StateChangeEventHandler(MapState state);
+	[Signal] public delegate void ModeChangeEventHandler(MapMode mode);
+	
 	[Export] public GroundLayer GroundLayer { get; private set; }
 	[Export] public AtlasLayer DecorationLayer { get; private set; }
 	[Export] public EntityLayer EntityLayer { get; private set; }
 	[Export] public OverlayLayer OverlayLayer { get; private set; }
 	[Export] public ProjectileLayer ProjectileLayer { get; private set; }
 	
-	public MapStatus Status { get; private set; } = MapStatus.Initialized;
+	public MapState State { get; 
+		private set {
+			field = value;
+			EmitSignal(SignalName.StateChange, (int)field);
+		}
+	} = MapState.Initialized;
+	
+	public MapMode Mode { get;
+		set {
+			field = value;
+			switch (field)
+			{
+				case MapMode.Locked:
+					
+					break;
+				case MapMode.HiddenInteractable:
+					
+					break;
+				case MapMode.Interactable:
+					
+					break;
+				case MapMode.Editing:
+					
+					break;
+				default: break;
+			}
+			EmitSignal(SignalName.ModeChange, (int)field);
+		}
+	} = MapMode.Locked;
 	
 	public MapResource Export()
 	{
@@ -24,9 +55,9 @@ public partial class Map : Node2D
 	
 	public void Load(MapResource mapResource)
 	{
-		Status = MapStatus.Loading;
+		State = MapState.Loading;
 		
-		Status = MapStatus.Done;
+		State = MapState.Done;
 	}
 	/*public override void _Ready()
 	{
