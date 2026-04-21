@@ -2,7 +2,7 @@ using Godot;
 using System;
 using Drumstalotajs;
 
-namespace Drumstalotajs;
+namespace Drumstalotajs.Mapping.Layers;
 
 public abstract partial class BaseLayer : TileMapLayer
 {

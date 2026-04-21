@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using Drumstalotajs;
+using Drumstalotajs.Utilities;
 using Drumstalotajs.Mapping.Layers;
 using Drumstalotajs.Resources.Mapping;
 using Drumstalotajs.Mapping.Projectiles;
@@ -37,16 +38,20 @@ public partial class Map : Node2D
 			switch (field)
 			{
 				case MapMode.Locked:
-					
+					Selector.Mode = SelectorMode.Invisible;
+					Camera.Mode = CameraMode.Locked;
 					break;
 				case MapMode.HiddenInteractable:
-					
+					Selector.Mode = SelectorMode.Invisible;
+					Camera.Mode = CameraMode.DragOnly;
 					break;
 				case MapMode.Interactable:
-					
+					Selector.Mode = SelectorMode.Visible;
+					Camera.Mode = CameraMode.DragOnly;
 					break;
 				case MapMode.Editing:
-					
+					Selector.Mode = SelectorMode.Visible;
+					Camera.Mode = CameraMode.DragOnly;
 					break;
 				default: break;
 			}
@@ -61,18 +66,23 @@ public partial class Map : Node2D
 	
 	public void Load(MapMeta mapMeta)
 	{
-		
+		Load(mapMeta.MapResourcePath);
 	}
 	
 	public void Load(string mapResourcePath)
 	{
-		
-	}
-	
-	public void Load(MapResource mapResource)
-	{
 		State = MapState.Loading;
-		
-		State = MapState.Done;
+		try {
+			var data = Files.SafeLoadResource<MapResource>(mapResourcePath);
+			GroundLayer.Load(data.GroundLayer);
+			DecorationLayer.Load(data.DecorationLayer);
+			EntityLayer.Load(data.EntityLayer);
+			OverlayLayer.Load(data.OverlayLayer);
+			State = MapState.Done;
+		} catch (Exception e)
+		{
+			GD.Print(e);
+			State = MapState.Error;
+		}
 	}
 }

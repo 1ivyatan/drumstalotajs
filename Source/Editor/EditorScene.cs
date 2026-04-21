@@ -4,6 +4,8 @@ using Drumstalotajs;
 using Drumstalotajs.Mapping;
 using Drumstalotajs.Editor.Components;
 using Drumstalotajs.Components.Modals;
+using Drumstalotajs.Mapping.Cameras;
+using Drumstalotajs.Mapping.Selection;
 
 namespace Drumstalotajs.Editor;
 
@@ -19,13 +21,16 @@ public partial class EditorScene : Node2D
 			switch (field)
 			{
 				case EditorMode.View:
-					
+					Map.Camera.Mode = CameraMode.DragOnly;
+					Map.Selector.Mode = SelectorMode.Invisible;
 					break;
 				case EditorMode.Insert:
-					
+					Map.Camera.Mode = CameraMode.Locked;
+					Map.Selector.Mode = SelectorMode.Visible;
 					break;
 				case EditorMode.Edit:
-					
+					Map.Camera.Mode = CameraMode.DragOnly;
+					Map.Selector.Mode = SelectorMode.Visible;
 					break;
 				default: break;
 			}
@@ -40,19 +45,16 @@ public partial class EditorScene : Node2D
 		//test.Azimuth = 1;
 		//test.Position = new Vector2I(5, 5);
 		//OverlayLayer.AddTile(test);
+		
 		EditorTopnav.SelectedSave += Save;
-		UpdateTitle(); //!!!!!!!
+		EditorTopnav.Title = "Editor";
+		Map.Mode = MapMode.Editing;
 		Mode = EditorMode.View;
 	}
 	
 	private void Save()
 	{
-		EditorSaveManager.SaveDialog("res://Exp");
-	}
-	
-	private void UpdateTitle()
-	{
-		EditorTopnav.Title = "Untitled";
+		EditorSaveManager.SaveDialog();
 	}
 	
 	public override void _UnhandledInput(InputEvent @event)

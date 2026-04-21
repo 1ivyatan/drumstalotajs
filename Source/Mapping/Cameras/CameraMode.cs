@@ -1,3 +1,3 @@
 namespace Drumstalotajs.Mapping.Cameras;
 
-public enum CameraMode { Locked, DragOnly, Unlocked }
+public enum CameraMode { Locked, DragOnly }

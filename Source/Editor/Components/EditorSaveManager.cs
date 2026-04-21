@@ -24,12 +24,12 @@ public partial class EditorSaveManager : Node
 		_openDialog.FileSelected += (string path) => { AttemptOpen(path); };
 	}
 
-	public void OpenDialog(string path)
+	public void OpenDialog()
 	{
 		_openDialog.PopupCentered();
 	}
 	
-	public void SaveDialog(string path)
+	public void SaveDialog()
 	{
 		_saveDialog.PopupCentered();
 	}
