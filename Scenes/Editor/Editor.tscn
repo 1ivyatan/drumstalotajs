@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://8jpei68xm1ae" path="res://Source/Editor/Components/EditorTopnav.cs" id="4_4aan4"]
 [ext_resource type="Script" uid="uid://dqtrbg5atrot6" path="res://Source/Editor/Components/EditorSaveManager.cs" id="5_shl5k"]
 [ext_resource type="PackedScene" uid="uid://cwg3c3xndjp21" path="res://Scenes/Components/Modal.tscn" id="5_u75kh"]
+[ext_resource type="Script" uid="uid://cc7v2qtyr6xtf" path="res://Source/Editor/Components/MetaEditorContainer.cs" id="6_ghgdu"]
 
 [node name="Editor" type="Node2D" unique_id=238378600 node_paths=PackedStringArray("Map", "EditorTopnav", "MetaEditor")]
 script = ExtResource("1_tw15f")
@@ -75,6 +76,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("6_ghgdu")
 
 [node name="TitleContainer" type="HBoxContainer" parent="Overlay/MetaEditor/Container" unique_id=427705822]
 layout_mode = 2
