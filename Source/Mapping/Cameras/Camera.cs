@@ -19,10 +19,6 @@ public partial class Camera : Camera2D
 	[Export] private AtlasLayer _calibratingAtlasLayer;
 	private bool _dragging = false;
 	private Vector2 _dragAnchorWorld;
-
-	public override void _Ready()
-	{	
-	}
 	
 	public override void _UnhandledInput(InputEvent @event)
 	{

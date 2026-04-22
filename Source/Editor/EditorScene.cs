@@ -35,7 +35,7 @@ public partial class EditorScene : Node2D
 					break;
 				default: break;
 			}
-			/* topnav change vvvv */
+			EditorTopnav.SetModeMarking(field);
 		}
 	}
 	
@@ -49,18 +49,14 @@ public partial class EditorScene : Node2D
 		
 		BaseLayer[] layers = [ Map.GroundLayer, Map.DecorationLayer ];
 		Map.Selector.Filter = new SelectorFilter(layers);
-		EditorTopnav.SelectedSave += Save;
+		EditorTopnav.SelectedSave += () => { EditorSaveManager.SaveDialog(); };
+		EditorTopnav.SelectedMode += (EditorMode mode) => { Mode = mode; };
 		EditorTopnav.Title = "Editor";
 		Map.Mode = MapMode.Editing;
+		Mode = EditorMode.View;
 		
 		/* vvvvvv */
-			Mode = EditorMode.View;
 			Map.Camera.Calibrate();
-	}
-	
-	private void Save()
-	{
-		EditorSaveManager.SaveDialog();
 	}
 	
 	public override void _UnhandledInput(InputEvent @event)

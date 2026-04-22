@@ -10,6 +10,7 @@ public partial class EditorTopnav : Topnav
 {
 	[Signal] public delegate void SelectedSaveEventHandler();
 	[Signal] public delegate void SelectedPropertiesEventHandler();
+	[Signal] public delegate void SelectedModeEventHandler(EditorMode mode);
 	[Export] private PopupMenu _fileMenu;
 	[Export] private PopupMenu _viewMenu;
 	private PopupMenu _viewModeMenu;
@@ -43,10 +44,23 @@ public partial class EditorTopnav : Topnav
 			
 		});
 		_viewMenuModeCall = Callable.From((int id) => {
-			
+			EmitSignal(SignalName.SelectedMode, (int)id);
 		});
 		_fileMenu.Connect(PopupMenu.SignalName.IdPressed, _fileMenuCall);
-		_viewMenu.Connect(PopupMenu.SignalName.IdPressed, _viewMenuCall);
 		_viewModeMenu.Connect(PopupMenu.SignalName.IdPressed, _viewMenuModeCall);
+		_viewMenu.Connect(PopupMenu.SignalName.IdPressed, _viewMenuCall);
+	}
+	
+	public void SetModeMarking(EditorMode id)
+	{
+		foreach (var mode in Enum.GetValues(typeof(EditorMode)))
+		{
+			if (_viewModeMenu.IsItemChecked((int)mode))
+			{
+				_viewModeMenu.SetItemChecked((int)mode, false);
+				break;
+			}
+		}
+		_viewModeMenu.SetItemChecked((int)id, true);
 	}
 }

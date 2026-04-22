@@ -11,4 +11,5 @@ namespace Drumstalotajs.Mapping.Projectiles;
 public partial class ProjectileLayer : Node2D
 {
 	public int MaxProjectileCount { get; } = Constants.Mapping.MaxProjectileCount;
+	public void ClearProjectiles() {}
 }
