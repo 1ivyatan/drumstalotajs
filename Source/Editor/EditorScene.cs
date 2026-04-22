@@ -52,7 +52,10 @@ public partial class EditorScene : Node2D
 		EditorTopnav.SelectedSave += Save;
 		EditorTopnav.Title = "Editor";
 		Map.Mode = MapMode.Editing;
-		Mode = EditorMode.View;
+		
+		/* vvvvvv */
+			Mode = EditorMode.View;
+			Map.Camera.Calibrate();
 	}
 	
 	private void Save()

@@ -138,11 +138,13 @@ Atlas = Array[Object]([SubResource("Resource_ccdcv"), SubResource("Resource_p3co
 script = ExtResource("14_bc3k3")
 
 [node name="Selector" type="Node2D" parent="." unique_id=509430252 node_paths=PackedStringArray("_map")]
+visible = false
 script = ExtResource("15_0ild7")
 _map = NodePath("..")
 
 [node name="Sprite" type="Sprite2D" parent="Selector" unique_id=269947912]
 texture = SubResource("AtlasTexture_mukcc")
 
-[node name="Camera" type="Camera2D" parent="." unique_id=221812195]
+[node name="Camera" type="Camera2D" parent="." unique_id=221812195 node_paths=PackedStringArray("_calibratingAtlasLayer")]
 script = ExtResource("16_mukcc")
+_calibratingAtlasLayer = NodePath("../Ground")
