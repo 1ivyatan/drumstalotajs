@@ -15,6 +15,7 @@ public partial class Map : Node2D
 {
 	[Signal] public delegate void StateChangeEventHandler(MapState state);
 	[Signal] public delegate void ModeChangeEventHandler(MapMode mode);
+	[Signal] public delegate void EditedEventHandler(MapMode mode);
 	
 	[Export] public GroundLayer GroundLayer { get; private set; }
 	[Export] public AtlasLayer DecorationLayer { get; private set; }
@@ -46,11 +47,11 @@ public partial class Map : Node2D
 					Camera.Mode = CameraMode.DragOnly;
 					break;
 				case MapMode.Interactable:
-					Selector.Mode = SelectorMode.Visible;
+					Selector.Mode = SelectorMode.Interactable;
 					Camera.Mode = CameraMode.DragOnly;
 					break;
 				case MapMode.Editing:
-					Selector.Mode = SelectorMode.Visible;
+					Selector.Mode = SelectorMode.Editing;
 					Camera.Mode = CameraMode.DragOnly;
 					break;
 				default: break;
@@ -69,20 +70,88 @@ public partial class Map : Node2D
 		Load(mapMeta.MapResourcePath);
 	}
 	
-	public void Load(string mapResourcePath)
+	public async void Load(string mapResourcePath)
 	{
 		State = MapState.Loading;
 		try {
 			var data = Files.SafeLoadResource<MapResource>(mapResourcePath);
-			GroundLayer.Load(data.GroundLayer);
-			DecorationLayer.Load(data.DecorationLayer);
-			EntityLayer.Load(data.EntityLayer);
-			OverlayLayer.Load(data.OverlayLayer);
+			await GroundLayer.Load(data.GroundLayer);
+			await DecorationLayer.Load(data.DecorationLayer);
+			await EntityLayer.Load(data.EntityLayer);
+			await OverlayLayer.Load(data.OverlayLayer);
 			State = MapState.Done;
 		} catch (Exception e)
 		{
 			GD.Print(e);
 			State = MapState.Error;
+		}
+	}
+	
+	public Vector2I ViewportToMap()
+	{
+		Vector2 mouseScreenPos = GetViewport().GetMousePosition();
+		Vector2 mouseWorldPos = Camera.ScreenToWorld(mouseScreenPos);
+		Vector2 mouseLocalPos = GroundLayer.ToLocal(mouseWorldPos);
+		return GroundLayer.LocalToMap(mouseLocalPos);
+	}
+	
+	public void AddTile(
+		BaseLayer layer, 
+		string atlas,
+		Vector2I position
+	)
+	{
+		bool added = false;
+		if (layer is AtlasLayer atlasLayer)
+		{
+			if (Types.Vector2I.ValidVector2I(atlas))
+			{
+				Vector2I coords = Types.Vector2I.StringToVector2I(atlas);
+				
+				if (atlasLayer is GroundLayer groundLayer)
+				{
+					groundLayer.AddTile(position, coords);
+					added = true;
+				} else
+				{
+					if (GroundLayer.GetCellAtlasCoords(position) != Constants.Vector2I.Negative)
+					{
+						atlasLayer.AddTile(position, coords);
+						added = true;
+					}
+				}
+			}
+		} else if (layer is SceneLayer sceneLayer)
+		{
+			if (GroundLayer.GetCellAtlasCoords(position) != Constants.Vector2I.Negative)
+			{
+				sceneLayer.AddTile(position, atlas);
+				added = true;
+			}
+		}
+		
+		if (added)
+		{
+			EmitEdit();
+		}
+	}
+	
+	public void RemoveTile(BaseLayer layer, Vector2I position)
+	{
+		if (layer is AtlasLayer atlasLayer)
+		{
+			atlasLayer.RemoveTile(position);
+		} else if (layer is SceneLayer sceneLayer)
+		{
+			sceneLayer.RemoveTile(position);
+		}
+	}
+	
+	private void EmitEdit()
+	{
+		if (State != MapState.Loading && Mode == MapMode.Editing)
+		{
+			EmitSignal(SignalName.Edited);
 		}
 	}
 }

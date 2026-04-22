@@ -1,3 +1,3 @@
 namespace Drumstalotajs.Mapping.Selection;
 
-public enum SelectorMode { Invisible, Visible }
+public enum SelectorMode { Invisible, Interactable, Editing }

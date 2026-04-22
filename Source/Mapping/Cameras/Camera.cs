@@ -13,4 +13,10 @@ public partial class Camera : Camera2D
 	public override void _Ready()
 	{
 	}
+	
+	public Vector2 ScreenToWorld(Vector2 screenPos)
+	{
+		Vector2 viewportCenter = GetViewport().GetVisibleRect().Size / 2f;
+		return GlobalPosition + (screenPos - viewportCenter) / Zoom.X;
+	}
 }

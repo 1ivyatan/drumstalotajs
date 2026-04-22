@@ -6,11 +6,10 @@
 [ext_resource type="Script" uid="uid://8jpei68xm1ae" path="res://Source/Editor/Components/EditorTopnav.cs" id="4_4aan4"]
 [ext_resource type="Script" uid="uid://dqtrbg5atrot6" path="res://Source/Editor/Components/EditorSaveManager.cs" id="5_shl5k"]
 
-[node name="Editor" type="Node2D" unique_id=238378600 node_paths=PackedStringArray("Map", "EditorTopnav", "EditorSaveManager")]
+[node name="Editor" type="Node2D" unique_id=238378600 node_paths=PackedStringArray("Map", "EditorTopnav")]
 script = ExtResource("1_tw15f")
 Map = NodePath("Map")
 EditorTopnav = NodePath("Overlay/Container/Topnav")
-EditorSaveManager = NodePath("EditorSaveManager")
 
 [node name="Map" parent="." unique_id=1338299763 instance=ExtResource("2_wl3go")]
 
@@ -63,6 +62,7 @@ item_1/separator = true
 [node name="Body" type="Control" parent="Overlay/Container" unique_id=1759704946]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 1
 
 [node name="EditorSaveManager" type="Node" parent="." unique_id=907072181 node_paths=PackedStringArray("_map", "_openDialog", "_saveDialog")]
 script = ExtResource("5_shl5k")

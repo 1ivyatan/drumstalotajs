@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Threading.Tasks;
 using Drumstalotajs;
 using Drumstalotajs.Utilities;
 using Drumstalotajs.Mapping;
@@ -75,7 +76,7 @@ public partial class AtlasLayer : Layer<Vector2I, AtlasTile, AtlasLayerData>
 		return new AtlasLayerData(this);
 	}
 	
-	public override void Load(AtlasLayerData layerData)
+	public async override Task Load(AtlasLayerData layerData)
 	{
 		Clear();
 		SetPattern(layerData.Offset, layerData.Tiles);

@@ -6,6 +6,7 @@ using Drumstalotajs.Editor.Components;
 using Drumstalotajs.Components.Modals;
 using Drumstalotajs.Mapping.Cameras;
 using Drumstalotajs.Mapping.Selection;
+using Drumstalotajs.Mapping.Layers;
 
 namespace Drumstalotajs.Editor;
 
@@ -26,11 +27,11 @@ public partial class EditorScene : Node2D
 					break;
 				case EditorMode.Insert:
 					Map.Camera.Mode = CameraMode.Locked;
-					Map.Selector.Mode = SelectorMode.Visible;
+					Map.Selector.Mode = SelectorMode.Editing;
 					break;
 				case EditorMode.Edit:
 					Map.Camera.Mode = CameraMode.DragOnly;
-					Map.Selector.Mode = SelectorMode.Visible;
+					Map.Selector.Mode = SelectorMode.Interactable;
 					break;
 				default: break;
 			}
@@ -46,6 +47,8 @@ public partial class EditorScene : Node2D
 		//test.Position = new Vector2I(5, 5);
 		//OverlayLayer.AddTile(test);
 		
+		BaseLayer[] layers = [ Map.GroundLayer, Map.DecorationLayer ];
+		Map.Selector.Filter = new SelectorFilter(layers);
 		EditorTopnav.SelectedSave += Save;
 		EditorTopnav.Title = "Editor";
 		Map.Mode = MapMode.Editing;

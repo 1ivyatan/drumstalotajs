@@ -2,6 +2,7 @@ using Godot;
 using Godot.Collections;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 using Drumstalotajs;
 using Drumstalotajs.Utilities;
 using Drumstalotajs.Mapping;
@@ -40,12 +41,15 @@ public partial class OverlayLayer : SceneLayer
 	{
 		return new OverlayLayerData(this);
 	}
-	
-	public override void Load(SceneLayerData layerData)
+
+	public async override Task Load(SceneLayerData layerData)
 	{
-		if (layerData is OverlayLayerData entityLayerData)
+		if (layerData is OverlayLayerData overlayLayerData)
 		{
-			
-		} else return;
+			foreach (var tile in overlayLayerData.Tiles)
+			{
+				this.AddTile(tile);
+			}
+		}
 	}
 }

@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Threading.Tasks;
 using Drumstalotajs;
 using Drumstalotajs.Mapping;
 using Drumstalotajs.Mapping.Tiles;
@@ -19,6 +20,6 @@ public abstract partial class Layer<
 	public abstract void AddTile(Vector2I position, TAtlasType atlas);
 	public abstract void RemoveTile(Vector2I position);
 	public abstract TLayerResource Export();
-	public abstract void Load(TLayerResource layerData);
 	public abstract Godot.Collections.Array<TTileInstance> Flash(Vector2I position);
+	public abstract Task Load(TLayerResource layerData);
 }

@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Threading.Tasks;
 using Drumstalotajs;
 using Drumstalotajs.Utilities;
 using Drumstalotajs.Mapping;
@@ -29,7 +30,7 @@ public partial class GroundLayer : AtlasLayer
 		return new GroundLayerData(this);
 	}
 	
-	public override void Load(AtlasLayerData layerData)
+	public async override Task Load(AtlasLayerData layerData)
 	{
 		if (layerData is GroundLayerData groundLayerData)
 		{

@@ -3,6 +3,7 @@ using Godot.Collections;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Drumstalotajs;
 using Drumstalotajs.Utilities;
 using Drumstalotajs.Mapping;
@@ -127,9 +128,12 @@ public partial class SceneLayer : Layer<string, SceneTile, SceneLayerData>
 		return new SceneLayerData(this);
 	}
 	
-	public override void Load(SceneLayerData layerData)
+	public async override Task Load(SceneLayerData layerData)
 	{
-		
+		foreach (var tile in layerData.Tiles)
+		{
+			AddTile(tile);
+		}
 	}
 	
 	public override Godot.Collections.Array<SceneTile> Flash(Vector2I position)
