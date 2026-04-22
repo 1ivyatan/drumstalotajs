@@ -80,6 +80,7 @@ public partial class Map : Node2D
 			await EntityLayer.Load(data.EntityLayer);
 			await OverlayLayer.Load(data.OverlayLayer);
 			State = MapState.Done;
+			Camera.Calibrate();
 		} catch (Exception e)
 		{
 			GD.Print(e);
