@@ -65,11 +65,13 @@ _map = NodePath("../Map")
 _openDialog = NodePath("OpenDialog")
 _saveDialog = NodePath("SaveDialog")
 _editedDialog = NodePath("EditedDialog")
+TemplateMap = "res://Resources/Maps/Backgrounds/Untitled.res"
 
 [node name="SaveDialog" type="FileDialog" parent="EditorSaveManager" unique_id=1292357662]
 initial_position = 2
 display_mode = 1
 access = 2
+filters = PackedStringArray(".tres", ".res")
 use_native_dialog = true
 
 [node name="OpenDialog" type="FileDialog" parent="EditorSaveManager" unique_id=137755826]
@@ -78,6 +80,7 @@ initial_position = 2
 file_mode = 0
 display_mode = 1
 access = 2
+filters = PackedStringArray(".tres", ".res")
 use_native_dialog = true
 
 [node name="EditedDialog" type="ConfirmationDialog" parent="EditorSaveManager" unique_id=592913740]

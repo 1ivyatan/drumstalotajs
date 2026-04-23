@@ -67,11 +67,6 @@ public partial class Map : Node2D
 		return new MapResource(this);
 	}
 	
-	public void Load(MapMeta mapMeta)
-	{
-		Load(mapMeta.MapResourcePath);
-	}
-	
 	public async void Load(string mapResourcePath)
 	{
 		State = MapState.Loading;

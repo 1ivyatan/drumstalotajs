@@ -15,7 +15,6 @@ public partial class EditorSaveManager : Node
 	[Signal] public delegate void SavedEventHandler();
 	[Signal] public delegate void ChangedEventHandler();
 	[Signal] public delegate void LoadedEventHandler();
-	[Signal] public delegate void LoadedEventHandler();
 	
 	[ExportGroup("Nodes")]
 	[Export] private Map _map;
@@ -24,9 +23,10 @@ public partial class EditorSaveManager : Node
 	[Export] private ConfirmationDialog _editedDialog;
 	
 	[ExportGroup("Files")]
-	[Export] private string FileFormat = ".tres";
+	[Export] private string FileFormat = ".res";
 	[Export(PropertyHint.File, "*.tres,*.res")] public string TemplateMap { get; private set; }
 	[Export] public string SaveName { get; set; } = "Untitled";
+	public string Path { get; private set; } = "";
 	
 	public bool Edited { get; private set; } = false;
 	private SaveFileMode _mode = SaveFileMode.None;
@@ -42,6 +42,7 @@ public partial class EditorSaveManager : Node
 			switch (_mode)
 			{
 				case SaveFileMode.New: New(); break;
+				case SaveFileMode.Open:  _openDialog.PopupCentered(); break;
 				default: break;
 			}
 			_mode = SaveFileMode.None;
@@ -51,8 +52,8 @@ public partial class EditorSaveManager : Node
 			_mode = SaveFileMode.None;
 		};
 		
-		//_saveDialog.FileSelected += (string path) => { AttemptSave(path); };
-		//_openDialog.FileSelected += (string path) => { AttemptOpen(path); };
+		_saveDialog.FileSelected += (string path) => { Save(path); };
+		_openDialog.FileSelected += (string path) => { Open(path); };
 	}
 	
 	private void OpenConfirmAction(SaveFileMode mode)
@@ -61,46 +62,60 @@ public partial class EditorSaveManager : Node
 		_editedDialog.PopupCentered();
 	}
 	
+	private void ResetProps(string path, string editedPath)
+	{
+		SaveName = System.IO.Path.GetFileNameWithoutExtension(path);
+		Path = editedPath;
+		Edited = false;
+	}
+	
 	public void AttemptNew()
 	{
 		if (Edited) OpenConfirmAction(SaveFileMode.New);
 		else New();
 	}
 	
-	private void New()
+	public void AttemptSave()
 	{
-		
+		if (Path.Length == 0)
+		{
+			AttemptSaveAs();
+		} else Save();
 	}
 	
-	/*private async Task ConfirmAction()
-	{
-		_confirm = false;
-		await ToSignal(_editedDialog, AcceptDialog.SignalName.CloseRequested);
-		GD.Print(_confirm);
-		GD.Print("here");
-	} */
-/*
-	public void OpenDialog()
-	{
-		_openDialog.PopupCentered();
-	}
-	
-	public void SaveDialog()
+	public void AttemptSaveAs()
 	{
 		_saveDialog.PopupCentered();
 	}
 	
-	private void AttemptSave(string path)
+	public void AttemptOpen()
 	{
-		var export = _map.Export();
-		var editedPath = ProjectSettings.LocalizePath((path + ( !path.Contains(FileFormat) ? ".tres" : "" )).Replace("\\", "/"));
-		ResourceSaver.Save(export, editedPath);
-		Nodes.GetRoot().ToastManager.Spawn($"Done exporting, file is {Path.GetFileName(editedPath)}");
-		EmitSignal(SignalName.Saved, editedPath);
+		if (Edited) OpenConfirmAction(SaveFileMode.Open);
+		else _openDialog.PopupCentered();
 	}
 	
-	private void AttemptOpen(string path)
+	public void Save(string path)
 	{
-		
-	}*/
+		var editedPath = ProjectSettings.LocalizePath((path + ( !path.Contains(FileFormat) ? ".res" : "" )).Replace("\\", "/"));
+		var export = _map.Export();
+		ResourceSaver.Save(export, editedPath, 
+			ResourceSaver.SaverFlags.Compress |
+			ResourceSaver.SaverFlags.ChangePath
+		);
+		ResetProps(path, editedPath);
+		EmitSignal(SignalName.Saved);
+	}
+	
+	public void Open(string path)
+	{
+		var editedPath = ProjectSettings.LocalizePath(path.Replace("\\", "/"));
+		_map.Load(editedPath);
+		ResetProps(path, editedPath);
+		EmitSignal(SignalName.Loaded);
+	}
+	
+	public void New()
+	{
+		Open(TemplateMap);
+	}
 }
