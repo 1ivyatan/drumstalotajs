@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using Drumstalotajs;
+using Drumstalotajs.Utilities;
 using Drumstalotajs.Mapping;
 using Drumstalotajs.Editor.Components;
 using Drumstalotajs.Components.Modals;
@@ -56,8 +57,7 @@ public partial class EditorScene : Node2D
 		EditorTopnav.SelectedSaveAs += () => { EditorSaveManager.AttemptSaveAs(); };
 		EditorTopnav.SelectedCameraCalibrate += () => { Map.Camera.Calibrate(); };
 		EditorTopnav.SelectedMode += (EditorMode mode) => { Mode = mode; };
-		EditorTopnav.SelectedClose += () => {
-		};
+		EditorTopnav.SelectedClose += () => { Nodes.GetRoot().SceneManager.Start(); };
 		
 		EditorSaveManager.Changed += () => {
 			SetTitle(true);
