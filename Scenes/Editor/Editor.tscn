@@ -5,12 +5,14 @@
 [ext_resource type="PackedScene" uid="uid://bqh5apppkldxo" path="res://Scenes/Components/Topnav.tscn" id="3_s7bqi"]
 [ext_resource type="Script" uid="uid://8jpei68xm1ae" path="res://Source/Editor/Components/EditorTopnav.cs" id="4_4aan4"]
 [ext_resource type="Script" uid="uid://dqtrbg5atrot6" path="res://Source/Editor/Components/EditorSaveManager.cs" id="5_shl5k"]
+[ext_resource type="Script" uid="uid://oxxks4a0xpbj" path="res://Source/Editor/Components/InsertWindow.cs" id="5_u75kh"]
 
-[node name="Editor" type="Node2D" unique_id=238378600 node_paths=PackedStringArray("Map", "EditorTopnav", "EditorSaveManager")]
+[node name="Editor" type="Node2D" unique_id=238378600 node_paths=PackedStringArray("Map", "EditorTopnav", "EditorSaveManager", "InsertWindow")]
 script = ExtResource("1_tw15f")
 Map = NodePath("Map")
 EditorTopnav = NodePath("Overlay/Topnav")
 EditorSaveManager = NodePath("EditorSaveManager")
+InsertWindow = NodePath("Overlay/InsertWindow")
 
 [node name="Map" parent="." unique_id=1338299763 instance=ExtResource("2_wl3go")]
 
@@ -54,6 +56,18 @@ item_0/text = "Calibrate camera"
 item_0/id = 0
 item_1/id = 1
 item_1/separator = true
+
+[node name="InsertWindow" type="Window" parent="Overlay" unique_id=1904856842]
+transparent_bg = true
+oversampling_override = 1.0
+title = "Insert tiles"
+initial_position = 2
+size = Vector2i(150, 150)
+transient = true
+transparent = true
+popup_window = true
+popup_wm_hint = true
+script = ExtResource("5_u75kh")
 
 [node name="EditorSaveManager" type="Node" parent="." unique_id=907072181 node_paths=PackedStringArray("_map", "_openDialog", "_saveDialog", "_editedDialog")]
 script = ExtResource("5_shl5k")

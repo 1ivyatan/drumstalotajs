@@ -80,17 +80,4 @@ public partial class EditorScene : Node2D
 	{
 		EditorTopnav.Title = EditorSaveManager.SaveName + (edited ? "*" : "");
 	}
-	
-	public override void _UnhandledInput(InputEvent @event)
-	{
-		//if (@event is InputEventMouseButton)
-		//{
-	//		var ins = OverlayLayer.GetInstance(new Vector2I(5, 5));
-			//if (ins != null)
-			//{
-				
-			//	Export();
-			//}
-		//}
-	}
 }
