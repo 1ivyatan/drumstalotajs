@@ -18,7 +18,6 @@ public partial class Camera : Camera2D
 	
 	[Export] private AtlasLayer _calibratingAtlasLayer;
 	private bool _dragging = false;
-	private Vector2 _dragAnchorWorld;
 	
 	public override void _UnhandledInput(InputEvent @event)
 	{
@@ -39,17 +38,13 @@ public partial class Camera : Camera2D
 		if (mouseEvent is InputEventMouseButton mouseClick && mouseClick.ButtonIndex == MouseButton.Left)
 		{
 			_dragging = mouseClick.Pressed;
-			if (_dragging) _dragAnchorWorld = ScreenToWorld(GetViewport().GetMousePosition());
-			else State = CameraState.Idle;
+			State = _dragging ? CameraState.Dragging : CameraState.Idle;
 		}
 		
-		if (mouseEvent is InputEventMouseMotion && _dragging)
+		if (mouseEvent is InputEventMouseMotion mouseMotion && _dragging)
 		{
-			Vector2 mouseScreenPos = GetViewport().GetMousePosition();
-			Vector2 currentWorldUnderCursor = ScreenToWorld(mouseScreenPos);
-			Vector2 desiredPosition = GlobalPosition - (currentWorldUnderCursor - _dragAnchorWorld);
+			Vector2 desiredPosition = GlobalPosition - (mouseMotion.Relative / Zoom);
 			GlobalPosition = ClampToLimits(desiredPosition);
-			_dragAnchorWorld = ScreenToWorld(mouseScreenPos);
 			State = CameraState.Dragging;
 		}
 	}

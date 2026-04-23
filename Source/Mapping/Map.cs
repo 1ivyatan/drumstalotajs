@@ -93,9 +93,16 @@ public partial class Map : Node2D
 	
 	public Vector2I ViewportMouseToMap()
 	{
-		Vector2 mouseScreenPos = GetViewport().GetMousePosition();
-		Vector2 mouseWorldPos = Camera.ScreenToWorld(mouseScreenPos);
-		Vector2 mouseLocalPos = GroundLayer.ToLocal(mouseWorldPos);
+		/*
+		Vector2 mouseLocalPos = GroundLayer.GetLocalMousePosition();
+		Vector2I mapPos = GroundLayer.LocalToMap(mouseLocalPos);
+		Rect2I usedRect = GroundLayer.GetUsedRect();
+		if (!usedRect.HasArea()) return mapPos;
+		return new Vector2I(
+			Mathf.Clamp(mapPos.X, usedRect.Position.X, usedRect.End.X - 1),
+			Mathf.Clamp(mapPos.Y, usedRect.Position.Y, usedRect.End.Y - 1)
+		);*/
+		Vector2 mouseLocalPos = GroundLayer.GetLocalMousePosition();
 		return GroundLayer.LocalToMap(mouseLocalPos);
 	}
 	
