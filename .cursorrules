@@ -5,5 +5,7 @@ Basics
  - Godot version 4.6
 
 Namespace & source code
- - All code and scripts reside in @Source directory
- - When adding a namespace in code, do not include "Source"
+ - Namespace starts with 'Drumstalotajs'
+ - All code and scripts reside in @Source directory\
+ - When adding namespace in code (namespace ...;), do not include "Source"
+  - Example: Drumstalotajs.Source.Control -> Drumstalotajs.Control

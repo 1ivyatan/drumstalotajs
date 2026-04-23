@@ -49,8 +49,16 @@ public partial class EditorScene : Node2D
 		
 		BaseLayer[] layers = [ Map.GroundLayer, Map.DecorationLayer ];
 		Map.Selector.Filter = new SelectorFilter(layers);
+		
+		EditorTopnav.SelectedNew += () => {};
+		EditorTopnav.SelectedOpen += () => {};
 		EditorTopnav.SelectedSave += () => { EditorSaveManager.SaveDialog(); };
+		EditorTopnav.SelectedSaveAs += () => {};
+		EditorTopnav.SelectedProperties += () => {};
+		EditorTopnav.SelectedClose += () => {};
+		EditorTopnav.SelectedCameraCalibrate += () => {};
 		EditorTopnav.SelectedMode += (EditorMode mode) => { Mode = mode; };
+		
 		EditorTopnav.Title = "Editor";
 		Map.Mode = MapMode.Editing;
 		Mode = EditorMode.View;

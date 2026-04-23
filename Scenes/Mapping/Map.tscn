@@ -137,7 +137,7 @@ Atlas = Array[Object]([SubResource("Resource_ccdcv"), SubResource("Resource_p3co
 [node name="Projectiles" type="Node2D" parent="." unique_id=1337390122]
 script = ExtResource("14_bc3k3")
 
-[node name="Selector" type="Node2D" parent="." unique_id=509430252 node_paths=PackedStringArray("_map")]
+[node name="Selector" type="Node2D" parent="." unique_id=1827463472 node_paths=PackedStringArray("_map")]
 visible = false
 script = ExtResource("15_0ild7")
 _map = NodePath("..")

@@ -39,7 +39,7 @@ public partial class Map : Node2D
 			switch (field)
 			{
 				case MapMode.Locked:
-					Selector.Mode = SelectorMode.Invisible;
+					Selector.Mode = SelectorMode.Locked;
 					Camera.Mode = CameraMode.Locked;
 					break;
 				case MapMode.HiddenInteractable:
@@ -91,7 +91,7 @@ public partial class Map : Node2D
 		}
 	}
 	
-	public Vector2I ViewportToMap()
+	public Vector2I ViewportMouseToMap()
 	{
 		Vector2 mouseScreenPos = GetViewport().GetMousePosition();
 		Vector2 mouseWorldPos = Camera.ScreenToWorld(mouseScreenPos);

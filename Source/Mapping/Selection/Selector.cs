@@ -8,15 +8,49 @@ namespace Drumstalotajs.Mapping.Selection;
 public partial class Selector : Node2D
 {
 	[Export] private Map _map;
-	public SelectorMode Mode { get; set; } = SelectorMode.Invisible;
-	public SelectorFilter Filter { get; set; } = SelectorFilter.Empty;
 	private Vector2I _currentPos;
+	public SelectorFilter Filter { get; set; } = SelectorFilter.Empty;
+	public SelectorMode Mode { get;
+		set {
+			field = value;
+			switch (field)
+			{
+				case SelectorMode.Locked:
+					State = SelectorState.Locked; 
+					RemoveHighlight();
+					break;
+				default: State = SelectorState.Intedeterminate; break;
+			}
+		}
+	} = SelectorMode.Locked;
+	public SelectorState State { get; private set; } = SelectorState.Locked;
+	
+	public override void _Input(InputEvent @event)
+	{
+		if (Mode == SelectorMode.Locked) return;
+
+		if (@event is InputEventMouseMotion)
+		{
+			var touchingControl = GetViewport().GuiGetHoveredControl();
+			if (touchingControl != null)
+			{
+				State = SelectorState.Outside;
+				RemoveHighlight();
+			} else
+			{
+				State = SelectorState.Inside;
+			}
+		}
+	}
 	
 	public override void _UnhandledInput(InputEvent @event)
 	{
-		if (@event is InputEventMouseMotion mouseMotion)
+		if (Mode == SelectorMode.Locked || 
+		State != SelectorState.Inside) return;
+
+		if (@event is InputEventMouseMotion)
 		{
-			Vector2I newCellPos = _map.ViewportToMap();
+			Vector2I newCellPos = _map.ViewportMouseToMap();
 			if (_currentPos != newCellPos)
 			{
 				_currentPos = newCellPos;
@@ -32,7 +66,7 @@ public partial class Selector : Node2D
 						HighlightAt(newCellPos);
 						break;
 					default:
-						Visible = false;
+						RemoveHighlight();
 						break;
 				}
 			}
@@ -56,5 +90,10 @@ public partial class Selector : Node2D
 		var tileSize = _map.GroundLayer.TileSize;
 		SetPosition((cellPosition * tileSize) + new Vector2I(tileSize / 2, tileSize / 2));
 		Visible = true;
+	}
+	
+	private void RemoveHighlight()
+	{
+		Visible = false;
 	}
 }
