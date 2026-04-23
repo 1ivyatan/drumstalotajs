@@ -50,14 +50,26 @@ public partial class EditorScene : Node2D
 		BaseLayer[] layers = [ Map.GroundLayer, Map.DecorationLayer ];
 		Map.Selector.Filter = new SelectorFilter(layers);
 		
-		EditorTopnav.SelectedNew += () => {};
+		EditorTopnav.SelectedNew += () => { EditorSaveManager.AttemptNew(); };
 		EditorTopnav.SelectedOpen += () => {};
-		EditorTopnav.SelectedSave += () => { EditorSaveManager.SaveDialog(); };
+		EditorTopnav.SelectedSave += () => { /*EditorSaveManager.SaveDialog();*/ };
 		EditorTopnav.SelectedSaveAs += () => {};
 		EditorTopnav.SelectedProperties += () => {};
-		EditorTopnav.SelectedClose += () => {};
 		EditorTopnav.SelectedCameraCalibrate += () => {};
 		EditorTopnav.SelectedMode += (EditorMode mode) => { Mode = mode; };
+		EditorTopnav.SelectedClose += () => {
+		};
+		
+		EditorSaveManager.Changed += () => {
+			SetTitle(true);
+		};
+		EditorSaveManager.Saved += () => {
+			SetTitle(false);
+		};
+		EditorSaveManager.Loaded += () => {
+			SetTitle(false);
+		};
+		//
 		
 		EditorTopnav.Title = "Editor";
 		Map.Mode = MapMode.Editing;
@@ -65,6 +77,11 @@ public partial class EditorScene : Node2D
 		
 		/* vvvvvv */
 			Map.Camera.Calibrate();
+	}
+	
+	private void SetTitle(bool edited)
+	{
+		EditorTopnav.Title = EditorSaveManager.SaveName + (edited ? "*" : "");
 	}
 	
 	public override void _UnhandledInput(InputEvent @event)

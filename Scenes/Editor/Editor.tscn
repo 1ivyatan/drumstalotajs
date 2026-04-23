@@ -59,11 +59,12 @@ item_0/id = 0
 item_1/id = 1
 item_1/separator = true
 
-[node name="EditorSaveManager" type="Node" parent="." unique_id=907072181 node_paths=PackedStringArray("_map", "_openDialog", "_saveDialog")]
+[node name="EditorSaveManager" type="Node" parent="." unique_id=907072181 node_paths=PackedStringArray("_map", "_openDialog", "_saveDialog", "_editedDialog")]
 script = ExtResource("5_shl5k")
 _map = NodePath("../Map")
 _openDialog = NodePath("OpenDialog")
 _saveDialog = NodePath("SaveDialog")
+_editedDialog = NodePath("EditedDialog")
 
 [node name="SaveDialog" type="FileDialog" parent="EditorSaveManager" unique_id=1292357662]
 initial_position = 2
@@ -78,3 +79,16 @@ file_mode = 0
 display_mode = 1
 access = 2
 use_native_dialog = true
+
+[node name="EditedDialog" type="ConfirmationDialog" parent="EditorSaveManager" unique_id=592913740]
+oversampling_override = 1.0
+title = "Unsaved changes"
+initial_position = 2
+size = Vector2i(324, 106)
+unresizable = true
+always_on_top = true
+popup_window = true
+popup_wm_hint = true
+ok_button_text = "Continue"
+dialog_text = "Changes of this map were not saved.
+Continue without saving?"

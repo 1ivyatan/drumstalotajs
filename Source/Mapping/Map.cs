@@ -15,7 +15,7 @@ public partial class Map : Node2D
 {
 	[Signal] public delegate void StateChangeEventHandler(MapState state);
 	[Signal] public delegate void ModeChangeEventHandler(MapMode mode);
-	[Signal] public delegate void EditedEventHandler(MapMode mode);
+	[Signal] public delegate void EditedEventHandler();
 	
 	[Export] public GroundLayer GroundLayer { get; private set; }
 	[Export] public AtlasLayer DecorationLayer { get; private set; }
