@@ -12,7 +12,6 @@ public partial class EditorTopnav : Topnav
 	[Signal] public delegate void SelectedOpenEventHandler();
 	[Signal] public delegate void SelectedSaveEventHandler();
 	[Signal] public delegate void SelectedSaveAsEventHandler();
-	[Signal] public delegate void SelectedPropertiesEventHandler();
 	[Signal] public delegate void SelectedCloseEventHandler();
 	[Signal] public delegate void SelectedCameraCalibrateEventHandler();
 	[Signal] public delegate void SelectedModeEventHandler(EditorMode mode);
@@ -39,7 +38,6 @@ public partial class EditorTopnav : Topnav
 				/* open */ case 1: EmitSignal(SignalName.SelectedOpen); break;
 				/* save */ case 2: EmitSignal(SignalName.SelectedSave); break;
 				/* save as */ case 7: EmitSignal(SignalName.SelectedSaveAs); break;
-				/* properties */ case 4: EmitSignal(SignalName.SelectedProperties); break;
 				/* close */ case 6: EmitSignal(SignalName.SelectedClose); break;
 				default: break;
 			}

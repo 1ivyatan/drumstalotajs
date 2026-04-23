@@ -23,7 +23,7 @@ public partial class EditorSaveManager : Node
 	[Export] private ConfirmationDialog _editedDialog;
 	
 	[ExportGroup("Files")]
-	[Export] private string FileFormat = ".res";
+	[Export] private string FileFormat = ".tres";
 	[Export(PropertyHint.File, "*.tres,*.res")] public string TemplateMap { get; private set; }
 	[Export] public string SaveName { get; set; } = "Untitled";
 	public string Path { get; private set; } = "";
@@ -96,10 +96,10 @@ public partial class EditorSaveManager : Node
 	
 	public void Save(string path)
 	{
-		var editedPath = ProjectSettings.LocalizePath((path + ( !path.Contains(FileFormat) ? ".res" : "" )).Replace("\\", "/"));
+		var editedPath = ProjectSettings.LocalizePath((path + ( !path.Contains(FileFormat) ? ".tres" : "" )).Replace("\\", "/"));
 		var export = _map.Export();
 		ResourceSaver.Save(export, editedPath, 
-			ResourceSaver.SaverFlags.Compress |
+		//	ResourceSaver.SaverFlags.Compress |
 			ResourceSaver.SaverFlags.ChangePath
 		);
 		ResetProps(path, editedPath);

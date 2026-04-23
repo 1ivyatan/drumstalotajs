@@ -51,12 +51,10 @@ public partial class EditorScene : Node2D
 		Map.Selector.Filter = new SelectorFilter(layers);
 		
 		EditorTopnav.SelectedNew += () => { EditorSaveManager.AttemptNew(); };
-		EditorTopnav.SelectedOpen += () => {  };
-		EditorTopnav.SelectedSave += () => { EditorSaveManager.AttemptSave(); 
-		/*EditorSaveManager.SaveDialog();*/ };
-		EditorTopnav.SelectedSaveAs += () => {};
-		EditorTopnav.SelectedProperties += () => {};
-		EditorTopnav.SelectedCameraCalibrate += () => {};
+		EditorTopnav.SelectedOpen += () => { EditorSaveManager.AttemptOpen(); };
+		EditorTopnav.SelectedSave += () => { EditorSaveManager.AttemptSave(); };
+		EditorTopnav.SelectedSaveAs += () => { EditorSaveManager.AttemptSaveAs(); };
+		EditorTopnav.SelectedCameraCalibrate += () => { Map.Camera.Calibrate(); };
 		EditorTopnav.SelectedMode += (EditorMode mode) => { Mode = mode; };
 		EditorTopnav.SelectedClose += () => {
 		};
