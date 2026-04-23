@@ -8,8 +8,13 @@ namespace Drumstalotajs.Editor.Components;
 
 public partial class EditorTopnav : Topnav
 {
+	[Signal] public delegate void SelectedNewEventHandler();
+	[Signal] public delegate void SelectedOpenEventHandler();
 	[Signal] public delegate void SelectedSaveEventHandler();
+	[Signal] public delegate void SelectedSaveAsEventHandler();
 	[Signal] public delegate void SelectedPropertiesEventHandler();
+	[Signal] public delegate void SelectedCloseEventHandler();
+	[Signal] public delegate void SelectedCameraCalibrateEventHandler();
 	[Signal] public delegate void SelectedModeEventHandler(EditorMode mode);
 	[Export] private PopupMenu _fileMenu;
 	[Export] private PopupMenu _viewMenu;
@@ -30,18 +35,21 @@ public partial class EditorTopnav : Topnav
 		_fileMenuCall = Callable.From((int id) => {
 			switch (id)
 			{
-				/* save */
-				case 2:
-					EmitSignal(SignalName.SelectedSave);
-					break;
-				/* properties */
-				case 4:
-					EmitSignal(SignalName.SelectedProperties);
-					break;
+				/* new */ case 0: EmitSignal(SignalName.SelectedNew); break;
+				/* open */ case 1: EmitSignal(SignalName.SelectedOpen); break;
+				/* save */ case 2: EmitSignal(SignalName.SelectedSave); break;
+				/* save as */ case 7: EmitSignal(SignalName.SelectedSaveAs); break;
+				/* properties */ case 4: EmitSignal(SignalName.SelectedProperties); break;
+				/* close */ case 6: EmitSignal(SignalName.SelectedClose); break;
+				default: break;
 			}
 		});
 		_viewMenuCall = Callable.From((int id) => {
-			
+			switch (id)
+			{
+				/* calibrate camera */ case 0: EmitSignal(SignalName.SelectedCameraCalibrate); break;
+				default: break;
+			}
 		});
 		_viewMenuModeCall = Callable.From((int id) => {
 			EmitSignal(SignalName.SelectedMode, (int)id);

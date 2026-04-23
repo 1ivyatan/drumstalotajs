@@ -60,6 +60,8 @@ public partial class Map : Node2D
 		}
 	} = MapMode.Locked;
 	
+	public MapResource CurrentLoadedResource { get; private set; } = null;
+	
 	public MapResource Export()
 	{
 		return new MapResource(this);
@@ -79,8 +81,9 @@ public partial class Map : Node2D
 			await DecorationLayer.Load(data.DecorationLayer);
 			await EntityLayer.Load(data.EntityLayer);
 			await OverlayLayer.Load(data.OverlayLayer);
-			State = MapState.Done;
+			CurrentLoadedResource = data;
 			Camera.Calibrate();
+			State = MapState.Done;
 		} catch (Exception e)
 		{
 			GD.Print(e);
