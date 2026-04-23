@@ -80,7 +80,7 @@ public partial class EditorSaveManager : Node
 		if (Path.Length == 0)
 		{
 			AttemptSaveAs();
-		} else Save();
+		} else Save(Path);
 	}
 	
 	public void AttemptSaveAs()
