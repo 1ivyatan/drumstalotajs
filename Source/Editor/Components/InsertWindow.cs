@@ -17,5 +17,12 @@ public partial class InsertWindow : Window
 	public void LoadTiles(BaseLayer[] layers)
 	{
 		foreach (var layer in layers)
+		{
+			if (layer is AtlasLayer atlasLayer)
+			{
+				GD.Print(atlasLayer.GetAtlas());
+			}
+			
+		}
 	}
 }

@@ -15,7 +15,8 @@ public partial class AtlasLayer : Layer<Vector2I, AtlasTile, AtlasLayerData>
 	{
 		if (TileSet != null)
 		{
-			TileSetAtlasSource source = TileSet.GetSource(0) as TileSetAtlasSource;
+			int firstSourceId = TileSet.GetSourceId(0);
+			TileSetAtlasSource source = TileSet.GetSource(firstSourceId) as TileSetAtlasSource;
 			if (source != null)
 			{
 				int count = source.GetTilesCount();
