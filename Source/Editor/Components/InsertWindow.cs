@@ -8,6 +8,7 @@ public partial class InsertWindow : Window
 {
 	public override void _Ready()
 	{
+		
 	}
 
 	public override void _Process(double delta)

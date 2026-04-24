@@ -23,14 +23,17 @@ public partial class EditorScene : Node2D
 			switch (field)
 			{
 				case EditorMode.View:
+					InsertWindow.Hide();
 					Map.Camera.Mode = CameraMode.DragOnly;
 					Map.Selector.Mode = SelectorMode.Invisible;
 					break;
 				case EditorMode.Insert:
 					Map.Camera.Mode = CameraMode.Locked;
 					Map.Selector.Mode = SelectorMode.Editing;
+					InsertWindow.Show();
 					break;
 				case EditorMode.Edit:
+					InsertWindow.Hide();
 					Map.Camera.Mode = CameraMode.DragOnly;
 					Map.Selector.Mode = SelectorMode.Interactable;
 					break;
@@ -50,6 +53,8 @@ public partial class EditorScene : Node2D
 		
 		BaseLayer[] layers = [ Map.GroundLayer, Map.DecorationLayer ];
 		Map.Selector.Filter = new SelectorFilter(layers);
+		
+		InsertWindow.CloseRequested += () => { Mode = EditorMode.View; };
 		
 		EditorTopnav.SelectedNew += () => { EditorSaveManager.AttemptNew(); };
 		EditorTopnav.SelectedOpen += () => { EditorSaveManager.AttemptOpen(); };
