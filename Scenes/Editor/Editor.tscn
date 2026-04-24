@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://8jpei68xm1ae" path="res://Source/Editor/Components/EditorTopnav.cs" id="4_4aan4"]
 [ext_resource type="Script" uid="uid://dqtrbg5atrot6" path="res://Source/Editor/Components/EditorSaveManager.cs" id="5_shl5k"]
 [ext_resource type="Script" uid="uid://oxxks4a0xpbj" path="res://Source/Editor/Components/InsertWindow.cs" id="5_u75kh"]
+[ext_resource type="PackedScene" uid="uid://drv6la8g3uiy1" path="res://Scenes/Components/TileList.tscn" id="6_ghgdu"]
 
 [node name="Editor" type="Node2D" unique_id=238378600 node_paths=PackedStringArray("Map", "EditorTopnav", "EditorSaveManager", "InsertWindow")]
 script = ExtResource("1_tw15f")
@@ -68,6 +69,26 @@ transparent = true
 popup_window = true
 popup_wm_hint = true
 script = ExtResource("5_u75kh")
+_tileListScene = ExtResource("6_ghgdu")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Overlay/InsertWindow" unique_id=1419517552]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Overlay/InsertWindow/ScrollContainer" unique_id=1704207006]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+alignment = 1
+
+[node name="Button" type="Button" parent="Overlay/InsertWindow/ScrollContainer/VBoxContainer" unique_id=1672610806]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+text = "Reset"
 
 [node name="EditorSaveManager" type="Node" parent="." unique_id=907072181 node_paths=PackedStringArray("_map", "_openDialog", "_saveDialog", "_editedDialog")]
 script = ExtResource("5_shl5k")

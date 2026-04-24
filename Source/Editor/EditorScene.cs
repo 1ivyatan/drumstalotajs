@@ -54,6 +54,7 @@ public partial class EditorScene : Node2D
 		BaseLayer[] layers = [ Map.GroundLayer, Map.DecorationLayer ];
 		Map.Selector.Filter = new SelectorFilter(layers);
 		
+		InsertWindow.LoadTiles(layers);
 		InsertWindow.CloseRequested += () => { Mode = EditorMode.View; };
 		
 		EditorTopnav.SelectedNew += () => { EditorSaveManager.AttemptNew(); };
