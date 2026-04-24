@@ -101,6 +101,7 @@ public partial class SceneLayer : Layer<string, SceneTile, SceneLayerData>
 		{
 			var tile = (SceneTile)nodes[0];
 			tile.TileId = id;
+			tile.Data = new Godot.Collections.Dictionary();
 		}
 		EmitSignal(SignalName.ChangedLayer);
 	}
@@ -113,6 +114,7 @@ public partial class SceneLayer : Layer<string, SceneTile, SceneLayerData>
 		{
 			var tile = (SceneTile)nodes[0];
 			tile.TileId = atlas.Id;
+			tile.Data = atlas.Data;
 		}
 		EmitSignal(SignalName.ChangedLayer);
 	}

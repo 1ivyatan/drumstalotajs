@@ -1,4 +1,5 @@
 using Godot;
+using Godot.Collections;
 using System;
 using Drumstalotajs;
 using Drumstalotajs.Utilities;
@@ -9,6 +10,7 @@ namespace Drumstalotajs.Mapping.Tiles;
 public partial class SceneTile : Tile
 {
 	public int TileId { get; set; } = -1;
+	public Dictionary Data { get; set; } = null;
 
 	protected void Die()
 	{

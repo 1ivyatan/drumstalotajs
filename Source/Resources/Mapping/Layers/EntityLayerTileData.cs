@@ -21,5 +21,6 @@ public partial class EntityLayerTileData : SceneLayerTileData
 		Azimuth = tile.Azimuth;
 		Integrity = tile.Integrity;
 		Player = tile.Player;
+		Data = tile.Data;
 	}
 }

@@ -17,5 +17,6 @@ public partial class OverlayLayerTileData : SceneLayerTileData
 	public OverlayLayerTileData(OverlayLayer layer, OverlayTile tile) : base(layer, tile)
 	{
 		Radians = tile.Rotation;
+		Data = tile.Data;
 	}
 }
