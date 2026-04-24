@@ -1,8 +1,15 @@
 [gd_scene format=3 uid="uid://drv6la8g3uiy1"]
 
+[ext_resource type="Script" uid="uid://d2vohdo7eava0" path="res://Source/Components/TileList.cs" id="1_waeea"]
+
 [node name="TileList" type="ItemList" unique_id=987348294]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+auto_width = true
+auto_height = true
+max_columns = 3
+same_column_width = true
+script = ExtResource("1_waeea")

@@ -58,7 +58,7 @@ item_0/id = 0
 item_1/id = 1
 item_1/separator = true
 
-[node name="InsertWindow" type="Window" parent="Overlay" unique_id=1904856842]
+[node name="InsertWindow" type="Window" parent="Overlay" unique_id=1904856842 node_paths=PackedStringArray("_container", "_clearSelection")]
 transparent_bg = true
 oversampling_override = 1.0
 title = "Insert tiles"
@@ -70,24 +70,31 @@ popup_window = true
 popup_wm_hint = true
 script = ExtResource("5_u75kh")
 _tileListScene = ExtResource("6_ghgdu")
+_container = NodePath("Container/ScrollContainer/ListContainer")
+_clearSelection = NodePath("Container/ClearSelection")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Overlay/InsertWindow" unique_id=1419517552]
+[node name="Container" type="VBoxContainer" parent="Overlay/InsertWindow" unique_id=1704207006]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Overlay/InsertWindow/ScrollContainer" unique_id=1704207006]
-layout_mode = 2
 size_flags_horizontal = 6
-size_flags_vertical = 4
 alignment = 1
 
-[node name="Button" type="Button" parent="Overlay/InsertWindow/ScrollContainer/VBoxContainer" unique_id=1672610806]
+[node name="ScrollContainer" type="ScrollContainer" parent="Overlay/InsertWindow/Container" unique_id=1419517552]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ListContainer" type="VBoxContainer" parent="Overlay/InsertWindow/Container/ScrollContainer" unique_id=75916703]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ClearSelection" type="Button" parent="Overlay/InsertWindow/Container" unique_id=1672610806]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 6
+size_flags_vertical = 4
 text = "Reset"
 
 [node name="EditorSaveManager" type="Node" parent="." unique_id=907072181 node_paths=PackedStringArray("_map", "_openDialog", "_saveDialog", "_editedDialog")]
