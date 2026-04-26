@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://drv6la8g3uiy1"]
 
-[ext_resource type="Script" uid="uid://d2vohdo7eava0" path="res://Source/Components/TileList.cs" id="1_waeea"]
+[ext_resource type="Script" uid="uid://d2vohdo7eava0" path="res://Source/Components/Tiling/TileList.cs" id="1_waeea"]
 
 [node name="TileList" type="ItemList" unique_id=987348294]
 anchors_preset = 15
