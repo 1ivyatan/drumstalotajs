@@ -114,18 +114,14 @@ public partial class Map : Node2D
 			{
 				Vector2I coords = Types.Vector2I.StringToVector2I(atlas);
 				
-				if (atlasLayer is GroundLayer groundLayer)
+				if (!(atlasLayer is GroundLayer groundLayer) && 
+				GroundLayer.GetCellAtlasCoords(position) != Constants.Vector2I.Negative)
 				{
-					groundLayer.AddTile(position, coords);
-					added = true;
-				} else
-				{
-					if (GroundLayer.GetCellAtlasCoords(position) != Constants.Vector2I.Negative)
-					{
-						atlasLayer.AddTile(position, coords);
-						added = true;
-					}
+					return;
 				}
+					
+				atlasLayer.AddTile(position, coords);
+				added = true;
 			}
 		} else if (layer is SceneLayer sceneLayer)
 		{

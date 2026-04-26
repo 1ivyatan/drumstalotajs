@@ -55,10 +55,8 @@ public partial class EditorScene : Node2D
 		{
 			Map.AddTile(
 				InsertWindow.PickedTile.Layer,
-				//InsertWindow.PickedTile.Atlas,
-				"(0,0)",
-				new Vector2I(2,2)
-				//Map.ViewportMouseToMap()
+				InsertWindow.PickedTile.Atlas,
+				Map.ViewportMouseToMap()
 			);
 		} else if (_mouseRightPressed)
 		{
