@@ -16,6 +16,7 @@ public partial class EditorScene : Node2D
 	[Export] public Map Map { get; private set; }
 	[Export] public EditorTopnav EditorTopnav { get; private set; }
 	[Export] private EditorSaveManager EditorSaveManager { get; set; }
+	[Export] private InsertWindow InsertWindow { get; set; }
 	
 	public EditorMode Mode { get;
 		set {

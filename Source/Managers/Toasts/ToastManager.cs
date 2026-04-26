@@ -52,4 +52,10 @@ public partial class ToastManager : Control
 	{
 		AddChild(new Toast(message, ToastFadeTime));
 	}
+	
+	public void SpawnOne(string message)
+	{
+		Clear();
+		AddChild(new Toast(message, ToastFadeTime));
+	}
 }
