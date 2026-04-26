@@ -21,6 +21,11 @@ public partial class InsertWindow : Window
 	public override void _Ready()
 	{
 		_pickers = new List<TileList>();
+		_clearSelection.Pressed += () => {
+			var oldPicker = _pickers.FirstOrDefault(p => p.Layer == PickedTile.Layer);
+			oldPicker.DeselectAll();
+			PickedTile = null;
+		};
 	}
 	
 	private void SetSelectedTile(PickedTileData data)
