@@ -35,7 +35,7 @@ layout_mode = 2
 [node name="File" type="PopupMenu" parent="Overlay/Topnav/Menu" unique_id=1217355390]
 oversampling_override = 1.0
 size = Vector2i(121, 151)
-item_count = 6
+item_count = 8
 item_0/text = "New"
 item_0/id = 0
 item_1/text = "Open"
@@ -44,10 +44,14 @@ item_2/text = "Save"
 item_2/id = 2
 item_3/text = "Save As"
 item_3/id = 7
-item_4/id = 5
+item_4/id = 8
 item_4/separator = true
-item_5/text = "Close"
-item_5/id = 6
+item_5/text = "Export"
+item_5/id = 10
+item_6/id = 5
+item_6/separator = true
+item_7/text = "Close"
+item_7/id = 6
 
 [node name="View" type="PopupMenu" parent="Overlay/Topnav/Menu" unique_id=356847103]
 oversampling_override = 1.0
@@ -97,11 +101,12 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Reset"
 
-[node name="EditorSaveManager" type="Node" parent="." unique_id=907072181 node_paths=PackedStringArray("_map", "_openDialog", "_saveDialog", "_editedDialog")]
+[node name="EditorSaveManager" type="Node" parent="." unique_id=907072181 node_paths=PackedStringArray("_map", "_openDialog", "_saveDialog", "_exportDialog", "_editedDialog")]
 script = ExtResource("5_shl5k")
 _map = NodePath("../Map")
 _openDialog = NodePath("OpenDialog")
 _saveDialog = NodePath("SaveDialog")
+_exportDialog = NodePath("ExportDialog")
 _editedDialog = NodePath("EditedDialog")
 TemplateMap = "res://Resources/Maps/Backgrounds/Untitled.res"
 
@@ -110,6 +115,14 @@ initial_position = 2
 display_mode = 1
 access = 2
 filters = PackedStringArray(".tres", ".res")
+use_native_dialog = true
+
+[node name="ExportDialog" type="FileDialog" parent="EditorSaveManager" unique_id=1893098562]
+title = "Export"
+initial_position = 2
+display_mode = 1
+access = 2
+filters = PackedStringArray(".res")
 use_native_dialog = true
 
 [node name="OpenDialog" type="FileDialog" parent="EditorSaveManager" unique_id=137755826]

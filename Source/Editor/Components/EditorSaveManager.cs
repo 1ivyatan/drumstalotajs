@@ -20,10 +20,12 @@ public partial class EditorSaveManager : Node
 	[Export] private Map _map;
 	[Export] private FileDialog _openDialog;
 	[Export] private FileDialog _saveDialog;
+	[Export] private FileDialog _exportDialog;
 	[Export] private ConfirmationDialog _editedDialog;
 	
 	[ExportGroup("Files")]
-	[Export] private string FileFormat = ".tres";
+	[Export] private string ExportFormat = ".res";
+	[Export] private string SaveFormat = ".tres";
 	[Export(PropertyHint.File, "*.tres,*.res")] public string TemplateMap { get; private set; }
 	[Export] public string SaveName { get; set; } = "Untitled";
 	public string Path { get; private set; } = "";
@@ -54,6 +56,7 @@ public partial class EditorSaveManager : Node
 		
 		_saveDialog.FileSelected += (string path) => { Save(path); };
 		_openDialog.FileSelected += (string path) => { Open(path); };
+		_exportDialog.FileSelected += (string path) => { Export(path); };
 	}
 	
 	private void OpenConfirmAction(SaveFileMode mode)
@@ -83,6 +86,11 @@ public partial class EditorSaveManager : Node
 		} else Save(Path);
 	}
 	
+	public void AttemptExport()
+	{
+		_exportDialog.PopupCentered();
+	}
+	
 	public void AttemptSaveAs()
 	{
 		_saveDialog.PopupCentered();
@@ -94,9 +102,19 @@ public partial class EditorSaveManager : Node
 		else _openDialog.PopupCentered();
 	}
 	
+	public void Export(string path)
+	{
+		var editedPath = ProjectSettings.LocalizePath((path + ( !path.Contains(ExportFormat) ? ".tres" : "" )).Replace("\\", "/"));
+		var export = _map.Export();
+		ResourceSaver.Save(export, editedPath, 
+			ResourceSaver.SaverFlags.Compress
+		);
+		Nodes.GetRoot().ToastManager.Spawn("Exported!");
+	}
+	
 	public void Save(string path)
 	{
-		var editedPath = ProjectSettings.LocalizePath((path + ( !path.Contains(FileFormat) ? ".tres" : "" )).Replace("\\", "/"));
+		var editedPath = ProjectSettings.LocalizePath((path + ( !path.Contains(SaveFormat) ? ".tres" : "" )).Replace("\\", "/"));
 		var export = _map.Export();
 		ResourceSaver.Save(export, editedPath, 
 		//	ResourceSaver.SaverFlags.Compress |
