@@ -16,10 +16,6 @@ public partial class EditWindow : Window
 	[Export] private Label _emptyText;
 	[Export] private TileEditor _tileEditor;
 	
-	public override void _Ready()
-	{
-	}
-	
 	public void GetTile(Vector2I coords)
 	{
 		if (_map.IsEmpty(coords))
