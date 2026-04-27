@@ -144,7 +144,7 @@ text = "Select a nonempty tile
 with right click"
 horizontal_alignment = 1
 
-[node name="TileEditor" type="VBoxContainer" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer" unique_id=963839371 node_paths=PackedStringArray("_map", "GroundProps", "DecorationProps", "OverlayProps")]
+[node name="TileEditor" type="VBoxContainer" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer" unique_id=963839371 node_paths=PackedStringArray("_map", "GroundProps", "DecorationProps", "EntityProps", "OverlayProps")]
 visible = false
 layout_mode = 2
 size_flags_vertical = 3
@@ -152,6 +152,7 @@ script = ExtResource("8_ufwpj")
 _map = NodePath("../../../../../Map")
 GroundProps = NodePath("GroundProps")
 DecorationProps = NodePath("DecorationProps")
+EntityProps = NodePath("EntityProps")
 OverlayProps = NodePath("OverlayProps")
 
 [node name="GroundProps" type="VBoxContainer" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor" unique_id=1014014307 node_paths=PackedStringArray("_map", "_baseRelHeight", "_addedHeightSpinner")]
