@@ -119,8 +119,8 @@ public partial class EditorSaveManager : Node
 		ResourceSaver.Save(export, editedPath//, 
 		//	ResourceSaver.SaverFlags.ChangePath
 		);
-		
 		ResetProps(path, editedPath);
+		Nodes.GetRoot().ToastManager.Spawn("Saved!");
 		EmitSignal(SignalName.Saved);
 	}
 	
