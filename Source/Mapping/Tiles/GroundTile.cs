@@ -14,6 +14,7 @@ public partial class GroundTile : AtlasTile
 	
 	public GroundTile(GroundLayer layer, Vector2I position) : base(layer, position)
 	{
+		_layer = layer;
 		_baseHeight = layer.BaseHeight;
 		_relHeight = (double)TileData.GetCustomData("RelativeHeight");
 	}
@@ -25,6 +26,16 @@ public partial class GroundTile : AtlasTile
 	
 	public double GetFullHeight()
 	{
-		return _baseHeight + _relHeight + _layer.GetAddedHeight(CellPosition);
+		return _baseHeight + _relHeight + GetAddedHeight();
+	}
+	
+	public double GetAddedHeight()
+	{
+		return _layer.GetAddedHeight(CellPosition);
+	}
+	
+	public void SetAddedHeight(double value)
+	{
+		_layer.SetAddedHeight(CellPosition, value);
 	}
 }

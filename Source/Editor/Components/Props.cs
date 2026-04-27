@@ -5,6 +5,7 @@ using Drumstalotajs.Mapping;
 using Drumstalotajs.Editor;
 using Drumstalotajs.Components;
 using Drumstalotajs.Components.Modals;
+using Drumstalotajs.Mapping.Tiles;
 
 namespace Drumstalotajs.Editor.Components;
 
@@ -14,5 +15,5 @@ public abstract partial class Props : Control
 	{
 		Visible = false;
 	}
-	public abstract void Load(Vector2I position);
+	public abstract void Load(Tile tile);
 }

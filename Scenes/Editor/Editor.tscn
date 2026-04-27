@@ -136,7 +136,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="EmptyText" type="Label" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer" unique_id=1395375715]
-visible = false
 layout_mode = 2
 size_flags_vertical = 6
 text = "Select a nonempty tile
@@ -144,6 +143,7 @@ with right click"
 horizontal_alignment = 1
 
 [node name="TileEditor" type="VBoxContainer" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer" unique_id=963839371 node_paths=PackedStringArray("_map", "GroundProps")]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("8_ufwpj")
@@ -156,6 +156,10 @@ script = ExtResource("9_3kjjy")
 _map = NodePath("../../../../../../Map")
 _baseRelHeight = NodePath("Height/BaseRelHeight")
 _addedHeightSpinner = NodePath("Height/AddedSpinner")
+
+[node name="Title" type="Label" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor/GroundProps" unique_id=1291570940]
+layout_mode = 2
+text = "Ground"
 
 [node name="Height" type="HBoxContainer" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor/GroundProps" unique_id=1801259163]
 layout_mode = 2
