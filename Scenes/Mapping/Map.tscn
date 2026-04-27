@@ -48,16 +48,17 @@ custom_data_layer_0/name = "RelativeHeight"
 custom_data_layer_0/type = 3
 sources/0 = SubResource("TileSetAtlasSource_ox681")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s3wx3"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mukcc"]
 texture = ExtResource("4_s3wx3")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
+3:0/0 = 0
 
-[sub_resource type="TileSet" id="TileSet_f0kan"]
+[sub_resource type="TileSet" id="TileSet_wu35y"]
 tile_size = Vector2i(32, 32)
-sources/1 = SubResource("TileSetAtlasSource_s3wx3")
+sources/0 = SubResource("TileSetAtlasSource_mukcc")
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_awdyq"]
 
@@ -108,7 +109,7 @@ region = Rect2(64, 0, 38, 38)
 [node name="Map" type="Node2D" unique_id=1338299763 node_paths=PackedStringArray("GroundLayer", "DecorationLayer", "EntityLayer", "OverlayLayer", "ProjectileLayer", "Selector", "Camera")]
 script = ExtResource("1_lo67w")
 GroundLayer = NodePath("Ground")
-DecorationLayer = NodePath("Decorations")
+DecorationLayer = NodePath("Decoration")
 EntityLayer = NodePath("Entities")
 OverlayLayer = NodePath("Overlays")
 ProjectileLayer = NodePath("Projectiles")
@@ -119,8 +120,8 @@ Camera = NodePath("Camera")
 tile_set = SubResource("TileSet_wxnmh")
 script = ExtResource("2_wxnmh")
 
-[node name="Decorations" type="TileMapLayer" parent="." unique_id=884655678]
-tile_set = SubResource("TileSet_f0kan")
+[node name="Decoration" type="TileMapLayer" parent="." unique_id=727344730]
+tile_set = SubResource("TileSet_wu35y")
 script = ExtResource("4_ox681")
 
 [node name="Entities" type="TileMapLayer" parent="." unique_id=56824911]

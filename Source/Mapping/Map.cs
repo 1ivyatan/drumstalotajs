@@ -115,7 +115,7 @@ public partial class Map : Node2D
 				Vector2I coords = Types.Vector2I.StringToVector2I(atlas);
 				
 				if (!(atlasLayer is GroundLayer groundLayer) && 
-				GroundLayer.GetCellAtlasCoords(position) != Constants.Vector2I.Negative)
+				GroundLayer.GetCellAtlasCoords(position) == Constants.Vector2I.Negative)
 				{
 					return;
 				}

@@ -116,9 +116,10 @@ public partial class EditorSaveManager : Node
 	{
 		var editedPath = ProjectSettings.LocalizePath((path + ( !path.Contains(SaveFormat) ? ".tres" : "" )).Replace("\\", "/"));
 		var export = _map.Export();
-		ResourceSaver.Save(export, editedPath, 
-			ResourceSaver.SaverFlags.ChangePath
+		ResourceSaver.Save(export, editedPath//, 
+		//	ResourceSaver.SaverFlags.ChangePath
 		);
+		
 		ResetProps(path, editedPath);
 		EmitSignal(SignalName.Saved);
 	}

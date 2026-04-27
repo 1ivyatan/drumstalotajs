@@ -9,7 +9,7 @@ public static class Files
 	{
 		if (ResourceLoader.Exists(path))
 		{
-			return ResourceLoader.Load<T>(path);
+			return ResourceLoader.Load<T>(path, "", ResourceLoader.CacheMode.Ignore);
 		}
 		return null;
 	}
