@@ -114,8 +114,7 @@ public partial class Map : Node2D
 			{
 				Vector2I coords = Types.Vector2I.StringToVector2I(atlas);
 				
-				if (!(atlasLayer is GroundLayer groundLayer) && 
-				GroundLayer.GetCellAtlasCoords(position) == Constants.Vector2I.Negative)
+				if (!(atlasLayer is GroundLayer groundLayer) && IsEmpty(position))
 				{
 					return;
 				}
@@ -147,6 +146,11 @@ public partial class Map : Node2D
 		{
 			sceneLayer.RemoveTile(position);
 		}
+	}
+	
+	public bool IsEmpty(Vector2I position)
+	{
+		return GroundLayer.GetCellAtlasCoords(position) == Constants.Vector2I.Negative;
 	}
 	
 	private void EmitEdit()

@@ -39,8 +39,16 @@ public partial class EditorScene : Node2D
 		switch (Mode)
 		{
 			case EditorMode.Insert: HandleInsert(@event); break;
+			case EditorMode.Edit: HandleEdit(@event); break;
 			default: break;
 		}
+	}
+	
+	private void HandleEdit(InputEvent @event)
+	{
+		if (_mouseMoving) return;
+		if (_mouseRightPressed) { EditWindow.GetTile(Map.ViewportMouseToMap()); }
+		else if (_mouseLeftPressed) { EditWindow.DeselectTile(); }
 	}
 	
 	private void HandleInsert(InputEvent @event)

@@ -17,6 +17,7 @@ public partial class EditorScene : Node2D
 	[Export] public EditorTopnav EditorTopnav { get; private set; }
 	[Export] private EditorSaveManager EditorSaveManager { get; set; }
 	[Export] private InsertWindow InsertWindow { get; set; }
+	[Export] private EditWindow EditWindow { get; set; }
 	
 	public EditorMode Mode { get;
 		set {
@@ -25,16 +26,19 @@ public partial class EditorScene : Node2D
 			{
 				case EditorMode.View:
 					InsertWindow.Hide();
+					EditWindow.Hide();
 					Map.Camera.Mode = CameraMode.DragOnly;
 					Map.Selector.Mode = SelectorMode.Invisible;
 					break;
 				case EditorMode.Insert:
 					Map.Camera.Mode = CameraMode.Locked;
 					Map.Selector.Mode = SelectorMode.Editing;
+					EditWindow.Hide();
 					InsertWindow.Show();
 					break;
 				case EditorMode.Edit:
 					InsertWindow.Hide();
+					EditWindow.Show();
 					Map.Camera.Mode = CameraMode.DragOnly;
 					Map.Selector.Mode = SelectorMode.Interactable;
 					break;

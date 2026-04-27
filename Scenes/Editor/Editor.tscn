@@ -7,13 +7,16 @@
 [ext_resource type="Script" uid="uid://dqtrbg5atrot6" path="res://Source/Editor/Components/EditorSaveManager.cs" id="5_shl5k"]
 [ext_resource type="Script" uid="uid://oxxks4a0xpbj" path="res://Source/Editor/Components/InsertWindow.cs" id="5_u75kh"]
 [ext_resource type="PackedScene" uid="uid://drv6la8g3uiy1" path="res://Scenes/Components/TileList.tscn" id="6_ghgdu"]
+[ext_resource type="Script" uid="uid://b4cp46s4hg5og" path="res://Source/Editor/Components/EditWindow.cs" id="7_wwjnl"]
+[ext_resource type="Script" uid="uid://b11c33smldhvo" path="res://Source/Editor/Components/TileEditor.cs" id="8_ufwpj"]
 
-[node name="Editor" type="Node2D" unique_id=238378600 node_paths=PackedStringArray("Map", "EditorTopnav", "EditorSaveManager", "InsertWindow")]
+[node name="Editor" type="Node2D" unique_id=238378600 node_paths=PackedStringArray("Map", "EditorTopnav", "EditorSaveManager", "InsertWindow", "EditWindow")]
 script = ExtResource("1_tw15f")
 Map = NodePath("Map")
 EditorTopnav = NodePath("Overlay/Topnav")
 EditorSaveManager = NodePath("EditorSaveManager")
 InsertWindow = NodePath("Overlay/InsertWindow")
+EditWindow = NodePath("Overlay/EditWindow")
 
 [node name="Map" parent="." unique_id=1338299763 instance=ExtResource("2_wl3go")]
 
@@ -68,6 +71,7 @@ oversampling_override = 1.0
 title = "Insert tiles"
 position = Vector2i(50, 100)
 size = Vector2i(150, 150)
+visible = false
 transient = true
 transparent = true
 popup_window = true
@@ -100,6 +104,46 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Reset"
+
+[node name="EditWindow" type="Window" parent="Overlay" unique_id=638736027 node_paths=PackedStringArray("_map", "_emptyText", "_tileEditor")]
+oversampling_override = 1.0
+title = "Edit tile"
+position = Vector2i(20, 100)
+size = Vector2i(200, 100)
+transient = true
+always_on_top = true
+popup_window = true
+popup_wm_hint = true
+script = ExtResource("7_wwjnl")
+_map = NodePath("../../Map")
+_emptyText = NodePath("ScrollContainer/TileEditorContainer/EmptyText")
+_tileEditor = NodePath("ScrollContainer/TileEditorContainer/TileEditor")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Overlay/EditWindow" unique_id=7110715]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TileEditorContainer" type="VBoxContainer" parent="Overlay/EditWindow/ScrollContainer" unique_id=1426638987]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="EmptyText" type="Label" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer" unique_id=1395375715]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Select a nonempty tile
+with right click"
+horizontal_alignment = 1
+
+[node name="TileEditor" type="VBoxContainer" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer" unique_id=963839371 node_paths=PackedStringArray("_map")]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("8_ufwpj")
+_map = NodePath("../../../../../Map")
 
 [node name="EditorSaveManager" type="Node" parent="." unique_id=907072181 node_paths=PackedStringArray("_map", "_openDialog", "_saveDialog", "_exportDialog", "_editedDialog")]
 script = ExtResource("5_shl5k")
