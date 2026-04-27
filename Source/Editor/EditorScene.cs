@@ -61,6 +61,7 @@ public partial class EditorScene : Node2D
 		
 		InsertWindow.LoadTiles(layers);
 		InsertWindow.CloseRequested += () => { Mode = EditorMode.View; };
+		EditWindow.CloseRequested += () => { Mode = EditorMode.View; };
 		
 		EditorTopnav.SelectedNew += () => { EditorSaveManager.AttemptNew(); };
 		EditorTopnav.SelectedOpen += () => { EditorSaveManager.AttemptOpen(); };

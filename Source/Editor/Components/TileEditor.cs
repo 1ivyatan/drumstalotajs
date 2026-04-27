@@ -13,6 +13,7 @@ public partial class TileEditor : Control
 {
 	[Export] private Map _map;
 	[Export] private GroundProps GroundProps;
+	[Export] private DecorationProps DecorationProps;
 	
 	public override void _Ready()
 	{
@@ -26,7 +27,10 @@ public partial class TileEditor : Control
 			GroundProps.Load((Tile)tiles[_map.GroundLayer][0]);
 		} else { GroundProps.Close(); }
 		
-		GD.Print(tiles);
+		if (tiles.ContainsKey(_map.DecorationLayer)) {
+			DecorationProps.Load((Tile)tiles[_map.DecorationLayer][0]);
+		} else { DecorationProps.Close(); }
+
 		Visible = true;
 	}
 	

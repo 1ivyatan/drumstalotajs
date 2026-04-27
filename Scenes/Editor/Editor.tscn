@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://b4cp46s4hg5og" path="res://Source/Editor/Components/EditWindow.cs" id="7_wwjnl"]
 [ext_resource type="Script" uid="uid://b11c33smldhvo" path="res://Source/Editor/Components/TileEditor.cs" id="8_ufwpj"]
 [ext_resource type="Script" uid="uid://c77ud0l36riv3" path="res://Source/Editor/Components/GroundProps.cs" id="9_3kjjy"]
+[ext_resource type="Script" uid="uid://dn6rix0tabaxt" path="res://Source/Editor/Components/DecorationProps.cs" id="10_brbfr"]
 
 [node name="Editor" type="Node2D" unique_id=238378600 node_paths=PackedStringArray("Map", "EditorTopnav", "EditorSaveManager", "InsertWindow", "EditWindow")]
 script = ExtResource("1_tw15f")
@@ -111,8 +112,7 @@ transparent_bg = true
 oversampling_override = 1.0
 title = "Edit tile"
 position = Vector2i(20, 100)
-size = Vector2i(200, 200)
-visible = false
+size = Vector2i(215, 200)
 transient = true
 always_on_top = true
 transparent = true
@@ -142,13 +142,14 @@ text = "Select a nonempty tile
 with right click"
 horizontal_alignment = 1
 
-[node name="TileEditor" type="VBoxContainer" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer" unique_id=963839371 node_paths=PackedStringArray("_map", "GroundProps")]
+[node name="TileEditor" type="VBoxContainer" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer" unique_id=963839371 node_paths=PackedStringArray("_map", "GroundProps", "DecorationProps")]
 visible = false
 layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("8_ufwpj")
 _map = NodePath("../../../../../Map")
 GroundProps = NodePath("GroundProps")
+DecorationProps = NodePath("DecorationProps")
 
 [node name="GroundProps" type="VBoxContainer" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor" unique_id=1014014307 node_paths=PackedStringArray("_map", "_baseRelHeight", "_addedHeightSpinner")]
 layout_mode = 2
@@ -167,7 +168,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor/GroundProps/Height" unique_id=1560358635]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Height"
+text = "Height:"
 
 [node name="BaseRelHeight" type="Label" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor/GroundProps/Height" unique_id=1556798392]
 layout_mode = 2
@@ -175,6 +176,45 @@ text = "0+"
 
 [node name="AddedSpinner" type="SpinBox" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor/GroundProps/Height" unique_id=1092164341]
 layout_mode = 2
+
+[node name="DecorationProps" type="VBoxContainer" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor" unique_id=760870386 node_paths=PackedStringArray("_map", "_rotation0deg", "_rotation90deg", "_rotation180deg", "_rotation270deg")]
+layout_mode = 2
+script = ExtResource("10_brbfr")
+_map = NodePath("../../../../../../Map")
+_rotation0deg = NodePath("Rotation/0")
+_rotation90deg = NodePath("Rotation/90")
+_rotation180deg = NodePath("Rotation/180")
+_rotation270deg = NodePath("Rotation/270")
+
+[node name="Title" type="Label" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor/DecorationProps" unique_id=1784873957]
+layout_mode = 2
+text = "Decoration"
+
+[node name="Rotation" type="HBoxContainer" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor/DecorationProps" unique_id=280530340]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor/DecorationProps/Rotation" unique_id=1197814091]
+layout_mode = 2
+text = "Rotation:"
+
+[node name="0" type="Button" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor/DecorationProps/Rotation" unique_id=1696716663]
+layout_mode = 2
+text = "0"
+
+[node name="90" type="Button" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor/DecorationProps/Rotation" unique_id=955068468]
+layout_mode = 2
+text = "90
+"
+
+[node name="180" type="Button" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor/DecorationProps/Rotation" unique_id=1257028400]
+layout_mode = 2
+text = "180
+"
+
+[node name="270" type="Button" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor/DecorationProps/Rotation" unique_id=1774867243]
+layout_mode = 2
+text = "270
+"
 
 [node name="EditorSaveManager" type="Node" parent="." unique_id=907072181 node_paths=PackedStringArray("_map", "_openDialog", "_saveDialog", "_exportDialog", "_editedDialog")]
 script = ExtResource("5_shl5k")
