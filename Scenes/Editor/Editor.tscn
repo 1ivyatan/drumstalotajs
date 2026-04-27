@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://c77ud0l36riv3" path="res://Source/Editor/Components/GroundProps.cs" id="9_3kjjy"]
 [ext_resource type="Script" uid="uid://dn6rix0tabaxt" path="res://Source/Editor/Components/DecorationProps.cs" id="10_brbfr"]
 [ext_resource type="Script" uid="uid://ynvy87jxpcb4" path="res://Source/Editor/Components/OverlayProps.cs" id="11_4vgsf"]
+[ext_resource type="Script" uid="uid://c4ham3m3jbaaj" path="res://Source/Editor/Components/EntityProps.cs" id="11_85jo5"]
 
 [node name="Editor" type="Node2D" unique_id=238378600 node_paths=PackedStringArray("Map", "EditorTopnav", "EditorSaveManager", "InsertWindow", "EditWindow")]
 script = ExtResource("1_tw15f")
@@ -113,8 +114,7 @@ transparent_bg = true
 oversampling_override = 1.0
 title = "Edit tile"
 position = Vector2i(20, 100)
-size = Vector2i(215, 200)
-visible = false
+size = Vector2i(215, 310)
 transient = true
 always_on_top = true
 transparent = true
@@ -161,9 +161,16 @@ _map = NodePath("../../../../../../Map")
 _baseRelHeight = NodePath("Height/BaseRelHeight")
 _addedHeightSpinner = NodePath("Height/AddedSpinner")
 
-[node name="Title" type="Label" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor/GroundProps" unique_id=1291570940]
+[node name="Title" type="HBoxContainer" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor/GroundProps" unique_id=910682608]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor/GroundProps/Title" unique_id=570237298]
 layout_mode = 2
 text = "Ground"
+
+[node name="Separator" type="HSeparator" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor/GroundProps/Title" unique_id=1448858113]
+layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="Height" type="HBoxContainer" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor/GroundProps" unique_id=1801259163]
 layout_mode = 2
@@ -193,9 +200,16 @@ _rotation90deg = NodePath("Rotation/90")
 _rotation180deg = NodePath("Rotation/180")
 _rotation270deg = NodePath("Rotation/270")
 
-[node name="Title" type="Label" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor/DecorationProps" unique_id=1784873957]
+[node name="Title" type="HBoxContainer" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor/DecorationProps" unique_id=453231855]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor/DecorationProps/Title" unique_id=348252356]
 layout_mode = 2
 text = "Decoration"
+
+[node name="Separator" type="HSeparator" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor/DecorationProps/Title" unique_id=999415779]
+layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="Rotation" type="HBoxContainer" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor/DecorationProps" unique_id=280530340]
 layout_mode = 2
@@ -224,15 +238,73 @@ layout_mode = 2
 text = "270
 "
 
+[node name="EntityProps" type="VBoxContainer" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor" unique_id=1253156899]
+layout_mode = 2
+script = ExtResource("11_85jo5")
+
+[node name="Title" type="HBoxContainer" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor/EntityProps" unique_id=797518356]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor/EntityProps/Title" unique_id=1063014150]
+layout_mode = 2
+text = "Entity"
+
+[node name="Separator" type="HSeparator" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor/EntityProps/Title" unique_id=1734416174]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Azimuth" type="HBoxContainer" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor/EntityProps" unique_id=1162128004]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor/EntityProps/Azimuth" unique_id=626325278]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Azimuth:"
+
+[node name="AzimuthSpinner" type="SpinBox" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor/EntityProps/Azimuth" unique_id=96165237]
+layout_mode = 2
+max_value = 360.0
+step = 0.1
+
+[node name="Integrity" type="HBoxContainer" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor/EntityProps" unique_id=1579631905]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor/EntityProps/Integrity" unique_id=904829825]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Integrity:"
+
+[node name="IntegritySpinner" type="SpinBox" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor/EntityProps/Integrity" unique_id=489240039]
+layout_mode = 2
+step = 0.1
+
+[node name="Player" type="HBoxContainer" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor/EntityProps" unique_id=1015059327]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor/EntityProps/Player" unique_id=171876734]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Player:"
+
+[node name="PlayerCheck" type="CheckBox" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor/EntityProps/Player" unique_id=652551015]
+layout_mode = 2
+
 [node name="OverlayProps" type="VBoxContainer" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor" unique_id=833686570 node_paths=PackedStringArray("_map", "_rotationSpinner")]
 layout_mode = 2
 script = ExtResource("11_4vgsf")
 _map = NodePath("../../../../../../Map")
 _rotationSpinner = NodePath("Rotation/RotationSpinner")
 
-[node name="Label" type="Label" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor/OverlayProps" unique_id=1942086199]
+[node name="Title" type="HBoxContainer" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor/OverlayProps" unique_id=651452498]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor/OverlayProps/Title" unique_id=1369040424]
 layout_mode = 2
 text = "Overlay"
+
+[node name="Separator" type="HSeparator" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor/OverlayProps/Title" unique_id=714114528]
+layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="Rotation" type="HBoxContainer" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor/OverlayProps" unique_id=857324428]
 layout_mode = 2
