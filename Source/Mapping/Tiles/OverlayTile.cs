@@ -6,4 +6,7 @@ using Drumstalotajs.Mapping.Layers;
 
 namespace Drumstalotajs.Mapping.Tiles;
 
-public partial class OverlayTile : SceneTile { }
+public partial class OverlayTile : SceneTile
+{
+	
+}

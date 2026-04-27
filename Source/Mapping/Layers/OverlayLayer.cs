@@ -46,7 +46,7 @@ public partial class OverlayLayer : SceneLayer
 	{
 		if (layerData is OverlayLayerData overlayLayerData)
 		{
-			foreach (var tile in overlayLayerData.Tiles)
+			foreach (OverlayLayerTileData tile in overlayLayerData.Tiles)
 			{
 				this.AddTile(tile);
 			}

@@ -16,6 +16,16 @@ public partial class OverlayProps : Props
 	[Export] private SpinBox _rotationSpinner;
 	private OverlayTile _overlayTile = null;
 	
+	public override void _Ready()
+	{
+		_rotationSpinner.ValueChanged += (double value) => {
+			if (_overlayTile != null)
+			{
+				_overlayTile.RotationDegrees = (float)value;
+			}
+		};
+	}
+	
 	public override void Load(Tile tile)
 	{
 		if (tile is OverlayTile overlayTile)
