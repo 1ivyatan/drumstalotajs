@@ -14,6 +14,7 @@ public partial class TileEditor : Control
 	[Export] private Map _map;
 	[Export] private GroundProps GroundProps;
 	[Export] private DecorationProps DecorationProps;
+	[Export] private OverlayProps OverlayProps;
 	
 	public override void _Ready()
 	{
@@ -30,6 +31,10 @@ public partial class TileEditor : Control
 		if (tiles.ContainsKey(_map.DecorationLayer)) {
 			DecorationProps.Load((Tile)tiles[_map.DecorationLayer][0]);
 		} else { DecorationProps.Close(); }
+		
+		if (tiles.ContainsKey(_map.OverlayLayer)) {
+			OverlayProps.Load((Tile)tiles[_map.OverlayLayer][0]);
+		} else { OverlayProps.Close(); }
 
 		Visible = true;
 	}
