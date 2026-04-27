@@ -34,6 +34,8 @@ public partial class EntityLayer : SceneLayer
 		{
 			var tile = (Entity)nodes[0];
 			tile.Azimuth = (float)atlas.Azimuth;
+			tile.Integrity = (float)atlas.Integrity;
+			tile.Player = (bool)atlas.Player;
 		}
 		EmitSignal(SignalName.ChangedLayer);
 	}
@@ -47,7 +49,7 @@ public partial class EntityLayer : SceneLayer
 	{
 		if (layerData is EntityLayerData entityLayerData)
 		{
-			foreach (var tile in entityLayerData.Tiles)
+			foreach (EntityLayerTileData tile in entityLayerData.Tiles)
 			{
 				this.AddTile(tile);
 			}

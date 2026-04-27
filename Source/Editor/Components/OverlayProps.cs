@@ -31,6 +31,7 @@ public partial class OverlayProps : Props
 		if (tile is OverlayTile overlayTile)
 		{
 			_overlayTile = overlayTile;
+			_rotationSpinner.Value = overlayTile.RotationDegrees;
 			Visible = true;
 		} else {
 			Close();

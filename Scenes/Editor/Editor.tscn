@@ -239,9 +239,13 @@ layout_mode = 2
 text = "270
 "
 
-[node name="EntityProps" type="VBoxContainer" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor" unique_id=1253156899]
+[node name="EntityProps" type="VBoxContainer" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor" unique_id=1253156899 node_paths=PackedStringArray("_map", "_azimuthSpinner", "_integritySpinner", "_playerCheck")]
 layout_mode = 2
 script = ExtResource("11_85jo5")
+_map = NodePath("../../../../../../Map")
+_azimuthSpinner = NodePath("Azimuth/AzimuthSpinner")
+_integritySpinner = NodePath("Integrity/IntegritySpinner")
+_playerCheck = NodePath("Player/PlayerCheck")
 
 [node name="Title" type="HBoxContainer" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor/EntityProps" unique_id=797518356]
 layout_mode = 2
