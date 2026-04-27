@@ -11,6 +11,7 @@ namespace Drumstalotajs.Editor.Components;
 public partial class TileEditor : Control
 {
 	[Export] private Map _map;
+	[Export] private GroundProps GroundProps;
 	
 	public override void _Ready()
 	{
@@ -18,6 +19,9 @@ public partial class TileEditor : Control
 	
 	public void Load(Vector2I coords)
 	{
+		var tiles = _map.Flash(coords);
+		if (tiles.ContainsKey(_map.GroundLayer)) { GroundProps.Load(coords); } else { GroundProps.Close(); }
+		GD.Print(tiles);
 		Visible = true;
 	}
 	

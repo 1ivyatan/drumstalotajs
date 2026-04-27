@@ -77,7 +77,7 @@ public partial class Selector : Node2D
 	{
 		FilteredTiles tiles = new FilteredTiles();
 		
-		if (_map.GroundLayer.GetCellAtlasCoords(position) != Constants.Vector2I.Negative)
+		if (!_map.IsEmpty(position))
 		{
 			tiles = Filter.GetTiles(position);
 		}

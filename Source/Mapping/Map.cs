@@ -153,6 +153,11 @@ public partial class Map : Node2D
 		return GroundLayer.GetCellAtlasCoords(position) == Constants.Vector2I.Negative;
 	}
 	
+	public FilteredTiles Flash(Vector2I position)
+	{
+		return Selector.GetTiles(position);
+	}
+	
 	private void EmitEdit()
 	{
 		if (State != MapState.Loading && Mode == MapMode.Editing)

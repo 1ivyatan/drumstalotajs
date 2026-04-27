@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://drv6la8g3uiy1" path="res://Scenes/Components/TileList.tscn" id="6_ghgdu"]
 [ext_resource type="Script" uid="uid://b4cp46s4hg5og" path="res://Source/Editor/Components/EditWindow.cs" id="7_wwjnl"]
 [ext_resource type="Script" uid="uid://b11c33smldhvo" path="res://Source/Editor/Components/TileEditor.cs" id="8_ufwpj"]
+[ext_resource type="Script" uid="uid://c77ud0l36riv3" path="res://Source/Editor/Components/GroundProps.cs" id="9_3kjjy"]
 
 [node name="Editor" type="Node2D" unique_id=238378600 node_paths=PackedStringArray("Map", "EditorTopnav", "EditorSaveManager", "InsertWindow", "EditWindow")]
 script = ExtResource("1_tw15f")
@@ -106,12 +107,15 @@ size_flags_vertical = 4
 text = "Reset"
 
 [node name="EditWindow" type="Window" parent="Overlay" unique_id=638736027 node_paths=PackedStringArray("_map", "_emptyText", "_tileEditor")]
+transparent_bg = true
 oversampling_override = 1.0
 title = "Edit tile"
 position = Vector2i(20, 100)
-size = Vector2i(200, 100)
+size = Vector2i(200, 200)
+visible = false
 transient = true
 always_on_top = true
+transparent = true
 popup_window = true
 popup_wm_hint = true
 script = ExtResource("7_wwjnl")
@@ -132,18 +136,41 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="EmptyText" type="Label" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer" unique_id=1395375715]
+visible = false
 layout_mode = 2
 size_flags_vertical = 6
 text = "Select a nonempty tile
 with right click"
 horizontal_alignment = 1
 
-[node name="TileEditor" type="VBoxContainer" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer" unique_id=963839371 node_paths=PackedStringArray("_map")]
-visible = false
+[node name="TileEditor" type="VBoxContainer" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer" unique_id=963839371 node_paths=PackedStringArray("_map", "GroundProps")]
 layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("8_ufwpj")
 _map = NodePath("../../../../../Map")
+GroundProps = NodePath("GroundProps")
+
+[node name="GroundProps" type="VBoxContainer" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor" unique_id=1014014307 node_paths=PackedStringArray("_map", "_baseRelHeight", "_addedHeightSpinner")]
+layout_mode = 2
+script = ExtResource("9_3kjjy")
+_map = NodePath("../../../../../../Map")
+_baseRelHeight = NodePath("Height/BaseRelHeight")
+_addedHeightSpinner = NodePath("Height/AddedSpinner")
+
+[node name="Height" type="HBoxContainer" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor/GroundProps" unique_id=1801259163]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor/GroundProps/Height" unique_id=1560358635]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Height"
+
+[node name="BaseRelHeight" type="Label" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor/GroundProps/Height" unique_id=1556798392]
+layout_mode = 2
+text = "0+"
+
+[node name="AddedSpinner" type="SpinBox" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor/GroundProps/Height" unique_id=1092164341]
+layout_mode = 2
 
 [node name="EditorSaveManager" type="Node" parent="." unique_id=907072181 node_paths=PackedStringArray("_map", "_openDialog", "_saveDialog", "_exportDialog", "_editedDialog")]
 script = ExtResource("5_shl5k")

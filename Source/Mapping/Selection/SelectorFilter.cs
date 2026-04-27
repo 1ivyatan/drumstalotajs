@@ -20,10 +20,12 @@ public struct SelectorFilter
 		{
 			if (layer is AtlasLayer)
 			{
-				tiles[layer] = (Godot.Collections.Array)(layer as AtlasLayer).Flash(position);
+				var flashedTiles = (Godot.Collections.Array)(layer as AtlasLayer).Flash(position);
+				if (flashedTiles.Count > 0) tiles[layer] = flashedTiles;
 			} else if (layer is SceneLayer)
 			{
-				tiles[layer] = (Godot.Collections.Array)(layer as SceneLayer).Flash(position);
+				var flashedTiles = (Godot.Collections.Array)(layer as SceneLayer).Flash(position);
+				if (flashedTiles.Count > 0) tiles[layer] = flashedTiles;
 			}
 		}
 		return tiles;
