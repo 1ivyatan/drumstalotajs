@@ -229,7 +229,7 @@ TemplateMap = "res://Resources/Maps/Backgrounds/Untitled.res"
 initial_position = 2
 display_mode = 1
 access = 2
-filters = PackedStringArray(".tres", ".res")
+filters = PackedStringArray("*.tres", "*.res")
 use_native_dialog = true
 
 [node name="ExportDialog" type="FileDialog" parent="EditorSaveManager" unique_id=1893098562]
@@ -237,7 +237,7 @@ title = "Export"
 initial_position = 2
 display_mode = 1
 access = 2
-filters = PackedStringArray(".res")
+filters = PackedStringArray("*.res")
 use_native_dialog = true
 
 [node name="OpenDialog" type="FileDialog" parent="EditorSaveManager" unique_id=137755826]
@@ -246,7 +246,7 @@ initial_position = 2
 file_mode = 0
 display_mode = 1
 access = 2
-filters = PackedStringArray(".tres", ".res")
+filters = PackedStringArray("*.tres", "*.res")
 use_native_dialog = true
 
 [node name="EditedDialog" type="ConfirmationDialog" parent="EditorSaveManager" unique_id=592913740]
