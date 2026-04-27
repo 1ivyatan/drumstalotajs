@@ -71,7 +71,7 @@ public partial class Map : Node2D
 	{
 		State = MapState.Loading;
 		try {
-			var data = Files.SafeLoadResource<MapResource>(mapResourcePath);
+			var data = Files.SafeLoadResource<MapResource>(mapResourcePath, false);
 			await GroundLayer.Load(data.GroundLayer);
 			await DecorationLayer.Load(data.DecorationLayer);
 			await EntityLayer.Load(data.EntityLayer);

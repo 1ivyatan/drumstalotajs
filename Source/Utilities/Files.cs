@@ -5,11 +5,14 @@ namespace Drumstalotajs.Utilities;
 
 public static class Files
 {	
-	public static T SafeLoadResource<T>(string path) where T : Resource
+	public static T SafeLoadResource<T>(string path, bool cached = true) where T : Resource
 	{
 		if (ResourceLoader.Exists(path))
 		{
-			return ResourceLoader.Load<T>(path, "", ResourceLoader.CacheMode.Ignore);
+			if (cached)
+			{
+				return ResourceLoader.Load<T>(path);
+			} else return ResourceLoader.Load<T>(path, "", ResourceLoader.CacheMode.Ignore);
 		}
 		return null;
 	}
