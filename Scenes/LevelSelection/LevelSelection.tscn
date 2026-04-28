@@ -19,23 +19,51 @@ offset_right = 62.0
 grow_vertical = 0
 text = "Return"
 
-[node name="LevelMetaContainer" type="VBoxContainer" parent="Overlay" unique_id=113706533]
-anchors_preset = 3
+[node name="LevelMetaContainer" type="VBoxContainer" parent="Overlay" unique_id=113706533 node_paths=PackedStringArray("_loadCustomMap", "_customMapDialog")]
+anchors_preset = 11
 anchor_left = 1.0
-anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -40.0
-offset_top = -40.0
+offset_left = -146.0
 grow_horizontal = 0
-grow_vertical = 0
+grow_vertical = 2
 alignment = 2
 script = ExtResource("2_bnw7x")
+_loadCustomMap = NodePath("LoadCustomMap")
+_customMapDialog = NodePath("CustomMapDialog")
 
 [node name="LevelMeta" type="PanelContainer" parent="Overlay/LevelMetaContainer" unique_id=765754551]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="LoadCustomLevel" type="Button" parent="Overlay/LevelMetaContainer" unique_id=968323469]
+[node name="MetaContainer" type="VBoxContainer" parent="Overlay/LevelMetaContainer/LevelMeta" unique_id=1981763327]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Title" type="Label" parent="Overlay/LevelMetaContainer/LevelMeta/MetaContainer" unique_id=872026647]
+layout_mode = 2
+text = "Title"
+
+[node name="Desc" type="RichTextLabel" parent="Overlay/LevelMetaContainer/LevelMeta/MetaContainer" unique_id=1525277028]
+layout_mode = 2
+size_flags_vertical = 3
+text = "sdfsggggggggggggggggggggggddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+fit_content = true
+
+[node name="Play" type="Button" parent="Overlay/LevelMetaContainer/LevelMeta/MetaContainer" unique_id=2098536059]
+layout_mode = 2
+text = "Play"
+
+[node name="LoadCustomMap" type="Button" parent="Overlay/LevelMetaContainer" unique_id=968323469]
 layout_mode = 2
 text = "Load custom map"
+
+[node name="CustomMapDialog" type="FileDialog" parent="Overlay/LevelMetaContainer" unique_id=2044600388]
+title = "Open a custom map"
+initial_position = 2
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.res")
+use_native_dialog = true
