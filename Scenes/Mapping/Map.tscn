@@ -20,42 +20,15 @@
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ox681"]
 texture = ExtResource("2_sd0qa")
 texture_region_size = Vector2i(32, 32)
-0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
 2:0/0/custom_data_0 = 5.0
 3:0/0 = 0
 3:0/0/custom_data_0 = 5.0
 4:0/0 = 0
-4:1/0 = 0
-4:2/0 = 0
-3:2/0 = 0
-3:2/0/custom_data_0 = 5.0
-2:2/0 = 0
-2:2/0/custom_data_0 = 5.0
-2:1/0 = 0
-2:1/0/custom_data_0 = 5.0
-1:1/0 = 0
-0:1/0 = 0
-3:1/0 = 0
-3:1/0/custom_data_0 = 5.0
-1:2/0 = 0
-0:2/0 = 0
 5:0/0 = 0
-5:0/0/custom_data_0 = 0.5
-5:1/0 = 0
-5:1/0/custom_data_0 = 0.5
-5:2/0 = 0
-5:2/0/custom_data_0 = 0.5
-5:3/0 = 0
-5:3/0/custom_data_0 = 0.5
-4:3/0 = 0
-3:3/0 = 0
-3:3/0/custom_data_0 = 5.0
-2:3/0 = 0
-2:3/0/custom_data_0 = 5.0
-1:3/0 = 0
-0:3/0 = 0
+5:0/0/custom_data_0 = 2.0
+0:0/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_wxnmh"]
 tile_size = Vector2i(32, 32)
@@ -136,12 +109,6 @@ Thumbnail = SubResource("AtlasTexture_ajbla")
 Scene = ExtResource("7_ajbla")
 metadata/_custom_type_script = "uid://bn1u57sn0woiq"
 
-[sub_resource type="Resource" id="Resource_p3cor"]
-script = ExtResource("7_f0kan")
-Id = 2
-Name = "DevicePlacement"
-metadata/_custom_type_script = "uid://bn1u57sn0woiq"
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_mukcc"]
 atlas = ExtResource("7_ccdcv")
 region = Rect2(64, 0, 38, 38)
@@ -173,7 +140,7 @@ Atlas = Array[Object]([SubResource("Resource_7ig3r")])
 [node name="Overlays" type="TileMapLayer" parent="." unique_id=201889829]
 tile_set = SubResource("TileSet_ajbla")
 script = ExtResource("6_bdwom")
-Atlas = Array[Object]([SubResource("Resource_ccdcv"), SubResource("Resource_p3cor")])
+Atlas = Array[Object]([SubResource("Resource_ccdcv")])
 
 [node name="Projectiles" type="Node2D" parent="." unique_id=1337390122]
 script = ExtResource("14_bc3k3")

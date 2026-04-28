@@ -37,6 +37,7 @@ public partial class GroundLayer : AtlasLayer
 		{
 			Clear();
 			SetPattern(groundLayerData.Offset, groundLayerData.Tiles);
+			FixInvalidTiles();
 			BaseHeight = groundLayerData.BaseHeight;
 			AddedHeights = groundLayerData.AddedHeights;
 		}

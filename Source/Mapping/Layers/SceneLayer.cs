@@ -87,6 +87,11 @@ public partial class SceneLayer : Layer<string, SceneTile, SceneLayerData>
 		return Atlas.Select(a => a.Name).ToArray();
 	}
 	
+	public SceneLayerAtlasData GetAtlasData(string name)
+	{
+		return Atlas.FirstOrDefault(a => a.Name == name);
+	}
+	
 	public SceneLayerAtlasData[] GetFullAtlas()
 	{
 		return Atlas;

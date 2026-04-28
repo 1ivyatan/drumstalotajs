@@ -156,5 +156,6 @@ public partial class AtlasLayer : Layer<Vector2I, AtlasTile, AtlasLayerData>
 	{
 		Clear();
 		SetPattern(layerData.Offset, layerData.Tiles);
+		FixInvalidTiles();
 	}
 }

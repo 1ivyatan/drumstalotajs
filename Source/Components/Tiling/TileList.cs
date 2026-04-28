@@ -1,6 +1,8 @@
 using Godot;
 using System;
+using System.Linq;
 using Drumstalotajs;
+using Drumstalotajs.Utilities;
 using Drumstalotajs.Mapping.Layers;
 
 namespace Drumstalotajs.Components.Tiling;
@@ -8,6 +10,8 @@ namespace Drumstalotajs.Components.Tiling;
 public partial class TileList : ItemList
 {
 	[Signal] public delegate void SelectedAtlasEventHandler(PickedTileData data);
+	[Export] private int AtlasColumnCount = 6;
+	[Export] private int SceneColumnCount = 3;
 	public BaseLayer Layer { get; private set; } = null;
 	
 	public override void _Ready()
@@ -28,14 +32,18 @@ public partial class TileList : ItemList
 			var atlas = atlasLayer.GetAtlas();
 			foreach (var tile in atlas)
 			{
-				AddItem($"{tile}");
+				MaxColumns = AtlasColumnCount;
+				Texture2D texture = Utilities.Layers.GetCellTexture(layer, tile);
+				AddItem($"{tile}", texture);
 			}
 		} else if (layer is SceneLayer sceneLayer)
 		{
 			var atlas = sceneLayer.GetAtlas();
 			foreach (var tile in atlas)
 			{
-				AddItem($"{tile}");
+				MaxColumns = SceneColumnCount;
+				Texture2D texture = sceneLayer.GetAtlasData(tile).Thumbnail;
+				AddItem($"{tile}", texture);
 			}
 		}
 		Layer = layer;

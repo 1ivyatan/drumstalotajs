@@ -10,6 +10,6 @@ grow_horizontal = 2
 grow_vertical = 2
 auto_width = true
 auto_height = true
-max_columns = 3
 same_column_width = true
+icon_mode = 0
 script = ExtResource("1_waeea")
