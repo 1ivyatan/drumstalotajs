@@ -16,15 +16,7 @@ public partial class StartScene : Control
 
 	public override void _Ready()
 	{
-		if (!OS.HasFeature("editor"))
-		{
-			_editor.Visible = false;
-			_editor.Disabled = true;
-		} else
-		{
-			_editor.Visible = true;
-			_editor.Disabled = false;
-		}
+		Utilities.Editor.EditorControl(_editor);
 		
 		var annFile = Files.SafeLoadFile(_annotationFilePath,  FileAccess.ModeFlags.Read);
 		if (annFile != null)
@@ -37,7 +29,7 @@ public partial class StartScene : Control
 		};
 		
 		_editor.Pressed += () => {
-			if (OS.HasFeature("editor"))
+			if (Utilities.Editor.IsEditor())
 			{
 				Nodes.GetRoot().SceneManager.Editor();
 			}

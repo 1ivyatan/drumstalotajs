@@ -8,12 +8,14 @@ using Drumstalotajs.Components.Modals;
 using Drumstalotajs.Mapping.Cameras;
 using Drumstalotajs.Mapping.Selection;
 using Drumstalotajs.Mapping.Layers;
+using Drumstalotajs.LevelSelection.Components;
 
 namespace Drumstalotajs.LevelSelection;
 
 public partial class LevelSelectionScene : Node2D
 {
 	[Export] private Button _return;
+	[Export] private LevelMetaContainer LevelMetaContainer;
 	
 	public override void _Ready()
 	{

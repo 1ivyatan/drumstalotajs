@@ -26,7 +26,7 @@ public partial class GroundLayer : AtlasLayer
 		return tile != null ? [tile] : [];
 	}
 	
-	public GroundTile GetTile(Vector2I position)
+	new public GroundTile GetTile(Vector2I position)
 	{
 		if (GetCellAtlasCoords(position) == Constants.Vector2I.Negative) return null;
 		return new GroundTile(this, position);

@@ -1,10 +1,12 @@
 [gd_scene format=3 uid="uid://6w0if5idroq3"]
 
 [ext_resource type="Script" uid="uid://cwwvp54fnm6w0" path="res://Source/LevelSelection/LevelSelectionScene.cs" id="1_g1q0k"]
+[ext_resource type="Script" uid="uid://bkxbq06wvfjt2" path="res://Source/LevelSelection/Components/LevelMetaContainer.cs" id="2_bnw7x"]
 
-[node name="LevelSelection" type="Node2D" unique_id=1846218210 node_paths=PackedStringArray("_return")]
+[node name="LevelSelection" type="Node2D" unique_id=1846218210 node_paths=PackedStringArray("_return", "LevelMetaContainer")]
 script = ExtResource("1_g1q0k")
 _return = NodePath("Overlay/Start")
+LevelMetaContainer = NodePath("Overlay/LevelMetaContainer")
 
 [node name="Overlay" type="CanvasLayer" parent="." unique_id=1073188663]
 
@@ -16,3 +18,24 @@ offset_top = -31.0
 offset_right = 62.0
 grow_vertical = 0
 text = "Return"
+
+[node name="LevelMetaContainer" type="VBoxContainer" parent="Overlay" unique_id=113706533]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+alignment = 2
+script = ExtResource("2_bnw7x")
+
+[node name="LevelMeta" type="PanelContainer" parent="Overlay/LevelMetaContainer" unique_id=765754551]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LoadCustomLevel" type="Button" parent="Overlay/LevelMetaContainer" unique_id=968323469]
+layout_mode = 2
+text = "Load custom map"
