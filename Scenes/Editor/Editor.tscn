@@ -193,7 +193,7 @@ step = 0.5
 allow_greater = true
 allow_lesser = true
 
-[node name="DecorationProps" type="VBoxContainer" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor" unique_id=760870386 node_paths=PackedStringArray("_map", "_rotation0deg", "_rotation90deg", "_rotation180deg", "_rotation270deg")]
+[node name="DecorationProps" type="VBoxContainer" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor" unique_id=760870386 node_paths=PackedStringArray("_map", "_rotation0deg", "_rotation90deg", "_rotation180deg", "_rotation270deg", "_colorContainer")]
 layout_mode = 2
 script = ExtResource("10_brbfr")
 _map = NodePath("../../../../../../Map")
@@ -201,6 +201,7 @@ _rotation0deg = NodePath("Rotation/0")
 _rotation90deg = NodePath("Rotation/90")
 _rotation180deg = NodePath("Rotation/180")
 _rotation270deg = NodePath("Rotation/270")
+_colorContainer = NodePath("Color")
 
 [node name="Title" type="HBoxContainer" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor/DecorationProps" unique_id=453231855]
 layout_mode = 2
@@ -239,6 +240,14 @@ text = "180
 layout_mode = 2
 text = "270
 "
+
+[node name="Color" type="HBoxContainer" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor/DecorationProps" unique_id=508054]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor/DecorationProps/Color" unique_id=1912788371]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Color:"
 
 [node name="EntityProps" type="VBoxContainer" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor" unique_id=1253156899 node_paths=PackedStringArray("_map", "_azimuthSpinner", "_integritySpinner", "_playerCheck")]
 layout_mode = 2

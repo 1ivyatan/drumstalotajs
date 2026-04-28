@@ -163,6 +163,7 @@ script = ExtResource("2_wxnmh")
 [node name="Decoration" type="TileMapLayer" parent="." unique_id=727344730]
 tile_set = SubResource("TileSet_wu35y")
 script = ExtResource("4_ox681")
+extraColors = PackedColorArray(0, 0, 0, 1)
 
 [node name="Entities" type="TileMapLayer" parent="." unique_id=56824911]
 tile_set = SubResource("TileSet_awdyq")

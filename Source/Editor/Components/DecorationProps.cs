@@ -17,6 +17,7 @@ public partial class DecorationProps : Props
 	[Export] private BaseButton _rotation90deg;
 	[Export] private BaseButton _rotation180deg;
 	[Export] private BaseButton _rotation270deg;
+	[Export] private Container _colorContainer;
 	private AtlasTile _decorationTile = null;
 	
 	public override void _Ready()
@@ -25,6 +26,26 @@ public partial class DecorationProps : Props
 		_rotation90deg.Pressed += () => { RotateTile(90); };
 		_rotation180deg.Pressed += () => { RotateTile(180); };
 		_rotation270deg.Pressed += () => { RotateTile(270); };
+		
+		foreach (var i in _map.DecorationLayer.GetAtlasIds())
+		{
+			var button = new Button();
+			button.Text = $"{i}";
+			button.Pressed += async () => { 
+				ChangeTileSource(i);
+			};
+			_colorContainer.AddChild(button);
+		}
+	}
+	
+	private async void ChangeTileSource(int id)
+	{
+		if (_decorationTile != null)
+		{
+			Vector2I position = _decorationTile.CellPosition;
+			_map.DecorationLayer.ChangeTileSource(position, id);
+			_decorationTile = _map.DecorationLayer.GetTile(position);
+		}
 	}
 	
 	private void RotateTile(double degrees)

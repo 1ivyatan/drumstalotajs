@@ -1,22 +1,69 @@
 using Godot;
+using Godot.Collections;
 using System;
 using System.Threading.Tasks;
 using Drumstalotajs;
-using Drumstalotajs.Utilities;
 using Drumstalotajs.Mapping;
 using Drumstalotajs.Mapping.Tiles;
 using Drumstalotajs.Resources.Mapping.Layers;
+using Drumstalotajs.Utilities;
 
 namespace Drumstalotajs.Mapping.Layers;
 
 public partial class AtlasLayer : Layer<Vector2I, AtlasTile, AtlasLayerData>
 {
-	public override Vector2I[] GetAtlas()
+	[Export] private Color[] extraColors = [];
+	
+	public override void _Ready()
+	{
+		PrepareColorAtlases();
+	}
+	
+	protected void PrepareColorAtlases()
+	{
+		if (extraColors != null && extraColors.Length > 0 && TileSet != null)
+		{
+			int firstSourceId = TileSet.GetSourceId(0);
+			foreach (var color in extraColors)
+			{
+				var newAtlas = Utilities.Layers.TintAtlasSource(this, firstSourceId, color);
+				TileSet.AddSource(newAtlas);
+			}
+		}
+	}
+	
+	public int[] GetAtlasIds()
+	{
+		if (TileSet == null) return [];
+		int[] ids = new int[TileSet.GetSourceCount()];
+		for (int i = 0; i < ids.Length; i++)
+		{
+			ids[i] = TileSet.GetSourceId(i);
+		}
+		return ids;
+	}
+	
+	public Dictionary<int, Array<Vector2I>> GetAtlases()
+	{
+		if (TileSet == null) return null;
+		Dictionary<int, Array<Vector2I>> data = new Dictionary<int, Array<Vector2I>>();
+		for (int i = 0; i < TileSet.GetSourceCount(); i++)
+		{
+			int sourceId = TileSet.GetSourceId(i);
+			var atlas = GetAtlas(i);
+			if (atlas != null)
+			{
+				data[sourceId] = new Array<Vector2I>(atlas);
+			}
+		}
+		return data;
+	}
+	
+	public Vector2I[] GetAtlas(int idx)
 	{
 		if (TileSet != null)
 		{
-			int firstSourceId = TileSet.GetSourceId(0);
-			TileSetAtlasSource source = TileSet.GetSource(firstSourceId) as TileSetAtlasSource;
+			TileSetAtlasSource source = TileSet.GetSource(idx) as TileSetAtlasSource;
 			if (source != null)
 			{
 				int count = source.GetTilesCount();
@@ -28,6 +75,16 @@ public partial class AtlasLayer : Layer<Vector2I, AtlasTile, AtlasLayerData>
 				}
 				return tileAtlas;
 			}
+		}
+		return [];
+	}
+	
+	public override Vector2I[] GetAtlas()
+	{
+		if (TileSet != null)
+		{
+			int firstSourceId = TileSet.GetSourceId(0);
+			return GetAtlas(firstSourceId);
 		}
 		return [];
 	}
@@ -44,10 +101,21 @@ public partial class AtlasLayer : Layer<Vector2I, AtlasTile, AtlasLayerData>
 		EmitSignal(SignalName.ChangedLayer);
 	}
 	
+	public void ChangeTileSource(Vector2I position, int id)
+	{
+		Vector2I atlasCoords = GetCellAtlasCoords(position);
+		if (atlasCoords == Constants.Vector2I.Negative) return;
+		int altId = GetCellAlternativeTile(position);
+		Vector2I atlas = GetCellAtlasCoords(position);
+		SetCell(position, id, atlas, altId);
+		EmitSignal(SignalName.ChangedLayer);
+	}
+	
 	public void RotateTile(Vector2I position, double degrees)
 	{
 		Vector2I atlasCoords = GetCellAtlasCoords(position);
 		if (atlasCoords == Constants.Vector2I.Negative) return;
+		int sourceId = GetCellSourceId(position);
 		int bitwise = 0;
 		int quadrant = Calculations.GetQuadrant(degrees);
 		
@@ -63,13 +131,20 @@ public partial class AtlasLayer : Layer<Vector2I, AtlasTile, AtlasLayerData>
 			default: break;
 		}
 		
-		SetCell(position, 0, atlasCoords, bitwise);
+		SetCell(position, sourceId, atlasCoords, bitwise);
+		EmitSignal(SignalName.ChangedLayer);
+	}
+	
+	public AtlasTile GetTile(Vector2I position)
+	{
+		if (GetCellAtlasCoords(position) == Constants.Vector2I.Negative) return null;
+		return new AtlasTile(this, position);
 	}
 	
 	public override Godot.Collections.Array<AtlasTile> Flash(Vector2I position)
 	{
-		if (GetCellAtlasCoords(position) == Constants.Vector2I.Negative) return [];
-		return [ new AtlasTile(this, position) ];
+		var tile = GetTile(position);
+		return tile != null ? [tile] : [];
 	}
 	
 	public override AtlasLayerData Export()

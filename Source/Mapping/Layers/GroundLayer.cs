@@ -17,6 +17,7 @@ public partial class GroundLayer : AtlasLayer
 	public override void _Ready()
 	{
 		AddedHeights = new AddedGroundHeightAtlas();
+		PrepareColorAtlases();
 	}
 	
 	public override Godot.Collections.Array<AtlasTile> Flash(Vector2I position)
