@@ -15,4 +15,9 @@ public partial class Main : Node
 	{
 		SceneManager.Start();
 	}
+	
+	public void Exit()
+	{
+		GetTree().Quit();
+	}
 }

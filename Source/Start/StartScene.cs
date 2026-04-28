@@ -12,6 +12,7 @@ public partial class StartScene : Control
 	[Export] private Button _start;
 	[Export] private Button _editor;
 	[Export] private Button _about;
+	[Export] private Button _exit;
 
 	public override void _Ready()
 	{
@@ -40,6 +41,10 @@ public partial class StartScene : Control
 		
 		_about.Pressed += () => {
 			_annotation.PopupCentered();
+		};
+		
+		_exit.Pressed += () => {
+			Nodes.GetRoot().Exit();
 		};
 	}
 }
