@@ -55,7 +55,7 @@ text = "Start"
 
 [node name="Editor" type="Button" parent="Grid/MenuColumn/Buttons" unique_id=1106992829]
 layout_mode = 2
-text = "Editor"
+text = "Tile editor"
 
 [node name="About" type="Button" parent="Grid/MenuColumn/Buttons" unique_id=2046261125]
 layout_mode = 2
