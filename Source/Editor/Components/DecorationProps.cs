@@ -17,25 +17,17 @@ public partial class DecorationProps : Props
 	[Export] private BaseButton _rotation90deg;
 	[Export] private BaseButton _rotation180deg;
 	[Export] private BaseButton _rotation270deg;
-	[Export] private Container _colorContainer;
+	[Export] private AtlasColorSwitcher _colorContainer;
 	private AtlasTile _decorationTile = null;
 	
 	public override void _Ready()
 	{
+		_colorContainer.Load(_map.DecorationLayer);
 		_rotation0deg.Pressed += () => { RotateTile(0); };
 		_rotation90deg.Pressed += () => { RotateTile(90); };
 		_rotation180deg.Pressed += () => { RotateTile(180); };
 		_rotation270deg.Pressed += () => { RotateTile(270); };
-		
-		foreach (var i in _map.DecorationLayer.GetAtlasIds())
-		{
-			var button = new Button();
-			button.Text = $"{i}";
-			button.Pressed += async () => { 
-				ChangeTileSource(i);
-			};
-			_colorContainer.AddChild(button);
-		}
+		_colorContainer.ClickedColor += (int id) => { ChangeTileSource(id); };
 	}
 	
 	private async void ChangeTileSource(int id)

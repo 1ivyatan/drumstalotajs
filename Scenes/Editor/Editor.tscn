@@ -6,13 +6,14 @@
 [ext_resource type="Script" uid="uid://8jpei68xm1ae" path="res://Source/Editor/Components/EditorTopnav.cs" id="4_4aan4"]
 [ext_resource type="Script" uid="uid://dqtrbg5atrot6" path="res://Source/Editor/Components/EditorSaveManager.cs" id="5_shl5k"]
 [ext_resource type="Script" uid="uid://oxxks4a0xpbj" path="res://Source/Editor/Components/InsertWindow.cs" id="5_u75kh"]
-[ext_resource type="PackedScene" uid="uid://drv6la8g3uiy1" path="res://Scenes/Components/TileList.tscn" id="6_ghgdu"]
+[ext_resource type="PackedScene" uid="uid://drv6la8g3uiy1" path="res://Scenes/Editor/TileList.tscn" id="6_ghgdu"]
 [ext_resource type="Script" uid="uid://b4cp46s4hg5og" path="res://Source/Editor/Components/EditWindow.cs" id="7_wwjnl"]
 [ext_resource type="Script" uid="uid://b11c33smldhvo" path="res://Source/Editor/Components/TileEditor.cs" id="8_ufwpj"]
 [ext_resource type="Script" uid="uid://c77ud0l36riv3" path="res://Source/Editor/Components/GroundProps.cs" id="9_3kjjy"]
 [ext_resource type="Script" uid="uid://dn6rix0tabaxt" path="res://Source/Editor/Components/DecorationProps.cs" id="10_brbfr"]
 [ext_resource type="Script" uid="uid://ynvy87jxpcb4" path="res://Source/Editor/Components/OverlayProps.cs" id="11_4vgsf"]
 [ext_resource type="Script" uid="uid://c4ham3m3jbaaj" path="res://Source/Editor/Components/EntityProps.cs" id="11_85jo5"]
+[ext_resource type="PackedScene" uid="uid://ddva1e3we4dix" path="res://Scenes/Editor/AtlasColorSwitcher.tscn" id="11_wddii"]
 
 [node name="Editor" type="Node2D" unique_id=238378600 node_paths=PackedStringArray("Map", "EditorTopnav", "EditorSaveManager", "InsertWindow", "EditWindow")]
 script = ExtResource("1_tw15f")
@@ -156,12 +157,13 @@ DecorationProps = NodePath("DecorationProps")
 EntityProps = NodePath("EntityProps")
 OverlayProps = NodePath("OverlayProps")
 
-[node name="GroundProps" type="VBoxContainer" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor" unique_id=1014014307 node_paths=PackedStringArray("_map", "_baseRelHeight", "_addedHeightSpinner")]
+[node name="GroundProps" type="VBoxContainer" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor" unique_id=1014014307 node_paths=PackedStringArray("_map", "_baseRelHeight", "_addedHeightSpinner", "_colorContainer")]
 layout_mode = 2
 script = ExtResource("9_3kjjy")
 _map = NodePath("../../../../../../Map")
 _baseRelHeight = NodePath("Height/BaseRelHeight")
 _addedHeightSpinner = NodePath("Height/AddedSpinner")
+_colorContainer = NodePath("AtlasColorSwitcher")
 
 [node name="Title" type="HBoxContainer" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor/GroundProps" unique_id=910682608]
 layout_mode = 2
@@ -193,6 +195,9 @@ step = 0.5
 allow_greater = true
 allow_lesser = true
 
+[node name="AtlasColorSwitcher" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor/GroundProps" unique_id=869518537 instance=ExtResource("11_wddii")]
+layout_mode = 2
+
 [node name="DecorationProps" type="VBoxContainer" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor" unique_id=760870386 node_paths=PackedStringArray("_map", "_rotation0deg", "_rotation90deg", "_rotation180deg", "_rotation270deg", "_colorContainer")]
 layout_mode = 2
 script = ExtResource("10_brbfr")
@@ -201,7 +206,7 @@ _rotation0deg = NodePath("Rotation/0")
 _rotation90deg = NodePath("Rotation/90")
 _rotation180deg = NodePath("Rotation/180")
 _rotation270deg = NodePath("Rotation/270")
-_colorContainer = NodePath("Color")
+_colorContainer = NodePath("AtlasColorSwitcher")
 
 [node name="Title" type="HBoxContainer" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor/DecorationProps" unique_id=453231855]
 layout_mode = 2
@@ -241,13 +246,8 @@ layout_mode = 2
 text = "270
 "
 
-[node name="Color" type="HBoxContainer" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor/DecorationProps" unique_id=508054]
+[node name="AtlasColorSwitcher" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor/DecorationProps" unique_id=921964294 instance=ExtResource("11_wddii")]
 layout_mode = 2
-
-[node name="Label" type="Label" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor/DecorationProps/Color" unique_id=1912788371]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Color:"
 
 [node name="EntityProps" type="VBoxContainer" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor" unique_id=1253156899 node_paths=PackedStringArray("_map", "_azimuthSpinner", "_integritySpinner", "_playerCheck")]
 layout_mode = 2

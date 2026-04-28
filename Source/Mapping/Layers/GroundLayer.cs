@@ -22,8 +22,14 @@ public partial class GroundLayer : AtlasLayer
 	
 	public override Godot.Collections.Array<AtlasTile> Flash(Vector2I position)
 	{
-		if (GetCellAtlasCoords(position) == Constants.Vector2I.Negative) return [];
-		return [ new GroundTile(this, position) ];
+		var tile = this.GetTile(position);
+		return tile != null ? [tile] : [];
+	}
+	
+	public GroundTile GetTile(Vector2I position)
+	{
+		if (GetCellAtlasCoords(position) == Constants.Vector2I.Negative) return null;
+		return new GroundTile(this, position);
 	}
 	
 	public override GroundLayerData Export()

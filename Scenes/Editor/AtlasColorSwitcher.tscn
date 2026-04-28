@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://ddva1e3we4dix"]
+
+[ext_resource type="Script" uid="uid://bibcljb687c8x" path="res://Source/Editor/Components/AtlasColorSwitcher.cs" id="1_4uw5q"]
+
+[node name="AtlasColorSwitcher" type="HBoxContainer" unique_id=869518537]
+script = ExtResource("1_4uw5q")
+
+[node name="Label" type="Label" parent="." unique_id=965514768]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Color:"
