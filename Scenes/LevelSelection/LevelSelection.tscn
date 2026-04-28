@@ -1,3 +1,18 @@
 [gd_scene format=3 uid="uid://6w0if5idroq3"]
 
-[node name="LevelSelection" type="Node2D" unique_id=1846218210]
+[ext_resource type="Script" uid="uid://cwwvp54fnm6w0" path="res://Source/LevelSelection/LevelSelectionScene.cs" id="1_g1q0k"]
+
+[node name="LevelSelection" type="Node2D" unique_id=1846218210 node_paths=PackedStringArray("_return")]
+script = ExtResource("1_g1q0k")
+_return = NodePath("Overlay/Start")
+
+[node name="Overlay" type="CanvasLayer" parent="." unique_id=1073188663]
+
+[node name="Start" type="Button" parent="Overlay" unique_id=1848185697]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -31.0
+offset_right = 62.0
+grow_vertical = 0
+text = "Return"
