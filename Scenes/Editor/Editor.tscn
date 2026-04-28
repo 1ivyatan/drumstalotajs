@@ -115,6 +115,7 @@ oversampling_override = 1.0
 title = "Edit tile"
 position = Vector2i(20, 100)
 size = Vector2i(215, 310)
+visible = false
 transient = true
 always_on_top = true
 transparent = true

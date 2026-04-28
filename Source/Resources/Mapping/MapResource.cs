@@ -10,6 +10,9 @@ namespace Drumstalotajs.Resources.Mapping;
 [GlobalClass]
 public partial class MapResource : Resource
 {
+	[ExportGroup("Properties")]
+	[Export] public double MetersPerPixel { get; set; } = 1;
+	
 	[ExportGroup("Layers")]
 	[Export] public GroundLayerData GroundLayer { get; set; } = null;
 	[Export] public AtlasLayerData DecorationLayer { get; set; } = null;
