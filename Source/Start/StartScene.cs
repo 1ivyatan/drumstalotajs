@@ -32,6 +32,10 @@ public partial class StartScene : Control
 			_annotation.DialogText = annFile.GetAsText();
 		}
 		
+		_start.Pressed += () => {
+			Nodes.GetRoot().SceneManager.LevelSelection();
+		};
+		
 		_editor.Pressed += () => {
 			if (OS.HasFeature("editor"))
 			{

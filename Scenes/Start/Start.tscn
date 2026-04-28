@@ -64,6 +64,7 @@ text = "About "
 
 [node name="Exit" type="Button" parent="Grid/MenuColumn/Buttons" unique_id=218327265]
 layout_mode = 2
+text = "Exit"
 
 [node name="Annotation" type="AcceptDialog" parent="." unique_id=379908606]
 oversampling_override = 1.0

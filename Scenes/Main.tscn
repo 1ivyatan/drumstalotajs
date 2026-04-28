@@ -11,7 +11,11 @@ ToastManager = NodePath("Overlay/ToastManager")
 
 [node name="SceneManager" type="Node" parent="." unique_id=712174652]
 script = ExtResource("2_idj7w")
-ScenesPath = "res://Scenes/"
+Scenes = Dictionary[String, String]({
+"Editor": "res://Scenes/Editor/Editor.tscn",
+"LevelSelection": "res://Scenes/LevelSelection/LevelSelection.tscn",
+"Start": "res://Scenes/Start/Start.tscn"
+})
 
 [node name="AudioManager" type="Node" parent="." unique_id=1009940070]
 

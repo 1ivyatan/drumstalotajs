@@ -1,4 +1,5 @@
 using Godot;
+using Godot.Collections;
 using System;
 using Drumstalotajs.Utilities;
 
@@ -6,7 +7,7 @@ namespace Drumstalotajs.Managers.Scenes;
 
 public partial class SceneManager : Node
 {
-	[Export] private string ScenesPath;
+	[Export] private Dictionary<string, string> Scenes;
 	public Node CurrentScene { get; private set; } = null;
 	public SceneState State { get; private set; } = SceneState.RUNNING;
 	
@@ -15,7 +16,7 @@ public partial class SceneManager : Node
 	
 	private Node LoadScene(string name)
 	{
-		PackedScene scene = Files.SafeLoadResource<PackedScene>($"{ScenesPath}/{name}/{name}.tscn");
+		PackedScene scene = Files.SafeLoadResource<PackedScene>(Scenes[name]);
 		if (scene != null)
 		{
 			State = SceneState.LOADING;
