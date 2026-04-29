@@ -50,12 +50,6 @@ public partial class EditorScene : Node2D
 	
 	public override void _Ready()
 	{
-	//	var test = new OverlayLayerTileData();
-		//test.Id = 1;
-		//test.Azimuth = 1;
-		//test.Position = new Vector2I(5, 5);
-		//OverlayLayer.AddTile(test);
-		
 		BaseLayer[] layers = [ Map.GroundLayer, Map.DecorationLayer, Map.EntityLayer, Map.OverlayLayer ];
 		Map.Selector.Filter = new SelectorFilter(layers);
 		

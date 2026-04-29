@@ -25,7 +25,7 @@ public partial class AtlasColorSwitcher : Control
 			{
 				button.AddThemeColorOverride("font_color", layer.ExtraColors[count - 1]);
 			}
-			button.Pressed += () => { 
+			button.Pressed += () => {
 				EmitSignal(SignalName.ClickedColor, i);
 			};
 			AddChild(button);

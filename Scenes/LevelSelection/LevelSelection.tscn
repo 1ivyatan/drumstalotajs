@@ -1,16 +1,24 @@
 [gd_scene format=3 uid="uid://6w0if5idroq3"]
 
 [ext_resource type="Script" uid="uid://cwwvp54fnm6w0" path="res://Source/LevelSelection/LevelSelectionScene.cs" id="1_g1q0k"]
+[ext_resource type="PackedScene" uid="uid://druw1x35jlqnh" path="res://Scenes/Mapping/Map.tscn" id="2_675ns"]
 [ext_resource type="Script" uid="uid://bkxbq06wvfjt2" path="res://Source/LevelSelection/Components/LevelMetaContainer.cs" id="2_bnw7x"]
+[ext_resource type="PackedScene" uid="uid://bqh5apppkldxo" path="res://Scenes/Components/Topnav.tscn" id="3_2duud"]
 
-[node name="LevelSelection" type="Node2D" unique_id=1846218210 node_paths=PackedStringArray("_return", "LevelMetaContainer")]
+[node name="LevelSelection" type="Node2D" unique_id=1846218210 node_paths=PackedStringArray("_return", "LevelMetaContainer", "Map", "Topnav")]
 script = ExtResource("1_g1q0k")
-_return = NodePath("Overlay/Start")
+_return = NodePath("Overlay/ToStart")
 LevelMetaContainer = NodePath("Overlay/LevelMetaContainer")
+Map = NodePath("Map")
+Topnav = NodePath("Overlay/Topnav")
+
+[node name="Map" parent="." unique_id=1338299763 instance=ExtResource("2_675ns")]
 
 [node name="Overlay" type="CanvasLayer" parent="." unique_id=1073188663]
 
-[node name="Start" type="Button" parent="Overlay" unique_id=1848185697]
+[node name="Topnav" parent="Overlay" unique_id=118245835 instance=ExtResource("3_2duud")]
+
+[node name="ToStart" type="Button" parent="Overlay" unique_id=1848185697]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -61,7 +69,7 @@ layout_mode = 2
 text = "Load custom map"
 
 [node name="CustomMapDialog" type="FileDialog" parent="Overlay/LevelMetaContainer" unique_id=2044600388]
-title = "Open a custom map"
+title = "Open a File"
 initial_position = 2
 file_mode = 0
 access = 2
