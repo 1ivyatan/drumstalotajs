@@ -1,8 +1,10 @@
 using Godot;
+using Godot.Collections;
 using System;
 using Drumstalotajs;
 using Drumstalotajs.Resources;
 using Drumstalotajs.Resources.Mapping;
+using Drumstalotajs.Resources.Mapping.Layers;
 
 namespace Drumstalotajs.Resources.Levels;
 
@@ -10,8 +12,19 @@ namespace Drumstalotajs.Resources.Levels;
 public partial class LevelProps : Resource
 {
 	[Export] public string Name { get; set; } = "";
-	[Export] public string Desc { get; set; } = "";
+	[Export(PropertyHint.MultilineText)] public string Desc { get; set; } = "";
 	[Export] public int Order { get; set; } = 0;
 	[Export] public Vector2I InMapPosition { get; set; }
 	[Export(PropertyHint.File, "*.tres,*.res")] public string MapPath { get; set; } = "";
+	
+	public OverlayLayerTileData GetTileData()
+	{
+		OverlayLayerTileData data = new OverlayLayerTileData();
+		data.Id = 1;
+		data.Position = InMapPosition;
+		var meta = new Dictionary();
+		meta["Order"] = Order;
+		data.Data = meta;
+		return data;
+	}
 }

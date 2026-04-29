@@ -1,5 +1,7 @@
 using Godot;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using Drumstalotajs;
 using Drumstalotajs.Resources.Levels;
 
@@ -12,5 +14,10 @@ public partial class SaveManager : Node
 	
 	public override void _EnterTree()
 	{
+	}
+	
+	public LevelSet GetLevelSet(string name)
+	{
+		return LevelSets.FirstOrDefault(s => s.Name == name);
 	}
 }

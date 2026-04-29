@@ -69,6 +69,11 @@ public partial class Map : Node2D
 	
 	public async void Load(string mapResourcePath)
 	{
+		if (mapResourcePath == null || mapResourcePath.Length == 0)
+		{
+			return;
+		}
+		
 		State = MapState.Loading;
 		try {
 			var data = Files.SafeLoadResource<MapResource>(mapResourcePath, false);
