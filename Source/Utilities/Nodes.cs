@@ -23,8 +23,8 @@ public static class Nodes
 	{
 		return ((SceneTree)Engine.GetMainLoop()).Root.GetNode("Main") as Main;
 	}
-	
-	public static Node GetSceneRoot()
+
+	public static dynamic GetSceneRoot()
 	{
 		return ((SceneTree)Engine.GetMainLoop()).Root.GetNode("Main/SceneManager").GetChild(0);
 	}

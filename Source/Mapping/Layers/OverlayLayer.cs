@@ -32,7 +32,9 @@ public partial class OverlayLayer : SceneLayer
 		if (nodes.Length > 0 && nodes[0].VariantType == Variant.Type.Object)
 		{
 			var tile = (SceneTile)nodes[0];
+			tile.TileId = atlas.Id;
 			tile.Rotation = (float)atlas.Radians;
+			tile.Data = atlas.Data;
 		}
 		EmitSignal(SignalName.ChangedLayer);
 	}

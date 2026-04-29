@@ -20,7 +20,7 @@ public partial class LevelSelectionScene : Node2D
 	[Export] private LevelMetaContainer LevelMetaContainer { get; set; }
 	[Export] public Map Map { get; private set; }
 	[Export] private Topnav Topnav { get; set; }
-	private LevelSet LevelSet { get; set; }
+	public LevelSet LevelSet { get; private set; }
 	
 	public async override void _Ready()
 	{
