@@ -126,12 +126,12 @@ Camera = NodePath("Camera")
 [node name="Ground" type="TileMapLayer" parent="." unique_id=1439789346]
 tile_set = SubResource("TileSet_wxnmh")
 script = ExtResource("2_wxnmh")
-extraColors = PackedColorArray(0.654902, 0.654902, 0.654902, 1, 0.84313726, 0.65882355, 0.85882354, 1)
+ExtraColors = PackedColorArray(0.5328826, 0.5328826, 0.5328826, 1, 0.6907189, 0.42712486, 0.6625841, 1)
 
 [node name="Decoration" type="TileMapLayer" parent="." unique_id=727344730]
 tile_set = SubResource("TileSet_wu35y")
 script = ExtResource("4_ox681")
-extraColors = PackedColorArray(0, 0, 0, 1, 0.24705882, 0.24705882, 0.24705882, 1, 0.49019608, 0.49019608, 0.49019608, 1, 0.6156863, 0.21960784, 0.06666667, 1)
+ExtraColors = PackedColorArray(0, 0, 0, 1, 0.23036289, 0.23036289, 0.23036289, 1, 0.5920712, 0.5920712, 0.5920712, 1, 0.66441286, 0.18683052, 0.039448556, 1)
 
 [node name="Entities" type="TileMapLayer" parent="." unique_id=56824911]
 tile_set = SubResource("TileSet_awdyq")

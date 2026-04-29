@@ -16,14 +16,20 @@ public partial class AtlasColorSwitcher : Control
 	
 	public void Load(AtlasLayer layer)
 	{
+		int count = 0;
 		foreach (var i in layer.GetAtlasIds())
 		{
 			var button = new Button();
 			button.Text = $"{i}";
+			if (count > 0)
+			{
+				button.AddThemeColorOverride("font_color", layer.ExtraColors[count - 1]);
+			}
 			button.Pressed += () => { 
 				EmitSignal(SignalName.ClickedColor, i);
 			};
 			AddChild(button);
+			count++;
 		}
 	}
 }

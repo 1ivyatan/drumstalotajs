@@ -12,7 +12,7 @@ namespace Drumstalotajs.Mapping.Layers;
 
 public partial class AtlasLayer : Layer<Vector2I, AtlasTile, AtlasLayerData>
 {
-	[Export] private Color[] extraColors = [];
+	[Export] public Color[] ExtraColors { get; private set; } = [];
 	
 	public override void _Ready()
 	{
@@ -21,10 +21,10 @@ public partial class AtlasLayer : Layer<Vector2I, AtlasTile, AtlasLayerData>
 	
 	protected void PrepareColorAtlases()
 	{
-		if (extraColors != null && extraColors.Length > 0 && TileSet != null)
+		if (ExtraColors != null && ExtraColors.Length > 0 && TileSet != null)
 		{
 			int firstSourceId = TileSet.GetSourceId(0);
-			foreach (var color in extraColors)
+			foreach (var color in ExtraColors)
 			{
 				var newAtlas = Utilities.Layers.TintAtlasSource(this, firstSourceId, color);
 				TileSet.AddSource(newAtlas);
