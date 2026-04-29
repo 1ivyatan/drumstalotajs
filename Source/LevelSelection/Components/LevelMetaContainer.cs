@@ -7,14 +7,19 @@ using Drumstalotajs.Utilities;
 using Drumstalotajs.Mapping;
 using Drumstalotajs.Mapping.Tiles;
 using Drumstalotajs.LevelSelection;
+using Drumstalotajs.Resources.Levels;
 
 namespace Drumstalotajs.LevelSelection.Components;
 
 public partial class LevelMetaContainer : Control
 {
 	[Export] private Map _map;
+	[Export] private Container _levelMeta;
+	[Export] private Label _title;
+	[Export] private RichTextLabel _desc;
 	[Export] private Button _loadCustomMap;
 	[Export] private FileDialog _customMapDialog;
+	private LevelProps _selectedLevel = null;
 	
 	public override void _Ready()
 	{
@@ -38,15 +43,22 @@ public partial class LevelMetaContainer : Control
 			var sceneRoot = (LevelSelectionScene)Nodes.GetSceneRoot();
 			var levelSet = sceneRoot.LevelSet;
 			var level = levelSet.Levels.FirstOrDefault(l => l.Order == (int)tile.Data["Order"]);
-			
-			GD.Print(level);
-			
-			Visible = true;
+			if (level != null && _selectedLevel == level)
+			{
+				Close();
+			} else if (level != null)
+			{
+				_selectedLevel = level;
+				_title.Text = level.Name;
+				_desc.Text = level.Desc;
+				_levelMeta.Visible = true;
+			}
 		} else Close();
 	}
 	
 	public void Close()
 	{
-		Visible = false;
+		_levelMeta.Visible = false;
+		_selectedLevel = null;
 	}
 }

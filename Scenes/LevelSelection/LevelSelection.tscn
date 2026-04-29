@@ -27,7 +27,7 @@ offset_right = 62.0
 grow_vertical = 0
 text = "Return"
 
-[node name="LevelMetaContainer" type="VBoxContainer" parent="Overlay" unique_id=113706533 node_paths=PackedStringArray("_map", "_loadCustomMap", "_customMapDialog")]
+[node name="LevelMetaContainer" type="VBoxContainer" parent="Overlay" unique_id=113706533 node_paths=PackedStringArray("_map", "_levelMeta", "_title", "_desc", "_loadCustomMap", "_customMapDialog")]
 anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
@@ -38,6 +38,9 @@ grow_vertical = 2
 alignment = 2
 script = ExtResource("2_bnw7x")
 _map = NodePath("../../Map")
+_levelMeta = NodePath("LevelMeta")
+_title = NodePath("LevelMeta/MetaContainer/Title")
+_desc = NodePath("LevelMeta/MetaContainer/Desc")
 _loadCustomMap = NodePath("LoadCustomMap")
 _customMapDialog = NodePath("CustomMapDialog")
 
@@ -53,12 +56,10 @@ size_flags_vertical = 3
 
 [node name="Title" type="Label" parent="Overlay/LevelMetaContainer/LevelMeta/MetaContainer" unique_id=872026647]
 layout_mode = 2
-text = "Title"
 
 [node name="Desc" type="RichTextLabel" parent="Overlay/LevelMetaContainer/LevelMeta/MetaContainer" unique_id=1525277028]
 layout_mode = 2
 size_flags_vertical = 3
-text = "sdfsggggggggggggggggggggggddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
 fit_content = true
 
 [node name="Play" type="Button" parent="Overlay/LevelMetaContainer/LevelMeta/MetaContainer" unique_id=2098536059]
