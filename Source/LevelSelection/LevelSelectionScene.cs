@@ -22,7 +22,7 @@ public partial class LevelSelectionScene : Node2D
 	[Export] private Topnav Topnav { get; set; }
 	private LevelSet LevelSet { get; set; }
 	
-	public override void _Ready()
+	public async override void _Ready()
 	{
 		LevelSet = Nodes.GetRoot().SaveManager.GetLevelSet("Rocky Island");
 		Map.Selector.Filter = new SelectorFilter([Map.OverlayLayer]);
@@ -34,7 +34,7 @@ public partial class LevelSelectionScene : Node2D
 			foreach (var level in LevelSet.Levels)
 			{
 				var data = level.GetTileData();
-				GD.Print(data);
+				Map.OverlayLayer.AddTile(data);
 			}
 		}
 		_return.Pressed += () => {
