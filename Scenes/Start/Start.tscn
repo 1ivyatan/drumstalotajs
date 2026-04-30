@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bihyilbkefydv" path="res://Assets/Textures/Logo.svg" id="1_tdy0i"]
 [ext_resource type="Script" uid="uid://r3lgv0vnhfe7" path="res://Source/Start/StartScene.cs" id="1_x3rvt"]
+[ext_resource type="Script" uid="uid://eeh8oaywqo4m" path="res://Source/Disposable/CounterTest.cs" id="3_x3rvt"]
 
 [node name="Start" type="Control" unique_id=1888125272 node_paths=PackedStringArray("_annotation", "_start", "_editor", "_about", "_exit")]
 layout_mode = 3
@@ -66,6 +67,11 @@ text = "About "
 [node name="Exit" type="Button" parent="Grid/MenuColumn/Buttons" unique_id=218327265]
 layout_mode = 2
 text = "Exit"
+
+[node name="CounterTest" type="Button" parent="Grid/MenuColumn/Buttons" unique_id=251399668]
+layout_mode = 2
+text = "test"
+script = ExtResource("3_x3rvt")
 
 [node name="Annotation" type="AcceptDialog" parent="." unique_id=379908606]
 oversampling_override = 1.0

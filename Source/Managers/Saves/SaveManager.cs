@@ -15,7 +15,9 @@ public partial class SaveManager : Node
 	[Export] private string SavePath { get; set; } = "user://save";
 	// key file, user could write "user://key"
 	[Export] private string KeyPath { get; set; } = "user://key";
-	public SecureFile<Save> Save { get; private set; }
+
+	public SecureFile<Save> Save { get; private set; } = null;
+	public Save SaveData => Save?.Data;
 
 	[Export] public LevelSet[] LevelSets { get; private set; } = [];
 	
