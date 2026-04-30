@@ -6,7 +6,7 @@ using Drumstalotajs;
 namespace Drumstalotajs.Resources.Saves;
 
 [GlobalClass]
-public partial class Save : Resource
+public partial class LevelScore : Resource
 {
-	[Export] public Dictionary<int, Array<LevelScore>> Scores = new();
+	[Export] public int Order { get; set; }
 }
