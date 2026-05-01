@@ -8,6 +8,7 @@ namespace Drumstalotajs.Managers.Scenes;
 public partial class SceneManager : Node
 {
 	[Export] private Dictionary<string, string> Scenes;
+	[Export] private FadeCurtainContainer FadeCurtainContainer;
 	public Node CurrentScene { get; private set; } = null;
 	public SceneState State { get; private set; } = SceneState.RUNNING;
 	
@@ -31,6 +32,7 @@ public partial class SceneManager : Node
 		{
 			foreach (var node in GetChildren())
 			{
+				if (node is FadeCurtainContainer) continue;
 				node.QueueFree();
 				RemoveChild(node);
 			}

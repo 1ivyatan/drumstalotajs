@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dfsur52pslkvm" path="res://Source/Managers/Scenes/SceneManager.cs" id="2_idj7w"]
 [ext_resource type="Script" uid="uid://c6xgiiya64xrh" path="res://Source/Managers/Toasts/ToastManager.cs" id="3_kln2b"]
 [ext_resource type="Script" uid="uid://dt3akytandfac" path="res://Source/Managers/Saves/SaveManager.cs" id="3_rgh2o"]
+[ext_resource type="Script" uid="uid://psksvlqmuwi" path="res://Source/Managers/Scenes/FadeCurtainContainer.cs" id="3_v1gob"]
 [ext_resource type="Resource" uid="uid://bmuvam4iac45v" path="res://Resources/LevelSets/RockyIsland.tres" id="4_pbw6q"]
 
 [node name="Main" type="Node" unique_id=1017316100 node_paths=PackedStringArray("SceneManager", "ToastManager", "SaveManager")]
@@ -20,6 +21,9 @@ Scenes = Dictionary[String, String]({
 "LevelSelection": "res://Scenes/LevelSelection/LevelSelection.tscn",
 "Start": "res://Scenes/Start/Start.tscn"
 })
+
+[node name="FadeCurtainContainer" type="CanvasLayer" parent="SceneManager" unique_id=1463910313]
+script = ExtResource("3_v1gob")
 
 [node name="AudioManager" type="Node" parent="." unique_id=1009940070]
 
