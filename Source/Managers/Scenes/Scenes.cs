@@ -2,6 +2,7 @@ using Godot;
 using System;
 using Drumstalotajs.Utilities;
 using Drumstalotajs.Resources.Levels;
+using Drumstalotajs.Battle;
 
 namespace Drumstalotajs.Managers.Scenes;
 
@@ -27,13 +28,15 @@ public partial class SceneManager : Node
 	
 	public async void Battle(string mapPath)
 	{
-		Node scene = await LoadScene("Battle");
+		BattleScene scene = await LoadScene("Battle") as BattleScene;
+		await scene.Open(mapPath);
 		await SetScene(scene);
 	}
 	
 	public async void Battle(LevelSet levelSet, LevelProps level)
 	{
-		Node scene = await LoadScene("Battle");
+		BattleScene scene = await LoadScene("Battle") as BattleScene;
+		await scene.Open(levelSet, level);
 		await SetScene(scene);
 	}
 }
