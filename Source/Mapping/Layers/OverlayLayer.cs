@@ -25,7 +25,7 @@ public partial class OverlayLayer : SceneLayer
 		return tile as OverlayTile;
 	}
 	
-	public async void AddTile(OverlayLayerTileData atlas)
+	public async Task AddTile(OverlayLayerTileData atlas)
 	{
 		SetCell(atlas.Position, 0, Vector2I.Zero, atlas.Id);
 		var nodes = await ToSignal(this, SignalName.TileSpawned);
@@ -37,6 +37,7 @@ public partial class OverlayLayer : SceneLayer
 			tile.Data = atlas.Data;
 		}
 		EmitSignal(SignalName.ChangedLayer);
+		GD.Print(2);
 	}
 	
 	new public OverlayLayerData Export()

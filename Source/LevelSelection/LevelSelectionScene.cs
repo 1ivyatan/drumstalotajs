@@ -34,7 +34,7 @@ public partial class LevelSelectionScene : Node2D
 			foreach (var level in LevelSet.Levels)
 			{
 				var data = level.GetTileData();
-				Map.OverlayLayer.AddTile(data);
+				await Map.OverlayLayer.AddTile(data);
 			}
 		}
 		_return.Pressed += () => {

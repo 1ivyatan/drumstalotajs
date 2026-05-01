@@ -10,10 +10,7 @@ namespace Drumstalotajs.Managers.Saves;
 
 public partial class SaveManager : Node
 {
-	// this is the path that SaveManager looks for. In godot inspector,
-	// user could write "user://save", "user://save.data" and so on
 	[Export] private string SavePath { get; set; } = "user://save";
-	// key file, user could write "user://key"
 	[Export] private string KeyPath { get; set; } = "user://key";
 
 	public SecureFile<Save> Save { get; private set; } = null;
@@ -24,6 +21,26 @@ public partial class SaveManager : Node
 	public override void _EnterTree()
 	{
 		Load();
+	}
+	
+	/* levelset */
+	public LevelSet GetLevelSet(string name)
+	{
+		return LevelSets.FirstOrDefault(s => s.Name == name);
+	}
+	
+	public bool IsLevelUnlocked(LevelSet levelSet, int order)
+	{
+		//if (LevelSets.Scores.Count == 0) LevelSets[levelSet]
+		if (SaveData.Scores.ContainsKey(levelSet))
+		{
+			
+		} else
+		{
+			GD.Print(order);
+			
+		}
+		return false;
 	}
 	
 	private void Load()
@@ -40,10 +57,5 @@ public partial class SaveManager : Node
 		}
 
 		Save.Save();
-	}
-	
-	public LevelSet GetLevelSet(string name)
-	{
-		return LevelSets.FirstOrDefault(s => s.Name == name);
 	}
 }

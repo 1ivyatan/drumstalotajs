@@ -18,13 +18,13 @@ public partial class CounterTest : Button
 			//test.Order = 6;
 			//Nodes.GetRoot().SaveManager.SaveData.Scores[0].Add(test);
 			
-			foreach (var h in Nodes.GetRoot().SaveManager.SaveData.Scores[0])
-			{
-				GD.Print(h.Order);
-			}
+			//foreach (var h in Nodes.GetRoot().SaveManager.SaveData.Scores[])
+			//{
+			//	GD.Print(h.Order);
+			//}
 			
 		//	GD.Print(Nodes.GetRoot().SaveManager.SaveData.Scores.Count);
-			Nodes.GetRoot().SaveManager.SaveProgress();
+		//	Nodes.GetRoot().SaveManager.SaveProgress();
 		};
 	}
 }

@@ -89,7 +89,7 @@ public partial class AtlasLayer : Layer<Vector2I, AtlasTile, AtlasLayerData>
 		return [];
 	}
 	
-	public override void AddTile(Vector2I position, Vector2I atlas)
+	public async override Task AddTile(Vector2I position, Vector2I atlas)
 	{
 		SetCell(position, 0, atlas, 0);
 		EmitSignal(SignalName.ChangedLayer);

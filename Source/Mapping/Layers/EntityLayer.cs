@@ -26,7 +26,7 @@ public partial class EntityLayer : SceneLayer
 		return tile as Entity;
 	}
 	
-	public async void AddTile(EntityLayerTileData atlas)
+	public async Task AddTile(EntityLayerTileData atlas)
 	{
 		SetCell(atlas.Position, 0, Vector2I.Zero, atlas.Id);
 		var nodes = await ToSignal(this, SignalName.TileSpawned);

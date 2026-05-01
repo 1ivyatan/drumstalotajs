@@ -8,6 +8,7 @@ using Drumstalotajs.Mapping;
 using Drumstalotajs.Mapping.Tiles;
 using Drumstalotajs.LevelSelection;
 using Drumstalotajs.Resources.Levels;
+using Drumstalotajs.Managers.Saves;
 
 namespace Drumstalotajs.LevelSelection.Components;
 
@@ -17,12 +18,15 @@ public partial class LevelMetaContainer : Control
 	[Export] private Container _levelMeta;
 	[Export] private Label _title;
 	[Export] private RichTextLabel _desc;
+	[Export] private Button _playLevel;
 	[Export] private Button _loadCustomMap;
 	[Export] private FileDialog _customMapDialog;
 	private LevelProps _selectedLevel = null;
+	private SaveManager _saveManager;
 	
 	public override void _Ready()
 	{
+		_saveManager = Nodes.GetRoot().SaveManager;
 		Utilities.Editor.EditorControl(_loadCustomMap);
 		if (Utilities.Editor.IsEditor())
 		{
@@ -51,6 +55,7 @@ public partial class LevelMetaContainer : Control
 				_selectedLevel = level;
 				_title.Text = level.Name;
 				_desc.Text = level.Desc;
+				_playLevel.Disabled = !_saveManager.IsLevelUnlocked(levelSet, level.Order);
 				_levelMeta.Visible = true;
 			}
 		} else Close();
