@@ -18,8 +18,13 @@ public partial class BattleScene : Node2D
 		BattleTopnav.PressedPause += () => { Pause(); };
 		
 		_pauseOverlay.PressedResume += () => { Resume(); };
-		_pauseOverlay.PressedRestart += () => {  };
-		_pauseOverlay.PressedExit += () => {  };
+		_pauseOverlay.PressedRestart += () => { Load(); };
+		_pauseOverlay.PressedExit += () => { Exit(); };
+	}
+	
+	private void Exit()
+	{
+		Nodes.GetRoot().SceneManager.LevelSelection();
 	}
 	
 	private void Pause()
@@ -38,10 +43,15 @@ public partial class BattleScene : Node2D
 	
 	public void Open(LevelSet levelSet, LevelProps levelProps)
 	{
-		
+		Load();
 	}
 	
 	public void Open(string mapPath)
+	{
+		Load();
+	}
+	
+	private void Load()
 	{
 		
 	}
