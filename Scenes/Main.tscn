@@ -23,9 +23,20 @@ Scenes = Dictionary[String, String]({
 })
 FadeCurtainContainer = NodePath("FadeCurtainContainer")
 
-[node name="FadeCurtainContainer" type="CanvasLayer" parent="SceneManager" unique_id=1463910313]
+[node name="FadeCurtainContainer" type="CanvasLayer" parent="SceneManager" unique_id=1463910313 node_paths=PackedStringArray("ColorRect")]
 layer = 2
 script = ExtResource("3_v1gob")
+Time = 0.5
+FadeInColor = Color(0, 0, 0, 1)
+ColorRect = NodePath("ColorRect")
+
+[node name="ColorRect" type="ColorRect" parent="SceneManager/FadeCurtainContainer" unique_id=987761588]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
 [node name="AudioManager" type="Node" parent="." unique_id=1009940070]
 
