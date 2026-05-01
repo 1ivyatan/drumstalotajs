@@ -5,6 +5,7 @@ using Drumstalotajs.Utilities;
 using Drumstalotajs.Resources.Levels;
 using Drumstalotajs.Battle.Components;
 using System.Threading.Tasks;
+using Drumstalotajs.Resources.Saves;
 
 namespace Drumstalotajs.Battle;
 
@@ -18,13 +19,29 @@ public partial class BattleScene : Node2D
 	private LevelProps _levelProps;
 	private string _mapPath;
 	
+	
+	[Export] private Button _fakeVictory;
+	
 	public override void _Ready()
 	{
+		
 		BattleTopnav.PressedPause += () => { Pause(); };
 		_pauseOverlay.PressedResume += () => { Resume(); };
 		_pauseOverlay.PressedRestart += () => { Restart(); };
 		_pauseOverlay.PressedExit += () => { Exit(); };
 		Load();
+		
+		_fakeVictory.Pressed += () => { RecordScore();  Exit(); };
+	}
+	
+	private void RecordScore()
+	{
+		if (_levelSet != null && _levelProps != null)
+		{
+			var saveManager = Nodes.GetRoot().SaveManager;
+			var score = new LevelScore(_levelProps);
+			saveManager.AddScore(_levelSet, score);
+		}
 	}
 	
 	private void Exit()

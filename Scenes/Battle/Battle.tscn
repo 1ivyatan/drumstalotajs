@@ -6,10 +6,11 @@
 [ext_resource type="Script" uid="uid://b6ocl3clhwf1h" path="res://Source/Battle/Components/PauseOverlay.cs" id="4_odh8s"]
 [ext_resource type="Script" uid="uid://bnmf3stn1wm0k" path="res://Source/Battle/Components/PauseContainer.cs" id="5_rremj"]
 
-[node name="Battle" type="Node2D" unique_id=1007953308 node_paths=PackedStringArray("BattleTopnav", "_pauseOverlay")]
+[node name="Battle" type="Node2D" unique_id=1007953308 node_paths=PackedStringArray("BattleTopnav", "_pauseOverlay", "_fakeVictory")]
 script = ExtResource("1_ael4v")
 BattleTopnav = NodePath("CanvasLayer/Topnav")
 _pauseOverlay = NodePath("CanvasLayer/PauseOverlay")
+_fakeVictory = NodePath("CanvasLayer/FakeVictory")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1518625057]
 
@@ -71,3 +72,16 @@ text = "Restart"
 [node name="Exit" type="Button" parent="CanvasLayer/PauseOverlay/PauseMenu/VBoxContainer" unique_id=1292169710]
 layout_mode = 2
 text = "Exit"
+
+[node name="FakeVictory" type="Button" parent="CanvasLayer" unique_id=580280653]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -8.0
+offset_right = 4.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "FAKE A VICTORY"
