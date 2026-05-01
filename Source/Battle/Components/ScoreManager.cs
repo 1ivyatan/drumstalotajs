@@ -1,6 +1,9 @@
 using Godot;
 using System;
 using Drumstalotajs;
+using Drumstalotajs.Mapping;
+using Drumstalotajs.Resources.Levels;
+using Drumstalotajs.Resources.Mapping;
 
 namespace Drumstalotajs.Battle.Components;
 
@@ -10,7 +13,12 @@ public partial class ScoreManager : Node
 	{
 	}
 	
-	public void PrepareScoring()
+	public void PrepareScoring(MapResource mapResource)
+	{
+		
+	}
+	
+	public void PrepareScoring(MapResource mapResource, LevelProps levelProps)
 	{
 		
 	}

@@ -1,18 +1,22 @@
 [gd_scene format=3 uid="uid://b2sxeaix5akn6"]
 
 [ext_resource type="Script" uid="uid://cdywfpx8u2wse" path="res://Source/Battle/BattleScene.cs" id="1_ael4v"]
+[ext_resource type="PackedScene" uid="uid://druw1x35jlqnh" path="res://Scenes/Mapping/Map.tscn" id="2_dcr6b"]
 [ext_resource type="Script" uid="uid://cc1cxehau7o4" path="res://Source/Battle/Components/ScoreManager.cs" id="2_g1sps"]
 [ext_resource type="PackedScene" uid="uid://bqh5apppkldxo" path="res://Scenes/Components/Topnav.tscn" id="2_gunap"]
 [ext_resource type="Script" uid="uid://btbtqp8lo1xc2" path="res://Source/Battle/Components/BattleTopnav.cs" id="3_3ihc8"]
 [ext_resource type="Script" uid="uid://b6ocl3clhwf1h" path="res://Source/Battle/Components/PauseOverlay.cs" id="4_odh8s"]
 [ext_resource type="Script" uid="uid://bnmf3stn1wm0k" path="res://Source/Battle/Components/PauseContainer.cs" id="5_rremj"]
 
-[node name="Battle" type="Node2D" unique_id=1007953308 node_paths=PackedStringArray("BattleTopnav", "ScoreManager", "_pauseOverlay", "_fakeVictory")]
+[node name="Battle" type="Node2D" unique_id=1007953308 node_paths=PackedStringArray("BattleTopnav", "Map", "ScoreManager", "_pauseOverlay", "_fakeVictory")]
 script = ExtResource("1_ael4v")
 BattleTopnav = NodePath("CanvasLayer/Topnav")
+Map = NodePath("Map")
 ScoreManager = NodePath("ScoreManager")
 _pauseOverlay = NodePath("CanvasLayer/PauseOverlay")
 _fakeVictory = NodePath("CanvasLayer/FakeVictory")
+
+[node name="Map" parent="." unique_id=1338299763 instance=ExtResource("2_dcr6b")]
 
 [node name="ScoreManager" type="Node" parent="." unique_id=999479475]
 script = ExtResource("2_g1sps")

@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using Drumstalotajs;
+using Drumstalotajs.Mapping;
 using Drumstalotajs.Utilities;
 using Drumstalotajs.Resources.Levels;
 using Drumstalotajs.Battle.Components;
@@ -12,6 +13,7 @@ namespace Drumstalotajs.Battle;
 public partial class BattleScene : Node2D
 {
 	[Export] public BattleTopnav BattleTopnav { get; private set; }
+	[Export] public Map Map { get; private set; }
 	[Export] private ScoreManager ScoreManager { get; set; }
 	[Export] private PauseOverlay _pauseOverlay;
 	public bool Paused { get; private set; } = false;
@@ -79,7 +81,13 @@ public partial class BattleScene : Node2D
 	
 	private void Load(string mapPath)
 	{
-		ScoreManager.PrepareScoring();
+		if (_levelProps != null)
+		{
+			ScoreManager.PrepareScoring(Map.CurrentLoadedMap, _levelProps);
+		} else
+		{
+			ScoreManager.PrepareScoring(Map.CurrentLoadedMap);
+		}
 	}
 	
 	private void Restart()
