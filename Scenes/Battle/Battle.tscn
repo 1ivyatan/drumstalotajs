@@ -1,6 +1,41 @@
 [gd_scene format=3 uid="uid://b2sxeaix5akn6"]
 
 [ext_resource type="Script" uid="uid://cdywfpx8u2wse" path="res://Source/Battle/BattleScene.cs" id="1_ael4v"]
+[ext_resource type="PackedScene" uid="uid://bqh5apppkldxo" path="res://Scenes/Components/Topnav.tscn" id="2_gunap"]
+[ext_resource type="Script" uid="uid://btbtqp8lo1xc2" path="res://Source/Battle/Components/BattleTopnav.cs" id="3_3ihc8"]
+[ext_resource type="Script" uid="uid://b6ocl3clhwf1h" path="res://Source/Battle/Components/PauseOverlay.cs" id="4_odh8s"]
 
-[node name="Battle" type="Node2D" unique_id=1007953308]
+[node name="Battle" type="Node2D" unique_id=1007953308 node_paths=PackedStringArray("BattleTopnav", "_pauseOverlay")]
 script = ExtResource("1_ael4v")
+BattleTopnav = NodePath("CanvasLayer/Topnav")
+_pauseOverlay = NodePath("CanvasLayer/PauseOverlay")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1518625057]
+
+[node name="Topnav" parent="CanvasLayer" unique_id=118245835 node_paths=PackedStringArray("_pause") instance=ExtResource("2_gunap")]
+script = ExtResource("3_3ihc8")
+_pause = NodePath("PauseButton")
+
+[node name="PauseButton" type="Button" parent="CanvasLayer/Topnav" unique_id=268528842]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Pause"
+
+[node name="PauseOverlay" type="Control" parent="CanvasLayer" unique_id=1813882581]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_odh8s")
+
+[node name="Curtain" type="ColorRect" parent="CanvasLayer/PauseOverlay" unique_id=1724706246]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5176471)

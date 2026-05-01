@@ -11,5 +11,6 @@ script = ExtResource("1_wxygq")
 _title = NodePath("Title")
 
 [node name="Title" type="Label" parent="." unique_id=1464729364]
+z_index = 1
 layout_mode = 2
 size_flags_horizontal = 4
