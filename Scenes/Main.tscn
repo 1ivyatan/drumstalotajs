@@ -23,6 +23,7 @@ Scenes = Dictionary[String, String]({
 })
 
 [node name="FadeCurtainContainer" type="CanvasLayer" parent="SceneManager" unique_id=1463910313]
+layer = 2
 script = ExtResource("3_v1gob")
 
 [node name="AudioManager" type="Node" parent="." unique_id=1009940070]

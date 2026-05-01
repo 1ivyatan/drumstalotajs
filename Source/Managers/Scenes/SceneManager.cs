@@ -37,6 +37,7 @@ public partial class SceneManager : Node
 				RemoveChild(node);
 			}
 			AddChild(scene);
+			MoveChild(scene, 0);
 			CurrentScene = scene;
 		}
 		State = SceneState.RUNNING;
