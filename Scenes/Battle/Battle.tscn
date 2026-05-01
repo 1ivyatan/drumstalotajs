@@ -1,3 +1,6 @@
 [gd_scene format=3 uid="uid://b2sxeaix5akn6"]
 
+[ext_resource type="Script" uid="uid://cdywfpx8u2wse" path="res://Source/Battle/BattleScene.cs" id="1_ael4v"]
+
 [node name="Battle" type="Node2D" unique_id=1007953308]
+script = ExtResource("1_ael4v")

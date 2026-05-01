@@ -32,13 +32,14 @@ public partial class LevelMetaContainer : Control
 			var levelSet = GetCurrentLevelSet();
 			if (_selectedLevel != null && _saveManager.IsLevelUnlocked(levelSet, _selectedLevel.Order))
 			{
-				Nodes.GetRoot().SceneManager.Battle(_selectedLevel);
+				Nodes.GetRoot().SceneManager.Battle(levelSet, _selectedLevel);
 			}
 		};
 		if (Utilities.Editor.IsEditor())
 		{
 			_customMapDialog.FileSelected += (string path) => {
-				GD.Print(path);
+				var editedPath = ProjectSettings.LocalizePath(path.Replace("\\", "/"));
+				Nodes.GetRoot().SceneManager.Battle(editedPath);
 			};
 			_loadCustomMap.Pressed += () => {
 				_customMapDialog.PopupCentered();

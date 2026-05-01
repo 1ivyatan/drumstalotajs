@@ -25,7 +25,13 @@ public partial class SceneManager : Node
 		SetScene(scene);
 	}
 	
-	public void Battle(LevelProps level)
+	public void Battle(string mapPath)
+	{
+		Node scene = LoadScene("Battle");
+		SetScene(scene);
+	}
+	
+	public void Battle(LevelSet levelSet, LevelProps level)
 	{
 		Node scene = LoadScene("Battle");
 		SetScene(scene);
