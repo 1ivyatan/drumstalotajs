@@ -1,16 +1,22 @@
 using Godot;
 using System;
 using Drumstalotajs;
+using System.Threading.Tasks;
 
 namespace Drumstalotajs.Managers.Scenes;
 
 public partial class FadeCurtainContainer : CanvasLayer
 {
-	public override void _Ready()
+	public async Task FadeIn()
 	{
+		
 	}
-
-	public override void _Process(double delta)
+	
+	public async Task FadeOut()
 	{
+		
 	}
+	
+			/*
+	await ToSignal(tween, Tween.SignalName.Finished);*/
 }

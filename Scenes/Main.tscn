@@ -13,7 +13,7 @@ SceneManager = NodePath("SceneManager")
 ToastManager = NodePath("Overlay/ToastManager")
 SaveManager = NodePath("SaveManager")
 
-[node name="SceneManager" type="Node" parent="." unique_id=712174652]
+[node name="SceneManager" type="Node" parent="." unique_id=712174652 node_paths=PackedStringArray("FadeCurtainContainer")]
 script = ExtResource("2_idj7w")
 Scenes = Dictionary[String, String]({
 "Battle": "res://Scenes/Battle/Battle.tscn",
@@ -21,6 +21,7 @@ Scenes = Dictionary[String, String]({
 "LevelSelection": "res://Scenes/LevelSelection/LevelSelection.tscn",
 "Start": "res://Scenes/Start/Start.tscn"
 })
+FadeCurtainContainer = NodePath("FadeCurtainContainer")
 
 [node name="FadeCurtainContainer" type="CanvasLayer" parent="SceneManager" unique_id=1463910313]
 layer = 2

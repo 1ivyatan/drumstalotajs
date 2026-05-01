@@ -2,6 +2,7 @@ using Godot;
 using Godot.Collections;
 using System;
 using Drumstalotajs.Utilities;
+using System.Threading.Tasks;
 
 namespace Drumstalotajs.Managers.Scenes;
 
@@ -10,23 +11,27 @@ public partial class SceneManager : Node
 	[Export] private Dictionary<string, string> Scenes;
 	[Export] private FadeCurtainContainer FadeCurtainContainer;
 	public Node CurrentScene { get; private set; } = null;
-	public SceneState State { get; private set; } = SceneState.RUNNING;
+	public SceneState State { get; private set; } = SceneState.Running;
 	
-	public void PauseScene() { if (State != SceneState.LOADING) State = SceneState.RUNNING; }
-	public void ResumeScene() { if (State != SceneState.LOADING) State = SceneState.RUNNING; }
+	public void PauseScene() { if (State != SceneState.Loading) State = SceneState.Paused; }
+	public void ResumeScene() { if (State != SceneState.Loading) State = SceneState.Loading; }
 	
-	private Node LoadScene(string name)
+	private async Task<Node> LoadScene(string name)
 	{
+		await FadeCurtainContainer.FadeIn();
 		PackedScene scene = Files.SafeLoadResource<PackedScene>(Scenes[name]);
 		if (scene != null)
 		{
-			State = SceneState.LOADING;
+			State = SceneState.Loading;
 			return scene.Instantiate();
+		} else
+		{
+			State = SceneState.Error;
+			return null;
 		}
-		return null;
 	}
 	
-	private void SetScene(Node scene)
+	private async Task SetScene(Node scene)
 	{
 		if (scene != null)
 		{
@@ -39,7 +44,11 @@ public partial class SceneManager : Node
 			AddChild(scene);
 			MoveChild(scene, 0);
 			CurrentScene = scene;
+			State = SceneState.Running;
+			await FadeCurtainContainer.FadeOut();
+		} else
+		{
+			State = SceneState.Error;
 		}
-		State = SceneState.RUNNING;
 	}
 }

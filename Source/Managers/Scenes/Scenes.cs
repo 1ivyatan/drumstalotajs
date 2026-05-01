@@ -7,33 +7,33 @@ namespace Drumstalotajs.Managers.Scenes;
 
 public partial class SceneManager : Node
 {
-	public void Start()
+	public async void Start()
 	{
-		Node scene = LoadScene("Start");
-		SetScene(scene);
+		Node scene = await LoadScene("Start");
+		await SetScene(scene);
 	}
 	
-	public void LevelSelection()
+	public async void LevelSelection()
 	{
-		Node scene = LoadScene("LevelSelection");
-		SetScene(scene);
+		Node scene = await LoadScene("LevelSelection");
+		await SetScene(scene);
 	}
 	
-	public void Editor()
+	public async void Editor()
 	{
-		Node scene = LoadScene("Editor");
-		SetScene(scene);
+		Node scene = await LoadScene("Editor");
+		await SetScene(scene);
 	}
 	
-	public void Battle(string mapPath)
+	public async void Battle(string mapPath)
 	{
-		Node scene = LoadScene("Battle");
-		SetScene(scene);
+		Node scene = await LoadScene("Battle");
+		await SetScene(scene);
 	}
 	
-	public void Battle(LevelSet levelSet, LevelProps level)
+	public async void Battle(LevelSet levelSet, LevelProps level)
 	{
-		Node scene = LoadScene("Battle");
-		SetScene(scene);
+		Node scene = await LoadScene("Battle");
+		await SetScene(scene);
 	}
 }

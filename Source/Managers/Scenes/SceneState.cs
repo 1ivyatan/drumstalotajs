@@ -5,5 +5,5 @@ namespace Drumstalotajs.Managers.Scenes;
 
 public enum SceneState
 {
-	LOADING, PAUSED, RUNNING
+	Loading, Paused, Running, Error
 }
