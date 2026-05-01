@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bqh5apppkldxo" path="res://Scenes/Components/Topnav.tscn" id="2_gunap"]
 [ext_resource type="Script" uid="uid://btbtqp8lo1xc2" path="res://Source/Battle/Components/BattleTopnav.cs" id="3_3ihc8"]
 [ext_resource type="Script" uid="uid://b6ocl3clhwf1h" path="res://Source/Battle/Components/PauseOverlay.cs" id="4_odh8s"]
+[ext_resource type="Script" uid="uid://bnmf3stn1wm0k" path="res://Source/Battle/Components/PauseContainer.cs" id="5_rremj"]
 
 [node name="Battle" type="Node2D" unique_id=1007953308 node_paths=PackedStringArray("BattleTopnav", "_pauseOverlay")]
 script = ExtResource("1_ael4v")
@@ -21,7 +22,7 @@ layout_mode = 2
 size_flags_horizontal = 0
 text = "Pause"
 
-[node name="PauseOverlay" type="Control" parent="CanvasLayer" unique_id=1813882581]
+[node name="PauseOverlay" type="Control" parent="CanvasLayer" unique_id=1813882581 node_paths=PackedStringArray("_pauseContainer")]
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -30,6 +31,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("4_odh8s")
+_pauseContainer = NodePath("PauseMenu")
 
 [node name="Curtain" type="ColorRect" parent="CanvasLayer/PauseOverlay" unique_id=1724706246]
 layout_mode = 1
@@ -39,3 +41,33 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.5176471)
+
+[node name="PauseMenu" type="PanelContainer" parent="CanvasLayer/PauseOverlay" unique_id=1047462654 node_paths=PackedStringArray("_resume", "_restart", "_exit")]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_rremj")
+_resume = NodePath("VBoxContainer/Resume")
+_restart = NodePath("VBoxContainer/Restart")
+_exit = NodePath("VBoxContainer/Exit")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PauseOverlay/PauseMenu" unique_id=769875721]
+layout_mode = 2
+
+[node name="Resume" type="Button" parent="CanvasLayer/PauseOverlay/PauseMenu/VBoxContainer" unique_id=224519652]
+layout_mode = 2
+text = "Resume"
+
+[node name="Restart" type="Button" parent="CanvasLayer/PauseOverlay/PauseMenu/VBoxContainer" unique_id=448006504]
+layout_mode = 2
+text = "Restart"
+
+[node name="Exit" type="Button" parent="CanvasLayer/PauseOverlay/PauseMenu/VBoxContainer" unique_id=1292169710]
+layout_mode = 2
+text = "Exit"

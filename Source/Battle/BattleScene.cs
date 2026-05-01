@@ -16,6 +16,10 @@ public partial class BattleScene : Node2D
 	public override void _Ready()
 	{
 		BattleTopnav.PressedPause += () => { Pause(); };
+		
+		_pauseOverlay.PressedResume += () => { Resume(); };
+		_pauseOverlay.PressedRestart += () => {  };
+		_pauseOverlay.PressedExit += () => {  };
 	}
 	
 	private void Pause()
@@ -23,6 +27,13 @@ public partial class BattleScene : Node2D
 		Nodes.GetRoot().SceneManager.PauseScene();
 		Paused = true;
 		_pauseOverlay.Visible = true;
+	}
+	
+	private void Resume()
+	{
+		_pauseOverlay.Visible = false;
+		Nodes.GetRoot().SceneManager.ResumeScene();
+		Paused = false;
 	}
 	
 	public void Open(LevelSet levelSet, LevelProps levelProps)
