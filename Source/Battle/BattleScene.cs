@@ -12,6 +12,7 @@ namespace Drumstalotajs.Battle;
 public partial class BattleScene : Node2D
 {
 	[Export] public BattleTopnav BattleTopnav { get; private set; }
+	[Export] private ScoreManager ScoreManager { get; set; }
 	[Export] private PauseOverlay _pauseOverlay;
 	public bool Paused { get; private set; } = false;
 	
@@ -29,7 +30,6 @@ public partial class BattleScene : Node2D
 		_pauseOverlay.PressedResume += () => { Resume(); };
 		_pauseOverlay.PressedRestart += () => { Restart(); };
 		_pauseOverlay.PressedExit += () => { Exit(); };
-		Load();
 		
 		_fakeVictory.Pressed += () => { RecordScore();  Exit(); };
 	}
@@ -67,18 +67,19 @@ public partial class BattleScene : Node2D
 	{
 		_levelSet = levelSet;
 		_levelProps = levelProps;
-		Load();
+		_mapPath = levelProps.MapPath;
+		Load(levelProps.MapPath);
 	}
 	
 	public async Task Open(string mapPath)
 	{
 		_mapPath = mapPath;
-		Load();
+		Load(mapPath);
 	}
 	
-	private void Load()
+	private void Load(string mapPath)
 	{
-		
+		ScoreManager.PrepareScoring();
 	}
 	
 	private void Restart()
