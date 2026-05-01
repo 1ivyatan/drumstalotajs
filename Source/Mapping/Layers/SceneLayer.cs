@@ -139,7 +139,7 @@ public partial class SceneLayer : Layer<string, SceneTile, SceneLayerData>
 	{
 		foreach (var tile in layerData.Tiles)
 		{
-			AddTile(tile);
+			await AddTile(tile);
 		}
 	}
 	

@@ -28,6 +28,13 @@ public partial class LevelMetaContainer : Control
 	{
 		_saveManager = Nodes.GetRoot().SaveManager;
 		Utilities.Editor.EditorControl(_loadCustomMap);
+		_playLevel.Pressed += () => {
+			var levelSet = GetCurrentLevelSet();
+			if (_selectedLevel != null && _saveManager.IsLevelUnlocked(levelSet, _selectedLevel.Order))
+			{
+				Nodes.GetRoot().SceneManager.Battle(_selectedLevel);
+			}
+		};
 		if (Utilities.Editor.IsEditor())
 		{
 			_customMapDialog.FileSelected += (string path) => {
@@ -44,8 +51,7 @@ public partial class LevelMetaContainer : Control
 		var atlas = _map.OverlayLayer.GetFullAtlas().FirstOrDefault(a => a.Id == tile.TileId);
 		if (atlas != null)
 		{
-			var sceneRoot = (LevelSelectionScene)Nodes.GetSceneRoot();
-			var levelSet = sceneRoot.LevelSet;
+			var levelSet = GetCurrentLevelSet();
 			var level = levelSet.Levels.FirstOrDefault(l => l.Order == (int)tile.Data["Order"]);
 			if (level != null && _selectedLevel == level)
 			{
@@ -59,6 +65,12 @@ public partial class LevelMetaContainer : Control
 				_levelMeta.Visible = true;
 			}
 		} else Close();
+	}
+	
+	private LevelSet GetCurrentLevelSet()
+	{
+		var sceneRoot = (LevelSelectionScene)Nodes.GetSceneRoot();
+		return sceneRoot.LevelSet;
 	}
 	
 	public void Close()

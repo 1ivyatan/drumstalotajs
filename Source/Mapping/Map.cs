@@ -106,7 +106,7 @@ public partial class Map : Node2D
 		return GroundLayer.LocalToMap(mouseLocalPos);
 	}
 	
-	public void AddTile(
+	public async void AddTile(
 		BaseLayer layer, 
 		string atlas,
 		Vector2I position
@@ -124,14 +124,14 @@ public partial class Map : Node2D
 					return;
 				}
 					
-				atlasLayer.AddTile(position, coords);
+				await atlasLayer.AddTile(position, coords);
 				added = true;
 			}
 		} else if (layer is SceneLayer sceneLayer)
 		{
 			if (GroundLayer.GetCellAtlasCoords(position) != Constants.Vector2I.Negative)
 			{
-				sceneLayer.AddTile(position, atlas);
+				await sceneLayer.AddTile(position, atlas);
 				added = true;
 			}
 		}

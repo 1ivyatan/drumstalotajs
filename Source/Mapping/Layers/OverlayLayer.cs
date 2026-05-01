@@ -37,7 +37,6 @@ public partial class OverlayLayer : SceneLayer
 			tile.Data = atlas.Data;
 		}
 		EmitSignal(SignalName.ChangedLayer);
-		GD.Print(2);
 	}
 	
 	new public OverlayLayerData Export()
@@ -51,7 +50,7 @@ public partial class OverlayLayer : SceneLayer
 		{
 			foreach (OverlayLayerTileData tile in overlayLayerData.Tiles)
 			{
-				this.AddTile(tile);
+				await this.AddTile(tile);
 			}
 		}
 	}

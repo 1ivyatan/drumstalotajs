@@ -37,8 +37,8 @@ public partial class SaveManager : Node
 			
 		} else
 		{
-			GD.Print(order);
-			
+			int idx = Array.FindIndex(levelSet.Levels, l => l.Order == order);
+			return idx == 0;
 		}
 		return false;
 	}

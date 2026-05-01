@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using Drumstalotajs.Utilities;
+using Drumstalotajs.Resources.Levels;
 
 namespace Drumstalotajs.Managers.Scenes;
 
@@ -21,6 +22,12 @@ public partial class SceneManager : Node
 	public void Editor()
 	{
 		Node scene = LoadScene("Editor");
+		SetScene(scene);
+	}
+	
+	public void Battle(LevelProps level)
+	{
+		Node scene = LoadScene("Battle");
 		SetScene(scene);
 	}
 }

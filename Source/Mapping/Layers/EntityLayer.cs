@@ -51,7 +51,7 @@ public partial class EntityLayer : SceneLayer
 		{
 			foreach (EntityLayerTileData tile in entityLayerData.Tiles)
 			{
-				this.AddTile(tile);
+				await this.AddTile(tile);
 			}
 		} else return;
 	}

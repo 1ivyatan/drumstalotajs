@@ -15,6 +15,7 @@ SaveManager = NodePath("SaveManager")
 [node name="SceneManager" type="Node" parent="." unique_id=712174652]
 script = ExtResource("2_idj7w")
 Scenes = Dictionary[String, String]({
+"Battle": "res://Scenes/Battle/Battle.tscn",
 "Editor": "res://Scenes/Editor/Editor.tscn",
 "LevelSelection": "res://Scenes/LevelSelection/LevelSelection.tscn",
 "Start": "res://Scenes/Start/Start.tscn"
