@@ -20,11 +20,11 @@ _fakeVictory = NodePath("Overlay/FakeVictory")
 
 [node name="Map" parent="." unique_id=1338299763 instance=ExtResource("2_dcr6b")]
 
-[node name="ScoreManager" type="Node" parent="." unique_id=999479475]
-script = ExtResource("2_g1sps")
-
 [node name="StageManager" type="CanvasLayer" parent="." unique_id=1845418048]
 script = ExtResource("4_07e4u")
+
+[node name="ScoreManager" type="Node" parent="." unique_id=999479475]
+script = ExtResource("2_g1sps")
 
 [node name="Overlay" type="CanvasLayer" parent="." unique_id=1518625057]
 

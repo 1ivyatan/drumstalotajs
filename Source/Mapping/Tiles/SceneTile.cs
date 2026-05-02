@@ -10,7 +10,7 @@ namespace Drumstalotajs.Mapping.Tiles;
 public partial class SceneTile : Tile
 {
 	public int TileId { get; set; } = -1;
-	public Dictionary Data { get; set; } = null;
+	public virtual Dictionary Data { get; set; } = new();
 
 	protected void Die()
 	{
