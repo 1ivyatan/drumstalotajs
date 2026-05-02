@@ -227,6 +227,13 @@ texture_region_size = Vector2i(32, 32)
 8:5/0 = 0
 9:5/0 = 0
 10:5/0 = 0
+0:14/0 = 0
+1:14/0 = 0
+2:14/0 = 0
+3:14/0 = 0
+4:14/0 = 0
+5:14/0 = 0
+6:14/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_wu35y"]
 tile_size = Vector2i(32, 32)
@@ -290,7 +297,7 @@ ExtraColors = PackedColorArray(0.5328826, 0.5328826, 0.5328826, 1, 0.6907189, 0.
 [node name="Decoration" type="TileMapLayer" parent="." unique_id=727344730]
 tile_set = SubResource("TileSet_wu35y")
 script = ExtResource("4_ox681")
-ExtraColors = PackedColorArray(0, 0, 0, 1, 0.23036289, 0.23036289, 0.23036289, 1, 0.5920712, 0.5920712, 0.5920712, 1, 0.66441286, 0.18683052, 0.039448556, 1, 1, 1, 1, 0.5058824, 0, 0, 0, 0.49411765)
+ExtraColors = PackedColorArray(0, 0, 0, 1, 0.23036289, 0.23036289, 0.23036289, 1, 0.5920712, 0.5920712, 0.5920712, 1, 0.66441286, 0.18683052, 0.039448556, 1, 0, 0.04726239, 0.79594314, 1, 1, 1, 1, 0.5058824, 0, 0, 0, 0.49411765)
 
 [node name="Entities" type="TileMapLayer" parent="." unique_id=56824911]
 tile_set = SubResource("TileSet_awdyq")

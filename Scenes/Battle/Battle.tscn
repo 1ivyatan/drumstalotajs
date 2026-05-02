@@ -5,34 +5,38 @@
 [ext_resource type="Script" uid="uid://cc1cxehau7o4" path="res://Source/Battle/Components/ScoreManager.cs" id="2_g1sps"]
 [ext_resource type="PackedScene" uid="uid://bqh5apppkldxo" path="res://Scenes/Components/Topnav.tscn" id="2_gunap"]
 [ext_resource type="Script" uid="uid://btbtqp8lo1xc2" path="res://Source/Battle/Components/BattleTopnav.cs" id="3_3ihc8"]
+[ext_resource type="Script" uid="uid://csmobm8nus0qv" path="res://Source/Battle/Stages/StageManager.cs" id="4_07e4u"]
 [ext_resource type="Script" uid="uid://b6ocl3clhwf1h" path="res://Source/Battle/Components/PauseOverlay.cs" id="4_odh8s"]
 [ext_resource type="Script" uid="uid://bnmf3stn1wm0k" path="res://Source/Battle/Components/PauseContainer.cs" id="5_rremj"]
 
 [node name="Battle" type="Node2D" unique_id=1007953308 node_paths=PackedStringArray("BattleTopnav", "Map", "ScoreManager", "_pauseOverlay", "_fakeVictory")]
 script = ExtResource("1_ael4v")
-BattleTopnav = NodePath("CanvasLayer/Topnav")
+BattleTopnav = NodePath("Overlay/Topnav")
 Map = NodePath("Map")
 ScoreManager = NodePath("ScoreManager")
-_pauseOverlay = NodePath("CanvasLayer/PauseOverlay")
-_fakeVictory = NodePath("CanvasLayer/FakeVictory")
+_pauseOverlay = NodePath("Overlay/PauseOverlay")
+_fakeVictory = NodePath("Overlay/FakeVictory")
 
 [node name="Map" parent="." unique_id=1338299763 instance=ExtResource("2_dcr6b")]
 
 [node name="ScoreManager" type="Node" parent="." unique_id=999479475]
 script = ExtResource("2_g1sps")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1518625057]
+[node name="StageManager" type="CanvasLayer" parent="." unique_id=1845418048]
+script = ExtResource("4_07e4u")
 
-[node name="Topnav" parent="CanvasLayer" unique_id=118245835 node_paths=PackedStringArray("_pause") instance=ExtResource("2_gunap")]
+[node name="Overlay" type="CanvasLayer" parent="." unique_id=1518625057]
+
+[node name="Topnav" parent="Overlay" unique_id=118245835 node_paths=PackedStringArray("_pause") instance=ExtResource("2_gunap")]
 script = ExtResource("3_3ihc8")
 _pause = NodePath("PauseButton")
 
-[node name="PauseButton" type="Button" parent="CanvasLayer/Topnav" unique_id=268528842]
+[node name="PauseButton" type="Button" parent="Overlay/Topnav" unique_id=268528842]
 layout_mode = 2
 size_flags_horizontal = 0
 text = "Pause"
 
-[node name="PauseOverlay" type="Control" parent="CanvasLayer" unique_id=1813882581 node_paths=PackedStringArray("_pauseContainer")]
+[node name="PauseOverlay" type="Control" parent="Overlay" unique_id=1813882581 node_paths=PackedStringArray("_pauseContainer")]
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -43,7 +47,7 @@ grow_vertical = 2
 script = ExtResource("4_odh8s")
 _pauseContainer = NodePath("PauseMenu")
 
-[node name="Curtain" type="ColorRect" parent="CanvasLayer/PauseOverlay" unique_id=1724706246]
+[node name="Curtain" type="ColorRect" parent="Overlay/PauseOverlay" unique_id=1724706246]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -52,7 +56,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.5176471)
 
-[node name="PauseMenu" type="PanelContainer" parent="CanvasLayer/PauseOverlay" unique_id=1047462654 node_paths=PackedStringArray("_resume", "_restart", "_exit")]
+[node name="PauseMenu" type="PanelContainer" parent="Overlay/PauseOverlay" unique_id=1047462654 node_paths=PackedStringArray("_resume", "_restart", "_exit")]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 1
 anchors_preset = 8
@@ -67,22 +71,22 @@ _resume = NodePath("VBoxContainer/Resume")
 _restart = NodePath("VBoxContainer/Restart")
 _exit = NodePath("VBoxContainer/Exit")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PauseOverlay/PauseMenu" unique_id=769875721]
+[node name="VBoxContainer" type="VBoxContainer" parent="Overlay/PauseOverlay/PauseMenu" unique_id=769875721]
 layout_mode = 2
 
-[node name="Resume" type="Button" parent="CanvasLayer/PauseOverlay/PauseMenu/VBoxContainer" unique_id=224519652]
+[node name="Resume" type="Button" parent="Overlay/PauseOverlay/PauseMenu/VBoxContainer" unique_id=224519652]
 layout_mode = 2
 text = "Resume"
 
-[node name="Restart" type="Button" parent="CanvasLayer/PauseOverlay/PauseMenu/VBoxContainer" unique_id=448006504]
+[node name="Restart" type="Button" parent="Overlay/PauseOverlay/PauseMenu/VBoxContainer" unique_id=448006504]
 layout_mode = 2
 text = "Restart"
 
-[node name="Exit" type="Button" parent="CanvasLayer/PauseOverlay/PauseMenu/VBoxContainer" unique_id=1292169710]
+[node name="Exit" type="Button" parent="Overlay/PauseOverlay/PauseMenu/VBoxContainer" unique_id=1292169710]
 layout_mode = 2
 text = "Exit"
 
-[node name="FakeVictory" type="Button" parent="CanvasLayer" unique_id=580280653]
+[node name="FakeVictory" type="Button" parent="Overlay" unique_id=580280653]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
