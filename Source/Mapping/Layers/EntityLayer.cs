@@ -23,7 +23,7 @@ public partial class EntityLayer : SceneLayer
 	new public Entity GetInstance(Vector2I position)
 	{
 		var tile = base.GetInstance(position);
-		return tile as Entity;
+		return tile != null ? tile as Entity : null;
 	}
 	
 	public async Task AddTile(EntityLayerTileData atlas)

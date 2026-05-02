@@ -73,13 +73,13 @@ public partial class Selector : Node2D
 		}
 	}
 	
-	public FilteredTiles GetTiles(Vector2I position)
+	public FilteredTiles GetTiles(Vector2I position, bool strict = false)
 	{
 		FilteredTiles tiles = new FilteredTiles();
 		
 		if (!_map.IsEmpty(position))
 		{
-			tiles = Filter.GetTiles(position);
+			tiles = Filter.GetTiles(position, strict);
 		}
 		
 		return tiles;

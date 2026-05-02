@@ -19,7 +19,7 @@ public partial class TileEditor : Control
 	
 	public void Load(Vector2I coords)
 	{
-		var tiles = _map.Flash(coords);
+		var tiles = _map.Flash(coords, true);
 		
 		if (tiles.ContainsKey(_map.GroundLayer)) {
 			GroundProps.Load((Tile)tiles[_map.GroundLayer][0]);

@@ -13,7 +13,7 @@ public struct SelectorFilter
 		Layers = layers;
 	}
 	
-	public FilteredTiles GetTiles(Vector2I position)
+	public FilteredTiles GetTiles(Vector2I position, bool strict = false)
 	{
 		FilteredTiles tiles = new FilteredTiles();
 		foreach (var layer in Layers)
@@ -24,8 +24,15 @@ public struct SelectorFilter
 				if (flashedTiles.Count > 0) tiles[layer] = flashedTiles;
 			} else if (layer is SceneLayer)
 			{
-				var flashedTiles = (Godot.Collections.Array)(layer as SceneLayer).Flash(position);
-				if (flashedTiles.Count > 0) tiles[layer] = flashedTiles;
+				if (strict)
+				{
+					var flashedTile = (layer as SceneLayer).GetInstance(position);
+					if (flashedTile != null) tiles[layer] = [flashedTile];
+				} else
+				{
+					var flashedTiles = (Godot.Collections.Array)(layer as SceneLayer).Flash(position);
+					if (flashedTiles.Count > 0) tiles[layer] = flashedTiles;
+				}
 			}
 		}
 		return tiles;

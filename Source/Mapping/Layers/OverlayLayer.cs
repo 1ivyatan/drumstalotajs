@@ -22,7 +22,7 @@ public partial class OverlayLayer : SceneLayer
 	new public OverlayTile GetInstance(Vector2I position)
 	{
 		var tile = base.GetInstance(position);
-		return tile as OverlayTile;
+		return tile != null ? tile as OverlayTile : null;
 	}
 	
 	public async Task AddTile(OverlayLayerTileData atlas)
