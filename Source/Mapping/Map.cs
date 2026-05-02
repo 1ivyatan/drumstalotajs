@@ -106,6 +106,20 @@ public partial class Map : Node2D
 		return GroundLayer.LocalToMap(mouseLocalPos);
 	}
 	
+	public Vector2 ViewportMouseToLocal()
+	{
+		/*
+		Vector2 mouseLocalPos = GroundLayer.GetLocalMousePosition();
+		Vector2I mapPos = GroundLayer.LocalToMap(mouseLocalPos);
+		Rect2I usedRect = GroundLayer.GetUsedRect();
+		if (!usedRect.HasArea()) return mapPos;
+		return new Vector2I(
+			Mathf.Clamp(mapPos.X, usedRect.Position.X, usedRect.End.X - 1),
+			Mathf.Clamp(mapPos.Y, usedRect.Position.Y, usedRect.End.Y - 1)
+		);*/
+		return GetLocalMousePosition();
+	}
+	
 	public async void AddTile(
 		BaseLayer layer, 
 		string atlas,

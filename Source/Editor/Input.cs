@@ -43,7 +43,7 @@ public partial class EditorScene : Node2D
 			default: break;
 		}
 	}
-	
+
 	private void HandleEdit(InputEvent @event)
 	{
 		if (_mouseMoving) return;
@@ -57,6 +57,14 @@ public partial class EditorScene : Node2D
 		{
 			Nodes.GetRoot().ToastManager.SpawnOne("Pick a tile");
 			return;
+		}
+		
+		if (_mouseMoving && (_mouseLeftPressed || _mouseRightPressed))
+		{
+			EditorTopnav.Visible = false;
+		} else
+		{
+			EditorTopnav.Visible = true;
 		}
 		
 		if (_mouseLeftPressed)
