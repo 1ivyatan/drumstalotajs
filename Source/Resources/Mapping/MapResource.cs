@@ -12,6 +12,7 @@ public partial class MapResource : Resource
 {
 	[ExportGroup("Properties")]
 	[Export] public double MetersPerPixel { get; set; } = 1;
+	[Export] public double TimeLimitSecs { get; set; } = 60;
 	
 	[ExportGroup("Layers")]
 	[Export] public GroundLayerData GroundLayer { get; set; } = null;
