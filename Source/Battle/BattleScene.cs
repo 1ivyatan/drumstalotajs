@@ -17,11 +17,7 @@ public partial class BattleScene : Node2D
 	[Export] private ScoreManager ScoreManager { get; set; }
 	[Export] private PauseOverlay _pauseOverlay;
 	public bool Paused { get; private set; } = false;
-	
-	private LevelSet _levelSet;
-	private LevelProps _levelProps;
 	private string _mapPath;
-	
 	
 	[Export] private Button _fakeVictory;
 	
@@ -33,17 +29,7 @@ public partial class BattleScene : Node2D
 		_pauseOverlay.PressedRestart += () => { Restart(); };
 		_pauseOverlay.PressedExit += () => { Exit(); };
 		
-		_fakeVictory.Pressed += () => { RecordScore();  Exit(); };
-	}
-	
-	private void RecordScore()
-	{
-		if (_levelSet != null && _levelProps != null)
-		{
-			var saveManager = Nodes.GetRoot().SaveManager;
-			var score = new LevelScore(_levelProps);
-			saveManager.AddScore(_levelSet, score);
-		}
+		_fakeVictory.Pressed += () => { ScoreManager.RecordScore();  Exit(); };
 	}
 	
 	private void Exit()
@@ -67,35 +53,31 @@ public partial class BattleScene : Node2D
 	
 	public async Task Open(LevelSet levelSet, LevelProps levelProps)
 	{
-		_levelSet = levelSet;
-		_levelProps = levelProps;
 		_mapPath = levelProps.MapPath;
-		Load(levelProps.MapPath);
-	}
-	
-	public async Task Open(string mapPath)
-	{
-		_mapPath = mapPath;
-		Load(mapPath);
-	}
-	
-	private void Load(string mapPath)
-	{
-		Map.Load(mapPath);
-		if (_levelProps != null)
+		
+		Map.Load(_mapPath);
+		
+		if (levelProps != null)
 		{
-			ScoreManager.PrepareScoring(Map.CurrentLoadedMap, _levelProps);
+			ScoreManager.PrepareScoring(Map.CurrentLoadedMap, levelSet, levelProps);
 		} else
 		{
 			ScoreManager.PrepareScoring(Map.CurrentLoadedMap);
 		}
 	}
 	
+	public async Task Open(string mapPath)
+	{
+		_mapPath = mapPath;
+		Map.Load(_mapPath);
+		ScoreManager.PrepareScoring(Map.CurrentLoadedMap);
+	}
+	
 	private void Restart()
 	{
-		if (_levelSet != null && _levelProps != null)
+		if (ScoreManager.LevelSet != null && ScoreManager.LevelProps != null)
 		{
-			Nodes.GetRoot().SceneManager.Battle(_levelSet, _levelProps);
+			Nodes.GetRoot().SceneManager.Battle(ScoreManager.LevelSet, ScoreManager.LevelProps);
 		} else if (_mapPath != null && _mapPath != "")
 		{
 			Nodes.GetRoot().SceneManager.Battle(_mapPath);
