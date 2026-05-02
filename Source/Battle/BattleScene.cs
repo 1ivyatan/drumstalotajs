@@ -81,6 +81,7 @@ public partial class BattleScene : Node2D
 	
 	private void Load(string mapPath)
 	{
+		Map.Load(mapPath);
 		if (_levelProps != null)
 		{
 			ScoreManager.PrepareScoring(Map.CurrentLoadedMap, _levelProps);

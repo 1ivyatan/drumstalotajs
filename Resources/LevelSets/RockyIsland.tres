@@ -7,6 +7,7 @@
 script = ExtResource("1_gunys")
 Name = "Shoreline lines"
 InMapPosition = Vector2i(4, 4)
+MapPath = "res://Resources/Maps/Shoreline.tres"
 metadata/_custom_type_script = "uid://dj5l06h3bhoe2"
 
 [sub_resource type="Resource" id="Resource_gunys"]
