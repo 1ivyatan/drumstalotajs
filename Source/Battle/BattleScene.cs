@@ -7,6 +7,7 @@ using Drumstalotajs.Resources.Levels;
 using Drumstalotajs.Battle.Components;
 using System.Threading.Tasks;
 using Drumstalotajs.Resources.Saves;
+using Drumstalotajs.Battle.Stages;
 
 namespace Drumstalotajs.Battle;
 
@@ -15,6 +16,8 @@ public partial class BattleScene : Node2D
 	[Export] public BattleTopnav BattleTopnav { get; private set; }
 	[Export] public Map Map { get; private set; }
 	[Export] private ScoreManager ScoreManager { get; set; }
+	[Export] public StageManager StageManager { get; private set; }
+
 	[Export] private PauseOverlay _pauseOverlay;
 	public bool Paused { get; private set; } = false;
 	private string _mapPath;

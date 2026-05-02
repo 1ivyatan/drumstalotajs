@@ -9,11 +9,12 @@
 [ext_resource type="Script" uid="uid://b6ocl3clhwf1h" path="res://Source/Battle/Components/PauseOverlay.cs" id="4_odh8s"]
 [ext_resource type="Script" uid="uid://bnmf3stn1wm0k" path="res://Source/Battle/Components/PauseContainer.cs" id="5_rremj"]
 
-[node name="Battle" type="Node2D" unique_id=1007953308 node_paths=PackedStringArray("BattleTopnav", "Map", "ScoreManager", "_pauseOverlay", "_fakeVictory")]
+[node name="Battle" type="Node2D" unique_id=1007953308 node_paths=PackedStringArray("BattleTopnav", "Map", "ScoreManager", "StageManager", "_pauseOverlay", "_fakeVictory")]
 script = ExtResource("1_ael4v")
 BattleTopnav = NodePath("Overlay/Topnav")
 Map = NodePath("Map")
 ScoreManager = NodePath("ScoreManager")
+StageManager = NodePath("StageManager")
 _pauseOverlay = NodePath("Overlay/PauseOverlay")
 _fakeVictory = NodePath("Overlay/FakeVictory")
 
