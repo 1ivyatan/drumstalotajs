@@ -34,6 +34,11 @@ public partial class SceneLayer : Layer<string, SceneTile, SceneLayerData>
 		return list.Count() > 0 ? list.ToArray()[0] : null;
 	}
 	
+	public int InstanceCount(int id)
+	{
+		return Instances.Where(i => i.TileId == id).Count();
+	}
+	
 	private void PrepareAtlas(SceneLayerAtlasData[] atlas)
 	{
 		TileSetSource source;

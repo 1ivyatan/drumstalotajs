@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://by3qk6btxkmix"]
+
+[ext_resource type="PackedScene" uid="uid://dsfv0ewuipia8" path="res://Scenes/Mapping/Entities/EntityBase.tscn" id="1_omkvp"]
+[ext_resource type="Script" uid="uid://bh8h8p88je745" path="res://Source/Mapping/Entities/Device.cs" id="2_v3n2h"]
+[ext_resource type="Texture2D" uid="uid://bscapcc3qlnqv" path="res://Assets/Textures/entity.png" id="3_b3an4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sq3cx"]
+size = Vector2(32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cra73"]
+atlas = ExtResource("3_b3an4")
+region = Rect2(32, 0, 32, 32)
+
+[node name="Mortar" unique_id=116583695 instance=ExtResource("1_omkvp")]
+script = ExtResource("2_v3n2h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0" unique_id=1592627457]
+shape = SubResource("RectangleShape2D_sq3cx")
+
+[node name="Sprite" type="Sprite2D" parent="." index="1" unique_id=142233934]
+texture = SubResource("AtlasTexture_cra73")

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dlakdl7qufbmm" path="res://Source/Battle/Stages/DevicePlacement.cs" id="1_8xrf7"]
 
-[node name="DevicePlacement" type="PanelContainer" unique_id=1138659137]
+[node name="DevicePlacement" type="PanelContainer" unique_id=1138659137 node_paths=PackedStringArray("_deviceInventory")]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -11,8 +11,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("1_8xrf7")
+_deviceInventory = NodePath("DeviceInventory")
 
 [node name="DeviceInventory" type="ItemList" parent="." unique_id=1736832961]
 layout_mode = 2
+allow_search = false
 auto_width = true
 auto_height = true
+max_columns = 10
+icon_mode = 0

@@ -13,6 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://2io65q52gq16" path="res://Assets/Textures/overlay.png" id="7_ccdcv"]
 [ext_resource type="Script" uid="uid://bn1u57sn0woiq" path="res://Source/Resources/Mapping/Layers/SceneLayerAtlasData.cs" id="7_f0kan"]
 [ext_resource type="PackedScene" uid="uid://cf0tu2qcva34g" path="res://Scenes/Mapping/Entities/Sandbags.tscn" id="7_p3cor"]
+[ext_resource type="PackedScene" uid="uid://ssq8p1ratxek" path="res://Scenes/Mapping/Entities/LightMortar.tscn" id="10_wu35y"]
+[ext_resource type="PackedScene" uid="uid://by3qk6btxkmix" path="res://Scenes/Mapping/Entities/HeavyMortar.tscn" id="11_55ud5"]
 [ext_resource type="Script" uid="uid://cp6mf7hu5xvce" path="res://Source/Mapping/Projectiles/ProjectileLayer.cs" id="14_bc3k3"]
 [ext_resource type="Script" uid="uid://ciiiu3aq8tm4l" path="res://Source/Mapping/Selection/Selector.cs" id="15_0ild7"]
 [ext_resource type="Script" uid="uid://blbxol7imiof6" path="res://Source/Mapping/Cameras/Camera.cs" id="16_mukcc"]
@@ -257,6 +259,32 @@ Thumbnail = SubResource("AtlasTexture_p3cor")
 Scene = ExtResource("7_p3cor")
 metadata/_custom_type_script = "uid://7qxwheiwlsgl"
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_wu35y"]
+atlas = ExtResource("7_7ig3r")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="Resource" id="Resource_mukcc"]
+script = ExtResource("7_awdyq")
+Type = 1
+Id = 2
+Name = "Light Mortar"
+Thumbnail = SubResource("AtlasTexture_wu35y")
+Scene = ExtResource("10_wu35y")
+metadata/_custom_type_script = "uid://7qxwheiwlsgl"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_55ud5"]
+atlas = ExtResource("7_7ig3r")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="Resource" id="Resource_hfvyn"]
+script = ExtResource("7_awdyq")
+Type = 1
+Id = 3
+Name = "Heavy Mortar"
+Thumbnail = SubResource("AtlasTexture_55ud5")
+Scene = ExtResource("11_55ud5")
+metadata/_custom_type_script = "uid://7qxwheiwlsgl"
+
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_ajbla"]
 
 [sub_resource type="TileSet" id="TileSet_ajbla"]
@@ -302,7 +330,7 @@ ExtraColors = PackedColorArray(0, 0, 0, 1, 0.23036289, 0.23036289, 0.23036289, 1
 [node name="Entities" type="TileMapLayer" parent="." unique_id=56824911]
 tile_set = SubResource("TileSet_awdyq")
 script = ExtResource("6_56oc8")
-Atlas = Array[Object]([SubResource("Resource_7ig3r")])
+Atlas = Array[Object]([SubResource("Resource_7ig3r"), SubResource("Resource_mukcc"), SubResource("Resource_hfvyn")])
 
 [node name="Overlays" type="TileMapLayer" parent="." unique_id=201889829]
 tile_set = SubResource("TileSet_ajbla")

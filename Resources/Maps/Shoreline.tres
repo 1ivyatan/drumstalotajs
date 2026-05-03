@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dom3f8wqcdyt6" path="res://Source/Resources/Mapping/Layers/AtlasLayerData.cs" id="1_576gc"]
 [ext_resource type="Script" uid="uid://vyguosyx2s12" path="res://Source/Resources/Mapping/Layers/SceneLayerTileData.cs" id="2_ghv0k"]
+[ext_resource type="Script" uid="uid://vidsdghus3qn" path="res://Source/Resources/Mapping/Sets/DeviceProps.cs" id="2_n4mfl"]
 [ext_resource type="Script" uid="uid://cq1pnhl7adv1d" path="res://Source/Resources/Mapping/Layers/EntityLayerData.cs" id="3_n4mfl"]
 [ext_resource type="Script" uid="uid://xbfxgm5xatvp" path="res://Source/Resources/Mapping/Layers/GroundLayerData.cs" id="4_8qlul"]
 [ext_resource type="Script" uid="uid://btnk2lh74r81j" path="res://Source/Resources/Mapping/Layers/OverlayLayerData.cs" id="5_q1ff3"]
@@ -12,6 +13,18 @@
 [sub_resource type="Resource" id="Resource_ghv0k"]
 script = ExtResource("1_576gc")
 Tiles = SubResource("TileMapPattern_576gc")
+
+[sub_resource type="Resource" id="Resource_8qlul"]
+script = ExtResource("2_n4mfl")
+DeviceId = 2
+MaxCount = 2
+metadata/_custom_type_script = "uid://vidsdghus3qn"
+
+[sub_resource type="Resource" id="Resource_b2u0n"]
+script = ExtResource("2_n4mfl")
+DeviceId = 3
+MinCount = 1
+metadata/_custom_type_script = "uid://vidsdghus3qn"
 
 [sub_resource type="Resource" id="Resource_n4mfl"]
 script = ExtResource("3_n4mfl")
@@ -31,6 +44,7 @@ Tiles = Array[ExtResource("2_ghv0k")]([])
 
 [resource]
 script = ExtResource("6_nnwkw")
+DeviceProps = Array[ExtResource("2_n4mfl")]([SubResource("Resource_8qlul"), SubResource("Resource_b2u0n")])
 GroundLayer = SubResource("Resource_q1ff3")
 DecorationLayer = SubResource("Resource_ghv0k")
 EntityLayer = SubResource("Resource_n4mfl")
