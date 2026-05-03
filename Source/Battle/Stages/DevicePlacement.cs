@@ -1,10 +1,13 @@
 using Godot;
 using System;
+using System.Linq;
 using Drumstalotajs;
 using Drumstalotajs.Utilities;
 using Drumstalotajs.Battle;
 using Drumstalotajs.Mapping;
 using Drumstalotajs.Resources.Mapping.Sets;
+using Drumstalotajs.Mapping.Entities;
+using Drumstalotajs.Resources.Mapping.Layers;
 
 namespace Drumstalotajs.Battle.Stages;
 
@@ -22,9 +25,16 @@ public partial class DevicePlacement : Control
 		_map = _scene.Map;
 		_scene.BattleTopnav.Title = "Device placement";
 		//_map.EntityLayer.InstanceCount();
+		
+		var deviceAtlas = _map.EntityLayer.GetFullAtlas();
 		foreach (var device in _map.CurrentLoadedMap.DeviceProps)
 		{
-			GD.Print(device);
+			var sceneTile = deviceAtlas.FirstOrDefault(e => e.Id == device.DeviceId);
+			if (sceneTile != null && sceneTile is EntityLayerAtlasData entity && entity.Type == EntityType.Device)
+			{
+				_deviceInventory.AddItem($"{device.MaxCount}", entity.Thumbnail);
+			}
+			GD.Print(device.DeviceId);
 		}
 	}
 	
