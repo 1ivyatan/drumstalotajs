@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://by3qk6btxkmix" path="res://Scenes/Mapping/Entities/HeavyMortar.tscn" id="11_55ud5"]
 [ext_resource type="Script" uid="uid://cp6mf7hu5xvce" path="res://Source/Mapping/Projectiles/ProjectileLayer.cs" id="14_bc3k3"]
 [ext_resource type="Script" uid="uid://ciiiu3aq8tm4l" path="res://Source/Mapping/Selection/Selector.cs" id="15_0ild7"]
+[ext_resource type="PackedScene" uid="uid://cb0f78vc8xv76" path="res://Scenes/Mapping/Overlays/DeviceMarker.tscn" id="16_hfvyn"]
 [ext_resource type="Script" uid="uid://blbxol7imiof6" path="res://Source/Mapping/Cameras/Camera.cs" id="16_mukcc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ox681"]
@@ -303,6 +304,18 @@ Thumbnail = SubResource("AtlasTexture_ajbla")
 Scene = ExtResource("7_ajbla")
 metadata/_custom_type_script = "uid://bn1u57sn0woiq"
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_st7r0"]
+atlas = ExtResource("7_ccdcv")
+region = Rect2(62, 0, 38, 76)
+
+[sub_resource type="Resource" id="Resource_asx6w"]
+script = ExtResource("7_f0kan")
+Id = 2
+Name = "DeviceMarker"
+Thumbnail = SubResource("AtlasTexture_st7r0")
+Scene = ExtResource("16_hfvyn")
+metadata/_custom_type_script = "uid://bn1u57sn0woiq"
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_mukcc"]
 atlas = ExtResource("7_ccdcv")
 region = Rect2(64, 0, 38, 38)
@@ -335,7 +348,7 @@ Atlas = Array[Object]([SubResource("Resource_7ig3r"), SubResource("Resource_mukc
 [node name="Overlays" type="TileMapLayer" parent="." unique_id=201889829]
 tile_set = SubResource("TileSet_ajbla")
 script = ExtResource("6_bdwom")
-Atlas = Array[Object]([SubResource("Resource_ccdcv")])
+Atlas = Array[Object]([SubResource("Resource_ccdcv"), SubResource("Resource_asx6w")])
 
 [node name="Projectiles" type="Node2D" parent="." unique_id=1337390122]
 script = ExtResource("14_bc3k3")

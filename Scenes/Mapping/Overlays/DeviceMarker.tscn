@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://cb0f78vc8xv76"]
+
+[ext_resource type="PackedScene" uid="uid://dankeweh6q1bb" path="res://Scenes/Mapping/Overlays/BaseOverlay.tscn" id="1_6187o"]
+[ext_resource type="Script" uid="uid://cpww25x7eajqe" path="res://Source/Mapping/Overlays/DeviceMarker.cs" id="2_6e7ls"]
+[ext_resource type="Texture2D" uid="uid://2io65q52gq16" path="res://Assets/Textures/overlay.png" id="3_po2hh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6e7ls"]
+size = Vector2(32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1h2f4"]
+atlas = ExtResource("3_po2hh")
+region = Rect2(62, 38, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_po2hh"]
+atlas = ExtResource("3_po2hh")
+region = Rect2(62, 0, 38, 37)
+
+[node name="DeviceMarker" unique_id=1900493059 node_paths=PackedStringArray("_arrow") instance=ExtResource("1_6187o")]
+script = ExtResource("2_6e7ls")
+_arrow = NodePath("Arrow")
+
+[node name="ClickArea" type="CollisionShape2D" parent="." index="0" unique_id=616944716]
+shape = SubResource("RectangleShape2D_6e7ls")
+
+[node name="Marker" type="Sprite2D" parent="." index="1" unique_id=169307944]
+texture = SubResource("AtlasTexture_1h2f4")
+
+[node name="Arrow" type="Sprite2D" parent="." index="2" unique_id=2061802648]
+texture = SubResource("AtlasTexture_po2hh")
+offset = Vector2(0, -40)

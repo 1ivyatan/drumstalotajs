@@ -44,6 +44,12 @@ Tiles = Array[ExtResource("2_ghv0k")]([])
 
 [resource]
 script = ExtResource("6_nnwkw")
+DevicePositions = Dictionary[Vector2i, float]({
+Vector2i(10, 10): 100.0,
+Vector2i(13, 12): 60.0,
+Vector2i(14, 10): 0.0,
+Vector2i(16, 14): 180.0
+})
 DeviceProps = Array[ExtResource("2_n4mfl")]([SubResource("Resource_8qlul"), SubResource("Resource_b2u0n")])
 GroundLayer = SubResource("Resource_q1ff3")
 DecorationLayer = SubResource("Resource_ghv0k")

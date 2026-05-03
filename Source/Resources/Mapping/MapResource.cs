@@ -17,7 +17,7 @@ public partial class MapResource : Resource
 	[Export] public double TimeLimitSecs { get; set; } = 60;
 	
 	[ExportGroup("Devices")]
-	[Export] public Array<Vector2I> DevicePositions { get; set; } = new();
+	[Export] public Dictionary<Vector2I, double> DevicePositions { get; set; } = new();
 	[Export] public Array<DeviceProps> DeviceProps { get; set; } = new();
 	
 	[ExportGroup("Layers")]

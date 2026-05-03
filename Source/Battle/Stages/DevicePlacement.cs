@@ -8,6 +8,7 @@ using Drumstalotajs.Mapping;
 using Drumstalotajs.Resources.Mapping.Sets;
 using Drumstalotajs.Mapping.Entities;
 using Drumstalotajs.Resources.Mapping.Layers;
+using Drumstalotajs.Mapping.Overlays;
 
 namespace Drumstalotajs.Battle.Stages;
 
@@ -19,7 +20,7 @@ public partial class DevicePlacement : Control
 	
 	private DeviceProps _deviceProps;
 	
-	public override void _Ready()
+	public async override void _Ready()
 	{
 		_scene = Nodes.GetSceneRoot() as BattleScene;
 		_map = _scene.Map;
@@ -27,6 +28,7 @@ public partial class DevicePlacement : Control
 		//_map.EntityLayer.InstanceCount();
 		
 		var deviceAtlas = _map.EntityLayer.GetFullAtlas();
+
 		foreach (var device in _map.CurrentLoadedMap.DeviceProps)
 		{
 			var sceneTile = deviceAtlas.FirstOrDefault(e => e.Id == device.DeviceId);
@@ -36,10 +38,17 @@ public partial class DevicePlacement : Control
 			}
 			GD.Print(device.DeviceId);
 		}
+		
+		foreach (var position in _map.CurrentLoadedMap.DevicePositions)
+		{
+			await _map.OverlayLayer.AddTile(position.Key, "DeviceMarker");
+			var marker = (DeviceMarker)_map.OverlayLayer.GetInstance(position.Key);
+			marker.SetArrowRotation(position.Value);
+		}
 	}
 	
 	public override void _UnhandledInput(InputEvent @event)
 	{
-		//GD.Print(3333);
+		
 	}
 }
