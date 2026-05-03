@@ -9,19 +9,23 @@
 [ext_resource type="Script" uid="uid://b6ocl3clhwf1h" path="res://Source/Battle/Components/PauseOverlay.cs" id="4_odh8s"]
 [ext_resource type="Script" uid="uid://bnmf3stn1wm0k" path="res://Source/Battle/Components/PauseContainer.cs" id="5_rremj"]
 
-[node name="Battle" type="Node2D" unique_id=1007953308 node_paths=PackedStringArray("BattleTopnav", "Map", "ScoreManager", "StageManager", "_pauseOverlay", "_fakeVictory")]
+[node name="Battle" type="Node2D" unique_id=1007953308 node_paths=PackedStringArray("BattleTopnav", "Map", "ScoreManager", "StageManager", "_pauseOverlay")]
 script = ExtResource("1_ael4v")
 BattleTopnav = NodePath("Overlay/Topnav")
 Map = NodePath("Map")
 ScoreManager = NodePath("ScoreManager")
 StageManager = NodePath("StageManager")
 _pauseOverlay = NodePath("Overlay/PauseOverlay")
-_fakeVictory = NodePath("Overlay/FakeVictory")
 
 [node name="Map" parent="." unique_id=1338299763 instance=ExtResource("2_dcr6b")]
 
 [node name="StageManager" type="CanvasLayer" parent="." unique_id=1845418048]
 script = ExtResource("4_07e4u")
+Stages = Dictionary[String, String]({
+"DeviceAdjustment": "",
+"DevicePlacement": "res://Scenes/Battle/Stages/DevicePlacement.tscn",
+"Firing": ""
+})
 
 [node name="ScoreManager" type="Node" parent="." unique_id=999479475]
 script = ExtResource("2_g1sps")
@@ -86,16 +90,3 @@ text = "Restart"
 [node name="Exit" type="Button" parent="Overlay/PauseOverlay/PauseMenu/VBoxContainer" unique_id=1292169710]
 layout_mode = 2
 text = "Exit"
-
-[node name="FakeVictory" type="Button" parent="Overlay" unique_id=580280653]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -4.0
-offset_top = -8.0
-offset_right = 4.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "FAKE A VICTORY"

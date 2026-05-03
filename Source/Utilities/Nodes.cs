@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using Drumstalotajs.Managers.Scenes;
 
 namespace Drumstalotajs.Utilities;
 
@@ -26,6 +27,10 @@ public static class Nodes
 
 	public static dynamic GetSceneRoot()
 	{
-		return ((SceneTree)Engine.GetMainLoop()).Root.GetNode("Main/SceneManager").GetChild(0);
+		foreach (var node in ((((SceneTree)Engine.GetMainLoop()).Root.GetNode("Main/SceneManager")) as SceneManager).GetChildren())
+		{
+			if (!(node is FadeCurtainContainer)) return node;
+		}
+		return null;
 	}
 }

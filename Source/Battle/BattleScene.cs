@@ -22,17 +22,13 @@ public partial class BattleScene : Node2D
 	public bool Paused { get; private set; } = false;
 	private string _mapPath;
 	
-	[Export] private Button _fakeVictory;
-	
 	public override void _Ready()
 	{
-		
 		BattleTopnav.PressedPause += () => { Pause(); };
 		_pauseOverlay.PressedResume += () => { Resume(); };
 		_pauseOverlay.PressedRestart += () => { Restart(); };
 		_pauseOverlay.PressedExit += () => { Exit(); };
-		
-		_fakeVictory.Pressed += () => { ScoreManager.RecordScore();  Exit(); };
+		StageManager.DevicePlacement();
 	}
 	
 	private void Exit()

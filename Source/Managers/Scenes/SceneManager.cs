@@ -56,6 +56,7 @@ public partial class SceneManager : Node
 			}
 			AddChild(scene);
 			MoveChild(scene, 0);
+			//GD.Print(scene.Name);
 			CurrentScene = scene;
 			State = SceneState.Running;
 			await FadeCurtainContainer.FadeOut();
