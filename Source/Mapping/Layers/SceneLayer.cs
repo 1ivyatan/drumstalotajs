@@ -102,6 +102,12 @@ public partial class SceneLayer : Layer<string, SceneTile, SceneLayerData>
 		return Atlas;
 	}
 	
+	public int GetAtlasId(string name)
+	{
+		var atlas = GetAtlasData(name);
+		return atlas != null ? atlas.Id : -1;
+	}
+	
 	public async override Task AddTile(Vector2I position, string atlas)
 	{
 		int id = Atlas.FirstOrDefault(a => a.Name == atlas).Id;

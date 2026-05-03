@@ -14,6 +14,19 @@ namespace Drumstalotajs.Mapping.Layers;
 
 public partial class EntityLayer : SceneLayer
 {
+	public Array<int> GetEntityIdsByType(EntityType entityType)
+	{
+		var ids = GetFullAtlas()
+		.Where(a => {
+			if (a is EntityLayerAtlasData ea)
+			{
+				return ea.Type == entityType;
+			} else return false;
+		})
+		.Select(e => e.Id).ToArray();
+		return new Array<int>(ids);
+	}
+	
 	new public Array<Entity> Flash(Vector2I position)
 	{
 		var arr = base.Flash(position);
