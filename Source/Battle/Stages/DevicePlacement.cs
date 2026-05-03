@@ -25,6 +25,7 @@ public partial class DevicePlacement : Control
 	private DeviceProps _deviceProps;
 	private SceneLayerAtlasData[] _deviceAtlas;
 	private SceneLayerAtlasData _selectedDeviceAtlas = null;
+	private long _itemListIndex = -1;
 	
 	public async override void _Ready()
 	{
@@ -33,8 +34,6 @@ public partial class DevicePlacement : Control
 		_deviceAtlas = _map.EntityLayer.GetFullAtlas()
 		.Where(s => s is EntityLayerAtlasData entity && entity.Type == EntityType.Device)
 		.ToArray();
-	//..	.sceneTile is EntityLayerAtlasData entity
-	//	.Where(d => d.Type == EntityType.Device).ToArray();
 		_scene.BattleTopnav.Title = "Device placement";
 		
 		BaseLayer[] layers = [ _map.EntityLayer, _map.OverlayLayer ];
@@ -70,6 +69,7 @@ public partial class DevicePlacement : Control
 		var atlas = _deviceAtlas[index];
 		_selectedDeviceAtlas = atlas;
 		_deviceProps = _map.CurrentLoadedMap.DeviceProps.FirstOrDefault(d => d.DeviceId == _selectedDeviceAtlas.Id);
+		_itemListIndex = index;
 	}
 	
 	public async override void _UnhandledInput(InputEvent @event)
@@ -106,34 +106,19 @@ public partial class DevicePlacement : Control
 	private async Task ToggleDevice(Vector2I position)
 	{
 		var device = _map.EntityLayer.GetInstance(position);
-		
+		var count = _map.EntityLayer.InstanceCount(_selectedDeviceAtlas.Id);
 		
 		if (device == null)
 		{
-			GD.Print(_map.EntityLayer.InstanceCount(_selectedDeviceAtlas.Id));
-			GD.Print(_deviceProps.DeviceId);
-		} else
+			if (count < _deviceProps.MaxCount)
+			{
+				await _map.EntityLayer.AddTile(position, _selectedDeviceAtlas.Name);
+				_deviceInventory.SetItemText((int)_itemListIndex, $"{_deviceProps.MaxCount - count - 1}");
+			}
+		} else if (_selectedDeviceAtlas.Id == device.TileId)
 		{
-			
+			_map.EntityLayer.RemoveTile(position);
+			_deviceInventory.SetItemText((int)_itemListIndex, $"{_deviceProps.MaxCount - count + 1}");
 		}
-		GD.Print(position);
 	}
-				/*
-		if (tiles.ContainsKey(_map.GroundLayer)) {
-			GroundProps.Load((Tile)tiles[_map.GroundLayer][0]);
-		} else { GroundProps.Close(); }
-		
-		if (tiles.ContainsKey(_map.DecorationLayer)) {
-			DecorationProps.Load((Tile)tiles[_map.DecorationLayer][0]);
-		} else { DecorationProps.Close(); }
-		
-		if (tiles.ContainsKey(_map.EntityLayer)) {
-			EntityProps.Load((Tile)tiles[_map.EntityLayer][0]);
-		} else { EntityProps.Close(); }
-		
-		if (tiles.ContainsKey(_map.OverlayLayer)) {
-			OverlayProps.Load((Tile)tiles[_map.OverlayLayer][0]);
-		} else { OverlayProps.Close(); }*/
-				//_mouseLeftPressed = mouseButton.Pressed && mouseButton.ButtonIndex == MouseButton.Left;
-
 }
