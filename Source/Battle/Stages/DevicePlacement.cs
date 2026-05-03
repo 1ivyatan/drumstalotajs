@@ -11,6 +11,8 @@ using Drumstalotajs.Resources.Mapping.Layers;
 using Drumstalotajs.Mapping.Overlays;
 using Drumstalotajs.Mapping.Selection;
 using Drumstalotajs.Mapping.Layers;
+using Drumstalotajs.Mapping.Tiles;
+using System.Threading.Tasks;
 
 namespace Drumstalotajs.Battle.Stages;
 
@@ -28,7 +30,11 @@ public partial class DevicePlacement : Control
 	{
 		_scene = Nodes.GetSceneRoot() as BattleScene;
 		_map = _scene.Map;
-		_deviceAtlas = _map.EntityLayer.GetFullAtlas();
+		_deviceAtlas = _map.EntityLayer.GetFullAtlas()
+		.Where(s => s is EntityLayerAtlasData entity && entity.Type == EntityType.Device)
+		.ToArray();
+	//..	.sceneTile is EntityLayerAtlasData entity
+	//	.Where(d => d.Type == EntityType.Device).ToArray();
 		_scene.BattleTopnav.Title = "Device placement";
 		
 		BaseLayer[] layers = [ _map.EntityLayer, _map.OverlayLayer ];
@@ -39,7 +45,6 @@ public partial class DevicePlacement : Control
 		};
 		_map.Selector.Filter = new SelectorFilter(layers, idFilters);
 		_map.Mode = MapMode.HiddenInteractable;
-		//_map.EntityLayer.InstanceCount();
 
 		foreach (var device in _map.CurrentLoadedMap.DeviceProps)
 		{
@@ -64,9 +69,10 @@ public partial class DevicePlacement : Control
 	{
 		var atlas = _deviceAtlas[index];
 		_selectedDeviceAtlas = atlas;
+		_deviceProps = _map.CurrentLoadedMap.DeviceProps.FirstOrDefault(d => d.DeviceId == _selectedDeviceAtlas.Id);
 	}
 	
-	public override void _UnhandledInput(InputEvent @event)
+	public async override void _UnhandledInput(InputEvent @event)
 	{
 		if (@event is InputEventMouse mouseEvent)
 		{
@@ -85,8 +91,33 @@ public partial class DevicePlacement : Control
 				
 				if (tiles.Count > 0)
 				{
-					
+					if (tiles.ContainsKey(_map.OverlayLayer) && tiles[_map.OverlayLayer].Count > 0)
+					{
+						var pos = _map.OverlayLayer.LocalToMap(
+							((SceneTile)tiles[_map.OverlayLayer][0]).Position
+						);
+						await ToggleDevice(pos);
+					}
 				}
+			}
+		}
+	}
+	
+	private async Task ToggleDevice(Vector2I position)
+	{
+		var device = _map.EntityLayer.GetInstance(position);
+		
+		
+		if (device == null)
+		{
+			GD.Print(_map.EntityLayer.InstanceCount(_selectedDeviceAtlas.Id));
+			GD.Print(_deviceProps.DeviceId);
+		} else
+		{
+			
+		}
+		GD.Print(position);
+	}
 				/*
 		if (tiles.ContainsKey(_map.GroundLayer)) {
 			GroundProps.Load((Tile)tiles[_map.GroundLayer][0]);
@@ -103,9 +134,6 @@ public partial class DevicePlacement : Control
 		if (tiles.ContainsKey(_map.OverlayLayer)) {
 			OverlayProps.Load((Tile)tiles[_map.OverlayLayer][0]);
 		} else { OverlayProps.Close(); }*/
-				GD.Print(tiles);
 				//_mouseLeftPressed = mouseButton.Pressed && mouseButton.ButtonIndex == MouseButton.Left;
-			}
-		}
-	}
+
 }
