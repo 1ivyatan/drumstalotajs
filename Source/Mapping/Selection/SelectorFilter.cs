@@ -46,24 +46,37 @@ public partial class SceneTile : Tile
 				if (flashedTiles.Count > 0) tiles[layer] = flashedTiles;
 			} else if (layer is SceneLayer)
 			{
+				var filteredTiles = new Godot.Collections.Array();
+				
 				if (strict)
 				{
 					var flashedTile = (layer as SceneLayer).GetInstance(position);
-					if (flashedTile != null) tiles[layer] = [flashedTile];
+					if (flashedTile != null) filteredTiles = [flashedTile];
 				} else
 				{
 					var flashedTiles = (Godot.Collections.Array)(layer as SceneLayer).Flash(position);
-					if (flashedTiles.Count > 0) tiles[layer] = flashedTiles;
+					if (flashedTiles.Count > 0) filteredTiles = flashedTiles;
 				}
+				
+				
+				if (FilteredItemIds.ContainsKey(layer))
+				{
+					var tileCheck = (Array<int> ids, SceneTile tile) =>
+					{
+						return ids.Contains(tile.TileId);
+					};
+					
+					foreach (var tile in filteredTiles)
+					{
+						if (!tileCheck(FilteredItemIds[layer], (SceneTile)tile))
+						{
+							filteredTiles.Remove(tile);
+						}
+					}
+				}
+				
+				tiles[layer] = filteredTiles;
 			}
-		}
-		
-		if (FilteredItemIds.Count > 0)
-		{
-			//foreach (var tile in tiles)
-			//{
-				GD.Print(FilteredItemIds);
-			//}
 		}
 		
 		return tiles;
