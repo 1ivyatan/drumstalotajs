@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://cbrvwrfgt47ac"]
+
+[ext_resource type="Script" uid="uid://2vutmwm40ck6" path="res://Source/Battle/Stages/DeviceAdjustment.cs" id="1_fnx8f"]
+
+[node name="DeviceAdjustment" type="Control" unique_id=641640994]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fnx8f")

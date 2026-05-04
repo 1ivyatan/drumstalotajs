@@ -22,7 +22,7 @@ _pauseOverlay = NodePath("Overlay/PauseOverlay")
 [node name="StageManager" type="CanvasLayer" parent="." unique_id=1845418048]
 script = ExtResource("4_07e4u")
 Stages = Dictionary[String, String]({
-"DeviceAdjustment": "",
+"DeviceAdjustment": "res://Scenes/Battle/Stages/DeviceAdjustment.tscn",
 "DevicePlacement": "res://Scenes/Battle/Stages/DevicePlacement.tscn",
 "Firing": ""
 })

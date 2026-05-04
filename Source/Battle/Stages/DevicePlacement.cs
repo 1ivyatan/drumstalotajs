@@ -70,7 +70,7 @@ public partial class DevicePlacement : Control
 		_toDeviceAdjustment.Pressed += () => {
 			if (CheckBounds())
 			{
-				
+				_scene.StageManager.DeviceAdjustment();
 			}
 		};
 	}
