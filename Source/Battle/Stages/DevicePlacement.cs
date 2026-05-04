@@ -1,4 +1,5 @@
 using Godot;
+using Godot.Collections;
 using System;
 using System.Linq;
 using Drumstalotajs;
@@ -19,6 +20,7 @@ namespace Drumstalotajs.Battle.Stages;
 public partial class DevicePlacement : Control
 {
 	[Export] private ItemList _deviceInventory;
+	[Export] private Button _toDeviceAdjustment;
 	private BattleScene _scene;
 	private Map _map;
 	
@@ -26,6 +28,8 @@ public partial class DevicePlacement : Control
 	private SceneLayerAtlasData[] _deviceAtlas;
 	private SceneLayerAtlasData _selectedDeviceAtlas = null;
 	private long _itemListIndex = -1;
+	/* id, count */
+	private Dictionary<int, int> _counter = new();
 	
 	public async override void _Ready()
 	{
@@ -51,6 +55,7 @@ public partial class DevicePlacement : Control
 			if (sceneTile != null && sceneTile is EntityLayerAtlasData entity && entity.Type == EntityType.Device)
 			{
 				_deviceInventory.AddItem($"{device.MaxCount}", entity.Thumbnail);
+				_counter[device.DeviceId] = 0;
 			}
 		}
 		
@@ -62,6 +67,12 @@ public partial class DevicePlacement : Control
 		}
 		
 		_deviceInventory.ItemSelected += this.SetSelectedDevice;
+		_toDeviceAdjustment.Pressed += () => {
+			if (CheckBounds())
+			{
+				
+			}
+		};
 	}
 	
 	private void SetSelectedDevice(long index)
@@ -117,16 +128,30 @@ public partial class DevicePlacement : Control
 				data.Player = true;
 				await _map.EntityLayer.AddTile(data);
 				_deviceInventory.SetItemText((int)_itemListIndex, $"{_deviceProps.MaxCount - count - 1}");
+				_counter[_selectedDeviceAtlas.Id]++;
 			}
 		} else if (_selectedDeviceAtlas.Id == device.TileId)
 		{
 			_map.EntityLayer.RemoveTile(position);
 			_deviceInventory.SetItemText((int)_itemListIndex, $"{_deviceProps.MaxCount - count + 1}");
+			_counter[_selectedDeviceAtlas.Id]--;
 		}
+		
+		LockcheckAdjustmentButton();
 	}
 	
-	//private bool CheckBounds()
-	//{
-		
-	//}
+	private void LockcheckAdjustmentButton()
+	{
+		_toDeviceAdjustment.Disabled = !CheckBounds();
+	}
+	
+	private bool CheckBounds()
+	{
+		int total = 0;
+		foreach (var count in _counter)
+		{
+			total += count.Value;
+		}
+		return (total >= _map.CurrentLoadedMap.MinTotalDevices && total <= _map.CurrentLoadedMap.MaxTotalDevices);
+	}
 }

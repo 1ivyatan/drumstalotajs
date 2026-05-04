@@ -51,6 +51,8 @@ Vector2i(14, 10): 0.0,
 Vector2i(16, 14): 180.0
 })
 DeviceProps = Array[ExtResource("2_n4mfl")]([SubResource("Resource_8qlul"), SubResource("Resource_b2u0n")])
+MinTotalDevices = 1
+MaxTotalDevices = 2
 GroundLayer = SubResource("Resource_q1ff3")
 DecorationLayer = SubResource("Resource_ghv0k")
 EntityLayer = SubResource("Resource_n4mfl")

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dlakdl7qufbmm" path="res://Source/Battle/Stages/DevicePlacement.cs" id="1_8xrf7"]
 
-[node name="DevicePlacement" type="Control" unique_id=1734111832 node_paths=PackedStringArray("_deviceInventory")]
+[node name="DevicePlacement" type="Control" unique_id=1734111832 node_paths=PackedStringArray("_deviceInventory", "_toDeviceAdjustment")]
 layout_mode = 3
 anchors_preset = 12
 anchor_top = 1.0
@@ -12,14 +12,19 @@ grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("1_8xrf7")
 _deviceInventory = NodePath("DeviceInventoryContainer/DeviceInventory")
+_toDeviceAdjustment = NodePath("ToDeviceAdjustment")
 
 [node name="DeviceInventoryContainer" type="PanelContainer" parent="." unique_id=1814224064]
 layout_mode = 1
-anchors_preset = 2
+anchors_preset = 7
+anchor_left = 0.5
 anchor_top = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
+offset_left = -20.0
 offset_top = -40.0
-offset_right = 40.0
+offset_right = 20.0
+grow_horizontal = 2
 grow_vertical = 0
 
 [node name="DeviceInventory" type="ItemList" parent="DeviceInventoryContainer" unique_id=1736832961]
@@ -41,4 +46,5 @@ offset_left = -8.0
 offset_top = -8.0
 grow_horizontal = 0
 grow_vertical = 0
+disabled = true
 text = "Place devices"

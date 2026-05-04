@@ -19,6 +19,8 @@ public partial class MapResource : Resource
 	[ExportGroup("Devices")]
 	[Export] public Dictionary<Vector2I, double> DevicePositions { get; set; } = new();
 	[Export] public Array<DeviceProps> DeviceProps { get; set; } = new();
+	[Export] public int MinTotalDevices { get; set; } = 1;
+	[Export] public int MaxTotalDevices { get; set; } = 1;
 	
 	[ExportGroup("Layers")]
 	[Export] public GroundLayerData GroundLayer { get; set; } = null;
