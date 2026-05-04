@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://ceahjm1ad3yp2"]
+
+[ext_resource type="Texture2D" uid="uid://2io65q52gq16" path="res://Assets/Textures/overlay.png" id="1_2qutd"]
+[ext_resource type="Script" uid="uid://berjic4hx20yl" path="res://Source/Components/Wheel.cs" id="1_ed1tk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ed1tk"]
+atlas = ExtResource("1_2qutd")
+region = Rect2(100, 0, 44, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2qutd"]
+atlas = ExtResource("1_2qutd")
+region = Rect2(149, 12, 10, 15)
+
+[node name="Wheel" type="Control" unique_id=620630249 node_paths=PackedStringArray("_wheel", "_controls", "_leftButton", "_rightButton")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_ed1tk")
+_wheel = NodePath("WheelTexture")
+_controls = NodePath("Controls")
+_leftButton = NodePath("Controls/LeftButton")
+_rightButton = NodePath("Controls/RightButton")
+
+[node name="WheelTexture" type="TextureRect" parent="." unique_id=796412443]
+layout_mode = 1
+offset_right = 44.0
+offset_bottom = 44.0
+texture = SubResource("AtlasTexture_ed1tk")
+
+[node name="Controls" type="HBoxContainer" parent="." unique_id=288004148]
+layout_mode = 1
+offset_right = 24.0
+offset_bottom = 15.0
+alignment = 1
+
+[node name="LeftButton" type="TextureButton" parent="Controls" unique_id=2012958214]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = SubResource("AtlasTexture_2qutd")
+stretch_mode = 3
+flip_h = true
+
+[node name="RightButton" type="TextureButton" parent="Controls" unique_id=607174432]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = SubResource("AtlasTexture_2qutd")
+stretch_mode = 3
