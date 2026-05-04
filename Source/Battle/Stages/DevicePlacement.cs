@@ -106,13 +106,16 @@ public partial class DevicePlacement : Control
 	private async Task ToggleDevice(Vector2I position)
 	{
 		var device = _map.EntityLayer.GetInstance(position);
-		var count = _map.EntityLayer.InstanceCount(_selectedDeviceAtlas.Id);
-		
+		var count = _map.EntityLayer.InstanceCount(_selectedDeviceAtlas.Id, true);
 		if (device == null)
 		{
 			if (count < _deviceProps.MaxCount)
 			{
-				await _map.EntityLayer.AddTile(position, _selectedDeviceAtlas.Name);
+				var data = new EntityLayerTileData();
+				data.Id = _selectedDeviceAtlas.Id;
+				data.Position = position;
+				data.Player = true;
+				await _map.EntityLayer.AddTile(data);
 				_deviceInventory.SetItemText((int)_itemListIndex, $"{_deviceProps.MaxCount - count - 1}");
 			}
 		} else if (_selectedDeviceAtlas.Id == device.TileId)
@@ -121,4 +124,9 @@ public partial class DevicePlacement : Control
 			_deviceInventory.SetItemText((int)_itemListIndex, $"{_deviceProps.MaxCount - count + 1}");
 		}
 	}
+	
+	//private bool CheckBounds()
+	//{
+		
+	//}
 }

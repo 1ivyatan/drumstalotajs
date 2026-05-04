@@ -39,6 +39,15 @@ public partial class EntityLayer : SceneLayer
 		return tile != null ? tile as Entity : null;
 	}
 	
+	public int InstanceCount(int id, bool player)
+	{
+		return Instances
+			.Where(i => i.TileId == id)
+			.Where(i => i is Entity)
+			.Where(e => ((Entity)e).Player == player)
+			.Count();
+	}
+	
 	public async Task AddTile(EntityLayerTileData atlas)
 	{
 		SetCell(atlas.Position, 0, Vector2I.Zero, atlas.Id);
@@ -49,6 +58,8 @@ public partial class EntityLayer : SceneLayer
 			tile.Azimuth = (float)atlas.Azimuth;
 			tile.Integrity = (float)atlas.Integrity;
 			tile.Player = (bool)atlas.Player;
+			tile.TileId = atlas.Id;
+			tile.Data = atlas.Data;
 		}
 		EmitSignal(SignalName.ChangedLayer);
 	}
