@@ -12,7 +12,7 @@ public partial class Wheel : Control
 	[Export] public double Value { get; set; } = 0;
 	[Export] public double MinValue { get; set; } = -100;
 	[Export] public double MaxValue { get; set; } = 100;
-	[Export] public double Step { get; set; } = 0.5;
+	[Export] public double Step { get; set; } = 1;
 
 	[ExportGroup("Textures")]
 	[Export] private Texture2D _normalArrow;
@@ -32,10 +32,13 @@ public partial class Wheel : Control
 	
 	public override void _Ready()
 	{
-		Size = _wheel.GetSize();
+		CustomMinimumSize = _wheel.GetSize();
 		_left.Texture = _normalArrow;
 		_right.Texture = _normalArrow;
-		_wheelNode.PivotOffset = _wheel.GetSize() * 0.5f;
+		
+		//GD.Print(Size);
+		
+		_wheelNode.PivotOffset = CustomMinimumSize * 0.5f;
 		_slider.Modulate = new Color(1, 1, 1, 0); 
 		_slider.Size = _wheel.GetSize();
 		_slider.MinValue = -WheelIntensity;

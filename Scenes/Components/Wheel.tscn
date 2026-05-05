@@ -25,13 +25,9 @@ region = Rect2(146, 0, 15, 23)
 
 [node name="Wheel" type="Control" unique_id=484444380 node_paths=PackedStringArray("_slider", "_wheelNode", "_left", "_right")]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -1236.0
-offset_bottom = -676.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
 script = ExtResource("1_w0fep")
 _normalArrow = SubResource("AtlasTexture_mmtua")
 _hoveredArrow = SubResource("AtlasTexture_qldnv")
@@ -42,10 +38,14 @@ _left = NodePath("ArrowTextures/Left")
 _right = NodePath("ArrowTextures/Right")
 
 [node name="Texture" type="TextureRect" parent="." unique_id=905232903]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = SubResource("AtlasTexture_w0fep")
+stretch_mode = 3
 
 [node name="ArrowTextures" type="HBoxContainer" parent="." unique_id=528764189]
 layout_mode = 1
@@ -69,7 +69,7 @@ texture = SubResource("AtlasTexture_u2h7p")
 stretch_mode = 3
 
 [node name="Slider" type="HSlider" parent="." unique_id=1475277947]
-layout_mode = 0
+layout_mode = 1
 offset_right = 8.0
 offset_bottom = 16.0
 min_value = -1.0

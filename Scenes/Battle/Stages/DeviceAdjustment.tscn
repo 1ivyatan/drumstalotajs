@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://cbrvwrfgt47ac"]
 
 [ext_resource type="Script" uid="uid://2vutmwm40ck6" path="res://Source/Battle/Stages/DeviceAdjustment.cs" id="1_fnx8f"]
+[ext_resource type="PackedScene" uid="uid://tkq5giln4ao6" path="res://Scenes/Components/Wheel.tscn" id="2_uecgq"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_uecgq"]
 
 [node name="DeviceAdjustment" type="Control" unique_id=641640994]
 layout_mode = 3
@@ -12,22 +15,63 @@ grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("1_fnx8f")
 
-[node name="DeviceAdjustmentContainer" type="PanelContainer" parent="." unique_id=1235408494]
+[node name="WheelAdjustmentContainer" type="PanelContainer" parent="." unique_id=1235408494]
+visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -20.0
-offset_top = -40.0
-offset_right = 20.0
+offset_left = -75.0
+offset_top = -150.0
+offset_right = 75.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="DeviceAdjustmentContainer" unique_id=357179251]
+[node name="Container" type="VBoxContainer" parent="WheelAdjustmentContainer" unique_id=357179251]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="DeviceAdjustmentContainer/VBoxContainer" unique_id=2010495193]
+[node name="Title" type="Label" parent="WheelAdjustmentContainer/Container" unique_id=2010495193]
 layout_mode = 2
 text = "Adjust device"
+label_settings = SubResource("LabelSettings_uecgq")
+horizontal_alignment = 1
+
+[node name="Wheels" type="HBoxContainer" parent="WheelAdjustmentContainer/Container" unique_id=113747272]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TraverseWheel" type="VBoxContainer" parent="WheelAdjustmentContainer/Container/Wheels" unique_id=1504444597]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="Title" type="Label" parent="WheelAdjustmentContainer/Container/Wheels/TraverseWheel" unique_id=4687548]
+layout_mode = 2
+text = "Traverse"
+horizontal_alignment = 1
+
+[node name="Wheel" parent="WheelAdjustmentContainer/Container/Wheels/TraverseWheel" unique_id=484444380 instance=ExtResource("2_uecgq")]
+layout_mode = 2
+
+[node name="ApproxDegrees" type="Label" parent="WheelAdjustmentContainer/Container/Wheels/TraverseWheel" unique_id=481912856]
+layout_mode = 2
+text = "~000deg"
+horizontal_alignment = 1
+
+[node name="AngleWheel" type="VBoxContainer" parent="WheelAdjustmentContainer/Container/Wheels" unique_id=848434709]
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="Title" type="Label" parent="WheelAdjustmentContainer/Container/Wheels/AngleWheel" unique_id=344281175]
+layout_mode = 2
+text = "Angle"
+horizontal_alignment = 1
+
+[node name="Wheel" parent="WheelAdjustmentContainer/Container/Wheels/AngleWheel" unique_id=953888548 instance=ExtResource("2_uecgq")]
+layout_mode = 2
+
+[node name="ApproxDegrees" type="Label" parent="WheelAdjustmentContainer/Container/Wheels/AngleWheel" unique_id=1028028555]
+layout_mode = 2
+text = "~000deg"
+horizontal_alignment = 1

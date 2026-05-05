@@ -36,6 +36,11 @@ public partial class StageManager : CanvasLayer
 		 SetStage(Stages["DevicePlacement"]);
 	}
 	
+	public void InitDeviceAdjustment()
+	{
+		SetStage(Stages["InitDeviceAdjustment"]);
+	}
+	
 	public void DeviceAdjustment()
 	{
 		SetStage(Stages["DeviceAdjustment"]);
