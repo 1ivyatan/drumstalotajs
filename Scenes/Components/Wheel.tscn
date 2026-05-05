@@ -1,46 +1,77 @@
-[gd_scene format=3 uid="uid://ceahjm1ad3yp2"]
+[gd_scene format=3 uid="uid://tkq5giln4ao6"]
 
-[ext_resource type="Texture2D" uid="uid://2io65q52gq16" path="res://Assets/Textures/overlay.png" id="1_2qutd"]
-[ext_resource type="Script" uid="uid://berjic4hx20yl" path="res://Source/Components/Wheel.cs" id="1_ed1tk"]
+[ext_resource type="Texture2D" uid="uid://2io65q52gq16" path="res://Assets/Textures/overlay.png" id="1_isp52"]
+[ext_resource type="Script" uid="uid://cvm6gqfo616im" path="res://Source/Components/Wheel.cs" id="1_w0fep"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ed1tk"]
-atlas = ExtResource("1_2qutd")
+[sub_resource type="AtlasTexture" id="AtlasTexture_mmtua"]
+atlas = ExtResource("1_isp52")
+region = Rect2(146, 0, 15, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qldnv"]
+atlas = ExtResource("1_isp52")
+region = Rect2(162, 0, 15, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tcxc5"]
+atlas = ExtResource("1_isp52")
 region = Rect2(100, 0, 44, 44)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2qutd"]
-atlas = ExtResource("1_2qutd")
-region = Rect2(149, 12, 10, 15)
+[sub_resource type="AtlasTexture" id="AtlasTexture_w0fep"]
+atlas = ExtResource("1_isp52")
+region = Rect2(100, 0, 44, 44)
 
-[node name="Wheel" type="Control" unique_id=620630249 node_paths=PackedStringArray("_wheel", "_controls", "_leftButton", "_rightButton")]
+[sub_resource type="AtlasTexture" id="AtlasTexture_u2h7p"]
+atlas = ExtResource("1_isp52")
+region = Rect2(146, 0, 15, 23)
+
+[node name="Wheel" type="Control" unique_id=484444380 node_paths=PackedStringArray("_slider", "_wheelNode", "_left", "_right")]
 layout_mode = 3
-anchors_preset = 0
-script = ExtResource("1_ed1tk")
-_wheel = NodePath("WheelTexture")
-_controls = NodePath("Controls")
-_leftButton = NodePath("Controls/LeftButton")
-_rightButton = NodePath("Controls/RightButton")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1236.0
+offset_bottom = -676.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_w0fep")
+_normalArrow = SubResource("AtlasTexture_mmtua")
+_hoveredArrow = SubResource("AtlasTexture_qldnv")
+_wheel = SubResource("AtlasTexture_tcxc5")
+_slider = NodePath("Slider")
+_wheelNode = NodePath("Texture")
+_left = NodePath("ArrowTextures/Left")
+_right = NodePath("ArrowTextures/Right")
 
-[node name="WheelTexture" type="TextureRect" parent="." unique_id=796412443]
+[node name="Texture" type="TextureRect" parent="." unique_id=905232903]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("AtlasTexture_w0fep")
+
+[node name="ArrowTextures" type="HBoxContainer" parent="." unique_id=528764189]
 layout_mode = 1
-offset_right = 44.0
-offset_bottom = 44.0
-texture = SubResource("AtlasTexture_ed1tk")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Controls" type="HBoxContainer" parent="." unique_id=288004148]
-layout_mode = 1
-offset_right = 24.0
-offset_bottom = 15.0
-alignment = 1
-
-[node name="LeftButton" type="TextureButton" parent="Controls" unique_id=2012958214]
+[node name="Left" type="TextureRect" parent="ArrowTextures" unique_id=885090117]
 layout_mode = 2
-size_flags_horizontal = 3
-texture_normal = SubResource("AtlasTexture_2qutd")
+size_flags_horizontal = 2
+texture = SubResource("AtlasTexture_u2h7p")
 stretch_mode = 3
 flip_h = true
 
-[node name="RightButton" type="TextureButton" parent="Controls" unique_id=607174432]
+[node name="Right" type="TextureRect" parent="ArrowTextures" unique_id=992023294]
 layout_mode = 2
-size_flags_horizontal = 3
-texture_normal = SubResource("AtlasTexture_2qutd")
+size_flags_horizontal = 10
+texture = SubResource("AtlasTexture_u2h7p")
 stretch_mode = 3
+
+[node name="Slider" type="HSlider" parent="." unique_id=1475277947]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 16.0
+min_value = -1.0
+max_value = 1.0
+step = 0.01

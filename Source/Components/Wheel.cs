@@ -13,44 +13,85 @@ public partial class Wheel : Control
 	[Export] public double MinValue { get; set; } = -100;
 	[Export] public double MaxValue { get; set; } = 100;
 	[Export] public double Step { get; set; } = 0.5;
+
+	[ExportGroup("Textures")]
+	[Export] private Texture2D _normalArrow;
+	[Export] private Texture2D _hoveredArrow;
+	[Export] private Texture2D _wheel;
 	
 	[ExportGroup("Wheel")]
-	[Export] private double WheelSpeed { get; set; } = 250;
-	[Export] private double Direction { get; set; } = 1;
+	[Export] public double WheelSpeed { get; set; } = 250;
+	[Export] public double WheelIntensity { get; set; } = 2.5;
 	
-	[ExportGroup("Internals")]
-	[Export] private TextureRect _wheel;
-	[Export] private Control _controls;
-	[Export] private BaseButton _leftButton;
-	[Export] private BaseButton _rightButton;
-	
-	private double _wheelDirection = 0;
+	[ExportGroup("Internal Nodes")]
+	[Export] private Slider _slider;
+	[Export] private TextureRect _wheelNode;
+	[Export] private TextureRect _left;
+	[Export] private TextureRect _right;
+	private bool _dragging = false;
 	
 	public override void _Ready()
 	{
-		_wheel.PivotOffset = _wheel.Texture.GetSize() * 0.5f;
-		_controls.Size = _wheel.Texture.GetSize();
-		_leftButton.ButtonDown += () => { TurnWheel(-1); };
-		_rightButton.ButtonDown += () => { TurnWheel(1); };
-		_leftButton.ButtonUp += () => { TurnWheel(0); };
-		_rightButton.ButtonUp += () => { TurnWheel(0); };
+		Size = _wheel.GetSize();
+		_left.Texture = _normalArrow;
+		_right.Texture = _normalArrow;
+		_wheelNode.PivotOffset = _wheel.GetSize() * 0.5f;
+		_slider.Modulate = new Color(1, 1, 1, 0); 
+		_slider.Size = _wheel.GetSize();
+		_slider.MinValue = -WheelIntensity;
+		_slider.MaxValue = WheelIntensity;
+		_slider.DragStarted += () => {
+			_dragging = true;
+		};
+		_slider.DragEnded += (bool changed) => { 
+			StopWheel();
+		};
 	}
 	
-	public override void _PhysicsProcess(double delta)
+	private void TurnWheel(double intensity, double delta)
 	{
-		if (_wheelDirection != 0)
+		if (MinValue < Value && Value < MaxValue)
 		{
-			Value = Mathf.Clamp(Value + _wheelDirection, MinValue, MaxValue);
-			EmitSignal(SignalName.ValueChanged, Value);
-			if (MinValue < Value && Value < MaxValue)
-			{
-				_wheel.RotationDegrees += ((float)_wheelDirection * (float)delta) * (float)WheelSpeed;
-			}
+			_wheelNode.RotationDegrees += ((float)intensity * (float)delta) * (float)WheelSpeed;
 		}
 	}
 	
-	private void TurnWheel(double direction)
+	private void StopWheel()
 	{
-		_wheelDirection = direction * Direction;
+		_dragging = false;
+		_slider.Value = 0;
+		PilotArrow(0);
+	}
+	
+	private void PilotArrow(double direction)
+	{
+		if (direction == 0)
+		{
+			_left.Texture = _normalArrow;
+			_right.Texture = _normalArrow;
+			_right.Visible = true;
+			_left.Visible = true;
+		} else if (direction > 0)
+		{
+			_right.Texture = _hoveredArrow;
+			_right.Visible = true;
+			_left.Visible = false;
+		} else if (direction < 0)
+		{
+			_left.Texture = _hoveredArrow;
+			_right.Visible = false;
+			_left.Visible = true;
+		}
+	}
+
+	public override void _PhysicsProcess(double delta)
+	{
+		if (_dragging)
+		{
+			TurnWheel(_slider.Value, delta);
+			PilotArrow(_slider.Value);
+			Value = Mathf.Clamp(Value + (Math.Sign(_slider.Value) * Step), MinValue, MaxValue);
+			EmitSignal(SignalName.ValueChanged, Value);
+		}
 	}
 }
