@@ -95,6 +95,8 @@ horizontal_alignment = 1
 
 [node name="Wheel" parent="InitDeviceAdjustmentContainer/Container/Wheels/Angle" unique_id=484444380 instance=ExtResource("3_svpor")]
 layout_mode = 2
+Step = 0.1
+WheelIntensity = 1.0
 
 [node name="Value" type="Label" parent="InitDeviceAdjustmentContainer/Container/Wheels/Angle" unique_id=508199123]
 layout_mode = 2

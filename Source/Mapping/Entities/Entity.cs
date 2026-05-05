@@ -8,13 +8,14 @@ namespace Drumstalotajs.Mapping.Entities;
 
 public partial class Entity : SceneTile
 {
-	[Export] public EntityPropertiesData Properties { get; private set; }
+	[Export] public EntityPropertiesData Properties { get; set; }
 	
 	public double Azimuth { get;
 		set {
 			field = ((value % 360) + 360) % 360;
 		}
-	}
+	} = 0;
+
 	public double Integrity { get; 
 		set { 
 			field = Mathf.Clamp(value, 0, 100);

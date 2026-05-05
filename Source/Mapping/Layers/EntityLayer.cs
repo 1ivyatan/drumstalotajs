@@ -60,6 +60,11 @@ public partial class EntityLayer : SceneLayer
 			tile.Player = (bool)atlas.Player;
 			tile.TileId = atlas.Id;
 			tile.Data = atlas.Data;
+			
+			if (tile is Device device && atlas is EntityLayerDeviceTileData deviceAtlas)
+			{
+				device.Angle = deviceAtlas.Angle;
+			}
 		}
 		EmitSignal(SignalName.ChangedLayer);
 	}

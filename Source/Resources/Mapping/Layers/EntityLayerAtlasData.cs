@@ -13,5 +13,5 @@ namespace Drumstalotajs.Resources.Mapping.Layers;
 public partial class EntityLayerAtlasData : SceneLayerAtlasData
 {
 	[Export] public EntityType Type { get; private set; }
-	//[Export] public EntityPropertiesData Properties { get; private set; }
+	[Export] public EntityPropertiesData Properties { get; private set; }
 }

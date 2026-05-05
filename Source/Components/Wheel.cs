@@ -9,7 +9,12 @@ public partial class Wheel : Control
 	[Signal] public delegate void ValueChangedEventHandler(double value);
 	
 	[ExportGroup("Range")]
-	[Export] public double Value { get; set; } = 0;
+	[Export] public double Value { get; 
+		set {
+			field = value;
+			EmitSignal(SignalName.ValueChanged, Value);
+		}
+	} = 0;
 	[Export] public double MinValue { get; set; } = -100;
 	[Export] public double MaxValue { get; set; } = 100;
 	[Export] public double Step { get; set; } = 1;
@@ -94,7 +99,6 @@ public partial class Wheel : Control
 			TurnWheel(_slider.Value, delta);
 			PilotArrow(_slider.Value);
 			Value = Mathf.Clamp(Value + (Math.Sign(_slider.Value) * Step), MinValue, MaxValue);
-			EmitSignal(SignalName.ValueChanged, Value);
 		}
 	}
 }

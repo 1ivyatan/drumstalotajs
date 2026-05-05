@@ -9,6 +9,7 @@ namespace Drumstalotajs.Mapping.Entities;
 public partial class Device : Entity
 {
 	public bool Placed { get; set; } = false;
+	public double Angle { get; set; } = -1;
 	
 	public override void _Ready()
 	{
