@@ -33,11 +33,56 @@ public partial class InitDeviceAdjustment : Control
 		_scene = Nodes.GetSceneRoot() as BattleScene;
 		_map = _scene.Map;
 		_scene.BattleTopnav.Title = "Prepare devices";
+		
+		BaseLayer[] layers = [ _map.EntityLayer ];
+		FilteredItemIds idFilters = new FilteredItemIds
+		{
+			{ _map.EntityLayer, _map.EntityLayer.GetEntityIdsByType(EntityType.Device) }
+		};
+		_map.Selector.Filter = new SelectorFilter(layers, idFilters);
+		_map.Mode = MapMode.Interactable;
+		
+		_map.OverlayLayer.RemoveAllInstancesByName("DeviceMarker");
+		_map.OverlayLayer.ClearAllHighlighters();
+		
+		/*
 		_azimuthSlider.ValueChanged += (double value) => {
 			_azimuthLabel.Text = $"~{Math.Round(value)}°";
 		};
 		_angleSlider.ValueChanged += (double value) => {
 			_angleLabel.Text = $"~{Math.Round(value)}°";
-		};
+		};*/
 	}
+	
+	
+	
+	public async override void _UnhandledInput(InputEvent @event)
+	{
+		if (@event is InputEventMouse mouseEvent)
+		{
+			if (mouseEvent is InputEventMouseButton mouseButton && 
+				mouseButton.ButtonIndex == MouseButton.Left &&
+				mouseButton.Pressed
+			)
+			{
+				var pos = _map.ViewportMouseToMap();
+				var tiles = _map.Flash(pos);
+				
+				if (tiles.Count > 0)
+				{
+					var device = tiles[_map.EntityLayer][0];
+					_map.OverlayLayer.PlaceHighlighter(_map.OverlayLayer.LocalToMap(((SceneTile)device).Position));
+				} else
+				{
+					_map.OverlayLayer.ClearAllHighlighters();
+				}
+				
+			}
+		}
+	}
+				//if (_selectedDeviceAtlas == null)
+				//{
+				//	Nodes.GetRoot().ToastManager.SpawnOne("Select a device!");
+				//	return;
+				//}
 }

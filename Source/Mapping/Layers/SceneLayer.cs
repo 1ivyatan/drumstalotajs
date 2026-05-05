@@ -34,11 +34,6 @@ public partial class SceneLayer : Layer<string, SceneTile, SceneLayerData>
 		return list.Count() > 0 ? list.ToArray()[0] : null;
 	}
 	
-	public int InstanceCount(int id)
-	{
-		return Instances.Where(i => i.TileId == id).Count();
-	}
-	
 	private void PrepareAtlas(SceneLayerAtlasData[] atlas)
 	{
 		TileSetSource source;
@@ -100,12 +95,6 @@ public partial class SceneLayer : Layer<string, SceneTile, SceneLayerData>
 	public SceneLayerAtlasData[] GetFullAtlas()
 	{
 		return Atlas;
-	}
-	
-	public int GetAtlasId(string name)
-	{
-		var atlas = GetAtlasData(name);
-		return atlas != null ? atlas.Id : -1;
 	}
 	
 	public async override Task AddTile(Vector2I position, string atlas)

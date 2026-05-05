@@ -19,6 +19,7 @@
 [ext_resource type="Script" uid="uid://ciiiu3aq8tm4l" path="res://Source/Mapping/Selection/Selector.cs" id="15_0ild7"]
 [ext_resource type="PackedScene" uid="uid://cb0f78vc8xv76" path="res://Scenes/Mapping/Overlays/DeviceMarker.tscn" id="16_hfvyn"]
 [ext_resource type="Script" uid="uid://blbxol7imiof6" path="res://Source/Mapping/Cameras/Camera.cs" id="16_mukcc"]
+[ext_resource type="PackedScene" uid="uid://do63mxtpdm0w7" path="res://Scenes/Mapping/Overlays/SelectorHighlight.tscn" id="17_st7r0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ox681"]
 texture = ExtResource("2_sd0qa")
@@ -316,9 +317,21 @@ Thumbnail = SubResource("AtlasTexture_st7r0")
 Scene = ExtResource("16_hfvyn")
 metadata/_custom_type_script = "uid://bn1u57sn0woiq"
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_hfvyn"]
+atlas = ExtResource("7_ccdcv")
+region = Rect2(104, 6, 34, 34)
+
+[sub_resource type="Resource" id="Resource_st7r0"]
+script = ExtResource("7_f0kan")
+Id = 3
+Name = "SelectorHighlight"
+Thumbnail = SubResource("AtlasTexture_hfvyn")
+Scene = ExtResource("17_st7r0")
+metadata/_custom_type_script = "uid://bn1u57sn0woiq"
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_mukcc"]
 atlas = ExtResource("7_ccdcv")
-region = Rect2(64, 0, 38, 38)
+region = Rect2(62, 38, 38, 38)
 
 [node name="Map" type="Node2D" unique_id=1338299763 node_paths=PackedStringArray("GroundLayer", "DecorationLayer", "EntityLayer", "OverlayLayer", "ProjectileLayer", "Selector", "Camera")]
 script = ExtResource("1_lo67w")
@@ -348,7 +361,7 @@ Atlas = Array[Object]([SubResource("Resource_7ig3r"), SubResource("Resource_mukc
 [node name="Overlays" type="TileMapLayer" parent="." unique_id=201889829]
 tile_set = SubResource("TileSet_ajbla")
 script = ExtResource("6_bdwom")
-Atlas = Array[Object]([SubResource("Resource_ccdcv"), SubResource("Resource_asx6w")])
+Atlas = Array[Object]([SubResource("Resource_ccdcv"), SubResource("Resource_asx6w"), SubResource("Resource_st7r0")])
 
 [node name="Projectiles" type="Node2D" parent="." unique_id=1337390122]
 script = ExtResource("14_bc3k3")

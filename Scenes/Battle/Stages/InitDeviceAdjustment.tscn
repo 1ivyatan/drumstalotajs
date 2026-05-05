@@ -42,6 +42,23 @@ horizontal_alignment = 1
 [node name="Wheels" type="HBoxContainer" parent="InitDeviceAdjustmentContainer/Container" unique_id=2142764939]
 layout_mode = 2
 
+[node name="DeviceInfo" type="VBoxContainer" parent="InitDeviceAdjustmentContainer/Container/Wheels" unique_id=222576668]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="InitDeviceAdjustmentContainer/Container/Wheels/DeviceInfo" unique_id=1002577227]
+layout_mode = 2
+text = "Prepare device"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="InitDeviceAdjustmentContainer/Container/Wheels/DeviceInfo" unique_id=1502481921]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Position" type="Label" parent="InitDeviceAdjustmentContainer/Container/Wheels/DeviceInfo" unique_id=1741099166]
+layout_mode = 2
+text = "(11;11)"
+horizontal_alignment = 1
+
 [node name="Azimuth" type="VBoxContainer" parent="InitDeviceAdjustmentContainer/Container/Wheels" unique_id=2145251941]
 layout_mode = 2
 size_flags_vertical = 3
