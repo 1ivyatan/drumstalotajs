@@ -12,13 +12,13 @@ public partial class CircleSlider : Control
 	[Export] public double Value { get; set; } = 0;
 	[Export] public double MinValue { get; set; } = 0;
 	[Export] public double MaxValue { get; set; } = 100;
-	[Export] public double Step { get; set; } = 1;
 	
 	[ExportGroup("Internals")]
 	[Export] private Control _buttOfArrow;
 	[Export] private TextureRect _arrow;
 	
 	private bool _pressed = false;
+	private bool _clicked = false;
 	
 	public override void _Input(InputEvent @event)
 	{
@@ -26,7 +26,25 @@ public partial class CircleSlider : Control
 		{
 			if (mouseEvent is InputEventMouseButton mouseButton)
 			{
-				_pressed = mouseButton.Pressed;
+				if (mouseButton.Pressed && !_clicked)
+				{
+					var localPos = GetLocalMousePosition();
+					var rect = new Rect2(Vector2.Zero, GetRect().Size);
+					if (rect.HasPoint(localPos))
+					{
+						_clicked = true;
+					}
+				} else if (!mouseButton.Pressed)
+				{
+					_clicked = false;
+					_pressed = false;
+				}
+				
+				if (_clicked)
+				{
+					_pressed = mouseButton.Pressed;
+				}
+				
 			}
 		}
 		

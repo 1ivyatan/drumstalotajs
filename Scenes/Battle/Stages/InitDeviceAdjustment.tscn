@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://bvriq6a47jad1"]
 
 [ext_resource type="Script" uid="uid://de4woxc2uwi5r" path="res://Source/Battle/Stages/InitDeviceAdjustment.cs" id="1_y6unp"]
+[ext_resource type="PackedScene" uid="uid://dmgd2vv1ixfnn" path="res://Scenes/Components/CircleSlider.tscn" id="2_g3l6y"]
+[ext_resource type="PackedScene" uid="uid://tkq5giln4ao6" path="res://Scenes/Components/Wheel.tscn" id="3_svpor"]
 
-[node name="InitDeviceAdjustment" type="Control" unique_id=1768267525]
+[node name="InitDeviceAdjustment" type="Control" unique_id=1768267525 node_paths=PackedStringArray("_azimuthSlider", "_azimuthLabel", "_angleSlider", "_angleLabel")]
 layout_mode = 3
 anchors_preset = 12
 anchor_top = 1.0
@@ -11,6 +13,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("1_y6unp")
+_azimuthSlider = NodePath("InitDeviceAdjustmentContainer/Container/Wheels/Azimuth/CircleSlider")
+_azimuthLabel = NodePath("InitDeviceAdjustmentContainer/Container/Wheels/Azimuth/Value")
+_angleSlider = NodePath("InitDeviceAdjustmentContainer/Container/Wheels/Angle/Wheel")
+_angleLabel = NodePath("InitDeviceAdjustmentContainer/Container/Wheels/Angle/Value")
 
 [node name="InitDeviceAdjustmentContainer" type="PanelContainer" parent="." unique_id=87147405]
 layout_mode = 1
@@ -30,3 +36,42 @@ layout_mode = 2
 
 [node name="Title" type="Label" parent="InitDeviceAdjustmentContainer/Container" unique_id=753167254]
 layout_mode = 2
+text = "Prepare device"
+horizontal_alignment = 1
+
+[node name="Wheels" type="HBoxContainer" parent="InitDeviceAdjustmentContainer/Container" unique_id=2142764939]
+layout_mode = 2
+
+[node name="Azimuth" type="VBoxContainer" parent="InitDeviceAdjustmentContainer/Container/Wheels" unique_id=2145251941]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Title" type="Label" parent="InitDeviceAdjustmentContainer/Container/Wheels/Azimuth" unique_id=1619432581]
+layout_mode = 2
+text = "Azimuth"
+horizontal_alignment = 1
+
+[node name="CircleSlider" parent="InitDeviceAdjustmentContainer/Container/Wheels/Azimuth" unique_id=858039364 instance=ExtResource("2_g3l6y")]
+layout_mode = 2
+MaxValue = 360.0
+
+[node name="Value" type="Label" parent="InitDeviceAdjustmentContainer/Container/Wheels/Azimuth" unique_id=191958126]
+layout_mode = 2
+text = "~0°"
+horizontal_alignment = 1
+
+[node name="Angle" type="VBoxContainer" parent="InitDeviceAdjustmentContainer/Container/Wheels" unique_id=2078709291]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="InitDeviceAdjustmentContainer/Container/Wheels/Angle" unique_id=1792810669]
+layout_mode = 2
+text = "Angle"
+horizontal_alignment = 1
+
+[node name="Wheel" parent="InitDeviceAdjustmentContainer/Container/Wheels/Angle" unique_id=484444380 instance=ExtResource("3_svpor")]
+layout_mode = 2
+
+[node name="Value" type="Label" parent="InitDeviceAdjustmentContainer/Container/Wheels/Angle" unique_id=508199123]
+layout_mode = 2
+text = "~0°"
+horizontal_alignment = 1
