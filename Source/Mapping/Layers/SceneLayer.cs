@@ -92,6 +92,11 @@ public partial class SceneLayer : Layer<string, SceneTile, SceneLayerData>
 		return Atlas.FirstOrDefault(a => a.Name == name);
 	}
 	
+	public SceneLayerAtlasData GetAtlasData(int id)
+	{
+		return Atlas.FirstOrDefault(a => a.Id == id);
+	}
+	
 	public SceneLayerAtlasData[] GetFullAtlas()
 	{
 		return Atlas;

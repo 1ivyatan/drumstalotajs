@@ -68,8 +68,23 @@ public partial class CircleSlider : Control
 			
 			_arrow.RotationDegrees = deg;
 			Value = rot / (2 * Mathf.Pi) * (MaxValue - MinValue) + MinValue;
-			GD.Print("Value: ", Value);
 			EmitSignal(SignalName.ValueChanged, Value);
 		}
+	}
+	
+	public void SetValue(double value)
+	{
+		var cut = Mathf.Clamp(value, MinValue, MaxValue);
+		Value = cut;
+		var rads = ((Value - MinValue) / (MaxValue - MinValue) * (2 * Mathf.Pi));
+		
+		rads -= Mathf.Pi / 2;
+		if (rads < 0)//>= Mathf.Tau)
+		{
+			rads += Mathf.Tau;
+		}
+		
+		_arrow.Rotation = (float)rads;
+		EmitSignal(SignalName.ValueChanged, Value);
 	}
 }

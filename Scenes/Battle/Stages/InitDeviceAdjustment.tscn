@@ -1,10 +1,11 @@
 [gd_scene format=3 uid="uid://bvriq6a47jad1"]
 
 [ext_resource type="Script" uid="uid://de4woxc2uwi5r" path="res://Source/Battle/Stages/InitDeviceAdjustment.cs" id="1_y6unp"]
+[ext_resource type="Script" uid="uid://bw2lob855567r" path="res://Source/Battle/Components/InitDeviceAdjustmentContainer.cs" id="2_62jor"]
 [ext_resource type="PackedScene" uid="uid://dmgd2vv1ixfnn" path="res://Scenes/Components/CircleSlider.tscn" id="2_g3l6y"]
 [ext_resource type="PackedScene" uid="uid://tkq5giln4ao6" path="res://Scenes/Components/Wheel.tscn" id="3_svpor"]
 
-[node name="InitDeviceAdjustment" type="Control" unique_id=1768267525 node_paths=PackedStringArray("_azimuthSlider", "_azimuthLabel", "_angleSlider", "_angleLabel")]
+[node name="InitDeviceAdjustment" type="Control" unique_id=1768267525 node_paths=PackedStringArray("_initDeviceAdjustmentContainer")]
 layout_mode = 3
 anchors_preset = 12
 anchor_top = 1.0
@@ -13,12 +14,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("1_y6unp")
-_azimuthSlider = NodePath("InitDeviceAdjustmentContainer/Container/Wheels/Azimuth/CircleSlider")
-_azimuthLabel = NodePath("InitDeviceAdjustmentContainer/Container/Wheels/Azimuth/Value")
-_angleSlider = NodePath("InitDeviceAdjustmentContainer/Container/Wheels/Angle/Wheel")
-_angleLabel = NodePath("InitDeviceAdjustmentContainer/Container/Wheels/Angle/Value")
+_initDeviceAdjustmentContainer = NodePath("InitDeviceAdjustmentContainer")
 
-[node name="InitDeviceAdjustmentContainer" type="PanelContainer" parent="." unique_id=87147405]
+[node name="InitDeviceAdjustmentContainer" type="PanelContainer" parent="." unique_id=87147405 node_paths=PackedStringArray("_deviceLabel", "_devicePosition", "_deviceTexture", "_azimuthSlider", "_azimuthLabel", "_angleSlider", "_angleLabel")]
+visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -30,6 +29,14 @@ offset_top = -40.0
 offset_right = 20.0
 grow_horizontal = 2
 grow_vertical = 0
+script = ExtResource("2_62jor")
+_deviceLabel = NodePath("Container/Wheels/DeviceInfo/Label")
+_devicePosition = NodePath("Container/Wheels/DeviceInfo/Position")
+_deviceTexture = NodePath("Container/Wheels/DeviceInfo/TextureRect")
+_azimuthSlider = NodePath("Container/Wheels/Azimuth/CircleSlider")
+_azimuthLabel = NodePath("Container/Wheels/Azimuth/Value")
+_angleSlider = NodePath("Container/Wheels/Angle/Wheel")
+_angleLabel = NodePath("Container/Wheels/Angle/Value")
 
 [node name="Container" type="VBoxContainer" parent="InitDeviceAdjustmentContainer" unique_id=1010489265]
 layout_mode = 2
@@ -53,6 +60,7 @@ horizontal_alignment = 1
 [node name="TextureRect" type="TextureRect" parent="InitDeviceAdjustmentContainer/Container/Wheels/DeviceInfo" unique_id=1502481921]
 layout_mode = 2
 size_flags_vertical = 3
+stretch_mode = 3
 
 [node name="Position" type="Label" parent="InitDeviceAdjustmentContainer/Container/Wheels/DeviceInfo" unique_id=1741099166]
 layout_mode = 2

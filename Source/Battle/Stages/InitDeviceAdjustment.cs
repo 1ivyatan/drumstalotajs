@@ -6,6 +6,7 @@ using Drumstalotajs;
 using Drumstalotajs.Utilities;
 using Drumstalotajs.Battle;
 using Drumstalotajs.Mapping;
+using Drumstalotajs.Battle.Components;
 using Drumstalotajs.Resources.Mapping.Sets;
 using Drumstalotajs.Mapping.Entities;
 using Drumstalotajs.Resources.Mapping.Layers;
@@ -20,11 +21,7 @@ namespace Drumstalotajs.Battle.Stages;
 
 public partial class InitDeviceAdjustment : Control
 {
-	[Export] private CircleSlider _azimuthSlider;
-	[Export] private Label _azimuthLabel;
-	[Export] private Wheel _angleSlider;
-	[Export] private Label _angleLabel;
-	
+	[Export] private InitDeviceAdjustmentContainer _initDeviceAdjustmentContainer;
 	private BattleScene _scene;
 	private Map _map;
 	
@@ -44,17 +41,7 @@ public partial class InitDeviceAdjustment : Control
 		
 		_map.OverlayLayer.RemoveAllInstancesByName("DeviceMarker");
 		_map.OverlayLayer.ClearAllHighlighters();
-		
-		/*
-		_azimuthSlider.ValueChanged += (double value) => {
-			_azimuthLabel.Text = $"~{Math.Round(value)}°";
-		};
-		_angleSlider.ValueChanged += (double value) => {
-			_angleLabel.Text = $"~{Math.Round(value)}°";
-		};*/
 	}
-	
-	
 	
 	public async override void _UnhandledInput(InputEvent @event)
 	{
@@ -70,19 +57,18 @@ public partial class InitDeviceAdjustment : Control
 				
 				if (tiles.Count > 0)
 				{
-					var device = tiles[_map.EntityLayer][0];
-					_map.OverlayLayer.PlaceHighlighter(_map.OverlayLayer.LocalToMap(((SceneTile)device).Position));
+					var tile = tiles[_map.EntityLayer][0];
+					if ((SceneTile)tile is Device device)
+					{
+						_map.OverlayLayer.PlaceHighlighter(_map.OverlayLayer.LocalToMap(device.Position));
+						_initDeviceAdjustmentContainer.Load(device);
+					}
 				} else
 				{
 					_map.OverlayLayer.ClearAllHighlighters();
+					_initDeviceAdjustmentContainer.Close();
 				}
-				
 			}
 		}
 	}
-				//if (_selectedDeviceAtlas == null)
-				//{
-				//	Nodes.GetRoot().ToastManager.SpawnOne("Select a device!");
-				//	return;
-				//}
 }
