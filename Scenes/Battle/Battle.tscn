@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://csmobm8nus0qv" path="res://Source/Battle/Stages/StageManager.cs" id="4_07e4u"]
 [ext_resource type="Script" uid="uid://b6ocl3clhwf1h" path="res://Source/Battle/Components/PauseOverlay.cs" id="4_odh8s"]
 [ext_resource type="Script" uid="uid://bnmf3stn1wm0k" path="res://Source/Battle/Components/PauseContainer.cs" id="5_rremj"]
+[ext_resource type="PackedScene" uid="uid://dnasbla8y237b" path="res://Scenes/Components/Counter.tscn" id="7_tmq01"]
 
 [node name="Battle" type="Node2D" unique_id=1007953308 node_paths=PackedStringArray("BattleTopnav", "Map", "ScoreManager", "StageManager", "_pauseOverlay")]
 script = ExtResource("1_ael4v")
@@ -41,6 +42,19 @@ _pause = NodePath("PauseButton")
 layout_mode = 2
 size_flags_horizontal = 0
 text = "Pause"
+
+[node name="Counters" type="HBoxContainer" parent="Overlay/Topnav" unique_id=598029868]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="PlayerDeviceCounter" parent="Overlay/Topnav/Counters" unique_id=2026965253 instance=ExtResource("7_tmq01")]
+layout_mode = 2
+
+[node name="EnemyTargetCount" parent="Overlay/Topnav/Counters" unique_id=34201706 instance=ExtResource("7_tmq01")]
+layout_mode = 2
+
+[node name="Timer" parent="Overlay/Topnav/Counters" unique_id=1505146687 instance=ExtResource("7_tmq01")]
+layout_mode = 2
 
 [node name="PauseOverlay" type="Control" parent="Overlay" unique_id=1813882581 node_paths=PackedStringArray("_pauseContainer")]
 visible = false

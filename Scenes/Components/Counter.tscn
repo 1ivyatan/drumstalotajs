@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://dnasbla8y237b"]
+
+[ext_resource type="Script" uid="uid://1osv7wy4pcqb" path="res://Source/Components/Counter.cs" id="1_r5n7t"]
+[ext_resource type="Texture2D" uid="uid://2io65q52gq16" path="res://Assets/Textures/overlay.png" id="2_g3i71"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mxod4"]
+atlas = ExtResource("2_g3i71")
+region = Rect2(0, 96, 32, 32)
+
+[node name="Counter" type="VBoxContainer" unique_id=34201706 node_paths=PackedStringArray("_iconNode", "_count")]
+offset_right = 32.0
+offset_bottom = 59.0
+script = ExtResource("1_r5n7t")
+_iconNode = NodePath("Icon")
+_count = NodePath("Count")
+
+[node name="Icon" type="TextureRect" parent="." unique_id=541086259]
+layout_mode = 2
+texture = SubResource("AtlasTexture_mxod4")
+
+[node name="Count" type="Label" parent="." unique_id=1484449724]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1

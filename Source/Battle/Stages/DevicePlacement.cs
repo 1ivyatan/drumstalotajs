@@ -89,9 +89,16 @@ public partial class DevicePlacement : Control
 	{
 		if (@event is InputEventMouse mouseEvent)
 		{
+			bool moving = false;
+			
+			if (mouseEvent is InputEventMouseMotion mouseMotion)
+			{
+				moving = true;
+			}
+			
 			if (mouseEvent is InputEventMouseButton mouseButton && 
 				mouseButton.ButtonIndex == MouseButton.Left &&
-				mouseButton.Pressed
+				mouseButton.Pressed && !moving
 			)
 			{
 				if (_selectedDeviceAtlas == null)

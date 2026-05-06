@@ -22,6 +22,7 @@ namespace Drumstalotajs.Battle.Stages;
 public partial class InitDeviceAdjustment : Control
 {
 	[Export] private InitDeviceAdjustmentContainer _initDeviceAdjustmentContainer;
+	[Export] private Button _toFiringButton;
 	private BattleScene _scene;
 	private Map _map;
 	
