@@ -70,6 +70,8 @@ public partial class DevicePlacement : Control
 		_toDeviceAdjustment.Pressed += () => {
 			if (CheckBounds())
 			{
+				_map.OverlayLayer.RemoveAllInstancesByName("DeviceMarker");
+				_map.OverlayLayer.ClearAllHighlighters();
 				_scene.StageManager.InitDeviceAdjustment();
 			}
 		};
