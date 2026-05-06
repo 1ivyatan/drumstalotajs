@@ -22,4 +22,9 @@ public partial class Counter : Control
 	{
 		_count.Text = $"{count}";
 	}
+	
+	public void SetText(string text)
+	{
+		_count.Text = text;
+	}
 }
