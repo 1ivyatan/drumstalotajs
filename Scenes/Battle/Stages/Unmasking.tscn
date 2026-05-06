@@ -2,11 +2,54 @@
 
 [ext_resource type="Script" uid="uid://bceyymb5ob2g2" path="res://Source/Battle/Stages/Unmasking.cs" id="1_qkf6u"]
 
-[node name="Unmasking" type="Control" unique_id=945037654]
+[node name="Unmasking" type="Control" unique_id=945037654 node_paths=PackedStringArray("_call", "_skip")]
 layout_mode = 3
-anchors_preset = 15
+anchors_preset = 12
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 script = ExtResource("1_qkf6u")
+_call = NodePath("Dialog/Container/Buttons/Call")
+_skip = NodePath("Dialog/Container/Buttons/Skip")
+
+[node name="Dialog" type="PanelContainer" parent="." unique_id=413848275]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Container" type="VBoxContainer" parent="Dialog" unique_id=438194390]
+layout_mode = 2
+
+[node name="Prompt" type="Label" parent="Dialog/Container" unique_id=1901726819]
+layout_mode = 2
+text = "Turns out we need some help uncovering
+more information on our targets...
+We should get our scouts to attempt
+uncovering more information on
+our targets."
+
+[node name="Buttons" type="HBoxContainer" parent="Dialog/Container" unique_id=664725631]
+layout_mode = 2
+
+[node name="Call" type="Button" parent="Dialog/Container/Buttons" unique_id=673527659]
+layout_mode = 2
+text = "Call them in and try!"
+
+[node name="VSeparator" type="VSeparator" parent="Dialog/Container/Buttons" unique_id=2061009173]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Skip" type="Button" parent="Dialog/Container/Buttons" unique_id=968690581]
+layout_mode = 2
+text = "Nevermind, fire!"

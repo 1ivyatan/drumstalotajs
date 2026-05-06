@@ -27,4 +27,9 @@ public partial class OverlayLayer : SceneLayer
 	{
 		return false;
 	}
+	
+	public void ClearAllBlackTiles()
+	{
+		//RemoveAllInstancesByName("SelectorHighlight");
+	}
 }
