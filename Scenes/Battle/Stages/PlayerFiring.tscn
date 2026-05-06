@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://xy5ddkip34e3"]
+
+[ext_resource type="Script" uid="uid://brrvcotpjwrnx" path="res://Source/Battle/Stages/PlayerFiring.cs" id="1_jfff3"]
+
+[node name="PlayerFiring" type="Control" unique_id=1630068081]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jfff3")

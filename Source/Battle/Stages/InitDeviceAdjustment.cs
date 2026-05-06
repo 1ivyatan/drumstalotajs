@@ -37,11 +37,35 @@ public partial class InitDeviceAdjustment : Control
 		{
 			{ _map.EntityLayer, _map.EntityLayer.GetEntityIdsByType(EntityType.Device) }
 		};
+		
 		_map.Selector.Filter = new SelectorFilter(layers, idFilters);
 		_map.Mode = MapMode.Interactable;
 		
 		_map.OverlayLayer.RemoveAllInstancesByName("DeviceMarker");
 		_map.OverlayLayer.ClearAllHighlighters();
+		
+		_toFiringButton.Pressed += () => {
+			var devs = _map.EntityLayer.GetPlayerDevices();
+
+			bool hasNegativeAzimuth = devs.Any(d => d.Azimuth == -1);
+			bool hasNegativeAngle = devs.Any(d => d.Angle == -1);
+			
+			if (hasNegativeAzimuth || hasNegativeAngle)
+			{
+				Nodes.GetRoot().ToastManager.SpawnOne("Adjust all of your devices!");
+				return;
+			}
+			
+			_map.OverlayLayer.ClearAllHighlighters();
+			if (_map.OverlayLayer.HasBlackTiles())
+			{
+				_scene.StageManager.Unmasking();
+			} else
+			{
+				//_scene.StageManager.PlayerFiring();
+				_scene.StageManager.DeviceAdjustment();
+			}
+		};
 	}
 	
 	public async override void _UnhandledInput(InputEvent @event)
@@ -61,6 +85,7 @@ public partial class InitDeviceAdjustment : Control
 					var tile = tiles[_map.EntityLayer][0];
 					if ((SceneTile)tile is Device device)
 					{
+						_map.OverlayLayer.ClearAllHighlighters();
 						_map.OverlayLayer.PlaceHighlighter(_map.OverlayLayer.LocalToMap(device.Position));
 						_initDeviceAdjustmentContainer.Load(device);
 					}

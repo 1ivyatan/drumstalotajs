@@ -14,18 +14,62 @@ using Drumstalotajs.Mapping.Selection;
 using Drumstalotajs.Mapping.Layers;
 using Drumstalotajs.Mapping.Tiles;
 using System.Threading.Tasks;
+using Drumstalotajs.Battle.Components;
 
 namespace Drumstalotajs.Battle.Stages;
 
 public partial class DeviceAdjustment : Control
 {
+	[Export] private DeviceAdjustmentContainer _deviceAdjustmentContainer;
 	private BattleScene _scene;
 	private Map _map;
-	
+
 	public override void _Ready()
 	{
 		_scene = Nodes.GetSceneRoot() as BattleScene;
 		_map = _scene.Map;
-		_scene.BattleTopnav.Title = "Device adjustment";
+		_scene.BattleTopnav.Title = "Adjust devices";
+		
+		BaseLayer[] layers = [ _map.EntityLayer ];
+		FilteredItemIds idFilters = new FilteredItemIds
+		{
+			{ _map.EntityLayer, _map.EntityLayer.GetEntityIdsByType(EntityType.Device) }
+		};
+		
+		_map.Selector.Filter = new SelectorFilter(layers, idFilters);
+		_map.Mode = MapMode.Interactable;
+		
+		_map.OverlayLayer.RemoveAllInstancesByName("DeviceMarker");
+		_map.OverlayLayer.ClearAllHighlighters();
+	}
+	
+	public async override void _UnhandledInput(InputEvent @event)
+	{
+		if (@event is InputEventMouse mouseEvent)
+		{
+			if (mouseEvent is InputEventMouseButton mouseButton && 
+				mouseButton.ButtonIndex == MouseButton.Left &&
+				mouseButton.Pressed
+			)
+			{
+				var pos = _map.ViewportMouseToMap();
+				var tiles = _map.Flash(pos);
+				
+				if (tiles.Count > 0)
+				{
+					var tile = tiles[_map.EntityLayer][0];
+					if ((SceneTile)tile is Device device)
+					{
+						_map.OverlayLayer.ClearAllHighlighters();
+						_map.OverlayLayer.PlaceHighlighter(_map.OverlayLayer.LocalToMap(device.Position));
+						_deviceAdjustmentContainer.Load(device);
+					}
+				} else
+				{
+					_map.OverlayLayer.ClearAllHighlighters();
+					_deviceAdjustmentContainer.Close();
+				}
+			}
+		}
 	}
 }

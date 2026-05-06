@@ -20,4 +20,23 @@ public partial class EntityLayer : SceneLayer
 		var atlas = GetAtlasData(id);
 		return ((EntityLayerAtlasData)atlas).Type;
 	}
+	
+	public Device[] GetPlayerDevices()
+	{
+		var instances = Instances
+		.Where(e => e is Device)
+		.Where(e => ((Entity)e).Player == true)
+		.Select(e => e as Device)
+		.ToArray();
+		return instances;
+	}
+	/*var devs = _map.EntityLayer.Instances
+			.Where(e => e is Device)//_map.EntityLayer.GetType(e.TileId) == EntityType.Device)
+			.Where(e => ((Entity)e).Player == true);
+			
+			foreach (Device dev in devs)
+			{
+				dev.Placed = true;
+			}
+			*/
 }

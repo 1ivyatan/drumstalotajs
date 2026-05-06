@@ -40,8 +40,11 @@ script = ExtResource("4_07e4u")
 Stages = Dictionary[String, String]({
 "DeviceAdjustment": "res://Scenes/Battle/Stages/DeviceAdjustment.tscn",
 "DevicePlacement": "res://Scenes/Battle/Stages/DevicePlacement.tscn",
-"Firing": "",
-"InitDeviceAdjustment": "res://Scenes/Battle/Stages/InitDeviceAdjustment.tscn"
+"End": "res://Scenes/Battle/Stages/End.tscn",
+"EnemyFiring": "res://Scenes/Battle/Stages/EnemyFiring.tscn",
+"InitDeviceAdjustment": "res://Scenes/Battle/Stages/InitDeviceAdjustment.tscn",
+"PlayerFiring": "res://Scenes/Battle/Stages/PlayerFiring.tscn",
+"Unmasking": "res://Scenes/Battle/Stages/Unmasking.tscn"
 })
 
 [node name="ScoreManager" type="Node" parent="." unique_id=999479475]

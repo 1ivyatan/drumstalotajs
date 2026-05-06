@@ -22,4 +22,9 @@ public partial class OverlayLayer : SceneLayer
 	{
 		RemoveAllInstancesByName("SelectorHighlight");
 	}
+	
+	public bool HasBlackTiles()
+	{
+		return false;
+	}
 }

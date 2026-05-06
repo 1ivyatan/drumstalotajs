@@ -31,23 +31,11 @@ public partial class StageManager : CanvasLayer
 		}
 	}
 	
-	public void DevicePlacement()
-	{
-		 SetStage(Stages["DevicePlacement"]);
-	}
-	
-	public void InitDeviceAdjustment()
-	{
-		SetStage(Stages["InitDeviceAdjustment"]);
-	}
-	
-	public void DeviceAdjustment()
-	{
-		SetStage(Stages["DeviceAdjustment"]);
-	}
-	
-	public void Firing()
-	{
-		SetStage(Stages["Firing"]);
-	}
+	public void DevicePlacement() { SetStage(Stages["DevicePlacement"]); }
+	public void InitDeviceAdjustment() { SetStage(Stages["InitDeviceAdjustment"]); }
+	public void Unmasking() { SetStage(Stages["Unmasking"]);}
+	public void PlayerFiring() { SetStage(Stages["PlayerFiring"]); }
+	public void EnemyFiring() { SetStage(Stages["EnemyFiring"]); }
+	public void DeviceAdjustment() { SetStage(Stages["DeviceAdjustment"]); }
+	public void End() { SetStage(Stages["End"]); }
 }

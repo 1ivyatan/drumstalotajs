@@ -9,4 +9,5 @@ public partial class DevicePropertiesData : EntityPropertiesData
 {
 	[Export] public double MinAngle { get; set; } = 10;
 	[Export] public double MaxAngle { get; set; } = 80;
+	[Export] public double TraverseRadius { get; set; } = 15;
 }

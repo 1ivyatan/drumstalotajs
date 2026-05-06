@@ -30,7 +30,7 @@ public partial class Counters : Control
 		if (entity is Device device && device.Player == true)
 		{
 			_playerDeviceCounter.Value += 1;
-		} else if (device.Player == false && device.Target == false)
+		} else if (entity.Player == false && entity.Target == true)
 		{
 			_enemyTargetCounter.Value += 1;
 		}
@@ -42,7 +42,7 @@ public partial class Counters : Control
 		if (entity is Device device && device.Player == true)
 		{
 			_playerDeviceCounter.Value -= 1;
-		} else if (device.Player == false && device.Target == false)
+		} else if (entity.Player == false && entity.Target == true)
 		{
 			_enemyTargetCounter.Value -= 1;
 		}

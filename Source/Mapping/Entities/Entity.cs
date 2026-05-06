@@ -14,7 +14,7 @@ public partial class Entity : SceneTile
 		set {
 			field = ((value % 360) + 360) % 360;
 		}
-	} = 0;
+	} = -1;
 
 	public double Integrity { get; 
 		set { 

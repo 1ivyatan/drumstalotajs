@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dmgd2vv1ixfnn" path="res://Scenes/Components/CircleSlider.tscn" id="2_g3l6y"]
 [ext_resource type="PackedScene" uid="uid://tkq5giln4ao6" path="res://Scenes/Components/Wheel.tscn" id="3_svpor"]
 
-[node name="InitDeviceAdjustment" type="Control" unique_id=1768267525 node_paths=PackedStringArray("_initDeviceAdjustmentContainer")]
+[node name="InitDeviceAdjustment" type="Control" unique_id=1768267525 node_paths=PackedStringArray("_initDeviceAdjustmentContainer", "_toFiringButton")]
 layout_mode = 3
 anchors_preset = 12
 anchor_top = 1.0
@@ -15,6 +15,7 @@ grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("1_y6unp")
 _initDeviceAdjustmentContainer = NodePath("InitDeviceAdjustmentContainer")
+_toFiringButton = NodePath("ToFiring")
 
 [node name="InitDeviceAdjustmentContainer" type="PanelContainer" parent="." unique_id=87147405 node_paths=PackedStringArray("_deviceLabel", "_devicePosition", "_deviceTexture", "_azimuthSlider", "_azimuthLabel", "_angleSlider", "_angleLabel")]
 visible = false
