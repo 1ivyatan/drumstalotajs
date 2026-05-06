@@ -56,7 +56,7 @@ public partial class InitDeviceAdjustmentContainer : Container
 	{
 		_atlas = (EntityLayerAtlasData)_map.EntityLayer.GetAtlasData(device.TileId);
 		_device = device;
-		_props = (DevicePropertiesData)_atlas.Properties;
+		_props = (DevicePropertiesData)device.Properties;
 		_deviceTexture.Texture = _atlas.Thumbnail;
 		_deviceLabel.Text = _atlas.Name;
 		_devicePosition.Text = $"{_map.EntityLayer.LocalToMap(device.Position)}";

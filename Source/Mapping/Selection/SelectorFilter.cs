@@ -27,18 +27,6 @@ public struct SelectorFilter
 		EntityOwnership = entityOwnership;
 	}
 	
-	//public SelectorFilter(BaseLayer[] layers)
-	//{
-//		Layers = layers;
-	//}
-	
-	/*
-	
-namespace Drumstalotajs.Mapping.Tiles;
-
-public partial class SceneTile : Tile
-	*/
-	
 	public FilteredTiles GetTiles(Vector2I position, bool strict = false)
 	{
 		FilteredTiles tiles = new FilteredTiles();

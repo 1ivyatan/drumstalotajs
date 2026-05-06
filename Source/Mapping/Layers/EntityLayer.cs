@@ -9,6 +9,7 @@ using Drumstalotajs.Mapping;
 using Drumstalotajs.Mapping.Tiles;
 using Drumstalotajs.Resources.Mapping.Layers;
 using Drumstalotajs.Mapping.Entities;
+using Drumstalotajs.Resources.Mapping.Entities;
 
 namespace Drumstalotajs.Mapping.Layers;
 
@@ -61,9 +62,16 @@ public partial class EntityLayer : SceneLayer
 			tile.TileId = atlas.Id;
 			tile.Data = atlas.Data;
 			
+			var entityAtlas = (EntityLayerAtlasData)GetAtlasData(atlas.Id);
+			if (entityAtlas != null)
+			{
+				tile.Properties = entityAtlas.Properties;
+			}
+			
 			if (tile is Device device && atlas is EntityLayerDeviceTileData deviceAtlas)
 			{
 				device.Angle = deviceAtlas.Angle;
+				device.Properties = (DevicePropertiesData)entityAtlas.Properties;
 			}
 		}
 		EmitSignal(SignalName.ChangedLayer);

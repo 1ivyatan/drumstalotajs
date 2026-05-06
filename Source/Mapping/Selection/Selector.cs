@@ -58,7 +58,6 @@ public partial class Selector : Node2D
 				{
 					case SelectorMode.Interactable:
 						var tiles = GetTiles(newCellPos);
-						GD.Print(tiles);
 						if (tiles.Count > 0)
 						{
 							HighlightAt(newCellPos);
