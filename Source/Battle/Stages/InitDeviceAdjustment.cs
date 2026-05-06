@@ -57,13 +57,12 @@ public partial class InitDeviceAdjustment : Control
 			}
 			
 			_map.OverlayLayer.ClearAllHighlighters();
-			if (_map.OverlayLayer.HasBlackTiles())
+			if (!_map.OverlayLayer.HasBlackTiles())
 			{
 				_scene.StageManager.Unmasking();
 			} else
 			{
-				//_scene.StageManager.PlayerFiring();
-				_scene.StageManager.DeviceAdjustment();
+				_scene.StageManager.PlayerFiring();
 			}
 		};
 	}
