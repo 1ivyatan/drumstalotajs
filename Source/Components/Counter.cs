@@ -6,6 +6,15 @@ namespace Drumstalotajs.Components;
 
 public partial class Counter : Control
 {
+	[ExportGroup("Counting")]
+	[Export] public int Value { get; 
+		set
+		{
+			field = value;
+			_count.Text = $"{field}";
+		}
+	} = 0;
+	
 	[ExportGroup("Textures")]
 	[Export] private Texture2D _icon = null;
 	
@@ -16,11 +25,6 @@ public partial class Counter : Control
 	public override void _Ready()
 	{
 		if (_icon != null) _iconNode.Texture = _icon;
-	}
-	
-	public void SetCount(int count)
-	{
-		_count.Text = $"{count}";
 	}
 	
 	public void SetText(string text)

@@ -24,6 +24,7 @@ public partial class Entity : SceneTile
 	} = 100;
 	
 	public bool Player { get; set; } = false;
+	public bool Target { get; set; } = false;
 	
 	/* simplistic, inheritor will do this  in more sophisiscated ways */
 	public void DecreaseIntegrity(double factor)

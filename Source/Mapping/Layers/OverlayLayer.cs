@@ -35,6 +35,7 @@ public partial class OverlayLayer : SceneLayer
 			tile.TileId = atlas.Id;
 			tile.Rotation = (float)atlas.Radians;
 			tile.Data = atlas.Data;
+			EmitSignal(SignalName.TileSpawned, tile);
 		}
 		EmitSignal(SignalName.ChangedLayer);
 	}

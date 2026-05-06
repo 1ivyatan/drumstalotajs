@@ -73,6 +73,8 @@ public partial class EntityLayer : SceneLayer
 				device.Angle = deviceAtlas.Angle;
 				device.Properties = (DevicePropertiesData)entityAtlas.Properties;
 			}
+			
+			EmitSignal(SignalName.TileSpawned, tile);
 		}
 		EmitSignal(SignalName.ChangedLayer);
 	}

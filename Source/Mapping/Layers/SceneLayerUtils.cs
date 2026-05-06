@@ -14,6 +14,12 @@ namespace Drumstalotajs.Mapping.Layers;
 
 public partial class SceneLayer : Layer<string, SceneTile, SceneLayerData>
 {
+	public SceneTile GetInstance(Vector2I position)
+	{
+		var list = Instances.Where(i => LocalToMap(i.Position) == position);
+		return list.Count() > 0 ? list.ToArray()[0] : null;
+	}
+	
 	public int InstanceCount(int id)
 	{
 		return Instances.Where(i => i.TileId == id).Count();

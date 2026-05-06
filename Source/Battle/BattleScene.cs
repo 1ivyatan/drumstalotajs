@@ -8,6 +8,8 @@ using Drumstalotajs.Battle.Components;
 using System.Threading.Tasks;
 using Drumstalotajs.Resources.Saves;
 using Drumstalotajs.Battle.Stages;
+using Drumstalotajs.Mapping.Entities;
+using Drumstalotajs.Mapping.Tiles;
 
 namespace Drumstalotajs.Battle;
 
@@ -17,6 +19,7 @@ public partial class BattleScene : Node2D
 	[Export] public Map Map { get; private set; }
 	[Export] private ScoreManager ScoreManager { get; set; }
 	[Export] public StageManager StageManager { get; private set; }
+	[Export] public Counters Counters { get; private set; }
 
 	[Export] private PauseOverlay _pauseOverlay;
 	public bool Paused { get; private set; } = false;

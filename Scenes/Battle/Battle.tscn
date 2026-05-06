@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://b6ocl3clhwf1h" path="res://Source/Battle/Components/PauseOverlay.cs" id="4_odh8s"]
 [ext_resource type="Script" uid="uid://bnmf3stn1wm0k" path="res://Source/Battle/Components/PauseContainer.cs" id="5_rremj"]
 [ext_resource type="PackedScene" uid="uid://dnasbla8y237b" path="res://Scenes/Components/Counter.tscn" id="7_tmq01"]
+[ext_resource type="Script" uid="uid://7abbuvthhp83" path="res://Source/Battle/Components/Counters.cs" id="7_ukbm8"]
 [ext_resource type="Texture2D" uid="uid://2io65q52gq16" path="res://Assets/Textures/overlay.png" id="8_cmwrv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ukbm8"]
@@ -23,12 +24,13 @@ region = Rect2(0, 96, 32, 32)
 atlas = ExtResource("8_cmwrv")
 region = Rect2(0, 160, 32, 32)
 
-[node name="Battle" type="Node2D" unique_id=1007953308 node_paths=PackedStringArray("BattleTopnav", "Map", "ScoreManager", "StageManager", "_pauseOverlay")]
+[node name="Battle" type="Node2D" unique_id=1007953308 node_paths=PackedStringArray("BattleTopnav", "Map", "ScoreManager", "StageManager", "Counters", "_pauseOverlay")]
 script = ExtResource("1_ael4v")
 BattleTopnav = NodePath("Overlay/Topnav")
 Map = NodePath("Map")
 ScoreManager = NodePath("ScoreManager")
 StageManager = NodePath("StageManager")
+Counters = NodePath("Overlay/Topnav/Counters")
 _pauseOverlay = NodePath("Overlay/PauseOverlay")
 
 [node name="Map" parent="." unique_id=1338299763 instance=ExtResource("2_dcr6b")]
@@ -56,9 +58,15 @@ layout_mode = 2
 size_flags_horizontal = 0
 text = "Pause"
 
-[node name="Counters" type="HBoxContainer" parent="Overlay/Topnav" unique_id=598029868]
+[node name="Counters" type="HBoxContainer" parent="Overlay/Topnav" unique_id=598029868 node_paths=PackedStringArray("_playerDeviceCounter", "_enemyTargetCounter", "_timerCounter", "_map", "_scoreManager")]
 layout_mode = 2
 size_flags_horizontal = 8
+script = ExtResource("7_ukbm8")
+_playerDeviceCounter = NodePath("PlayerDeviceCounter")
+_enemyTargetCounter = NodePath("EnemyTargetCount")
+_timerCounter = NodePath("Timer")
+_map = NodePath("../../../Map")
+_scoreManager = NodePath("../../../ScoreManager")
 
 [node name="PlayerDeviceCounter" parent="Overlay/Topnav/Counters" unique_id=2026965253 instance=ExtResource("7_tmq01")]
 layout_mode = 2

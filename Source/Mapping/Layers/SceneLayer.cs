@@ -28,12 +28,6 @@ public partial class SceneLayer : Layer<string, SceneTile, SceneLayerData>
 		ChildExitingTree += TileExitingAction;
 	}
 	
-	public SceneTile GetInstance(Vector2I position)
-	{
-		var list = Instances.Where(i => LocalToMap(i.Position) == position);
-		return list.Count() > 0 ? list.ToArray()[0] : null;
-	}
-	
 	private void PrepareAtlas(SceneLayerAtlasData[] atlas)
 	{
 		TileSetSource source;
@@ -112,6 +106,7 @@ public partial class SceneLayer : Layer<string, SceneTile, SceneLayerData>
 			var tile = (SceneTile)nodes[0];
 			tile.TileId = id;
 			tile.Data = new Godot.Collections.Dictionary();
+			EmitSignal(SignalName.TileSpawned, tile);
 		}
 		EmitSignal(SignalName.ChangedLayer);
 	}
@@ -125,12 +120,15 @@ public partial class SceneLayer : Layer<string, SceneTile, SceneLayerData>
 			var tile = (SceneTile)nodes[0];
 			tile.TileId = atlas.Id;
 			tile.Data = atlas.Data;
+			EmitSignal(SignalName.TileSpawned, tile);
 		}
 		EmitSignal(SignalName.ChangedLayer);
 	}
 	
 	public override void RemoveTile(Vector2I position)
 	{
+		//var tile = GetInstance(position);
+		//EmitSignal(SignalName.TileExiting, tile);
 		EraseCell(position);
 		EmitSignal(SignalName.ChangedLayer);
 	}
