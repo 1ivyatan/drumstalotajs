@@ -14,6 +14,7 @@ public partial class Projectile : Node2D
 	[Signal] public delegate void DetonatedEventHandler();
 	
 	private Device _device;
+	private bool _flying = false;
 	
 	public override void _Ready()
 	{
@@ -28,5 +29,11 @@ public partial class Projectile : Node2D
 	public void Launch()
 	{
 		_device.ExpendShell();
+		_flying = true;
+	}
+	
+	public override void _PhysicsProcess(double delta)
+	{
+		
 	}
 }

@@ -17,13 +17,15 @@ public partial class SceneLayer : Layer<string, SceneTile, SceneLayerData>
 	[Signal] public delegate void TileSpawnedEventHandler(SceneTile entity);
 	[Signal] public delegate void TileExitingEventHandler(SceneTile entity);
 	
-	[Export] private SceneLayerAtlasData[] Atlas { get; set; }
-	public List<SceneTile> Instances { get; private set; }
+	[Export] protected SceneLayerAtlasData[] Atlas { get; set; }
+	public List<SceneTile> Instances { get; private set; } = new();
+	
+	/* godot engine's stupid thing with signals (or my problem) making me do this */
+	protected List<SceneLayerTileData> _newTileQueue = new();
 	
 	public override void _Ready()
 	{
 		PrepareAtlas(Atlas);
-		Instances = new List<SceneTile>();
 		ChildEnteredTree += TileSpawnedAction;
 		ChildExitingTree += TileExitingAction;
 	}
@@ -58,12 +60,23 @@ public partial class SceneLayer : Layer<string, SceneTile, SceneLayerData>
 		}
 	}
 	
-	private void TileSpawnedAction(Node node)
+	protected virtual void TileSpawnedAction(Node node)
 	{
 		if (node is SceneTile sceneTile)
 		{
+			var pos = LocalToMap(sceneTile.Position);
+			var atlas = _newTileQueue.FirstOrDefault(t => t.Position == pos);
+			
+			if (atlas != null)
+			{
+				sceneTile.TileId = atlas.Id;
+				sceneTile.Data = atlas.Data;
+			}
+			
 			if (!Instances.Contains(sceneTile)) Instances.Add(sceneTile);
+			_newTileQueue.Remove(atlas);
 			EmitSignal(SignalName.TileSpawned, sceneTile);
+			EmitSignal(SignalName.ChangedLayer);
 		}
 	}
 	
@@ -98,9 +111,12 @@ public partial class SceneLayer : Layer<string, SceneTile, SceneLayerData>
 	
 	public async override Task AddTile(Vector2I position, string atlas)
 	{
+		SceneLayerTileData data = new SceneLayerTileData();
 		int id = Atlas.FirstOrDefault(a => a.Name == atlas).Id;
-		SetCell(position, 0, Vector2I.Zero, id);
-		var nodes = await ToSignal(this, SignalName.TileSpawned);
+		data.Position = position;
+		data.Id = id;
+		await AddTile(data);
+		/*var nodes = await ToSignal(this, SignalName.TileSpawned);
 		if (nodes.Length > 0 && nodes[0].VariantType == Variant.Type.Object)
 		{
 			var tile = (SceneTile)nodes[0];
@@ -108,27 +124,17 @@ public partial class SceneLayer : Layer<string, SceneTile, SceneLayerData>
 			tile.Data = new Godot.Collections.Dictionary();
 			EmitSignal(SignalName.TileSpawned, tile);
 		}
-		EmitSignal(SignalName.ChangedLayer);
+		EmitSignal(SignalName.ChangedLayer);*/
 	}
 	
 	public async Task AddTile(SceneLayerTileData atlas)
 	{
+		_newTileQueue.Add(atlas);
 		SetCell(atlas.Position, 0, Vector2I.Zero, atlas.Id);
-		var nodes = await ToSignal(this, SignalName.TileSpawned);
-		if (nodes.Length > 0 && nodes[0].VariantType == Variant.Type.Object)
-		{
-			var tile = (SceneTile)nodes[0];
-			tile.TileId = atlas.Id;
-			tile.Data = atlas.Data;
-			EmitSignal(SignalName.TileSpawned, tile);
-		}
-		EmitSignal(SignalName.ChangedLayer);
 	}
 	
 	public override void RemoveTile(Vector2I position)
 	{
-		//var tile = GetInstance(position);
-		//EmitSignal(SignalName.TileExiting, tile);
 		EraseCell(position);
 		EmitSignal(SignalName.ChangedLayer);
 	}
@@ -142,7 +148,10 @@ public partial class SceneLayer : Layer<string, SceneTile, SceneLayerData>
 	{
 		foreach (var tile in layerData.Tiles)
 		{
-			await AddTile(tile);
+			if (tile != null)
+			{
+				await AddTile(tile);
+			}
 		}
 	}
 	

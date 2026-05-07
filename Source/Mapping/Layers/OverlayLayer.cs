@@ -2,6 +2,7 @@ using Godot;
 using Godot.Collections;
 using System;
 using System.Linq;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Drumstalotajs;
 using Drumstalotajs.Utilities;
@@ -13,6 +14,8 @@ namespace Drumstalotajs.Mapping.Layers;
 
 public partial class OverlayLayer : SceneLayer
 {
+	new protected List<OverlayLayerTileData> _newTileQueue = new();
+	
 	new public Array<OverlayTile> Flash(Vector2I position)
 	{
 		var arr = base.Flash(position);
@@ -25,19 +28,39 @@ public partial class OverlayLayer : SceneLayer
 		return tile != null ? tile as OverlayTile : null;
 	}
 	
+	protected override void TileSpawnedAction(Node node)
+	{
+		if (node is OverlayTile overlayTile)
+		{
+			var pos = LocalToMap(overlayTile.Position);
+			var atlas = _newTileQueue.FirstOrDefault(t => t.Position == pos);
+			if (atlas != null && atlas is OverlayLayerTileData overlayAtlas)
+			{
+				overlayTile.TileId = overlayAtlas.Id;
+				overlayTile.Data = overlayAtlas.Data;
+				overlayTile.Rotation = (float)overlayAtlas.Radians;
+				
+				if (!Instances.Contains(overlayTile)) Instances.Add(overlayTile);
+				_newTileQueue.Remove(atlas);
+				EmitSignal(SignalName.TileSpawned, overlayTile);
+				EmitSignal(SignalName.ChangedLayer);
+			}
+		}
+	}
+	
+	public async override Task AddTile(Vector2I position, string atlas)
+	{
+		OverlayLayerTileData data = new OverlayLayerTileData();
+		int id = Atlas.FirstOrDefault(a => a.Name == atlas).Id;
+		data.Position = position;
+		data.Id = id;
+		await AddTile(data);
+	}
+	
 	public async Task AddTile(OverlayLayerTileData atlas)
 	{
+		_newTileQueue.Add(atlas);
 		SetCell(atlas.Position, 0, Vector2I.Zero, atlas.Id);
-		var nodes = await ToSignal(this, SignalName.TileSpawned);
-		if (nodes.Length > 0 && nodes[0].VariantType == Variant.Type.Object)
-		{
-			var tile = (SceneTile)nodes[0];
-			tile.TileId = atlas.Id;
-			tile.Rotation = (float)atlas.Radians;
-			tile.Data = atlas.Data;
-			EmitSignal(SignalName.TileSpawned, tile);
-		}
-		EmitSignal(SignalName.ChangedLayer);
 	}
 	
 	new public OverlayLayerData Export()
@@ -51,7 +74,10 @@ public partial class OverlayLayer : SceneLayer
 		{
 			foreach (OverlayLayerTileData tile in overlayLayerData.Tiles)
 			{
-				await this.AddTile(tile);
+				if (tile != null)
+				{
+					await AddTile(tile);
+				}
 			}
 		}
 	}

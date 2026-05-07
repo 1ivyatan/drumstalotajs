@@ -66,7 +66,7 @@ public partial class BattleScene : Node2D
 	{
 		_mapPath = levelProps.MapPath;
 		
-		Map.Load(_mapPath);
+		await Map.Load(_mapPath);
 		
 		if (levelProps != null)
 		{
@@ -80,7 +80,7 @@ public partial class BattleScene : Node2D
 	public async Task Open(string mapPath)
 	{
 		_mapPath = mapPath;
-		Map.Load(_mapPath);
+		await Map.Load(_mapPath);
 		ScoreManager.PrepareScoring(Map.CurrentLoadedMap);
 	}
 	

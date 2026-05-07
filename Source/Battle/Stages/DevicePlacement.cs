@@ -25,20 +25,34 @@ public partial class DevicePlacement : Control
 	private Map _map;
 	
 	private DeviceProps _deviceProps;
-	private SceneLayerAtlasData[] _deviceAtlas;
+	private EntityLayerAtlasData[] _deviceAtlas;
 	private SceneLayerAtlasData _selectedDeviceAtlas = null;
 	private long _itemListIndex = -1;
 	/* id, count */
 	private Dictionary<int, int> _counter = new();
+	private Array<int> _deviceIds = new();
 	
 	public async override void _Ready()
 	{
 		_scene = Nodes.GetSceneRoot() as BattleScene;
 		_map = _scene.Map;
 		_deviceAtlas = _map.EntityLayer.GetFullAtlas()
-		.Where(s => s is EntityLayerAtlasData entity && entity.Type == EntityType.Device)
+		.Where(a => a is EntityLayerAtlasData)
+		.Select(a => a as EntityLayerAtlasData)
+		.Where(a => a.Type == EntityType.Device)
 		.ToArray();
 		_scene.BattleTopnav.Title = "Device placement";
+		
+		foreach (var device in _map.CurrentLoadedMap.DeviceProps)
+		{
+			var sceneTile = _deviceAtlas.FirstOrDefault(e => e.Id == device.DeviceId);
+			if (sceneTile != null && sceneTile.Type == EntityType.Device)
+			{
+				_deviceInventory.AddItem($"{device.MaxCount}", sceneTile.Thumbnail);
+				_counter[sceneTile.Id] = 0;
+				_deviceIds.Add(sceneTile.Id);
+			}
+		}
 		
 		BaseLayer[] layers = [ _map.EntityLayer, _map.OverlayLayer ];
 		FilteredItemIds idFilters = new FilteredItemIds
@@ -46,27 +60,18 @@ public partial class DevicePlacement : Control
 			{ _map.EntityLayer, _map.EntityLayer.GetEntityIdsByType(EntityType.Device) },
 			{ _map.OverlayLayer, [ _map.OverlayLayer.GetAtlasId("DeviceMarker") ] }
 		};
-		_map.Selector.Filter = new SelectorFilter(layers, idFilters);
-		_map.Mode = MapMode.HiddenInteractable;
-
-		foreach (var device in _map.CurrentLoadedMap.DeviceProps)
-		{
-			var sceneTile = _deviceAtlas.FirstOrDefault(e => e.Id == device.DeviceId);
-			if (sceneTile != null && sceneTile is EntityLayerAtlasData entity && entity.Type == EntityType.Device)
-			{
-				_deviceInventory.AddItem($"{device.MaxCount}", entity.Thumbnail);
-				_counter[device.DeviceId] = 0;
-			}
-		}
 		
 		foreach (var position in _map.CurrentLoadedMap.DevicePositions)
 		{
 			await _map.OverlayLayer.AddTile(position.Key, "DeviceMarker");
+			await ToSignal(_map.OverlayLayer, "TileSpawned");
 			var marker = (DeviceMarker)_map.OverlayLayer.GetInstance(position.Key);
 			marker.SetArrowRotation(position.Value);
 		}
 		
-		_deviceInventory.ItemSelected += this.SetSelectedDevice;
+		_map.Selector.Filter = new SelectorFilter(layers, idFilters);
+		_map.Mode = MapMode.HiddenInteractable;
+		_deviceInventory.ItemSelected += SetSelectedDevice;
 		_toDeviceAdjustment.Pressed += () => {
 			if (CheckBounds())
 			{
@@ -79,9 +84,11 @@ public partial class DevicePlacement : Control
 	
 	private void SetSelectedDevice(long index)
 	{
-		var atlas = _deviceAtlas[index];
+		int id = _deviceIds[(int)index];
+		var atlas = _deviceAtlas.FirstOrDefault(d => d.Id == id);
+		var props = _map.CurrentLoadedMap.DeviceProps.FirstOrDefault(d => d.DeviceId == id);
 		_selectedDeviceAtlas = atlas;
-		_deviceProps = _map.CurrentLoadedMap.DeviceProps.FirstOrDefault(d => d.DeviceId == _selectedDeviceAtlas.Id);
+		_deviceProps = props;
 		_itemListIndex = index;
 	}
 	

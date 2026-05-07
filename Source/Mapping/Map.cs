@@ -8,6 +8,7 @@ using Drumstalotajs.Mapping.Projectiles;
 using Drumstalotajs.Mapping.Selection;
 using Drumstalotajs.Mapping.Cameras;
 using Drumstalotajs.Resources.Mapping.Layers;
+using System.Threading.Tasks;
 
 namespace Drumstalotajs.Mapping;
 
@@ -67,7 +68,7 @@ public partial class Map : Node2D
 		return new MapResource(this);
 	}
 	
-	public async void Load(string mapResourcePath)
+	public async Task Load(string mapResourcePath)
 	{
 		if (mapResourcePath == null || mapResourcePath.Length == 0)
 		{
@@ -77,11 +78,11 @@ public partial class Map : Node2D
 		State = MapState.Loading;
 		try {
 			var data = Files.SafeLoadResource<MapResource>(mapResourcePath, false);
+			CurrentLoadedMap = data;
 			await GroundLayer.Load(data.GroundLayer);
 			await DecorationLayer.Load(data.DecorationLayer);
 			await EntityLayer.Load(data.EntityLayer);
 			await OverlayLayer.Load(data.OverlayLayer);
-			CurrentLoadedMap = data;
 			Camera.Calibrate();
 			State = MapState.Done;
 		} catch (Exception e)

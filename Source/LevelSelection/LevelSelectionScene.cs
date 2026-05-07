@@ -32,7 +32,7 @@ public partial class LevelSelectionScene : Node2D
 		Map.Selector.Filter = new SelectorFilter([Map.OverlayLayer]);
 		Map.Mode = MapMode.HiddenInteractable;
 		Topnav.Title = "Deploy";
-		Map.Load(LevelSet.BackgroundMapPath);
+		await Map.Load(LevelSet.BackgroundMapPath);
 		if (LevelSet != null)
 		{
 			foreach (var level in LevelSet.Levels)
