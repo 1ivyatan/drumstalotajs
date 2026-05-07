@@ -6,6 +6,7 @@ using Drumstalotajs.Mapping;
 using Drumstalotajs.Mapping.Tiles;
 using Drumstalotajs.Resources.Mapping.Layers;
 using Drumstalotajs.Mapping.Entities;
+using Drumstalotajs.Resources.Mapping.Entities;
 
 namespace Drumstalotajs.Mapping.Projectiles;
 
@@ -15,6 +16,7 @@ public partial class Projectile : Node2D
 	
 	private Device _device;
 	private bool _flying = false;
+	private DevicePropertiesData _props;
 	
 	public override void _Ready()
 	{
@@ -24,6 +26,8 @@ public partial class Projectile : Node2D
 	{
 		_device = device;
 		Position = _device.Position;
+		_props = (DevicePropertiesData)_device.Properties;
+		GD.Print(_props.Caliber);
 	}
 	
 	public void Launch()
