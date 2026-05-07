@@ -17,9 +17,9 @@ public abstract partial class Layer<
 	where TLayerResource : LayerData
 {
 	public abstract TAtlasType[] GetAtlas();
-	public abstract Task AddTile(Vector2I position, TAtlasType atlas);
+	public abstract void AddTile(Vector2I position, TAtlasType atlas);
 	public abstract void RemoveTile(Vector2I position);
 	public abstract TLayerResource Export();
 	public abstract Godot.Collections.Array<TTileInstance> Flash(Vector2I position);
-	public abstract Task Load(TLayerResource layerData);
+	public abstract void Load(TLayerResource layerData);
 }

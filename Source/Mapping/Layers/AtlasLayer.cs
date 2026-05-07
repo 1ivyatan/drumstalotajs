@@ -89,7 +89,7 @@ public partial class AtlasLayer : Layer<Vector2I, AtlasTile, AtlasLayerData>
 		return [];
 	}
 	
-	public async override Task AddTile(Vector2I position, Vector2I atlas)
+	public override void AddTile(Vector2I position, Vector2I atlas)
 	{
 		SetCell(position, 0, atlas, 0);
 		EmitSignal(SignalName.ChangedLayer);
@@ -152,7 +152,7 @@ public partial class AtlasLayer : Layer<Vector2I, AtlasTile, AtlasLayerData>
 		return new AtlasLayerData(this);
 	}
 	
-	public async override Task Load(AtlasLayerData layerData)
+	public override void Load(AtlasLayerData layerData)
 	{
 		Clear();
 		SetPattern(layerData.Offset, layerData.Tiles);

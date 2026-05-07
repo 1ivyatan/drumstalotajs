@@ -48,16 +48,16 @@ public partial class OverlayLayer : SceneLayer
 		}
 	}
 	
-	public async override Task AddTile(Vector2I position, string atlas)
+	public override void AddTile(Vector2I position, string atlas)
 	{
 		OverlayLayerTileData data = new OverlayLayerTileData();
 		int id = Atlas.FirstOrDefault(a => a.Name == atlas).Id;
 		data.Position = position;
 		data.Id = id;
-		await AddTile(data);
+		AddTile(data);
 	}
 	
-	public async Task AddTile(OverlayLayerTileData atlas)
+	public void AddTile(OverlayLayerTileData atlas)
 	{
 		_newTileQueue.Add(atlas);
 		SetCell(atlas.Position, 0, Vector2I.Zero, atlas.Id);
@@ -68,7 +68,7 @@ public partial class OverlayLayer : SceneLayer
 		return new OverlayLayerData(this);
 	}
 
-	public async override Task Load(SceneLayerData layerData)
+	public override void Load(SceneLayerData layerData)
 	{
 		if (layerData is OverlayLayerData overlayLayerData)
 		{
@@ -76,7 +76,7 @@ public partial class OverlayLayer : SceneLayer
 			{
 				if (tile != null)
 				{
-					await AddTile(tile);
+					AddTile(tile);
 				}
 			}
 		}

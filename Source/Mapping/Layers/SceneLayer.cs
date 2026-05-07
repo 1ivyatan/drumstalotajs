@@ -109,13 +109,13 @@ public partial class SceneLayer : Layer<string, SceneTile, SceneLayerData>
 		return Atlas;
 	}
 	
-	public async override Task AddTile(Vector2I position, string atlas)
+	public override void AddTile(Vector2I position, string atlas)
 	{
 		SceneLayerTileData data = new SceneLayerTileData();
 		int id = Atlas.FirstOrDefault(a => a.Name == atlas).Id;
 		data.Position = position;
 		data.Id = id;
-		await AddTile(data);
+		AddTile(data);
 		/*var nodes = await ToSignal(this, SignalName.TileSpawned);
 		if (nodes.Length > 0 && nodes[0].VariantType == Variant.Type.Object)
 		{
@@ -127,7 +127,7 @@ public partial class SceneLayer : Layer<string, SceneTile, SceneLayerData>
 		EmitSignal(SignalName.ChangedLayer);*/
 	}
 	
-	public async Task AddTile(SceneLayerTileData atlas)
+	public void AddTile(SceneLayerTileData atlas)
 	{
 		_newTileQueue.Add(atlas);
 		SetCell(atlas.Position, 0, Vector2I.Zero, atlas.Id);
@@ -144,13 +144,13 @@ public partial class SceneLayer : Layer<string, SceneTile, SceneLayerData>
 		return new SceneLayerData(this);
 	}
 	
-	public async override Task Load(SceneLayerData layerData)
+	public override void Load(SceneLayerData layerData)
 	{
 		foreach (var tile in layerData.Tiles)
 		{
 			if (tile != null)
 			{
-				await AddTile(tile);
+				AddTile(tile);
 			}
 		}
 	}

@@ -39,7 +39,8 @@ public partial class LevelSelectionScene : Node2D
 			{
 				var isUnlocked = _saveManager.IsLevelUnlocked(LevelSet, level.Order);
 				var data = level.GetTileData(isUnlocked);
-				await Map.OverlayLayer.AddTile(data);
+				Map.OverlayLayer.AddTile(data);
+				await ToSignal(Map.OverlayLayer, "TileSpawned");
 			}
 		}
 		_return.Pressed += () => {

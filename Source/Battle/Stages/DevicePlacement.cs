@@ -63,7 +63,7 @@ public partial class DevicePlacement : Control
 		
 		foreach (var position in _map.CurrentLoadedMap.DevicePositions)
 		{
-			await _map.OverlayLayer.AddTile(position.Key, "DeviceMarker");
+			_map.OverlayLayer.AddTile(position.Key, "DeviceMarker");
 			await ToSignal(_map.OverlayLayer, "TileSpawned");
 			var marker = (DeviceMarker)_map.OverlayLayer.GetInstance(position.Key);
 			marker.SetArrowRotation(position.Value);
@@ -142,7 +142,8 @@ public partial class DevicePlacement : Control
 				data.Id = _selectedDeviceAtlas.Id;
 				data.Position = position;
 				data.Player = true;
-				await _map.EntityLayer.AddTile(data);
+				_map.EntityLayer.AddTile(data);
+				await ToSignal(_map.EntityLayer, "TileSpawned");
 				_deviceInventory.SetItemText((int)_itemListIndex, $"{_deviceProps.MaxCount - count - 1}");
 				_counter[_selectedDeviceAtlas.Id]++;
 			}

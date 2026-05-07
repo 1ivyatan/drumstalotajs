@@ -87,16 +87,16 @@ public partial class EntityLayer : SceneLayer
 		}
 	}
 	
-	public async override Task AddTile(Vector2I position, string atlas)
+	public override void AddTile(Vector2I position, string atlas)
 	{
 		EntityLayerTileData data = new EntityLayerTileData();
 		int id = Atlas.FirstOrDefault(a => a.Name == atlas).Id;
 		data.Position = position;
 		data.Id = id;
-		await AddTile(data);
+		AddTile(data);
 	}
 	
-	public async Task AddTile(EntityLayerTileData atlas)
+	public void AddTile(EntityLayerTileData atlas)
 	{
 		_newTileQueue.Add(atlas);
 		SetCell(atlas.Position, 0, Vector2I.Zero, atlas.Id);
@@ -107,7 +107,7 @@ public partial class EntityLayer : SceneLayer
 		return new EntityLayerData(this);
 	}
 	
-	public async override Task Load(SceneLayerData layerData)
+	public override void Load(SceneLayerData layerData)
 	{
 		if (layerData is EntityLayerData entityLayerData)
 		{
@@ -115,7 +115,7 @@ public partial class EntityLayer : SceneLayer
 			{
 				if (tile != null)
 				{
-					await AddTile(tile);
+					AddTile(tile);
 				}
 			}
 		}
