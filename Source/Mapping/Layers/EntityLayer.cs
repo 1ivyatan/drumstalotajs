@@ -1,6 +1,7 @@
 using Godot;
 using Godot.Collections;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Drumstalotajs;
@@ -15,6 +16,8 @@ namespace Drumstalotajs.Mapping.Layers;
 
 public partial class EntityLayer : SceneLayer
 {
+	new protected List<EntityLayerTileData> _newTileQueue = new();
+	
 	public Array<int> GetEntityIdsByType(EntityType entityType)
 	{
 		var ids = GetFullAtlas()
@@ -49,34 +52,54 @@ public partial class EntityLayer : SceneLayer
 			.Count();
 	}
 	
-	public async Task AddTile(EntityLayerTileData atlas)
+	protected override void TileSpawnedAction(Node node)
 	{
-		SetCell(atlas.Position, 0, Vector2I.Zero, atlas.Id);
-		var nodes = await ToSignal(this, SignalName.TileSpawned);
-		if (nodes.Length > 0 && nodes[0].VariantType == Variant.Type.Object)
+		if (node is Entity entity)
 		{
-			var tile = (Entity)nodes[0];
-			tile.Azimuth = (float)atlas.Azimuth;
-			tile.Integrity = (float)atlas.Integrity;
-			tile.Player = (bool)atlas.Player;
-			tile.TileId = atlas.Id;
-			tile.Data = atlas.Data;
+			var pos = LocalToMap(entity.Position);
+			var atlas = _newTileQueue.FirstOrDefault(t => t.Position == pos);
 			
-			var entityAtlas = (EntityLayerAtlasData)GetAtlasData(atlas.Id);
-			if (entityAtlas != null)
+			if (atlas != null && atlas is EntityLayerTileData entityAtlas)
 			{
-				tile.Properties = entityAtlas.Properties;
+				entity.Azimuth = entityAtlas.Azimuth;
+				entity.Integrity = entityAtlas.Integrity;
+				entity.Player = entityAtlas.Player;
+				entity.TileId = entityAtlas.Id;
+				entity.Data = entityAtlas.Data;
+				
+				var entityLayerAtlas = (EntityLayerAtlasData)GetAtlasData(entityAtlas.Id);
+				if (entityLayerAtlas != null)
+				{
+					entity.Properties = entityLayerAtlas.Properties;
+				}
+				
+				if (entity is Device device && entityAtlas is EntityLayerDeviceTileData deviceAtlas)
+				{
+					device.Angle = deviceAtlas.Angle;
+					device.Properties = (DevicePropertiesData)entityLayerAtlas.Properties;
+				}
+
+				if (!Instances.Contains(entity)) Instances.Add(entity);
+				_newTileQueue.Remove(atlas);
+				EmitSignal(SignalName.TileSpawned, entity);
+				EmitSignal(SignalName.ChangedLayer);
 			}
-			
-			if (tile is Device device && atlas is EntityLayerDeviceTileData deviceAtlas)
-			{
-				device.Angle = deviceAtlas.Angle;
-				device.Properties = (DevicePropertiesData)entityAtlas.Properties;
-			} //else if (tile is Wall wall && atlas is EntityLayerDeviceTileData deviceAtlas)
-			
-			EmitSignal(SignalName.TileSpawned, tile);
 		}
-		EmitSignal(SignalName.ChangedLayer);
+	}
+	
+	public override void AddTile(Vector2I position, string atlas)
+	{
+		EntityLayerTileData data = new EntityLayerTileData();
+		int id = Atlas.FirstOrDefault(a => a.Name == atlas).Id;
+		data.Position = position;
+		data.Id = id;
+		AddTile(data);
+	}
+	
+	public void AddTile(EntityLayerTileData atlas)
+	{
+		_newTileQueue.Add(atlas);
+		SetCell(atlas.Position, 0, Vector2I.Zero, atlas.Id);
 	}
 	
 	new public EntityLayerData Export()
@@ -84,14 +107,44 @@ public partial class EntityLayer : SceneLayer
 		return new EntityLayerData(this);
 	}
 	
-	public async override Task Load(SceneLayerData layerData)
+	public override void Load(SceneLayerData layerData)
 	{
 		if (layerData is EntityLayerData entityLayerData)
 		{
-			foreach (EntityLayerTileData tile in entityLayerData.Tiles)
+			foreach (var tile in entityLayerData.Tiles)
 			{
-				await this.AddTile(tile);
+				if (tile != null)
+				{
+					AddTile(tile);
+				}
 			}
-		} else return;
+		}
+			//_layerData = entityLayerData;
+			//foreach (var tile in entityLayerData.Tiles)
+			//{
+			//	if (tile != null)
+			//	{
+				//	await this.AddTile((EntityLayerTileData)tile);
+					//SetCell(tile.Position, 0, Vector2I.Zero, tile.Id);
+			//	}
+			//}
+		//		if (tile != null)
+		//		{
+		//			var data = new EntityLayerTileData();
+		//			data.Id = tile.Id;
+		//			data.Position = tile.Position;
+			//	GD.Print(tile.GetType().Name);
+			//	GD.Print(tile.Id);
+			//	GD.Print(tile.Position);
+					//await AddTile(data);
+			//await EntityLayer.Load(data.EntityLayer);
+			//await OverlayLayer.Load(data.OverlayLayer);
+					
+		//		}
+				//await this.AddTile(tile);  SceneLayerTileData . Tiles
+				/*
+	[Export] public int Id { get; set; }
+	[Export] public Vector2I Position { get; set; }*/
+		//	}
 	}
 }

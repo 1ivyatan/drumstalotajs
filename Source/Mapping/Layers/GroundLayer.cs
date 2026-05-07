@@ -37,7 +37,7 @@ public partial class GroundLayer : AtlasLayer
 		return new GroundLayerData(this);
 	}
 	
-	public async override Task Load(AtlasLayerData layerData)
+	public override void Load(AtlasLayerData layerData)
 	{
 		if (layerData is GroundLayerData groundLayerData)
 		{

@@ -124,10 +124,10 @@ public partial class EditorSaveManager : Node
 		EmitSignal(SignalName.Saved);
 	}
 	
-	public void Open(string path)
+	public async void Open(string path)
 	{
 		var editedPath = ProjectSettings.LocalizePath(path.Replace("\\", "/"));
-		_map.Load(editedPath);
+		await _map.Load(editedPath);
 		ResetProps(path, editedPath);
 		EmitSignal(SignalName.Loaded);
 	}

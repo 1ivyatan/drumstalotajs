@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://2io65q52gq16" path="res://Assets/Textures/overlay.png" id="7_ccdcv"]
 [ext_resource type="Script" uid="uid://bn1u57sn0woiq" path="res://Source/Resources/Mapping/Layers/SceneLayerAtlasData.cs" id="7_f0kan"]
 [ext_resource type="PackedScene" uid="uid://cf0tu2qcva34g" path="res://Scenes/Mapping/Entities/Sandbags.tscn" id="7_p3cor"]
+[ext_resource type="Script" uid="uid://btef5gw2dfffc" path="res://Source/Resources/Mapping/Entities/WallPropertiesData.cs" id="7_ve6d6"]
 [ext_resource type="PackedScene" uid="uid://ssq8p1ratxek" path="res://Scenes/Mapping/Entities/LightMortar.tscn" id="10_wu35y"]
 [ext_resource type="PackedScene" uid="uid://by3qk6btxkmix" path="res://Scenes/Mapping/Entities/HeavyMortar.tscn" id="11_55ud5"]
 [ext_resource type="Script" uid="uid://cp6mf7hu5xvce" path="res://Source/Mapping/Projectiles/ProjectileLayer.cs" id="14_bc3k3"]
@@ -251,12 +252,17 @@ sources/0 = SubResource("TileSetAtlasSource_mukcc")
 tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetScenesCollectionSource_awdyq")
 
+[sub_resource type="Resource" id="Resource_iv8rp"]
+script = ExtResource("7_ve6d6")
+metadata/_custom_type_script = "uid://btef5gw2dfffc"
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_p3cor"]
 atlas = ExtResource("7_7ig3r")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="Resource" id="Resource_7ig3r"]
 script = ExtResource("7_awdyq")
+Properties = SubResource("Resource_iv8rp")
 Id = 1
 Name = "Sandbags"
 Thumbnail = SubResource("AtlasTexture_p3cor")

@@ -15,7 +15,7 @@ public partial class OverlayLayer : SceneLayer
 {
 	public async void PlaceHighlighter(Vector2I position)
 	{
-		await AddTile(position, "SelectorHighlight");
+		AddTile(position, "SelectorHighlight");
 	}
 	
 	public void ClearAllHighlighters()

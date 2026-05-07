@@ -5,12 +5,12 @@
 [ext_resource type="Script" uid="uid://bkxbq06wvfjt2" path="res://Source/LevelSelection/Components/LevelMetaContainer.cs" id="2_bnw7x"]
 [ext_resource type="PackedScene" uid="uid://bqh5apppkldxo" path="res://Scenes/Components/Topnav.tscn" id="3_2duud"]
 
-[node name="LevelSelection" type="Node2D" unique_id=1846218210 node_paths=PackedStringArray("_return", "LevelMetaContainer", "Map", "Topnav")]
+[node name="LevelSelection" type="Node2D" unique_id=1846218210 node_paths=PackedStringArray("LevelMetaContainer", "Map", "Topnav", "_return")]
 script = ExtResource("1_g1q0k")
-_return = NodePath("Overlay/ToStart")
 LevelMetaContainer = NodePath("Overlay/LevelMetaContainer")
 Map = NodePath("Map")
 Topnav = NodePath("Overlay/Topnav")
+_return = NodePath("Overlay/ToStart")
 
 [node name="Map" parent="." unique_id=1338299763 instance=ExtResource("2_675ns")]
 
@@ -76,5 +76,5 @@ title = "Open a File"
 initial_position = 2
 file_mode = 0
 access = 2
-filters = PackedStringArray("*.res")
+filters = PackedStringArray("*.res", "*.tres")
 use_native_dialog = true

@@ -8,6 +8,7 @@ using Drumstalotajs.Mapping.Projectiles;
 using Drumstalotajs.Mapping.Selection;
 using Drumstalotajs.Mapping.Cameras;
 using Drumstalotajs.Resources.Mapping.Layers;
+using System.Threading.Tasks;
 
 namespace Drumstalotajs.Mapping;
 
@@ -67,7 +68,7 @@ public partial class Map : Node2D
 		return new MapResource(this);
 	}
 	
-	public async void Load(string mapResourcePath)
+	public async Task Load(string mapResourcePath)
 	{
 		if (mapResourcePath == null || mapResourcePath.Length == 0)
 		{
@@ -77,11 +78,11 @@ public partial class Map : Node2D
 		State = MapState.Loading;
 		try {
 			var data = Files.SafeLoadResource<MapResource>(mapResourcePath, false);
-			await GroundLayer.Load(data.GroundLayer);
-			await DecorationLayer.Load(data.DecorationLayer);
-			await EntityLayer.Load(data.EntityLayer);
-			await OverlayLayer.Load(data.OverlayLayer);
 			CurrentLoadedMap = data;
+			GroundLayer.Load(data.GroundLayer);
+			DecorationLayer.Load(data.DecorationLayer);
+			EntityLayer.Load(data.EntityLayer);
+			OverlayLayer.Load(data.OverlayLayer);
 			Camera.Calibrate();
 			State = MapState.Done;
 		} catch (Exception e)
@@ -138,14 +139,16 @@ public partial class Map : Node2D
 					return;
 				}
 					
-				await atlasLayer.AddTile(position, coords);
+				atlasLayer.AddTile(position, coords);
+				await ToSignal(atlasLayer, "TileSpawned");
 				added = true;
 			}
 		} else if (layer is SceneLayer sceneLayer)
 		{
 			if (GroundLayer.GetCellAtlasCoords(position) != Constants.Vector2I.Negative)
 			{
-				await sceneLayer.AddTile(position, atlas);
+				sceneLayer.AddTile(position, atlas);
+				await ToSignal(sceneLayer, "TileSpawned");
 				added = true;
 			}
 		}
