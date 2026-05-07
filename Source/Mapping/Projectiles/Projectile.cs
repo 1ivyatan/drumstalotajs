@@ -22,6 +22,7 @@ public partial class Projectile : Node2D
 	public void Set(Device device)
 	{
 		_device = device;
+		Position = _device.Position;
 	}
 	
 	public void Launch()
