@@ -20,7 +20,7 @@ using Drumstalotajs.Mapping.Projectiles;
 
 namespace Drumstalotajs.Battle.Stages;
 
-public partial class PlayerFiring : Control
+public partial class EnemyFiring : Control
 {
 	private BattleScene _scene;
 	private Map _map;
@@ -30,13 +30,13 @@ public partial class PlayerFiring : Control
 		_scene = Nodes.GetSceneRoot() as BattleScene;
 		_map = _scene.Map;
 		_map.Selector.Mode = SelectorMode.Locked;
-		_scene.BattleTopnav.Title = "Battery!";
+		_scene.BattleTopnav.Title = "Counterbattery!";
 		Fire();
 	}
 	
 	private void Fire()
 	{
-		var devs = _map.EntityLayer.GetPlayerDevices();
+		var devs = _map.EntityLayer.GetEnemyDevices();
 		int firedCount = 0;
 		foreach (var dev in devs)
 		{

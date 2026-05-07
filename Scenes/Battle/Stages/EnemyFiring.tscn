@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://cl3tdrthao2hv"]
 
+[ext_resource type="Script" uid="uid://bx6ebq31wc7nd" path="res://Source/Battle/Stages/EnemyFiring.cs" id="1_qsf2s"]
+
 [node name="EnemyFiring" type="Control" unique_id=238963127]
 layout_mode = 3
 anchors_preset = 15
@@ -7,3 +9,4 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_qsf2s")
