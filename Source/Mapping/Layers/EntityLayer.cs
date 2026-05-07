@@ -72,7 +72,7 @@ public partial class EntityLayer : SceneLayer
 			{
 				device.Angle = deviceAtlas.Angle;
 				device.Properties = (DevicePropertiesData)entityAtlas.Properties;
-			}
+			} //else if (tile is Wall wall && atlas is EntityLayerDeviceTileData deviceAtlas)
 			
 			EmitSignal(SignalName.TileSpawned, tile);
 		}

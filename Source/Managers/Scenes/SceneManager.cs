@@ -17,6 +17,7 @@ public partial class SceneManager : Node
 	{ 
 		if (State != SceneState.Loading)
 		{
+			GetTree().Paused = true;
 			State = SceneState.Paused;
 		}
 	}
@@ -25,6 +26,7 @@ public partial class SceneManager : Node
 	{
 		if (State != SceneState.Loading)
 		{
+			GetTree().Paused = false;
 			State = SceneState.Running;
 		}
 	}
