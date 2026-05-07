@@ -48,13 +48,28 @@ public partial class Unmasking : Control
 					_scene.StageManager.DeviceAdjustment();
 					break;
 				case 3: /* unmask and enemy fire */
-					Nodes.GetRoot().ToastManager.SpawnOne("We uncovered, but enemy caught us! Run for cover!");
-					_map.OverlayLayer.ClearAllBlackTiles();
-					_scene.StageManager.EnemyFiring();
+					if (_map.CurrentLoadedMap.Counterbattery)
+					{
+						Nodes.GetRoot().ToastManager.SpawnOne("We uncovered, but enemy caught us! Run for cover!");
+						_map.OverlayLayer.ClearAllBlackTiles();
+						_scene.StageManager.EnemyFiring();
+					} else
+					{
+						Nodes.GetRoot().ToastManager.SpawnOne("We uncovered silently, make adjustments.");
+						_map.OverlayLayer.ClearAllBlackTiles();
+						_scene.StageManager.DeviceAdjustment();
+					}
 					break;
 				case 4: /* fail to unmask and enemy fire */
-					Nodes.GetRoot().ToastManager.SpawnOne("Failed to uncover and enemy caught us! Run for cover!");
-					_scene.StageManager.EnemyFiring();
+					if (_map.CurrentLoadedMap.Counterbattery)
+					{
+						Nodes.GetRoot().ToastManager.SpawnOne("Failed to uncover and enemy caught us! Run for cover!");
+						_scene.StageManager.EnemyFiring();
+					} else
+					{
+						Nodes.GetRoot().ToastManager.SpawnOne("Failed to uncover, lost their contact!");
+						_scene.StageManager.DeviceAdjustment();
+					}
 					break;
 				default: break;
 			}

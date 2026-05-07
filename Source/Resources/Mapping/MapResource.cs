@@ -22,6 +22,9 @@ public partial class MapResource : Resource
 	[Export] public int MinTotalDevices { get; set; } = 1;
 	[Export] public int MaxTotalDevices { get; set; } = 1;
 	
+	[ExportGroup("Targets")]
+	[Export] public bool Counterbattery { get; set; } = false;
+	
 	[ExportGroup("Layers")]
 	[Export] public GroundLayerData GroundLayer { get; set; } = null;
 	[Export] public AtlasLayerData DecorationLayer { get; set; } = null;
