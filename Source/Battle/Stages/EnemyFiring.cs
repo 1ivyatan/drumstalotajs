@@ -36,6 +36,7 @@ public partial class EnemyFiring : Control
 	
 	private void Fire()
 	{
+		/*
 		var devs = _map.EntityLayer.GetEnemyDevices();
 		int firedCount = 0;
 		foreach (var dev in devs)
@@ -57,6 +58,6 @@ public partial class EnemyFiring : Control
 					}
 				}));
 			}));
-		}
+		}*/
 	}
 }

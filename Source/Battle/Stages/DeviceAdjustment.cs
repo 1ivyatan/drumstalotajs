@@ -41,6 +41,7 @@ public partial class DeviceAdjustment : Control
 		
 		_map.OverlayLayer.RemoveAllInstancesByName("DeviceMarker");
 		_map.OverlayLayer.ClearAllHighlighters();
+		_scene.NextTurn();
 	}
 	
 	public async override void _UnhandledInput(InputEvent @event)

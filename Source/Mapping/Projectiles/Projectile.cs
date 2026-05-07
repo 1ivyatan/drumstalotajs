@@ -13,17 +13,19 @@ public partial class Projectile : Node2D
 {
 	[Signal] public delegate void DetonatedEventHandler();
 	
+	private Device _device;
+	
 	public override void _Ready()
 	{
 	}
 	
 	public void Set(Device device)
 	{
-		
+		_device = device;
 	}
 	
 	public void Launch()
 	{
-		
+		_device.ExpendShell();
 	}
 }

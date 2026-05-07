@@ -15,6 +15,8 @@ namespace Drumstalotajs.Battle;
 
 public partial class BattleScene : Node2D
 {
+	[Signal] public delegate void NewTurnEventHandler(int turn);
+	
 	[Export] public BattleTopnav BattleTopnav { get; private set; }
 	[Export] public Map Map { get; private set; }
 	[Export] private ScoreManager ScoreManager { get; set; }
@@ -24,6 +26,7 @@ public partial class BattleScene : Node2D
 	[Export] private PauseOverlay _pauseOverlay;
 	public bool Paused { get; private set; } = false;
 	private string _mapPath;
+	public int Turn { get; private set; } = 1;
 	
 	public override void _Ready()
 	{
@@ -32,6 +35,12 @@ public partial class BattleScene : Node2D
 		_pauseOverlay.PressedRestart += () => { Restart(); };
 		_pauseOverlay.PressedExit += () => { Exit(); };
 		StageManager.DevicePlacement();
+	}
+	
+	public void NextTurn()
+	{
+		Turn++;
+		EmitSignal(SignalName.NewTurn, Turn);
 	}
 	
 	private void Exit()

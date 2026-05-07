@@ -13,8 +13,7 @@ namespace Drumstalotajs.Resources.Mapping;
 public partial class MapResource : Resource
 {
 	[ExportGroup("Properties")]
-	[Export] public double MetersPerPixel { get; set; } = 1;
-	[Export] public double TimeLimitSecs { get; set; } = 60;
+	[Export] public double MetersPerCell { get; set; } = 1;
 	
 	[ExportGroup("Devices")]
 	[Export] public Dictionary<Vector2I, double> DevicePositions { get; set; } = new();
@@ -24,6 +23,11 @@ public partial class MapResource : Resource
 	
 	[ExportGroup("Targets")]
 	[Export] public bool Counterbattery { get; set; } = false;
+	
+	[ExportGroup("Hardening")]
+	[Export] public double TimeLimitSecs { get; set; } = 60;
+	[Export] public bool PlayerResupply { get; set; } = true;
+	[Export] public bool EnemyResupply { get; set; } = true;
 	
 	[ExportGroup("Layers")]
 	[Export] public GroundLayerData GroundLayer { get; set; } = null;

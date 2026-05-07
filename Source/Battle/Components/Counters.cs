@@ -2,6 +2,7 @@ using Godot;
 using System;
 using System.Linq;
 using Drumstalotajs;
+using Drumstalotajs.Utilities;
 using Drumstalotajs.Components;
 using Drumstalotajs.Mapping;
 using Drumstalotajs.Battle.Components;
@@ -15,16 +16,24 @@ public partial class Counters : Control
 	[Export] private Counter _playerDeviceCounter;
 	[Export] private Counter _enemyTargetCounter;
 	[Export] private Counter _timerCounter;
+	[Export] private Counter _turnCounter;
 	[Export] private Map _map;
 	[Export] private ScoreManager _scoreManager;
 	
 	public override void _Ready()
 	{
-		_map.EntityLayer.TileSpawned += IncCounters;
-		_map.EntityLayer.TileExiting += DecCounters;
+		BattleScene scene = Nodes.GetSceneRoot();
+		_map.EntityLayer.TileSpawned += IncTileCounters;
+		_map.EntityLayer.TileExiting += DecTileCounters;
+		scene.NewTurn += IncTurnCounter;
 	}
 	
-	private void IncCounters(SceneTile tile)
+	private void IncTurnCounter(int turn)
+	{
+		_turnCounter.Value = turn;
+	}
+	
+	private void IncTileCounters(SceneTile tile)
 	{
 		var entity = tile as Entity;
 		if (entity is Device device && device.Player == true)
@@ -36,7 +45,7 @@ public partial class Counters : Control
 		}
 	}
 	
-	private void DecCounters(SceneTile tile)
+	private void DecTileCounters(SceneTile tile)
 	{
 		var entity = tile as Entity;
 		if (entity is Device device && device.Player == true)
