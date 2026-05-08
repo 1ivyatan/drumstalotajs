@@ -78,6 +78,8 @@ public partial class EntityLayer : SceneLayer
 				{
 					device.Angle = deviceAtlas.Angle;
 					device.Properties = (DevicePropertiesData)entityLayerAtlas.Properties;
+					device.ShellsPerTurn = deviceAtlas.ShellsPerTurn;
+					device.Traverse = deviceAtlas.Traverse;
 				}
 
 				if (!Instances.Contains(entity)) Instances.Add(entity);

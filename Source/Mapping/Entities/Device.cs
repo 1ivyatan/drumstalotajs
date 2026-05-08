@@ -49,6 +49,7 @@ public partial class Device : Entity
 	public double Angle { get; set; } = -1;
 	public int Shells { get; set; } = 0;
 	public int ResupplyTurns { get; private set; } = 0;
+	public int ShellsPerTurn { get; set; } = 1;
 	
 	public override void _Ready()
 	{

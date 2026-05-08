@@ -26,6 +26,9 @@ public partial class InitDeviceAdjustmentContainer : Container
 	[Export] private Wheel _angleSlider;
 	[Export] private Label _angleLabel;
 	
+	[Export] private VSlider _shellSlider;
+	[Export] private Label _shellLabel;
+	
 	private DevicePropertiesData _props = null;
 	private EntityLayerAtlasData _atlas = null;
 	private Device _device = null;
@@ -49,6 +52,14 @@ public partial class InitDeviceAdjustmentContainer : Container
 			{
 				_angleLabel.Text = $"~{Math.Round(value)}°";
 				_device.Angle = value;
+			}
+		};
+		
+		_shellSlider.ValueChanged += (double value) => {
+			if (_device != null)
+			{
+				_shellLabel.Text = $"{value}";
+				_device.ShellsPerTurn = (int)value;
 			}
 		};
 	}
@@ -80,6 +91,9 @@ public partial class InitDeviceAdjustmentContainer : Container
 		{
 			_angleSlider.Value = _device.Angle;
 		}
+		
+		_shellSlider.MaxValue = _props.MaxFiringPerTurn;
+		_shellSlider.Value = _device.ShellsPerTurn;
 		
 		Visible = true;
 	}

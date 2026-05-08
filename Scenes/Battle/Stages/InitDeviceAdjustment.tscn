@@ -17,7 +17,7 @@ script = ExtResource("1_y6unp")
 _initDeviceAdjustmentContainer = NodePath("InitDeviceAdjustmentContainer")
 _toFiringButton = NodePath("ToFiring")
 
-[node name="InitDeviceAdjustmentContainer" type="PanelContainer" parent="." unique_id=87147405 node_paths=PackedStringArray("_deviceLabel", "_devicePosition", "_deviceShellInfo", "_deviceTexture", "_azimuthSlider", "_azimuthLabel", "_angleSlider", "_angleLabel")]
+[node name="InitDeviceAdjustmentContainer" type="PanelContainer" parent="." unique_id=87147405 node_paths=PackedStringArray("_deviceLabel", "_devicePosition", "_deviceShellInfo", "_deviceTexture", "_azimuthSlider", "_azimuthLabel", "_angleSlider", "_angleLabel", "_shellSlider", "_shellLabel")]
 visible = false
 layout_mode = 1
 anchors_preset = 7
@@ -39,6 +39,8 @@ _azimuthSlider = NodePath("Container/Wheels/Azimuth/CircleSlider")
 _azimuthLabel = NodePath("Container/Wheels/Azimuth/Value")
 _angleSlider = NodePath("Container/Wheels/Angle/Wheel")
 _angleLabel = NodePath("Container/Wheels/Angle/Value")
+_shellSlider = NodePath("Container/Wheels/Shells/VSlider")
+_shellLabel = NodePath("Container/Wheels/Shells/Value")
 
 [node name="Container" type="VBoxContainer" parent="InitDeviceAdjustmentContainer" unique_id=1010489265]
 layout_mode = 2
@@ -108,6 +110,28 @@ WheelIntensity = 1.0
 [node name="Value" type="Label" parent="InitDeviceAdjustmentContainer/Container/Wheels/Angle" unique_id=508199123]
 layout_mode = 2
 text = "~0°"
+horizontal_alignment = 1
+
+[node name="Shells" type="VBoxContainer" parent="InitDeviceAdjustmentContainer/Container/Wheels" unique_id=523109623]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="InitDeviceAdjustmentContainer/Container/Wheels/Shells" unique_id=161467355]
+layout_mode = 2
+text = "Shell barrages"
+horizontal_alignment = 1
+
+[node name="VSlider" type="VSlider" parent="InitDeviceAdjustmentContainer/Container/Wheels/Shells" unique_id=605242499]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+min_value = 1.0
+max_value = 10.0
+value = 1.0
+rounded = true
+
+[node name="Value" type="Label" parent="InitDeviceAdjustmentContainer/Container/Wheels/Shells" unique_id=283418871]
+layout_mode = 2
+text = "1"
 horizontal_alignment = 1
 
 [node name="ToFiring" type="Button" parent="." unique_id=1933279334]

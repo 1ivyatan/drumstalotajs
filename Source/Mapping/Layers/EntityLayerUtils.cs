@@ -26,6 +26,7 @@ public partial class EntityLayer : SceneLayer
 		var instances = Instances
 		.Where(e => e is Device)
 		.Where(e => ((Entity)e).Player == true)
+		.Where(e => ((Entity)e).Disabled == false)
 		.Select(e => e as Device)
 		.ToArray();
 		return instances;
@@ -36,7 +37,20 @@ public partial class EntityLayer : SceneLayer
 		var instances = Instances
 		.Where(e => e is Device)
 		.Where(e => ((Entity)e).Player == false)
+		.Where(e => ((Entity)e).Disabled == false)
 		.Select(e => e as Device)
+		.ToArray();
+		return instances;
+	}
+	
+	public Entity[] GetEnemyTargets()
+	{
+		var instances = Instances
+		.Where(e => e is Entity)
+		.Where(e => ((Entity)e).Player == false)
+		.Where(e => ((Entity)e).Target == true)
+		.Where(e => ((Entity)e).Disabled == false)
+		.Select(e => e as Entity)
 		.ToArray();
 		return instances;
 	}
