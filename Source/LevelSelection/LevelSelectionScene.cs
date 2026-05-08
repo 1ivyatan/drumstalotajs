@@ -31,6 +31,7 @@ public partial class LevelSelectionScene : Node2D
 		LevelSet = Nodes.GetRoot().SaveManager.GetLevelSet("Rocky Island");
 		Map.Selector.Filter = new SelectorFilter([Map.OverlayLayer]);
 		Map.Mode = MapMode.HiddenInteractable;
+		Map.Camera.Mode = CameraMode.DragOnly;
 		Topnav.Title = "Deploy";
 		await Map.Load(LevelSet.BackgroundMapPath);
 		if (LevelSet != null)
