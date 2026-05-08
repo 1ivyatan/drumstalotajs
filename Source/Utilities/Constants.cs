@@ -16,4 +16,11 @@ public static class Constants
 		public static Godot.Vector2I TileSize => new Godot.Vector2I(32, 32);
 		public static int MaxProjectileCount => 50;
 	}
+	
+	public static class Physics
+	{
+		public static double Gravity = 9.81; /* m/s^2 */
+		public static double SeaLevelAirDensity = 1.225; /* kg/m^3 */
+		public static double ScaleHeight = 8500; /* m */
+	}
 }

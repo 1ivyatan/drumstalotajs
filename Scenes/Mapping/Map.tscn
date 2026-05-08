@@ -385,8 +385,9 @@ tile_set = SubResource("TileSet_ajbla")
 script = ExtResource("6_bdwom")
 Atlas = Array[Object]([SubResource("Resource_ccdcv"), SubResource("Resource_asx6w"), SubResource("Resource_st7r0")])
 
-[node name="Projectiles" type="Node2D" parent="." unique_id=1337390122]
+[node name="Projectiles" type="Node2D" parent="." unique_id=1337390122 node_paths=PackedStringArray("_map")]
 script = ExtResource("14_bc3k3")
+_map = NodePath("..")
 _projectileScene = ExtResource("20_wb4r7")
 
 [node name="Selector" type="Node2D" parent="." unique_id=1827463472 node_paths=PackedStringArray("_map")]

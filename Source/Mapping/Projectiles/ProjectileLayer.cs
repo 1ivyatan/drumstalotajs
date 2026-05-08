@@ -12,6 +12,7 @@ namespace Drumstalotajs.Mapping.Projectiles;
 
 public partial class ProjectileLayer : Node2D
 {
+	[Export] private Map _map;
 	public int MaxProjectileCount { get; } = Constants.Mapping.MaxProjectileCount;
 	[Export] private PackedScene _projectileScene;
 	private List<Projectile> _projectiles = new();
@@ -26,7 +27,7 @@ public partial class ProjectileLayer : Node2D
 		}
 		
 		var projectile = _projectileScene.Instantiate() as Projectile;
-		projectile.Set(device);
+		projectile.Set(device, _map);
 		AddChild(projectile);
 		projectile.Launch();
 		return projectile;

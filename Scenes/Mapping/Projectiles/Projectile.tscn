@@ -11,4 +11,5 @@ region = Rect2(77, 10, 7, 12)
 script = ExtResource("1_110hw")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=124077106]
+rotation = 1.5707964
 texture = SubResource("AtlasTexture_khasa")

@@ -11,6 +11,7 @@ public partial class DevicePropertiesData : EntityPropertiesData
 	[Export] public double MinAngle { get; set; } = 10;
 	[Export] public double MaxAngle { get; set; } = 80;
 	[Export] public double TraverseRadius { get; set; } = 15;
+	[Export] public double MuzzleVelocity { get; set; } = 20;
 	
 	[ExportGroup("Supplies")]
 	[Export] public int Shells { get; set; } = 40;
