@@ -10,6 +10,7 @@ public partial class Device : Entity
 {	
 	[Export] private Sprite2D _body;
 	[Export] private Sprite2D _head;
+	[Export] private Flag _flag;
 	[Export] private Sprite2D _resupplyStatus;
 	
 	[Export] public override EntityPropertiesData Properties { get; 
@@ -24,11 +25,34 @@ public partial class Device : Entity
 		}
 	}
 	
-	public double Angle { get; set; } = -1;
+	public override double Azimuth { get;
+		set {
+			field = ((value % 360) + 360) % 360;
+			_body.RotationDegrees = (float)field;
+		}
+	} = -1;
+	
+	public double Angle { get;
+		set {
+			field = value;
+			_head.RotationDegrees = _body.RotationDegrees + (float)field;
+		}
+	} = -1;
+	
+	public override bool Player { get;
+		set {
+			field = value;
+			_flag.SetFlag(field);
+		}
+	} = false;
+	/*
+	public virtual bool Player { get; set; } = false;
+	public virtual bool Target { get; set; } = false;
+	public virtual bool Disabled { get; set; } = false;*/
+	
 	public double Traverse { get; set; } = 0;
 	public int Shells { get; set; } = 0;
-	
-	public int ResupplyTurns {get; private set;} = 0;
+	public int ResupplyTurns { get; private set; } = 0;
 	
 	public override void _Ready()
 	{
