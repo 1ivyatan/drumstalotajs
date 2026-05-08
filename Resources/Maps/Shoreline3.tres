@@ -26,665 +26,570 @@ script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(4, 2)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_gywf5"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(5, 2)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_fwbw3"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(6, 2)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_8a3xe"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(7, 2)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_i8dx4"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(8, 2)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_547yb"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(9, 2)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_hsogk"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(10, 2)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_81rgc"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(11, 2)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_q1fya"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(12, 2)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_ltqkj"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(13, 2)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_qibyr"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(14, 2)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_p0gqs"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(15, 2)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_a5qni"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(16, 2)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_sbmc5"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(17, 2)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_6dwuq"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(19, 2)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_sh1ao"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(20, 2)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_gfjbg"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(21, 2)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_4h5vn"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(22, 2)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_oqory"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(23, 2)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_hd23c"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(24, 2)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_74j47"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(25, 2)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_efqr1"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(26, 2)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_0fb33"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(27, 2)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_ro667"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(28, 2)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_onntr"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(29, 2)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_gm3s7"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(30, 2)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_cmn8b"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(31, 2)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_7h8b1"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(32, 2)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_paukc"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(33, 2)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_oqrgn"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(34, 2)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_f6yxj"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(35, 2)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_k7xaw"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(33, 1)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_74aej"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(32, 1)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_xt0ty"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(31, 1)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_nafba"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(30, 1)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_cfbcf"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(29, 1)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_praxl"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(28, 1)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_105qh"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(27, 1)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_12yyh"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(26, 1)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_g5wxr"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(25, 1)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_aqrqa"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(24, 1)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_m03op"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(23, 1)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_1xcpg"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(22, 1)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_8dujj"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(21, 1)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_r172e"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(20, 1)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_7shbb"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(19, 1)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_oi22o"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(18, 1)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_qt00k"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(17, 1)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_t0gyc"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(16, 1)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_gb5bg"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(15, 1)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_6xw37"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(14, 1)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_whoj7"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(13, 1)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_rbyqi"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(12, 1)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_wn36j"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(11, 1)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_wwbeh"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(10, 1)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_lqgud"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(9, 1)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_s5piq"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(8, 1)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_jysyw"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(7, 1)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_808m1"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(6, 1)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_jbbn2"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(5, 1)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_61dwy"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(4, 1)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_xcuos"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(3, 1)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_34agr"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(2, 1)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_hq2lf"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(2, 2)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_g0aoc"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(3, 2)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_oxvhb"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(18, 2)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_56o42"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(36, 2)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_48k24"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(37, 2)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_ymjnf"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(37, 3)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_d3rsr"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(36, 3)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_fqn5v"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(35, 3)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_uobw1"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(34, 3)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_r0uhd"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(33, 3)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_1wyco"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(32, 3)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_xxok1"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(31, 3)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_tj3o3"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(30, 3)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_rbqj1"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(29, 3)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_a67ur"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(28, 3)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_6is7b"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(27, 3)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_hl1dq"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(26, 3)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_hvmm5"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(25, 3)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_13d8t"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(24, 3)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_opf3a"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(23, 3)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_r4k3d"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(11, 3)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_m6mnw"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(12, 3)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_q6a4s"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(13, 3)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_mqn08"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(14, 3)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_wfjad"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(15, 3)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_8je4m"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(16, 3)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_lj8km"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(17, 3)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_3xme5"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(18, 3)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_rr6b6"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(19, 3)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_c3itx"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(20, 3)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_ptft3"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(21, 3)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_gymob"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
 Id = 1
 Position = Vector2i(22, 3)
-Data = {}
 
 [sub_resource type="Resource" id="Resource_403xj"]
 script = ExtResource("5_b4qf1")
@@ -704,6 +609,7 @@ Tiles = Array[ExtResource("3_xge3b")]([])
 
 [resource]
 script = ExtResource("8_btd7q")
+MetersPerCell = Vector2i(64, 64)
 DevicePositions = Dictionary[Vector2i, float]({
 Vector2i(10, 10): 100.0,
 Vector2i(13, 12): 60.0,

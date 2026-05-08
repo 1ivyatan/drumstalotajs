@@ -2,6 +2,7 @@ using Godot;
 using Godot.Collections;
 using System;
 using Drumstalotajs;
+using Drumstalotajs.Utilities;
 using Drumstalotajs.Mapping;
 using Drumstalotajs.Resources;
 using Drumstalotajs.Resources.Mapping.Layers;
@@ -13,7 +14,7 @@ namespace Drumstalotajs.Resources.Mapping;
 public partial class MapResource : Resource
 {
 	[ExportGroup("Properties")]
-	[Export] public double MetersPerCell { get; set; } = 1;
+	[Export] public Vector2I MetersPerCell { get; set; } = Constants.Mapping.TileSize;
 	
 	[ExportGroup("Devices")]
 	[Export] public Dictionary<Vector2I, double> DevicePositions { get; set; } = new();

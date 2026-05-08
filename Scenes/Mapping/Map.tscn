@@ -292,6 +292,7 @@ metadata/_custom_type_script = "uid://7qxwheiwlsgl"
 script = ExtResource("7_asx6w")
 MinAngle = 30.0
 MaxAngle = 60.0
+MuzzleVelocity = 100.0
 Height = 4.0
 metadata/_custom_type_script = "uid://cqwwdwx080x60"
 

@@ -37,9 +37,8 @@ public partial class Projectile : Node2D
 			ApplyHorizontalDrag(airDensity, delta);
 			ApplyVerticalDrag(airDensity, delta);
 			Altitude += VerticalVelocity * (float)delta;
-			Position += HorizontalVelocity * (float)delta;
+			Position += (HorizontalVelocity * (float)delta) / _map.CellCoefficient;
 			Rotation = _direction.Angle();
-			
 			GD.Print(Altitude);
 		}
 	}
