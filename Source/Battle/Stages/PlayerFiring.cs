@@ -129,6 +129,9 @@ public partial class PlayerFiring : Control
 					((DevicePropertiesData)device.Properties).DelayBetweenFires
 				), SceneTreeTimer.SignalName.Timeout);
 			}
+		} else
+		{
+			device.CheckAndTryResupply();
 		}
 	}
 }
