@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://blnp1df0jakre"]
+
+[ext_resource type="Script" uid="uid://bh8h8p88je745" path="res://Source/Mapping/Entities/Device.cs" id="1_wkidr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xpqcu"]
+size = Vector2(32, 32)
+
+[node name="Device" type="Area2D" unique_id=728909634]
+script = ExtResource("1_wkidr")
+
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=601721672]
+shape = SubResource("RectangleShape2D_xpqcu")
+
+[node name="Body" type="Sprite2D" parent="." unique_id=1450484756]
+
+[node name="Head" type="Sprite2D" parent="Body" unique_id=1838086888]
+
+[node name="ResupplyStatus" type="Sprite2D" parent="." unique_id=507502265]
