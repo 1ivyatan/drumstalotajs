@@ -1,12 +1,20 @@
 [gd_scene format=3 uid="uid://blnp1df0jakre"]
 
 [ext_resource type="Script" uid="uid://bh8h8p88je745" path="res://Source/Mapping/Entities/Device.cs" id="1_wkidr"]
+[ext_resource type="Texture2D" uid="uid://bscapcc3qlnqv" path="res://Assets/Textures/entity.png" id="2_tq584"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xpqcu"]
 size = Vector2(32, 32)
 
-[node name="Device" type="Area2D" unique_id=728909634]
+[sub_resource type="AtlasTexture" id="AtlasTexture_xjn6u"]
+atlas = ExtResource("2_tq584")
+region = Rect2(4, 35, 23, 24)
+
+[node name="Device" type="Area2D" unique_id=728909634 node_paths=PackedStringArray("_body", "_head", "_resupplyStatus")]
 script = ExtResource("1_wkidr")
+_body = NodePath("Body")
+_head = NodePath("Body/Head")
+_resupplyStatus = NodePath("ResupplyStatus")
 
 [node name="Collision" type="CollisionShape2D" parent="." unique_id=601721672]
 shape = SubResource("RectangleShape2D_xpqcu")
@@ -16,3 +24,6 @@ shape = SubResource("RectangleShape2D_xpqcu")
 [node name="Head" type="Sprite2D" parent="Body" unique_id=1838086888]
 
 [node name="ResupplyStatus" type="Sprite2D" parent="." unique_id=507502265]
+visible = false
+texture = SubResource("AtlasTexture_xjn6u")
+offset = Vector2(-25, -25)

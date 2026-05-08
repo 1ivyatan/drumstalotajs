@@ -313,8 +313,25 @@ Thumbnail = SubResource("AtlasTexture_55ud5")
 Scene = ExtResource("11_55ud5")
 metadata/_custom_type_script = "uid://7qxwheiwlsgl"
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_iv8rp"]
+atlas = ExtResource("7_7ig3r")
+region = Rect2(34, 65, 30, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_44ay1"]
+atlas = ExtResource("7_7ig3r")
+region = Rect2(33, 34, 31, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0enno"]
+atlas = ExtResource("7_7ig3r")
+region = Rect2(34, 0, 26, 28)
+
 [sub_resource type="Resource" id="Resource_04b6o"]
 script = ExtResource("7_asx6w")
+DeviceBody = SubResource("AtlasTexture_44ay1")
+DeviceHead = SubResource("AtlasTexture_0enno")
+DestroyedDeviceBody = SubResource("AtlasTexture_iv8rp")
+Height = 1.1
+Toughness = -1.0
 metadata/_custom_type_script = "uid://cqwwdwx080x60"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_04b6o"]

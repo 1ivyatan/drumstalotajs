@@ -8,9 +8,9 @@ namespace Drumstalotajs.Mapping.Entities;
 
 public partial class Entity : SceneTile
 {
-	[Export] public EntityPropertiesData Properties { get; set; }
+	[Export] public virtual EntityPropertiesData Properties { get; set; }
 	
-	public double Azimuth { get;
+	public virtual double Azimuth { get;
 		set {
 			field = ((value % 360) + 360) % 360;
 		}
@@ -23,8 +23,9 @@ public partial class Entity : SceneTile
 		}
 	} = 100;
 
-	public bool Player { get; set; } = false;
-	public bool Target { get; set; } = false;
+	public virtual bool Player { get; set; } = false;
+	public virtual bool Target { get; set; } = false;
+	public virtual bool Disabled { get; set; } = false;
 	
 	/* simplistic, inheritor will do this  in more sophisiscated ways */
 	public void DecreaseIntegrity(double amount)

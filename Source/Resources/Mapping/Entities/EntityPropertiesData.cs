@@ -8,5 +8,5 @@ namespace Drumstalotajs.Resources.Mapping.Entities;
 public partial class EntityPropertiesData : Resource
 {
 	[Export] public double Height { get; set; }
-	[Export(PropertyHint.Range, "0,1,0.01")] public double Toughness { get; set; }
+	[Export(PropertyHint.Range, "-10,10,0.01")] public double Toughness { get; set; }
 }
