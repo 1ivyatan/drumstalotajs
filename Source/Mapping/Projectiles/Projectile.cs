@@ -137,28 +137,7 @@ public partial class Projectile : Node2D
 		EmitSignal(SignalName.Detonated);
 		QueueFree();
 	}
-	/*
-	
-	public override void _Ready()
-	{
-	}
-	Constants
-{
-	public static class Vector2I
-	{
-		public static Godot.Vector2I Negative => new Godot.Vector2I(-1, -1);
-	}
-	
-	public static class Mapping
-	{
-		public static Godot.Vector2I TileSize => new Godot.Vector2I(32, 32);
-		public static int MaxProjectileCount => 50;
-	}
-	
-	public static class Physics
-	{
-	
-	*/
+
 	private void ApplyHorizontalDrag(double airDensity, double delta)
 	{
 		double horizontalSpeed = HorizontalVelocity.Length();

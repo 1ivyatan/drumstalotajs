@@ -18,6 +18,7 @@ public partial class InitDeviceAdjustmentContainer : Container
 	
 	[Export] private Label _deviceLabel;
 	[Export] private Label _devicePosition;
+	[Export] private Label _deviceShellInfo;
 	[Export] private TextureRect _deviceTexture;
 	
 	[Export] private CircleSlider _azimuthSlider;
@@ -62,7 +63,7 @@ public partial class InitDeviceAdjustmentContainer : Container
 		_devicePosition.Text = $"{_map.EntityLayer.LocalToMap(device.Position)}";
 		_angleSlider.MinValue = _props.MinAngle;
 		_angleSlider.MaxValue = _props.MaxAngle;
-		
+		_deviceShellInfo.Text = $"{device.Shells} shells at disposal";
 		
 		if (_device.Azimuth == -1)
 		{

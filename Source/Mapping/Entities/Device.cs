@@ -12,7 +12,7 @@ public partial class Device : Entity
 	public double Traverse { get; set; } = 0;
 	public int Shells { get; set; } = 0;
 	
-	private int _resupplyTurnTracker = 0;
+	public int ResupplyTurns {get; private set;} = 0;
 	
 	public override void _Ready()
 	{
@@ -22,25 +22,29 @@ public partial class Device : Entity
 	private void Resupply()
 	{
 		Shells = ((DevicePropertiesData)Properties).Shells;
-		_resupplyTurnTracker = 0;
+		ResupplyTurns = 0;
 	}
 	
 	public void ExpendShell()
 	{
 		Shells--;
+		if (Shells == 0)
+		{
+			ResupplyTurns = ((DevicePropertiesData)Properties).ResupplyTurns;
+		}
 	}
 	
 	public void CheckAndTryResupply()
 	{
 		if (Shells == 0)
 		{
-			if (_resupplyTurnTracker == 0)
+			if (ResupplyTurns == 0)
 			{
-				_resupplyTurnTracker = ((DevicePropertiesData)Properties).ResupplyTurns;
+				ResupplyTurns = ((DevicePropertiesData)Properties).ResupplyTurns;
 			} else
 			{
-				_resupplyTurnTracker--;
-				if (_resupplyTurnTracker == 0)
+				ResupplyTurns--;
+				if (ResupplyTurns == 0)
 				{
 					Resupply();
 				}

@@ -17,7 +17,7 @@ script = ExtResource("1_y6unp")
 _initDeviceAdjustmentContainer = NodePath("InitDeviceAdjustmentContainer")
 _toFiringButton = NodePath("ToFiring")
 
-[node name="InitDeviceAdjustmentContainer" type="PanelContainer" parent="." unique_id=87147405 node_paths=PackedStringArray("_deviceLabel", "_devicePosition", "_deviceTexture", "_azimuthSlider", "_azimuthLabel", "_angleSlider", "_angleLabel")]
+[node name="InitDeviceAdjustmentContainer" type="PanelContainer" parent="." unique_id=87147405 node_paths=PackedStringArray("_deviceLabel", "_devicePosition", "_deviceShellInfo", "_deviceTexture", "_azimuthSlider", "_azimuthLabel", "_angleSlider", "_angleLabel")]
 visible = false
 layout_mode = 1
 anchors_preset = 7
@@ -33,6 +33,7 @@ grow_vertical = 0
 script = ExtResource("2_62jor")
 _deviceLabel = NodePath("Container/Wheels/DeviceInfo/Label")
 _devicePosition = NodePath("Container/Wheels/DeviceInfo/Position")
+_deviceShellInfo = NodePath("Container/Wheels/DeviceInfo/ShellInfo")
 _deviceTexture = NodePath("Container/Wheels/DeviceInfo/TextureRect")
 _azimuthSlider = NodePath("Container/Wheels/Azimuth/CircleSlider")
 _azimuthLabel = NodePath("Container/Wheels/Azimuth/Value")
@@ -66,6 +67,11 @@ stretch_mode = 3
 [node name="Position" type="Label" parent="InitDeviceAdjustmentContainer/Container/Wheels/DeviceInfo" unique_id=1741099166]
 layout_mode = 2
 text = "(11;11)"
+horizontal_alignment = 1
+
+[node name="ShellInfo" type="Label" parent="InitDeviceAdjustmentContainer/Container/Wheels/DeviceInfo" unique_id=2133018784]
+layout_mode = 2
+text = "0 Shells at disposal"
 horizontal_alignment = 1
 
 [node name="Azimuth" type="VBoxContainer" parent="InitDeviceAdjustmentContainer/Container/Wheels" unique_id=2145251941]

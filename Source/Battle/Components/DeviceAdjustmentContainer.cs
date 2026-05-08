@@ -19,6 +19,7 @@ public partial class DeviceAdjustmentContainer : Container
 	[Export] private Label _deviceLabel;
 	[Export] private Label _devicePosition;
 	[Export] private TextureRect _deviceTexture;
+	[Export] private Label _deviceShellInfo;
 
 	[Export] private Wheel _traverseSlider;
 	[Export] private Label _traverseLabel;
@@ -60,6 +61,15 @@ public partial class DeviceAdjustmentContainer : Container
 		_deviceTexture.Texture = _atlas.Thumbnail;
 		_deviceLabel.Text = _atlas.Name;
 		_devicePosition.Text = $"{_map.EntityLayer.LocalToMap(device.Position)}";
+		
+		if (device.Shells == 0)
+		{
+			_deviceShellInfo.Text = $"{device.ResupplyTurns} turns until resupply";
+		} else
+		{
+			_deviceShellInfo.Text = $"{device.Shells} shells at disposal";
+		}
+		
 		
 		_traverseSlider.MinValue = -_props.TraverseRadius;
 		_traverseSlider.MaxValue = _props.TraverseRadius;
