@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://cngthrfn8437u"]
+
+[ext_resource type="Script" uid="uid://1fbc6xi7x3uc" path="res://Source/Mapping/Entities/Flag.cs" id="1_5gt4f"]
+[ext_resource type="Texture2D" uid="uid://bscapcc3qlnqv" path="res://Assets/Textures/entity.png" id="2_1g58r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1g58r"]
+atlas = ExtResource("2_1g58r")
+region = Rect2(128, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qfwm0"]
+atlas = ExtResource("2_1g58r")
+region = Rect2(93, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nfjdi"]
+atlas = ExtResource("2_1g58r")
+region = Rect2(126, 0, 32, 64)
+
+[node name="Flag" type="Sprite2D" unique_id=366412039]
+texture = SubResource("AtlasTexture_1g58r")
+script = ExtResource("1_5gt4f")
+_playerFlag = SubResource("AtlasTexture_qfwm0")
+_enemyFlag = SubResource("AtlasTexture_nfjdi")

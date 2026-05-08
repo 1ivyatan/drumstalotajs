@@ -27,6 +27,16 @@ public static class Calculations
 		double radians = ToRadians(90.0 - azimuth);
 		return new Vector2((float)Math.Cos(radians), (float)-Math.Sign(Math.Sin(radians)));
 	}
+	
+	public static double AzimuthToDegrees(double azimuth)
+	{
+		return 90.0 - azimuth;
+	}
+	
+	public static double AzimuthToRadians(double azimuth)
+	{
+		return ToRadians(90.0 - azimuth);
+	}
 		
 	public static double GetAirDensity(double altitude)
 	{

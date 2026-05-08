@@ -7,6 +7,12 @@ namespace Drumstalotajs.Resources.Mapping.Entities;
 [GlobalClass]
 public partial class DevicePropertiesData : EntityPropertiesData
 {
+	[ExportGroup("Textures")]
+	[Export] public Texture2D DeviceBody { get; set; } = null;
+	[Export] public Texture2D DeviceHead { get; set; } = null;
+	[Export] public Texture2D DestroyedDevice { get; set; } = null;
+	[Export] public Vector2 DeviceHeadPosition { get; set; } = Vector2.Zero;
+	
 	[ExportGroup("Device")]
 	[Export] public double MinAngle { get; set; } = 10;
 	[Export] public double MaxAngle { get; set; } = 80;
@@ -16,6 +22,8 @@ public partial class DevicePropertiesData : EntityPropertiesData
 	[ExportGroup("Supplies")]
 	[Export] public int Shells { get; set; } = 40;
 	[Export] public int ResupplyTurns { get; set; } = 10;
+	[Export] public int MaxShellsInTurn { get; set; } = 5;
+	[Export] public double DelayBetweenRapidFires { get; set; } = 2.5;
 	
 	[ExportGroup("Shell")]
 	[Export] public double Caliber { get; set; } = 81; /* mm */
