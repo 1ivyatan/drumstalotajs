@@ -32,25 +32,21 @@ public partial class Device : Entity
 		}
 	} = -1;
 	
-	public double Angle { get;
-		set {
-			field = value;
-			_head.RotationDegrees = _body.RotationDegrees + (float)field;
-		}
-	} = -1;
-	
 	public override bool Player { get;
 		set {
 			field = value;
 			_flag.SetFlag(field);
 		}
 	} = false;
-	/*
-	public virtual bool Player { get; set; } = false;
-	public virtual bool Target { get; set; } = false;
-	public virtual bool Disabled { get; set; } = false;*/
 	
-	public double Traverse { get; set; } = 0;
+	public double Traverse { get;
+		set {
+			field = value;
+			_head.RotationDegrees = _body.RotationDegrees + (float)field;
+		}
+	} = 0;
+	
+	public double Angle { get; set; } = -1;
 	public int Shells { get; set; } = 0;
 	public int ResupplyTurns { get; private set; } = 0;
 	
@@ -59,10 +55,18 @@ public partial class Device : Entity
 		Resupply();
 	}
 	
+	public override void Disable()
+	{
+		Disabled = true;
+		_head.Visible = false;
+		_body.Texture = ((DevicePropertiesData)Properties).DestroyedDeviceBody;
+	}
+	
 	private void Resupply()
 	{
 		Shells = ((DevicePropertiesData)Properties).Shells;
 		ResupplyTurns = 0;
+		_resupplyStatus.Visible = false;
 	}
 	
 	public void ExpendShell()
@@ -71,6 +75,7 @@ public partial class Device : Entity
 		if (Shells == 0)
 		{
 			ResupplyTurns = ((DevicePropertiesData)Properties).ResupplyTurns;
+			_resupplyStatus.Visible = true;
 		}
 	}
 	
@@ -81,6 +86,7 @@ public partial class Device : Entity
 			if (ResupplyTurns == 0)
 			{
 				ResupplyTurns = ((DevicePropertiesData)Properties).ResupplyTurns;
+				_resupplyStatus.Visible = true;
 			} else
 			{
 				ResupplyTurns--;
