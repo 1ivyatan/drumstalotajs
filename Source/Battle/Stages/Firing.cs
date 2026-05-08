@@ -21,7 +21,7 @@ using Drumstalotajs.Resources.Mapping.Entities;
 
 namespace Drumstalotajs.Battle.Stages;
 
-public partial class PlayerFiring : Control
+public partial class Firing : Control
 {
 	private BattleScene _scene;
 	private Map _map;
@@ -31,6 +31,8 @@ public partial class PlayerFiring : Control
 	private int _firedEnemyDeviceCount = 0;
 	private int _totalPlayerDeviceCount = 0;
 	private int _totalEnemyDeviceCount = 0;
+	private Device[] _playerDevs = null;
+	private Device[] _enemyDevs = null;
 	
 	public override void _Ready()
 	{
@@ -43,16 +45,16 @@ public partial class PlayerFiring : Control
 	
 	private void FireAll()
 	{
-		Device[] playerDevs = _map.EntityLayer.GetPlayerDevices();
+		_playerDevs = _map.EntityLayer.GetPlayerDevices().Where(d => d.Shells > 0).ToArray();
 		Device[] enemyDevs = null;
 		
 		_firedPlayerDeviceCount = 0;
 		_firedEnemyDeviceCount = 0;
-		_totalPlayerDeviceCount = playerDevs.Length;
+		_totalPlayerDeviceCount = _playerDevs.Length;
 		
 		if (_map.CurrentLoadedMap.Counterbattery)
 		{
-			enemyDevs = _map.EntityLayer.GetEnemyDevices();
+			_enemyDevs = _map.EntityLayer.GetEnemyDevices().Where(d => d.Shells > 0).ToArray();
 			_totalEnemyDeviceCount = enemyDevs.Length;
 		}
 		
@@ -63,9 +65,8 @@ public partial class PlayerFiring : Control
 	{
 		if (_map.CurrentLoadedMap.Counterbattery)
 		{
-		_scene.BattleTopnav.Title = "Enemy Counterbattery!";
-			Device[] enemyDevs = _map.EntityLayer.GetEnemyDevices();
-			MassFire(enemyDevs);
+			_scene.BattleTopnav.Title = "Enemy Counterbattery!";
+			MassFire(_enemyDevs);
 		} else
 		{
 			NextStage();
@@ -74,6 +75,7 @@ public partial class PlayerFiring : Control
 	
 	private void NextStage()
 	{
+		/* here be score checking */
 		_scene.StageManager.DeviceAdjustment();
 	}
 	

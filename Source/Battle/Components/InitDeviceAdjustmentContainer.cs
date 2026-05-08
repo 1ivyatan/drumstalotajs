@@ -94,6 +94,7 @@ public partial class InitDeviceAdjustmentContainer : Container
 		
 		_shellSlider.MaxValue = _props.MaxFiringPerTurn;
 		_shellSlider.Value = _device.ShellsPerTurn;
+		_shellLabel.Text = $"{_device.ShellsPerTurn}";
 		
 		Visible = true;
 	}

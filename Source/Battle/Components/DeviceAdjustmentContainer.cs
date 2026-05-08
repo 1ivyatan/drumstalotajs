@@ -70,8 +70,6 @@ public partial class DeviceAdjustmentContainer : Container
 		_device = device;
 		_props = (DevicePropertiesData)device.Properties;
 	
-	
-	
 		_deviceTexture.Texture = _atlas.Thumbnail;
 		_deviceLabel.Text = _atlas.Name;
 		_devicePosition.Text = $"{_map.EntityLayer.LocalToMap(device.Position)}";
@@ -94,6 +92,7 @@ public partial class DeviceAdjustmentContainer : Container
 		
 		_shellSlider.MaxValue = _props.MaxFiringPerTurn;
 		_shellSlider.Value = _device.ShellsPerTurn;
+		_shellLabel.Text = $"{_device.ShellsPerTurn}";
 		
 		Visible = true;
 	}

@@ -62,7 +62,7 @@ public partial class InitDeviceAdjustment : Control
 				_scene.StageManager.Unmasking();
 			} else
 			{
-				_scene.StageManager.PlayerFiring();
+				_scene.StageManager.Firing();
 			}
 		};
 	}
