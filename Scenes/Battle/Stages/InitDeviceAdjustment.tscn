@@ -117,7 +117,7 @@ layout_mode = 2
 
 [node name="Title" type="Label" parent="InitDeviceAdjustmentContainer/Container/Wheels/Shells" unique_id=161467355]
 layout_mode = 2
-text = "Shell barrages"
+text = "Shelling"
 horizontal_alignment = 1
 
 [node name="VSlider" type="VSlider" parent="InitDeviceAdjustmentContainer/Container/Wheels/Shells" unique_id=605242499]

@@ -42,7 +42,7 @@ public partial class Device : Entity
 	public double Traverse { get;
 		set {
 			field = value;
-			_head.RotationDegrees = _body.RotationDegrees + (float)field;
+			_head.RotationDegrees = (float)field;
 		}
 	} = 0;
 	
