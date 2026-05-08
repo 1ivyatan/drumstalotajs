@@ -22,14 +22,13 @@ public partial class Entity : SceneTile
 			if (field <= 0) Die();
 		}
 	} = 100;
-	
-	public double Height { get; set; } = 1;
+
 	public bool Player { get; set; } = false;
 	public bool Target { get; set; } = false;
 	
 	/* simplistic, inheritor will do this  in more sophisiscated ways */
-	public void DecreaseIntegrity(double factor)
+	public void DecreaseIntegrity(double amount)
 	{
-		Integrity -= factor;
+		Integrity -= amount;
 	}
 }

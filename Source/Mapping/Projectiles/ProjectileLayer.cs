@@ -17,6 +17,11 @@ public partial class ProjectileLayer : Node2D
 	[Export] private PackedScene _projectileScene;
 	private List<Projectile> _projectiles = new();
 	
+	public override void _Ready()
+	{
+		ChildExitingTree += ClearProjectile;
+	}
+	
 	public Projectile SpawnProjectile(Device device)
 	{
 		if (_projectiles.Count >= MaxProjectileCount)
@@ -33,6 +38,15 @@ public partial class ProjectileLayer : Node2D
 		return projectile;
 	}
 	
+	public void ClearProjectile(Node node)
+	{
+		if (node is Projectile projectile)
+		{
+			projectile.QueueFree();
+			_projectiles.Remove(projectile);
+		}
+	}
+	
 	public void ClearProjectiles()
 	{
 		foreach (var projectile in _projectiles)
@@ -40,5 +54,6 @@ public partial class ProjectileLayer : Node2D
 			projectile.QueueFree();
 			RemoveChild(projectile);
 		}
+		_projectiles.Clear();
 	}
 }

@@ -182,7 +182,7 @@ public partial class Map : Node2D
 		{
 			var groundHeight = groundTile.GetFullHeight();
 			Entity entity = EntityLayer.GetInstance(position);
-			return groundHeight + (entity != null ? entity.Height : 0);
+			return groundHeight + (entity != null ? entity.Properties.Height : 0);
 		} else return GroundLayer.BaseHeight;
 	}
 	

@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Linq;
 using Drumstalotajs;
 using Drumstalotajs.Utilities;
 using Drumstalotajs.Mapping;
@@ -13,8 +14,7 @@ namespace Drumstalotajs.Mapping.Projectiles;
 public partial class Projectile : Node2D
 {
 	[Signal] public delegate void DetonatedEventHandler();
-	
-	private Vector2 MapPosition;
+
 	private Vector2 HorizontalVelocity;
 	private double VerticalVelocity;
 	private double Altitude = 0;
@@ -23,8 +23,12 @@ public partial class Projectile : Node2D
 	private Vector2 _direction;
 	private double _angleRad;
 	
+	private double _calculatedLethalRadius;
+	private double _calculatedCasualityRadius;
+	
 	private Vector2I _cellPosition;
 	private double _cellHeight;
+	private bool _justFired = false;
 	
 	private Device _device;
 	private bool _flying = false;
@@ -42,13 +46,96 @@ public partial class Projectile : Node2D
 			Position += (HorizontalVelocity * (float)delta) / _map.CellCoefficient;
 			
 			var newCellPos = _map.GroundLayer.LocalToMap(Position);
+			if (_map.IsEmpty(newCellPos))
+			{
+				Disappear();
+			}
+			
 			if (_cellPosition != newCellPos)
 			{
 				_cellPosition = newCellPos;
 				_cellHeight = _map.GetTotalTileHeight(_cellPosition);
 			}
-			GD.Print($"{Altitude} -- {_cellHeight}");
+			
+			if (!_justFired)
+			{
+				/* fight off edgecase */
+				_justFired = true;
+			} else
+			{
+				if (Altitude <= _cellHeight)
+				{
+					Detonate();
+				}
+			}
 		}
+	}
+	
+	private void Detonate()
+	{
+		_flying = false;
+
+		var tntEquivalent = _props.ExplosiveFill * 1.33;
+		var casingWeight =  _props.TotalWeight - _props.ExplosiveFill;
+		_calculatedLethalRadius = 2.5 * Mathf.Pow(casingWeight * tntEquivalent, 1/3);
+		_calculatedCasualityRadius = 5.0 * Mathf.Pow(casingWeight * tntEquivalent, 1/3);
+		
+		ApplyDamage();
+		Disappear();
+	}
+	
+	private void ApplyDamage()
+	{
+		var spaceState = GetWorld2D().DirectSpaceState;
+		var query = new PhysicsShapeQueryParameters2D();
+		var shape = new CircleShape2D();
+		shape.Radius = (float)(_calculatedCasualityRadius / _map.CellCoefficient.X);
+		query.Shape = shape;
+		query.CollideWithAreas = true;
+		query.Transform = GlobalTransform;
+		
+		var results = spaceState.IntersectShape(query, 32);
+		if (results.Count > 0)
+		{
+			var entities = results
+				.Where(r => (Node2D)r["collider"] is Entity)
+				.Select(r => (Node2D)r["collider"] as Entity);
+				
+			foreach (var entity in entities)
+			{
+				var distance = GlobalPosition.DistanceTo(entity.GlobalPosition) / _map.CellCoefficient.X; //_map.CellCoefficient.X
+				var damage = CalculateDamageAtDistance(entity, distance);
+				entity.DecreaseIntegrity(damage);
+			}
+		}
+	}
+	
+	private double CalculateDamageAtDistance(Entity entity, double distance)
+	{
+		var shellAltitude = Altitude;
+		var targetAltitude = _cellHeight;
+		var altitudeDiff = targetAltitude - shellAltitude;
+		var trueDistance = Mathf.Sqrt(Mathf.Pow(distance, 2) + Mathf.Pow(altitudeDiff, 2));
+		var baseDamage = (_props.ExplosiveFill * 10) / Mathf.Max(trueDistance, 1);
+		var distanceFallOff = GetDistanceFalloff(trueDistance);
+		var altitudeMod = 1.0;
+		if (altitudeDiff > 5) altitudeMod = Mathf.Max(0.3, 1 - (altitudeDiff / 50));
+		else if (altitudeDiff < -5) altitudeMod = Mathf.Min(1.3, 1 + (Mathf.Abs(altitudeDiff) / 100));
+		var materialMultiplier = 1 - entity.Properties.Toughness;
+		
+		return baseDamage * distanceFallOff * altitudeMod * materialMultiplier;
+	}
+	
+	private double GetDistanceFalloff(double distance)
+	{
+		return Mathf.Clamp(Mathf.Pow(distance / 2, -1.5), 0.01, 1);
+	}
+	
+	private void Disappear()
+	{
+		_flying = false;
+		EmitSignal(SignalName.Detonated);
+		QueueFree();
 	}
 	/*
 	
@@ -112,9 +199,8 @@ public partial class Projectile : Node2D
 		
 		var deviceCellPos = _map.EntityLayer.LocalToMap(_device.Position);
 		GroundTile groundTile = (GroundTile)_map.GroundLayer.Flash(deviceCellPos)[0];
-		
-		MapPosition = Position;
-		Altitude = groundTile.GetFullHeight();
+
+		Altitude = groundTile.GetFullHeight() + device.Properties.Height;
 		
 		var radius = (_props.Caliber / 1000.0) / 2.0;
 		var traverse = _device.Azimuth + _device.Traverse;
@@ -129,6 +215,7 @@ public partial class Projectile : Node2D
 		var initVerticalVelocity = _props.MuzzleVelocity * Math.Cos(_angleRad);
 		HorizontalVelocity = initHorizontalVelocity;
 		VerticalVelocity = initVerticalVelocity;
+		 _justFired = false;
 	}
 	
 	public void Launch()

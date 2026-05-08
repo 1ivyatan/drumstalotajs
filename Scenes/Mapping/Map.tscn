@@ -255,6 +255,7 @@ sources/0 = SubResource("TileSetScenesCollectionSource_awdyq")
 [sub_resource type="Resource" id="Resource_iv8rp"]
 script = ExtResource("7_ve6d6")
 Height = 2.5
+Toughness = 0.05
 metadata/_custom_type_script = "uid://btef5gw2dfffc"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p3cor"]
