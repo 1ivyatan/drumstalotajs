@@ -33,6 +33,7 @@ public partial class SceneManager : Node
 	
 	private async Task<Node> LoadScene(string name)
 	{
+		GetTree().Paused = false;
 		await FadeCurtainContainer.FadeIn();
 		PackedScene scene = Files.SafeLoadResource<PackedScene>(Scenes[name]);
 		if (scene != null)
@@ -58,9 +59,9 @@ public partial class SceneManager : Node
 			}
 			AddChild(scene);
 			MoveChild(scene, 0);
-			//GD.Print(scene.Name);
 			CurrentScene = scene;
 			State = SceneState.Running;
+			GetTree().Paused = false;
 			await FadeCurtainContainer.FadeOut();
 		} else
 		{

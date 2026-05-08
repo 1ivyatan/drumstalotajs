@@ -7,6 +7,8 @@ namespace Drumstalotajs.Managers.Scenes;
 
 public partial class FadeCurtainContainer : CanvasLayer
 {
+	[Signal] public delegate void DoneFadingEventHandler();
+	
 	[Export] private double Time { get; set; }
 	[Export] private Color FadeInColor { get; set; }
 	[Export] private Color FadeOutColor { get; set; }

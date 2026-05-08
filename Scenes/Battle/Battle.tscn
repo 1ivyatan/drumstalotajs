@@ -34,8 +34,10 @@ Counters = NodePath("Overlay/Topnav/Counters")
 _pauseOverlay = NodePath("Overlay/PauseOverlay")
 
 [node name="Map" parent="." unique_id=1338299763 instance=ExtResource("2_dcr6b")]
+process_mode = 1
 
 [node name="StageManager" type="CanvasLayer" parent="." unique_id=1845418048]
+process_mode = 1
 script = ExtResource("4_07e4u")
 Stages = Dictionary[String, String]({
 "DeviceAdjustment": "res://Scenes/Battle/Stages/DeviceAdjustment.tscn",
@@ -48,6 +50,7 @@ Stages = Dictionary[String, String]({
 })
 
 [node name="ScoreManager" type="Node" parent="." unique_id=999479475]
+process_mode = 1
 script = ExtResource("2_g1sps")
 
 [node name="Overlay" type="CanvasLayer" parent="." unique_id=1518625057]
@@ -90,6 +93,7 @@ layout_mode = 2
 _icon = SubResource("AtlasTexture_diuyf")
 
 [node name="PauseOverlay" type="Control" parent="Overlay" unique_id=1813882581 node_paths=PackedStringArray("_pauseContainer")]
+process_mode = 3
 visible = false
 layout_mode = 3
 anchors_preset = 15

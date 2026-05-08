@@ -14,6 +14,7 @@ ToastManager = NodePath("Overlay/ToastManager")
 SaveManager = NodePath("SaveManager")
 
 [node name="SceneManager" type="Node" parent="." unique_id=712174652 node_paths=PackedStringArray("FadeCurtainContainer")]
+process_mode = 1
 script = ExtResource("2_idj7w")
 Scenes = Dictionary[String, String]({
 "Battle": "res://Scenes/Battle/Battle.tscn",
@@ -24,6 +25,8 @@ Scenes = Dictionary[String, String]({
 FadeCurtainContainer = NodePath("FadeCurtainContainer")
 
 [node name="FadeCurtainContainer" type="CanvasLayer" parent="SceneManager" unique_id=1463910313 node_paths=PackedStringArray("ColorRect")]
+process_mode = 3
+process_priority = 1
 layer = 2
 script = ExtResource("3_v1gob")
 Time = 0.125
@@ -39,12 +42,15 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="AudioManager" type="Node" parent="." unique_id=1009940070]
+process_mode = 3
 
 [node name="SaveManager" type="Node" parent="." unique_id=994388498]
+process_mode = 3
 script = ExtResource("3_rgh2o")
 LevelSets = [ExtResource("4_pbw6q")]
 
 [node name="Overlay" type="CanvasLayer" parent="." unique_id=1415426569]
+process_mode = 3
 
 [node name="ToastManager" type="VBoxContainer" parent="Overlay" unique_id=450725507]
 anchors_preset = 7

@@ -45,6 +45,9 @@ public partial class BattleScene : Node2D
 	
 	private void Exit()
 	{
+		/* hack */
+		Map.ProcessMode = ProcessModeEnum.Disabled;
+		ScoreManager.ProcessMode = ProcessModeEnum.Disabled;
 		Nodes.GetRoot().SceneManager.LevelSelection();
 	}
 	
