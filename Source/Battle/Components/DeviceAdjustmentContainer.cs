@@ -27,6 +27,9 @@ public partial class DeviceAdjustmentContainer : Container
 	[Export] private Wheel _angleSlider;
 	[Export] private Label _angleLabel;
 	
+	[Export] private VSlider _shellSlider;
+	[Export] private Label _shellLabel;
+	
 	private DevicePropertiesData _props = null;
 	private EntityLayerAtlasData _atlas = null;
 	private Device _device = null;
@@ -51,6 +54,14 @@ public partial class DeviceAdjustmentContainer : Container
 				_device.Angle = value;
 			}
 		};
+		
+		_shellSlider.ValueChanged += (double value) => {
+			if (_device != null)
+			{
+				_shellLabel.Text = $"{value}";
+				_device.ShellsPerTurn = (int)value;
+			}
+		};
 	}
 	
 	public void Load(Device device)
@@ -58,6 +69,7 @@ public partial class DeviceAdjustmentContainer : Container
 		_atlas = (EntityLayerAtlasData)_map.EntityLayer.GetAtlasData(device.TileId);
 		_device = device;
 		_props = (DevicePropertiesData)device.Properties;
+	
 		_deviceTexture.Texture = _atlas.Thumbnail;
 		_deviceLabel.Text = _atlas.Name;
 		_devicePosition.Text = $"{_map.EntityLayer.LocalToMap(device.Position)}";
@@ -70,7 +82,6 @@ public partial class DeviceAdjustmentContainer : Container
 			_deviceShellInfo.Text = $"{device.Shells} shells at disposal";
 		}
 		
-		
 		_traverseSlider.MinValue = -_props.TraverseRadius;
 		_traverseSlider.MaxValue = _props.TraverseRadius;
 		_traverseSlider.Value = _device.Traverse;
@@ -78,6 +89,10 @@ public partial class DeviceAdjustmentContainer : Container
 		_angleSlider.MinValue = _props.MinAngle;
 		_angleSlider.MaxValue = _props.MaxAngle;
 		_angleSlider.Value = _device.Angle;
+		
+		_shellSlider.MaxValue = _props.MaxFiringPerTurn;
+		_shellSlider.Value = _device.ShellsPerTurn;
+		_shellLabel.Text = $"{_device.ShellsPerTurn}";
 		
 		Visible = true;
 	}

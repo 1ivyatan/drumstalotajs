@@ -66,6 +66,7 @@ public partial class EntityLayer : SceneLayer
 				entity.Player = entityAtlas.Player;
 				entity.TileId = entityAtlas.Id;
 				entity.Data = entityAtlas.Data;
+				entity.Disabled = entityAtlas.Disabled;
 				
 				var entityLayerAtlas = (EntityLayerAtlasData)GetAtlasData(entityAtlas.Id);
 				if (entityLayerAtlas != null)
@@ -77,6 +78,8 @@ public partial class EntityLayer : SceneLayer
 				{
 					device.Angle = deviceAtlas.Angle;
 					device.Properties = (DevicePropertiesData)entityLayerAtlas.Properties;
+					device.ShellsPerTurn = deviceAtlas.ShellsPerTurn;
+					device.Traverse = deviceAtlas.Traverse;
 				}
 
 				if (!Instances.Contains(entity)) Instances.Add(entity);

@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://br4qrr061f0op" path="res://Source/Battle/Components/DeviceAdjustmentContainer.cs" id="2_35mjs"]
 [ext_resource type="PackedScene" uid="uid://tkq5giln4ao6" path="res://Scenes/Components/Wheel.tscn" id="2_uecgq"]
 
-[node name="DeviceAdjustment" type="Control" unique_id=641640994 node_paths=PackedStringArray("_deviceAdjustmentContainer")]
+[node name="DeviceAdjustment" type="Control" unique_id=641640994 node_paths=PackedStringArray("_deviceAdjustmentContainer", "_toFiringButton")]
 layout_mode = 3
 anchors_preset = 12
 anchor_top = 1.0
@@ -14,8 +14,9 @@ grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("1_fnx8f")
 _deviceAdjustmentContainer = NodePath("DeviceAdjustmentContainer")
+_toFiringButton = NodePath("ToFiring")
 
-[node name="DeviceAdjustmentContainer" type="PanelContainer" parent="." unique_id=1235408494 node_paths=PackedStringArray("_deviceLabel", "_devicePosition", "_deviceTexture", "_deviceShellInfo", "_traverseSlider", "_traverseLabel", "_angleSlider", "_angleLabel")]
+[node name="DeviceAdjustmentContainer" type="PanelContainer" parent="." unique_id=1235408494 node_paths=PackedStringArray("_deviceLabel", "_devicePosition", "_deviceTexture", "_deviceShellInfo", "_traverseSlider", "_traverseLabel", "_angleSlider", "_angleLabel", "_shellSlider", "_shellLabel")]
 visible = false
 layout_mode = 1
 anchors_preset = 7
@@ -37,6 +38,8 @@ _traverseSlider = NodePath("Container/Wheels/Traverse/Wheel")
 _traverseLabel = NodePath("Container/Wheels/Traverse/Value")
 _angleSlider = NodePath("Container/Wheels/Angle/Wheel")
 _angleLabel = NodePath("Container/Wheels/Angle/Value")
+_shellSlider = NodePath("Container/Wheels/Shells/VSlider")
+_shellLabel = NodePath("Container/Wheels/Shells/Value")
 
 [node name="Container" type="VBoxContainer" parent="DeviceAdjustmentContainer" unique_id=1908841184]
 layout_mode = 2
@@ -106,3 +109,37 @@ WheelIntensity = 1.0
 layout_mode = 2
 text = "~0°"
 horizontal_alignment = 1
+
+[node name="Shells" type="VBoxContainer" parent="DeviceAdjustmentContainer/Container/Wheels" unique_id=840390067]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="DeviceAdjustmentContainer/Container/Wheels/Shells" unique_id=1258132030]
+layout_mode = 2
+text = "Shelling"
+horizontal_alignment = 1
+
+[node name="VSlider" type="VSlider" parent="DeviceAdjustmentContainer/Container/Wheels/Shells" unique_id=1544210255]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+min_value = 1.0
+value = 1.0
+rounded = true
+
+[node name="Value" type="Label" parent="DeviceAdjustmentContainer/Container/Wheels/Shells" unique_id=1062377419]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="ToFiring" type="Button" parent="." unique_id=794923235]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Fire!"

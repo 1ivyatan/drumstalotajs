@@ -13,7 +13,7 @@ namespace Drumstalotajs.Mapping.Projectiles;
 
 public partial class Projectile : Node2D
 {
-	[Signal] public delegate void DetonatedEventHandler();
+	[Signal] public delegate void DetonatedEventHandler(Device device);
 
 	private Vector2 HorizontalVelocity;
 	private double VerticalVelocity;
@@ -134,7 +134,7 @@ public partial class Projectile : Node2D
 	private void Disappear()
 	{
 		_flying = false;
-		EmitSignal(SignalName.Detonated);
+		EmitSignal(SignalName.Detonated, _device);
 		QueueFree();
 	}
 

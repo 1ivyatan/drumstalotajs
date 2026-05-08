@@ -17,7 +17,7 @@ Tiles = SubResource("TileMapPattern_f3e58")
 
 [sub_resource type="Resource" id="Resource_7mwfy"]
 script = ExtResource("2_ljtri")
-DeviceId = 3
+DeviceId = 4
 MaxCount = 2
 metadata/_custom_type_script = "uid://vidsdghus3qn"
 

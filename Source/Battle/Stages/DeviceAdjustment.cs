@@ -21,6 +21,7 @@ namespace Drumstalotajs.Battle.Stages;
 public partial class DeviceAdjustment : Control
 {
 	[Export] private DeviceAdjustmentContainer _deviceAdjustmentContainer;
+	[Export] private Button _toFiringButton;
 	private BattleScene _scene;
 	private Map _map;
 
@@ -34,6 +35,11 @@ public partial class DeviceAdjustment : Control
 		FilteredItemIds idFilters = new FilteredItemIds
 		{
 			{ _map.EntityLayer, _map.EntityLayer.GetEntityIdsByType(EntityType.Device) }
+		};
+		
+		_toFiringButton.Pressed += () => {
+			_map.OverlayLayer.ClearAllHighlighters();
+			_scene.StageManager.Firing();
 		};
 		
 		_map.Selector.Filter = new SelectorFilter(layers, idFilters);

@@ -43,9 +43,8 @@ Stages = Dictionary[String, String]({
 "DeviceAdjustment": "res://Scenes/Battle/Stages/DeviceAdjustment.tscn",
 "DevicePlacement": "res://Scenes/Battle/Stages/DevicePlacement.tscn",
 "End": "res://Scenes/Battle/Stages/End.tscn",
-"EnemyFiring": "res://Scenes/Battle/Stages/EnemyFiring.tscn",
+"Firing": "res://Scenes/Battle/Stages/Firing.tscn",
 "InitDeviceAdjustment": "res://Scenes/Battle/Stages/InitDeviceAdjustment.tscn",
-"PlayerFiring": "res://Scenes/Battle/Stages/PlayerFiring.tscn",
 "Unmasking": "res://Scenes/Battle/Stages/Unmasking.tscn"
 })
 
