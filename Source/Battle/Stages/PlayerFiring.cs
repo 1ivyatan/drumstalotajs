@@ -17,6 +17,7 @@ using Drumstalotajs.Mapping.Tiles;
 using System.Threading.Tasks;
 using Drumstalotajs.Components;
 using Drumstalotajs.Mapping.Projectiles;
+using Drumstalotajs.Resources.Mapping.Entities;
 
 namespace Drumstalotajs.Battle.Stages;
 
@@ -26,6 +27,10 @@ public partial class PlayerFiring : Control
 	private Map _map;
 	
 	private Dictionary<Device, int> _fireTracker = new();
+	private int _firedPlayerDeviceCount = 0;
+	private int _firedEnemyDeviceCount = 0;
+	private int _totalPlayerDeviceCount = 0;
+	private int _totalEnemyDeviceCount = 0;
 	
 	public override void _Ready()
 	{
@@ -33,67 +38,97 @@ public partial class PlayerFiring : Control
 		_map = _scene.Map;
 		_map.Selector.Mode = SelectorMode.Locked;
 		_scene.BattleTopnav.Title = "Battery!";
-		//Fire();
 		FireAll();
 	}
 	
 	private void FireAll()
 	{
-		var devs = _map.EntityLayer.GetPlayerDevices();
-		MassFire(devs);
-		//if (_map.CurrentLoadedMap.Counterbattery)
-		//{
-			
-		//}
+		Device[] playerDevs = _map.EntityLayer.GetPlayerDevices();
+		Device[] enemyDevs = null;
+		
+		_firedPlayerDeviceCount = 0;
+		_firedEnemyDeviceCount = 0;
+		_totalPlayerDeviceCount = playerDevs.Length;
+		
+		if (_map.CurrentLoadedMap.Counterbattery)
+		{
+			enemyDevs = _map.EntityLayer.GetEnemyDevices();
+			_totalEnemyDeviceCount = enemyDevs.Length;
+		}
+		
+		FirePlayerDevices();
+	}
+	
+	private void FireEnemyDevices()
+	{
+		if (_map.CurrentLoadedMap.Counterbattery)
+		{
+		_scene.BattleTopnav.Title = "Enemy Counterbattery!";
+			Device[] enemyDevs = _map.EntityLayer.GetEnemyDevices();
+			MassFire(enemyDevs);
+		} else
+		{
+			NextStage();
+		}
+	}
+	
+	private void NextStage()
+	{
+		_scene.StageManager.DeviceAdjustment();
+	}
+	
+	private void FirePlayerDevices()
+	{
+		Device[] playerDevs = _map.EntityLayer.GetPlayerDevices();
+		MassFire(playerDevs);
 	}
 	
 	private void MassFire(Device[] devices)
 	{
 		foreach (var dev in devices)
 		{
-			if (!_fireTracker.ContainsKey(dev)) _fireTracker[dev] = 0;
-			
+			_fireTracker[dev] = 0;
+			SceneTreeTimer delayToFire = GetTree().CreateTimer(GD.RandRange(0.01f, .5f));
+			delayToFire.Connect(SceneTreeTimer.SignalName.Timeout , Callable.From(() => {
+				BatchFire(dev);
+			}));
 		}
-		
 	}
 	
-	private void Fire()
+	private async void BatchFire(Device device)
 	{
-		var devs = _map.EntityLayer.GetPlayerDevices();
-		int firedCount = 0;
-		int fireableCount = devs.Where(d => d.Shells > 0).Count();
-		
-		foreach (var dev in devs)
+		if (device.Shells > 0)
 		{
-			SceneTreeTimer delayToFire = GetTree().CreateTimer(GD.RandRange(0.01f, .75f));
-			delayToFire.Connect(SceneTreeTimer.SignalName.Timeout , Callable.From(async () => {
-				
-				
-				
-				
-				
-				
-				if (dev.Shells > 0)
-				{
-					var projectile = _map.ProjectileLayer.SpawnProjectile(dev);
-					projectile.Connect(Projectile.SignalName.Detonated, Callable.From(() => {
-						firedCount++;
-						if (firedCount == fireableCount)
+			for (int i = 0; i < device.ShellsPerTurn; i++)
+			{
+				var projectile = _map.ProjectileLayer.SpawnProjectile(device);
+				projectile.Connect(Projectile.SignalName.Detonated, Callable.From(
+					(Device device) => {
+						_fireTracker[device]++;
+						if (_fireTracker[device] == device.ShellsPerTurn)
 						{
-							if (_map.CurrentLoadedMap.Counterbattery)
+							if (device.Player)
 							{
-								_scene.StageManager.EnemyFiring();
+								_firedPlayerDeviceCount++;
+								if (_firedPlayerDeviceCount == _totalPlayerDeviceCount)
+								{
+									FireEnemyDevices();
+								}
 							} else
 							{
-								_scene.StageManager.DeviceAdjustment();
+								_firedEnemyDeviceCount++;
+								if (_firedEnemyDeviceCount == _totalEnemyDeviceCount)
+								{
+									NextStage();
+								}
 							}
 						}
-					}));
-				} else
-				{
-					dev.CheckAndTryResupply();
-				}
-			}));
+					}
+				));
+				await ToSignal(GetTree().CreateTimer(
+					((DevicePropertiesData)device.Properties).DelayBetweenFires
+				), SceneTreeTimer.SignalName.Timeout);
+			}
 		}
 	}
 }

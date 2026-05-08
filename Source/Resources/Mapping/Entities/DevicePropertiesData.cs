@@ -23,7 +23,7 @@ public partial class DevicePropertiesData : EntityPropertiesData
 	[Export] public int Shells { get; set; } = 40;
 	[Export] public int ResupplyTurns { get; set; } = 10;
 	[Export] public int MaxFiringPerTurn { get; set; } = 5;
-	[Export] public double DelayBetweenFires { get; set; } = 5;
+	[Export] public double DelayBetweenFires { get; set; } = 2.5;
 	
 	[ExportGroup("Shell")]
 	[Export] public double Caliber { get; set; } = 81; /* mm */
