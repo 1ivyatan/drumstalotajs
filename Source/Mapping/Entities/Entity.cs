@@ -23,6 +23,7 @@ public partial class Entity : SceneTile
 		}
 	} = 100;
 	
+	public double Height { get; set; } = 1;
 	public bool Player { get; set; } = false;
 	public bool Target { get; set; } = false;
 	

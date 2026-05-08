@@ -66,6 +66,7 @@ public partial class EntityLayer : SceneLayer
 				entity.Player = entityAtlas.Player;
 				entity.TileId = entityAtlas.Id;
 				entity.Data = entityAtlas.Data;
+				entity.Height = entityAtlas.Height;
 				
 				var entityLayerAtlas = (EntityLayerAtlasData)GetAtlasData(entityAtlas.Id);
 				if (entityLayerAtlas != null)
@@ -119,32 +120,5 @@ public partial class EntityLayer : SceneLayer
 				}
 			}
 		}
-			//_layerData = entityLayerData;
-			//foreach (var tile in entityLayerData.Tiles)
-			//{
-			//	if (tile != null)
-			//	{
-				//	await this.AddTile((EntityLayerTileData)tile);
-					//SetCell(tile.Position, 0, Vector2I.Zero, tile.Id);
-			//	}
-			//}
-		//		if (tile != null)
-		//		{
-		//			var data = new EntityLayerTileData();
-		//			data.Id = tile.Id;
-		//			data.Position = tile.Position;
-			//	GD.Print(tile.GetType().Name);
-			//	GD.Print(tile.Id);
-			//	GD.Print(tile.Position);
-					//await AddTile(data);
-			//await EntityLayer.Load(data.EntityLayer);
-			//await OverlayLayer.Load(data.OverlayLayer);
-					
-		//		}
-				//await this.AddTile(tile);  SceneLayerTileData . Tiles
-				/*
-	[Export] public int Id { get; set; }
-	[Export] public Vector2I Position { get; set; }*/
-		//	}
 	}
 }

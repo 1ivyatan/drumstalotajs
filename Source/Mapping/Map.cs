@@ -9,6 +9,7 @@ using Drumstalotajs.Mapping.Selection;
 using Drumstalotajs.Mapping.Cameras;
 using Drumstalotajs.Resources.Mapping.Layers;
 using System.Threading.Tasks;
+using Drumstalotajs.Mapping.Entities;
 
 namespace Drumstalotajs.Mapping;
 
@@ -172,6 +173,17 @@ public partial class Map : Node2D
 		{
 			sceneLayer.RemoveTile(position);
 		}
+	}
+	
+	public double GetTotalTileHeight(Vector2I position)
+	{
+		var groundTile = GroundLayer.GetTile(position);
+		if (groundTile != null)
+		{
+			var groundHeight = groundTile.GetFullHeight();
+			Entity entity = EntityLayer.GetInstance(position);
+			return groundHeight + (entity != null ? entity.Height : 0);
+		} else return GroundLayer.BaseHeight;
 	}
 	
 	public bool IsEmpty(Vector2I position)

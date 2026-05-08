@@ -22,7 +22,9 @@ public partial class Projectile : Node2D
 	private double _projectileArea; /* m^2 */
 	private Vector2 _direction;
 	private double _angleRad;
+	
 	private Vector2I _cellPosition;
+	private double _cellHeight;
 	
 	private Device _device;
 	private bool _flying = false;
@@ -38,8 +40,14 @@ public partial class Projectile : Node2D
 			ApplyVerticalDrag(airDensity, delta);
 			Altitude += VerticalVelocity * (float)delta;
 			Position += (HorizontalVelocity * (float)delta) / _map.CellCoefficient;
-			Rotation = _direction.Angle();
-			GD.Print(Altitude);
+			
+			var newCellPos = _map.GroundLayer.LocalToMap(Position);
+			if (_cellPosition != newCellPos)
+			{
+				_cellPosition = newCellPos;
+				_cellHeight = _map.GetTotalTileHeight(_cellPosition);
+			}
+			GD.Print($"{Altitude} -- {_cellHeight}");
 		}
 	}
 	/*
@@ -114,6 +122,8 @@ public partial class Projectile : Node2D
 		_direction = Calculations.AzimuthToDirection(traverse);
 		_angleRad = Calculations.ToRadians(_device.Angle);
 		_cellPosition = deviceCellPos;
+		_cellHeight = _map.GetTotalTileHeight(deviceCellPos);
+		Rotation = _direction.Angle();
 
 		var initHorizontalVelocity = _direction * (float)(_props.MuzzleVelocity * Math.Cos(_angleRad));
 		var initVerticalVelocity = _props.MuzzleVelocity * Math.Cos(_angleRad);
