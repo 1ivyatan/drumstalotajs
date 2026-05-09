@@ -15,17 +15,32 @@
 [ext_resource type="Script" uid="uid://c4ham3m3jbaaj" path="res://Source/Editor/Components/EntityProps.cs" id="11_85jo5"]
 [ext_resource type="PackedScene" uid="uid://ddva1e3we4dix" path="res://Scenes/Editor/AtlasColorSwitcher.tscn" id="11_wddii"]
 
-[node name="Editor" type="Node2D" unique_id=238378600 node_paths=PackedStringArray("Map", "EditorTopnav", "EditorSaveManager", "InsertWindow", "EditWindow")]
+[sub_resource type="LabelSettings" id="LabelSettings_wddii"]
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Editor" type="Node2D" unique_id=238378600 node_paths=PackedStringArray("Map", "EditorTopnav", "EditorSaveManager", "InsertWindow", "EditWindow", "_positionLabel")]
 script = ExtResource("1_tw15f")
 Map = NodePath("Map")
 EditorTopnav = NodePath("Overlay/Topnav")
 EditorSaveManager = NodePath("EditorSaveManager")
 InsertWindow = NodePath("Overlay/InsertWindow")
 EditWindow = NodePath("Overlay/EditWindow")
+_positionLabel = NodePath("Overlay/Position")
 
 [node name="Map" parent="." unique_id=1338299763 instance=ExtResource("2_wl3go")]
 
 [node name="Overlay" type="CanvasLayer" parent="." unique_id=31358238]
+
+[node name="Position" type="Label" parent="Overlay" unique_id=1733582449]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+offset_right = 40.0
+grow_vertical = 0
+text = "(0;0)"
+label_settings = SubResource("LabelSettings_wddii")
 
 [node name="Topnav" parent="Overlay" unique_id=118245835 node_paths=PackedStringArray("_fileMenu", "_viewMenu") instance=ExtResource("3_s7bqi")]
 anchors_preset = 0

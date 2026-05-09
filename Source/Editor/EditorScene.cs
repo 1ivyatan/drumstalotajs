@@ -19,6 +19,8 @@ public partial class EditorScene : Node2D
 	[Export] private InsertWindow InsertWindow { get; set; }
 	[Export] private EditWindow EditWindow { get; set; }
 	
+	[Export] private Label _positionLabel;
+	
 	public EditorMode Mode { get;
 		set {
 			field = value;

@@ -42,6 +42,8 @@ public partial class EditorScene : Node2D
 			case EditorMode.Edit: HandleEdit(@event); break;
 			default: break;
 		}
+		
+		_positionLabel.Text = $"{Map.ViewportMouseToMap()}";
 	}
 
 	private void HandleEdit(InputEvent @event)
