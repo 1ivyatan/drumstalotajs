@@ -11,22 +11,27 @@
 [ext_resource type="PackedScene" uid="uid://dnasbla8y237b" path="res://Scenes/Components/Counter.tscn" id="7_tmq01"]
 [ext_resource type="Script" uid="uid://7abbuvthhp83" path="res://Source/Battle/Components/Counters.cs" id="7_ukbm8"]
 [ext_resource type="Texture2D" uid="uid://2io65q52gq16" path="res://Assets/Textures/overlay.png" id="8_cmwrv"]
+[ext_resource type="Texture2D" uid="uid://v2gkmg7yaoh5" path="res://Assets/Textures/controls.png" id="10_diuyf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gibtw"]
 atlas = ExtResource("8_cmwrv")
 region = Rect2(110, 156, 32, 5)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ukbm8"]
-atlas = ExtResource("8_cmwrv")
-region = Rect2(0, 129, 32, 32)
+atlas = ExtResource("10_diuyf")
+region = Rect2(141, 1, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cmwrv"]
-atlas = ExtResource("8_cmwrv")
-region = Rect2(0, 96, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_q0gc0"]
+atlas = ExtResource("10_diuyf")
+region = Rect2(108, 1, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dby5i"]
+atlas = ExtResource("10_diuyf")
+region = Rect2(108, 34, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_diuyf"]
-atlas = ExtResource("8_cmwrv")
-region = Rect2(32, 160, 32, 32)
+atlas = ExtResource("10_diuyf")
+region = Rect2(174, 0, 32, 32)
 
 [node name="Battle" type="Node2D" unique_id=1007953308 node_paths=PackedStringArray("BattleTopnav", "Map", "ScoreManager", "StageManager", "Counters", "_pauseOverlay", "_measureLabel")]
 script = ExtResource("1_ael4v")
@@ -88,6 +93,7 @@ stretch_mode = 3
 [node name="MeasureText" type="Label" parent="Overlay/Topnav/InfoContainer/MeasureContainer" unique_id=2032981526]
 layout_mode = 2
 text = "32m"
+horizontal_alignment = 1
 
 [node name="Counters" type="HBoxContainer" parent="Overlay/Topnav/InfoContainer" unique_id=598029868 node_paths=PackedStringArray("_playerDeviceCounter", "_enemyTargetCounter", "_timerCounter", "_turnCounter", "_map", "_scoreManager")]
 layout_mode = 2
@@ -106,12 +112,12 @@ _icon = SubResource("AtlasTexture_ukbm8")
 
 [node name="EnemyTargetCount" parent="Overlay/Topnav/InfoContainer/Counters" unique_id=34201706 instance=ExtResource("7_tmq01")]
 layout_mode = 2
-_icon = SubResource("AtlasTexture_cmwrv")
+_icon = SubResource("AtlasTexture_q0gc0")
 
 [node name="Turn" parent="Overlay/Topnav/InfoContainer/Counters" unique_id=378506084 instance=ExtResource("7_tmq01")]
 layout_mode = 2
 Value = 1
-_icon = SubResource("AtlasTexture_diuyf")
+_icon = SubResource("AtlasTexture_dby5i")
 
 [node name="Timer" parent="Overlay/Topnav/InfoContainer/Counters" unique_id=1505146687 instance=ExtResource("7_tmq01")]
 layout_mode = 2
