@@ -30,6 +30,10 @@ window/size/viewport_height=720
 project/assembly_name="Drumstalotajs"
 project/solution_directory="Source"
 
+[gui]
+
+theme/custom="uid://qkx7nrqhbgfy"
+
 [importer_defaults]
 
 animation_library={

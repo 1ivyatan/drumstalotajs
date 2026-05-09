@@ -1,0 +1,30 @@
+[gd_resource type="Theme" format=3 uid="uid://qkx7nrqhbgfy"]
+
+[ext_resource type="FontFile" uid="uid://dhu5ju5qalk4u" path="res://Assets/Fonts/lmmonolt10-bold.otf" id="1_2ampp"]
+[ext_resource type="StyleBox" uid="uid://ccjpxiiux54e8" path="res://Resources/Themes/Box.tres" id="1_55d53"]
+[ext_resource type="StyleBox" uid="uid://bevly37glw8pn" path="res://Resources/Themes/Button.tres" id="1_qlv1n"]
+[ext_resource type="StyleBox" uid="uid://cbxhrtqnulp70" path="res://Resources/Themes/ButtonPress.tres" id="2_h28yt"]
+[ext_resource type="StyleBox" uid="uid://dod1ghpw0yava" path="res://Resources/Themes/ButtonHover.tres" id="4_bnvpu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h28yt"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.28955156, 0.28955156, 0.28955156, 1)
+border_blend = true
+
+[resource]
+default_font = ExtResource("1_2ampp")
+default_font_size = 16
+Button/styles/disabled = SubResource("StyleBoxFlat_h28yt")
+Button/styles/hover = ExtResource("4_bnvpu")
+Button/styles/normal = ExtResource("1_qlv1n")
+Button/styles/pressed = ExtResource("2_h28yt")
+MenuBar/styles/disabled = ExtResource("1_55d53")
+MenuBar/styles/hover = ExtResource("4_bnvpu")
+MenuBar/styles/normal = ExtResource("1_qlv1n")
+MenuBar/styles/pressed = ExtResource("2_h28yt")
+Panel/styles/panel = ExtResource("1_55d53")
+PanelContainer/styles/panel = ExtResource("1_55d53")

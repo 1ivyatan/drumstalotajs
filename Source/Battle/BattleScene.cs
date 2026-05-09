@@ -24,6 +24,8 @@ public partial class BattleScene : Node2D
 	[Export] public Counters Counters { get; private set; }
 
 	[Export] private PauseOverlay _pauseOverlay;
+	[Export] private Label _measureLabel;
+
 	public bool Paused { get; private set; } = false;
 	private string _mapPath;
 	public int Turn { get; private set; } = 1;
@@ -78,12 +80,15 @@ public partial class BattleScene : Node2D
 		{
 			ScoreManager.PrepareScoring(Map.CurrentLoadedMap);
 		}
+		
+		_measureLabel.Text = $"{Map.CurrentLoadedMap.MetersPerCell.X}m";
 	}
 	
 	public async Task Open(string mapPath)
 	{
 		_mapPath = mapPath;
 		await Map.Load(_mapPath);
+		_measureLabel.Text = $"{Map.CurrentLoadedMap.MetersPerCell.X}m";
 		ScoreManager.PrepareScoring(Map.CurrentLoadedMap);
 	}
 	
