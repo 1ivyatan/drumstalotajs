@@ -16,6 +16,7 @@ using Drumstalotajs.Mapping.Layers;
 using Drumstalotajs.Mapping.Tiles;
 using System.Threading.Tasks;
 using Drumstalotajs.Components;
+using Drumstalotajs.Battle.Stages;
 
 namespace Drumstalotajs.Battle.Stages;
 
@@ -76,7 +77,7 @@ public partial class Unmasking : Control
 			}
 		};
 		_skip.Pressed += () => {
-			_scene.StageManager.Firing();
+			_scene.StageManager.Firing(FiringMode.Both);
 		};
 	}
 }

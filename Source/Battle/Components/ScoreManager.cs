@@ -21,6 +21,11 @@ public partial class ScoreManager : Node
 	{
 	}
 	
+	public bool CanContinue()
+	{
+		return true;
+	}
+	
 	public void PrepareScoring(MapResource mapResource)
 	{
 		TimeLimit = mapResource.TimeLimitSecs;

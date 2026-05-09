@@ -34,13 +34,39 @@ public partial class Firing : Control
 	private Device[] _playerDevs = null;
 	private Device[] _enemyDevs = null;
 	
+	private FiringMode _mode;
+	
 	public override void _Ready()
 	{
 		_scene = Nodes.GetSceneRoot() as BattleScene;
 		_map = _scene.Map;
 		_map.Mode = MapMode.HiddenInteractable;
 		_scene.BattleTopnav.Title = "Battery!";
-		FireAll();
+	}
+	
+	public void StartFiring(FiringMode mode)
+	{
+		_mode = mode;
+		switch (mode)
+		{
+			case FiringMode.Player:
+				_playerDevs = _map.EntityLayer.GetPlayerDevices().Where(d => d.Shells > 0).ToArray();
+				_firedPlayerDeviceCount = 0;
+				_totalPlayerDeviceCount = _playerDevs.Length;
+				FirePlayerDevices();
+				break;
+			case FiringMode.Enemy:
+				_enemyDevs = _map.EntityLayer.GetEnemyDevices().Where(d => d.Shells > 0).ToArray();
+				_firedEnemyDeviceCount = 0;
+				_totalEnemyDeviceCount = _enemyDevs.Length;
+				FireEnemyDevices();
+				break;
+			case FiringMode.Both:
+				_scene.BattleTopnav.Title = "Battery!";
+				FireAll();
+				break;
+			default: break;
+		}
 	}
 	
 	private void FireAll()
@@ -63,7 +89,7 @@ public partial class Firing : Control
 	
 	private void FireEnemyDevices()
 	{
-		if (_map.CurrentLoadedMap.Counterbattery)
+		if (_map.CurrentLoadedMap.Counterbattery && _mode != FiringMode.Player)
 		{
 			_scene.BattleTopnav.Title = "Enemy Counterbattery!";
 			MassFire(_enemyDevs);
@@ -76,7 +102,14 @@ public partial class Firing : Control
 	private void NextStage()
 	{
 		/* here be score checking */
-		_scene.StageManager.DeviceAdjustment();
+		if (_scene.ScoreManager.CanContinue())
+		{
+			_scene.StageManager.DeviceAdjustment();
+		} else
+		{
+			
+		}
+		
 	}
 	
 	private void FirePlayerDevices()

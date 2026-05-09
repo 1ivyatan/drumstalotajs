@@ -15,6 +15,7 @@ using Drumstalotajs.Mapping.Layers;
 using Drumstalotajs.Mapping.Tiles;
 using System.Threading.Tasks;
 using Drumstalotajs.Battle.Components;
+using Drumstalotajs.Battle.Stages;
 
 namespace Drumstalotajs.Battle.Stages;
 
@@ -39,7 +40,7 @@ public partial class DeviceAdjustment : Control
 		
 		_toFiringButton.Pressed += () => {
 			_map.OverlayLayer.ClearAllHighlighters();
-			_scene.StageManager.Firing();
+			_scene.StageManager.Firing(FiringMode.Both);
 		};
 		
 		_map.Selector.Filter = new SelectorFilter(layers, idFilters);

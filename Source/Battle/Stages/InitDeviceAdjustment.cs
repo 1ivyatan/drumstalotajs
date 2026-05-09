@@ -16,6 +16,7 @@ using Drumstalotajs.Mapping.Layers;
 using Drumstalotajs.Mapping.Tiles;
 using System.Threading.Tasks;
 using Drumstalotajs.Components;
+using Drumstalotajs.Battle.Stages;
 
 namespace Drumstalotajs.Battle.Stages;
 
@@ -62,7 +63,7 @@ public partial class InitDeviceAdjustment : Control
 				_scene.StageManager.Unmasking();
 			} else
 			{
-				_scene.StageManager.Firing();
+				_scene.StageManager.Firing(FiringMode.Both);
 			}
 		};
 	}

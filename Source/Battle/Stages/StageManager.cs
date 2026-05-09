@@ -34,7 +34,10 @@ public partial class StageManager : CanvasLayer
 	public void DevicePlacement() { SetStage(Stages["DevicePlacement"]); }
 	public void InitDeviceAdjustment() { SetStage(Stages["InitDeviceAdjustment"]); }
 	public void Unmasking() { SetStage(Stages["Unmasking"]);}
-	public void Firing() { SetStage(Stages["Firing"]); }
+	public void Firing(FiringMode mode) {
+		SetStage(Stages["Firing"]);
+		((Firing)CurrentStage).StartFiring(mode);
+	}
 	public void DeviceAdjustment() { SetStage(Stages["DeviceAdjustment"]); }
 	public void End() { SetStage(Stages["End"]); }
 }
