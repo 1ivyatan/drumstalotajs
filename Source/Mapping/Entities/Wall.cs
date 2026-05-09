@@ -9,7 +9,6 @@ namespace Drumstalotajs.Mapping.Entities;
 public partial class Wall : Entity
 {
 	[Export] private Sprite2D _sprite;
-	
 	[Export] public override EntityPropertiesData Properties { get; 
 		set
 		{
@@ -58,13 +57,4 @@ public partial class Wall : Entity
 		Disabled = true;
 		SetSprite(true);
 	}
-	//public double Height { get; private set; } = 0;
-	
-	//public override void _Ready()
-	//{
-	//	if (Properties != null && Properties is WallPropertiesData wallProperties)
-	//	{
-	//		Height = wallProperties.Height;
-	//	}
-	//}
 }

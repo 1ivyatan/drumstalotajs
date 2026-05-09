@@ -7,5 +7,6 @@ namespace Drumstalotajs.Resources.Mapping.Entities;
 [GlobalClass]
 public partial class StructurePropertiesData : EntityPropertiesData
 {
-	
+	[ExportGroup("Textures")]
+	[Export] public Texture2D[] IntegrityStages { get; set; } = null;
 }
