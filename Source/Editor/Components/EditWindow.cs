@@ -15,6 +15,7 @@ public partial class EditWindow : Window
 	[Export] private Map _map;
 	[Export] private Label _emptyText;
 	[Export] private TileEditor _tileEditor;
+	public int PickedSourceId = 0;
 	
 	public void GetTile(Vector2I coords)
 	{

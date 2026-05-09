@@ -20,6 +20,6 @@ metadata/_custom_type_script = "uid://dj5l06h3bhoe2"
 [resource]
 script = ExtResource("1_0ldjb")
 Name = "Rocky Island"
-BackgroundMapPath = "res://Resources/Maps/Backgrounds/Untitled.res"
+BackgroundMapPath = "res://Resources/Maps/Backgrounds/RockyIsland.tres"
 Levels = [SubResource("Resource_vp5qx"), SubResource("Resource_gunys")]
 metadata/_custom_type_script = "uid://r6uws5n8excx"

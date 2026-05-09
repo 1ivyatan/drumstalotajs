@@ -15,7 +15,7 @@ public partial class InsertWindow : Window
 	[Export] private Container _container;
 	[Export] private Button _clearSelection;
 	private List<TileList> _pickers;
-	public PickedTileData PickedTile = null;
+	public PickedTileData PickedTile { get; private set; } = null;
 	
 	public override void _Ready()
 	{
