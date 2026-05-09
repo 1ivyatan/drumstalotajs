@@ -23,7 +23,7 @@ public partial class AtlasColorSwitcher : Control
 			button.Text = $"{i}";
 			if (count > 0)
 			{
-				button.AddThemeColorOverride("font_color", layer.ExtraColors[count - 1]);
+				button.AddThemeColorOverride("font_color", layer.ExtraColors[^1]);
 			}
 			button.Pressed += () => {
 				EmitSignal(SignalName.ClickedColor, i);
