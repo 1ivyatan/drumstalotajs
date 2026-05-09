@@ -69,17 +69,19 @@ public partial class EntityLayer : SceneLayer
 				entity.Disabled = entityAtlas.Disabled;
 				
 				var entityLayerAtlas = (EntityLayerAtlasData)GetAtlasData(entityAtlas.Id);
-				if (entityLayerAtlas != null)
-				{
-					entity.Properties = entityLayerAtlas.Properties;
-				}
-				
+
 				if (entity is Device device && entityAtlas is EntityLayerDeviceTileData deviceAtlas)
 				{
 					device.Angle = deviceAtlas.Angle;
 					device.Properties = (DevicePropertiesData)entityLayerAtlas.Properties;
 					device.ShellsPerTurn = deviceAtlas.ShellsPerTurn;
 					device.Traverse = deviceAtlas.Traverse;
+				} else if (entity is Wall wall)
+				{
+					wall.Properties = (WallPropertiesData)entityLayerAtlas.Properties;
+				} else if (entityLayerAtlas != null)
+				{
+					entity.Properties = entityLayerAtlas.Properties;
 				}
 
 				if (!Instances.Contains(entity)) Instances.Add(entity);
@@ -114,11 +116,11 @@ public partial class EntityLayer : SceneLayer
 	{
 		if (layerData is EntityLayerData entityLayerData)
 		{
-			foreach (var tile in entityLayerData.Tiles)
+			foreach (EntityLayerTileData tile in entityLayerData.Tiles)
 			{
 				if (tile != null)
 				{
-					AddTile(tile);
+					this.AddTile(tile);
 				}
 			}
 		}

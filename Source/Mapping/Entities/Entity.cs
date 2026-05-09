@@ -16,7 +16,7 @@ public partial class Entity : SceneTile
 		}
 	} = -1;
 
-	public double Integrity { get; 
+	public virtual double Integrity { get; 
 		set { 
 			field = Mathf.Clamp(value, 0, 100);
 			if (field <= 0) Disable();

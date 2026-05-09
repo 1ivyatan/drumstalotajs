@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://d08de6s1gh1v7"]
+
+[ext_resource type="Script" uid="uid://c1nuh68dhr7ej" path="res://Source/Mapping/Entities/Wall.cs" id="1_7bvef"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qflnk"]
+size = Vector2(32, 32)
+
+[node name="Wall" type="Area2D" unique_id=85680265 node_paths=PackedStringArray("_sprite")]
+script = ExtResource("1_7bvef")
+_sprite = NodePath("Sprite")
+
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=479276154]
+shape = SubResource("RectangleShape2D_qflnk")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=965926713]
