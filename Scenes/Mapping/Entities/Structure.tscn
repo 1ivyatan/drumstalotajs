@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dq41d7suwf688"]
+
+[ext_resource type="Script" uid="uid://v3qjjgnagdc" path="res://Source/Mapping/Entities/Structure.cs" id="1_oo5hv"]
+[ext_resource type="PackedScene" uid="uid://cngthrfn8437u" path="res://Scenes/Mapping/Entities/Flag.tscn" id="2_sjtgj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oo5hv"]
+size = Vector2(32, 32)
+
+[node name="Structure" type="Area2D" unique_id=1042581813 node_paths=PackedStringArray("_flag")]
+script = ExtResource("1_oo5hv")
+_flag = NodePath("Flag")
+
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=1171550532]
+shape = SubResource("RectangleShape2D_oo5hv")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=319283119]
+
+[node name="Flag" parent="." unique_id=334692262 instance=ExtResource("2_sjtgj")]
+offset = Vector2(27.5, -20)
