@@ -145,7 +145,7 @@ public partial class Map : Node2D
 				}
 					
 				atlasLayer.AddTile(position, coords);
-				await ToSignal(atlasLayer, "TileSpawned");
+				//await ToSignal(atlasLayer, "TileSpawned");
 				added = true;
 			}
 		} else if (layer is SceneLayer sceneLayer)
@@ -153,7 +153,7 @@ public partial class Map : Node2D
 			if (GroundLayer.GetCellAtlasCoords(position) != Constants.Vector2I.Negative)
 			{
 				sceneLayer.AddTile(position, atlas);
-				await ToSignal(sceneLayer, "TileSpawned");
+				//await ToSignal(sceneLayer, "TileSpawned");
 				added = true;
 			}
 		}
