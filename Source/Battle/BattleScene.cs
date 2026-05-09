@@ -36,6 +36,7 @@ public partial class BattleScene : Node2D
 		_pauseOverlay.PressedResume += () => { Resume(); };
 		_pauseOverlay.PressedRestart += () => { Restart(); };
 		_pauseOverlay.PressedExit += () => { Exit(); };
+		Map.Camera.ShiftTop((int)BattleTopnav.Size.Y);
 		StageManager.DevicePlacement();
 	}
 	

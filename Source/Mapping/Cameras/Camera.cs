@@ -68,15 +68,23 @@ public partial class Camera : Camera2D
 		return result;
 	}
 	
+	private int _topShift = 0;
+	public void ShiftTop(int shift)
+	{
+		_topShift = shift;
+		LimitTop = LimitTop - shift;
+	}
+	
 	public void Calibrate()
 	{
 		Rect2 usedRect = _calibratingAtlasLayer.GetUsedRect();
 		int tileSize = _calibratingAtlasLayer.TileSize;
 		LimitLeft = (int)(usedRect.Position.X * tileSize);
 		LimitRight = (int)((usedRect.Position.X + usedRect.Size.X) * tileSize);
-		LimitTop = (int)(usedRect.Position.Y * tileSize);
+		LimitTop = (int)(usedRect.Position.Y * tileSize); //- (int)();
 		LimitBottom = (int)((usedRect.Size.Y * tileSize) + (usedRect.Position.Y * tileSize));
 		GlobalPosition = usedRect.Position + usedRect.GetCenter() * _calibratingAtlasLayer.TileSize;
+		ShiftTop(_topShift);
 	}
 	
 	public void FitCamera()

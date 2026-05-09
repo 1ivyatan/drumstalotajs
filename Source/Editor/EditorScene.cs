@@ -82,6 +82,7 @@ public partial class EditorScene : Node2D
 		Map.Mode = MapMode.Editing;
 		Mode = EditorMode.View;
 		
+		Map.Camera.ShiftTop((int)EditorTopnav.Size.Y);
 		EditorSaveManager.AttemptNew();
 	}
 	
