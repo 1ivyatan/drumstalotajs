@@ -52,6 +52,9 @@ Stages = Dictionary[String, String]({
 process_mode = 1
 script = ExtResource("2_g1sps")
 
+[node name="Timer" type="Timer" parent="ScoreManager" unique_id=1839964999]
+process_callback = 0
+
 [node name="Overlay" type="CanvasLayer" parent="." unique_id=1518625057]
 
 [node name="Topnav" parent="Overlay" unique_id=118245835 node_paths=PackedStringArray("_pause") instance=ExtResource("2_gunap")]
