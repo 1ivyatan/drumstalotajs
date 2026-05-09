@@ -19,7 +19,7 @@ public partial class BattleScene : Node2D
 	
 	[Export] public BattleTopnav BattleTopnav { get; private set; }
 	[Export] public Map Map { get; private set; }
-	[Export] private ScoreManager ScoreManager { get; set; }
+	[Export] public ScoreManager ScoreManager { get; private set; }
 	[Export] public StageManager StageManager { get; private set; }
 	[Export] public Counters Counters { get; private set; }
 

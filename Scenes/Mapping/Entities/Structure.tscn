@@ -6,9 +6,10 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oo5hv"]
 size = Vector2(32, 32)
 
-[node name="Structure" type="Area2D" unique_id=1042581813 node_paths=PackedStringArray("_flag")]
+[node name="Structure" type="Area2D" unique_id=1042581813 node_paths=PackedStringArray("_flag", "_sprite")]
 script = ExtResource("1_oo5hv")
 _flag = NodePath("Flag")
+_sprite = NodePath("Sprite")
 
 [node name="Collision" type="CollisionShape2D" parent="." unique_id=1171550532]
 shape = SubResource("RectangleShape2D_oo5hv")
