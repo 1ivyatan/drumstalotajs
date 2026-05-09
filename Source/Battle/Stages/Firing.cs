@@ -38,7 +38,7 @@ public partial class Firing : Control
 	{
 		_scene = Nodes.GetSceneRoot() as BattleScene;
 		_map = _scene.Map;
-		_map.Selector.Mode = SelectorMode.Locked;
+		_map.Mode = MapMode.HiddenInteractable;
 		_scene.BattleTopnav.Title = "Battery!";
 		FireAll();
 	}

@@ -107,17 +107,17 @@ public partial class DevicePlacement : Control
 				mouseButton.ButtonIndex == MouseButton.Left &&
 				mouseButton.Pressed && !moving
 			)
-			{
-				if (_selectedDeviceAtlas == null)
-				{
-					Nodes.GetRoot().ToastManager.SpawnOne("Select a device!");
-					return;
-				}
-				
+			{	
 				var tiles = _map.Flash(_map.ViewportMouseToMap());
 				
 				if (tiles.Count > 0)
 				{
+					if (_selectedDeviceAtlas == null)
+					{
+						Nodes.GetRoot().ToastManager.SpawnOne("Select a device!");
+						return;
+					}
+				
 					if (tiles.ContainsKey(_map.OverlayLayer) && tiles[_map.OverlayLayer].Count > 0)
 					{
 						var pos = _map.OverlayLayer.LocalToMap(
