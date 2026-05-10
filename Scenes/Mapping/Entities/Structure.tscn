@@ -2,14 +2,16 @@
 
 [ext_resource type="Script" uid="uid://v3qjjgnagdc" path="res://Source/Mapping/Entities/Structure.cs" id="1_oo5hv"]
 [ext_resource type="PackedScene" uid="uid://cngthrfn8437u" path="res://Scenes/Mapping/Entities/Flag.tscn" id="2_sjtgj"]
+[ext_resource type="PackedScene" uid="uid://j8mrswni3rqe" path="res://Scenes/Mapping/Entities/Status.tscn" id="3_q3ebp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oo5hv"]
 size = Vector2(32, 32)
 
-[node name="Structure" type="Area2D" unique_id=1042581813 node_paths=PackedStringArray("_flag", "_sprite")]
+[node name="Structure" type="Area2D" unique_id=1042581813 node_paths=PackedStringArray("_flag", "_sprite", "_status")]
 script = ExtResource("1_oo5hv")
 _flag = NodePath("Flag")
 _sprite = NodePath("Sprite")
+_status = NodePath("Status")
 
 [node name="Collision" type="CollisionShape2D" parent="." unique_id=1171550532]
 shape = SubResource("RectangleShape2D_oo5hv")
@@ -18,3 +20,6 @@ shape = SubResource("RectangleShape2D_oo5hv")
 
 [node name="Flag" parent="." unique_id=334692262 instance=ExtResource("2_sjtgj")]
 position = Vector2(20, -10)
+
+[node name="Status" parent="." unique_id=578538614 instance=ExtResource("3_q3ebp")]
+offset = Vector2(-22.5, -22.5)

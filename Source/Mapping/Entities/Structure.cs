@@ -10,6 +10,7 @@ public partial class Structure : Entity
 {
 	[Export] private Flag _flag;
 	[Export] private Sprite2D _sprite;
+	[Export] private Status _status;
 	
 	[Export] public override EntityPropertiesData Properties { get; 
 		set
@@ -41,6 +42,10 @@ public partial class Structure : Entity
 		Disabled = true;
 		SetSprite(true);
 		_flag.SetFlag(Player, true);
+		if (Target)
+		{
+			_status.DisabledIcon();
+		}
 	}
 	
 	private void SetSprite(bool disabled = false)
