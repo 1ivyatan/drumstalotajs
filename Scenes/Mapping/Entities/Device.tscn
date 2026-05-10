@@ -1,22 +1,18 @@
 [gd_scene format=3 uid="uid://blnp1df0jakre"]
 
 [ext_resource type="Script" uid="uid://bh8h8p88je745" path="res://Source/Mapping/Entities/Device.cs" id="1_wkidr"]
-[ext_resource type="Texture2D" uid="uid://bscapcc3qlnqv" path="res://Assets/Textures/entity.png" id="2_tq584"]
 [ext_resource type="PackedScene" uid="uid://cngthrfn8437u" path="res://Scenes/Mapping/Entities/Flag.tscn" id="3_xjn6u"]
+[ext_resource type="PackedScene" uid="uid://j8mrswni3rqe" path="res://Scenes/Mapping/Entities/Status.tscn" id="4_gmlo8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xpqcu"]
 size = Vector2(32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xjn6u"]
-atlas = ExtResource("2_tq584")
-region = Rect2(4, 35, 23, 24)
-
-[node name="Device" type="Area2D" unique_id=728909634 node_paths=PackedStringArray("_body", "_head", "_flag", "_resupplyStatus")]
+[node name="Device" type="Area2D" unique_id=728909634 node_paths=PackedStringArray("_body", "_head", "_flag", "_status")]
 script = ExtResource("1_wkidr")
 _body = NodePath("Body")
 _head = NodePath("Body/Head")
 _flag = NodePath("Flag")
-_resupplyStatus = NodePath("ResupplyStatus")
+_status = NodePath("Status")
 
 [node name="Collision" type="CollisionShape2D" parent="." unique_id=601721672]
 shape = SubResource("RectangleShape2D_xpqcu")
@@ -26,9 +22,9 @@ shape = SubResource("RectangleShape2D_xpqcu")
 [node name="Head" type="Sprite2D" parent="Body" unique_id=1838086888]
 
 [node name="Flag" parent="." unique_id=334692262 instance=ExtResource("3_xjn6u")]
-offset = Vector2(27.5, -10)
+z_index = 3
+position = Vector2(20, -10)
 
-[node name="ResupplyStatus" type="Sprite2D" parent="." unique_id=507502265]
-visible = false
-texture = SubResource("AtlasTexture_xjn6u")
-offset = Vector2(-25, -25)
+[node name="Status" parent="." unique_id=578538614 instance=ExtResource("4_gmlo8")]
+z_index = 3
+offset = Vector2(-22.5, -22.5)

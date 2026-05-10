@@ -11,7 +11,7 @@ public partial class Device : Entity
 	[Export] private Sprite2D _body;
 	[Export] private Sprite2D _head;
 	[Export] private Flag _flag;
-	[Export] private Sprite2D _resupplyStatus;
+	[Export] private Status _status;
 	
 	[Export] public override EntityPropertiesData Properties { get; 
 		set
@@ -61,13 +61,15 @@ public partial class Device : Entity
 		Disabled = true;
 		_head.Visible = false;
 		_body.Texture = ((DevicePropertiesData)Properties).DestroyedDeviceBody;
+		_status.DisabledIcon();
+		_flag.SetFlag(Player, true);
 	}
 	
 	private void Resupply()
 	{
 		Shells = ((DevicePropertiesData)Properties).Shells;
 		ResupplyTurns = 0;
-		_resupplyStatus.Visible = false;
+		_status.HideIcon();
 	}
 	
 	public void ExpendShell()
@@ -76,7 +78,7 @@ public partial class Device : Entity
 		if (Shells == 0)
 		{
 			ResupplyTurns = ((DevicePropertiesData)Properties).ResupplyTurns;
-			_resupplyStatus.Visible = true;
+			_status.ResupplyIcon();
 		}
 	}
 	
@@ -87,7 +89,7 @@ public partial class Device : Entity
 			if (ResupplyTurns == 0)
 			{
 				ResupplyTurns = ((DevicePropertiesData)Properties).ResupplyTurns;
-				_resupplyStatus.Visible = true;
+				_status.ResupplyIcon();
 			} else
 			{
 				ResupplyTurns--;

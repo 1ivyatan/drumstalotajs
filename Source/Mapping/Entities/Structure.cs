@@ -39,8 +39,8 @@ public partial class Structure : Entity
 	public override void Disable()
 	{
 		Disabled = true;
-		_flag.Visible = false;
 		SetSprite(true);
+		_flag.SetFlag(Player, true);
 	}
 	
 	private void SetSprite(bool disabled = false)

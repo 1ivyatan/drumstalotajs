@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://j8mrswni3rqe"]
+
+[ext_resource type="Script" uid="uid://dqdbvjvbvldnr" path="res://Source/Mapping/Entities/Status.cs" id="1_4amjb"]
+[ext_resource type="Texture2D" uid="uid://v2gkmg7yaoh5" path="res://Assets/Textures/controls.png" id="2_uvu51"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ba0sa"]
+atlas = ExtResource("2_uvu51")
+region = Rect2(110, 68, 14, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uvu51"]
+atlas = ExtResource("2_uvu51")
+region = Rect2(110, 85, 14, 14)
+
+[node name="Status" type="Sprite2D" unique_id=578538614]
+visible = false
+texture = SubResource("AtlasTexture_ba0sa")
+script = ExtResource("1_4amjb")
+_icons = Array[Texture2D]([SubResource("AtlasTexture_ba0sa"), SubResource("AtlasTexture_uvu51")])
