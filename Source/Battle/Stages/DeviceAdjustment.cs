@@ -40,7 +40,13 @@ public partial class DeviceAdjustment : Control
 		
 		_toFiringButton.Pressed += () => {
 			_map.OverlayLayer.ClearAllHighlighters();
-			_scene.StageManager.Firing(FiringMode.Both);
+			if (_scene.ScoreManager.CanContinue())
+			{
+				_scene.StageManager.Firing(FiringMode.Both);
+			} else
+			{
+				
+			}
 		};
 		
 		_map.Selector.Filter = new SelectorFilter(layers, idFilters);
@@ -48,7 +54,7 @@ public partial class DeviceAdjustment : Control
 		
 		_map.OverlayLayer.RemoveAllInstancesByName("DeviceMarker");
 		_map.OverlayLayer.ClearAllHighlighters();
-		_scene.NextTurn();
+		_scene.ScoreManager.NextTurn();
 	}
 	
 	public async override void _UnhandledInput(InputEvent @event)

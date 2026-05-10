@@ -25,11 +25,12 @@ public partial class OverlayLayer : SceneLayer
 	
 	public bool HasBlackTiles()
 	{
-		return false;
+		var id = GetAtlasId("BlackTile");
+		return InstanceCount(id) > 0;
 	}
 	
 	public void ClearAllBlackTiles()
 	{
-		//RemoveAllInstancesByName("SelectorHighlight");
+		RemoveAllInstancesByName("BlackTile");
 	}
 }

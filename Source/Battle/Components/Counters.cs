@@ -25,7 +25,16 @@ public partial class Counters : Control
 		BattleScene scene = Nodes.GetSceneRoot();
 		_map.EntityLayer.TileSpawned += IncTileCounters;
 		_map.EntityLayer.TileExiting += DecTileCounters;
-		scene.NewTurn += IncTurnCounter;
+		_scoreManager.NewTurn += IncTurnCounter;
+		_scoreManager.TimeTicked += SetClock;
+		_scoreManager.TimeSet += SetClock;
+		SetClock(_map.CurrentLoadedMap.TimeLimitSecs);
+	}
+	
+	private void SetClock(double remaining)
+	{
+		var t = TimeSpan.FromSeconds(remaining);
+		_timerCounter.SetText(t.ToString(@"mm\:ss"));
 	}
 	
 	private void IncTurnCounter(int turn)

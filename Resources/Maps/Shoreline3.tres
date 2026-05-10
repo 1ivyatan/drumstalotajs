@@ -84,6 +84,7 @@ Position = Vector2i(13, 2)
 [sub_resource type="Resource" id="Resource_qibyr"]
 script = ExtResource("4_877ik")
 Azimuth = -1.0
+Target = true
 Id = 5
 Position = Vector2i(14, 2)
 

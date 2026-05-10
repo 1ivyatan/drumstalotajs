@@ -14,9 +14,7 @@ using Drumstalotajs.Mapping.Tiles;
 namespace Drumstalotajs.Battle;
 
 public partial class BattleScene : Node2D
-{
-	[Signal] public delegate void NewTurnEventHandler(int turn);
-	
+{	
 	[Export] public BattleTopnav BattleTopnav { get; private set; }
 	[Export] public Map Map { get; private set; }
 	[Export] public ScoreManager ScoreManager { get; private set; }
@@ -28,7 +26,6 @@ public partial class BattleScene : Node2D
 
 	public bool Paused { get; private set; } = false;
 	private string _mapPath;
-	public int Turn { get; private set; } = 1;
 	
 	public override void _Ready()
 	{
@@ -38,12 +35,6 @@ public partial class BattleScene : Node2D
 		_pauseOverlay.PressedExit += () => { Exit(); };
 		Map.Camera.ShiftTop((int)BattleTopnav.Size.Y);
 		StageManager.DevicePlacement();
-	}
-	
-	public void NextTurn()
-	{
-		Turn++;
-		EmitSignal(SignalName.NewTurn, Turn);
 	}
 	
 	private void Exit()

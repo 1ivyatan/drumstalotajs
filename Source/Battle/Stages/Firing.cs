@@ -42,6 +42,7 @@ public partial class Firing : Control
 		_map = _scene.Map;
 		_map.Mode = MapMode.HiddenInteractable;
 		_scene.BattleTopnav.Title = "Battery!";
+		_scene.ScoreManager.CheckAndActivate();
 	}
 	
 	public void StartFiring(FiringMode mode)
@@ -101,7 +102,6 @@ public partial class Firing : Control
 	
 	private void NextStage()
 	{
-		/* here be score checking */
 		if (_scene.ScoreManager.CanContinue())
 		{
 			_scene.StageManager.DeviceAdjustment();

@@ -24,6 +24,7 @@
 [ext_resource type="Script" uid="uid://blbxol7imiof6" path="res://Source/Mapping/Cameras/Camera.cs" id="16_mukcc"]
 [ext_resource type="PackedScene" uid="uid://do63mxtpdm0w7" path="res://Scenes/Mapping/Overlays/SelectorHighlight.tscn" id="17_st7r0"]
 [ext_resource type="PackedScene" uid="uid://bkwxw3yx6ouqh" path="res://Scenes/Mapping/Projectiles/Projectile.tscn" id="20_wb4r7"]
+[ext_resource type="Texture2D" uid="uid://v2gkmg7yaoh5" path="res://Assets/Textures/controls.png" id="21_04b6o"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ox681"]
 texture = ExtResource("2_sd0qa")
@@ -381,6 +382,17 @@ Thumbnail = SubResource("AtlasTexture_hfvyn")
 Scene = ExtResource("17_st7r0")
 metadata/_custom_type_script = "uid://bn1u57sn0woiq"
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_lsqgu"]
+atlas = ExtResource("21_04b6o")
+region = Rect2(78, 197, 32, 32)
+
+[sub_resource type="Resource" id="Resource_0enno"]
+script = ExtResource("7_f0kan")
+Id = 4
+Name = "BlackTile"
+Thumbnail = SubResource("AtlasTexture_lsqgu")
+metadata/_custom_type_script = "uid://bn1u57sn0woiq"
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_mukcc"]
 atlas = ExtResource("7_ccdcv")
 region = Rect2(62, 38, 38, 38)
@@ -413,7 +425,7 @@ Atlas = Array[Object]([SubResource("Resource_54hn3"), SubResource("Resource_ve6d
 [node name="Overlays" type="TileMapLayer" parent="." unique_id=201889829]
 tile_set = SubResource("TileSet_ajbla")
 script = ExtResource("6_bdwom")
-Atlas = Array[Object]([SubResource("Resource_ccdcv"), SubResource("Resource_asx6w"), SubResource("Resource_st7r0")])
+Atlas = Array[Object]([SubResource("Resource_ccdcv"), SubResource("Resource_asx6w"), SubResource("Resource_st7r0"), SubResource("Resource_0enno")])
 
 [node name="Projectiles" type="Node2D" parent="." unique_id=1337390122 node_paths=PackedStringArray("_map")]
 script = ExtResource("14_bc3k3")

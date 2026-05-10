@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dhs8elwnae0rg"]
+
+[ext_resource type="PackedScene" uid="uid://dankeweh6q1bb" path="res://Scenes/Mapping/Overlays/BaseOverlay.tscn" id="1_dkgjj"]
+[ext_resource type="Script" uid="uid://dnpv7uytxq08t" path="res://Source/Mapping/Overlays/BlackTile.cs" id="2_eui5v"]
+[ext_resource type="Texture2D" uid="uid://v2gkmg7yaoh5" path="res://Assets/Textures/controls.png" id="2_ihdlp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eui5v"]
+size = Vector2(32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eui5v"]
+atlas = ExtResource("2_ihdlp")
+region = Rect2(78, 197, 32, 32)
+
+[node name="BaseOverlay" unique_id=1900493059 instance=ExtResource("1_dkgjj")]
+z_index = 4
+script = ExtResource("2_eui5v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0" unique_id=728328233]
+shape = SubResource("RectangleShape2D_eui5v")
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="1" unique_id=1164586679]
+texture = SubResource("AtlasTexture_eui5v")
