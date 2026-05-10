@@ -4,6 +4,15 @@
 [ext_resource type="PackedScene" uid="uid://druw1x35jlqnh" path="res://Scenes/Mapping/Map.tscn" id="2_675ns"]
 [ext_resource type="Script" uid="uid://bkxbq06wvfjt2" path="res://Source/LevelSelection/Components/LevelMetaContainer.cs" id="2_bnw7x"]
 [ext_resource type="PackedScene" uid="uid://bqh5apppkldxo" path="res://Scenes/Components/Topnav.tscn" id="3_2duud"]
+[ext_resource type="Texture2D" uid="uid://v2gkmg7yaoh5" path="res://Assets/Textures/controls.png" id="4_fka4w"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_epixl"]
+atlas = ExtResource("4_fka4w")
+region = Rect2(63, 132, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fka4w"]
+atlas = ExtResource("4_fka4w")
+region = Rect2(-1, 132, 64, 64)
 
 [node name="LevelSelection" type="Node2D" unique_id=1846218210 node_paths=PackedStringArray("LevelMetaContainer", "Map", "Topnav", "_return")]
 script = ExtResource("1_g1q0k")
@@ -26,6 +35,7 @@ offset_top = -31.0
 offset_right = 62.0
 grow_vertical = 0
 text = "Return"
+icon = SubResource("AtlasTexture_epixl")
 
 [node name="LevelMetaContainer" type="VBoxContainer" parent="Overlay" unique_id=113706533 node_paths=PackedStringArray("_map", "_levelMeta", "_title", "_desc", "_playLevel", "_loadCustomMap", "_customMapDialog")]
 anchors_preset = 11
@@ -65,7 +75,8 @@ fit_content = true
 
 [node name="Play" type="Button" parent="Overlay/LevelMetaContainer/LevelMeta/MetaContainer" unique_id=2098536059]
 layout_mode = 2
-text = "Play"
+text = "Deploy!"
+icon = SubResource("AtlasTexture_fka4w")
 
 [node name="LoadCustomMap" type="Button" parent="Overlay/LevelMetaContainer" unique_id=968323469]
 layout_mode = 2
