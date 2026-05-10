@@ -45,6 +45,7 @@ public partial class ScoreManager : Node
 				if (RemainingTime-- <= 0)
 				{
 					_running = false;
+					RemainingTime = 0;
 				}
 				EmitSignal(SignalName.TimeTicked, RemainingTime);
 			}
