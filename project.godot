@@ -52,3 +52,4 @@ open_editor_scene={
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 environment/defaults/default_clear_color=Color(0.19315124, 0.3118591, 0.3389618, 1)
+2d/snap/snap_2d_transforms_to_pixel=true
