@@ -346,21 +346,21 @@ metadata/_custom_type_script = "uid://7qxwheiwlsgl"
 tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetScenesCollectionSource_ajbla")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ajbla"]
-atlas = ExtResource("7_ccdcv")
-region = Rect2(0, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ykbtj"]
+atlas = ExtResource("21_04b6o")
+region = Rect2(129, 139, 60, 55)
 
 [sub_resource type="Resource" id="Resource_ccdcv"]
 script = ExtResource("7_f0kan")
 Id = 1
 Name = "LevelMarker"
-Thumbnail = SubResource("AtlasTexture_ajbla")
+Thumbnail = SubResource("AtlasTexture_ykbtj")
 Scene = ExtResource("7_ajbla")
 metadata/_custom_type_script = "uid://bn1u57sn0woiq"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_st7r0"]
-atlas = ExtResource("7_ccdcv")
-region = Rect2(62, 0, 38, 76)
+atlas = ExtResource("21_04b6o")
+region = Rect2(64, 48, 43, 42)
 
 [sub_resource type="Resource" id="Resource_asx6w"]
 script = ExtResource("7_f0kan")
@@ -370,15 +370,15 @@ Thumbnail = SubResource("AtlasTexture_st7r0")
 Scene = ExtResource("16_hfvyn")
 metadata/_custom_type_script = "uid://bn1u57sn0woiq"
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hfvyn"]
-atlas = ExtResource("7_ccdcv")
-region = Rect2(104, 6, 34, 34)
+[sub_resource type="AtlasTexture" id="AtlasTexture_xobjh"]
+atlas = ExtResource("21_04b6o")
+region = Rect2(67, 91, 34, 34)
 
 [sub_resource type="Resource" id="Resource_st7r0"]
 script = ExtResource("7_f0kan")
 Id = 3
 Name = "SelectorHighlight"
-Thumbnail = SubResource("AtlasTexture_hfvyn")
+Thumbnail = SubResource("AtlasTexture_xobjh")
 Scene = ExtResource("17_st7r0")
 metadata/_custom_type_script = "uid://bn1u57sn0woiq"
 

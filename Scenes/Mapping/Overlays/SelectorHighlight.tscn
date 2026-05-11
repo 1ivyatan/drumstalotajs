@@ -2,14 +2,14 @@
 
 [ext_resource type="PackedScene" uid="uid://dankeweh6q1bb" path="res://Scenes/Mapping/Overlays/BaseOverlay.tscn" id="1_nj8ni"]
 [ext_resource type="Script" uid="uid://c5ax8d38vvfcf" path="res://Source/Mapping/Overlays/SelectorHighlight.cs" id="2_aepa3"]
-[ext_resource type="Texture2D" uid="uid://2io65q52gq16" path="res://Assets/Textures/overlay.png" id="3_qfh7t"]
+[ext_resource type="Texture2D" uid="uid://v2gkmg7yaoh5" path="res://Assets/Textures/controls.png" id="3_qfh7t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aepa3"]
 size = Vector2(32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fq1x7"]
 atlas = ExtResource("3_qfh7t")
-region = Rect2(104, 6, 34, 34)
+region = Rect2(67, 91, 34, 34)
 
 [node name="SelectorHighlight" unique_id=1900493059 instance=ExtResource("1_nj8ni")]
 script = ExtResource("2_aepa3")

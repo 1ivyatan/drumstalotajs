@@ -2,18 +2,18 @@
 
 [ext_resource type="PackedScene" uid="uid://dankeweh6q1bb" path="res://Scenes/Mapping/Overlays/BaseOverlay.tscn" id="1_6187o"]
 [ext_resource type="Script" uid="uid://cpww25x7eajqe" path="res://Source/Mapping/Overlays/DeviceMarker.cs" id="2_6e7ls"]
-[ext_resource type="Texture2D" uid="uid://2io65q52gq16" path="res://Assets/Textures/overlay.png" id="3_po2hh"]
+[ext_resource type="Texture2D" uid="uid://v2gkmg7yaoh5" path="res://Assets/Textures/controls.png" id="3_1h2f4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6e7ls"]
 size = Vector2(32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1h2f4"]
-atlas = ExtResource("3_po2hh")
-region = Rect2(62, 38, 38, 38)
+atlas = ExtResource("3_1h2f4")
+region = Rect2(67, 51, 38, 38)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_po2hh"]
-atlas = ExtResource("3_po2hh")
-region = Rect2(62, 0, 38, 37)
+atlas = ExtResource("3_1h2f4")
+region = Rect2(79, 269, 29, 17)
 
 [node name="DeviceMarker" unique_id=1900493059 node_paths=PackedStringArray("_arrow") instance=ExtResource("1_6187o")]
 script = ExtResource("2_6e7ls")
@@ -26,5 +26,6 @@ shape = SubResource("RectangleShape2D_6e7ls")
 texture = SubResource("AtlasTexture_1h2f4")
 
 [node name="Arrow" type="Sprite2D" parent="." index="2" unique_id=2061802648]
+modulate = Color(0.0013465881, 0, 1, 1)
 texture = SubResource("AtlasTexture_po2hh")
-offset = Vector2(0, -40)
+offset = Vector2(0, -30)
