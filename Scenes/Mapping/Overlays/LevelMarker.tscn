@@ -2,20 +2,68 @@
 
 [ext_resource type="PackedScene" uid="uid://dankeweh6q1bb" path="res://Scenes/Mapping/Overlays/BaseOverlay.tscn" id="1_fcrg6"]
 [ext_resource type="Script" uid="uid://h238ah8u3t3d" path="res://Source/Mapping/Overlays/LevelMarker.cs" id="2_igsmk"]
-[ext_resource type="Texture2D" uid="uid://2io65q52gq16" path="res://Assets/Textures/overlay.png" id="2_jwqew"]
+[ext_resource type="PackedScene" uid="uid://cngthrfn8437u" path="res://Scenes/Mapping/Entities/Flag.tscn" id="4_02aok"]
+[ext_resource type="Texture2D" uid="uid://v2gkmg7yaoh5" path="res://Assets/Textures/controls.png" id="4_ec2lj"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_igsmk"]
-atlas = ExtResource("2_jwqew")
-region = Rect2(0, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_gok0u"]
+atlas = ExtResource("4_ec2lj")
+region = Rect2(77, 231, 38, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_irsvf"]
+atlas = ExtResource("4_ec2lj")
+region = Rect2(104, 102, 36, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8hqh3"]
+atlas = ExtResource("4_ec2lj")
+region = Rect2(113, 197, 40, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j6b74"]
+atlas = ExtResource("4_ec2lj")
+region = Rect2(155, 196, 38, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j0q3r"]
+atlas = ExtResource("4_ec2lj")
+region = Rect2(119, 231, 39, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tv4fl"]
+atlas = ExtResource("4_ec2lj")
+region = Rect2(159, 229, 37, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hjhyy"]
+atlas = ExtResource("4_ec2lj")
+region = Rect2(195, 164, 33, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4q541"]
+atlas = ExtResource("4_ec2lj")
+region = Rect2(195, 164, 33, 39)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jwqew"]
 size = Vector2(64, 64)
 
-[node name="LevelMarker" unique_id=1900493059 instance=ExtResource("1_fcrg6")]
+[sub_resource type="AtlasTexture" id="AtlasTexture_02aok"]
+atlas = ExtResource("4_ec2lj")
+region = Rect2(129, 165, 58, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ec2lj"]
+atlas = ExtResource("4_ec2lj")
+region = Rect2(155, 196, 40, 32)
+
+[node name="LevelMarker" unique_id=1900493059 node_paths=PackedStringArray("_building", "_flag") instance=ExtResource("1_fcrg6")]
 script = ExtResource("2_igsmk")
+_buildings = Array[Texture2D]([SubResource("AtlasTexture_gok0u"), SubResource("AtlasTexture_irsvf"), SubResource("AtlasTexture_8hqh3"), SubResource("AtlasTexture_j6b74"), SubResource("AtlasTexture_j0q3r"), SubResource("AtlasTexture_tv4fl"), SubResource("AtlasTexture_hjhyy"), SubResource("AtlasTexture_4q541")])
+_building = NodePath("Building")
+_flag = NodePath("Flag")
 
-[node name="Sprite2D" type="Sprite2D" parent="." index="0" unique_id=207893828]
-texture = SubResource("AtlasTexture_igsmk")
-
-[node name="Collision" type="CollisionShape2D" parent="." index="1" unique_id=1661338104]
+[node name="Collision" type="CollisionShape2D" parent="." index="0" unique_id=1661338104]
 shape = SubResource("RectangleShape2D_jwqew")
+
+[node name="Hamlet" type="Sprite2D" parent="." index="1" unique_id=1150642277]
+texture = SubResource("AtlasTexture_02aok")
+offset = Vector2(0, 18)
+
+[node name="Flag" parent="." index="2" unique_id=679626028 instance=ExtResource("4_02aok")]
+position = Vector2(25, -16)
+
+[node name="Building" type="Sprite2D" parent="." index="3" unique_id=530738490]
+texture = SubResource("AtlasTexture_ec2lj")
+offset = Vector2(0, -5)
