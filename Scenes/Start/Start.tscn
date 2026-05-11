@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://0bsr3dmk3b0g"]
 
-[ext_resource type="Texture2D" uid="uid://bihyilbkefydv" path="res://Assets/Textures/Logo.svg" id="1_tdy0i"]
 [ext_resource type="Script" uid="uid://r3lgv0vnhfe7" path="res://Source/Start/StartScene.cs" id="1_x3rvt"]
+[ext_resource type="Texture2D" uid="uid://c7ijf0gautnit" path="res://Assets/Textures/bg2.png" id="2_x3rvt"]
+[ext_resource type="Texture2D" uid="uid://dxpcp5oar78by" path="res://Assets/Textures/logo.png" id="3_x3rvt"]
 
 [node name="Start" type="Control" unique_id=1888125272 node_paths=PackedStringArray("_annotation", "_start", "_editor", "_about", "_exit")]
 layout_mode = 3
@@ -25,6 +26,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("2_x3rvt")
+expand_mode = 3
+stretch_mode = 6
 
 [node name="Grid" type="HBoxContainer" parent="." unique_id=952733736]
 layout_mode = 1
@@ -37,17 +41,18 @@ alignment = 1
 
 [node name="LogoColumn" type="CenterContainer" parent="Grid" unique_id=423811977]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 10
 
 [node name="TextureRect" type="TextureRect" parent="Grid/LogoColumn" unique_id=101610485]
 layout_mode = 2
-texture = ExtResource("1_tdy0i")
+texture = ExtResource("3_x3rvt")
 
 [node name="MenuColumn" type="CenterContainer" parent="Grid" unique_id=129725979]
 layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Buttons" type="VBoxContainer" parent="Grid/MenuColumn" unique_id=1850280225]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 
 [node name="Start" type="Button" parent="Grid/MenuColumn/Buttons" unique_id=838659274]
@@ -61,7 +66,7 @@ text = "Tile editor"
 
 [node name="About" type="Button" parent="Grid/MenuColumn/Buttons" unique_id=2046261125]
 layout_mode = 2
-text = "About "
+text = "About"
 
 [node name="Exit" type="Button" parent="Grid/MenuColumn/Buttons" unique_id=218327265]
 layout_mode = 2
