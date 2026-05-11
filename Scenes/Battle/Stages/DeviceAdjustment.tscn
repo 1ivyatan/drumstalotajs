@@ -21,20 +21,17 @@ script = ExtResource("1_fnx8f")
 _deviceAdjustmentContainer = NodePath("DeviceAdjustmentContainer")
 _toFiringButton = NodePath("ToFiring")
 
-[node name="DeviceAdjustmentContainer" type="PanelContainer" parent="." unique_id=1235408494 node_paths=PackedStringArray("_deviceLabel", "_devicePosition", "_deviceTexture", "_deviceShellInfo", "_traverseSlider", "_traverseLabel", "_angleSlider", "_angleLabel", "_shellSlider", "_shellLabel")]
+[node name="DeviceAdjustmentContainer" type="PanelContainer" parent="." unique_id=1235408494 node_paths=PackedStringArray("_title", "_traverseSlider", "_traverseLabel", "_angleSlider", "_angleLabel", "_shellSlider", "_shellLabel")]
 visible = false
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_top = -150.0
-offset_right = 431.0
+offset_right = 260.0
 grow_vertical = 0
 script = ExtResource("2_35mjs")
-_deviceLabel = NodePath("Container/Wheels/DeviceInfo/Label")
-_devicePosition = NodePath("Container/Wheels/DeviceInfo/Position")
-_deviceTexture = NodePath("Container/Wheels/DeviceInfo/TextureRect")
-_deviceShellInfo = NodePath("Container/Wheels/DeviceInfo/ShellInfo")
+_title = NodePath("Container/Title")
 _traverseSlider = NodePath("Container/Wheels/Traverse/Wheel")
 _traverseLabel = NodePath("Container/Wheels/Traverse/Value")
 _angleSlider = NodePath("Container/Wheels/Angle/Wheel")
@@ -52,29 +49,6 @@ horizontal_alignment = 1
 
 [node name="Wheels" type="HBoxContainer" parent="DeviceAdjustmentContainer/Container" unique_id=1661315727]
 layout_mode = 2
-
-[node name="DeviceInfo" type="VBoxContainer" parent="DeviceAdjustmentContainer/Container/Wheels" unique_id=1544618371]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="DeviceAdjustmentContainer/Container/Wheels/DeviceInfo" unique_id=945442744]
-layout_mode = 2
-text = "Prepare device"
-horizontal_alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="DeviceAdjustmentContainer/Container/Wheels/DeviceInfo" unique_id=2087942207]
-layout_mode = 2
-size_flags_vertical = 3
-stretch_mode = 3
-
-[node name="Position" type="Label" parent="DeviceAdjustmentContainer/Container/Wheels/DeviceInfo" unique_id=2022094310]
-layout_mode = 2
-text = "(11;11)"
-horizontal_alignment = 1
-
-[node name="ShellInfo" type="Label" parent="DeviceAdjustmentContainer/Container/Wheels/DeviceInfo" unique_id=279393379]
-layout_mode = 2
-text = "0 Shells at disposal"
-horizontal_alignment = 1
 
 [node name="Traverse" type="VBoxContainer" parent="DeviceAdjustmentContainer/Container/Wheels" unique_id=1806684437]
 custom_minimum_size = Vector2(80, 0)

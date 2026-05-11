@@ -15,11 +15,7 @@ namespace Drumstalotajs.Battle.Components;
 public partial class DeviceAdjustmentContainer : Container
 {
 	private Map _map;
-	
-	[Export] private Label _deviceLabel;
-	[Export] private Label _devicePosition;
-	[Export] private TextureRect _deviceTexture;
-	[Export] private Label _deviceShellInfo;
+	[Export] private Label _title;
 
 	[Export] private Wheel _traverseSlider;
 	[Export] private Label _traverseLabel;
@@ -69,18 +65,6 @@ public partial class DeviceAdjustmentContainer : Container
 		_atlas = (EntityLayerAtlasData)_map.EntityLayer.GetAtlasData(device.TileId);
 		_device = device;
 		_props = (DevicePropertiesData)device.Properties;
-	
-		_deviceTexture.Texture = _atlas.Thumbnail;
-		_deviceLabel.Text = _atlas.Name;
-		_devicePosition.Text = $"{_map.EntityLayer.LocalToMap(device.Position)}";
-		
-		if (device.Shells == 0)
-		{
-			_deviceShellInfo.Text = $"{device.ResupplyTurns} turns until resupply";
-		} else
-		{
-			_deviceShellInfo.Text = $"{device.Shells} shells at disposal";
-		}
 		
 		_traverseSlider.MinValue = -_props.TraverseRadius;
 		_traverseSlider.MaxValue = _props.TraverseRadius;
@@ -93,6 +77,9 @@ public partial class DeviceAdjustmentContainer : Container
 		_shellSlider.MaxValue = _props.MaxFiringPerTurn;
 		_shellSlider.Value = _device.ShellsPerTurn;
 		_shellLabel.Text = $"{_device.ShellsPerTurn}";
+		
+		var resupplyStr = device.ResupplyTurns > 0 ? $"({device.ResupplyTurns} turns until resupply)" : $"({device.Shells} shells)";
+		_title.Text = $"{_atlas.Name} {_map.EntityLayer.LocalToMap(new Vector2(device.Position.X, Math.Abs(device.Position.Y)))} {resupplyStr}";
 		
 		Visible = true;
 	}

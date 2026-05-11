@@ -15,11 +15,7 @@ namespace Drumstalotajs.Battle.Components;
 public partial class InitDeviceAdjustmentContainer : Container
 {
 	private Map _map;
-	
-	[Export] private Label _deviceLabel;
-	[Export] private Label _devicePosition;
-	[Export] private Label _deviceShellInfo;
-	[Export] private TextureRect _deviceTexture;
+	[Export] private Label _title;
 	
 	[Export] private CircleSlider _azimuthSlider;
 	[Export] private Label _azimuthLabel;
@@ -69,12 +65,9 @@ public partial class InitDeviceAdjustmentContainer : Container
 		_atlas = (EntityLayerAtlasData)_map.EntityLayer.GetAtlasData(device.TileId);
 		_device = device;
 		_props = (DevicePropertiesData)device.Properties;
-		_deviceTexture.Texture = _atlas.Thumbnail;
-		_deviceLabel.Text = _atlas.Name;
-		_devicePosition.Text = $"{_map.EntityLayer.LocalToMap(device.Position)}";
+		
 		_angleSlider.MinValue = _props.MinAngle;
 		_angleSlider.MaxValue = _props.MaxAngle;
-		_deviceShellInfo.Text = $"{device.Shells} shells at disposal";
 		
 		if (_device.Azimuth == -1)
 		{
@@ -95,6 +88,9 @@ public partial class InitDeviceAdjustmentContainer : Container
 		_shellSlider.MaxValue = _props.MaxFiringPerTurn;
 		_shellSlider.Value = _device.ShellsPerTurn;
 		_shellLabel.Text = $"{_device.ShellsPerTurn}";
+		
+		var resupplyStr = device.ResupplyTurns > 0 ? $"({device.ResupplyTurns} turns until resupply)" : $"({device.Shells} shells)";
+		_title.Text = $"{_atlas.Name} {_map.EntityLayer.LocalToMap(new Vector2(device.Position.X, Math.Abs(device.Position.Y)))} {resupplyStr}";
 		
 		Visible = true;
 	}
