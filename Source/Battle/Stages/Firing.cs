@@ -27,12 +27,14 @@ public partial class Firing : Control
 	private Map _map;
 	
 	private Dictionary<Device, int> _fireTracker = new();
-	private int _firedPlayerDeviceCount = 0;
-	private int _firedEnemyDeviceCount = 0;
-	private int _totalPlayerDeviceCount = 0;
-	private int _totalEnemyDeviceCount = 0;
+	
 	private Device[] _playerDevs = null;
+	private int _firedPlayerDeviceCount = 0;
+	private int _totalPlayerDeviceCount = 0;
+	
 	private Device[] _enemyDevs = null;
+	private int _firedEnemyDeviceCount = 0;
+	private int _totalEnemyDeviceCount = 0;
 	
 	private FiringMode _mode;
 	
@@ -41,29 +43,31 @@ public partial class Firing : Control
 		_scene = Nodes.GetSceneRoot() as BattleScene;
 		_map = _scene.Map;
 		_map.Mode = MapMode.HiddenInteractable;
-		_scene.BattleTopnav.Title = "Battery!";
 		_scene.ScoreManager.CheckAndActivate();
+		_scene.BattleTopnav.Title = "";
 	}
 	
 	public void StartFiring(FiringMode mode)
 	{
 		_mode = mode;
+		
+		_playerDevs = _map.EntityLayer.GetPlayerDevices();//.Where(d => d.Shells > 0).ToArray();
+		_totalPlayerDeviceCount = _playerDevs.Length;
+		_firedPlayerDeviceCount = 0;
+		
+		_enemyDevs = _map.EntityLayer.GetEnemyDevices();//.Where(d => d.Shells > 0).ToArray();
+		_totalEnemyDeviceCount = _enemyDevs.Length;
+		_firedEnemyDeviceCount = 0;
+		
 		switch (mode)
 		{
 			case FiringMode.Player:
-				_playerDevs = _map.EntityLayer.GetPlayerDevices().Where(d => d.Shells > 0).ToArray();
-				_firedPlayerDeviceCount = 0;
-				_totalPlayerDeviceCount = _playerDevs.Length;
 				FirePlayerDevices();
 				break;
 			case FiringMode.Enemy:
-				_enemyDevs = _map.EntityLayer.GetEnemyDevices().Where(d => d.Shells > 0).ToArray();
-				_firedEnemyDeviceCount = 0;
-				_totalEnemyDeviceCount = _enemyDevs.Length;
 				FireEnemyDevices();
 				break;
 			case FiringMode.Both:
-				_scene.BattleTopnav.Title = "Battery!";
 				FireAll();
 				break;
 			default: break;
@@ -72,19 +76,6 @@ public partial class Firing : Control
 	
 	private void FireAll()
 	{
-		_playerDevs = _map.EntityLayer.GetPlayerDevices().Where(d => d.Shells > 0).ToArray();
-		Device[] enemyDevs = null;
-		
-		_firedPlayerDeviceCount = 0;
-		_firedEnemyDeviceCount = 0;
-		_totalPlayerDeviceCount = _playerDevs.Length;
-		
-		if (_map.CurrentLoadedMap.Counterbattery)
-		{
-			_enemyDevs = _map.EntityLayer.GetEnemyDevices().Where(d => d.Shells > 0).ToArray();
-			_totalEnemyDeviceCount = enemyDevs.Length;
-		}
-		
 		FirePlayerDevices();
 	}
 	
@@ -100,6 +91,12 @@ public partial class Firing : Control
 		}
 	}
 	
+	private void FirePlayerDevices()
+	{
+		_scene.BattleTopnav.Title = "Battery!";
+		MassFire(_playerDevs);
+	}
+	
 	private void NextStage()
 	{
 		if (_scene.ScoreManager.CanContinue())
@@ -109,12 +106,6 @@ public partial class Firing : Control
 		{
 			_scene.StageManager.End();
 		}
-	}
-	
-	private void FirePlayerDevices()
-	{
-		Device[] playerDevs = _map.EntityLayer.GetPlayerDevices();
-		MassFire(playerDevs);
 	}
 	
 	private void MassFire(Device[] devices)
@@ -138,25 +129,7 @@ public partial class Firing : Control
 				var projectile = _map.ProjectileLayer.SpawnProjectile(device);
 				projectile.Connect(Projectile.SignalName.Detonated, Callable.From(
 					(Device device) => {
-						_fireTracker[device]++;
-						if (_fireTracker[device] == device.ShellsPerTurn)
-						{
-							if (device.Player)
-							{
-								_firedPlayerDeviceCount++;
-								if (_firedPlayerDeviceCount == _totalPlayerDeviceCount)
-								{
-									FireEnemyDevices();
-								}
-							} else
-							{
-								_firedEnemyDeviceCount++;
-								if (_firedEnemyDeviceCount == _totalEnemyDeviceCount)
-								{
-									NextStage();
-								}
-							}
-						}
+						LogTracker(device, 1);
 					}
 				));
 				await ToSignal(GetTree().CreateTimer(
@@ -166,6 +139,30 @@ public partial class Firing : Control
 		} else
 		{
 			device.CheckAndTryResupply();
+			LogTracker(device, device.ShellsPerTurn);
+		}
+	}
+	
+	private void LogTracker(Device device, int inc)
+	{
+		_fireTracker[device] += inc;
+		if (_fireTracker[device] == device.ShellsPerTurn)
+		{
+			if (device.Player)
+			{
+				_firedPlayerDeviceCount++;
+				if (_firedPlayerDeviceCount == _totalPlayerDeviceCount)
+				{
+					FireEnemyDevices();
+				}
+			} else
+			{
+				_firedEnemyDeviceCount++;
+				if (_firedEnemyDeviceCount == _totalEnemyDeviceCount)
+				{
+					NextStage();
+				}
+			}
 		}
 	}
 }
