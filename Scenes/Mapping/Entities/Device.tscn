@@ -23,7 +23,7 @@ shape = SubResource("RectangleShape2D_xpqcu")
 
 [node name="Flag" parent="." unique_id=334692262 instance=ExtResource("3_xjn6u")]
 z_index = 3
-position = Vector2(20, -10)
+position = Vector2(16, -10)
 
 [node name="Status" parent="." unique_id=578538614 instance=ExtResource("4_gmlo8")]
 z_index = 3

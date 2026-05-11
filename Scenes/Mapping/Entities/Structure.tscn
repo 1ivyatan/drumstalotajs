@@ -19,7 +19,7 @@ shape = SubResource("RectangleShape2D_oo5hv")
 [node name="Sprite" type="Sprite2D" parent="." unique_id=319283119]
 
 [node name="Flag" parent="." unique_id=334692262 instance=ExtResource("2_sjtgj")]
-position = Vector2(20, -10)
+position = Vector2(16, -10)
 
 [node name="Status" parent="." unique_id=578538614 instance=ExtResource("3_q3ebp")]
 offset = Vector2(-22.5, -22.5)
