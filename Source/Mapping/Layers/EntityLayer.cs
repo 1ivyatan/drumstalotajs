@@ -67,6 +67,7 @@ public partial class EntityLayer : SceneLayer
 				entity.TileId = entityAtlas.Id;
 				entity.Data = entityAtlas.Data;
 				entity.Disabled = entityAtlas.Disabled;
+				entity.Target = entityAtlas.Target;
 				
 				var entityLayerAtlas = (EntityLayerAtlasData)GetAtlasData(entityAtlas.Id);
 
