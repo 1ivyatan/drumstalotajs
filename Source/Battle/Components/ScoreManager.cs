@@ -15,6 +15,8 @@ public partial class ScoreManager : Node
 	[Signal] public delegate void TimeSetEventHandler(double remaining);
 	[Signal] public delegate void NewTurnEventHandler(int turn);
 	
+	[Export] private Map _map;
+	
 	public double TimeLimit { get; private set; } = 0;
 	public double RemainingTime { get; private set; } = 0;
 	public int Turn { get; private set; } = 1;
@@ -52,6 +54,12 @@ public partial class ScoreManager : Node
 		}
 	}
 	
+	public bool HasVictory()
+	{
+		var enemyCount = _map.EntityLayer.GetEnemyTargets().Length;
+		return enemyCount == 0;
+	}
+	
 	public void CheckAndActivate()
 	{
 		if (!_running && RemainingTime > 0)
@@ -62,7 +70,7 @@ public partial class ScoreManager : Node
 	
 	public bool CanContinue()
 	{
-		return (RemainingTime > 0);
+		return RemainingTime > 0 && !HasVictory();
 	}
 	
 	public void PrepareScoring(MapResource mapResource)
@@ -77,6 +85,11 @@ public partial class ScoreManager : Node
 		LevelSet = levelSet;
 		LevelProps = levelProps;
 		PrepareScoring(mapResource);
+	}
+	
+	public bool IsInLevel()
+	{
+		return LevelSet != null && LevelProps != null;
 	}
 	
 	public void RecordScore()

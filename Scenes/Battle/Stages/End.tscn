@@ -1,9 +1,66 @@
 [gd_scene format=3 uid="uid://dq14s71y2dguk"]
 
-[node name="End" type="Control" unique_id=589973685]
+[ext_resource type="Script" uid="uid://i8lyl1ylr683" path="res://Source/Battle/Stages/End.cs" id="1_wtf4v"]
+[ext_resource type="Texture2D" uid="uid://v2gkmg7yaoh5" path="res://Assets/Textures/controls.png" id="2_aq7wo"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_aq7wo"]
+font_size = 24
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vtw3y"]
+atlas = ExtResource("2_aq7wo")
+region = Rect2(63, 132, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aq7wo"]
+atlas = ExtResource("2_aq7wo")
+region = Rect2(12, 221, 64, 64)
+
+[node name="End" type="Control" unique_id=589973685 node_paths=PackedStringArray("_label", "_exit", "_retry")]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
+script = ExtResource("1_wtf4v")
+_label = NodePath("EndContainer/VBoxContainer/Label")
+_exit = NodePath("EndContainer/VBoxContainer/Buttons/Exit")
+_retry = NodePath("EndContainer/VBoxContainer/Buttons/Retry")
+
+[node name="EndContainer" type="FoldableContainer" parent="." unique_id=1737981986]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -136.5
+offset_top = -143.0
+offset_right = 136.5
+grow_horizontal = 2
+grow_vertical = 0
+title = "End"
+title_alignment = 2
+title_position = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="EndContainer" unique_id=212270880]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="EndContainer/VBoxContainer" unique_id=2047993574]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_aq7wo")
+
+[node name="Buttons" type="HBoxContainer" parent="EndContainer/VBoxContainer" unique_id=237527850]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Exit" type="Button" parent="EndContainer/VBoxContainer/Buttons" unique_id=9070374]
+layout_mode = 2
+text = "Exit"
+icon = SubResource("AtlasTexture_vtw3y")
+
+[node name="Retry" type="Button" parent="EndContainer/VBoxContainer/Buttons" unique_id=2043764904]
+layout_mode = 2
+text = "Retry"
+icon = SubResource("AtlasTexture_aq7wo")

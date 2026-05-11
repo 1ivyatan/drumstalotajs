@@ -45,7 +45,7 @@ public partial class DeviceAdjustment : Control
 				_scene.StageManager.Firing(FiringMode.Both);
 			} else
 			{
-				
+				_scene.StageManager.End();
 			}
 		};
 		

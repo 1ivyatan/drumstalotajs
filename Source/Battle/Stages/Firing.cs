@@ -107,9 +107,8 @@ public partial class Firing : Control
 			_scene.StageManager.DeviceAdjustment();
 		} else
 		{
-			
+			_scene.StageManager.End();
 		}
-		
 	}
 	
 	private void FirePlayerDevices()

@@ -37,7 +37,7 @@ public partial class BattleScene : Node2D
 		StageManager.DevicePlacement();
 	}
 	
-	private void Exit()
+	public void Exit()
 	{
 		/* hack */
 		Map.ProcessMode = ProcessModeEnum.Disabled;
@@ -84,9 +84,9 @@ public partial class BattleScene : Node2D
 		ScoreManager.PrepareScoring(Map.CurrentLoadedMap);
 	}
 	
-	private void Restart()
+	public void Restart()
 	{
-		if (ScoreManager.LevelSet != null && ScoreManager.LevelProps != null)
+		if (ScoreManager.IsInLevel())
 		{
 			Nodes.GetRoot().SceneManager.Battle(ScoreManager.LevelSet, ScoreManager.LevelProps);
 		} else if (_mapPath != null && _mapPath != "")
