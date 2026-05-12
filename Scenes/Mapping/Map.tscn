@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://2io65q52gq16" path="res://Assets/Textures/overlay.png" id="7_ccdcv"]
 [ext_resource type="Script" uid="uid://bn1u57sn0woiq" path="res://Source/Resources/Mapping/Layers/SceneLayerAtlasData.cs" id="7_f0kan"]
 [ext_resource type="Script" uid="uid://btef5gw2dfffc" path="res://Source/Resources/Mapping/Entities/WallPropertiesData.cs" id="7_ve6d6"]
+[ext_resource type="Script" uid="uid://dwre4lssbikfj" path="res://Source/Resources/Mapping/Entities/StructurePropertiesData.cs" id="11_wb4r7"]
+[ext_resource type="PackedScene" uid="uid://dq41d7suwf688" path="res://Scenes/Mapping/Entities/Structure.tscn" id="12_ve6d6"]
 [ext_resource type="PackedScene" uid="uid://d08de6s1gh1v7" path="res://Scenes/Mapping/Entities/Wall.tscn" id="13_ve6d6"]
 [ext_resource type="Script" uid="uid://cp6mf7hu5xvce" path="res://Source/Mapping/Projectiles/ProjectileLayer.cs" id="14_bc3k3"]
 [ext_resource type="Script" uid="uid://ciiiu3aq8tm4l" path="res://Source/Mapping/Selection/Selector.cs" id="15_0ild7"]
@@ -362,7 +364,7 @@ region = Rect2(32, 128, 32, 32)
 script = ExtResource("7_ve6d6")
 IntegrityStages = Array[Texture2D]([SubResource("AtlasTexture_wb4r7"), SubResource("AtlasTexture_ve6d6"), SubResource("AtlasTexture_iv8rp")])
 Height = 2.5
-Toughness = 0.40000000000000036
+Toughness = 0.4000000000000003
 metadata/_custom_type_script = "uid://btef5gw2dfffc"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_asx6w"]
@@ -412,6 +414,97 @@ Id = 14
 Name = "Concrete"
 Thumbnail = SubResource("AtlasTexture_04b6o")
 Scene = ExtResource("13_ve6d6")
+metadata/_custom_type_script = "uid://7qxwheiwlsgl"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ash1f"]
+atlas = ExtResource("15_54hn3")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dbek4"]
+atlas = ExtResource("15_54hn3")
+region = Rect2(160, 64, 32, 32)
+
+[sub_resource type="Resource" id="Resource_04b6o"]
+script = ExtResource("11_wb4r7")
+IntegrityStages = Array[Texture2D]([SubResource("AtlasTexture_ash1f"), SubResource("AtlasTexture_dbek4")])
+Height = 0.5
+Toughness = 0.05000000000000071
+metadata/_custom_type_script = "uid://dwre4lssbikfj"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8oobq"]
+atlas = ExtResource("15_54hn3")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="Resource" id="Resource_ash1f"]
+script = ExtResource("7_awdyq")
+Type = 2
+Properties = SubResource("Resource_04b6o")
+Id = 15
+Name = "Barbed1"
+Thumbnail = SubResource("AtlasTexture_8oobq")
+Scene = ExtResource("12_ve6d6")
+metadata/_custom_type_script = "uid://7qxwheiwlsgl"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mam6d"]
+atlas = ExtResource("15_54hn3")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m6bk1"]
+atlas = ExtResource("15_54hn3")
+region = Rect2(192, 64, 32, 32)
+
+[sub_resource type="Resource" id="Resource_44ay1"]
+script = ExtResource("11_wb4r7")
+IntegrityStages = Array[Texture2D]([SubResource("AtlasTexture_mam6d"), SubResource("AtlasTexture_m6bk1")])
+Height = 0.5
+Toughness = 0.05000000000000071
+metadata/_custom_type_script = "uid://dwre4lssbikfj"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4am28"]
+atlas = ExtResource("15_54hn3")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="Resource" id="Resource_boa3v"]
+script = ExtResource("7_awdyq")
+Type = 2
+Properties = SubResource("Resource_44ay1")
+Id = 16
+Name = "Barbed2"
+Thumbnail = SubResource("AtlasTexture_4am28")
+Scene = ExtResource("12_ve6d6")
+metadata/_custom_type_script = "uid://7qxwheiwlsgl"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rftuu"]
+atlas = ExtResource("15_54hn3")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qta14"]
+atlas = ExtResource("15_54hn3")
+region = Rect2(224, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xb816"]
+atlas = ExtResource("15_54hn3")
+region = Rect2(96, 128, 32, 32)
+
+[sub_resource type="Resource" id="Resource_wnn2a"]
+script = ExtResource("11_wb4r7")
+IntegrityStages = Array[Texture2D]([SubResource("AtlasTexture_rftuu"), SubResource("AtlasTexture_qta14"), SubResource("AtlasTexture_xb816")])
+Height = 20.0
+Toughness = 0.40000000000000036
+metadata/_custom_type_script = "uid://dwre4lssbikfj"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uhkhs"]
+atlas = ExtResource("15_54hn3")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="Resource" id="Resource_4desp"]
+script = ExtResource("7_awdyq")
+Type = 2
+Properties = SubResource("Resource_wnn2a")
+Id = 17
+Name = "Tower"
+Thumbnail = SubResource("AtlasTexture_uhkhs")
+Scene = ExtResource("12_ve6d6")
 metadata/_custom_type_script = "uid://7qxwheiwlsgl"
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_ajbla"]
@@ -494,7 +587,7 @@ ExtraColors = PackedColorArray(0, 0, 0, 1, 0.23036289, 0.23036289, 0.23036289, 1
 [node name="Entities" type="TileMapLayer" parent="." unique_id=56824911]
 tile_set = SubResource("TileSet_awdyq")
 script = ExtResource("6_56oc8")
-Atlas = Array[Object]([SubResource("Resource_lsqgu"), SubResource("Resource_xobjh"), SubResource("Resource_n6ld1"), SubResource("Resource_ve6d6"), SubResource("Resource_54hn3")])
+Atlas = Array[Object]([SubResource("Resource_lsqgu"), SubResource("Resource_xobjh"), SubResource("Resource_n6ld1"), SubResource("Resource_ve6d6"), SubResource("Resource_54hn3"), SubResource("Resource_ash1f"), SubResource("Resource_boa3v"), SubResource("Resource_4desp")])
 
 [node name="Overlays" type="TileMapLayer" parent="." unique_id=201889829]
 tile_set = SubResource("TileSet_ajbla")
