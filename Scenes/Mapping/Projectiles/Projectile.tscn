@@ -8,6 +8,7 @@ atlas = ExtResource("2_3rst8")
 region = Rect2(77, 10, 7, 12)
 
 [node name="Projectile" type="Node2D" unique_id=1331365897]
+z_index = 10
 script = ExtResource("1_110hw")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=124077106]
