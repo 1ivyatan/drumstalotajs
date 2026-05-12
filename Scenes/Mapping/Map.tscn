@@ -507,6 +507,39 @@ Thumbnail = SubResource("AtlasTexture_uhkhs")
 Scene = ExtResource("12_ve6d6")
 metadata/_custom_type_script = "uid://7qxwheiwlsgl"
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ivru2"]
+atlas = ExtResource("15_54hn3")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kkhwr"]
+atlas = ExtResource("15_54hn3")
+region = Rect2(256, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rjta7"]
+atlas = ExtResource("15_54hn3")
+region = Rect2(128, 128, 32, 32)
+
+[sub_resource type="Resource" id="Resource_a546w"]
+script = ExtResource("11_wb4r7")
+IntegrityStages = Array[Texture2D]([SubResource("AtlasTexture_ivru2"), SubResource("AtlasTexture_kkhwr"), SubResource("AtlasTexture_rjta7")])
+Height = 0.4
+Toughness = 0.05000000000000071
+metadata/_custom_type_script = "uid://dwre4lssbikfj"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vq2tq"]
+atlas = ExtResource("15_54hn3")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="Resource" id="Resource_x426y"]
+script = ExtResource("7_awdyq")
+Type = 2
+Properties = SubResource("Resource_a546w")
+Id = 18
+Name = "MgNest"
+Thumbnail = SubResource("AtlasTexture_vq2tq")
+Scene = ExtResource("12_ve6d6")
+metadata/_custom_type_script = "uid://7qxwheiwlsgl"
+
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_ajbla"]
 
 [sub_resource type="TileSet" id="TileSet_ajbla"]
@@ -587,7 +620,7 @@ ExtraColors = PackedColorArray(0, 0, 0, 1, 0.23036289, 0.23036289, 0.23036289, 1
 [node name="Entities" type="TileMapLayer" parent="." unique_id=56824911]
 tile_set = SubResource("TileSet_awdyq")
 script = ExtResource("6_56oc8")
-Atlas = Array[Object]([SubResource("Resource_lsqgu"), SubResource("Resource_xobjh"), SubResource("Resource_n6ld1"), SubResource("Resource_ve6d6"), SubResource("Resource_54hn3"), SubResource("Resource_ash1f"), SubResource("Resource_boa3v"), SubResource("Resource_4desp")])
+Atlas = Array[Object]([SubResource("Resource_lsqgu"), SubResource("Resource_xobjh"), SubResource("Resource_n6ld1"), SubResource("Resource_ve6d6"), SubResource("Resource_54hn3"), SubResource("Resource_ash1f"), SubResource("Resource_boa3v"), SubResource("Resource_4desp"), SubResource("Resource_x426y")])
 
 [node name="Overlays" type="TileMapLayer" parent="." unique_id=201889829]
 tile_set = SubResource("TileSet_ajbla")
