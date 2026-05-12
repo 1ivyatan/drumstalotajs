@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://bkwxw3yx6ouqh"]
 
 [ext_resource type="Script" uid="uid://oh8y1irej7ax" path="res://Source/Mapping/Projectiles/Projectile.cs" id="1_110hw"]
-[ext_resource type="Texture2D" uid="uid://bscapcc3qlnqv" path="res://Assets/Textures/entity.png" id="2_3rst8"]
+[ext_resource type="Texture2D" uid="uid://b12sdf1d12it1" path="res://Assets/Textures/entities.png" id="2_3rst8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_khasa"]
 atlas = ExtResource("2_3rst8")
-region = Rect2(77, 10, 7, 12)
+region = Rect2(122, 192, 7, 12)
 
 [node name="Projectile" type="Node2D" unique_id=1331365897]
 z_index = 10
