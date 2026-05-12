@@ -9,10 +9,13 @@ size = Vector2(32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fq1x7"]
 atlas = ExtResource("3_qfh7t")
-region = Rect2(67, 91, 34, 34)
+region = Rect2(66, 90, 36, 36)
 
 [node name="SelectorHighlight" unique_id=1900493059 instance=ExtResource("1_nj8ni")]
 script = ExtResource("2_aepa3")
+_c1 = Color(1, 0, 0, 1)
+_c2 = Color(0.18001938, 0, 1, 1)
+_speed = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0" unique_id=832521981]
 shape = SubResource("RectangleShape2D_aepa3")
