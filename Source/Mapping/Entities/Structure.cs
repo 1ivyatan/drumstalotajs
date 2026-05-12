@@ -35,7 +35,13 @@ public partial class Structure : Entity
 		}
 	} = false;
 
-	public override bool Target { get; set; } = false;
+	public override bool Target { 
+		get; 
+		set {
+			field = value;
+			_flag.Visible = field;
+		}
+	} = false;
 	
 	public override void Disable()
 	{
