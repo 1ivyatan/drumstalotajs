@@ -20,6 +20,7 @@
 [ext_resource type="Script" uid="uid://cp6mf7hu5xvce" path="res://Source/Mapping/Projectiles/ProjectileLayer.cs" id="14_bc3k3"]
 [ext_resource type="PackedScene" uid="uid://blnp1df0jakre" path="res://Scenes/Mapping/Entities/Device.tscn" id="14_iv8rp"]
 [ext_resource type="Script" uid="uid://ciiiu3aq8tm4l" path="res://Source/Mapping/Selection/Selector.cs" id="15_0ild7"]
+[ext_resource type="Texture2D" uid="uid://b12sdf1d12it1" path="res://Assets/Textures/entities.png" id="15_54hn3"]
 [ext_resource type="PackedScene" uid="uid://cb0f78vc8xv76" path="res://Scenes/Mapping/Overlays/DeviceMarker.tscn" id="16_hfvyn"]
 [ext_resource type="Script" uid="uid://blbxol7imiof6" path="res://Source/Mapping/Cameras/Camera.cs" id="16_mukcc"]
 [ext_resource type="PackedScene" uid="uid://do63mxtpdm0w7" path="res://Scenes/Mapping/Overlays/SelectorHighlight.tscn" id="17_st7r0"]
@@ -344,6 +345,70 @@ Thumbnail = SubResource("AtlasTexture_gph8d")
 Scene = ExtResource("14_04b6o")
 metadata/_custom_type_script = "uid://7qxwheiwlsgl"
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_n6ld1"]
+atlas = ExtResource("15_54hn3")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_boa3v"]
+atlas = ExtResource("15_54hn3")
+region = Rect2(0, 65, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wnn2a"]
+atlas = ExtResource("15_54hn3")
+region = Rect2(257, 96, 31, 33)
+
+[sub_resource type="Resource" id="Resource_gph8d"]
+script = ExtResource("7_ve6d6")
+IntegrityStages = Array[Texture2D]([SubResource("AtlasTexture_n6ld1"), SubResource("AtlasTexture_boa3v"), SubResource("AtlasTexture_wnn2a")])
+Height = 1.5
+Toughness = 0.05000000000000071
+metadata/_custom_type_script = "uid://btef5gw2dfffc"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q81wf"]
+atlas = ExtResource("15_54hn3")
+region = Rect2(0, 2, 32, 30)
+
+[sub_resource type="Resource" id="Resource_lsqgu"]
+script = ExtResource("7_awdyq")
+Properties = SubResource("Resource_gph8d")
+Id = 10
+Name = "Bags"
+Thumbnail = SubResource("AtlasTexture_q81wf")
+Scene = ExtResource("13_ve6d6")
+metadata/_custom_type_script = "uid://7qxwheiwlsgl"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x426y"]
+atlas = ExtResource("15_54hn3")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a546w"]
+atlas = ExtResource("15_54hn3")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s3var"]
+atlas = ExtResource("15_54hn3")
+region = Rect2(288, 96, 32, 32)
+
+[sub_resource type="Resource" id="Resource_ykbtj"]
+script = ExtResource("7_ve6d6")
+IntegrityStages = Array[Texture2D]([SubResource("AtlasTexture_x426y"), SubResource("AtlasTexture_a546w"), SubResource("AtlasTexture_s3var")])
+Height = 2.0
+Toughness = 0.15000000000000036
+metadata/_custom_type_script = "uid://btef5gw2dfffc"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4desp"]
+atlas = ExtResource("15_54hn3")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="Resource" id="Resource_xobjh"]
+script = ExtResource("7_awdyq")
+Properties = SubResource("Resource_ykbtj")
+Id = 11
+Name = "Log"
+Thumbnail = SubResource("AtlasTexture_4desp")
+Scene = ExtResource("13_ve6d6")
+metadata/_custom_type_script = "uid://7qxwheiwlsgl"
+
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_ajbla"]
 
 [sub_resource type="TileSet" id="TileSet_ajbla"]
@@ -424,7 +489,7 @@ ExtraColors = PackedColorArray(0, 0, 0, 1, 0.23036289, 0.23036289, 0.23036289, 1
 [node name="Entities" type="TileMapLayer" parent="." unique_id=56824911]
 tile_set = SubResource("TileSet_awdyq")
 script = ExtResource("6_56oc8")
-Atlas = Array[Object]([SubResource("Resource_54hn3"), SubResource("Resource_ve6d6"), SubResource("Resource_iv8rp")])
+Atlas = Array[Object]([SubResource("Resource_54hn3"), SubResource("Resource_ve6d6"), SubResource("Resource_iv8rp"), SubResource("Resource_lsqgu"), SubResource("Resource_xobjh")])
 
 [node name="Overlays" type="TileMapLayer" parent="." unique_id=201889829]
 tile_set = SubResource("TileSet_ajbla")
