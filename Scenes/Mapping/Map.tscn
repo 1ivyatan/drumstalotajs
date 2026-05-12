@@ -271,8 +271,12 @@ script = ExtResource("7_asx6w")
 DeviceBody = SubResource("AtlasTexture_44ay1")
 DeviceHead = SubResource("AtlasTexture_0enno")
 DestroyedDeviceBody = SubResource("AtlasTexture_iv8rp")
+MaxAngle = 89.0
 Shells = 10
 ResupplyTurns = 2
+Caliber = 155.0
+ExplosiveFill = 7.0
+TotalWeight = 44.0
 Height = 1.1
 Toughness = -1.0
 metadata/_custom_type_script = "uid://cqwwdwx080x60"
@@ -323,7 +327,7 @@ region = Rect2(0, 64, 32, 34)
 script = ExtResource("13_iv8rp")
 IntegrityStages = Array[Texture2D]([SubResource("AtlasTexture_54hn3")])
 Height = 10.0
-Toughness = 0.8000000000000007
+Toughness = 0.1999999999999993
 metadata/_custom_type_script = "uid://dwre4lssbikfj"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gph8d"]

@@ -35,6 +35,8 @@ public partial class End : Control
 		_map.Mode = MapMode.HiddenInteractable;
 		_scene.BattleTopnav.Title = "Conclusion";
 		
+		_scene.ScoreManager.SetRunning(false);
+		
 		if (_scene.ScoreManager.HasVictory())
 		{
 			if (_scene.ScoreManager.IsInLevel())

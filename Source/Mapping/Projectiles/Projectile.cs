@@ -35,6 +35,11 @@ public partial class Projectile : Node2D
 	private DevicePropertiesData _props;
 	private Map _map;
 	
+	private double _minAlt = 0;
+	private double _peakAlt = 0;
+	private double _minSize = 1.0;
+	private double _peakSize = 1.0;
+	
 	public override void _PhysicsProcess(double delta)
 	{
 		if (_flying)
@@ -44,6 +49,15 @@ public partial class Projectile : Node2D
 			ApplyVerticalDrag(airDensity, delta);
 			Altitude += VerticalVelocity * (float)delta;
 			Position += (HorizontalVelocity * (float)delta) / _map.CellCoefficient;
+			
+			if (Altitude > _peakAlt)
+			{
+				_peakAlt = Altitude;
+				Scale += new Vector2(.01f, .01f);
+			} else
+			{
+				Scale -= new Vector2(.01f, .01f);
+			}
 			
 			var newCellPos = _map.GroundLayer.LocalToMap(Position);
 			if (_map.IsEmpty(newCellPos))
@@ -75,10 +89,23 @@ public partial class Projectile : Node2D
 	{
 		_flying = false;
 
-		var tntEquivalent = _props.ExplosiveFill * 1.33;
-		var casingWeight =  _props.TotalWeight - _props.ExplosiveFill;
-		_calculatedLethalRadius = 2.5 * Mathf.Pow(casingWeight * tntEquivalent, 1/3);
-		_calculatedCasualityRadius = 5.0 * Mathf.Pow(casingWeight * tntEquivalent, 1/3);
+		double tntEquivalent = _props.ExplosiveFill * 1.33;
+		double casingWeight =  _props.TotalWeight - _props.ExplosiveFill;
+		double cubeRootw = Mathf.Pow(tntEquivalent, 1/3);
+		
+		/* blast */
+		double lethalBlast = 4.0 * cubeRootw;
+		double casualityBlast = 9.0 * cubeRootw;
+		
+		/* frags */
+		double lethalFrag = 2.5 * Mathf.Pow(casingWeight * tntEquivalent, 1/3);
+		double casualityFrag = 5.0 * Mathf.Pow(casingWeight * tntEquivalent, 1/3);
+		
+		_calculatedLethalRadius = Mathf.Max(lethalBlast, lethalFrag);
+		_calculatedCasualityRadius = Mathf.Max(casualityBlast, casualityFrag);
+		
+	//	GD.Print(_calculatedLethalRadius);
+	//	GD.Print(_calculatedCasualityRadius);
 		
 		ApplyDamage();
 		Disappear();
@@ -103,19 +130,31 @@ public partial class Projectile : Node2D
 				
 			foreach (var entity in entities)
 			{
-				var distance = GlobalPosition.DistanceTo(entity.GlobalPosition) / _map.CellCoefficient.X; //_map.CellCoefficient.X
+				var distance = GlobalPosition.DistanceTo(entity.GlobalPosition);
 				var damage = CalculateDamageAtDistance(entity, distance);
 				entity.DecreaseIntegrity(damage);
 			}
 		}
 	}
 	
+	private double CalculateOverpressure(double distance)
+	{
+		var tntEquivalent = _props.ExplosiveFill * 1.33;
+		var s = distance / Math.Pow(tntEquivalent, 1/3);
+		if (s < .5) return 20;
+		else if (s < 1) return 10 / (Math.Pow(s, 2));
+		else if (s < 3) return 1.5 / (Math.Pow(s, 2));
+		else if (s < 10) return 0.4 / (Math.Pow(s, 2));
+  		return 0.1 / (Math.Pow(s, 2));
+	}
+	
 	private double CalculateDamageAtDistance(Entity entity, double distance)
 	{
+		var pxDistance = distance * _map.CellCoefficient.X;
 		var shellAltitude = Altitude;
 		var targetAltitude = _cellHeight;
 		var altitudeDiff = targetAltitude - shellAltitude;
-		var trueDistance = Mathf.Sqrt(Mathf.Pow(distance, 2) + Mathf.Pow(altitudeDiff, 2));
+		var trueDistance = Mathf.Sqrt(Mathf.Pow(pxDistance, 2) + Mathf.Pow(altitudeDiff, 2));
 		var baseDamage = (_props.ExplosiveFill * 10) / Mathf.Max(trueDistance, 1);
 		var distanceFallOff = GetDistanceFalloff(trueDistance);
 		var altitudeMod = 1.0;
@@ -180,6 +219,7 @@ public partial class Projectile : Node2D
 		GroundTile groundTile = (GroundTile)_map.GroundLayer.Flash(deviceCellPos)[0];
 
 		Altitude = groundTile.GetFullHeight() + device.Properties.Height;
+		_minAlt = Altitude;
 		
 		var radius = (_props.Caliber / 1000.0) / 2.0;
 		var traverse = _device.Azimuth + _device.Traverse;

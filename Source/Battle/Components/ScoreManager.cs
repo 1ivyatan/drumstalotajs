@@ -64,8 +64,13 @@ public partial class ScoreManager : Node
 	{
 		if (!_running && RemainingTime > 0)
 		{
-			_running = true;
+			SetRunning(true);
 		}
+	}
+	
+	public void SetRunning(bool running)
+	{
+		_running = running;
 	}
 	
 	public bool CanContinue()

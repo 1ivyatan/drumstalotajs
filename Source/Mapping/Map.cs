@@ -64,7 +64,7 @@ public partial class Map : Node2D
 	
 	public MapResource CurrentLoadedMap { get; private set; } = null;
 	public Vector2I SquareMetersPerCell { get; private set; } = Constants.Mapping.TileSize;
-	public Vector2I CellCoefficient { get; private set; } = new Vector2I(1, 1);
+	public Vector2 CellCoefficient { get; private set; } = new Vector2(1.0f, 1.0f);
 	
 	public MapResource Export()
 	{
@@ -83,7 +83,10 @@ public partial class Map : Node2D
 			var data = Files.SafeLoadResource<MapResource>(mapResourcePath, false);
 			CurrentLoadedMap = data;
 			SquareMetersPerCell = CurrentLoadedMap.MetersPerCell;
-			CellCoefficient = (SquareMetersPerCell / Constants.Mapping.TileSize);
+			CellCoefficient = (
+				new Vector2((float)SquareMetersPerCell.X, (float)SquareMetersPerCell.Y) / 
+				new Vector2((float)Constants.Mapping.TileSize.X, (float)Constants.Mapping.TileSize.Y)
+			);
 			GroundLayer.Load(data.GroundLayer);
 			DecorationLayer.Load(data.DecorationLayer);
 			EntityLayer.Load(data.EntityLayer);

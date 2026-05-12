@@ -611,7 +611,7 @@ Tiles = Array[ExtResource("3_xge3b")]([])
 
 [resource]
 script = ExtResource("8_btd7q")
-MetersPerCell = Vector2i(64, 64)
+MetersPerCell = Vector2i(16, 16)
 DevicePositions = Dictionary[Vector2i, float]({
 Vector2i(10, 10): 100.0,
 Vector2i(13, 12): 60.0,
