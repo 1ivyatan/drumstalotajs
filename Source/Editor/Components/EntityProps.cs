@@ -24,7 +24,7 @@ public partial class EntityProps : Props
 		_azimuthSpinner.ValueChanged += (double value) => {
 			if (_entity != null)
 			{
-				_entity.Azimuth = (float)value;
+				_entity.Azimuth = value;
 			}
 		};
 		
