@@ -17,7 +17,18 @@ Tiles = SubResource("TileMapPattern_f3e58")
 
 [sub_resource type="Resource" id="Resource_7mwfy"]
 script = ExtResource("2_ljtri")
-DeviceId = 4
+DeviceId = 28
+MaxCount = 2
+metadata/_custom_type_script = "uid://vidsdghus3qn"
+
+[sub_resource type="Resource" id="Resource_kiqno"]
+script = ExtResource("2_ljtri")
+DeviceId = 29
+metadata/_custom_type_script = "uid://vidsdghus3qn"
+
+[sub_resource type="Resource" id="Resource_yg58v"]
+script = ExtResource("2_ljtri")
+DeviceId = 35
 MaxCount = 2
 metadata/_custom_type_script = "uid://vidsdghus3qn"
 
@@ -618,8 +629,8 @@ Vector2i(13, 12): 60.0,
 Vector2i(14, 10): 0.0,
 Vector2i(16, 14): 180.0
 })
-DeviceProps = Array[ExtResource("2_ljtri")]([SubResource("Resource_7mwfy")])
-MaxTotalDevices = 2
+DeviceProps = Array[ExtResource("2_ljtri")]([SubResource("Resource_7mwfy"), SubResource("Resource_kiqno"), SubResource("Resource_yg58v")])
+MaxTotalDevices = 10
 GroundLayer = SubResource("Resource_06np7")
 DecorationLayer = SubResource("Resource_y13o3")
 EntityLayer = SubResource("Resource_403xj")

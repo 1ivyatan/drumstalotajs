@@ -264,13 +264,15 @@ text = "270
 [node name="AtlasColorSwitcher" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor/DecorationProps" unique_id=921964294 instance=ExtResource("11_wddii")]
 layout_mode = 2
 
-[node name="EntityProps" type="VBoxContainer" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor" unique_id=1253156899 node_paths=PackedStringArray("_map", "_azimuthSpinner", "_integritySpinner", "_playerCheck")]
+[node name="EntityProps" type="VBoxContainer" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor" unique_id=1253156899 node_paths=PackedStringArray("_map", "_azimuthSpinner", "_integritySpinner", "_playerCheck", "_targetCheck", "_disabledCheck")]
 layout_mode = 2
 script = ExtResource("11_85jo5")
 _map = NodePath("../../../../../../Map")
 _azimuthSpinner = NodePath("Azimuth/AzimuthSpinner")
 _integritySpinner = NodePath("Integrity/IntegritySpinner")
 _playerCheck = NodePath("Player/PlayerCheck")
+_targetCheck = NodePath("Target/TargetCheck")
+_disabledCheck = NodePath("Disabled/DisabledCheck")
 
 [node name="Title" type="HBoxContainer" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor/EntityProps" unique_id=797518356]
 layout_mode = 2
@@ -317,6 +319,26 @@ size_flags_horizontal = 3
 text = "Player:"
 
 [node name="PlayerCheck" type="CheckBox" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor/EntityProps/Player" unique_id=652551015]
+layout_mode = 2
+
+[node name="Target" type="HBoxContainer" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor/EntityProps" unique_id=1344368686]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor/EntityProps/Target" unique_id=2146060635]
+layout_mode = 2
+text = "Target:"
+
+[node name="TargetCheck" type="CheckBox" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor/EntityProps/Target" unique_id=1303142497]
+layout_mode = 2
+
+[node name="Disabled" type="HBoxContainer" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor/EntityProps" unique_id=447068535]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor/EntityProps/Disabled" unique_id=133998647]
+layout_mode = 2
+text = "Disabled:"
+
+[node name="DisabledCheck" type="CheckBox" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor/EntityProps/Disabled" unique_id=269479016]
 layout_mode = 2
 
 [node name="OverlayProps" type="VBoxContainer" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor" unique_id=833686570 node_paths=PackedStringArray("_map", "_rotationSpinner")]

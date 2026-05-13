@@ -17,6 +17,8 @@ public partial class EntityProps : Props
 	[Export] private SpinBox _azimuthSpinner;
 	[Export] private SpinBox _integritySpinner;
 	[Export] private CheckBox _playerCheck;
+	[Export] private CheckBox _targetCheck;
+	[Export] private CheckBox _disabledCheck;
 	private Entity _entity = null;
 	
 	public override void _Ready()
@@ -39,6 +41,20 @@ public partial class EntityProps : Props
 			if (_entity != null)
 			{
 				_entity.Player = on;
+			}
+		};
+		
+		_targetCheck.Toggled += (bool on) => {
+			if (_entity != null)
+			{
+				_entity.Target = on;
+			}
+		};
+		
+		_disabledCheck.Toggled += (bool on) => {
+			if (_entity != null)
+			{
+				_entity.Disabled = on;
 			}
 		};
 	}
