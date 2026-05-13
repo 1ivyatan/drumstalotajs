@@ -14,7 +14,9 @@
 [ext_resource type="Script" uid="uid://btef5gw2dfffc" path="res://Source/Resources/Mapping/Entities/WallPropertiesData.cs" id="7_ve6d6"]
 [ext_resource type="Script" uid="uid://dwre4lssbikfj" path="res://Source/Resources/Mapping/Entities/StructurePropertiesData.cs" id="11_wb4r7"]
 [ext_resource type="PackedScene" uid="uid://dq41d7suwf688" path="res://Scenes/Mapping/Entities/Structure.tscn" id="12_ve6d6"]
+[ext_resource type="Script" uid="uid://cqwwdwx080x60" path="res://Source/Resources/Mapping/Entities/DevicePropertiesData.cs" id="13_iv8rp"]
 [ext_resource type="PackedScene" uid="uid://d08de6s1gh1v7" path="res://Scenes/Mapping/Entities/Wall.tscn" id="13_ve6d6"]
+[ext_resource type="PackedScene" uid="uid://blnp1df0jakre" path="res://Scenes/Mapping/Entities/Device.tscn" id="14_04b6o"]
 [ext_resource type="Script" uid="uid://cp6mf7hu5xvce" path="res://Source/Mapping/Projectiles/ProjectileLayer.cs" id="14_bc3k3"]
 [ext_resource type="Script" uid="uid://ciiiu3aq8tm4l" path="res://Source/Mapping/Selection/Selector.cs" id="15_0ild7"]
 [ext_resource type="Texture2D" uid="uid://b12sdf1d12it1" path="res://Assets/Textures/entities.png" id="15_54hn3"]
@@ -837,6 +839,358 @@ Thumbnail = SubResource("AtlasTexture_dlarq")
 Scene = ExtResource("12_ve6d6")
 metadata/_custom_type_script = "uid://7qxwheiwlsgl"
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_h63tt"]
+atlas = ExtResource("15_54hn3")
+region = Rect2(2, 171, 30, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6wiys"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g74wd"]
+atlas = ExtResource("15_54hn3")
+region = Rect2(292, 163, 22, 25)
+
+[sub_resource type="Resource" id="Resource_qimbd"]
+script = ExtResource("13_iv8rp")
+DeviceBody = SubResource("AtlasTexture_6wiys")
+DeviceHead = SubResource("AtlasTexture_g74wd")
+DestroyedDeviceBody = SubResource("AtlasTexture_h63tt")
+MinAngle = 40.0
+MaxAngle = 85.0
+TraverseRadius = 40.0
+MuzzleVelocity = 168.0
+Shells = 30
+ResupplyTurns = 4
+DelayBetweenFires = 3.0
+Caliber = 60.0
+ExplosiveFill = 0.6
+TotalWeight = 1.3599999999999999
+DragCoefficient = 0.65
+Height = 1.0
+Toughness = 0.009999999999999787
+metadata/_custom_type_script = "uid://cqwwdwx080x60"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fqpyd"]
+atlas = ExtResource("15_54hn3")
+region = Rect2(292, 163, 22, 25)
+
+[sub_resource type="Resource" id="Resource_elnrf"]
+script = ExtResource("7_awdyq")
+Type = 1
+Properties = SubResource("Resource_qimbd")
+Id = 28
+Name = "60mm ~19"
+Thumbnail = SubResource("AtlasTexture_fqpyd")
+Scene = ExtResource("14_04b6o")
+metadata/_custom_type_script = "uid://7qxwheiwlsgl"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o5vxm"]
+atlas = ExtResource("15_54hn3")
+region = Rect2(2, 169, 29, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o2t2a"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_crov1"]
+atlas = ExtResource("15_54hn3")
+region = Rect2(291, 194, 26, 29)
+
+[sub_resource type="Resource" id="Resource_7663r"]
+script = ExtResource("13_iv8rp")
+DeviceBody = SubResource("AtlasTexture_o2t2a")
+DeviceHead = SubResource("AtlasTexture_crov1")
+DestroyedDeviceBody = SubResource("AtlasTexture_o5vxm")
+MinAngle = 45.0
+MaxAngle = 89.0
+MuzzleVelocity = 174.0
+Shells = 30
+ResupplyTurns = 3
+MaxFiringPerTurn = 15
+ExplosiveFill = 0.6
+TotalWeight = 3.5
+DragCoefficient = 0.65
+Height = 1.15
+Toughness = 0.009999999999999787
+metadata/_custom_type_script = "uid://cqwwdwx080x60"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ac0s0"]
+atlas = ExtResource("15_54hn3")
+region = Rect2(291, 194, 26, 29)
+
+[sub_resource type="Resource" id="Resource_wocth"]
+script = ExtResource("7_awdyq")
+Type = 1
+Properties = SubResource("Resource_7663r")
+Id = 29
+Name = "81mm ~34"
+Thumbnail = SubResource("AtlasTexture_ac0s0")
+Scene = ExtResource("14_04b6o")
+metadata/_custom_type_script = "uid://7qxwheiwlsgl"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kiyy7"]
+atlas = ExtResource("15_54hn3")
+region = Rect2(2, 167, 28, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6s3u4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l116o"]
+atlas = ExtResource("15_54hn3")
+region = Rect2(132, 193, 24, 28)
+
+[sub_resource type="Resource" id="Resource_j34yc"]
+script = ExtResource("13_iv8rp")
+DeviceBody = SubResource("AtlasTexture_6s3u4")
+DeviceHead = SubResource("AtlasTexture_l116o")
+DestroyedDeviceBody = SubResource("AtlasTexture_kiyy7")
+MinAngle = 5.0
+MaxAngle = 75.0
+TraverseRadius = 5.0
+MuzzleVelocity = 600.0
+Shells = 20
+ResupplyTurns = 8
+MaxFiringPerTurn = 3
+DelayBetweenFires = 12.0
+Caliber = 105.0
+ExplosiveFill = 6.0
+TotalWeight = 15.0
+DragCoefficient = 0.55
+Height = 1.42
+Toughness = 0.15000000000000036
+metadata/_custom_type_script = "uid://cqwwdwx080x60"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_075g3"]
+atlas = ExtResource("15_54hn3")
+region = Rect2(132, 193, 24, 28)
+
+[sub_resource type="Resource" id="Resource_ltcfx"]
+script = ExtResource("7_awdyq")
+Type = 1
+Properties = SubResource("Resource_j34yc")
+Id = 30
+Name = "105mm ~ G7"
+Thumbnail = SubResource("AtlasTexture_075g3")
+Scene = ExtResource("14_04b6o")
+metadata/_custom_type_script = "uid://7qxwheiwlsgl"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pactd"]
+atlas = ExtResource("15_54hn3")
+region = Rect2(256, 169, 30, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1yc4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7dofr"]
+atlas = ExtResource("15_54hn3")
+region = Rect2(256, 163, 32, 50)
+
+[sub_resource type="Resource" id="Resource_cmlsp"]
+script = ExtResource("13_iv8rp")
+DeviceBody = SubResource("AtlasTexture_b1yc4")
+DeviceHead = SubResource("AtlasTexture_7dofr")
+DestroyedDeviceBody = SubResource("AtlasTexture_pactd")
+MinAngle = 5.0
+MaxAngle = 42.0
+TraverseRadius = 2.5
+MuzzleVelocity = 275.0
+Shells = 25
+ResupplyTurns = 7
+MaxFiringPerTurn = 3
+DelayBetweenFires = 10.2
+Caliber = 120.0
+ExplosiveFill = 6.0
+TotalWeight = 20.0
+DragCoefficient = 0.6
+Height = 1.5
+Toughness = 0.17999999999999972
+metadata/_custom_type_script = "uid://cqwwdwx080x60"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i7155"]
+atlas = ExtResource("15_54hn3")
+region = Rect2(256, 163, 32, 50)
+
+[sub_resource type="Resource" id="Resource_8racj"]
+script = ExtResource("7_awdyq")
+Type = 1
+Properties = SubResource("Resource_cmlsp")
+Id = 31
+Name = "120mm ~ 1905"
+Thumbnail = SubResource("AtlasTexture_i7155")
+Scene = ExtResource("14_04b6o")
+metadata/_custom_type_script = "uid://7qxwheiwlsgl"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_380ny"]
+atlas = ExtResource("15_54hn3")
+region = Rect2(160, 161, 32, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7teux"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_flfds"]
+atlas = ExtResource("15_54hn3")
+region = Rect2(160, 161, 32, 50)
+
+[sub_resource type="Resource" id="Resource_gttav"]
+script = ExtResource("13_iv8rp")
+DeviceBody = SubResource("AtlasTexture_7teux")
+DeviceHead = SubResource("AtlasTexture_flfds")
+DestroyedDeviceBody = SubResource("AtlasTexture_380ny")
+MinAngle = 5.0
+MaxAngle = 70.0
+TraverseRadius = 40.0
+MuzzleVelocity = 655.0
+Shells = 15
+MaxFiringPerTurn = 2
+DelayBetweenFires = 20.0
+Caliber = 155.0
+ExplosiveFill = 7.0
+TotalWeight = 43.0
+DragCoefficient = 0.7
+Height = 4.0
+Toughness = 0.34999999999999964
+metadata/_custom_type_script = "uid://cqwwdwx080x60"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s3gkw"]
+atlas = ExtResource("15_54hn3")
+region = Rect2(160, 161, 32, 50)
+
+[sub_resource type="Resource" id="Resource_n3uws"]
+script = ExtResource("7_awdyq")
+Type = 1
+Properties = SubResource("Resource_gttav")
+Id = 32
+Name = "155mm ~ 83"
+Thumbnail = SubResource("AtlasTexture_s3gkw")
+Scene = ExtResource("14_04b6o")
+metadata/_custom_type_script = "uid://7qxwheiwlsgl"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hg6ce"]
+atlas = ExtResource("15_54hn3")
+region = Rect2(224, 161, 32, 51)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4p7di"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6tvxw"]
+atlas = ExtResource("15_54hn3")
+region = Rect2(224, 161, 32, 51)
+
+[sub_resource type="Resource" id="Resource_0yeuk"]
+script = ExtResource("13_iv8rp")
+DeviceBody = SubResource("AtlasTexture_4p7di")
+DeviceHead = SubResource("AtlasTexture_6tvxw")
+DestroyedDeviceBody = SubResource("AtlasTexture_hg6ce")
+MinAngle = 4.5
+MaxAngle = 70.0
+TraverseRadius = 25.0
+MuzzleVelocity = 700.0
+Shells = 12
+MaxFiringPerTurn = 2
+DelayBetweenFires = 30.0
+Caliber = 155.0
+ExplosiveFill = 7.0
+TotalWeight = 43.0
+DragCoefficient = 0.65
+Height = 4.0
+Toughness = 0.3200000000000003
+metadata/_custom_type_script = "uid://cqwwdwx080x60"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fqxgq"]
+atlas = ExtResource("15_54hn3")
+region = Rect2(225, 161, 30, 51)
+
+[sub_resource type="Resource" id="Resource_8sob2"]
+script = ExtResource("7_awdyq")
+Type = 1
+Properties = SubResource("Resource_0yeuk")
+Id = 33
+Name = "155mm ~ 70"
+Thumbnail = SubResource("AtlasTexture_fqxgq")
+Scene = ExtResource("14_04b6o")
+metadata/_custom_type_script = "uid://7qxwheiwlsgl"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hrxa5"]
+atlas = ExtResource("15_54hn3")
+region = Rect2(192, 161, 32, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ej4kq"]
+atlas = ExtResource("15_54hn3")
+region = Rect2(192, 161, 32, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_updx0"]
+atlas = ExtResource("15_54hn3")
+region = Rect2(103, 192, 16, 68)
+
+[sub_resource type="Resource" id="Resource_52fpk"]
+script = ExtResource("13_iv8rp")
+DeviceBody = SubResource("AtlasTexture_ej4kq")
+DeviceHead = SubResource("AtlasTexture_updx0")
+DestroyedDeviceBody = SubResource("AtlasTexture_hrxa5")
+DeviceHeadPosition = Vector2(0, 13.5)
+MinAngle = 2.0
+MaxAngle = 70.0
+TraverseRadius = 180.0
+MuzzleVelocity = 800.0
+Shells = 9
+ResupplyTurns = 15
+MaxFiringPerTurn = 2
+DelayBetweenFires = 30.0
+Height = 3.0
+Toughness = 0.5
+metadata/_custom_type_script = "uid://cqwwdwx080x60"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_byfsy"]
+atlas = ExtResource("15_54hn3")
+region = Rect2(33, 266, 31, 48)
+
+[sub_resource type="Resource" id="Resource_lkeuq"]
+script = ExtResource("7_awdyq")
+Type = 1
+Properties = SubResource("Resource_52fpk")
+Id = 34
+Name = "155mm ~ Crab"
+Thumbnail = SubResource("AtlasTexture_byfsy")
+Scene = ExtResource("14_04b6o")
+metadata/_custom_type_script = "uid://7qxwheiwlsgl"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oubdd"]
+atlas = ExtResource("15_54hn3")
+region = Rect2(64, 193, 32, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ovqr4"]
+atlas = ExtResource("15_54hn3")
+region = Rect2(64, 195, 32, 51)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_15sun"]
+atlas = ExtResource("15_54hn3")
+region = Rect2(103, 192, 16, 69)
+
+[sub_resource type="Resource" id="Resource_1d368"]
+script = ExtResource("13_iv8rp")
+DeviceBody = SubResource("AtlasTexture_ovqr4")
+DeviceHead = SubResource("AtlasTexture_15sun")
+DestroyedDeviceBody = SubResource("AtlasTexture_oubdd")
+DeviceHeadPosition = Vector2(0, 13.5)
+MinAngle = 5.0
+MaxAngle = 78.0
+TraverseRadius = 180.0
+MuzzleVelocity = 900.0
+Shells = 32
+ResupplyTurns = 17
+MaxFiringPerTurn = 10
+DelayBetweenFires = 10.0
+Height = 3.0
+Toughness = 0.5999999999999996
+metadata/_custom_type_script = "uid://cqwwdwx080x60"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2852l"]
+atlas = ExtResource("15_54hn3")
+region = Rect2(0, 267, 32, 47)
+
+[sub_resource type="Resource" id="Resource_57vv3"]
+script = ExtResource("7_awdyq")
+Type = 1
+Properties = SubResource("Resource_1d368")
+Id = 35
+Name = "155mm ~ Pzh2K"
+Thumbnail = SubResource("AtlasTexture_2852l")
+Scene = ExtResource("14_04b6o")
+metadata/_custom_type_script = "uid://7qxwheiwlsgl"
+
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_ajbla"]
 
 [sub_resource type="TileSet" id="TileSet_ajbla"]
@@ -917,7 +1271,7 @@ ExtraColors = PackedColorArray(0, 0, 0, 1, 0.23036289, 0.23036289, 0.23036289, 1
 [node name="Entities" type="TileMapLayer" parent="." unique_id=56824911]
 tile_set = SubResource("TileSet_awdyq")
 script = ExtResource("6_56oc8")
-Atlas = Array[Object]([SubResource("Resource_lsqgu"), SubResource("Resource_xobjh"), SubResource("Resource_n6ld1"), SubResource("Resource_ve6d6"), SubResource("Resource_54hn3"), SubResource("Resource_ash1f"), SubResource("Resource_boa3v"), SubResource("Resource_4desp"), SubResource("Resource_x426y"), SubResource("Resource_h3exf"), SubResource("Resource_c7lfe"), SubResource("Resource_8oobq"), SubResource("Resource_mam6d"), SubResource("Resource_m6bk1"), SubResource("Resource_rftuu"), SubResource("Resource_qta14"), SubResource("Resource_vq2tq"), SubResource("Resource_kkhwr")])
+Atlas = Array[Object]([SubResource("Resource_lsqgu"), SubResource("Resource_xobjh"), SubResource("Resource_n6ld1"), SubResource("Resource_ve6d6"), SubResource("Resource_54hn3"), SubResource("Resource_ash1f"), SubResource("Resource_boa3v"), SubResource("Resource_4desp"), SubResource("Resource_x426y"), SubResource("Resource_h3exf"), SubResource("Resource_c7lfe"), SubResource("Resource_8oobq"), SubResource("Resource_mam6d"), SubResource("Resource_m6bk1"), SubResource("Resource_rftuu"), SubResource("Resource_qta14"), SubResource("Resource_vq2tq"), SubResource("Resource_kkhwr"), SubResource("Resource_elnrf"), SubResource("Resource_wocth"), SubResource("Resource_ltcfx"), SubResource("Resource_8racj"), SubResource("Resource_n3uws"), SubResource("Resource_8sob2"), SubResource("Resource_lkeuq"), SubResource("Resource_57vv3")])
 
 [node name="Overlays" type="TileMapLayer" parent="." unique_id=201889829]
 tile_set = SubResource("TileSet_ajbla")

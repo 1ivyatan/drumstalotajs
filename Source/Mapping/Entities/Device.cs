@@ -21,6 +21,7 @@ public partial class Device : Entity
 			{
 				_body.Texture = deviceProps.DeviceBody;
 				_head.Texture = deviceProps.DeviceHead;
+				_head.Position = deviceProps.DeviceHeadPosition;
 			}
 		}
 	}
