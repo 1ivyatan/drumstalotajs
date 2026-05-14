@@ -23,6 +23,7 @@ public partial class BattleScene : Node2D
 
 	[Export] private PauseOverlay _pauseOverlay;
 	[Export] private Label _measureLabel;
+	[Export] private Label _positionLabel;
 
 	public bool Paused { get; private set; } = false;
 	private string _mapPath;
@@ -35,6 +36,13 @@ public partial class BattleScene : Node2D
 		_pauseOverlay.PressedExit += () => { Exit(); };
 		Map.Camera.ShiftTop((int)BattleTopnav.Size.Y);
 		StageManager.DevicePlacement();
+	}
+	
+	public override void _UnhandledInput(InputEvent @event)
+	{
+		var pos = Map.ViewportMouseToMap();
+		var newpos = new Vector2(pos.X, Math.Abs(pos.Y));
+		_positionLabel.Text = $"{newpos}";
 	}
 	
 	public void Exit()

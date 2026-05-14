@@ -13,6 +13,10 @@
 [ext_resource type="Texture2D" uid="uid://2io65q52gq16" path="res://Assets/Textures/overlay.png" id="8_cmwrv"]
 [ext_resource type="Texture2D" uid="uid://v2gkmg7yaoh5" path="res://Assets/Textures/controls.png" id="10_diuyf"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_8f5sm"]
+atlas = ExtResource("10_diuyf")
+region = Rect2(209, 1, 32, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_gibtw"]
 atlas = ExtResource("8_cmwrv")
 region = Rect2(110, 156, 32, 5)
@@ -33,7 +37,7 @@ region = Rect2(108, 34, 32, 32)
 atlas = ExtResource("10_diuyf")
 region = Rect2(174, 0, 32, 32)
 
-[node name="Battle" type="Node2D" unique_id=1007953308 node_paths=PackedStringArray("BattleTopnav", "Map", "ScoreManager", "StageManager", "Counters", "_pauseOverlay", "_measureLabel")]
+[node name="Battle" type="Node2D" unique_id=1007953308 node_paths=PackedStringArray("BattleTopnav", "Map", "ScoreManager", "StageManager", "Counters", "_pauseOverlay", "_measureLabel", "_positionLabel")]
 script = ExtResource("1_ael4v")
 BattleTopnav = NodePath("Overlay/Topnav")
 Map = NodePath("Map")
@@ -42,6 +46,7 @@ StageManager = NodePath("StageManager")
 Counters = NodePath("Overlay/Topnav/InfoContainer/Counters")
 _pauseOverlay = NodePath("Overlay/PauseOverlay")
 _measureLabel = NodePath("Overlay/Topnav/InfoContainer/MeasureContainer/MeasureText")
+_positionLabel = NodePath("Overlay/Topnav/InfoContainer/PositionContainer/PosText")
 
 [node name="Map" parent="." unique_id=1338299763 instance=ExtResource("2_dcr6b")]
 process_mode = 1
@@ -77,6 +82,18 @@ text = "  ||  "
 [node name="InfoContainer" type="HBoxContainer" parent="Overlay/Topnav" unique_id=1611135056]
 layout_mode = 2
 size_flags_horizontal = 8
+
+[node name="PositionContainer" type="VBoxContainer" parent="Overlay/Topnav/InfoContainer" unique_id=100180890]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Overlay/Topnav/InfoContainer/PositionContainer" unique_id=1544777778]
+layout_mode = 2
+texture = SubResource("AtlasTexture_8f5sm")
+stretch_mode = 3
+
+[node name="PosText" type="Label" parent="Overlay/Topnav/InfoContainer/PositionContainer" unique_id=24564550]
+layout_mode = 2
 
 [node name="MeasureContainer" type="VBoxContainer" parent="Overlay/Topnav/InfoContainer" unique_id=1017487334]
 layout_mode = 2
