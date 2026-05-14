@@ -256,7 +256,6 @@ Vector2i(40, -5): 0.0,
 Vector2i(43, -5): 0.0
 })
 DeviceProps = Array[ExtResource("2_3urfg")]([SubResource("Resource_3urfg"), SubResource("Resource_p4iym")])
-MinTotalDevices = 4
 MaxTotalDevices = 6
 TimeLimitSecs = 120.0
 GroundLayer = SubResource("Resource_khj2m")

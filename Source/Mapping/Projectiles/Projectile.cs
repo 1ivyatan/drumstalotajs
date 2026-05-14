@@ -106,7 +106,7 @@ public partial class Projectile : Node2D
 		_calculatedCasualityBlast = 9.0 * cubeRootw;
 		
 		/* frags */
-		double lethalFrag = 2.5 * Mathf.Pow(casingWeight * tntEquivalent, 1.0/3.0);//
+		double lethalFrag = 2.5 * Mathf.Pow(casingWeight * tntEquivalent, 1.0/3.0);
 		double casualityFrag = 5.0 * Mathf.Pow(casingWeight * tntEquivalent, 1.0/3.0);
 		_calculatedLethalRadius = Mathf.Max(_calculatedLethalBlast, lethalFrag);
 		_calculatedCasualityRadius = Mathf.Max(_calculatedCasualityBlast, casualityFrag);
@@ -156,7 +156,6 @@ public partial class Projectile : Node2D
 		query.CollideWithBodies = false;
 		query.Transform = GlobalTransform;
 		var results = spaceState.IntersectShape(query, 32);
-
 		if (results.Count > 0)
 		{
 			var entities = results
@@ -165,7 +164,6 @@ public partial class Projectile : Node2D
 				
 			foreach (var entity in entities)
 			{
-				//var distance = GlobalPosition.DistanceTo(entity.GlobalPosition);
 				var damage = CalculateDamage(entity);
 				entity.DecreaseIntegrity(damage);
 			}
@@ -255,10 +253,6 @@ public partial class Projectile : Node2D
 			else return 1.0;
 		}
 	}
-//	private double GetDistanceFalloff(double distance)
-	//{
-	//	return Mathf.Clamp(Mathf.Pow(distance / 2, -1.5), 0.01, 1);
-	//}
 	
 	private void Disappear()
 	{
