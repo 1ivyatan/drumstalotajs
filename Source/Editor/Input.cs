@@ -64,9 +64,11 @@ public partial class EditorScene : Node2D
 		if (_mouseMoving && (_mouseLeftPressed || _mouseRightPressed))
 		{
 			EditorTopnav.Visible = false;
+			InsertWindow.Visible = false;
 		} else
 		{
 			EditorTopnav.Visible = true;
+			InsertWindow.Visible = true;
 		}
 		
 		if (_mouseLeftPressed)
