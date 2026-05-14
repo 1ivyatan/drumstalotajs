@@ -29,6 +29,9 @@ public partial class DecorationProps : Props
 		_rotation90deg.Pressed += () => { RotateTile(90); };
 		_rotation180deg.Pressed += () => { RotateTile(180); };
 		_rotation270deg.Pressed += () => { RotateTile(270); };
+		ColorContainer.ClickedColor += (int id) => { 
+			ChangeTileSource(id);
+		};
 	}
 	
 	private async void ChangeTileSource(int id)
