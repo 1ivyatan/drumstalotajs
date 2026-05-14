@@ -55,9 +55,12 @@ public partial class Wall : Entity
 	
 	public override bool Disabled { get;
 		set {
+			if (value && field != value)
+			{
+				EmitSignal(SignalName.DisabledEntity);
+			}
 			field = value;
 			SetSprite(field);
-			EmitSignal(SignalName.DisabledEntity);
 		}
 	}
 }

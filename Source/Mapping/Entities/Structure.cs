@@ -53,6 +53,10 @@ public partial class Structure : Entity
 	
 	public override bool Disabled { get;
 		set {
+			if (value && field != value)
+			{
+				EmitSignal(SignalName.DisabledEntity);
+			}
 			field = value;
 			SetSprite(field);
 			_flag.SetFlag(Player, field);
@@ -63,7 +67,6 @@ public partial class Structure : Entity
 			{
 				_status.HideIcon();
 			}
-			EmitSignal(SignalName.DisabledEntity);
 		}
 	}
 	

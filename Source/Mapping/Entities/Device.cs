@@ -61,6 +61,11 @@ public partial class Device : Entity
 	
 	public override bool Disabled { get;
 		set {
+			if (value && field != value)
+			{
+				EmitSignal(SignalName.DisabledEntity);
+			}
+			
 			field = value;
 			if (field)
 			{
@@ -87,7 +92,6 @@ public partial class Device : Entity
 					_status.ResupplyIcon();
 				}
 			}
-			EmitSignal(SignalName.DisabledEntity);
 		}
 	}
 	

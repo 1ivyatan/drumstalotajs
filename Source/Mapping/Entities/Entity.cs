@@ -32,8 +32,11 @@ public partial class Entity : SceneTile
 		get;
 		set
 		{
+			if (value && field != value)
+			{
+				EmitSignal(SignalName.DisabledEntity);
+			}
 			field = value;
-			EmitSignal(SignalName.DisabledEntity);
 		}
 	} = false;
 	
