@@ -95,25 +95,21 @@ public partial class Projectile : Node2D
 	private void Detonate()
 	{
 		_flying = false;
-
+		
+		/* tnt */
 		double tntEquivalent = _props.ExplosiveFill * 1.33;
 		double casingWeight =  _props.TotalWeight - _props.ExplosiveFill;
-		double cubeRootw = Mathf.Pow(tntEquivalent, 1/3);
 		
 		/* blast */
+		double cubeRootw = Mathf.Pow(tntEquivalent, 1.0/3.0);
 		_calculatedLethalBlast = 4.0 * cubeRootw;
 		_calculatedCasualityBlast = 9.0 * cubeRootw;
 		
 		/* frags */
-		double lethalFrag = 2.5 * Mathf.Pow(casingWeight * tntEquivalent, 1/3);
-		double casualityFrag = 5.0 * Mathf.Pow(casingWeight * tntEquivalent, 1/3);
-		
+		double lethalFrag = 2.5 * Mathf.Pow(casingWeight * tntEquivalent, 1.0/3.0);//
+		double casualityFrag = 5.0 * Mathf.Pow(casingWeight * tntEquivalent, 1.0/3.0);
 		_calculatedLethalRadius = Mathf.Max(_calculatedLethalBlast, lethalFrag);
 		_calculatedCasualityRadius = Mathf.Max(_calculatedCasualityBlast, casualityFrag);
-		
-	//	GD.Print(_calculatedLethalRadius);
-	//	GD.Print(_calculatedCasualityRadius);
-		
 		ApplyDamage();
 		AnimateAndDisappear();
 	}
@@ -146,15 +142,21 @@ public partial class Projectile : Node2D
 	
 	private void ApplyDamage()
 	{
+		/* to pixels */
+		double maxRadiusM = Math.Max(_calculatedCasualityBlast, _calculatedCasualityRadius);
+		double px = maxRadiusM / _map.CellCoefficient.X;
+		
+		/* space */
 		var spaceState = GetWorld2D().DirectSpaceState;
 		var query = new PhysicsShapeQueryParameters2D();
 		var shape = new CircleShape2D();
-		shape.Radius = (float)(_calculatedCasualityRadius / _map.CellCoefficient.X);
+		shape.Radius = (float)px;
 		query.Shape = shape;
 		query.CollideWithAreas = true;
+		query.CollideWithBodies = false;
 		query.Transform = GlobalTransform;
-		
 		var results = spaceState.IntersectShape(query, 32);
+
 		if (results.Count > 0)
 		{
 			var entities = results
@@ -163,45 +165,100 @@ public partial class Projectile : Node2D
 				
 			foreach (var entity in entities)
 			{
-				var distance = GlobalPosition.DistanceTo(entity.GlobalPosition);
-				var damage = CalculateDamageAtDistance(entity, distance);
+				//var distance = GlobalPosition.DistanceTo(entity.GlobalPosition);
+				var damage = CalculateDamage(entity);
 				entity.DecreaseIntegrity(damage);
 			}
 		}
+	}
+	
+	private double CalculateDamage(Entity entity)
+	{
+		/* props */
+		var tPos = entity.GlobalPosition;
+		double tAltitude = _cellHeight;
+		double toughness = 1.0 - entity.Properties.Toughness;
+		
+		/* distance & diffs */
+		double distancePx = GlobalPosition.DistanceTo(tPos);// / _map.CellCoefficient.X;
+		double altDiff = Math.Abs(tAltitude - Altitude);
+		double distance3d = Math.Sqrt(Math.Pow(distancePx, 2.0) + Math.Pow(altDiff, 2.0));
+		
+		/* damage */
+		double blastDmg = CalculateBlastDamage(distance3d, altDiff, tAltitude);
+		double fragDmg = CalculateFragDamage(distance3d, altDiff, tAltitude);
+		double rawDamage = Math.Max(blastDmg, fragDmg);
+		
+		return rawDamage * toughness;
+	}
+	
+	private double CalculateBlastDamage(double distance3d, double altDiff, double tAltitude)
+	{
+		if (distance3d > _calculatedCasualityBlast / _map.CellCoefficient.X) return 0.0;
+		double overpressure = CalculateOverpressure(distance3d);
+		double baseDamage = overpressure * 100.0;
+		double falloff = CalculateFalloff(distance3d);
+		double alt = CalculateAltitude(altDiff, tAltitude);
+		
+		return baseDamage * falloff * alt;
+	}
+	
+	private double CalculateFragDamage(double distance3d, double altDiff, double tAltitude)
+	{
+		if (distance3d > _calculatedCasualityRadius / _map.CellCoefficient.X) return 0.0;
+		double casingWeight =  _props.TotalWeight - _props.ExplosiveFill;
+		double baseDamage = (10.0 * casingWeight * _props.ExplosiveFill) / Math.Max(distance3d, 1.0);
+		double falloff = CalculateFalloff(distance3d);
+		double alt = CalculateAltitude(altDiff, tAltitude) * 0.8;
+		double frags = casingWeight / 5.0;
+		return baseDamage * falloff * alt * frags;
 	}
 	
 	private double CalculateOverpressure(double distance)
 	{
 		var tntEquivalent = _props.ExplosiveFill * 1.33;
 		var s = distance / Math.Pow(tntEquivalent, 1/3);
-		if (s < .5) return 20;
-		else if (s < 1) return 10 / (Math.Pow(s, 2));
-		else if (s < 3) return 1.5 / (Math.Pow(s, 2));
-		else if (s < 10) return 0.4 / (Math.Pow(s, 2));
-  		return 0.1 / (Math.Pow(s, 2));
+		if (s < .5) return 20.0;
+		else if (s < 1.0) return 10.0 / (Math.Pow(s, 2.0));
+		else if (s < 3.0) return 1.5 / (Math.Pow(s, 2.0));
+		else if (s < 10.0) return 0.4 / (Math.Pow(s, 2.0));
+  		return 0.1 / (Math.Pow(s, 2.0));
 	}
 	
-	private double CalculateDamageAtDistance(Entity entity, double distance)
+	private double CalculateFalloff(double distance)
 	{
-		var pxDistance = distance * _map.CellCoefficient.X;
-		var shellAltitude = Altitude;
-		var targetAltitude = _cellHeight;
-		var altitudeDiff = targetAltitude - shellAltitude;
-		var trueDistance = Mathf.Sqrt(Mathf.Pow(pxDistance, 2) + Mathf.Pow(altitudeDiff, 2));
-		var baseDamage = (_props.ExplosiveFill * 10) / Mathf.Max(trueDistance, 1);
-		var distanceFallOff = GetDistanceFalloff(trueDistance);
-		var altitudeMod = 1.0;
-		if (altitudeDiff > 5) altitudeMod = Mathf.Max(0.3, 1 - (altitudeDiff / 50));
-		else if (altitudeDiff < -5) altitudeMod = Mathf.Min(1.3, 1 + (Mathf.Abs(altitudeDiff) / 100));
-		var materialMultiplier = 1 - entity.Properties.Toughness;
+		//return Mathf.Clamp(Mathf.Pow(distance / 2, -1.5), 0.01, 1);
+		if (distance <= 2.0) return 1.0;
+		else if (distance <= 5.0) return .8;
+		else if (distance <= 10.0) return .5;
+		else if (distance <= 20.0) return .25;
+		else if (distance <= 30.0) return .1;
+		else if (distance <= 50.0) return .05;
+		else return .02;
+	}
+	
+	private double CalculateAltitude(double altDiff, double tAltitude)
+	{
+		if (altDiff < 1.0) return 1.0;
 		
-		return baseDamage * distanceFallOff * altitudeMod * materialMultiplier;
+		if (tAltitude > altDiff)
+		{
+			if (altDiff > 20.0) return .3;
+			else if (altDiff > 10.0) return .5;
+			else if (altDiff > 5.0) return .7;
+			else return .9;
+		} else
+		{
+			if (altDiff > 20.0) return 1.3;
+			else if (altDiff > 10.0) return 1.2;
+			else if (altDiff > 5.0) return 1.1;
+			else return 1.0;
+		}
 	}
-	
-	private double GetDistanceFalloff(double distance)
-	{
-		return Mathf.Clamp(Mathf.Pow(distance / 2, -1.5), 0.01, 1);
-	}
+//	private double GetDistanceFalloff(double distance)
+	//{
+	//	return Mathf.Clamp(Mathf.Pow(distance / 2, -1.5), 0.01, 1);
+	//}
 	
 	private void Disappear()
 	{

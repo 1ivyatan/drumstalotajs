@@ -40,6 +40,10 @@ public partial class Entity : SceneTile
 	/* simplistic, inheritor will do this  in more sophisiscated ways */
 	public void DecreaseIntegrity(double amount)
 	{
-		Integrity -= amount;
+		double dmg = amount;
+		double intFactor = Integrity < 50.0 ? 1.0 + (50.0 - Integrity) / 100.0 : 1.0;
+		dmg *= intFactor;
+		Integrity -= dmg;
+	//	GD.Print(Integrity);
 	}
 }
