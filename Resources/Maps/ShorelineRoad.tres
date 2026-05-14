@@ -19,195 +19,201 @@ Tiles = SubResource("TileMapPattern_3urfg")
 
 [sub_resource type="Resource" id="Resource_5awdp"]
 script = ExtResource("4_3urfg")
-Player = true
-Id = 19
-Position = Vector2i(40, -6)
+Id = 10
+Position = Vector2i(42, -19)
 
 [sub_resource type="Resource" id="Resource_2afoq"]
 script = ExtResource("4_3urfg")
-Player = true
-Id = 19
-Position = Vector2i(42, -6)
+Id = 15
+Position = Vector2i(48, -19)
 
 [sub_resource type="Resource" id="Resource_qqjy1"]
 script = ExtResource("4_3urfg")
-Player = true
-Id = 19
-Position = Vector2i(41, -6)
+Id = 15
+Position = Vector2i(43, -19)
 
 [sub_resource type="Resource" id="Resource_nakwr"]
 script = ExtResource("4_3urfg")
-Player = true
-Id = 19
-Position = Vector2i(34, -5)
+Id = 15
+Position = Vector2i(44, -19)
 
 [sub_resource type="Resource" id="Resource_mulak"]
 script = ExtResource("4_3urfg")
-Player = true
-Id = 19
-Position = Vector2i(4, -16)
+Id = 15
+Position = Vector2i(45, -19)
 
 [sub_resource type="Resource" id="Resource_5mehv"]
 script = ExtResource("4_3urfg")
-Player = true
-Id = 19
-Position = Vector2i(5, -16)
+Id = 15
+Position = Vector2i(46, -19)
 
 [sub_resource type="Resource" id="Resource_vf4j6"]
 script = ExtResource("4_3urfg")
-Player = true
-Id = 19
-Position = Vector2i(3, -16)
+Id = 15
+Position = Vector2i(47, -19)
 
 [sub_resource type="Resource" id="Resource_jan60"]
 script = ExtResource("4_3urfg")
-Player = true
-Id = 19
-Position = Vector2i(11, -11)
+Disabled = true
+Id = 22
+Position = Vector2i(43, -23)
 
 [sub_resource type="Resource" id="Resource_f4s4i"]
 script = ExtResource("4_3urfg")
-Player = true
-Id = 19
-Position = Vector2i(10, -11)
+Disabled = true
+Id = 22
+Position = Vector2i(44, -23)
 
 [sub_resource type="Resource" id="Resource_2ror8"]
 script = ExtResource("4_3urfg")
-Player = true
-Id = 19
-Position = Vector2i(19, -8)
+Id = 22
+Position = Vector2i(45, -23)
 
 [sub_resource type="Resource" id="Resource_t8mld"]
 script = ExtResource("4_3urfg")
-Player = true
-Id = 19
-Position = Vector2i(20, -8)
+Id = 22
+Position = Vector2i(26, -23)
 
 [sub_resource type="Resource" id="Resource_asu8r"]
+script = ExtResource("4_3urfg")
+Id = 22
+Position = Vector2i(27, -23)
+
+[sub_resource type="Resource" id="Resource_7u4cc"]
+script = ExtResource("4_3urfg")
+Id = 22
+Position = Vector2i(28, -23)
+
+[sub_resource type="Resource" id="Resource_njcxs"]
+script = ExtResource("4_3urfg")
+Disabled = true
+Id = 10
+Position = Vector2i(21, -21)
+
+[sub_resource type="Resource" id="Resource_3q7mv"]
+script = ExtResource("4_3urfg")
+Id = 10
+Position = Vector2i(20, -21)
+
+[sub_resource type="Resource" id="Resource_eip6h"]
+script = ExtResource("4_3urfg")
+Id = 15
+Position = Vector2i(23, -20)
+
+[sub_resource type="Resource" id="Resource_cos6i"]
+script = ExtResource("4_3urfg")
+Id = 15
+Position = Vector2i(22, -20)
+
+[sub_resource type="Resource" id="Resource_arh2j"]
+script = ExtResource("4_3urfg")
+Id = 15
+Position = Vector2i(21, -20)
+
+[sub_resource type="Resource" id="Resource_2tt4l"]
+script = ExtResource("4_3urfg")
+Id = 15
+Position = Vector2i(33, -19)
+
+[sub_resource type="Resource" id="Resource_xxgy5"]
+script = ExtResource("4_3urfg")
+Id = 16
+Position = Vector2i(34, -19)
+
+[sub_resource type="Resource" id="Resource_2yjx7"]
+script = ExtResource("4_3urfg")
+Target = true
+Id = 21
+Position = Vector2i(15, -21)
+
+[sub_resource type="Resource" id="Resource_5j8nk"]
+script = ExtResource("4_3urfg")
+Id = 20
+Position = Vector2i(32, -20)
+
+[sub_resource type="Resource" id="Resource_elnmn"]
+script = ExtResource("4_3urfg")
+Target = true
+Id = 21
+Position = Vector2i(37, -20)
+
+[sub_resource type="Resource" id="Resource_17jqu"]
+script = ExtResource("4_3urfg")
+Target = true
+Id = 21
+Position = Vector2i(35, -20)
+
+[sub_resource type="Resource" id="Resource_nsucg"]
 script = ExtResource("4_3urfg")
 Target = true
 Id = 23
 Position = Vector2i(33, -20)
 
-[sub_resource type="Resource" id="Resource_7u4cc"]
-script = ExtResource("4_3urfg")
-Id = 21
-Position = Vector2i(35, -20)
-
-[sub_resource type="Resource" id="Resource_njcxs"]
-script = ExtResource("4_3urfg")
-Id = 21
-Position = Vector2i(37, -20)
-
-[sub_resource type="Resource" id="Resource_3q7mv"]
-script = ExtResource("4_3urfg")
-Id = 20
-Position = Vector2i(32, -20)
-
-[sub_resource type="Resource" id="Resource_eip6h"]
-script = ExtResource("4_3urfg")
-Id = 21
-Position = Vector2i(15, -21)
-
-[sub_resource type="Resource" id="Resource_cos6i"]
-script = ExtResource("4_3urfg")
-Id = 16
-Position = Vector2i(34, -19)
-
-[sub_resource type="Resource" id="Resource_arh2j"]
-script = ExtResource("4_3urfg")
-Id = 15
-Position = Vector2i(33, -19)
-
-[sub_resource type="Resource" id="Resource_2tt4l"]
-script = ExtResource("4_3urfg")
-Id = 15
-Position = Vector2i(21, -20)
-
-[sub_resource type="Resource" id="Resource_xxgy5"]
-script = ExtResource("4_3urfg")
-Id = 15
-Position = Vector2i(22, -20)
-
-[sub_resource type="Resource" id="Resource_2yjx7"]
-script = ExtResource("4_3urfg")
-Id = 15
-Position = Vector2i(23, -20)
-
-[sub_resource type="Resource" id="Resource_5j8nk"]
-script = ExtResource("4_3urfg")
-Id = 10
-Position = Vector2i(20, -21)
-
-[sub_resource type="Resource" id="Resource_elnmn"]
-script = ExtResource("4_3urfg")
-Id = 10
-Position = Vector2i(21, -21)
-
-[sub_resource type="Resource" id="Resource_17jqu"]
-script = ExtResource("4_3urfg")
-Id = 22
-Position = Vector2i(28, -23)
-
-[sub_resource type="Resource" id="Resource_nsucg"]
-script = ExtResource("4_3urfg")
-Id = 22
-Position = Vector2i(27, -23)
-
 [sub_resource type="Resource" id="Resource_v66yx"]
 script = ExtResource("4_3urfg")
-Id = 22
-Position = Vector2i(26, -23)
+Player = true
+Id = 19
+Position = Vector2i(20, -8)
 
 [sub_resource type="Resource" id="Resource_1dtdd"]
 script = ExtResource("4_3urfg")
-Id = 22
-Position = Vector2i(45, -23)
+Player = true
+Id = 19
+Position = Vector2i(19, -8)
 
 [sub_resource type="Resource" id="Resource_67qr3"]
 script = ExtResource("4_3urfg")
-Id = 22
-Position = Vector2i(44, -23)
+Player = true
+Id = 19
+Position = Vector2i(10, -11)
 
 [sub_resource type="Resource" id="Resource_y8xrs"]
 script = ExtResource("4_3urfg")
-Id = 22
-Position = Vector2i(43, -23)
+Player = true
+Id = 19
+Position = Vector2i(11, -11)
 
 [sub_resource type="Resource" id="Resource_ipwdr"]
 script = ExtResource("4_3urfg")
-Id = 15
-Position = Vector2i(47, -19)
+Player = true
+Id = 19
+Position = Vector2i(3, -16)
 
 [sub_resource type="Resource" id="Resource_mjb5e"]
 script = ExtResource("4_3urfg")
-Id = 15
-Position = Vector2i(46, -19)
+Player = true
+Id = 19
+Position = Vector2i(5, -16)
 
 [sub_resource type="Resource" id="Resource_svy73"]
 script = ExtResource("4_3urfg")
-Id = 15
-Position = Vector2i(45, -19)
+Player = true
+Id = 19
+Position = Vector2i(4, -16)
 
 [sub_resource type="Resource" id="Resource_qkw2r"]
 script = ExtResource("4_3urfg")
-Id = 15
-Position = Vector2i(44, -19)
+Player = true
+Id = 19
+Position = Vector2i(34, -5)
 
 [sub_resource type="Resource" id="Resource_iuc21"]
 script = ExtResource("4_3urfg")
-Id = 15
-Position = Vector2i(43, -19)
+Player = true
+Id = 19
+Position = Vector2i(41, -6)
 
 [sub_resource type="Resource" id="Resource_rey4b"]
 script = ExtResource("4_3urfg")
-Id = 15
-Position = Vector2i(48, -19)
+Player = true
+Id = 19
+Position = Vector2i(42, -6)
 
 [sub_resource type="Resource" id="Resource_alifr"]
 script = ExtResource("4_3urfg")
-Id = 10
-Position = Vector2i(42, -19)
+Player = true
+Id = 19
+Position = Vector2i(40, -6)
 
 [sub_resource type="Resource" id="Resource_0eles"]
 script = ExtResource("4_5awdp")
