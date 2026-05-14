@@ -8,6 +8,7 @@ namespace Drumstalotajs.Mapping.Entities;
 
 public partial class Entity : SceneTile
 {
+	[Signal] public delegate void DisabledEntityEventHandler();
 	[Export] public virtual EntityPropertiesData Properties { get; set; }
 	
 	public virtual double Azimuth { get;
@@ -27,7 +28,14 @@ public partial class Entity : SceneTile
 		set;
 	} = false;
 	public virtual bool Target { get; set; } = false;
-	public virtual bool Disabled { get; set; } = false;
+	public virtual bool Disabled { 
+		get;
+		set
+		{
+			field = value;
+			EmitSignal(SignalName.DisabledEntity);
+		}
+	} = false;
 	
 	/* simplistic, inheritor will do this  in more sophisiscated ways */
 	public void DecreaseIntegrity(double amount)

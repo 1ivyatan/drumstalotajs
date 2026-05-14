@@ -2,15 +2,21 @@
 
 [ext_resource type="Script" uid="uid://bh8h8p88je745" path="res://Source/Mapping/Entities/Device.cs" id="1_wkidr"]
 [ext_resource type="PackedScene" uid="uid://cngthrfn8437u" path="res://Scenes/Mapping/Entities/Flag.tscn" id="3_xjn6u"]
+[ext_resource type="Texture2D" uid="uid://bq2uftd1bldx6" path="res://Assets/Textures/efects.png" id="4_by01y"]
 [ext_resource type="PackedScene" uid="uid://j8mrswni3rqe" path="res://Scenes/Mapping/Entities/Status.tscn" id="4_gmlo8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xpqcu"]
 size = Vector2(32, 32)
 
-[node name="Device" type="Area2D" unique_id=728909634 node_paths=PackedStringArray("_body", "_head", "_flag", "_status")]
+[sub_resource type="AtlasTexture" id="AtlasTexture_nlprr"]
+atlas = ExtResource("4_by01y")
+region = Rect2(4, 9, 22, 23)
+
+[node name="Device" type="Area2D" unique_id=728909634 node_paths=PackedStringArray("_body", "_head", "_smoke", "_flag", "_status")]
 script = ExtResource("1_wkidr")
 _body = NodePath("Body")
 _head = NodePath("Body/Head")
+_smoke = NodePath("Body/Head/Smoke")
 _flag = NodePath("Flag")
 _status = NodePath("Status")
 
@@ -20,6 +26,12 @@ shape = SubResource("RectangleShape2D_xpqcu")
 [node name="Body" type="Sprite2D" parent="." unique_id=1450484756]
 
 [node name="Head" type="Sprite2D" parent="Body" unique_id=1838086888]
+
+[node name="Smoke" type="Sprite2D" parent="Body/Head" unique_id=130628670]
+visible = false
+scale = Vector2(1.5, 1.5)
+texture = SubResource("AtlasTexture_nlprr")
+offset = Vector2(0, -17.5)
 
 [node name="Flag" parent="." unique_id=334692262 instance=ExtResource("3_xjn6u")]
 z_index = 3

@@ -63,6 +63,7 @@ public partial class Structure : Entity
 			{
 				_status.HideIcon();
 			}
+			EmitSignal(SignalName.DisabledEntity);
 		}
 	}
 	

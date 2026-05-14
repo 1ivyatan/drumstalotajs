@@ -10,6 +10,7 @@ public partial class Device : Entity
 {	
 	[Export] private Sprite2D _body;
 	[Export] private Sprite2D _head;
+	[Export] private Sprite2D _smoke;
 	[Export] private Flag _flag;
 	[Export] private Status _status;
 	
@@ -22,6 +23,7 @@ public partial class Device : Entity
 				_body.Texture = deviceProps.DeviceBody;
 				_head.Texture = deviceProps.DeviceHead;
 				_head.Position = deviceProps.DeviceHeadPosition;
+				_smoke.Offset = new Vector2(0, -22.5f);
 			}
 		}
 	}
@@ -63,13 +65,19 @@ public partial class Device : Entity
 			if (field)
 			{
 				_head.Visible = false;
-				_body.Texture = ((DevicePropertiesData)Properties).DestroyedDeviceBody;
+				if ((Properties) != null)
+				{
+					_body.Texture = ((DevicePropertiesData)Properties).DestroyedDeviceBody;
+				}
 				_flag.SetFlag(Player, true);
 				_status.DisabledIcon();
 			} else
 			{
 				_head.Visible = true;
-				_body.Texture = ((DevicePropertiesData)Properties).DeviceBody;
+				if ((Properties) != null)
+				{
+					_body.Texture = ((DevicePropertiesData)Properties).DeviceBody;
+				}
 				_flag.SetFlag(Player, false);
 				if (Shells > 0)
 				{
@@ -79,6 +87,7 @@ public partial class Device : Entity
 					_status.ResupplyIcon();
 				}
 			}
+			EmitSignal(SignalName.DisabledEntity);
 		}
 	}
 	
@@ -91,11 +100,19 @@ public partial class Device : Entity
 	
 	public void ExpendShell()
 	{
-		Shells--;
-		if (Shells == 0)
+		if (!Disabled)
 		{
-			ResupplyTurns = ((DevicePropertiesData)Properties).ResupplyTurns;
-			_status.ResupplyIcon();
+			Shells--;
+			if (Shells == 0)
+			{
+				ResupplyTurns = ((DevicePropertiesData)Properties).ResupplyTurns;
+				_status.ResupplyIcon();
+			}
+			_smoke.Visible = true;
+			SceneTreeTimer smokeTimer = GetTree().CreateTimer(.125f);
+			smokeTimer.Connect(SceneTreeTimer.SignalName.Timeout , Callable.From(() => {
+				_smoke.Visible = false;
+			}));
 		}
 	}
 	

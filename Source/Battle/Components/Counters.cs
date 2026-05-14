@@ -29,6 +29,9 @@ public partial class Counters : Control
 		_scoreManager.TimeTicked += SetClock;
 		_scoreManager.TimeSet += SetClock;
 		SetClock(_map.CurrentLoadedMap.TimeLimitSecs);
+		_map.EntityLayer.DisabledEntity += (Entity entity) => {
+			DecTileCounters(entity);
+		};
 	}
 	
 	private void SetClock(double remaining)

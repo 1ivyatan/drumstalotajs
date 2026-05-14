@@ -23,8 +23,11 @@ public partial class Projectile : Node2D
 	private Vector2 _direction;
 	private double _angleRad;
 	
-	private double _calculatedLethalRadius;
-	private double _calculatedCasualityRadius;
+	private double _calculatedLethalBlast = 0;
+	private double _calculatedCasualityBlast = 0;
+	
+	private double _calculatedLethalRadius = 0;
+	private double _calculatedCasualityRadius = 0;
 	
 	private Vector2I _cellPosition;
 	private double _cellHeight;
@@ -32,8 +35,12 @@ public partial class Projectile : Node2D
 	
 	private Device _device;
 	private bool _flying = false;
+	private bool _exploded = false;
 	private DevicePropertiesData _props;
 	private Map _map;
+	
+	[Export] private Sprite2D _explosion;
+	[Export] private Sprite2D _shell;
 	
 	private double _minAlt = 0;
 	private double _peakAlt = 0;
@@ -94,21 +101,47 @@ public partial class Projectile : Node2D
 		double cubeRootw = Mathf.Pow(tntEquivalent, 1/3);
 		
 		/* blast */
-		double lethalBlast = 4.0 * cubeRootw;
-		double casualityBlast = 9.0 * cubeRootw;
+		_calculatedLethalBlast = 4.0 * cubeRootw;
+		_calculatedCasualityBlast = 9.0 * cubeRootw;
 		
 		/* frags */
 		double lethalFrag = 2.5 * Mathf.Pow(casingWeight * tntEquivalent, 1/3);
 		double casualityFrag = 5.0 * Mathf.Pow(casingWeight * tntEquivalent, 1/3);
 		
-		_calculatedLethalRadius = Mathf.Max(lethalBlast, lethalFrag);
-		_calculatedCasualityRadius = Mathf.Max(casualityBlast, casualityFrag);
+		_calculatedLethalRadius = Mathf.Max(_calculatedLethalBlast, lethalFrag);
+		_calculatedCasualityRadius = Mathf.Max(_calculatedCasualityBlast, casualityFrag);
 		
 	//	GD.Print(_calculatedLethalRadius);
 	//	GD.Print(_calculatedCasualityRadius);
 		
 		ApplyDamage();
-		Disappear();
+		AnimateAndDisappear();
+	}
+	
+	public override void _Draw()
+	{
+		if (_exploded)
+		{
+			DrawCircle(
+				Vector2.Zero, 
+				(float)_calculatedCasualityRadius / _map.CellCoefficient.X,
+				new Color(0.0f, 0.0f, 0.0f, 0.35f)
+			);
+		}
+	}
+	
+	private void AnimateAndDisappear()
+	{
+		double newSize = _calculatedLethalRadius / (_explosion.Texture.GetWidth() / 2);
+		_explosion.Scale = new Vector2((float)newSize, (float)newSize);
+		_explosion.Visible = true;
+		_shell.Visible = false;
+		_exploded = true;
+		QueueRedraw();
+		SceneTreeTimer delayToFire = GetTree().CreateTimer(.5f);
+		delayToFire.Connect(SceneTreeTimer.SignalName.Timeout , Callable.From(() => {
+			Disappear();
+		}));
 	}
 	
 	private void ApplyDamage()

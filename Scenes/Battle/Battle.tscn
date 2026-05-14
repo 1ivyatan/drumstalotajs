@@ -94,12 +94,13 @@ stretch_mode = 3
 
 [node name="PosText" type="Label" parent="Overlay/Topnav/InfoContainer/PositionContainer" unique_id=24564550]
 layout_mode = 2
+horizontal_alignment = 1
 
 [node name="MeasureContainer" type="VBoxContainer" parent="Overlay/Topnav/InfoContainer" unique_id=1017487334]
 layout_mode = 2
 
 [node name="MeasurePreview" type="TextureRect" parent="Overlay/Topnav/InfoContainer/MeasureContainer" unique_id=782017182]
-custom_minimum_size = Vector2(32, 3)
+custom_minimum_size = Vector2(75, 3)
 layout_mode = 2
 size_flags_vertical = 3
 texture = SubResource("AtlasTexture_gibtw")

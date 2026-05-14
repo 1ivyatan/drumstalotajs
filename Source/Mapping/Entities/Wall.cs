@@ -57,6 +57,7 @@ public partial class Wall : Entity
 		set {
 			field = value;
 			SetSprite(field);
+			EmitSignal(SignalName.DisabledEntity);
 		}
 	}
 }

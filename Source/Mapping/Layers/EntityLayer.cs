@@ -17,6 +17,7 @@ namespace Drumstalotajs.Mapping.Layers;
 public partial class EntityLayer : SceneLayer
 {
 	new protected List<EntityLayerTileData> _newTileQueue = new();
+	[Signal] public delegate void DisabledEntityEventHandler(Entity entity);
 	
 	public Array<int> GetEntityIdsByType(EntityType entityType)
 	{
@@ -84,6 +85,8 @@ public partial class EntityLayer : SceneLayer
 				{
 					entity.Properties = entityLayerAtlas.Properties;
 				}
+				
+				entity.DisabledEntity += () => { EmitSignal(SignalName.DisabledEntity, entity); };
 
 				if (!Instances.Contains(entity)) Instances.Add(entity);
 				_newTileQueue.Remove(atlas);
