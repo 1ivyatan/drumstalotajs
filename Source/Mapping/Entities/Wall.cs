@@ -21,7 +21,8 @@ public partial class Wall : Entity
 		set { 
 			field = Mathf.Clamp(value, 0, 100);
 			SetSprite();
-			if (field <= 0) Disable();
+			if (field <= 0) Disabled = true;
+			else Disabled = false;
 		}
 	} = 100;
 	
@@ -52,9 +53,10 @@ public partial class Wall : Entity
 		return (int)Math.Min(Math.Floor(t * (spriteCount - 1)), spriteCount - 1);
 	}
 	
-	public override void Disable()
-	{
-		Disabled = true;
-		SetSprite(true);
+	public override bool Disabled { get;
+		set {
+			field = value;
+			SetSprite(field);
+		}
 	}
 }

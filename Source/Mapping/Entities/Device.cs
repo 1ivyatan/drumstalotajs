@@ -57,13 +57,29 @@ public partial class Device : Entity
 		Resupply();
 	}
 	
-	public override void Disable()
-	{
-		Disabled = true;
-		_head.Visible = false;
-		_body.Texture = ((DevicePropertiesData)Properties).DestroyedDeviceBody;
-		_status.DisabledIcon();
-		_flag.SetFlag(Player, true);
+	public override bool Disabled { get;
+		set {
+			field = value;
+			if (field)
+			{
+				_head.Visible = false;
+				_body.Texture = ((DevicePropertiesData)Properties).DestroyedDeviceBody;
+				_flag.SetFlag(Player, true);
+				_status.DisabledIcon();
+			} else
+			{
+				_head.Visible = true;
+				_body.Texture = ((DevicePropertiesData)Properties).DeviceBody;
+				_flag.SetFlag(Player, false);
+				if (Shells > 0)
+				{
+					_status.HideIcon();
+				} else
+				{
+					_status.ResupplyIcon();
+				}
+			}
+		}
 	}
 	
 	private void Resupply()

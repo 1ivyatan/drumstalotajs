@@ -24,14 +24,15 @@ public partial class Structure : Entity
 		set { 
 			field = Mathf.Clamp(value, 0, 100);
 			SetSprite();
-			if (field <= 0) Disable();
+			if (field <= 0) Disabled = true;
+			else Disabled = false;
 		}
 	} = 100;
 	
 	public override bool Player { get;
 		set {
 			field = value;
-			_flag.SetFlag(field);
+			_flag.SetFlag(field, Disabled);
 		}
 	} = false;
 
@@ -40,17 +41,28 @@ public partial class Structure : Entity
 		set {
 			field = value;
 			_flag.Visible = field;
+			if (Disabled && field)
+			{
+				_status.DisabledIcon();
+			} else
+			{
+				_status.HideIcon();
+			}
 		}
 	} = false;
 	
-	public override void Disable()
-	{
-		Disabled = true;
-		SetSprite(true);
-		_flag.SetFlag(Player, true);
-		if (Target)
-		{
-			_status.DisabledIcon();
+	public override bool Disabled { get;
+		set {
+			field = value;
+			SetSprite(field);
+			_flag.SetFlag(Player, field);
+			if (Target && field)
+			{
+				_status.DisabledIcon();
+			} else
+			{
+				_status.HideIcon();
+			}
 		}
 	}
 	

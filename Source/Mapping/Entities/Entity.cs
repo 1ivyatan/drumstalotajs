@@ -19,18 +19,17 @@ public partial class Entity : SceneTile
 	public virtual double Integrity { get; 
 		set { 
 			field = Mathf.Clamp(value, 0, 100);
-			if (field <= 0) Disable();
+			if (field <= 0) Disabled = true;
 		}
 	} = 100;
 
-	public virtual bool Player { get; set; } = false;
+	public virtual bool Player { get; 
+		set {
+			field = value;
+		}
+	} = false;
 	public virtual bool Target { get; set; } = false;
 	public virtual bool Disabled { get; set; } = false;
-	
-	public virtual void Disable()
-	{
-		Disabled = true;
-	}
 	
 	/* simplistic, inheritor will do this  in more sophisiscated ways */
 	public void DecreaseIntegrity(double amount)

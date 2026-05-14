@@ -67,6 +67,8 @@ public partial class EntityProps : Props
 			_azimuthSpinner.Value = entity.Azimuth;
 			_integritySpinner.Value = entity.Integrity;
 			_playerCheck.ButtonPressed = entity.Player;
+			_targetCheck.ButtonPressed = entity.Disabled;
+			_disabledCheck.ButtonPressed = entity.Target;
 			Visible = true;
 		} else {
 			Close();

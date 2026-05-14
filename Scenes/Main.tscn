@@ -60,8 +60,11 @@ anchor_right = 0.5
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
-pivot_offset = Vector2(0, -60)
 size_flags_horizontal = 4
 size_flags_vertical = 8
 script = ExtResource("3_kln2b")
 ToastFadeTime = 5.0
+
+[node name="Control" type="Control" parent="Overlay/ToastManager" unique_id=559346345]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2

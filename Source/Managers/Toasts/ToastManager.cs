@@ -42,9 +42,11 @@ public partial class ToastManager : Control
 	{
 		for (int i = 0; i < GetChildCount(); i++)
 		{
-			Toast toast = GetChild(i) as Toast;
-			toast.QueueFree();
-			RemoveChild(toast);
+			if (GetChild(i) is Toast toast)
+			{
+				toast.QueueFree();
+				RemoveChild(toast);
+			}
 		}
 	}
 	
