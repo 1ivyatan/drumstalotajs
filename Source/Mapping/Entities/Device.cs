@@ -36,7 +36,7 @@ public partial class Device : Entity
 	public override bool Player { get;
 		set {
 			field = value;
-			_flag.SetFlag(field);
+			_flag.SetFlag(field, Disabled);
 		}
 	} = false;
 	

@@ -24,9 +24,7 @@ public partial class Entity : SceneTile
 	} = 100;
 
 	public virtual bool Player { get; 
-		set {
-			field = value;
-		}
+		set;
 	} = false;
 	public virtual bool Target { get; set; } = false;
 	public virtual bool Disabled { get; set; } = false;
