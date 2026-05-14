@@ -71,11 +71,22 @@ public partial class EditorScene : Node2D
 		
 		if (_mouseLeftPressed)
 		{
-			Map.AddTile(
-				InsertWindow.PickedTile.Layer,
-				InsertWindow.PickedTile.Atlas,
-				Map.ViewportMouseToMap()
-			);
+			if (InsertWindow.PickedTile.Layer is AtlasLayer atlasLayer)
+			{
+				Map.AddSceneTile(
+					(AtlasLayer)InsertWindow.PickedTile.Layer,
+					InsertWindow.PickedTile.Atlas,
+					Map.ViewportMouseToMap(),
+					EditWindow.PickedSourceId
+				);
+			} else
+			{
+				Map.AddTile(
+					InsertWindow.PickedTile.Layer,
+					InsertWindow.PickedTile.Atlas,
+					Map.ViewportMouseToMap()
+				);
+			}
 		} else if (_mouseRightPressed)
 		{
 			Map.RemoveTile(

@@ -12,11 +12,11 @@ namespace Drumstalotajs.Editor.Components;
 public partial class TileEditor : Control
 {
 	[Export] private Map _map;
-	[Export] private GroundProps GroundProps;
-	[Export] private DecorationProps DecorationProps;
-	[Export] private EntityProps EntityProps;
-	[Export] private OverlayProps OverlayProps;
-	
+	[Export] public GroundProps GroundProps;
+	[Export] public DecorationProps DecorationProps;
+	[Export] public EntityProps EntityProps;
+	[Export] public OverlayProps OverlayProps;
+
 	public void Load(Vector2I coords)
 	{
 		var tiles = _map.Flash(coords, true);

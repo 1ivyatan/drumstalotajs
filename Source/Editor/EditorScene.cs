@@ -8,6 +8,7 @@ using Drumstalotajs.Components.Modals;
 using Drumstalotajs.Mapping.Cameras;
 using Drumstalotajs.Mapping.Selection;
 using Drumstalotajs.Mapping.Layers;
+using Drumstalotajs.Components.Tiling;
 
 namespace Drumstalotajs.Editor;
 
@@ -57,6 +58,10 @@ public partial class EditorScene : Node2D
 		
 		InsertWindow.LoadTiles(layers);
 		InsertWindow.CloseRequested += () => { Mode = EditorMode.View; };
+		InsertWindow.SelectedTile += (PickedTileData pickedTile) => {
+			EditWindow.PickedSourceId = 0;
+		};
+		
 		EditWindow.CloseRequested += () => { Mode = EditorMode.View; };
 		
 		EditorTopnav.SelectedNew += () => { EditorSaveManager.AttemptNew(); };

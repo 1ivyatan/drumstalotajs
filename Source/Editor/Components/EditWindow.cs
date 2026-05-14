@@ -17,6 +17,16 @@ public partial class EditWindow : Window
 	[Export] private TileEditor _tileEditor;
 	public int PickedSourceId = 0;
 	
+	public override void _Ready()
+	{
+		_tileEditor.GroundProps.ColorContainer.ClickedColor += (int id) => {
+			PickedSourceId = id;
+		};
+		_tileEditor.DecorationProps.ColorContainer.ClickedColor += (int id) => {
+			PickedSourceId = id;
+		};
+	}
+	
 	public void GetTile(Vector2I coords)
 	{
 		if (_map.IsEmpty(coords))

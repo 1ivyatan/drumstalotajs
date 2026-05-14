@@ -172,13 +172,13 @@ DecorationProps = NodePath("DecorationProps")
 EntityProps = NodePath("EntityProps")
 OverlayProps = NodePath("OverlayProps")
 
-[node name="GroundProps" type="VBoxContainer" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor" unique_id=1014014307 node_paths=PackedStringArray("_map", "_baseRelHeight", "_addedHeightSpinner", "_colorContainer")]
+[node name="GroundProps" type="VBoxContainer" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor" unique_id=1014014307 node_paths=PackedStringArray("_map", "_baseRelHeight", "_addedHeightSpinner", "ColorContainer")]
 layout_mode = 2
 script = ExtResource("9_3kjjy")
 _map = NodePath("../../../../../../Map")
 _baseRelHeight = NodePath("Height/BaseRelHeight")
 _addedHeightSpinner = NodePath("Height/AddedSpinner")
-_colorContainer = NodePath("AtlasColorSwitcher")
+ColorContainer = NodePath("AtlasColorSwitcher")
 
 [node name="Title" type="HBoxContainer" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor/GroundProps" unique_id=910682608]
 layout_mode = 2
@@ -213,7 +213,7 @@ allow_lesser = true
 [node name="AtlasColorSwitcher" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor/GroundProps" unique_id=869518537 instance=ExtResource("11_wddii")]
 layout_mode = 2
 
-[node name="DecorationProps" type="VBoxContainer" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor" unique_id=760870386 node_paths=PackedStringArray("_map", "_rotation0deg", "_rotation90deg", "_rotation180deg", "_rotation270deg", "_colorContainer")]
+[node name="DecorationProps" type="VBoxContainer" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor" unique_id=760870386 node_paths=PackedStringArray("_map", "_rotation0deg", "_rotation90deg", "_rotation180deg", "_rotation270deg", "ColorContainer")]
 layout_mode = 2
 script = ExtResource("10_brbfr")
 _map = NodePath("../../../../../../Map")
@@ -221,7 +221,7 @@ _rotation0deg = NodePath("Rotation/0")
 _rotation90deg = NodePath("Rotation/90")
 _rotation180deg = NodePath("Rotation/180")
 _rotation270deg = NodePath("Rotation/270")
-_colorContainer = NodePath("AtlasColorSwitcher")
+ColorContainer = NodePath("AtlasColorSwitcher")
 
 [node name="Title" type="HBoxContainer" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor/DecorationProps" unique_id=453231855]
 layout_mode = 2

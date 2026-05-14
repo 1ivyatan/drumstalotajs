@@ -129,6 +129,33 @@ public partial class Map : Node2D
 		return GetLocalMousePosition();
 	}
 	
+	public void AddSceneTile(
+		AtlasLayer layer, 
+		string atlas,
+		Vector2I position,
+		int source = 0
+	)
+	{
+		bool added = false;
+		if (Types.Vector2I.ValidVector2I(atlas))
+		{
+			Vector2I coords = Types.Vector2I.StringToVector2I(atlas);
+				
+			if (!(layer is GroundLayer groundLayer) && IsEmpty(position))
+			{
+				return;
+			}
+					
+			layer.AddTile(position, coords, source);
+			added = true;
+		}
+		
+		if (added)
+		{
+			EmitEdit();
+		}
+	}
+	
 	public async void AddTile(
 		BaseLayer layer, 
 		string atlas,

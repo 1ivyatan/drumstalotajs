@@ -95,6 +95,12 @@ public partial class AtlasLayer : Layer<Vector2I, AtlasTile, AtlasLayerData>
 		EmitSignal(SignalName.ChangedLayer);
 	}
 	
+	public void AddTile(Vector2I position, Vector2I atlas, int sourceId)
+	{
+		SetCell(position, sourceId, atlas, 0);
+		EmitSignal(SignalName.ChangedLayer);
+	}
+	
 	public override void RemoveTile(Vector2I position)
 	{
 		EraseCell(position);

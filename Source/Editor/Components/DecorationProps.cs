@@ -12,22 +12,23 @@ namespace Drumstalotajs.Editor.Components;
 
 public partial class DecorationProps : Props
 {
+	[Signal] public delegate void ClickedColorEventHandler(int id);
+	
 	[Export] private Map _map;
 	[Export] private BaseButton _rotation0deg;
 	[Export] private BaseButton _rotation90deg;
 	[Export] private BaseButton _rotation180deg;
 	[Export] private BaseButton _rotation270deg;
-	[Export] private AtlasColorSwitcher _colorContainer;
+	[Export] public AtlasColorSwitcher ColorContainer;
 	private AtlasTile _decorationTile = null;
 	
 	public override void _Ready()
 	{
-		_colorContainer.Load(_map.DecorationLayer);
+		ColorContainer.Load(_map.DecorationLayer);
 		_rotation0deg.Pressed += () => { RotateTile(0); };
 		_rotation90deg.Pressed += () => { RotateTile(90); };
 		_rotation180deg.Pressed += () => { RotateTile(180); };
 		_rotation270deg.Pressed += () => { RotateTile(270); };
-		_colorContainer.ClickedColor += (int id) => { ChangeTileSource(id); };
 	}
 	
 	private async void ChangeTileSource(int id)

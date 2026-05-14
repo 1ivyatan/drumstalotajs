@@ -15,14 +15,16 @@ public partial class GroundProps : Props
 	[Export] private Map _map;
 	[Export] private Label _baseRelHeight;
 	[Export] private SpinBox _addedHeightSpinner;
-	[Export] private AtlasColorSwitcher _colorContainer;
+	[Export] public AtlasColorSwitcher ColorContainer;
 	
 	private GroundTile _groundTile = null;
 	
 	public override void _Ready()
 	{
-		_colorContainer.Load(_map.GroundLayer);
-		_colorContainer.ClickedColor += (int id) => { ChangeTileSource(id);};
+		ColorContainer.Load(_map.GroundLayer);
+		ColorContainer.ClickedColor += (int id) => { 
+			ChangeTileSource(id);
+		};
 		_addedHeightSpinner.ValueChanged += (double value) => {
 			if (_groundTile != null)
 			{
