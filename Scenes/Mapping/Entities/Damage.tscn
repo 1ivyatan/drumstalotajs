@@ -21,4 +21,4 @@ label_settings = SubResource("LabelSettings_d1s8o")
 
 [node name="Timer" type="Timer" parent="." unique_id=1692409839]
 process_callback = 0
-wait_time = 0.5
+wait_time = 0.75
