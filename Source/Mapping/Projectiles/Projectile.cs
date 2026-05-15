@@ -177,9 +177,7 @@ public partial class Projectile : Node2D
 		double distancePx = GlobalPosition.DistanceTo(tPos);
 		var cellPos = _map.EntityLayer.LocalToMap(entity.Position);
 		GroundTile groundTile = (GroundTile)_map.GroundLayer.Flash(cellPos)[0];
-		
 		if (distancePx > 0.5) return;
-		
 		double explosiveFactor = Math.Pow(_props.ExplosiveFill, 1.0/3.4);
 		double soilConstant = 0.3;
 		double depth = explosiveFactor * soilConstant;

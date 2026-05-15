@@ -935,6 +935,7 @@ DeviceBody = SubResource("AtlasTexture_6s3u4")
 DeviceHead = SubResource("AtlasTexture_l116o")
 DestroyedDeviceBody = SubResource("AtlasTexture_kiyy7")
 MinAngle = 30.0
+MaxAngle = 89.0
 TraverseRadius = 5.0
 MuzzleVelocity = 400.0
 Shells = 35
