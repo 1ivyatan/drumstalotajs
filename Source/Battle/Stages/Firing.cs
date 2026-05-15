@@ -122,12 +122,12 @@ public partial class Firing : Control
 	
 	private async void BatchFire(Device device)
 	{
+		int expendable = device.Shells < device.ShellsPerTurn
+			? device.Shells
+			: device.ShellsPerTurn;
+				
 		if (device.Shells > 0)
 		{
-			int expendable = device.Shells < device.ShellsPerTurn
-				? device.Shells
-				: device.ShellsPerTurn;
-			
 			for (int i = 0; i < expendable; i++)
 			{
 				var projectile = _map.ProjectileLayer.SpawnProjectile(device);
@@ -149,14 +149,18 @@ public partial class Firing : Control
 			{
 				device.CheckAndTryResupply();
 			}
-			LogTracker(device, device.ShellsPerTurn);
+			LogTracker(device, expendable);
 		}
 	}
 	
 	private void LogTracker(Device device, int inc)
 	{
+		int expendable = device.Shells < device.ShellsPerTurn
+			? device.Shells
+			: device.ShellsPerTurn;
+			
 		_fireTracker[device] += inc;
-		if (_fireTracker[device] == device.ShellsPerTurn)
+		if (_fireTracker[device] == expendable)
 		{
 			if (device.Player)
 			{
