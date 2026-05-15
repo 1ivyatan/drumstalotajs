@@ -21,6 +21,7 @@ public partial class DevicePlacement : Control
 {
 	[Export] private ItemList _deviceInventory;
 	[Export] private Button _toDeviceAdjustment;
+	[Export] private Label _deviceCountLabel;
 	private BattleScene _scene;
 	private Map _map;
 	
@@ -42,6 +43,7 @@ public partial class DevicePlacement : Control
 		.Where(a => a.Type == EntityType.Device)
 		.ToArray();
 		_scene.BattleTopnav.Title = "Device placement";
+		_deviceCountLabel.Text = $"Placed: 0; Limits: {_map.CurrentLoadedMap.MinTotalDevices}-{_map.CurrentLoadedMap.MaxTotalDevices}";
 		
 		foreach (var device in _map.CurrentLoadedMap.DeviceProps)
 		{
@@ -169,6 +171,7 @@ public partial class DevicePlacement : Control
 		{
 			total += count.Value;
 		}
+		_deviceCountLabel.Text = $"Placed: {total}; Limits: {_map.CurrentLoadedMap.MinTotalDevices}-{_map.CurrentLoadedMap.MaxTotalDevices}";
 		return (total >= _map.CurrentLoadedMap.MinTotalDevices && total <= _map.CurrentLoadedMap.MaxTotalDevices);
 	}
 }

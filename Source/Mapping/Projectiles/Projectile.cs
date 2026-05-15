@@ -166,8 +166,30 @@ public partial class Projectile : Node2D
 			{
 				var damage = CalculateDamage(entity);
 				entity.DecreaseIntegrity(damage);
+				//ApplyGroundDamage(entity);
 			}
 		}
+	}
+	
+	private void ApplyGroundDamage(Entity entity)
+	{
+		var tPos = entity.GlobalPosition;
+		double distancePx = GlobalPosition.DistanceTo(tPos);
+		var cellPos = _map.EntityLayer.LocalToMap(entity.Position);
+		GroundTile groundTile = (GroundTile)_map.GroundLayer.Flash(cellPos)[0];
+		
+		if (distancePx > 0.5) return;
+		
+		double explosiveFactor = Math.Pow(_props.ExplosiveFill, 1.0/3.4);
+		double soilConstant = 0.3;
+		double depth = explosiveFactor * soilConstant;
+		double veloFactor = VerticalVelocity / 100.0;
+		double kineticDepth = veloFactor * 0.1;
+		double total = depth + kineticDepth;
+		double calced = Mathf.Clamp(total, 0.1, 0.5);
+		double oldHeight = groundTile.GetAddedHeight();
+		double newHeight = oldHeight - calced;
+		groundTile.SetAddedHeight(newHeight);
 	}
 	
 	private double CalculateDamage(Entity entity)
@@ -178,7 +200,7 @@ public partial class Projectile : Node2D
 		double toughness = 1.0 - entity.Properties.Toughness;
 		
 		/* distance & diffs */
-		double distancePx = GlobalPosition.DistanceTo(tPos);// / _map.CellCoefficient.X;
+		double distancePx = GlobalPosition.DistanceTo(tPos);
 		double altDiff = Math.Abs(tAltitude - Altitude);
 		double distance3d = Math.Sqrt(Math.Pow(distancePx, 2.0) + Math.Pow(altDiff, 2.0));
 		

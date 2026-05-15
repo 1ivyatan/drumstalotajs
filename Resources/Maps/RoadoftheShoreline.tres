@@ -236,6 +236,7 @@ tile_data = PackedInt32Array(0, 65536, 1, 1, 65536, 2, 2, 65536, 2, 3, 0, 2, 4, 
 
 [sub_resource type="Resource" id="Resource_6l7gi"]
 script = ExtResource("6_s3nbt")
+BaseHeight = 5.0
 AddedHeights = {}
 Offset = Vector2i(0, -23)
 Tiles = SubResource("TileMapPattern_2mejr")
@@ -259,7 +260,7 @@ Vector2i(43, -5): 0.0
 DeviceProps = Array[ExtResource("2_0qp53")]([SubResource("Resource_3g11v"), SubResource("Resource_0qp53")])
 MinTotalDevices = 4
 MaxTotalDevices = 6
-TimeLimitSecs = 300.0
+TimeLimitSecs = 600.0
 GroundLayer = SubResource("Resource_6l7gi")
 DecorationLayer = SubResource("Resource_xnyru")
 EntityLayer = SubResource("Resource_ccsp5")
