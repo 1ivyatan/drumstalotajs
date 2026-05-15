@@ -58,8 +58,8 @@ public partial class EditorScene : Node2D
 		
 		InsertWindow.LoadTiles(layers);
 		InsertWindow.CloseRequested += () => { Mode = EditorMode.View; };
-		InsertWindow.SelectedTile += (PickedTileData pickedTile) => {
-			EditWindow.PickedSourceId = 0;
+		InsertWindow.SelectedTile += (PickedTileData pickedTile, bool diffLayer) => {
+			if (diffLayer) EditWindow.PickedSourceId = 0;
 		};
 		
 		EditWindow.CloseRequested += () => { Mode = EditorMode.View; };

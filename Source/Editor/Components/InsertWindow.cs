@@ -11,7 +11,7 @@ namespace Drumstalotajs.Editor.Components;
 
 public partial class InsertWindow : Window
 {
-	[Signal] public delegate void SelectedTileEventHandler(PickedTileData pickedTile);
+	[Signal] public delegate void SelectedTileEventHandler(PickedTileData pickedTile, bool differentLayer);
 	
 	[Export] private PackedScene _tileListScene;
 	[Export] private Container _container;
@@ -32,13 +32,15 @@ public partial class InsertWindow : Window
 	
 	private void SetSelectedTile(PickedTileData data)
 	{
+		var diffLayer = false;
 		if (PickedTile != null && data.Layer != PickedTile.Layer)
 		{
 			var oldPicker = _pickers.FirstOrDefault(p => p.Layer == PickedTile.Layer);
 			oldPicker.DeselectAll();
+			diffLayer = true;
 		}
 		PickedTile = data;
-		EmitSignal(SignalName.SelectedTile, PickedTile);
+		EmitSignal(SignalName.SelectedTile, PickedTile, diffLayer);
 	}
 	
 	public void LoadTiles(BaseLayer[] layers)
