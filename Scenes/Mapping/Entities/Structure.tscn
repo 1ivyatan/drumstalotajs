@@ -25,4 +25,4 @@ position = Vector2(16, -10)
 
 [node name="Status" parent="." unique_id=578538614 instance=ExtResource("3_q3ebp")]
 z_index = 3
-offset = Vector2(-22.5, -22.5)
+offset = Vector2(20, -22.5)
