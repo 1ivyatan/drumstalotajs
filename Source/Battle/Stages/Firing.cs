@@ -138,7 +138,13 @@ public partial class Firing : Control
 			}
 		} else
 		{
-			device.CheckAndTryResupply();
+			if (device.Player && _map.CurrentLoadedMap.PlayerResupply)
+			{
+				device.CheckAndTryResupply();
+			} else if (!device.Player && _map.CurrentLoadedMap.EnemyResupply)
+			{
+				device.CheckAndTryResupply();
+			}
 			LogTracker(device, device.ShellsPerTurn);
 		}
 	}
