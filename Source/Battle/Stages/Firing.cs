@@ -124,7 +124,11 @@ public partial class Firing : Control
 	{
 		if (device.Shells > 0)
 		{
-			for (int i = 0; i < device.ShellsPerTurn; i++)
+			int expendable = device.Shells < device.ShellsPerTurn
+				? device.Shells
+				: device.ShellsPerTurn;
+			
+			for (int i = 0; i < expendable; i++)
 			{
 				var projectile = _map.ProjectileLayer.SpawnProjectile(device);
 				projectile.Connect(Projectile.SignalName.Detonated, Callable.From(
