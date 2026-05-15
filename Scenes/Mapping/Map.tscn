@@ -789,7 +789,7 @@ region = Rect2(64, 160, 32, 32)
 script = ExtResource("11_wb4r7")
 IntegrityStages = Array[Texture2D]([SubResource("AtlasTexture_yme37"), SubResource("AtlasTexture_qkfqa"), SubResource("AtlasTexture_e5jwo")])
 Height = 0.3
-Toughness = 0.019999999999999574
+Toughness = 0.01999999999999957
 metadata/_custom_type_script = "uid://dwre4lssbikfj"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fx4o5"]
@@ -822,7 +822,7 @@ region = Rect2(96, 160, 32, 32)
 script = ExtResource("11_wb4r7")
 IntegrityStages = Array[Texture2D]([SubResource("AtlasTexture_nns00"), SubResource("AtlasTexture_481wr"), SubResource("AtlasTexture_v8nr2")])
 Height = 0.12
-Toughness = 0.009999999999999787
+Toughness = 0.00999999999999978
 metadata/_custom_type_script = "uid://dwre4lssbikfj"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dlarq"]
@@ -861,10 +861,10 @@ MaxFiringPerTurn = 10
 DelayBetweenFires = 3.0
 Caliber = 60.0
 ExplosiveFill = 0.6
-TotalWeight = 1.3599999999999999
+TotalWeight = 1.36
 DragCoefficient = 0.65
 Height = 1.0
-Toughness = 0.009999999999999787
+Toughness = 0.00999999999999978
 metadata/_custom_type_script = "uid://cqwwdwx080x60"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fqpyd"]
@@ -902,11 +902,9 @@ MuzzleVelocity = 174.0
 Shells = 30
 ResupplyTurns = 3
 MaxFiringPerTurn = 15
-ExplosiveFill = 0.6
-TotalWeight = 3.5
 DragCoefficient = 0.65
 Height = 1.15
-Toughness = 0.009999999999999787
+Toughness = 0.00999999999999978
 metadata/_custom_type_script = "uid://cqwwdwx080x60"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ac0s0"]
