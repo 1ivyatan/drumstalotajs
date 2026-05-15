@@ -134,7 +134,7 @@ public partial class Projectile : Node2D
 		_shell.Visible = false;
 		_exploded = true;
 		QueueRedraw();
-		SceneTreeTimer delayToFire = GetTree().CreateTimer(.5f);
+		SceneTreeTimer delayToFire = GetTree().CreateTimer(.5f, false);
 		delayToFire.Connect(SceneTreeTimer.SignalName.Timeout , Callable.From(() => {
 			Disappear();
 		}));

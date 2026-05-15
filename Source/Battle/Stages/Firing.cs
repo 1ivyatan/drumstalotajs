@@ -113,7 +113,7 @@ public partial class Firing : Control
 		foreach (var dev in devices)
 		{
 			_fireTracker[dev] = 0;
-			SceneTreeTimer delayToFire = GetTree().CreateTimer(GD.RandRange(0.01f, .5f));
+			SceneTreeTimer delayToFire = GetTree().CreateTimer(GD.RandRange(0.01f, .5f), false);
 			delayToFire.Connect(SceneTreeTimer.SignalName.Timeout , Callable.From(() => {
 				BatchFire(dev);
 			}));
@@ -133,7 +133,7 @@ public partial class Firing : Control
 					}
 				));
 				await ToSignal(GetTree().CreateTimer(
-					((DevicePropertiesData)device.Properties).DelayBetweenFires
+					((DevicePropertiesData)device.Properties).DelayBetweenFires, false
 				), SceneTreeTimer.SignalName.Timeout);
 			}
 		} else
