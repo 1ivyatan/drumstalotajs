@@ -38,7 +38,7 @@ atlas = ExtResource("4_ec2lj")
 region = Rect2(195, 164, 33, 39)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jwqew"]
-size = Vector2(64, 64)
+size = Vector2(64, 79)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_02aok"]
 atlas = ExtResource("4_ec2lj")
@@ -55,6 +55,7 @@ _building = NodePath("Building")
 _flag = NodePath("Flag")
 
 [node name="Collision" type="CollisionShape2D" parent="." index="0" unique_id=1661338104]
+position = Vector2(0, -4.5)
 shape = SubResource("RectangleShape2D_jwqew")
 
 [node name="Hamlet" type="Sprite2D" parent="." index="1" unique_id=1150642277]
