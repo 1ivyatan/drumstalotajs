@@ -4,6 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://c7ijf0gautnit" path="res://Assets/Textures/bg2.png" id="2_x3rvt"]
 [ext_resource type="Texture2D" uid="uid://dxpcp5oar78by" path="res://Assets/Textures/logo.png" id="3_x3rvt"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3rvt"]
+atlas = ExtResource("3_x3rvt")
+region = Rect2(0, 0, 580, 424)
+
 [node name="Start" type="Control" unique_id=1888125272 node_paths=PackedStringArray("_annotation", "_start", "_editor", "_about", "_exit")]
 layout_mode = 3
 anchors_preset = 15
@@ -50,7 +54,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_x3rvt")
+texture = SubResource("AtlasTexture_x3rvt")
 expand_mode = 1
 stretch_mode = 5
 
