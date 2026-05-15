@@ -21,6 +21,10 @@ region = Rect2(209, 1, 32, 32)
 atlas = ExtResource("8_cmwrv")
 region = Rect2(110, 156, 32, 5)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_s4j5v"]
+atlas = ExtResource("10_diuyf")
+region = Rect2(243, 0, 32, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_ukbm8"]
 atlas = ExtResource("10_diuyf")
 region = Rect2(141, 1, 32, 32)
@@ -37,7 +41,7 @@ region = Rect2(108, 34, 32, 32)
 atlas = ExtResource("10_diuyf")
 region = Rect2(174, 0, 32, 32)
 
-[node name="Battle" type="Node2D" unique_id=1007953308 node_paths=PackedStringArray("BattleTopnav", "Map", "ScoreManager", "StageManager", "Counters", "_pauseOverlay", "_measureLabel", "_positionLabel")]
+[node name="Battle" type="Node2D" unique_id=1007953308 node_paths=PackedStringArray("BattleTopnav", "Map", "ScoreManager", "StageManager", "Counters", "_pauseOverlay", "_measureLabel", "_positionLabel", "_altitiudeLabel")]
 script = ExtResource("1_ael4v")
 BattleTopnav = NodePath("Overlay/Topnav")
 Map = NodePath("Map")
@@ -47,6 +51,7 @@ Counters = NodePath("Overlay/Topnav/InfoContainer/Counters")
 _pauseOverlay = NodePath("Overlay/PauseOverlay")
 _measureLabel = NodePath("Overlay/Topnav/InfoContainer/MeasureContainer/MeasureText")
 _positionLabel = NodePath("Overlay/Topnav/InfoContainer/PositionContainer/PosText")
+_altitiudeLabel = NodePath("Overlay/Topnav/InfoContainer/AltitudeContainer/AltitudeText")
 
 [node name="Map" parent="." unique_id=1338299763 instance=ExtResource("2_dcr6b")]
 process_mode = 1
@@ -109,6 +114,19 @@ stretch_mode = 3
 [node name="MeasureText" type="Label" parent="Overlay/Topnav/InfoContainer/MeasureContainer" unique_id=2032981526]
 layout_mode = 2
 text = "32m"
+horizontal_alignment = 1
+
+[node name="AltitudeContainer" type="VBoxContainer" parent="Overlay/Topnav/InfoContainer" unique_id=1035650609]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Overlay/Topnav/InfoContainer/AltitudeContainer" unique_id=945607272]
+layout_mode = 2
+texture = SubResource("AtlasTexture_s4j5v")
+stretch_mode = 3
+
+[node name="AltitudeText" type="Label" parent="Overlay/Topnav/InfoContainer/AltitudeContainer" unique_id=1470156452]
+layout_mode = 2
+text = "0m"
 horizontal_alignment = 1
 
 [node name="Counters" type="HBoxContainer" parent="Overlay/Topnav/InfoContainer" unique_id=598029868 node_paths=PackedStringArray("_playerDeviceCounter", "_enemyTargetCounter", "_timerCounter", "_turnCounter", "_map", "_scoreManager")]

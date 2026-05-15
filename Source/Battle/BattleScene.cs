@@ -24,6 +24,7 @@ public partial class BattleScene : Node2D
 	[Export] private PauseOverlay _pauseOverlay;
 	[Export] private Label _measureLabel;
 	[Export] private Label _positionLabel;
+	[Export] private Label _altitiudeLabel;
 
 	public bool Paused { get; private set; } = false;
 	private string _mapPath;
@@ -89,6 +90,7 @@ public partial class BattleScene : Node2D
 		_mapPath = mapPath;
 		await Map.Load(_mapPath);
 		_measureLabel.Text = $"{Map.CurrentLoadedMap.MetersPerCell.X}m";
+		_altitiudeLabel.Text = $"{Map.CurrentLoadedMap.GroundLayer.BaseHeight}m";
 		ScoreManager.PrepareScoring(Map.CurrentLoadedMap);
 	}
 	
