@@ -3,15 +3,17 @@
 [ext_resource type="Script" uid="uid://v3qjjgnagdc" path="res://Source/Mapping/Entities/Structure.cs" id="1_oo5hv"]
 [ext_resource type="PackedScene" uid="uid://cngthrfn8437u" path="res://Scenes/Mapping/Entities/Flag.tscn" id="2_sjtgj"]
 [ext_resource type="PackedScene" uid="uid://j8mrswni3rqe" path="res://Scenes/Mapping/Entities/Status.tscn" id="3_q3ebp"]
+[ext_resource type="PackedScene" uid="uid://ip41x4asq83w" path="res://Scenes/Mapping/Entities/Damage.tscn" id="4_2vl0o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oo5hv"]
 size = Vector2(32, 32)
 
-[node name="Structure" type="Area2D" unique_id=1042581813 node_paths=PackedStringArray("_flag", "_sprite", "_status")]
+[node name="Structure" type="Area2D" unique_id=1042581813 node_paths=PackedStringArray("_flag", "_sprite", "_status", "_damage")]
 script = ExtResource("1_oo5hv")
 _flag = NodePath("Flag")
 _sprite = NodePath("Sprite")
 _status = NodePath("Status")
+_damage = NodePath("Damage")
 
 [node name="Collision" type="CollisionShape2D" parent="." unique_id=1171550532]
 shape = SubResource("RectangleShape2D_oo5hv")
@@ -26,3 +28,5 @@ position = Vector2(16, -10)
 [node name="Status" parent="." unique_id=578538614 instance=ExtResource("3_q3ebp")]
 z_index = 3
 offset = Vector2(20, -22.5)
+
+[node name="Damage" parent="." unique_id=370992508 instance=ExtResource("4_2vl0o")]

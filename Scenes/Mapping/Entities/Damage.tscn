@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://ip41x4asq83w"]
+
+[ext_resource type="Script" uid="uid://dsidy27vll81s" path="res://Source/Mapping/Entities/Damage.cs" id="1_j7muh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_d1s8o"]
+outline_size = 7
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Damage" type="Node2D" unique_id=370992508 node_paths=PackedStringArray("_label", "_timer")]
+visible = false
+z_index = 3
+script = ExtResource("1_j7muh")
+_label = NodePath("Count")
+_timer = NodePath("Timer")
+
+[node name="Count" type="Label" parent="." unique_id=67139454]
+offset_right = 27.0
+offset_bottom = 22.0
+text = "100"
+label_settings = SubResource("LabelSettings_d1s8o")
+
+[node name="Timer" type="Timer" parent="." unique_id=1692409839]
+process_callback = 0
+wait_time = 0.5

@@ -11,6 +11,7 @@ public partial class Structure : Entity
 	[Export] private Flag _flag;
 	[Export] private Sprite2D _sprite;
 	[Export] private Status _status;
+	[Export] private Damage _damage;
 	
 	[Export] public override EntityPropertiesData Properties { get; 
 		set
@@ -22,10 +23,15 @@ public partial class Structure : Entity
 	
 	public override double Integrity { get; 
 		set { 
+			var old = field;
 			field = Mathf.Clamp(value, 0, 100);
 			SetSprite();
 			if (field <= 0) Disabled = true;
-			else Disabled = false;
+			else
+			{
+				Disabled = false;
+				if (old > field) _damage.Pulse(old - field);
+			} 
 		}
 	} = 100;
 	

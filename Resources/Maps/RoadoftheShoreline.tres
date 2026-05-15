@@ -250,7 +250,7 @@ MetersPerCell = Vector2i(10, 10)
 DevicePositions = Dictionary[Vector2i, float]({
 Vector2i(4, -15): 0.0,
 Vector2i(11, -10): 0.0,
-Vector2i(14, -7): 0.0,
+Vector2i(19, -7): 0.0,
 Vector2i(33, -4): 0.0,
 Vector2i(35, -5): 0.0,
 Vector2i(40, -5): 0.0,

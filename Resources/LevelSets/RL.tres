@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="LevelSet" format=3 uid="uid://bg5ml0po4tcgm"]
+
+[ext_resource type="Script" uid="uid://r6uws5n8excx" path="res://Source/Resources/Levels/LevelSet.cs" id="1_mck5y"]
+[ext_resource type="Script" uid="uid://dj5l06h3bhoe2" path="res://Source/Resources/Levels/LevelProps.cs" id="1_pflqy"]
+
+[sub_resource type="Resource" id="Resource_33t4b"]
+script = ExtResource("1_pflqy")
+Name = "Shoreline road"
+Desc = "Already opposing forces are responding to our attacks on this island, however will their response be smooth? Our naval infantrymen have already snuck up in the island and this road not far away from them is an artery to slow down our advances. Disrupt this road by blowing up some enemy trucks!"
+Type = 1
+InMapPosition = Vector2i(12, 18)
+metadata/_custom_type_script = "uid://dj5l06h3bhoe2"
+
+[resource]
+script = ExtResource("1_mck5y")
+Name = "Rocky Island"
+BackgroundMapPath = "uid://cell0v62vp7um"
+Levels = [SubResource("Resource_33t4b")]
+metadata/_custom_type_script = "uid://r6uws5n8excx"

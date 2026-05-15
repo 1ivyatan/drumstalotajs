@@ -13,6 +13,7 @@ public partial class Device : Entity
 	[Export] private Sprite2D _smoke;
 	[Export] private Flag _flag;
 	[Export] private Status _status;
+	[Export] private Damage _damage;
 	
 	[Export] public override EntityPropertiesData Properties { get; 
 		set
@@ -53,6 +54,19 @@ public partial class Device : Entity
 	public int Shells { get; set; } = 0;
 	public int ResupplyTurns { get; private set; } = 0;
 	public int ShellsPerTurn { get; set; } = 1;
+	
+	public override double Integrity { get; 
+		set { 
+			var old = field;
+			field = Mathf.Clamp(value, 0, 100);
+			if (field <= 0) Disabled = true;
+			else
+			{
+				Disabled = false;
+				if (old > field) _damage.Pulse(old - field);
+			} 
+		}
+	} = 100;
 	
 	public override void _Ready()
 	{
