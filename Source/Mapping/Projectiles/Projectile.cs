@@ -121,7 +121,7 @@ public partial class Projectile : Node2D
 			DrawCircle(
 				Vector2.Zero, 
 				(float)_calculatedCasualityRadius / _map.CellCoefficient.X,
-				new Color(0.0f, 0.0f, 0.0f, 0.35f)
+				new Color(0.0f, 0.0f, 0.0f, 0.66f)
 			);
 		}
 	}
