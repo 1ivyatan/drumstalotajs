@@ -11,9 +11,44 @@ Type = 1
 InMapPosition = Vector2i(12, 18)
 metadata/_custom_type_script = "uid://dj5l06h3bhoe2"
 
+[sub_resource type="Resource" id="Resource_pflqy"]
+script = ExtResource("1_pflqy")
+Name = "Entrenched hills"
+Desc = "Turns out there already are fortifications on the main island, but unbeknowst to them, our logistics teams already brought in heavy weapons to face them off. This spot has serveral MG nests that can bring trouble to our troops, blow them apart!"
+Order = 1
+InMapPosition = Vector2i(9, 14)
+metadata/_custom_type_script = "uid://dj5l06h3bhoe2"
+
+[sub_resource type="Resource" id="Resource_l0w2v"]
+script = ExtResource("1_pflqy")
+Name = "Some outpost"
+Desc = "This outpost may be the most painful for us all, for opponent has thoroughly planned to fight on this outpost, but for what? Is this some last ditch effort to stall us to compensate for the fact that not everyone has withdrawn from this outpost? Either way who leads this defense is either genius who will shock us or is overly confident, therefore foolish."
+Order = 2
+Type = 6
+InMapPosition = Vector2i(14, 9)
+metadata/_custom_type_script = "uid://dj5l06h3bhoe2"
+
+[sub_resource type="Resource" id="Resource_btbr6"]
+script = ExtResource("1_pflqy")
+Name = "Plains"
+Desc = "Heaviest and the best weapons have been brought to this island still not entirely under our control. Those fields are broad and so are the defenses that remain, still our heaviest weapons will be brought to flatten said defenses smaller teams to take entirety of the island."
+Order = 3
+Type = 2
+InMapPosition = Vector2i(18, 7)
+metadata/_custom_type_script = "uid://dj5l06h3bhoe2"
+
+[sub_resource type="Resource" id="Resource_asn50"]
+script = ExtResource("1_pflqy")
+Name = "Not a heaven"
+Desc = "This smaller island is not as defended as the main island, still the danger lies in mountains and teams inside helicopters have been brought to deal with this hidden depo. The altitude of this depo will change many rules, including how shells will land upon a target on an unheavenly height."
+Order = 4
+Type = 4
+InMapPosition = Vector2i(25, 9)
+metadata/_custom_type_script = "uid://dj5l06h3bhoe2"
+
 [resource]
 script = ExtResource("1_mck5y")
 Name = "Rocky Island"
 BackgroundMapPath = "uid://cell0v62vp7um"
-Levels = [SubResource("Resource_33t4b")]
+Levels = [SubResource("Resource_33t4b"), SubResource("Resource_pflqy"), SubResource("Resource_l0w2v"), SubResource("Resource_btbr6"), SubResource("Resource_asn50")]
 metadata/_custom_type_script = "uid://r6uws5n8excx"
