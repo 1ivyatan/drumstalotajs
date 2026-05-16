@@ -15,6 +15,14 @@ border_width_bottom = 5
 border_color = Color(0.28955156, 0.28955156, 0.28955156, 1)
 border_blend = true
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bnvpu"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+
 [resource]
 default_font = ExtResource("1_2ampp")
 default_font_size = 16
@@ -33,3 +41,4 @@ MenuBar/styles/normal = ExtResource("1_qlv1n")
 MenuBar/styles/pressed = ExtResource("2_h28yt")
 Panel/styles/panel = ExtResource("1_55d53")
 PanelContainer/styles/panel = ExtResource("1_55d53")
+TooltipLabel/styles/normal = SubResource("StyleBoxFlat_bnvpu")
