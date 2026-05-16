@@ -16,4 +16,9 @@ public partial class BattleTopnav : Topnav
 	{
 		_pause.Pressed += () => { EmitSignal(SignalName.PressedPause); };
 	}
+	
+	public void TogglePauseButton(bool toggle)
+	{
+		_pause.Visible = toggle;
+	}
 }

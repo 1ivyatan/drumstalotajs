@@ -14,7 +14,7 @@ using Drumstalotajs.Mapping.Tiles;
 namespace Drumstalotajs.Battle;
 
 public partial class BattleScene : Node2D
-{	
+{
 	[Export] public BattleTopnav BattleTopnav { get; private set; }
 	[Export] public Map Map { get; private set; }
 	[Export] public ScoreManager ScoreManager { get; private set; }
