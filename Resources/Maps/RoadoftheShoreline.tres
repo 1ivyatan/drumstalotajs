@@ -255,6 +255,7 @@ DeviceProps = Array[ExtResource("2_0qp53")]([SubResource("Resource_3g11v"), SubR
 MinTotalDevices = 4
 MaxTotalDevices = 6
 TimeLimitSecs = 600.0
+AltitudeMatters = false
 GroundLayer = SubResource("Resource_6l7gi")
 DecorationLayer = SubResource("Resource_xnyru")
 EntityLayer = SubResource("Resource_ccsp5")

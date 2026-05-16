@@ -29,6 +29,7 @@ public partial class MapResource : Resource
 	[Export] public double TimeLimitSecs { get; set; } = 60;
 	[Export] public bool PlayerResupply { get; set; } = true;
 	[Export] public bool EnemyResupply { get; set; } = true;
+	[Export] public bool AltitudeMatters { get; set; } = true;
 	
 	[ExportGroup("Layers")]
 	[Export] public GroundLayerData GroundLayer { get; set; } = null;

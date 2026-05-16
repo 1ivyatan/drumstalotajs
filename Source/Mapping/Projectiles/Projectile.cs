@@ -216,8 +216,10 @@ public partial class Projectile : Node2D
 		double overpressure = CalculateOverpressure(distance3d);
 		double baseDamage = overpressure * 100.0;
 		double falloff = CalculateFalloff(distance3d);
-		double alt = CalculateAltitude(altDiff, tAltitude);
-		
+		double alt = 
+			_map.CurrentLoadedMap.AltitudeMatters
+				? CalculateAltitude(altDiff, tAltitude)
+				: 1;
 		return baseDamage * falloff * alt;
 	}
 	
@@ -227,7 +229,12 @@ public partial class Projectile : Node2D
 		double casingWeight =  _props.TotalWeight - _props.ExplosiveFill;
 		double baseDamage = (10.0 * casingWeight * _props.ExplosiveFill) / Math.Max(distance3d, 1.0);
 		double falloff = CalculateFalloff(distance3d);
-		double alt = CalculateAltitude(altDiff, tAltitude) * 0.8;
+		
+		double alt = 
+			_map.CurrentLoadedMap.AltitudeMatters
+				? CalculateAltitude(altDiff, tAltitude) * 0.8
+				: 1;
+		
 		double frags = casingWeight / 5.0;
 		return baseDamage * falloff * alt * frags;
 	}
