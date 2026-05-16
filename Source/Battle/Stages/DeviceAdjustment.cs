@@ -72,7 +72,7 @@ public partial class DeviceAdjustment : Control
 				if (tiles.Count > 0)
 				{
 					var tile = tiles[_map.EntityLayer][0];
-					if ((SceneTile)tile is Device device)
+					if ((SceneTile)tile is Device device && device.Player)
 					{
 						_map.OverlayLayer.ClearAllHighlighters();
 						_map.OverlayLayer.PlaceHighlighter(_map.OverlayLayer.LocalToMap(device.Position));
