@@ -68,6 +68,19 @@ public partial class Device : Entity
 		}
 	} = 100;
 	
+	
+
+	public override bool Target { 
+		get; 
+		set {
+			field = value;
+			if (!Player && !field)
+			{
+				_flag.Visible = false;
+			}
+		}
+	} = false;
+	
 	public override void _Ready()
 	{
 		Resupply();
