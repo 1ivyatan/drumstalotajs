@@ -102,6 +102,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 3
 value = 1.0
 rounded = true
+allow_greater = true
 
 [node name="Value" type="Label" parent="DeviceAdjustmentContainer/Container/Wheels/Shells" unique_id=1062377419]
 layout_mode = 2

@@ -106,6 +106,7 @@ size_flags_vertical = 3
 max_value = 10.0
 value = 1.0
 rounded = true
+allow_greater = true
 
 [node name="Value" type="Label" parent="InitDeviceAdjustmentContainer/Container/Wheels/Shells" unique_id=283418871]
 layout_mode = 2
