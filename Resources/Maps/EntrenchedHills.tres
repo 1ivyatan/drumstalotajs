@@ -713,6 +713,7 @@ Vector2i(30, -7): 0.0,
 Vector2i(34, -7): 0.0
 })
 DeviceProps = Array[ExtResource("2_7ppt7")]([SubResource("Resource_28xej"), SubResource("Resource_iyqxh")])
+MinTotalDevices = 4
 MaxTotalDevices = 8
 TimeLimitSecs = 900.0
 EnemyResupply = false
