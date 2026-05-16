@@ -294,6 +294,7 @@ size_flags_horizontal = 3
 text = "Azimuth:"
 
 [node name="AzimuthSpinner" type="SpinBox" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor/EntityProps/Azimuth" unique_id=96165237]
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 max_value = 360.0
 step = 0.1
@@ -307,6 +308,7 @@ size_flags_horizontal = 3
 text = "Integrity:"
 
 [node name="IntegritySpinner" type="SpinBox" parent="Overlay/EditWindow/ScrollContainer/TileEditorContainer/TileEditor/EntityProps/Integrity" unique_id=489240039]
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 step = 0.1
 
