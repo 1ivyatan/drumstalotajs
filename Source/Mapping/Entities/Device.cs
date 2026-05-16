@@ -136,7 +136,7 @@ public partial class Device : Entity
 	
 	public void CheckAndTryResupply()
 	{
-		if (Shells == 0)
+		if (Shells <= 0)
 		{
 			if (ResupplyTurns == 0)
 			{

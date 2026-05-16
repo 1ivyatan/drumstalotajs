@@ -91,6 +91,7 @@ size_flags_horizontal = 8
 [node name="PositionContainer" type="VBoxContainer" parent="Overlay/Topnav/InfoContainer" unique_id=100180890]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
+tooltip_text = "Cell position of cursor"
 
 [node name="TextureRect" type="TextureRect" parent="Overlay/Topnav/InfoContainer/PositionContainer" unique_id=1544777778]
 layout_mode = 2
@@ -103,6 +104,7 @@ horizontal_alignment = 1
 
 [node name="MeasureContainer" type="VBoxContainer" parent="Overlay/Topnav/InfoContainer" unique_id=1017487334]
 layout_mode = 2
+tooltip_text = "Length of a 32px cell in meters"
 
 [node name="MeasurePreview" type="TextureRect" parent="Overlay/Topnav/InfoContainer/MeasureContainer" unique_id=782017182]
 custom_minimum_size = Vector2(75, 3)
@@ -118,6 +120,7 @@ horizontal_alignment = 1
 
 [node name="AltitudeContainer" type="VBoxContainer" parent="Overlay/Topnav/InfoContainer" unique_id=1035650609]
 layout_mode = 2
+tooltip_text = "Base altitude of the place"
 
 [node name="TextureRect" type="TextureRect" parent="Overlay/Topnav/InfoContainer/AltitudeContainer" unique_id=945607272]
 layout_mode = 2
@@ -142,19 +145,23 @@ _scoreManager = NodePath("../../../../ScoreManager")
 
 [node name="PlayerDeviceCounter" parent="Overlay/Topnav/InfoContainer/Counters" unique_id=2026965253 instance=ExtResource("7_tmq01")]
 layout_mode = 2
+tooltip_text = "Available player devices"
 _icon = SubResource("AtlasTexture_ukbm8")
 
 [node name="EnemyTargetCount" parent="Overlay/Topnav/InfoContainer/Counters" unique_id=34201706 instance=ExtResource("7_tmq01")]
 layout_mode = 2
+tooltip_text = "Enemy targets"
 _icon = SubResource("AtlasTexture_q0gc0")
 
 [node name="Turn" parent="Overlay/Topnav/InfoContainer/Counters" unique_id=378506084 instance=ExtResource("7_tmq01")]
 layout_mode = 2
+tooltip_text = "Turn"
 Value = 1
 _icon = SubResource("AtlasTexture_dby5i")
 
 [node name="Timer" parent="Overlay/Topnav/InfoContainer/Counters" unique_id=1505146687 instance=ExtResource("7_tmq01")]
 layout_mode = 2
+tooltip_text = "Remaining time"
 _icon = SubResource("AtlasTexture_diuyf")
 
 [node name="PauseOverlay" type="Control" parent="Overlay" unique_id=1813882581 node_paths=PackedStringArray("_pauseContainer")]
