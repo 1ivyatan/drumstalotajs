@@ -21,6 +21,13 @@ public partial class Structure : Entity
 		}
 	}
 	
+	public override double Azimuth { get;
+		set {
+			field = ((value % 360) + 360) % 360;
+			_sprite.RotationDegrees = (float)field;
+		}
+	} = -1;
+	
 	public override double Integrity { get; 
 		set { 
 			var old = field;
