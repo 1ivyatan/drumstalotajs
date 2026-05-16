@@ -26,7 +26,7 @@ public partial class Firing : Control
 	private BattleScene _scene;
 	private Map _map;
 	
-	private Dictionary<Device, int> _fireTracker = new();
+	private System.Collections.Generic.Dictionary<Device, (int Count, int Max)> _devFireTracker = new();
 	
 	private Device[] _playerDevs = null;
 	private int _firedPlayerDeviceCount = 0;
@@ -112,7 +112,10 @@ public partial class Firing : Control
 	{
 		foreach (var dev in devices)
 		{
-			_fireTracker[dev] = 0;
+			int expendable = dev.Shells < dev.ShellsPerTurn
+				? dev.Shells
+				: dev.ShellsPerTurn;
+			_devFireTracker[dev] = (0, expendable);
 			SceneTreeTimer delayToFire = GetTree().CreateTimer(GD.RandRange(0.01f, .5f), false);
 			delayToFire.Connect(SceneTreeTimer.SignalName.Timeout , Callable.From(() => {
 				BatchFire(dev);
@@ -122,13 +125,11 @@ public partial class Firing : Control
 	
 	private async void BatchFire(Device device)
 	{
-		int expendable = device.Shells < device.ShellsPerTurn
-			? device.Shells
-			: device.ShellsPerTurn;
-				
-		if (device.Shells > 0)
+		var devTrackingInfo = _devFireTracker[device];
+
+		if (devTrackingInfo.Max > 0)
 		{
-			for (int i = 0; i < expendable; i++)
+			for (int i = 0; i < devTrackingInfo.Max; i++)
 			{
 				var projectile = _map.ProjectileLayer.SpawnProjectile(device);
 				projectile.Connect(Projectile.SignalName.Detonated, Callable.From(
@@ -142,25 +143,23 @@ public partial class Firing : Control
 			}
 		} else
 		{
-			if (device.Player && _map.CurrentLoadedMap.PlayerResupply)
-			{
-				device.CheckAndTryResupply();
-			} else if (!device.Player && _map.CurrentLoadedMap.EnemyResupply)
+			if (
+				device.Player && _map.CurrentLoadedMap.PlayerResupply ||
+				!device.Player && _map.CurrentLoadedMap.EnemyResupply
+			)
 			{
 				device.CheckAndTryResupply();
 			}
-			LogTracker(device, expendable);
+			LogTracker(device, 0);
 		}
 	}
 	
 	private void LogTracker(Device device, int inc)
 	{
-		int expendable = device.Shells < device.ShellsPerTurn
-			? device.Shells
-			: device.ShellsPerTurn;
-			
-		_fireTracker[device] += inc;
-		if (_fireTracker[device] == expendable)
+		var oldDevTrackingInfo = _devFireTracker[device];
+		_devFireTracker[device] = (oldDevTrackingInfo.Count += inc, oldDevTrackingInfo.Max);
+		
+		if (_devFireTracker[device].Count == _devFireTracker[device].Max)
 		{
 			if (device.Player)
 			{
