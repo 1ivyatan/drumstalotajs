@@ -78,7 +78,15 @@ public partial class DeviceAdjustmentContainer : Container
 		_shellSlider.Value = _device.ShellsPerTurn;
 		_shellLabel.Text = $"{_device.ShellsPerTurn}";
 		
-		var resupplyStr = device.ResupplyTurns > 0 ? $"({device.ResupplyTurns} turns until resupply)" : $"({device.Shells} shells)";
+		var resupplyStr = device.Shells == 0
+			? (
+				_map.CurrentLoadedMap.PlayerResupply
+					? $"({device.ResupplyTurns} until resupply)"
+					: $"(No resupply available)"
+			)
+			: $"({device.Shells} shells)";
+		
+		
 		_title.Text = $"{_atlas.Name} {_map.EntityLayer.LocalToMap(new Vector2(device.Position.X, Math.Abs(device.Position.Y)))} {resupplyStr}";
 		
 		Visible = true;
