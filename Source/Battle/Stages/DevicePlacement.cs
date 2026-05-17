@@ -133,6 +133,10 @@ public partial class DevicePlacement : Control
 				{
 					if (_selectedDeviceAtlas == null)
 					{
+						if (tiles.ContainsKey(_map.EntityLayer) && !((Entity)tiles[_map.EntityLayer][0]).Player)
+						{
+							return;
+						}
 						Nodes.GetRoot().ToastManager.SpawnOne("Select a device!");
 						return;
 					}
@@ -142,6 +146,12 @@ public partial class DevicePlacement : Control
 						var pos = _map.OverlayLayer.LocalToMap(
 							((SceneTile)tiles[_map.OverlayLayer][0]).Position
 						);
+						
+						if (tiles.ContainsKey(_map.EntityLayer) && !((Entity)tiles[_map.EntityLayer][0]).Player)
+						{
+							return;
+						}
+						
 						await ToggleDevice(pos);
 					}
 				}
@@ -153,6 +163,7 @@ public partial class DevicePlacement : Control
 	{
 		var device = _map.EntityLayer.GetInstance(position);
 		var count = _map.EntityLayer.InstanceCount(_selectedDeviceAtlas.Id, true);
+		
 		if (device == null)
 		{
 			if (count < _deviceProps.MaxCount)
@@ -166,7 +177,7 @@ public partial class DevicePlacement : Control
 				_deviceInventory.SetItemText((int)_itemListIndex, $"{_deviceProps.MaxCount - count - 1}");
 				_counter[_selectedDeviceAtlas.Id]++;
 			}
-		} else if (_selectedDeviceAtlas.Id == device.TileId)
+		} else if (_selectedDeviceAtlas.Id == device.TileId && device.Player)
 		{
 			_map.EntityLayer.RemoveTile(position);
 			_deviceInventory.SetItemText((int)_itemListIndex, $"{_deviceProps.MaxCount - count + 1}");
