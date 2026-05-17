@@ -33,6 +33,9 @@ public partial class DevicePlacement : Control
 	private Dictionary<int, int> _counter = new();
 	private Array<int> _deviceIds = new();
 	
+	private bool _loaded = false;
+	private int _loadedCount = 0;
+	
 	public async override void _Ready()
 	{
 		_scene = Nodes.GetSceneRoot() as BattleScene;
@@ -67,9 +70,21 @@ public partial class DevicePlacement : Control
 		{
 			_map.OverlayLayer.AddTile(position.Key, "DeviceMarker");
 			await ToSignal(_map.OverlayLayer, "TileSpawned");
-			var marker = (DeviceMarker)_map.OverlayLayer.GetInstance(position.Key);
-			marker.SetArrowRotation(position.Value);
 		}
+		
+		_map.OverlayLayer.TileSpawned += (SceneTile tile) => {
+			if (tile is DeviceMarker deviceMarker)
+			{
+				var pos = _map.OverlayLayer.LocalToMap(deviceMarker.Position);
+				var devPosRot = _map.CurrentLoadedMap.DevicePositions[pos];
+				deviceMarker.SetArrowRotation(devPosRot);
+				_loadedCount++;
+				if (_loadedCount == _map.CurrentLoadedMap.DevicePositions.Count)
+				{
+					_loaded = true;
+				}
+			}
+		};
 		
 		_map.Selector.Filter = new SelectorFilter(layers, idFilters);
 		_map.Mode = MapMode.HiddenInteractable;
@@ -96,6 +111,8 @@ public partial class DevicePlacement : Control
 	
 	public async override void _UnhandledInput(InputEvent @event)
 	{
+		if (!_loaded) return;
+
 		if (@event is InputEventMouse mouseEvent)
 		{
 			bool moving = false;
