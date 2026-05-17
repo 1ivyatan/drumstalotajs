@@ -8,6 +8,6 @@ using Drumstalotajs.Mapping.Tiles;
 
 namespace Drumstalotajs.Mapping.Overlays;
 
-public partial class BlackTile : Node
+public partial class BlackTile : OverlayTile
 {
 }
