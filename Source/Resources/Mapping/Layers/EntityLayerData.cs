@@ -15,9 +15,16 @@ public partial class EntityLayerData : SceneLayerData
 		Tiles.Clear();
 		foreach (Entity instance in layer.Instances)
 		{
-			/*!!!!!!!!!!!!!!*/
-			EntityLayerTileData data = new EntityLayerTileData(layer, instance);
-			Tiles.Add(data);
+			if (instance is Device deviceInstance)
+			{
+				EntityLayerDeviceTileData data = new EntityLayerDeviceTileData(layer, deviceInstance);
+				Tiles.Add(data);
+			} else
+			{
+				EntityLayerTileData data = new EntityLayerTileData(layer, instance);
+				Tiles.Add(data);
+			}
+			
 		}
 		
 	}
