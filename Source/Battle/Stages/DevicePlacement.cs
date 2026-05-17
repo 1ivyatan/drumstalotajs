@@ -69,7 +69,7 @@ public partial class DevicePlacement : Control
 		foreach (var position in _map.CurrentLoadedMap.DevicePositions)
 		{
 			_map.OverlayLayer.AddTile(position.Key, "DeviceMarker");
-			await ToSignal(_map.OverlayLayer, "TileSpawned");
+			//await ToSignal(_map.OverlayLayer, "TileSpawned");
 		}
 		
 		_map.OverlayLayer.TileSpawned += (SceneTile tile) => {
