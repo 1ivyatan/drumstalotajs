@@ -19,478 +19,516 @@ Tiles = SubResource("TileMapPattern_nfspu")
 
 [sub_resource type="Resource" id="Resource_qlst2"]
 script = ExtResource("4_nfspu")
-Id = 17
-Position = Vector2i(43, -12)
+Azimuth = 90.0
+Id = 13
+Position = Vector2i(48, -5)
 
 [sub_resource type="Resource" id="Resource_pfp62"]
 script = ExtResource("4_nfspu")
-Id = 17
-Position = Vector2i(43, -8)
+Azimuth = 270.0
+Id = 18
+Position = Vector2i(44, -5)
 
 [sub_resource type="Resource" id="Resource_k28jl"]
 script = ExtResource("4_nfspu")
-Id = 15
-Position = Vector2i(48, -1)
+Id = 20
+Position = Vector2i(39, -13)
 
 [sub_resource type="Resource" id="Resource_q04km"]
 script = ExtResource("4_nfspu")
-Id = 15
-Position = Vector2i(47, -1)
+Id = 17
+Position = Vector2i(39, -14)
 
 [sub_resource type="Resource" id="Resource_q3g27"]
 script = ExtResource("4_nfspu")
-Id = 15
-Position = Vector2i(46, -1)
+Azimuth = 90.0
+Id = 14
+Position = Vector2i(38, -11)
 
 [sub_resource type="Resource" id="Resource_6ckfn"]
 script = ExtResource("4_nfspu")
-Id = 15
-Position = Vector2i(45, -1)
+Azimuth = 90.0
+Id = 14
+Position = Vector2i(38, -12)
 
 [sub_resource type="Resource" id="Resource_kg566"]
 script = ExtResource("4_nfspu")
-Id = 15
-Position = Vector2i(44, -1)
+Azimuth = 90.0
+Id = 14
+Position = Vector2i(38, -13)
 
 [sub_resource type="Resource" id="Resource_6fk3b"]
 script = ExtResource("4_nfspu")
-Id = 15
-Position = Vector2i(43, -1)
+Azimuth = 90.0
+Id = 14
+Position = Vector2i(38, -14)
 
 [sub_resource type="Resource" id="Resource_qgy8e"]
 script = ExtResource("4_nfspu")
-Id = 15
-Position = Vector2i(42, -1)
+Azimuth = 90.0
+Id = 14
+Position = Vector2i(41, -7)
 
 [sub_resource type="Resource" id="Resource_38l85"]
 script = ExtResource("4_nfspu")
-Id = 15
-Position = Vector2i(41, -1)
+Azimuth = 90.0
+Id = 14
+Position = Vector2i(41, -8)
 
 [sub_resource type="Resource" id="Resource_dt5xf"]
 script = ExtResource("4_nfspu")
-Id = 15
-Position = Vector2i(40, -1)
+Id = 23
+Position = Vector2i(35, -10)
 
 [sub_resource type="Resource" id="Resource_i4agv"]
 script = ExtResource("4_nfspu")
-Id = 15
-Position = Vector2i(39, -1)
+Id = 23
+Position = Vector2i(33, -11)
 
 [sub_resource type="Resource" id="Resource_frcsa"]
 script = ExtResource("4_nfspu")
-Id = 15
-Position = Vector2i(38, -1)
+Azimuth = 90.0
+Id = 14
+Position = Vector2i(34, -8)
 
 [sub_resource type="Resource" id="Resource_3cses"]
 script = ExtResource("4_nfspu")
-Id = 15
-Position = Vector2i(37, -1)
+Azimuth = 90.0
+Id = 14
+Position = Vector2i(34, -9)
 
 [sub_resource type="Resource" id="Resource_p25um"]
 script = ExtResource("4_nfspu")
-Id = 15
-Position = Vector2i(36, -1)
+Azimuth = 90.0
+Id = 14
+Position = Vector2i(34, -10)
 
 [sub_resource type="Resource" id="Resource_n63pr"]
 script = ExtResource("4_nfspu")
-Id = 15
-Position = Vector2i(35, -1)
+Azimuth = 90.0
+Id = 14
+Position = Vector2i(34, -11)
 
 [sub_resource type="Resource" id="Resource_0eqig"]
 script = ExtResource("4_nfspu")
-Id = 15
-Position = Vector2i(34, -1)
+Id = 21
+Position = Vector2i(44, -12)
 
 [sub_resource type="Resource" id="Resource_721py"]
 script = ExtResource("4_nfspu")
-Id = 15
-Position = Vector2i(33, -1)
+Id = 19
+Position = Vector2i(43, -19)
 
 [sub_resource type="Resource" id="Resource_8kwld"]
 script = ExtResource("4_nfspu")
-Id = 15
-Position = Vector2i(32, -1)
+Id = 19
+Position = Vector2i(44, -19)
 
 [sub_resource type="Resource" id="Resource_xb0h7"]
 script = ExtResource("4_nfspu")
-Id = 15
-Position = Vector2i(49, -1)
+Id = 25
+Position = Vector2i(42, -12)
 
 [sub_resource type="Resource" id="Resource_tpjow"]
 script = ExtResource("4_nfspu")
-Id = 15
-Position = Vector2i(50, -1)
+Id = 26
+Position = Vector2i(44, -18)
 
 [sub_resource type="Resource" id="Resource_lmxay"]
 script = ExtResource("4_nfspu")
-Id = 15
-Position = Vector2i(31, -1)
+Id = 27
+Position = Vector2i(45, -18)
 
 [sub_resource type="Resource" id="Resource_thtt3"]
 script = ExtResource("4_nfspu")
-Id = 22
-Position = Vector2i(30, -1)
+Id = 20
+Position = Vector2i(43, -18)
 
 [sub_resource type="Resource" id="Resource_hif62"]
 script = ExtResource("4_nfspu")
-Id = 14
-Position = Vector2i(30, -4)
+Id = 21
+Position = Vector2i(45, -16)
 
 [sub_resource type="Resource" id="Resource_uit7e"]
 script = ExtResource("4_nfspu")
-Id = 14
-Position = Vector2i(30, -5)
+Id = 21
+Position = Vector2i(44, -16)
 
 [sub_resource type="Resource" id="Resource_j1ndh"]
 script = ExtResource("4_nfspu")
-Id = 14
-Position = Vector2i(29, -6)
+Azimuth = 90.0
+Id = 15
+Position = Vector2i(28, -13)
 
 [sub_resource type="Resource" id="Resource_l2wfx"]
 script = ExtResource("4_nfspu")
-Id = 14
-Position = Vector2i(29, -7)
+Azimuth = 90.0
+Id = 15
+Position = Vector2i(28, -10)
 
 [sub_resource type="Resource" id="Resource_odrev"]
 script = ExtResource("4_nfspu")
-Id = 14
-Position = Vector2i(29, -8)
+Azimuth = 90.0
+Id = 15
+Position = Vector2i(28, -11)
 
 [sub_resource type="Resource" id="Resource_vu5un"]
 script = ExtResource("4_nfspu")
 Azimuth = 90.0
-Id = 14
-Position = Vector2i(29, -9)
+Id = 15
+Position = Vector2i(28, -12)
 
 [sub_resource type="Resource" id="Resource_ahy1h"]
 script = ExtResource("4_nfspu")
-Azimuth = 90.0
-Id = 14
-Position = Vector2i(29, -14)
+Id = 23
+Position = Vector2i(29, -13)
 
 [sub_resource type="Resource" id="Resource_hbio0"]
-script = ExtResource("4_nfspu")
-Id = 14
-Position = Vector2i(30, -15)
-
-[sub_resource type="Resource" id="Resource_op0uk"]
-script = ExtResource("4_nfspu")
-Id = 14
-Position = Vector2i(30, -16)
-
-[sub_resource type="Resource" id="Resource_7upwg"]
-script = ExtResource("4_nfspu")
-Id = 14
-Position = Vector2i(31, -18)
-
-[sub_resource type="Resource" id="Resource_p8a7l"]
-script = ExtResource("4_nfspu")
-Id = 14
-Position = Vector2i(31, -17)
-
-[sub_resource type="Resource" id="Resource_lt8hm"]
-script = ExtResource("4_nfspu")
-Id = 14
-Position = Vector2i(33, -20)
-
-[sub_resource type="Resource" id="Resource_7r8l4"]
-script = ExtResource("4_nfspu")
-Id = 14
-Position = Vector2i(33, -19)
-
-[sub_resource type="Resource" id="Resource_8grdp"]
-script = ExtResource("4_nfspu")
-Id = 14
-Position = Vector2i(34, -20)
-
-[sub_resource type="Resource" id="Resource_hedfi"]
-script = ExtResource("4_nfspu")
-Id = 14
-Position = Vector2i(35, -20)
-
-[sub_resource type="Resource" id="Resource_v6sab"]
-script = ExtResource("4_nfspu")
-Id = 14
-Position = Vector2i(36, -20)
-
-[sub_resource type="Resource" id="Resource_rlr6c"]
-script = ExtResource("4_nfspu")
-Id = 14
-Position = Vector2i(37, -20)
-
-[sub_resource type="Resource" id="Resource_chvnk"]
-script = ExtResource("4_nfspu")
-Id = 14
-Position = Vector2i(38, -20)
-
-[sub_resource type="Resource" id="Resource_xg7cg"]
-script = ExtResource("4_nfspu")
-Id = 14
-Position = Vector2i(39, -20)
-
-[sub_resource type="Resource" id="Resource_pfbk3"]
-script = ExtResource("4_nfspu")
-Id = 14
-Position = Vector2i(40, -20)
-
-[sub_resource type="Resource" id="Resource_oetrk"]
-script = ExtResource("4_nfspu")
-Id = 14
-Position = Vector2i(41, -20)
-
-[sub_resource type="Resource" id="Resource_0dk50"]
-script = ExtResource("4_nfspu")
-Id = 14
-Position = Vector2i(42, -20)
-
-[sub_resource type="Resource" id="Resource_khdbj"]
-script = ExtResource("4_nfspu")
-Id = 14
-Position = Vector2i(43, -20)
-
-[sub_resource type="Resource" id="Resource_f4b8q"]
-script = ExtResource("4_nfspu")
-Id = 14
-Position = Vector2i(44, -20)
-
-[sub_resource type="Resource" id="Resource_vp53n"]
-script = ExtResource("4_nfspu")
-Id = 14
-Position = Vector2i(45, -20)
-
-[sub_resource type="Resource" id="Resource_2uqd7"]
-script = ExtResource("4_nfspu")
-Id = 14
-Position = Vector2i(46, -20)
-
-[sub_resource type="Resource" id="Resource_wnp17"]
-script = ExtResource("4_nfspu")
-Id = 14
-Position = Vector2i(47, -20)
-
-[sub_resource type="Resource" id="Resource_33c74"]
-script = ExtResource("4_nfspu")
-Id = 14
-Position = Vector2i(47, -19)
-
-[sub_resource type="Resource" id="Resource_upe10"]
-script = ExtResource("4_nfspu")
-Id = 14
-Position = Vector2i(48, -18)
-
-[sub_resource type="Resource" id="Resource_w7lmh"]
-script = ExtResource("4_nfspu")
-Id = 14
-Position = Vector2i(48, -17)
-
-[sub_resource type="Resource" id="Resource_tuw65"]
-script = ExtResource("4_nfspu")
-Id = 14
-Position = Vector2i(48, -16)
-
-[sub_resource type="Resource" id="Resource_c04t6"]
-script = ExtResource("4_nfspu")
-Id = 14
-Position = Vector2i(49, -15)
-
-[sub_resource type="Resource" id="Resource_vyiax"]
-script = ExtResource("4_nfspu")
-Id = 14
-Position = Vector2i(50, -14)
-
-[sub_resource type="Resource" id="Resource_2rod5"]
-script = ExtResource("4_nfspu")
-Id = 14
-Position = Vector2i(50, -7)
-
-[sub_resource type="Resource" id="Resource_xmxcx"]
-script = ExtResource("4_nfspu")
-Id = 14
-Position = Vector2i(50, -6)
-
-[sub_resource type="Resource" id="Resource_ko4jg"]
-script = ExtResource("4_nfspu")
-Id = 14
-Position = Vector2i(50, -5)
-
-[sub_resource type="Resource" id="Resource_7mwgp"]
-script = ExtResource("4_nfspu")
-Id = 14
-Position = Vector2i(49, -4)
-
-[sub_resource type="Resource" id="Resource_0jc7b"]
-script = ExtResource("4_nfspu")
-Id = 14
-Position = Vector2i(48, -3)
-
-[sub_resource type="Resource" id="Resource_e16er"]
-script = ExtResource("4_nfspu")
-Id = 22
-Position = Vector2i(51, -1)
-
-[sub_resource type="Resource" id="Resource_hgvnr"]
-script = ExtResource("4_nfspu")
-Azimuth = 270.0
-Id = 31
-Position = Vector2i(35, -16)
-
-[sub_resource type="Resource" id="Resource_n1h66"]
 script = ExtResource("4_nfspu")
 Azimuth = 270.0
 Id = 31
 Position = Vector2i(33, -5)
 
+[sub_resource type="Resource" id="Resource_op0uk"]
+script = ExtResource("4_nfspu")
+Azimuth = 270.0
+Id = 31
+Position = Vector2i(35, -16)
+
+[sub_resource type="Resource" id="Resource_7upwg"]
+script = ExtResource("4_nfspu")
+Id = 22
+Position = Vector2i(51, -1)
+
+[sub_resource type="Resource" id="Resource_p8a7l"]
+script = ExtResource("4_nfspu")
+Azimuth = 270.0
+Id = 14
+Position = Vector2i(48, -3)
+
+[sub_resource type="Resource" id="Resource_lt8hm"]
+script = ExtResource("4_nfspu")
+Azimuth = 270.0
+Id = 14
+Position = Vector2i(49, -4)
+
+[sub_resource type="Resource" id="Resource_7r8l4"]
+script = ExtResource("4_nfspu")
+Azimuth = 270.0
+Id = 14
+Position = Vector2i(50, -5)
+
+[sub_resource type="Resource" id="Resource_8grdp"]
+script = ExtResource("4_nfspu")
+Azimuth = 270.0
+Id = 14
+Position = Vector2i(50, -6)
+
+[sub_resource type="Resource" id="Resource_hedfi"]
+script = ExtResource("4_nfspu")
+Azimuth = 270.0
+Id = 14
+Position = Vector2i(50, -7)
+
+[sub_resource type="Resource" id="Resource_v6sab"]
+script = ExtResource("4_nfspu")
+Azimuth = 270.0
+Id = 14
+Position = Vector2i(50, -14)
+
+[sub_resource type="Resource" id="Resource_rlr6c"]
+script = ExtResource("4_nfspu")
+Azimuth = 270.0
+Id = 14
+Position = Vector2i(49, -15)
+
+[sub_resource type="Resource" id="Resource_chvnk"]
+script = ExtResource("4_nfspu")
+Azimuth = 270.0
+Id = 14
+Position = Vector2i(48, -16)
+
+[sub_resource type="Resource" id="Resource_xg7cg"]
+script = ExtResource("4_nfspu")
+Azimuth = 270.0
+Id = 14
+Position = Vector2i(48, -17)
+
+[sub_resource type="Resource" id="Resource_pfbk3"]
+script = ExtResource("4_nfspu")
+Azimuth = 270.0
+Id = 14
+Position = Vector2i(48, -18)
+
+[sub_resource type="Resource" id="Resource_oetrk"]
+script = ExtResource("4_nfspu")
+Azimuth = 270.0
+Id = 14
+Position = Vector2i(47, -19)
+
+[sub_resource type="Resource" id="Resource_0dk50"]
+script = ExtResource("4_nfspu")
+Azimuth = 240.0
+Id = 14
+Position = Vector2i(47, -20)
+
+[sub_resource type="Resource" id="Resource_khdbj"]
+script = ExtResource("4_nfspu")
+Id = 14
+Position = Vector2i(46, -20)
+
+[sub_resource type="Resource" id="Resource_f4b8q"]
+script = ExtResource("4_nfspu")
+Id = 14
+Position = Vector2i(45, -20)
+
+[sub_resource type="Resource" id="Resource_vp53n"]
+script = ExtResource("4_nfspu")
+Id = 14
+Position = Vector2i(44, -20)
+
+[sub_resource type="Resource" id="Resource_2uqd7"]
+script = ExtResource("4_nfspu")
+Id = 14
+Position = Vector2i(43, -20)
+
+[sub_resource type="Resource" id="Resource_wnp17"]
+script = ExtResource("4_nfspu")
+Id = 14
+Position = Vector2i(42, -20)
+
+[sub_resource type="Resource" id="Resource_33c74"]
+script = ExtResource("4_nfspu")
+Id = 14
+Position = Vector2i(41, -20)
+
+[sub_resource type="Resource" id="Resource_upe10"]
+script = ExtResource("4_nfspu")
+Id = 14
+Position = Vector2i(40, -20)
+
+[sub_resource type="Resource" id="Resource_w7lmh"]
+script = ExtResource("4_nfspu")
+Id = 14
+Position = Vector2i(39, -20)
+
+[sub_resource type="Resource" id="Resource_tuw65"]
+script = ExtResource("4_nfspu")
+Id = 14
+Position = Vector2i(38, -20)
+
+[sub_resource type="Resource" id="Resource_c04t6"]
+script = ExtResource("4_nfspu")
+Id = 14
+Position = Vector2i(37, -20)
+
+[sub_resource type="Resource" id="Resource_vyiax"]
+script = ExtResource("4_nfspu")
+Id = 14
+Position = Vector2i(36, -20)
+
+[sub_resource type="Resource" id="Resource_2rod5"]
+script = ExtResource("4_nfspu")
+Id = 14
+Position = Vector2i(35, -20)
+
+[sub_resource type="Resource" id="Resource_xmxcx"]
+script = ExtResource("4_nfspu")
+Id = 14
+Position = Vector2i(34, -20)
+
+[sub_resource type="Resource" id="Resource_ko4jg"]
+script = ExtResource("4_nfspu")
+Azimuth = 90.0
+Id = 14
+Position = Vector2i(33, -19)
+
+[sub_resource type="Resource" id="Resource_7mwgp"]
+script = ExtResource("4_nfspu")
+Azimuth = 320.0
+Id = 14
+Position = Vector2i(33, -20)
+
+[sub_resource type="Resource" id="Resource_0jc7b"]
+script = ExtResource("4_nfspu")
+Azimuth = 90.0
+Id = 14
+Position = Vector2i(31, -17)
+
+[sub_resource type="Resource" id="Resource_e16er"]
+script = ExtResource("4_nfspu")
+Azimuth = 90.0
+Id = 14
+Position = Vector2i(31, -18)
+
+[sub_resource type="Resource" id="Resource_hgvnr"]
+script = ExtResource("4_nfspu")
+Azimuth = 90.0
+Id = 14
+Position = Vector2i(30, -16)
+
+[sub_resource type="Resource" id="Resource_n1h66"]
+script = ExtResource("4_nfspu")
+Azimuth = 90.0
+Id = 14
+Position = Vector2i(30, -15)
+
 [sub_resource type="Resource" id="Resource_15sph"]
 script = ExtResource("4_nfspu")
-Id = 23
-Position = Vector2i(29, -13)
+Azimuth = 90.0
+Id = 14
+Position = Vector2i(29, -14)
 
 [sub_resource type="Resource" id="Resource_y0d0a"]
 script = ExtResource("4_nfspu")
-Id = 15
-Position = Vector2i(28, -12)
+Azimuth = 90.0
+Id = 14
+Position = Vector2i(29, -9)
 
 [sub_resource type="Resource" id="Resource_blaon"]
 script = ExtResource("4_nfspu")
-Id = 15
-Position = Vector2i(28, -11)
+Azimuth = 90.0
+Id = 14
+Position = Vector2i(29, -8)
 
 [sub_resource type="Resource" id="Resource_0vonh"]
 script = ExtResource("4_nfspu")
-Id = 15
-Position = Vector2i(28, -10)
+Azimuth = 90.0
+Id = 14
+Position = Vector2i(29, -7)
 
 [sub_resource type="Resource" id="Resource_in51x"]
 script = ExtResource("4_nfspu")
-Azimuth = 50.0
-Id = 15
-Position = Vector2i(28, -13)
+Azimuth = 90.0
+Id = 14
+Position = Vector2i(29, -6)
 
 [sub_resource type="Resource" id="Resource_fdmo5"]
 script = ExtResource("4_nfspu")
-Id = 21
-Position = Vector2i(44, -16)
+Azimuth = 90.0
+Id = 14
+Position = Vector2i(30, -5)
 
 [sub_resource type="Resource" id="Resource_p1n28"]
 script = ExtResource("4_nfspu")
-Id = 21
-Position = Vector2i(45, -16)
+Azimuth = 90.0
+Id = 14
+Position = Vector2i(30, -4)
 
 [sub_resource type="Resource" id="Resource_pwpwv"]
 script = ExtResource("4_nfspu")
-Id = 20
-Position = Vector2i(43, -18)
+Id = 22
+Position = Vector2i(30, -1)
 
 [sub_resource type="Resource" id="Resource_d6q81"]
 script = ExtResource("4_nfspu")
-Id = 27
-Position = Vector2i(45, -18)
+Id = 15
+Position = Vector2i(31, -1)
 
 [sub_resource type="Resource" id="Resource_knkvb"]
 script = ExtResource("4_nfspu")
-Id = 26
-Position = Vector2i(44, -18)
+Id = 15
+Position = Vector2i(50, -1)
 
 [sub_resource type="Resource" id="Resource_wg2np"]
 script = ExtResource("4_nfspu")
-Id = 25
-Position = Vector2i(42, -12)
+Id = 15
+Position = Vector2i(49, -1)
 
 [sub_resource type="Resource" id="Resource_a7yvh"]
 script = ExtResource("4_nfspu")
-Id = 19
-Position = Vector2i(44, -19)
+Id = 15
+Position = Vector2i(32, -1)
 
 [sub_resource type="Resource" id="Resource_42mar"]
 script = ExtResource("4_nfspu")
-Id = 19
-Position = Vector2i(43, -19)
+Id = 15
+Position = Vector2i(33, -1)
 
 [sub_resource type="Resource" id="Resource_kd48r"]
 script = ExtResource("4_nfspu")
-Id = 21
-Position = Vector2i(44, -12)
+Id = 15
+Position = Vector2i(34, -1)
 
 [sub_resource type="Resource" id="Resource_xkgof"]
 script = ExtResource("4_nfspu")
-Id = 14
-Position = Vector2i(34, -11)
+Id = 15
+Position = Vector2i(35, -1)
 
 [sub_resource type="Resource" id="Resource_3ol11"]
 script = ExtResource("4_nfspu")
-Id = 14
-Position = Vector2i(34, -10)
+Id = 15
+Position = Vector2i(36, -1)
 
 [sub_resource type="Resource" id="Resource_jk5yn"]
 script = ExtResource("4_nfspu")
-Id = 14
-Position = Vector2i(34, -9)
+Id = 15
+Position = Vector2i(37, -1)
 
 [sub_resource type="Resource" id="Resource_senmb"]
 script = ExtResource("4_nfspu")
-Id = 14
-Position = Vector2i(34, -8)
+Id = 15
+Position = Vector2i(38, -1)
 
 [sub_resource type="Resource" id="Resource_7lses"]
 script = ExtResource("4_nfspu")
-Id = 23
-Position = Vector2i(33, -11)
+Id = 15
+Position = Vector2i(39, -1)
 
 [sub_resource type="Resource" id="Resource_u2cao"]
 script = ExtResource("4_nfspu")
-Id = 23
-Position = Vector2i(35, -10)
+Id = 15
+Position = Vector2i(40, -1)
 
 [sub_resource type="Resource" id="Resource_jy0b3"]
 script = ExtResource("4_nfspu")
-Id = 14
-Position = Vector2i(41, -8)
+Id = 15
+Position = Vector2i(41, -1)
 
 [sub_resource type="Resource" id="Resource_c1xqd"]
 script = ExtResource("4_nfspu")
-Id = 14
-Position = Vector2i(41, -7)
+Id = 15
+Position = Vector2i(42, -1)
 
 [sub_resource type="Resource" id="Resource_ghhkg"]
 script = ExtResource("4_nfspu")
-Id = 14
-Position = Vector2i(38, -14)
+Id = 15
+Position = Vector2i(43, -1)
 
 [sub_resource type="Resource" id="Resource_6sqac"]
 script = ExtResource("4_nfspu")
-Id = 14
-Position = Vector2i(38, -13)
+Id = 15
+Position = Vector2i(44, -1)
 
 [sub_resource type="Resource" id="Resource_fix8x"]
 script = ExtResource("4_nfspu")
-Id = 14
-Position = Vector2i(38, -12)
+Id = 15
+Position = Vector2i(45, -1)
 
 [sub_resource type="Resource" id="Resource_rt60y"]
 script = ExtResource("4_nfspu")
-Id = 14
-Position = Vector2i(38, -11)
+Id = 15
+Position = Vector2i(46, -1)
 
 [sub_resource type="Resource" id="Resource_bugga"]
 script = ExtResource("4_nfspu")
-Id = 17
-Position = Vector2i(39, -14)
+Id = 15
+Position = Vector2i(47, -1)
 
 [sub_resource type="Resource" id="Resource_mrwy5"]
 script = ExtResource("4_nfspu")
-Id = 20
-Position = Vector2i(39, -13)
+Id = 15
+Position = Vector2i(48, -1)
 
 [sub_resource type="Resource" id="Resource_t0g5w"]
 script = ExtResource("4_nfspu")
-Id = 18
-Position = Vector2i(44, -5)
+Id = 17
+Position = Vector2i(43, -8)
 
 [sub_resource type="Resource" id="Resource_38k7p"]
 script = ExtResource("4_nfspu")
-Id = 13
-Position = Vector2i(48, -5)
+Id = 17
+Position = Vector2i(43, -12)
 
 [sub_resource type="Resource" id="Resource_h71w1"]
 script = ExtResource("4_qlst2")
