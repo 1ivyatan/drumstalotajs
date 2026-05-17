@@ -118,6 +118,15 @@ public partial class Device : Entity
 			}
 		}
 	}
+	public void Resupply(int amount)
+	{
+		if (amount > 0)
+		{
+			Shells = amount;
+			ResupplyTurns = 0;
+			_status.HideIcon();
+		}
+	}
 	
 	public void Resupply()
 	{

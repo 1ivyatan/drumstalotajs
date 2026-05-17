@@ -78,7 +78,8 @@ public partial class EntityLayer : SceneLayer
 					device.Properties = (DevicePropertiesData)entityLayerAtlas.Properties;
 					device.ShellsPerTurn = deviceAtlas.ShellsPerTurn;
 					device.Traverse = deviceAtlas.Traverse;
-					device.Resupply();
+					if (deviceAtlas.Shells != -1) device.Resupply(deviceAtlas.Shells);
+					else device.Resupply();
 				} else if (entity is Wall wall)
 				{
 					wall.Properties = (WallPropertiesData)entityLayerAtlas.Properties;

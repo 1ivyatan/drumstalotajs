@@ -14,6 +14,7 @@ public partial class EntityLayerDeviceTileData : EntityLayerTileData
 	[Export] public double Angle { get; set; } = -1;
 	[Export] public double Traverse { get; set; } = 0;
 	[Export] public int ShellsPerTurn { get; set; } = 1;
+	[Export] public int Shells { get; set; } = -1;
 	
 	public EntityLayerDeviceTileData() : base() {}
 	public EntityLayerDeviceTileData(EntityLayer layer, Device device) : base(layer, device)
@@ -21,5 +22,6 @@ public partial class EntityLayerDeviceTileData : EntityLayerTileData
 		Angle = device.Angle;
 		ShellsPerTurn = device.ShellsPerTurn;
 		Traverse = device.Traverse;
+		Shells = device.Shells;
 	}
 }
