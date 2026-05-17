@@ -42,7 +42,7 @@ public partial class BattleScene : Node2D
 	public override void _UnhandledInput(InputEvent @event)
 	{
 		var pos = Map.ViewportMouseToMap();
-		var newpos = new Vector2(pos.X, Math.Abs(pos.Y));
+		var newpos = new Vector2I((int)pos.X, (int)Math.Abs(pos.Y));
 		_positionLabel.Text = $"{newpos}";
 	}
 	

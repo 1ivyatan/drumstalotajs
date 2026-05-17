@@ -87,7 +87,7 @@ public partial class DeviceAdjustmentContainer : Container
 			: $"({device.Shells} shells)";
 		
 		
-		_title.Text = $"{_atlas.Name} {_map.EntityLayer.LocalToMap(new Vector2(device.Position.X, Math.Abs(device.Position.Y)))} {resupplyStr}";
+		_title.Text = $"{_atlas.Name} {_map.EntityLayer.LocalToMap(new Vector2(device.Position.X, Math.Abs(device.Position.Y)-1))} {resupplyStr}";
 		
 		Visible = true;
 	}
