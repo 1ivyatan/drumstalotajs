@@ -35,26 +35,26 @@ public partial class Unmasking : Control
 		_map.Selector.Mode = SelectorMode.Locked;
 		_scene.BattleTopnav.Title = "We need some help";
 		_call.Pressed += () => {
-			int randomNumber = Random.Shared.Next(1, 5);
+			/* dice roll */
+			int randomNumber = Random.Shared.Next(1, 7);
 			switch (randomNumber)
 			{
-				/*
-				case 1: 
-					Nodes.GetRoot().ToastManager.SpawnOne("We uncovered, but enemy caught us! We fire first!");
-					_map.OverlayLayer.ClearAllBlackTiles();
-					_scene.StageManager.PlayerFiring();
-					break;
-				case 2:
+				case 5: case 6:
 					Nodes.GetRoot().ToastManager.SpawnOne("We uncovered silently, make adjustments.");
 					_map.OverlayLayer.ClearAllBlackTiles();
 					_scene.StageManager.DeviceAdjustment();
 					break;
-				case 3: 
+				case 3: case 4:
+					Nodes.GetRoot().ToastManager.SpawnOne("We uncovered, but enemy caught us! We fire first!");
+					_map.OverlayLayer.ClearAllBlackTiles();
+					_scene.StageManager.Firing(FiringMode.Player);
+					break;
+				case 2:
 					if (_map.CurrentLoadedMap.Counterbattery)
 					{
 						Nodes.GetRoot().ToastManager.SpawnOne("We uncovered, but enemy caught us! Run for cover!");
 						_map.OverlayLayer.ClearAllBlackTiles();
-						_scene.StageManager.EnemyFiring();
+						_scene.StageManager.Firing(FiringMode.Enemy);
 					} else
 					{
 						Nodes.GetRoot().ToastManager.SpawnOne("We uncovered silently, make adjustments.");
@@ -62,17 +62,17 @@ public partial class Unmasking : Control
 						_scene.StageManager.DeviceAdjustment();
 					}
 					break;
-				case 4: 
+				case 1:
 					if (_map.CurrentLoadedMap.Counterbattery)
 					{
 						Nodes.GetRoot().ToastManager.SpawnOne("Failed to uncover and enemy caught us! Run for cover!");
-						_scene.StageManager.EnemyFiring();
+						_scene.StageManager.Firing(FiringMode.Enemy);
 					} else
 					{
 						Nodes.GetRoot().ToastManager.SpawnOne("Failed to uncover, lost their contact!");
 						_scene.StageManager.DeviceAdjustment();
 					}
-					break;*/
+					break;
 				default: break;
 			}
 		};
