@@ -981,9 +981,8 @@ DeviceBody = SubResource("AtlasTexture_b1yc4")
 DeviceHead = SubResource("AtlasTexture_7dofr")
 DestroyedDeviceBody = SubResource("AtlasTexture_pactd")
 MinAngle = 5.0
-MaxAngle = 75.0
-TraverseRadius = 2.5
-MuzzleVelocity = 275.0
+TraverseRadius = 7.0
+MuzzleVelocity = 300.0
 Shells = 30
 ResupplyTurns = 3
 MaxFiringPerTurn = 10
@@ -993,7 +992,7 @@ ExplosiveFill = 3.0
 TotalWeight = 15.0
 DragCoefficient = 0.6
 Height = 1.5
-Toughness = 0.17999999999999972
+Toughness = 0.15000000000000036
 metadata/_custom_type_script = "uid://cqwwdwx080x60"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i7155"]
