@@ -47,7 +47,7 @@ public partial class Unmasking : Control
 				case 3: case 4:
 					Nodes.GetRoot().ToastManager.SpawnOne("We uncovered, but enemy caught us! We fire first!");
 					_map.OverlayLayer.ClearAllBlackTiles();
-					_scene.StageManager.Firing(FiringMode.Player);
+					_scene.StageManager.Firing(FiringMode.Both);
 					break;
 				case 2:
 					if (_map.CurrentLoadedMap.Counterbattery)
