@@ -36,7 +36,9 @@ text = "Turns out we need some help uncovering
 more information on our targets...
 We should get our scouts to attempt
 uncovering more information on
-our targets."
+our targets. Chances of getting info
+is same as not getting a particular side
+of a dice.s"
 
 [node name="Buttons" type="HBoxContainer" parent="Dialog/Container" unique_id=664725631]
 layout_mode = 2
