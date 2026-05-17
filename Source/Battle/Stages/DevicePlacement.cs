@@ -157,7 +157,7 @@ public partial class DevicePlacement : Control
 		{
 			if (count < _deviceProps.MaxCount)
 			{
-				var data = new EntityLayerTileData();
+				var data = new EntityLayerDeviceTileData();
 				data.Id = _selectedDeviceAtlas.Id;
 				data.Position = position;
 				data.Player = true;

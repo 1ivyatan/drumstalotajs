@@ -83,11 +83,6 @@ public partial class Device : Entity
 		}
 	} = false;
 	
-	public override void _Ready()
-	{
-		Resupply();
-	}
-	
 	public override bool Disabled { get;
 		set {
 			if (value && field != value)
@@ -124,7 +119,7 @@ public partial class Device : Entity
 		}
 	}
 	
-	private void Resupply()
+	public void Resupply()
 	{
 		Shells = ((DevicePropertiesData)Properties).Shells;
 		ResupplyTurns = 0;
