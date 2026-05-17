@@ -528,9 +528,10 @@ Position = Vector2i(48, -5)
 
 [sub_resource type="Resource" id="Resource_ahwj1"]
 script = ExtResource("5_nqwlc")
-Angle = 80.0
-Shells = 7
-Azimuth = 270.0
+Angle = 76.5
+ShellsPerTurn = 6
+Shells = 17
+Azimuth = 274.0
 Target = true
 Id = 31
 Position = Vector2i(35, -15)
@@ -1252,16 +1253,16 @@ script = ExtResource("9_a42km")
 DevicePositions = Dictionary[Vector2i, float]({
 Vector2i(3, -14): 0.0,
 Vector2i(4, -18): 0.0,
+Vector2i(4, -10): 0.0,
 Vector2i(5, -15): 0.0,
 Vector2i(8, -17): 0.0,
-Vector2i(9, -11): 0.0,
 Vector2i(9, -8): 0.0
 })
 DeviceProps = Array[ExtResource("2_nqwlc")]([SubResource("Resource_nqwlc")])
 MinTotalDevices = 2
 MaxTotalDevices = 6
 Counterbattery = true
-TimeLimitSecs = 600.0
+TimeLimitSecs = 440.0
 EnemyResupply = false
 AltitudeMatters = false
 GroundLayer = SubResource("Resource_50tp2")
