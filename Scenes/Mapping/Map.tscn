@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://do63mxtpdm0w7" path="res://Scenes/Mapping/Overlays/SelectorHighlight.tscn" id="17_st7r0"]
 [ext_resource type="PackedScene" uid="uid://bkwxw3yx6ouqh" path="res://Scenes/Mapping/Projectiles/Projectile.tscn" id="20_wb4r7"]
 [ext_resource type="Texture2D" uid="uid://v2gkmg7yaoh5" path="res://Assets/Textures/controls.png" id="21_04b6o"]
+[ext_resource type="PackedScene" uid="uid://dhs8elwnae0rg" path="res://Scenes/Mapping/Overlays/BlackTile.tscn" id="21_54hn3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ox681"]
 texture = ExtResource("2_sd0qa")
@@ -1240,6 +1241,7 @@ script = ExtResource("7_f0kan")
 Id = 4
 Name = "BlackTile"
 Thumbnail = SubResource("AtlasTexture_lsqgu")
+Scene = ExtResource("21_54hn3")
 metadata/_custom_type_script = "uid://bn1u57sn0woiq"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mukcc"]
