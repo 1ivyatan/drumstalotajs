@@ -325,23 +325,20 @@ public partial class Projectile : Node2D
 		Position = _device.Position;
 		_props = (DevicePropertiesData)_device.Properties;
 		_map = map;
-		
 		var deviceCellPos = _map.EntityLayer.LocalToMap(_device.Position);
 		GroundTile groundTile = (GroundTile)_map.GroundLayer.Flash(deviceCellPos)[0];
-
 		Altitude = groundTile.GetFullHeight() + device.Properties.Height;
 		_minAlt = Altitude;
-		
 		var radius = (_props.Caliber / 1000.0) / 2.0;
 		var traverse = _device.Azimuth + _device.Traverse;
 		_projectileArea = Mathf.Pi * Mathf.Pow(radius, 2);
-		_direction = Calculations.AzimuthToDirection(traverse);
-		_angleRad = Calculations.ToRadians(_device.Angle);
+		_angleRad = Mathf.DegToRad(_device.Angle);
 		_cellPosition = deviceCellPos;
 		_cellHeight = _map.GetTotalTileHeight(deviceCellPos);
+		var rads = Mathf.DegToRad((float)traverse);
+		_direction = new Vector2(Mathf.Sin(rads), -Mathf.Cos(rads)).Normalized();
 		Rotation = _direction.Angle();
-
-		var initHorizontalVelocity = _direction * (float)(_props.MuzzleVelocity * Math.Cos(_angleRad));
+		var initHorizontalVelocity = (float)(_props.MuzzleVelocity * Math.Cos(_angleRad)) * _direction;
 		var initVerticalVelocity = _props.MuzzleVelocity * Math.Cos(_angleRad);
 		HorizontalVelocity = initHorizontalVelocity;
 		VerticalVelocity = initVerticalVelocity;
