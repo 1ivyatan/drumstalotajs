@@ -24,7 +24,7 @@ metadata/_custom_type_script = "uid://dj5l06h3bhoe2"
 [sub_resource type="Resource" id="Resource_l0w2v"]
 script = ExtResource("1_pflqy")
 Name = "Some outpost"
-Desc = "This outpost may be the most painful for us all, for opponent has thoroughly planned to fight on this outpost, but for what? Is this some last ditch effort to stall us to compensate for the fact that not everyone has withdrawn from this outpost? Either way who leads this defense is either genius who will shock us or is overly confident, therefore foolish."
+Desc = "This outpost may be the most painful for us all, for opponent has thoroughly planned to fight on this outpost, but for what? Is this some last ditch effort to stall us to compensate for the fact that not everyone has withdrawn from this outpost? Either way who leads this defense is either genius who will shock us, is overly confident, therefore foolish, or worse, no choice but to act now. We have to destroy devices that are being used now, everyone else will take care of the rest."
 Order = 2
 Type = 6
 InMapPosition = Vector2i(14, 9)
