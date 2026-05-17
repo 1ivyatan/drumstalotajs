@@ -69,7 +69,6 @@ public partial class Device : Entity
 	} = 100;
 	
 	
-
 	public override bool Target { 
 		get; 
 		set {
@@ -77,6 +76,9 @@ public partial class Device : Entity
 			if (!Player && !field)
 			{
 				_flag.Visible = false;
+			} else
+			{
+				_flag.Visible = true;
 			}
 		}
 	} = false;
