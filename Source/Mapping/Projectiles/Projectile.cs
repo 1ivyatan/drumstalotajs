@@ -63,7 +63,7 @@ public partial class Projectile : Node2D
 				Scale += new Vector2(.01f, .01f);
 			} else
 			{
-				Scale -= new Vector2(.01f, .01f);
+				if (Scale.X > 0.1) Scale -= new Vector2(.01f, .01f);
 			}
 			
 			var newCellPos = _map.GroundLayer.LocalToMap(Position);
