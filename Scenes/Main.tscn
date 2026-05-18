@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://c6xgiiya64xrh" path="res://Source/Managers/Toasts/ToastManager.cs" id="3_kln2b"]
 [ext_resource type="Script" uid="uid://dt3akytandfac" path="res://Source/Managers/Saves/SaveManager.cs" id="3_rgh2o"]
 [ext_resource type="Script" uid="uid://psksvlqmuwi" path="res://Source/Managers/Scenes/FadeCurtainContainer.cs" id="3_v1gob"]
+[ext_resource type="Script" uid="uid://bkq07qlqgrhia" path="res://Source/Managers/Audio/AudioManager.cs" id="4_jw32o"]
 [ext_resource type="Resource" uid="uid://bg5ml0po4tcgm" path="res://Resources/LevelSets/RL.tres" id="5_v1gob"]
 
 [node name="Main" type="Node" unique_id=1017316100 node_paths=PackedStringArray("SceneManager", "ToastManager", "SaveManager")]
@@ -43,6 +44,7 @@ color = Color(0, 0, 0, 1)
 
 [node name="AudioManager" type="Node" parent="." unique_id=1009940070]
 process_mode = 3
+script = ExtResource("4_jw32o")
 
 [node name="SaveManager" type="Node" parent="." unique_id=994388498]
 process_mode = 3
