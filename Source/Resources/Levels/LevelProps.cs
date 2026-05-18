@@ -6,6 +6,7 @@ using Drumstalotajs.Resources;
 using Drumstalotajs.Resources.Mapping;
 using Drumstalotajs.Resources.Mapping.Layers;
 using Drumstalotajs.Utilities;
+using Drumstalotajs.Managers.Audio;
 
 namespace Drumstalotajs.Resources.Levels;
 
@@ -18,6 +19,7 @@ public partial class LevelProps : Resource
 	[Export] public LevelType Type { get; set; } = LevelType.Dugout;
 	[Export] public Vector2I InMapPosition { get; set; }
 	[Export(PropertyHint.File, "*.tres,*.res")] public string MapPath { get; set; } = "";
+	[Export] public UiMusic BgMusic { get; set; } = UiMusic.BattleOne;
 	
 	public OverlayLayerTileData GetTileData(bool unlocked = false)
 	{

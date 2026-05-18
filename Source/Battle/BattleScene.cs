@@ -57,6 +57,7 @@ public partial class BattleScene : Node2D
 	private void Pause()
 	{
 		Nodes.GetRoot().SceneManager.PauseScene();
+		Nodes.GetRoot().AudioManager.PauseAll();
 		Paused = true;
 		_pauseOverlay.Visible = true;
 	}
@@ -65,6 +66,7 @@ public partial class BattleScene : Node2D
 	{
 		_pauseOverlay.Visible = false;
 		Nodes.GetRoot().SceneManager.ResumeScene();
+		Nodes.GetRoot().AudioManager.ResumeAll();
 		Paused = false;
 	}
 	

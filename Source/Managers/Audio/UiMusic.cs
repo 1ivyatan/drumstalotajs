@@ -6,5 +6,5 @@ namespace Drumstalotajs.Managers.Audio;
 
 public enum UiMusic
 {
-	Mute, Main, Planning
+	Main, Planning, BattleOne
 }

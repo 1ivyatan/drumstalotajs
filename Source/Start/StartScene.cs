@@ -44,6 +44,5 @@ public partial class StartScene : Control
 			Nodes.GetRoot().Exit();
 		};
 		
-		Nodes.GetRoot().AudioManager.SetUiMusic(UiMusic.Main);
 	}
 }
