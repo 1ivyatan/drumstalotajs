@@ -90,7 +90,7 @@ public partial class InitDeviceAdjustmentContainer : Container
 		_shellLabel.Text = $"{_device.ShellsPerTurn}";
 		
 		var resupplyStr = device.ResupplyTurns > 0 ? $"({device.ResupplyTurns} turns until resupply)" : $"({device.Shells} shells)";
-		_title.Text = $"{_atlas.Name} {_map.EntityLayer.LocalToMap(new Vector2(device.Position.X, Math.Abs(device.Position.Y)-1))} {resupplyStr}";
+		_title.Text = $"{_atlas.Name} {resupplyStr}";
 		
 		Visible = true;
 	}
