@@ -75,7 +75,8 @@ public partial class ScoreManager : Node
 	
 	public bool CanContinue()
 	{
-		return RemainingTime > 0 && !HasVictory();
+		
+		return RemainingTime > 0 && !HasVictory() && _map.EntityLayer.GetPlayerDevices().Length > 0;
 	}
 	
 	public void PrepareScoring(MapResource mapResource)
