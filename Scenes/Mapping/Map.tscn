@@ -967,7 +967,7 @@ metadata/_custom_type_script = "uid://7qxwheiwlsgl"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pactd"]
 atlas = ExtResource("15_54hn3")
-region = Rect2(256, 169, 30, 44)
+region = Rect2(256, 173, 30, 35)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b1yc4"]
 
@@ -1011,7 +1011,7 @@ metadata/_custom_type_script = "uid://7qxwheiwlsgl"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_380ny"]
 atlas = ExtResource("15_54hn3")
-region = Rect2(160, 161, 32, 50)
+region = Rect2(160, 166, 32, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7teux"]
 
@@ -1055,7 +1055,7 @@ metadata/_custom_type_script = "uid://7qxwheiwlsgl"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hg6ce"]
 atlas = ExtResource("15_54hn3")
-region = Rect2(224, 161, 32, 51)
+region = Rect2(225, 165, 30, 44)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4p7di"]
 
@@ -1099,7 +1099,7 @@ metadata/_custom_type_script = "uid://7qxwheiwlsgl"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hrxa5"]
 atlas = ExtResource("15_54hn3")
-region = Rect2(192, 161, 32, 52)
+region = Rect2(196, 161, 26, 52)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ej4kq"]
 atlas = ExtResource("15_54hn3")
