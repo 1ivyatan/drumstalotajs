@@ -21,13 +21,13 @@ Tiles = SubResource("TileMapPattern_4utqf")
 [sub_resource type="Resource" id="Resource_4utqf"]
 script = ExtResource("2_5mu6w")
 DeviceId = 32
-MaxCount = 6
+MaxCount = 8
 metadata/_custom_type_script = "uid://vidsdghus3qn"
 
 [sub_resource type="Resource" id="Resource_dr1xw"]
 script = ExtResource("2_5mu6w")
 DeviceId = 33
-MaxCount = 4
+MaxCount = 6
 metadata/_custom_type_script = "uid://vidsdghus3qn"
 
 [sub_resource type="Resource" id="Resource_2280f"]
@@ -318,6 +318,11 @@ Tiles = Array[ExtResource("3_4utqf")]([])
 script = ExtResource("7_mmicr")
 MetersPerCell = Vector2i(64, 64)
 DevicePositions = Dictionary[Vector2i, float]({
+Vector2i(6, -18): 0.0,
+Vector2i(6, -15): 0.0,
+Vector2i(7, -11): 0.0,
+Vector2i(7, -8): 0.0,
+Vector2i(7, -5): 0.0,
 Vector2i(11, -17): 0.0,
 Vector2i(11, -13): 0.0,
 Vector2i(11, -6): 0.0,
@@ -328,9 +333,9 @@ Vector2i(13, -12): 0.0
 })
 DeviceProps = Array[ExtResource("2_5mu6w")]([SubResource("Resource_4utqf"), SubResource("Resource_dr1xw"), SubResource("Resource_2280f")])
 MinTotalDevices = 2
-MaxTotalDevices = 6
+MaxTotalDevices = 10
 Counterbattery = true
-TimeLimitSecs = 1200.0
+TimeLimitSecs = 1800.0
 GroundLayer = SubResource("Resource_4j523")
 DecorationLayer = SubResource("Resource_p68st")
 EntityLayer = SubResource("Resource_guqvw")
