@@ -4,6 +4,7 @@ using Drumstalotajs.Utilities;
 using Drumstalotajs.Managers.Scenes;
 using Drumstalotajs.Managers.Toasts;
 using Drumstalotajs.Managers.Saves;
+using Drumstalotajs.Managers.Audio;
 
 namespace Drumstalotajs;
 
@@ -12,6 +13,7 @@ public partial class Main : Node
 	[Export] public SceneManager SceneManager { get; private set; }
 	[Export] public ToastManager ToastManager { get; private set; }
 	[Export] public SaveManager SaveManager { get; private set; }
+	[Export] public AudioManager AudioManager { get; private set; }
 	
 	public override void _Ready()
 	{
