@@ -34,7 +34,7 @@ metadata/_custom_type_script = "uid://dj5l06h3bhoe2"
 [sub_resource type="Resource" id="Resource_btbr6"]
 script = ExtResource("1_pflqy")
 Name = "Plains"
-Desc = "Heaviest and the best weapons have been brought to this island still not entirely under our control. Those fields are broad and so are the defenses that remain, still our heaviest weapons will be brought to flatten said defenses smaller teams to take entirety of the island."
+Desc = "Heaviest and the best weapons have been brought to deal with remaining resistance on the island, but as it turns out an enemy captain of the battery has made thorough plans to thwart our attack with their own heavy weapons. This will be a captian versus captain fight."
 Order = 3
 Type = 2
 InMapPosition = Vector2i(18, 7)
