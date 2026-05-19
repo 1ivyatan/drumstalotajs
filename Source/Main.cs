@@ -31,6 +31,10 @@ public partial class Main : Node
 			_exitDialog.Hide();
 			_exitDialogContainer.Visible = false;
 		};
+		_exitDialog.CloseRequested += () => {
+			_exitDialog.Hide();
+			_exitDialogContainer.Visible = false;
+		};
 		_exitDialog.Confirmed += () => {
 			_exitDialog.Hide();
 			_exitDialogContainer.Visible = false;
