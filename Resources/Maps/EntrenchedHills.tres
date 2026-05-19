@@ -27,7 +27,7 @@ metadata/_custom_type_script = "uid://vidsdghus3qn"
 [sub_resource type="Resource" id="Resource_iyqxh"]
 script = ExtResource("2_7ppt7")
 DeviceId = 30
-MaxCount = 4
+MaxCount = 5
 metadata/_custom_type_script = "uid://vidsdghus3qn"
 
 [sub_resource type="Resource" id="Resource_ejtn2"]
@@ -720,7 +720,7 @@ Vector2i(34, -7): 0.0
 DeviceProps = Array[ExtResource("2_7ppt7")]([SubResource("Resource_28xej"), SubResource("Resource_iyqxh")])
 MinTotalDevices = 4
 MaxTotalDevices = 8
-TimeLimitSecs = 900.0
+TimeLimitSecs = 1000.0
 EnemyResupply = false
 GroundLayer = SubResource("Resource_uy03h")
 DecorationLayer = SubResource("Resource_7ppt7")
