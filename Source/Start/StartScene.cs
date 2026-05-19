@@ -2,6 +2,7 @@ using Godot;
 using System;
 using Drumstalotajs;
 using Drumstalotajs.Utilities;
+using Drumstalotajs.Managers.Audio;
 
 namespace Drumstalotajs.Start;
 
@@ -42,5 +43,6 @@ public partial class StartScene : Control
 		_exit.Pressed += () => {
 			Nodes.GetRoot().Exit();
 		};
+		
 	}
 }

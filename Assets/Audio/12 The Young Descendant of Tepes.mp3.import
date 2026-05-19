@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dhh2th0rcmx0w"
+path="res://.godot/imported/12 The Young Descendant of Tepes.mp3-8a6898e647457edd19091d8c5399b810.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/12 The Young Descendant of Tepes.mp3"
+dest_files=["res://.godot/imported/12 The Young Descendant of Tepes.mp3-8a6898e647457edd19091d8c5399b810.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

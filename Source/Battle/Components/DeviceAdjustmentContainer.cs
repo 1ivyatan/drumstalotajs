@@ -25,6 +25,7 @@ public partial class DeviceAdjustmentContainer : Container
 	
 	[Export] private VSlider _shellSlider;
 	[Export] private Label _shellLabel;
+	[Export] private AudioStreamPlayer _antitickSfx;
 	
 	private DevicePropertiesData _props = null;
 	private EntityLayerAtlasData _atlas = null;
@@ -57,6 +58,14 @@ public partial class DeviceAdjustmentContainer : Container
 				_shellLabel.Text = $"{value}";
 				_device.ShellsPerTurn = (int)value;
 			}
+		};
+		
+		_shellSlider.DragStarted += () => {
+			_antitickSfx.Play();
+		};
+		
+		_shellSlider.DragEnded += (bool changed) => {
+			_antitickSfx.Stop();
 		};
 	}
 	

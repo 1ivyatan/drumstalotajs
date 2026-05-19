@@ -24,6 +24,7 @@ public partial class InitDeviceAdjustment : Control
 {
 	[Export] private InitDeviceAdjustmentContainer _initDeviceAdjustmentContainer;
 	[Export] private Button _toFiringButton;
+	[Export] private AudioStreamPlayer _tickSfx;
 	private BattleScene _scene;
 	private Map _map;
 	
@@ -89,6 +90,7 @@ public partial class InitDeviceAdjustment : Control
 						_map.OverlayLayer.ClearAllHighlighters();
 						_map.OverlayLayer.PlaceHighlighter(_map.OverlayLayer.LocalToMap(device.Position));
 						_initDeviceAdjustmentContainer.Load(device);
+						_tickSfx.Play();
 					}
 				} else
 				{

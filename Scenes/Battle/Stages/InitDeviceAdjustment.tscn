@@ -5,12 +5,14 @@
 [ext_resource type="PackedScene" uid="uid://dmgd2vv1ixfnn" path="res://Scenes/Components/CircleSlider.tscn" id="2_g3l6y"]
 [ext_resource type="PackedScene" uid="uid://tkq5giln4ao6" path="res://Scenes/Components/Wheel.tscn" id="3_svpor"]
 [ext_resource type="Texture2D" uid="uid://v2gkmg7yaoh5" path="res://Assets/Textures/controls.png" id="5_8qgox"]
+[ext_resource type="AudioStream" uid="uid://4hd8mvth5jl" path="res://Assets/Audio/Antitick.wav" id="5_hkow6"]
+[ext_resource type="AudioStream" uid="uid://bfwhncauxvpnm" path="res://Assets/Audio/Tick.wav" id="6_xndrs"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xndrs"]
 atlas = ExtResource("5_8qgox")
 region = Rect2(141, 98, 64, 64)
 
-[node name="InitDeviceAdjustment" type="Control" unique_id=1768267525 node_paths=PackedStringArray("_initDeviceAdjustmentContainer", "_toFiringButton")]
+[node name="InitDeviceAdjustment" type="Control" unique_id=1768267525 node_paths=PackedStringArray("_initDeviceAdjustmentContainer", "_toFiringButton", "_tickSfx")]
 layout_mode = 3
 anchors_preset = 12
 anchor_top = 1.0
@@ -21,8 +23,9 @@ grow_vertical = 0
 script = ExtResource("1_y6unp")
 _initDeviceAdjustmentContainer = NodePath("InitDeviceAdjustmentContainer")
 _toFiringButton = NodePath("ToFiring")
+_tickSfx = NodePath("TickSfx")
 
-[node name="InitDeviceAdjustmentContainer" type="PanelContainer" parent="." unique_id=87147405 node_paths=PackedStringArray("_title", "_azimuthSlider", "_azimuthLabel", "_angleSlider", "_angleLabel", "_shellSlider", "_shellLabel")]
+[node name="InitDeviceAdjustmentContainer" type="PanelContainer" parent="." unique_id=87147405 node_paths=PackedStringArray("_title", "_azimuthSlider", "_azimuthLabel", "_angleSlider", "_angleLabel", "_shellSlider", "_shellLabel", "_antitickSfx")]
 visible = false
 layout_mode = 1
 anchors_preset = 2
@@ -39,6 +42,7 @@ _angleSlider = NodePath("Container/Wheels/Angle/Wheel")
 _angleLabel = NodePath("Container/Wheels/Angle/Value")
 _shellSlider = NodePath("Container/Wheels/Shells/VSlider")
 _shellLabel = NodePath("Container/Wheels/Shells/Value")
+_antitickSfx = NodePath("Container/Wheels/Shells/AntitickSfx")
 
 [node name="Container" type="VBoxContainer" parent="InitDeviceAdjustmentContainer" unique_id=1010489265]
 layout_mode = 2
@@ -113,6 +117,10 @@ layout_mode = 2
 text = "1"
 horizontal_alignment = 1
 
+[node name="AntitickSfx" type="AudioStreamPlayer" parent="InitDeviceAdjustmentContainer/Container/Wheels/Shells" unique_id=1054665287]
+stream = ExtResource("5_hkow6")
+bus = &"Sfx"
+
 [node name="ToFiring" type="Button" parent="." unique_id=1933279334]
 custom_minimum_size = Vector2(81, 81)
 layout_mode = 1
@@ -127,3 +135,7 @@ grow_horizontal = 0
 grow_vertical = 0
 text = "Fire!"
 icon = SubResource("AtlasTexture_xndrs")
+
+[node name="TickSfx" type="AudioStreamPlayer" parent="." unique_id=1567199384]
+stream = ExtResource("6_xndrs")
+bus = &"Sfx"

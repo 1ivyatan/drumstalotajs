@@ -2,12 +2,13 @@
 
 [ext_resource type="Script" uid="uid://dlakdl7qufbmm" path="res://Source/Battle/Stages/DevicePlacement.cs" id="1_8xrf7"]
 [ext_resource type="Texture2D" uid="uid://v2gkmg7yaoh5" path="res://Assets/Textures/controls.png" id="2_0v3wf"]
+[ext_resource type="AudioStream" uid="uid://bfwhncauxvpnm" path="res://Assets/Audio/Tick.wav" id="3_loeph"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_loeph"]
 atlas = ExtResource("2_0v3wf")
 region = Rect2(141, 34, 64, 64)
 
-[node name="DevicePlacement" type="Control" unique_id=1734111832 node_paths=PackedStringArray("_deviceInventory", "_toDeviceAdjustment", "_deviceCountLabel")]
+[node name="DevicePlacement" type="Control" unique_id=1734111832 node_paths=PackedStringArray("_deviceInventory", "_toDeviceAdjustment", "_deviceCountLabel", "_tickSfx")]
 layout_mode = 3
 anchors_preset = 12
 anchor_top = 1.0
@@ -19,6 +20,7 @@ script = ExtResource("1_8xrf7")
 _deviceInventory = NodePath("DeviceInventoryContainer/VBoxContainer/DeviceInventory")
 _toDeviceAdjustment = NodePath("ToDeviceAdjustment")
 _deviceCountLabel = NodePath("DeviceInventoryContainer/VBoxContainer/Label")
+_tickSfx = NodePath("TickSfx")
 
 [node name="DeviceInventoryContainer" type="PanelContainer" parent="." unique_id=1814224064]
 custom_minimum_size = Vector2(0, 81)
@@ -61,3 +63,7 @@ grow_vertical = 0
 disabled = true
 text = "Place devices "
 icon = SubResource("AtlasTexture_loeph")
+
+[node name="TickSfx" type="AudioStreamPlayer" parent="." unique_id=1193302539]
+stream = ExtResource("3_loeph")
+bus = &"Sfx"

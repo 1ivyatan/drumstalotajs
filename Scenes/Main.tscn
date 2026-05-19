@@ -5,13 +5,18 @@
 [ext_resource type="Script" uid="uid://c6xgiiya64xrh" path="res://Source/Managers/Toasts/ToastManager.cs" id="3_kln2b"]
 [ext_resource type="Script" uid="uid://dt3akytandfac" path="res://Source/Managers/Saves/SaveManager.cs" id="3_rgh2o"]
 [ext_resource type="Script" uid="uid://psksvlqmuwi" path="res://Source/Managers/Scenes/FadeCurtainContainer.cs" id="3_v1gob"]
+[ext_resource type="Script" uid="uid://bkq07qlqgrhia" path="res://Source/Managers/Audio/AudioManager.cs" id="4_jw32o"]
+[ext_resource type="AudioStream" uid="uid://ift4bdew8dg8" path="res://Assets/Audio/01 A Dream that is more Scarlet than Red.mp3" id="5_50glp"]
 [ext_resource type="Resource" uid="uid://bg5ml0po4tcgm" path="res://Resources/LevelSets/RL.tres" id="5_v1gob"]
+[ext_resource type="AudioStream" uid="uid://c3apf00wbbr3" path="res://Assets/Audio/10 The Maid and the Pocket Watch of Blood.mp3" id="6_vy5pj"]
+[ext_resource type="AudioStream" uid="uid://dhh2th0rcmx0w" path="res://Assets/Audio/12 The Young Descendant of Tepes.mp3" id="7_bmxlf"]
 
-[node name="Main" type="Node" unique_id=1017316100 node_paths=PackedStringArray("SceneManager", "ToastManager", "SaveManager")]
+[node name="Main" type="Node" unique_id=1017316100 node_paths=PackedStringArray("SceneManager", "ToastManager", "SaveManager", "AudioManager")]
 script = ExtResource("1_r150o")
 SceneManager = NodePath("SceneManager")
 ToastManager = NodePath("Overlay/ToastManager")
 SaveManager = NodePath("SaveManager")
+AudioManager = NodePath("AudioManager")
 
 [node name="SceneManager" type="Node" parent="." unique_id=712174652 node_paths=PackedStringArray("FadeCurtainContainer")]
 process_mode = 1
@@ -41,8 +46,18 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="AudioManager" type="Node" parent="." unique_id=1009940070]
+[node name="AudioManager" type="Node" parent="." unique_id=1009940070 node_paths=PackedStringArray("_uiMusicPlayer")]
 process_mode = 3
+script = ExtResource("4_jw32o")
+_uiMusic = Dictionary[int, AudioStream]({
+0: ExtResource("5_50glp"),
+1: ExtResource("6_vy5pj"),
+2: ExtResource("7_bmxlf")
+})
+_uiMusicPlayer = NodePath("UiMusic")
+
+[node name="UiMusic" type="AudioStreamPlayer" parent="AudioManager" unique_id=700937235]
+bus = &"Music"
 
 [node name="SaveManager" type="Node" parent="." unique_id=994388498]
 process_mode = 3

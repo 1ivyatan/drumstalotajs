@@ -33,6 +33,7 @@ public partial class Wheel : Control
 	[Export] private TextureRect _wheelNode;
 	[Export] private TextureRect _left;
 	[Export] private TextureRect _right;
+	[Export] private AudioStreamPlayer _crankSfx;
 	private bool _dragging = false;
 	
 	public override void _Ready()
@@ -99,6 +100,10 @@ public partial class Wheel : Control
 			TurnWheel(_slider.Value, delta);
 			PilotArrow(_slider.Value);
 			Value = Mathf.Clamp(Value + (Math.Sign(_slider.Value) * Step), MinValue, MaxValue);
+			if (!_crankSfx.Playing)
+			{
+				_crankSfx.Play();
+			}
 		}
 	}
 }

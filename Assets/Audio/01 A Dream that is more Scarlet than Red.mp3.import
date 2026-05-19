@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ift4bdew8dg8"
+path="res://.godot/imported/01 A Dream that is more Scarlet than Red.mp3-425478d3bb8e6d41e19a8237ba6fa063.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/01 A Dream that is more Scarlet than Red.mp3"
+dest_files=["res://.godot/imported/01 A Dream that is more Scarlet than Red.mp3-425478d3bb8e6d41e19a8237ba6fa063.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4
