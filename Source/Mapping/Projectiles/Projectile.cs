@@ -41,6 +41,7 @@ public partial class Projectile : Node2D
 	
 	[Export] private Sprite2D _explosion;
 	[Export] private Sprite2D _shell;
+	[Export] private AudioStreamPlayer _explosionSfx;
 	
 	private double _minAlt = 0;
 	private double _peakAlt = 0;
@@ -111,6 +112,7 @@ public partial class Projectile : Node2D
 		_calculatedLethalRadius = Mathf.Max(_calculatedLethalBlast, lethalFrag);
 		_calculatedCasualityRadius = Mathf.Max(_calculatedCasualityBlast, casualityFrag);
 		ApplyDamage();
+		_explosionSfx.Play();
 		AnimateAndDisappear();
 	}
 	

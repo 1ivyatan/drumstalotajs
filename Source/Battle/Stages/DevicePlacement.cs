@@ -22,6 +22,7 @@ public partial class DevicePlacement : Control
 	[Export] private ItemList _deviceInventory;
 	[Export] private Button _toDeviceAdjustment;
 	[Export] private Label _deviceCountLabel;
+	[Export] private AudioStreamPlayer _tickSfx;
 	private BattleScene _scene;
 	private Map _map;
 	
@@ -176,12 +177,14 @@ public partial class DevicePlacement : Control
 				await ToSignal(_map.EntityLayer, "TileSpawned");
 				_deviceInventory.SetItemText((int)_itemListIndex, $"{_deviceProps.MaxCount - count - 1}");
 				_counter[_selectedDeviceAtlas.Id]++;
+				_tickSfx.Play();
 			}
 		} else if (_selectedDeviceAtlas.Id == device.TileId && device.Player)
 		{
 			_map.EntityLayer.RemoveTile(position);
 			_deviceInventory.SetItemText((int)_itemListIndex, $"{_deviceProps.MaxCount - count + 1}");
 			_counter[_selectedDeviceAtlas.Id]--;
+			_tickSfx.Play();
 		}
 		
 		LockcheckAdjustmentButton();

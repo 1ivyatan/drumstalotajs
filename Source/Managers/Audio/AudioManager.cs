@@ -13,10 +13,6 @@ public partial class AudioManager : Node
 	public AudioMode AudioMode { get; private set; } = AudioMode.Mute;
 	private bool Paused { get; set; }
 	
-	public override void _Ready()
-	{
-	}
-	
 	public void SetAudioMode(AudioMode mode, UiMusic uiMusic = UiMusic.BattleOne)
 	{
 		AudioMode = mode;

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cptvwixr27hnt" path="res://Source/Components/CircleSlider.cs" id="1_vs6do"]
 [ext_resource type="Texture2D" uid="uid://v2gkmg7yaoh5" path="res://Assets/Textures/controls.png" id="2_30df8"]
+[ext_resource type="AudioStream" uid="uid://bfwhncauxvpnm" path="res://Assets/Audio/Tick.wav" id="3_30df8"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vs6do"]
 
@@ -13,13 +14,14 @@ region = Rect2(0, 0, 65, 64)
 atlas = ExtResource("2_30df8")
 region = Rect2(66, 1, 31, 10)
 
-[node name="CircleSlider" type="PanelContainer" unique_id=858039364 node_paths=PackedStringArray("_buttOfArrow", "_arrow")]
+[node name="CircleSlider" type="PanelContainer" unique_id=858039364 node_paths=PackedStringArray("_buttOfArrow", "_arrow", "_crankSfx")]
 offset_right = 64.0
 offset_bottom = 64.0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_vs6do")
 script = ExtResource("1_vs6do")
 _buttOfArrow = NodePath("ArrowCenter")
 _arrow = NodePath("ArrowCenter/Arrow")
+_crankSfx = NodePath("CrankSfx")
 
 [node name="Compass" type="TextureRect" parent="." unique_id=1522838307]
 layout_mode = 2
@@ -47,3 +49,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = SubResource("AtlasTexture_30df8")
 stretch_mode = 3
+
+[node name="CrankSfx" type="AudioStreamPlayer" parent="." unique_id=299954165]
+stream = ExtResource("3_30df8")
+bus = &"Sfx"

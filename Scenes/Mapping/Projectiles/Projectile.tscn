@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://oh8y1irej7ax" path="res://Source/Mapping/Projectiles/Projectile.cs" id="1_110hw"]
 [ext_resource type="Texture2D" uid="uid://b12sdf1d12it1" path="res://Assets/Textures/entities.png" id="2_3rst8"]
 [ext_resource type="Texture2D" uid="uid://bq2uftd1bldx6" path="res://Assets/Textures/efects.png" id="3_khasa"]
+[ext_resource type="AudioStream" uid="uid://c7vtxn5d30ft0" path="res://Assets/Audio/Detonate.wav" id="4_lc4dl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_khasa"]
 atlas = ExtResource("2_3rst8")
@@ -12,11 +13,12 @@ region = Rect2(122, 192, 7, 12)
 atlas = ExtResource("3_khasa")
 region = Rect2(35, 4, 25, 23)
 
-[node name="Projectile" type="Node2D" unique_id=1331365897 node_paths=PackedStringArray("_explosion", "_shell")]
+[node name="Projectile" type="Node2D" unique_id=1331365897 node_paths=PackedStringArray("_explosion", "_shell", "_explosionSfx")]
 z_index = 10
 script = ExtResource("1_110hw")
 _explosion = NodePath("Explosion")
 _shell = NodePath("Shell")
+_explosionSfx = NodePath("ExplosionSfx")
 
 [node name="Shell" type="Sprite2D" parent="." unique_id=124077106]
 rotation = 1.5707964
@@ -25,3 +27,7 @@ texture = SubResource("AtlasTexture_khasa")
 [node name="Explosion" type="Sprite2D" parent="." unique_id=1081839485]
 visible = false
 texture = SubResource("AtlasTexture_lc4dl")
+
+[node name="ExplosionSfx" type="AudioStreamPlayer" parent="." unique_id=700501092]
+stream = ExtResource("4_lc4dl")
+bus = &"Sfx"

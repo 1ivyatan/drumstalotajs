@@ -57,6 +57,7 @@ _uiMusic = Dictionary[int, AudioStream]({
 _uiMusicPlayer = NodePath("UiMusic")
 
 [node name="UiMusic" type="AudioStreamPlayer" parent="AudioManager" unique_id=700937235]
+bus = &"Music"
 
 [node name="SaveManager" type="Node" parent="." unique_id=994388498]
 process_mode = 3

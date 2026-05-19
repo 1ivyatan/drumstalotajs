@@ -16,6 +16,7 @@ public partial class CircleSlider : Control
 	[ExportGroup("Internals")]
 	[Export] private Control _buttOfArrow;
 	[Export] private TextureRect _arrow;
+	[Export] private AudioStreamPlayer _crankSfx;
 	
 	private bool _pressed = false;
 	private bool _clicked = false;
@@ -44,31 +45,37 @@ public partial class CircleSlider : Control
 				{
 					_pressed = mouseButton.Pressed;
 				}
-				
-			}
-		}
-		
-		if (_pressed)
-		{
-			var direction = (GetGlobalMousePosition() - _buttOfArrow.GlobalPosition);
-			var rot = Mathf.Atan2(direction.Y,direction.X);
-			var deg = Mathf.RadToDeg(rot);
-
-			if (deg < 0)
-			{
-				deg += 360;
-				rot += Mathf.Tau;
-			}
-
-			rot += Mathf.Pi / 2;
-			if (rot >= Mathf.Tau)
-			{
-				rot -= Mathf.Tau;
 			}
 			
-			_arrow.RotationDegrees = deg;
-			Value = rot / (2 * Mathf.Pi) * (MaxValue - MinValue) + MinValue;
-			EmitSignal(SignalName.ValueChanged, Value);
+			if (_pressed)
+			{
+				var direction = (GetGlobalMousePosition() - _buttOfArrow.GlobalPosition);
+				var rot = Mathf.Atan2(direction.Y,direction.X);
+				var deg = Mathf.RadToDeg(rot);
+
+				if (deg < 0)
+				{
+					deg += 360;
+					rot += Mathf.Tau;
+				}
+
+				rot += Mathf.Pi / 2;
+				if (rot >= Mathf.Tau)
+				{
+					rot -= Mathf.Tau;
+				}
+			
+				_arrow.RotationDegrees = deg;
+				Value = rot / (2 * Mathf.Pi) * (MaxValue - MinValue) + MinValue;
+				EmitSignal(SignalName.ValueChanged, Value);
+				if (!_crankSfx.Playing)
+				{
+					_crankSfx.Play();
+				}
+			} else
+			{
+				_crankSfx.Stop();
+			}
 		}
 	}
 	

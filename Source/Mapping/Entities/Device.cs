@@ -14,6 +14,7 @@ public partial class Device : Entity
 	[Export] private Flag _flag;
 	[Export] private Status _status;
 	[Export] private Damage _damage;
+	[Export] private AudioStreamPlayer _shootSfx;
 	
 	[Export] public override EntityPropertiesData Properties { get; 
 		set
@@ -140,6 +141,7 @@ public partial class Device : Entity
 		if (!Disabled)
 		{
 			Shells--;
+			_shootSfx.Play();
 			if (Shells == 0)
 			{
 				ResupplyTurns = ((DevicePropertiesData)Properties).ResupplyTurns;
