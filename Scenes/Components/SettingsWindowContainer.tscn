@@ -70,6 +70,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 1
 max_value = 1.0
 step = 0.01
+value = 1.0
 
 [node name="Value" type="Label" parent="SettingsWindow/SettingsContainer/MasterVolume" unique_id=954815512]
 custom_minimum_size = Vector2(40, 0)
@@ -93,6 +94,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 1
 max_value = 1.0
 step = 0.01
+value = 1.0
 
 [node name="Value" type="Label" parent="SettingsWindow/SettingsContainer/MusicVolume" unique_id=1960294635]
 custom_minimum_size = Vector2(40, 0)
@@ -117,6 +119,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 1
 max_value = 1.0
 step = 0.01
+value = 1.0
 
 [node name="Value" type="Label" parent="SettingsWindow/SettingsContainer/SfxVolume" unique_id=1006234609]
 custom_minimum_size = Vector2(40, 0)
