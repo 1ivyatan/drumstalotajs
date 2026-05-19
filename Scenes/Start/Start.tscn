@@ -122,6 +122,7 @@ layout_mode = 2
 [node name="Text" type="RichTextLabel" parent="AnnotationContainer/Annotation/Container" unique_id=2054149246]
 layout_mode = 2
 size_flags_vertical = 3
+bbcode_enabled = true
 
 [node name="Close" type="Button" parent="AnnotationContainer/Annotation/Container" unique_id=892477878]
 layout_mode = 2
