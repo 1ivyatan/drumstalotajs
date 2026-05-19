@@ -31,6 +31,11 @@ public partial class SettingsManager : Node
 		_settingsWindowContainer.OpenWindow();
 	}
 	
+	public void CloseSettings()
+	{
+		_settingsWindowContainer.CloseWindow();
+	}
+	
 	public void LoadSettings()
 	{
 		ConfigFile file = new ConfigFile();

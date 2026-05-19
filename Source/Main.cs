@@ -30,6 +30,7 @@ public partial class Main : Node
 	
 	public void Exit()
 	{
+		SettingsManager.CloseSettings();
 		SettingsManager.SaveSettings();
 		SaveManager.SaveProgress();
 		GetTree().Quit();
