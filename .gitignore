@@ -30,3 +30,4 @@ mono_crash.*.json
 
 # Drumstalotajs specific ignores
 Exports/*
+Build/*
