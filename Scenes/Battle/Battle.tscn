@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cdywfpx8u2wse" path="res://Source/Battle/BattleScene.cs" id="1_ael4v"]
 [ext_resource type="PackedScene" uid="uid://druw1x35jlqnh" path="res://Scenes/Mapping/Map.tscn" id="2_dcr6b"]
 [ext_resource type="Script" uid="uid://cc1cxehau7o4" path="res://Source/Battle/Components/ScoreManager.cs" id="2_g1sps"]
+[ext_resource type="PackedScene" uid="uid://dec5f0w2x3ome" path="res://Scenes/Components/Background.tscn" id="2_gibtw"]
 [ext_resource type="PackedScene" uid="uid://bqh5apppkldxo" path="res://Scenes/Components/Topnav.tscn" id="2_gunap"]
 [ext_resource type="Script" uid="uid://btbtqp8lo1xc2" path="res://Source/Battle/Components/BattleTopnav.cs" id="3_3ihc8"]
 [ext_resource type="Script" uid="uid://csmobm8nus0qv" path="res://Source/Battle/Stages/StageManager.cs" id="4_07e4u"]
@@ -52,6 +53,8 @@ _pauseOverlay = NodePath("Overlay/PauseOverlay")
 _measureLabel = NodePath("Overlay/Topnav/InfoContainer/MeasureContainer/MeasureText")
 _positionLabel = NodePath("Overlay/Topnav/InfoContainer/PositionContainer/PosText")
 _altitiudeLabel = NodePath("Overlay/Topnav/InfoContainer/AltitudeContainer/AltitudeText")
+
+[node name="Background" parent="." unique_id=1528618539 instance=ExtResource("2_gibtw")]
 
 [node name="Map" parent="." unique_id=1338299763 instance=ExtResource("2_dcr6b")]
 process_mode = 1
