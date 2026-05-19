@@ -6,7 +6,7 @@ namespace Drumstalotajs.Components.Settings;
 
 public partial class SettingsWindowContainer : Control
 {
-	[Export] private Window _window;
+	[Export] private SettingsWindow _window;
 	
 	public override void _Ready()
 	{
@@ -15,13 +15,13 @@ public partial class SettingsWindowContainer : Control
 	
 	public void OpenWindow()
 	{
-		_window.PopupCentered();
+		_window.Visible = true;
 		Visible = true;
 	}
 	
 	public void CloseWindow()
 	{
-		_window.Hide();
+		_window.Visible = false;
 		Visible = false;
 	}
 }

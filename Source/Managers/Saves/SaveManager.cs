@@ -23,14 +23,6 @@ public partial class SaveManager : Node
 		Load();
 	}
 	
-	public override void _Notification(int what)
-	{
-		if (what == NotificationWMCloseRequest)
-		{
-			SaveProgress();
-		}
-	}
-	
 	public LevelSet GetLevelSet(string name)
 	{
 		return LevelSets.FirstOrDefault(s => s.Name == name);

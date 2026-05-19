@@ -46,8 +46,7 @@ public partial class StartScene : Control
 		};
 		
 		_exit.Pressed += () => {
-			Nodes.GetRoot().Exit();
+			Nodes.GetRoot().ExitPrompt();
 		};
-		
 	}
 }

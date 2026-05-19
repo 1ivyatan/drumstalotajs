@@ -13,13 +13,15 @@
 [ext_resource type="Script" uid="uid://b72p3gp0pmsf4" path="res://Source/Managers/Settings/SettingsManager.cs" id="10_4kpch"]
 [ext_resource type="PackedScene" uid="uid://d0rn2nwxh40cj" path="res://Scenes/Components/SettingsWindowContainer.tscn" id="11_grg3l"]
 
-[node name="Main" type="Node" unique_id=1017316100 node_paths=PackedStringArray("SceneManager", "ToastManager", "SaveManager", "AudioManager", "SettingsManager")]
+[node name="Main" type="Node" unique_id=1017316100 node_paths=PackedStringArray("SceneManager", "ToastManager", "SaveManager", "AudioManager", "SettingsManager", "_exitDialogContainer", "_exitDialog")]
 script = ExtResource("1_r150o")
 SceneManager = NodePath("SceneManager")
 ToastManager = NodePath("Overlay/ToastManager")
 SaveManager = NodePath("SaveManager")
 AudioManager = NodePath("AudioManager")
 SettingsManager = NodePath("SettingsManager")
+_exitDialogContainer = NodePath("Overlay/ExitContainer")
+_exitDialog = NodePath("Overlay/ExitContainer/ExitPrompt")
 
 [node name="SceneManager" type="Node" parent="." unique_id=712174652 node_paths=PackedStringArray("FadeCurtainContainer")]
 process_mode = 1
@@ -95,3 +97,23 @@ ToastFadeTime = 5.0
 [node name="Control" type="Control" parent="Overlay/ToastManager" unique_id=559346345]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+
+[node name="ExitContainer" type="Control" parent="Overlay" unique_id=418851668]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ExitPrompt" type="ConfirmationDialog" parent="Overlay/ExitContainer" unique_id=264013145]
+title = "Quit"
+initial_position = 2
+transient_to_focused = true
+unresizable = true
+popup_window = true
+popup_wm_hint = true
+ok_button_text = "Yes"
+dialog_text = "Really quit?"
+cancel_button_text = "No"

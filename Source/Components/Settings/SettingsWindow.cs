@@ -6,8 +6,11 @@ using Drumstalotajs.Managers.Settings;
 
 namespace Drumstalotajs.Components.Settings;
 
-public partial class SettingsWindow : Window
+public partial class SettingsWindow : Control
 {
+	[Signal] public delegate void CloseRequestedEventHandler();
+	[Export] private Button _exitButton;
+	
 	[Export] private HSlider _masterVolumeSlider;
 	[Export] private Label _masterVolumeValue;
 	
@@ -34,5 +37,9 @@ public partial class SettingsWindow : Window
 		_masterVolumeSlider.ValueChanged += (double value) => {_settingsManager.MasterVolume = value;};
 		_musicVolumeSlider.ValueChanged += (double value) => {_settingsManager.MusicVolume = value;};
 		_sfxVolumeSlider.ValueChanged += (double value) => {_settingsManager.SfxVolume = value;};
+		_exitButton.Pressed += () => {
+			_settingsManager.SaveSettings();
+			EmitSignal(SignalName.CloseRequested);
+		};
 	}
 }

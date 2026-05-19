@@ -18,14 +18,6 @@ public partial class SettingsManager : Node
 	public double MusicVolume { get; set { field = value; EmitSignal(SignalName.ChangedSettings); } } = 1;
 	public double SfxVolume { get; set { field = value; EmitSignal(SignalName.ChangedSettings); } } = 1;
 	
-	public override void _Notification(int what)
-	{
-		if (what == NotificationWMCloseRequest)
-		{
-			SaveSettings();
-		}
-	}
-	
 	public void OpenSettings()
 	{
 		_settingsWindowContainer.OpenWindow();

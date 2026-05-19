@@ -18,6 +18,7 @@ config/name="Drumstalotajs"
 config/description="Topdown turn-based tactical precision shell shooter-launcher."
 config/version="1.0"
 run/main_scene="uid://gno18tio1tc1"
+config/auto_accept_quit=false
 config/features=PackedStringArray("4.6", "C#", "GL Compatibility")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/stretch_mode=0
