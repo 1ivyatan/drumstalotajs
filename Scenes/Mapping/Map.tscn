@@ -1266,13 +1266,10 @@ ProjectileLayer = NodePath("Projectiles")
 Selector = NodePath("Selector")
 Camera = NodePath("Camera")
 
-[node name="Border" type="NinePatchRect" parent="." unique_id=1836589218 node_paths=PackedStringArray("_calibratingAtlasLayer")]
-offset_right = 77.0
-offset_bottom = 60.0
-texture = SubResource("AtlasTexture_6wiys")
+[node name="Border" type="Sprite2D" parent="." unique_id=460413999 node_paths=PackedStringArray("_calibratingAtlasLayer")]
 script = ExtResource("2_44ay1")
+Border = SubResource("AtlasTexture_6wiys")
 _calibratingAtlasLayer = NodePath("../Ground")
-Padding = Vector2(12, 12)
 
 [node name="Ground" type="TileMapLayer" parent="." unique_id=1439789346]
 tile_set = SubResource("TileSet_wxnmh")
