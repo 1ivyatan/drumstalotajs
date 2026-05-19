@@ -19,6 +19,7 @@ public partial class Map : Node2D
 	[Signal] public delegate void ModeChangeEventHandler(MapMode mode);
 	[Signal] public delegate void EditedEventHandler();
 	
+	[Export] public FrameBackground FrameBackground { get; private set; }
 	[Export] public GroundLayer GroundLayer { get; private set; }
 	[Export] public AtlasLayer DecorationLayer { get; private set; }
 	[Export] public EntityLayer EntityLayer { get; private set; }
@@ -91,13 +92,19 @@ public partial class Map : Node2D
 			DecorationLayer.Load(data.DecorationLayer);
 			EntityLayer.Load(data.EntityLayer);
 			OverlayLayer.Load(data.OverlayLayer);
-			Camera.Calibrate();
+			CalibrateView();
 			State = MapState.Done;
 		} catch (Exception e)
 		{
 			GD.Print(e);
 			State = MapState.Error;
 		}
+	}
+	
+	public void CalibrateView()
+	{
+		Camera.Calibrate();
+		FrameBackground.Calibrate();
 	}
 	
 	public Vector2I ViewportMouseToMap()
