@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://r3lgv0vnhfe7" path="res://Source/Start/StartScene.cs" id="1_x3rvt"]
 [ext_resource type="Texture2D" uid="uid://c7ijf0gautnit" path="res://Assets/Textures/bg2.png" id="2_x3rvt"]
 [ext_resource type="Texture2D" uid="uid://dxpcp5oar78by" path="res://Assets/Textures/logo.png" id="3_x3rvt"]
+[ext_resource type="Script" uid="uid://vh48eypy6o4x" path="res://Source/Start/AnnonationContainer.cs" id="4_uh10c"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x3rvt"]
 atlas = ExtResource("3_x3rvt")
@@ -17,7 +18,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_x3rvt")
 _annotationFilePath = "res://Resources/Annotation.txt"
-_annotation = NodePath("Annotation")
+_annotation = NodePath("AnnotationContainer")
 _start = NodePath("Grid/MenuColumn/Buttons/Start")
 _editor = NodePath("Grid/MenuColumn/Buttons/Editor")
 _settings = NodePath("Grid/MenuColumn/Buttons/Settings")
@@ -88,14 +89,40 @@ text = "About"
 layout_mode = 2
 text = "Exit"
 
-[node name="Annotation" type="AcceptDialog" parent="." unique_id=379908606]
-oversampling_override = 1.0
-title = "About"
-position = Vector2i(340, 150)
-size = Vector2i(600, 100)
-unresizable = true
-popup_window = true
-popup_wm_hint = true
-min_size = Vector2i(600, 0)
-ok_button_text = "I acknowledge"
-dialog_autowrap = true
+[node name="AnnotationContainer" type="Control" parent="." unique_id=1306158042 node_paths=PackedStringArray("_text", "_close")]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_uh10c")
+_text = NodePath("Annotation/Container/Text")
+_close = NodePath("Annotation/Container/Close")
+
+[node name="Annotation" type="PanelContainer" parent="AnnotationContainer" unique_id=907120976]
+custom_minimum_size = Vector2(400, 400)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -7.5
+offset_right = 5.0
+offset_bottom = 7.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Container" type="VBoxContainer" parent="AnnotationContainer/Annotation" unique_id=1067555185]
+layout_mode = 2
+
+[node name="Text" type="RichTextLabel" parent="AnnotationContainer/Annotation/Container" unique_id=2054149246]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Close" type="Button" parent="AnnotationContainer/Annotation/Container" unique_id=892477878]
+layout_mode = 2
+text = "I acknowledge"
