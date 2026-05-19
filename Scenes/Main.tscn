@@ -10,13 +10,15 @@
 [ext_resource type="Resource" uid="uid://bg5ml0po4tcgm" path="res://Resources/LevelSets/RL.tres" id="5_v1gob"]
 [ext_resource type="AudioStream" uid="uid://c3apf00wbbr3" path="res://Assets/Audio/10 The Maid and the Pocket Watch of Blood.mp3" id="6_vy5pj"]
 [ext_resource type="AudioStream" uid="uid://dhh2th0rcmx0w" path="res://Assets/Audio/12 The Young Descendant of Tepes.mp3" id="7_bmxlf"]
+[ext_resource type="Script" uid="uid://b72p3gp0pmsf4" path="res://Source/Managers/Settings/SettingsManager.cs" id="10_4kpch"]
 
-[node name="Main" type="Node" unique_id=1017316100 node_paths=PackedStringArray("SceneManager", "ToastManager", "SaveManager", "AudioManager")]
+[node name="Main" type="Node" unique_id=1017316100 node_paths=PackedStringArray("SceneManager", "ToastManager", "SaveManager", "AudioManager", "SettingsManager")]
 script = ExtResource("1_r150o")
 SceneManager = NodePath("SceneManager")
 ToastManager = NodePath("Overlay/ToastManager")
 SaveManager = NodePath("SaveManager")
 AudioManager = NodePath("AudioManager")
+SettingsManager = NodePath("SettingsManager")
 
 [node name="SceneManager" type="Node" parent="." unique_id=712174652 node_paths=PackedStringArray("FadeCurtainContainer")]
 process_mode = 1
@@ -63,6 +65,10 @@ bus = &"Music"
 process_mode = 3
 script = ExtResource("3_rgh2o")
 LevelSets = [ExtResource("5_v1gob")]
+
+[node name="SettingsManager" type="Node" parent="." unique_id=202449258]
+script = ExtResource("10_4kpch")
+_settingsPath = "user://settings"
 
 [node name="Overlay" type="CanvasLayer" parent="." unique_id=1415426569]
 process_mode = 3
