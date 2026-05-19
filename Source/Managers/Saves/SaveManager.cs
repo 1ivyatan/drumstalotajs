@@ -23,7 +23,6 @@ public partial class SaveManager : Node
 		Load();
 	}
 	
-	/* levelset */
 	public LevelSet GetLevelSet(string name)
 	{
 		return LevelSets.FirstOrDefault(s => s.Name == name);
@@ -31,7 +30,6 @@ public partial class SaveManager : Node
 	
 	public bool IsLevelUnlocked(LevelSet levelSet, int order)
 	{
-		//if (LevelSets.Scores.Count == 0) LevelSets[levelSet]
 		if (SaveData.Scores.ContainsKey(levelSet) && SaveData.Scores[levelSet].Count > 0)
 		{
 			var existingScores = SaveData.Scores[levelSet].Where(s => s.Order == order).ToList();
@@ -100,7 +98,7 @@ public partial class SaveManager : Node
 	private void Load()
 	{
 		Save = SecureFile<Save>.OpenOrCreate(SavePath, KeyPath);
-		GD.Print($"SaveManager load state: {Save.LastLoadState}");
+	//	GD.Print($"SaveManager load state: {Save.LastLoadState}");
 	}
 
 	public void SaveProgress()

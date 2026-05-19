@@ -9,9 +9,10 @@ namespace Drumstalotajs.Start;
 public partial class StartScene : Control
 {
 	[Export(PropertyHint.File, "*.txt")] private string _annotationFilePath;
-	[Export] AcceptDialog _annotation;
+	[Export] AnnonationContainer _annotation;
 	[Export] private Button _start;
 	[Export] private Button _editor;
+	[Export] private Button _settings;
 	[Export] private Button _about;
 	[Export] private Button _exit;
 
@@ -22,7 +23,7 @@ public partial class StartScene : Control
 		var annFile = Files.SafeLoadFile(_annotationFilePath,  FileAccess.ModeFlags.Read);
 		if (annFile != null)
 		{
-			_annotation.DialogText = annFile.GetAsText();
+			_annotation.SetText(annFile.GetAsText());
 		}
 		
 		_start.Pressed += () => {
@@ -36,13 +37,16 @@ public partial class StartScene : Control
 			}
 		};
 		
+		_settings.Pressed += () => {
+			Nodes.GetRoot().SettingsManager.OpenSettings();
+		};
+		
 		_about.Pressed += () => {
-			_annotation.PopupCentered();
+			_annotation.Visible = true;
 		};
 		
 		_exit.Pressed += () => {
-			Nodes.GetRoot().Exit();
+			Nodes.GetRoot().ExitPrompt();
 		};
-		
 	}
 }

@@ -1,0 +1,126 @@
+[gd_scene format=3 uid="uid://d0rn2nwxh40cj"]
+
+[ext_resource type="Script" uid="uid://b5631x4m60bvj" path="res://Source/Components/Settings/SettingsWindowContainer.cs" id="1_545w2"]
+[ext_resource type="Script" uid="uid://c5gw5nxkaplk4" path="res://Source/Components/Settings/SettingsWindow.cs" id="2_64k81"]
+
+[node name="SettingsWindowContainer" type="Control" unique_id=1063269450 node_paths=PackedStringArray("_window")]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_545w2")
+_window = NodePath("SettingsWindow")
+
+[node name="SettingsWindow" type="PanelContainer" parent="." unique_id=1563587751 node_paths=PackedStringArray("_exitButton", "_masterVolumeSlider", "_masterVolumeValue", "_musicVolumeSlider", "_musicVolumeValue", "_sfxVolumeSlider", "_sfxVolumeValue")]
+visible = false
+custom_minimum_size = Vector2(275, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -7.5
+offset_right = 5.0
+offset_bottom = 7.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_64k81")
+_exitButton = NodePath("SettingsContainer/TitleBar/ExitButton")
+_masterVolumeSlider = NodePath("SettingsContainer/MasterVolume/HSlider")
+_masterVolumeValue = NodePath("SettingsContainer/MasterVolume/Value")
+_musicVolumeSlider = NodePath("SettingsContainer/MusicVolume/HSlider")
+_musicVolumeValue = NodePath("SettingsContainer/MusicVolume/Value")
+_sfxVolumeSlider = NodePath("SettingsContainer/SfxVolume/HSlider")
+_sfxVolumeValue = NodePath("SettingsContainer/SfxVolume/Value")
+
+[node name="SettingsContainer" type="VBoxContainer" parent="SettingsWindow" unique_id=216538024]
+layout_mode = 2
+
+[node name="TitleBar" type="HBoxContainer" parent="SettingsWindow/SettingsContainer" unique_id=1401726607]
+layout_mode = 2
+alignment = 2
+
+[node name="Label" type="Label" parent="SettingsWindow/SettingsContainer/TitleBar" unique_id=509227149]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Settings"
+
+[node name="ExitButton" type="Button" parent="SettingsWindow/SettingsContainer/TitleBar" unique_id=392584653]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Close"
+
+[node name="MasterVolume" type="HBoxContainer" parent="SettingsWindow/SettingsContainer" unique_id=1456110860]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Title" type="Label" parent="SettingsWindow/SettingsContainer/MasterVolume" unique_id=506421742]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "Master volume:"
+
+[node name="HSlider" type="HSlider" parent="SettingsWindow/SettingsContainer/MasterVolume" unique_id=1905325077]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+max_value = 1.0
+step = 0.01
+
+[node name="Value" type="Label" parent="SettingsWindow/SettingsContainer/MasterVolume" unique_id=954815512]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+text = "100%"
+horizontal_alignment = 2
+
+[node name="MusicVolume" type="HBoxContainer" parent="SettingsWindow/SettingsContainer" unique_id=138143401]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Title" type="Label" parent="SettingsWindow/SettingsContainer/MusicVolume" unique_id=1592552622]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "Music volume:"
+
+[node name="HSlider" type="HSlider" parent="SettingsWindow/SettingsContainer/MusicVolume" unique_id=313449485]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+max_value = 1.0
+step = 0.01
+
+[node name="Value" type="Label" parent="SettingsWindow/SettingsContainer/MusicVolume" unique_id=1960294635]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+text = "100%"
+horizontal_alignment = 2
+
+[node name="SfxVolume" type="HBoxContainer" parent="SettingsWindow/SettingsContainer" unique_id=2134744262]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Title" type="Label" parent="SettingsWindow/SettingsContainer/SfxVolume" unique_id=593707877]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "Sound effects
+volume:"
+
+[node name="HSlider" type="HSlider" parent="SettingsWindow/SettingsContainer/SfxVolume" unique_id=533738842]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+max_value = 1.0
+step = 0.01
+
+[node name="Value" type="Label" parent="SettingsWindow/SettingsContainer/SfxVolume" unique_id=1006234609]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+text = "100%"
+horizontal_alignment = 2
