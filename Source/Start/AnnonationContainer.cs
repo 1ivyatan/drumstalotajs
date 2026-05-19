@@ -16,6 +16,13 @@ public partial class AnnonationContainer : Control
 		_close.Pressed += () => {
 			Visible = false;
 		};
+		
+		_text.MetaClicked += (Variant meta) => {
+			if (meta.VariantType == Variant.Type.String)
+			{
+				OS.ShellOpen(meta.ToString());
+			}
+		};
 	}
 	
 	public void SetText(string text)

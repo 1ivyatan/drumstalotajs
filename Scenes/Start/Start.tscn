@@ -102,7 +102,7 @@ _text = NodePath("Annotation/Container/Text")
 _close = NodePath("Annotation/Container/Close")
 
 [node name="Annotation" type="PanelContainer" parent="AnnotationContainer" unique_id=907120976]
-custom_minimum_size = Vector2(400, 400)
+custom_minimum_size = Vector2(500, 400)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
