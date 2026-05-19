@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Drumstalotajs.Utilities;
 using Drumstalotajs.Resources;
+using Drumstalotajs.Components.Settings;
 
 namespace Drumstalotajs.Managers.Settings;
 
@@ -11,6 +12,7 @@ public partial class SettingsManager : Node
 {
 	[Signal] public delegate void ChangedSettingsEventHandler();
 	[Export] private string _settingsPath;
+	[Export] private SettingsWindowContainer _settingsWindowContainer;
 	
 	public double MasterVolume { get; set { field = value; EmitSignal(SignalName.ChangedSettings); } } = 1;
 	public double MusicVolume { get; set { field = value; EmitSignal(SignalName.ChangedSettings); } } = 1;
@@ -22,6 +24,11 @@ public partial class SettingsManager : Node
 		{
 			SaveSettings();
 		}
+	}
+	
+	public void OpenSettings()
+	{
+		_settingsWindowContainer.OpenWindow();
 	}
 	
 	public void LoadSettings()

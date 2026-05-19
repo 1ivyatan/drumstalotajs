@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://d0rn2nwxh40cj"]
+
+[ext_resource type="Script" uid="uid://b5631x4m60bvj" path="res://Source/Components/Settings/SettingsWindowContainer.cs" id="1_545w2"]
+
+[node name="SettingsWindowContainer" type="Control" unique_id=1063269450]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_545w2")
+
+[node name="Window" type="Window" parent="." unique_id=683063476]
+oversampling_override = 1.0
+initial_position = 2
+visible = false

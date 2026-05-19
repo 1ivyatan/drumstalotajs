@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://c3apf00wbbr3" path="res://Assets/Audio/10 The Maid and the Pocket Watch of Blood.mp3" id="6_vy5pj"]
 [ext_resource type="AudioStream" uid="uid://dhh2th0rcmx0w" path="res://Assets/Audio/12 The Young Descendant of Tepes.mp3" id="7_bmxlf"]
 [ext_resource type="Script" uid="uid://b72p3gp0pmsf4" path="res://Source/Managers/Settings/SettingsManager.cs" id="10_4kpch"]
+[ext_resource type="PackedScene" uid="uid://d0rn2nwxh40cj" path="res://Scenes/Components/SettingsWindowContainer.tscn" id="11_grg3l"]
 
 [node name="Main" type="Node" unique_id=1017316100 node_paths=PackedStringArray("SceneManager", "ToastManager", "SaveManager", "AudioManager", "SettingsManager")]
 script = ExtResource("1_r150o")
@@ -66,9 +67,14 @@ process_mode = 3
 script = ExtResource("3_rgh2o")
 LevelSets = [ExtResource("5_v1gob")]
 
-[node name="SettingsManager" type="Node" parent="." unique_id=202449258]
+[node name="SettingsManager" type="Node" parent="." unique_id=202449258 node_paths=PackedStringArray("_settingsWindowContainer")]
 script = ExtResource("10_4kpch")
 _settingsPath = "user://settings"
+_settingsWindowContainer = NodePath("SettingsWindowLayer/SettingsWindowContainer")
+
+[node name="SettingsWindowLayer" type="CanvasLayer" parent="SettingsManager" unique_id=594495051]
+
+[node name="SettingsWindowContainer" parent="SettingsManager/SettingsWindowLayer" unique_id=1063269450 instance=ExtResource("11_grg3l")]
 
 [node name="Overlay" type="CanvasLayer" parent="." unique_id=1415426569]
 process_mode = 3

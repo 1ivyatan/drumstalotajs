@@ -12,6 +12,7 @@ public partial class StartScene : Control
 	[Export] AcceptDialog _annotation;
 	[Export] private Button _start;
 	[Export] private Button _editor;
+	[Export] private Button _settings;
 	[Export] private Button _about;
 	[Export] private Button _exit;
 
@@ -34,6 +35,10 @@ public partial class StartScene : Control
 			{
 				Nodes.GetRoot().SceneManager.Editor();
 			}
+		};
+		
+		_settings.Pressed += () => {
+			Nodes.GetRoot().SettingsManager.OpenSettings();
 		};
 		
 		_about.Pressed += () => {

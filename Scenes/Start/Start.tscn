@@ -8,7 +8,7 @@
 atlas = ExtResource("3_x3rvt")
 region = Rect2(0, 0, 580, 424)
 
-[node name="Start" type="Control" unique_id=1888125272 node_paths=PackedStringArray("_annotation", "_start", "_editor", "_about", "_exit")]
+[node name="Start" type="Control" unique_id=1888125272 node_paths=PackedStringArray("_annotation", "_start", "_editor", "_settings", "_about", "_exit")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,6 +20,7 @@ _annotationFilePath = "res://Resources/Annotation.txt"
 _annotation = NodePath("Annotation")
 _start = NodePath("Grid/MenuColumn/Buttons/Start")
 _editor = NodePath("Grid/MenuColumn/Buttons/Editor")
+_settings = NodePath("Grid/MenuColumn/Buttons/Settings")
 _about = NodePath("Grid/MenuColumn/Buttons/About")
 _exit = NodePath("Grid/MenuColumn/Buttons/Exit")
 
@@ -74,6 +75,10 @@ text = "Start"
 visible = false
 layout_mode = 2
 text = "Tile editor"
+
+[node name="Settings" type="Button" parent="Grid/MenuColumn/Buttons" unique_id=1883408520]
+layout_mode = 2
+text = "Settings"
 
 [node name="About" type="Button" parent="Grid/MenuColumn/Buttons" unique_id=2046261125]
 layout_mode = 2
