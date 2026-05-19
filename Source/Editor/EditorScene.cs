@@ -69,7 +69,9 @@ public partial class EditorScene : Node2D
 		EditorTopnav.SelectedSave += () => { EditorSaveManager.AttemptSave(); };
 		EditorTopnav.SelectedSaveAs += () => { EditorSaveManager.AttemptSaveAs(); };
 		EditorTopnav.SelectedExport += () => { EditorSaveManager.AttemptExport(); };
-		EditorTopnav.SelectedCameraCalibrate += () => { Map.Camera.Calibrate(); };
+		EditorTopnav.SelectedCameraCalibrate += () => { 
+			Map.CalibrateView();
+		};
 		EditorTopnav.SelectedMode += (EditorMode mode) => { Mode = mode; };
 		EditorTopnav.SelectedClose += () => { Nodes.GetRoot().SceneManager.Start(); };
 		

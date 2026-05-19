@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cwwvp54fnm6w0" path="res://Source/LevelSelection/LevelSelectionScene.cs" id="1_g1q0k"]
 [ext_resource type="PackedScene" uid="uid://druw1x35jlqnh" path="res://Scenes/Mapping/Map.tscn" id="2_675ns"]
 [ext_resource type="Script" uid="uid://bkxbq06wvfjt2" path="res://Source/LevelSelection/Components/LevelMetaContainer.cs" id="2_bnw7x"]
+[ext_resource type="PackedScene" uid="uid://dec5f0w2x3ome" path="res://Scenes/Components/Background.tscn" id="2_epixl"]
 [ext_resource type="PackedScene" uid="uid://bqh5apppkldxo" path="res://Scenes/Components/Topnav.tscn" id="3_2duud"]
 [ext_resource type="Texture2D" uid="uid://v2gkmg7yaoh5" path="res://Assets/Textures/controls.png" id="4_fka4w"]
 
@@ -20,6 +21,8 @@ LevelMetaContainer = NodePath("Overlay/LevelMetaContainer")
 Map = NodePath("Map")
 Topnav = NodePath("Overlay/Topnav")
 _return = NodePath("Overlay/ToStart")
+
+[node name="Background" parent="." unique_id=1528618539 instance=ExtResource("2_epixl")]
 
 [node name="Map" parent="." unique_id=1338299763 instance=ExtResource("2_675ns")]
 
