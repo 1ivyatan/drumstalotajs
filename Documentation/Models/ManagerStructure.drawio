@@ -1,0 +1,40 @@
+<mxfile host="Electron">
+  <diagram name="Lapa-1" id="ycNdiokQ1clO5VKVNI84">
+    <mxGraphModel dx="694" dy="632" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="9-LA30QHaoMmoX4eWL1r-2" parent="1" style="shape=folder;fontStyle=0;spacingTop=10;tabWidth=40;tabHeight=14;tabPosition=left;html=1;whiteSpace=wrap;verticalAlign=top;" value="Main" vertex="1">
+          <mxGeometry height="220" width="560" x="110" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="9-LA30QHaoMmoX4eWL1r-3" parent="1" style="shape=module;align=left;spacingLeft=20;align=center;verticalAlign=middle;whiteSpace=wrap;html=1;" value="SceneManager" vertex="1">
+          <mxGeometry height="55" width="140" x="120" y="400" as="geometry" />
+        </mxCell>
+        <mxCell id="9-LA30QHaoMmoX4eWL1r-4" parent="1" style="shape=module;align=left;spacingLeft=20;align=center;verticalAlign=middle;whiteSpace=wrap;html=1;" value="AudioManager" vertex="1">
+          <mxGeometry height="50" width="140" x="120" y="460" as="geometry" />
+        </mxCell>
+        <mxCell id="9-LA30QHaoMmoX4eWL1r-8" parent="1" style="shape=folder;fontStyle=0;spacingTop=10;tabWidth=40;tabHeight=14;tabPosition=left;html=1;whiteSpace=wrap;verticalAlign=top;" value="Overlay" vertex="1">
+          <mxGeometry height="170" width="160" x="490" y="400" as="geometry" />
+        </mxCell>
+        <mxCell id="9-LA30QHaoMmoX4eWL1r-9" parent="1" style="shape=module;align=left;spacingLeft=20;align=center;verticalAlign=middle;whiteSpace=wrap;html=1;" value="ToastManager" vertex="1">
+          <mxGeometry height="50" width="140" x="500" y="440" as="geometry" />
+        </mxCell>
+        <mxCell id="9-LA30QHaoMmoX4eWL1r-11" parent="1" style="shape=module;align=left;spacingLeft=20;align=center;verticalAlign=middle;whiteSpace=wrap;html=1;" value="ExitDialog" vertex="1">
+          <mxGeometry height="50" width="140" x="500" y="500" as="geometry" />
+        </mxCell>
+        <mxCell id="9-LA30QHaoMmoX4eWL1r-12" parent="1" style="shape=folder;fontStyle=0;spacingTop=10;tabWidth=40;tabHeight=14;tabPosition=left;html=1;whiteSpace=wrap;verticalAlign=top;" value="Saves" vertex="1">
+          <mxGeometry height="170" width="160" x="300" y="400" as="geometry" />
+        </mxCell>
+        <mxCell id="9-LA30QHaoMmoX4eWL1r-13" parent="1" style="shape=module;align=left;spacingLeft=20;align=center;verticalAlign=middle;whiteSpace=wrap;html=1;" value="SettingsManager" vertex="1">
+          <mxGeometry height="50" width="140" x="310" y="440" as="geometry" />
+        </mxCell>
+        <mxCell id="9-LA30QHaoMmoX4eWL1r-15" parent="1" style="shape=module;align=left;spacingLeft=20;align=center;verticalAlign=middle;whiteSpace=wrap;html=1;" value="SaveManager" vertex="1">
+          <mxGeometry height="50" width="140" x="120" y="520" as="geometry" />
+        </mxCell>
+        <mxCell id="9-LA30QHaoMmoX4eWL1r-16" parent="1" style="shape=module;align=left;spacingLeft=20;align=center;verticalAlign=middle;whiteSpace=wrap;html=1;" value="SettingsWindow" vertex="1">
+          <mxGeometry height="50" width="140" x="310" y="500" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
