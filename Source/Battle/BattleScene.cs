@@ -85,6 +85,7 @@ public partial class BattleScene : Node2D
 		}
 		
 		_measureLabel.Text = $"{Map.CurrentLoadedMap.MetersPerCell.X}m";
+		_altitiudeLabel.Text = $"{Map.CurrentLoadedMap.GroundLayer.BaseHeight}m";
 	}
 	
 	public async Task Open(string mapPath)
