@@ -695,6 +695,7 @@ tile_data = PackedInt32Array(0, 65536, 2, 1, 65536, 2, 2, 65536, 2, 3, 65536, 2,
 
 [sub_resource type="Resource" id="Resource_uy03h"]
 script = ExtResource("6_xsbjw")
+BaseHeight = 15.0
 AddedHeights = {}
 Offset = Vector2i(0, -27)
 Tiles = SubResource("TileMapPattern_pvsuh")
