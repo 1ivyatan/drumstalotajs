@@ -1,0 +1,80 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.6.6 Chrome/144.0.7559.236 Electron/40.8.4 Safari/537.36">
+  <diagram name="Page-1" id="n4K6jWBaAmcyuxtmaEms">
+    <mxGraphModel dx="1414" dy="836" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="UdhPusHMSbcC9dUC4HhH-10" edge="1" parent="1" source="UdhPusHMSbcC9dUC4HhH-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="UdhPusHMSbcC9dUC4HhH-7">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="195" y="160" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UdhPusHMSbcC9dUC4HhH-1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Ierīču ievietošana" vertex="1">
+          <mxGeometry height="60" width="120" x="135" y="115" as="geometry" />
+        </mxCell>
+        <mxCell id="UdhPusHMSbcC9dUC4HhH-2" parent="1" style="ellipse;html=1;shape=endState;fillColor=#000000;strokeColor=#000000;" value="" vertex="1">
+          <mxGeometry height="30" width="30" x="30" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="UdhPusHMSbcC9dUC4HhH-5" edge="1" parent="1" source="UdhPusHMSbcC9dUC4HhH-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="UdhPusHMSbcC9dUC4HhH-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="UdhPusHMSbcC9dUC4HhH-3" parent="1" style="ellipse;html=1;shape=endState;fillColor=#000000;strokeColor=#000000;strokeWidth=5;" value="" vertex="1">
+          <mxGeometry height="30" width="30" x="30" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="aM1jMWKmeYNlFP9r1QdY-3" edge="1" parent="1" source="UdhPusHMSbcC9dUC4HhH-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.25;entryY=1;entryDx=0;entryDy=0;" target="UdhPusHMSbcC9dUC4HhH-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="UdhPusHMSbcC9dUC4HhH-6" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Izlūku izsaukšana" vertex="1">
+          <mxGeometry height="60" width="120" x="380" y="245" as="geometry" />
+        </mxCell>
+        <mxCell id="UdhPusHMSbcC9dUC4HhH-13" edge="1" parent="1" source="UdhPusHMSbcC9dUC4HhH-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="UdhPusHMSbcC9dUC4HhH-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="aM1jMWKmeYNlFP9r1QdY-1" edge="1" parent="1" source="UdhPusHMSbcC9dUC4HhH-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="UdhPusHMSbcC9dUC4HhH-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="UdhPusHMSbcC9dUC4HhH-7" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Ierīču koriģēšana" vertex="1">
+          <mxGeometry height="60" width="120" x="380" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="aM1jMWKmeYNlFP9r1QdY-2" edge="1" parent="1" source="UdhPusHMSbcC9dUC4HhH-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="UdhPusHMSbcC9dUC4HhH-7">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="690" y="30" />
+              <mxPoint x="440" y="30" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="aM1jMWKmeYNlFP9r1QdY-4" edge="1" parent="1" source="UdhPusHMSbcC9dUC4HhH-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="UdhPusHMSbcC9dUC4HhH-9">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="730" y="360" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UdhPusHMSbcC9dUC4HhH-8" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Uguņošana" vertex="1">
+          <mxGeometry height="60" width="120" x="640" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="UdhPusHMSbcC9dUC4HhH-21" edge="1" parent="1" source="UdhPusHMSbcC9dUC4HhH-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="UdhPusHMSbcC9dUC4HhH-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="UdhPusHMSbcC9dUC4HhH-9" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Rezultāti" vertex="1">
+          <mxGeometry height="60" width="120" x="280" y="330" as="geometry" />
+        </mxCell>
+        <mxCell id="UdhPusHMSbcC9dUC4HhH-16" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;div&gt;Nav aizsegtas ailes&lt;/div&gt;" vertex="1">
+          <mxGeometry height="30" width="90" x="520" y="115" as="geometry" />
+        </mxCell>
+        <mxCell id="aM1jMWKmeYNlFP9r1QdY-5" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Spēles nosacījumi ļauj turpināt" vertex="1">
+          <mxGeometry height="30" width="180" x="490" as="geometry" />
+        </mxCell>
+        <mxCell id="aM1jMWKmeYNlFP9r1QdY-6" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Izskaukts izlūks" vertex="1">
+          <mxGeometry height="30" width="180" x="475" y="245" as="geometry" />
+        </mxCell>
+        <mxCell id="aM1jMWKmeYNlFP9r1QdY-7" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Spēles nosacījuma liek beigt spēli" vertex="1">
+          <mxGeometry height="30" width="200" x="520" y="330" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
