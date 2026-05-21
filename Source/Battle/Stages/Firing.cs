@@ -126,7 +126,6 @@ public partial class Firing : Control
 	private async void BatchFire(Device device)
 	{
 		var devTrackingInfo = _devFireTracker[device];
-
 		if (devTrackingInfo.Max > 0)
 		{
 			for (int i = 0; i < devTrackingInfo.Max; i++)
