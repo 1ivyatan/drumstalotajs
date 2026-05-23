@@ -16,7 +16,7 @@
 [node name="Main" type="Node" unique_id=1017316100 node_paths=PackedStringArray("SceneManager", "ToastManager", "SaveManager", "AudioManager", "SettingsManager", "_exitDialogContainer", "_exitDialog")]
 script = ExtResource("1_r150o")
 SceneManager = NodePath("SceneManager")
-ToastManager = NodePath("Overlay/ToastManager")
+ToastManager = NodePath("Overlay/ToastContainer/ToastManager")
 SaveManager = NodePath("SaveManager")
 AudioManager = NodePath("AudioManager")
 SettingsManager = NodePath("SettingsManager")
@@ -38,6 +38,7 @@ FadeCurtainContainer = NodePath("FadeCurtainContainer")
 process_mode = 3
 process_priority = 1
 layer = 2
+visible = false
 script = ExtResource("3_v1gob")
 Time = 0.125
 FadeInColor = Color(0, 0, 0, 1)
@@ -81,19 +82,30 @@ _settingsWindowContainer = NodePath("SettingsWindowLayer/SettingsWindowContainer
 [node name="Overlay" type="CanvasLayer" parent="." unique_id=1415426569]
 process_mode = 3
 
-[node name="ToastManager" type="VBoxContainer" parent="Overlay" unique_id=450725507]
+[node name="ToastContainer" type="VBoxContainer" parent="Overlay" unique_id=163075433]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
+offset_top = -54.0
 grow_horizontal = 2
 grow_vertical = 0
+size_flags_vertical = 8
+mouse_filter = 2
+
+[node name="ToastManager" type="VBoxContainer" parent="Overlay/ToastContainer" unique_id=450725507]
+layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 mouse_filter = 2
 script = ExtResource("3_kln2b")
 ToastFadeTime = 5.0
+
+[node name="Spacer" type="Control" parent="Overlay/ToastContainer" unique_id=1837963641]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+mouse_filter = 2
 
 [node name="ExitContainer" type="Control" parent="Overlay" unique_id=418851668]
 visible = false
