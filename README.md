@@ -59,6 +59,7 @@ This is done by opening the project repository in Godot editor, selecting "Expor
 
 
 **Note:** Creating a new export platform, in resources tab, add "*.txt" in "Filters to export non-resource files/folders"
+
 <img width="500" src="https://github.com/user-attachments/assets/c290fdfe-5250-4981-aa9b-18414339c6ef" />
 
 
