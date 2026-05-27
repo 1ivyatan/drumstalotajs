@@ -52,31 +52,33 @@ alignment = 2
 script = ExtResource("2_bnw7x")
 _map = NodePath("../../Map")
 _levelMeta = NodePath("LevelMeta")
-_title = NodePath("LevelMeta/MetaContainer/Title")
-_desc = NodePath("LevelMeta/MetaContainer/Desc")
-_playLevel = NodePath("LevelMeta/MetaContainer/Play")
+_title = NodePath("LevelMeta/ScrollContainer/MetaContainer/Title")
+_desc = NodePath("LevelMeta/ScrollContainer/MetaContainer/Desc")
+_playLevel = NodePath("LevelMeta/ScrollContainer/MetaContainer/Play")
 _loadCustomMap = NodePath("LoadCustomMap")
 _customMapDialog = NodePath("CustomMapDialog")
 
 [node name="LevelMeta" type="PanelContainer" parent="Overlay/LevelMetaContainer" unique_id=765754551]
-visible = false
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="MetaContainer" type="VBoxContainer" parent="Overlay/LevelMetaContainer/LevelMeta" unique_id=1981763327]
+[node name="ScrollContainer" type="ScrollContainer" parent="Overlay/LevelMetaContainer/LevelMeta" unique_id=1708767741]
+layout_mode = 2
+
+[node name="MetaContainer" type="VBoxContainer" parent="Overlay/LevelMetaContainer/LevelMeta/ScrollContainer" unique_id=1981763327]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Title" type="Label" parent="Overlay/LevelMetaContainer/LevelMeta/MetaContainer" unique_id=872026647]
+[node name="Title" type="Label" parent="Overlay/LevelMetaContainer/LevelMeta/ScrollContainer/MetaContainer" unique_id=872026647]
 layout_mode = 2
 
-[node name="Desc" type="RichTextLabel" parent="Overlay/LevelMetaContainer/LevelMeta/MetaContainer" unique_id=1525277028]
+[node name="Desc" type="RichTextLabel" parent="Overlay/LevelMetaContainer/LevelMeta/ScrollContainer/MetaContainer" unique_id=1525277028]
 layout_mode = 2
 size_flags_vertical = 3
 fit_content = true
 
-[node name="Play" type="Button" parent="Overlay/LevelMetaContainer/LevelMeta/MetaContainer" unique_id=2098536059]
+[node name="Play" type="Button" parent="Overlay/LevelMetaContainer/LevelMeta/ScrollContainer/MetaContainer" unique_id=2098536059]
 layout_mode = 2
 text = "Deploy!"
 icon = SubResource("AtlasTexture_fka4w")
