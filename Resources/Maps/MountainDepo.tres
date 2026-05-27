@@ -139,7 +139,7 @@ Vector2i(34, -11): 0.0
 DeviceProps = Array[ExtResource("2_oyqb8")]([SubResource("Resource_oyqb8")])
 MinTotalDevices = 2
 MaxTotalDevices = 5
-TimeLimitSecs = 600.0
+TimeLimitSecs = 750.0
 PlayerResupply = false
 EnemyResupply = false
 GroundLayer = SubResource("Resource_hm1li")
