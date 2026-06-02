@@ -6,10 +6,10 @@
 [ext_resource type="Script" uid="uid://dt3akytandfac" path="res://Source/Managers/Saves/SaveManager.cs" id="3_rgh2o"]
 [ext_resource type="Script" uid="uid://psksvlqmuwi" path="res://Source/Managers/Scenes/FadeCurtainContainer.cs" id="3_v1gob"]
 [ext_resource type="Script" uid="uid://bkq07qlqgrhia" path="res://Source/Managers/Audio/AudioManager.cs" id="4_jw32o"]
-[ext_resource type="AudioStream" uid="uid://ift4bdew8dg8" path="res://Assets/Audio/01 A Dream that is more Scarlet than Red.mp3" id="5_50glp"]
+[ext_resource type="AudioStream" uid="uid://w4vel63w22ee" path="res://Assets/Audio/Menu.wav" id="5_grg3l"]
 [ext_resource type="Resource" uid="uid://bg5ml0po4tcgm" path="res://Resources/LevelSets/RL.tres" id="5_v1gob"]
-[ext_resource type="AudioStream" uid="uid://c3apf00wbbr3" path="res://Assets/Audio/10 The Maid and the Pocket Watch of Blood.mp3" id="6_vy5pj"]
-[ext_resource type="AudioStream" uid="uid://dhh2th0rcmx0w" path="res://Assets/Audio/12 The Young Descendant of Tepes.mp3" id="7_bmxlf"]
+[ext_resource type="AudioStream" uid="uid://tn0wo5khuncg" path="res://Assets/Audio/Planning.mp3" id="6_grg3l"]
+[ext_resource type="AudioStream" uid="uid://dxys044lqqydy" path="res://Assets/Audio/Battle1.mp3" id="7_grg3l"]
 [ext_resource type="Script" uid="uid://b72p3gp0pmsf4" path="res://Source/Managers/Settings/SettingsManager.cs" id="10_4kpch"]
 [ext_resource type="PackedScene" uid="uid://d0rn2nwxh40cj" path="res://Scenes/Components/SettingsWindowContainer.tscn" id="11_grg3l"]
 
@@ -56,9 +56,9 @@ color = Color(0, 0, 0, 1)
 process_mode = 3
 script = ExtResource("4_jw32o")
 _uiMusic = Dictionary[int, AudioStream]({
-0: ExtResource("5_50glp"),
-1: ExtResource("6_vy5pj"),
-2: ExtResource("7_bmxlf")
+0: ExtResource("5_grg3l"),
+1: ExtResource("6_grg3l"),
+2: ExtResource("7_grg3l")
 })
 _uiMusicPlayer = NodePath("UiMusic")
 
