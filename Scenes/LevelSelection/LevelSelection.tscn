@@ -41,7 +41,6 @@ text = "Return"
 icon = SubResource("AtlasTexture_epixl")
 
 [node name="LevelMetaContainer" type="VBoxContainer" parent="Overlay" unique_id=113706533 node_paths=PackedStringArray("_map", "_levelMeta", "_title", "_desc", "_playLevel", "_loadCustomMap", "_customMapDialog")]
-visible = false
 anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
@@ -60,6 +59,7 @@ _loadCustomMap = NodePath("LoadCustomMap")
 _customMapDialog = NodePath("CustomMapDialog")
 
 [node name="LevelMeta" type="PanelContainer" parent="Overlay/LevelMetaContainer" unique_id=765754551]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 
