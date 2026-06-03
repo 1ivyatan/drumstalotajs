@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://csmobm8nus0qv" path="res://Source/Battle/Stages/StageManager.cs" id="4_07e4u"]
 [ext_resource type="Script" uid="uid://b6ocl3clhwf1h" path="res://Source/Battle/Components/PauseOverlay.cs" id="4_odh8s"]
 [ext_resource type="Script" uid="uid://bnmf3stn1wm0k" path="res://Source/Battle/Components/PauseContainer.cs" id="5_rremj"]
+[ext_resource type="Script" uid="uid://crrj2ginbmn5b" path="res://Source/Battle/Components/RulerOverlay.cs" id="6_q0gc0"]
 [ext_resource type="PackedScene" uid="uid://dnasbla8y237b" path="res://Scenes/Components/Counter.tscn" id="7_tmq01"]
 [ext_resource type="Script" uid="uid://7abbuvthhp83" path="res://Source/Battle/Components/Counters.cs" id="7_ukbm8"]
 [ext_resource type="Texture2D" uid="uid://2io65q52gq16" path="res://Assets/Textures/overlay.png" id="8_cmwrv"]
@@ -50,13 +51,14 @@ region = Rect2(108, 34, 32, 32)
 atlas = ExtResource("10_diuyf")
 region = Rect2(174, 0, 32, 32)
 
-[node name="Battle" type="Node2D" unique_id=1007953308 node_paths=PackedStringArray("BattleTopnav", "Map", "ScoreManager", "StageManager", "Counters", "_pauseOverlay", "_measureLabel", "_positionLabel", "_altitiudeLabel")]
+[node name="Battle" type="Node2D" unique_id=1007953308 node_paths=PackedStringArray("BattleTopnav", "Map", "ScoreManager", "StageManager", "Counters", "RulerOverlay", "_pauseOverlay", "_measureLabel", "_positionLabel", "_altitiudeLabel")]
 script = ExtResource("1_ael4v")
 BattleTopnav = NodePath("Overlay/Topnav")
 Map = NodePath("Map")
 ScoreManager = NodePath("ScoreManager")
 StageManager = NodePath("StageManager")
 Counters = NodePath("Overlay/Topnav/InfoContainer/Counters")
+RulerOverlay = NodePath("Overlay/RulerOverlay")
 _pauseOverlay = NodePath("Overlay/PauseOverlay")
 _measureLabel = NodePath("Overlay/Topnav/InfoContainer/MeasureContainer/MeasureText")
 _positionLabel = NodePath("Overlay/Topnav/InfoContainer/PositionContainer/PosText")
@@ -85,6 +87,17 @@ script = ExtResource("2_g1sps")
 _map = NodePath("../Map")
 
 [node name="Overlay" type="CanvasLayer" parent="." unique_id=1518625057]
+
+[node name="RulerOverlay" type="Control" parent="Overlay" unique_id=890588354]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("6_q0gc0")
 
 [node name="Topnav" parent="Overlay" unique_id=118245835 node_paths=PackedStringArray("_pause", "_ruler") instance=ExtResource("2_gunap")]
 script = ExtResource("3_3ihc8")

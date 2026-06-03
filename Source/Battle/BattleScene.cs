@@ -20,6 +20,7 @@ public partial class BattleScene : Node2D
 	[Export] public ScoreManager ScoreManager { get; private set; }
 	[Export] public StageManager StageManager { get; private set; }
 	[Export] public Counters Counters { get; private set; }
+	[Export] public RulerOverlay RulerOverlay { get; private set; }
 
 	[Export] private PauseOverlay _pauseOverlay;
 	[Export] private Label _measureLabel;
@@ -33,7 +34,13 @@ public partial class BattleScene : Node2D
 	{
 		BattleTopnav.PressedPause += () => { Pause(); };
 		BattleTopnav.RulerToggled += (bool toggle) => {
+			if (toggle)
+			{
+				Nodes.GetRoot().ToastManager.SpawnOne("Right click to draw a ruler.");
+			//	Map.MarkerLayer.Wipe();
+			}
 			Map.MarkerLayer.Visible = toggle;
+			RulerOverlay.Visible = toggle;
 		};
 		_pauseOverlay.PressedResume += () => { Resume(); };
 		_pauseOverlay.PressedRestart += () => { Restart(); };
