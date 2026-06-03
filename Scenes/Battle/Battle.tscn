@@ -14,6 +14,14 @@
 [ext_resource type="Texture2D" uid="uid://2io65q52gq16" path="res://Assets/Textures/overlay.png" id="8_cmwrv"]
 [ext_resource type="Texture2D" uid="uid://v2gkmg7yaoh5" path="res://Assets/Textures/controls.png" id="10_diuyf"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_6tmns"]
+atlas = ExtResource("10_diuyf")
+region = Rect2(207, 88, 62, 62)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tx6ec"]
+atlas = ExtResource("10_diuyf")
+region = Rect2(232, 153, 62, 62)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_8f5sm"]
 atlas = ExtResource("10_diuyf")
 region = Rect2(209, 1, 32, 32)
@@ -80,23 +88,37 @@ _map = NodePath("../Map")
 
 [node name="Topnav" parent="Overlay" unique_id=118245835 node_paths=PackedStringArray("_pause") instance=ExtResource("2_gunap")]
 script = ExtResource("3_3ihc8")
-_pause = NodePath("PauseButton")
+_pause = NodePath("SwitchContainer/PauseButton")
 
-[node name="PauseButton" type="Button" parent="Overlay/Topnav" unique_id=268528842]
+[node name="SwitchContainer" type="HBoxContainer" parent="Overlay/Topnav" unique_id=535321116]
+layout_mode = 2
+
+[node name="PauseButton" type="Button" parent="Overlay/Topnav/SwitchContainer" unique_id=268528842]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 0
 text = "  ||  "
+
+[node name="RulerButton" type="TextureButton" parent="Overlay/Topnav/SwitchContainer" unique_id=1175189503]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+toggle_mode = true
+texture_normal = SubResource("AtlasTexture_6tmns")
+texture_pressed = SubResource("AtlasTexture_tx6ec")
+ignore_texture_size = true
+stretch_mode = 3
 
 [node name="InfoContainer" type="HBoxContainer" parent="Overlay/Topnav" unique_id=1611135056]
 layout_mode = 2
 size_flags_horizontal = 8
 
 [node name="PositionContainer" type="VBoxContainer" parent="Overlay/Topnav/InfoContainer" unique_id=100180890]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 tooltip_text = "Cell position of cursor"
 
 [node name="TextureRect" type="TextureRect" parent="Overlay/Topnav/InfoContainer/PositionContainer" unique_id=1544777778]
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 texture = SubResource("AtlasTexture_8f5sm")
 stretch_mode = 3
@@ -107,10 +129,11 @@ horizontal_alignment = 1
 
 [node name="MeasureContainer" type="VBoxContainer" parent="Overlay/Topnav/InfoContainer" unique_id=1017487334]
 layout_mode = 2
+size_flags_vertical = 4
 tooltip_text = "Length of a 32px cell in meters"
 
 [node name="MeasurePreview" type="TextureRect" parent="Overlay/Topnav/InfoContainer/MeasureContainer" unique_id=782017182]
-custom_minimum_size = Vector2(75, 3)
+custom_minimum_size = Vector2(75, 32)
 layout_mode = 2
 size_flags_vertical = 3
 texture = SubResource("AtlasTexture_gibtw")
@@ -123,6 +146,7 @@ horizontal_alignment = 1
 
 [node name="AltitudeContainer" type="VBoxContainer" parent="Overlay/Topnav/InfoContainer" unique_id=1035650609]
 layout_mode = 2
+size_flags_vertical = 4
 tooltip_text = "Base altitude of the place"
 
 [node name="TextureRect" type="TextureRect" parent="Overlay/Topnav/InfoContainer/AltitudeContainer" unique_id=945607272]
@@ -138,6 +162,7 @@ horizontal_alignment = 1
 [node name="Counters" type="HBoxContainer" parent="Overlay/Topnav/InfoContainer" unique_id=598029868 node_paths=PackedStringArray("_playerDeviceCounter", "_enemyTargetCounter", "_timerCounter", "_turnCounter", "_map", "_scoreManager")]
 layout_mode = 2
 size_flags_horizontal = 8
+size_flags_vertical = 4
 script = ExtResource("7_ukbm8")
 _playerDeviceCounter = NodePath("PlayerDeviceCounter")
 _enemyTargetCounter = NodePath("EnemyTargetCount")
