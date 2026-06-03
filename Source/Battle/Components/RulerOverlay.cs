@@ -61,6 +61,7 @@ public partial class RulerOverlay : Control
 							_adding = false;
 							_deselect.Disabled = true;
 							_map.MarkerLayer.WipePoints();
+							_map.MarkerLayer.PutRuler(_pointA, _pointB);
 						}
 					} else
 					{

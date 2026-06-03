@@ -18,11 +18,22 @@ public partial class MarkerLayer : Node2D
 			DrawCircle(point, 7.5f, Colors.Black);
 			DrawCircle(point, 5f, Colors.White);
 		}
+		
+		foreach(var ruler in _rulers)
+		{
+			DrawLine(ruler.A, ruler.B, Colors.Cyan, 5.8f);
+		}
 	}
 	
 	public void PutPoint(Vector2 position)
 	{
 		_points.Add(position);
+		QueueRedraw();
+	}
+	
+	public void PutRuler(Vector2 positionA, Vector2 positionB)
+	{
+		_rulers.Add((A: positionA, B: positionB));
 		QueueRedraw();
 	}
 	
