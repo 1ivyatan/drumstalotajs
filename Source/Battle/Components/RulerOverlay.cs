@@ -40,12 +40,22 @@ public partial class RulerOverlay : Control
 				{
 					if (_map.ViewportMouseOnMap())
 					{
-						
+						var pos = _map.ViewportMouseToLocal();
+						if (!_adding)
+						{
+							_adding = true;
+							_pointA = pos;
+							GD.Print($"1. {pos}");
+						} else
+						{
+							_pointB = pos;
+							_adding = false;
+							GD.Print($"2. {pos}");
+						}
 					} else
 					{
-						
+						_adding = false;
 					}
-					
 				}
 			}
 		}
