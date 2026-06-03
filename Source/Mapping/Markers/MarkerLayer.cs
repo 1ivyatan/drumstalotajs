@@ -43,6 +43,11 @@ public partial class MarkerLayer : Node2D
 		QueueRedraw();
 	}
 	
+	public int GetRulerCount()
+	{
+		return _rulers.Count;
+	}
+	
 	public void WipePoints()
 	{
 		_points.Clear();

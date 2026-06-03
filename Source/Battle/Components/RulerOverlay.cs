@@ -23,10 +23,12 @@ public partial class RulerOverlay : Control
 		};
 		_wipe.Pressed += () => {
 			_map.MarkerLayer.Wipe();
+			InspectRulerCounts();
 		};
 		_removeNewest.Pressed += () => {
 			_map.MarkerLayer.PopRuler();
 			DeselectPoint();
+			InspectRulerCounts();
 		};
 	}
 	
@@ -66,6 +68,7 @@ public partial class RulerOverlay : Control
 							_pointB = pos;
 							DeselectPoint();
 							_map.MarkerLayer.PutRuler(_pointA, _pointB);
+							InspectRulerCounts();
 						}
 					} else
 					{
@@ -81,5 +84,12 @@ public partial class RulerOverlay : Control
 		_adding = false;
 		_deselect.Disabled = true;
 		_map.MarkerLayer.WipePoints();
+	}
+	
+	private void InspectRulerCounts()
+	{
+		var zero = _map.MarkerLayer.GetRulerCount() == 0;
+		_wipe.Disabled = zero;
+		_removeNewest.Disabled = zero;
 	}
 }

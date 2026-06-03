@@ -119,10 +119,12 @@ text = "Deselect"
 
 [node name="Wipe" type="Button" parent="Overlay/RulerOverlay/RulerControls/VBoxContainer" unique_id=1663590489]
 layout_mode = 2
+disabled = true
 text = "Remove rulers"
 
 [node name="RemoveNewest" type="Button" parent="Overlay/RulerOverlay/RulerControls/VBoxContainer" unique_id=836213621]
 layout_mode = 2
+disabled = true
 text = "Remove newest ruler"
 
 [node name="Topnav" parent="Overlay" unique_id=118245835 node_paths=PackedStringArray("_pause", "_ruler") instance=ExtResource("2_gunap")]
