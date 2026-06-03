@@ -33,7 +33,7 @@ public partial class BattleScene : Node2D
 	{
 		BattleTopnav.PressedPause += () => { Pause(); };
 		BattleTopnav.RulerToggled += (bool toggle) => {
-			GD.Print(toggle);
+			Map.MarkerLayer.Visible = toggle;
 		};
 		_pauseOverlay.PressedResume += () => { Resume(); };
 		_pauseOverlay.PressedRestart += () => { Restart(); };

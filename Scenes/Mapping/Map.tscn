@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://bkwxw3yx6ouqh" path="res://Scenes/Mapping/Projectiles/Projectile.tscn" id="20_wb4r7"]
 [ext_resource type="Texture2D" uid="uid://v2gkmg7yaoh5" path="res://Assets/Textures/controls.png" id="21_04b6o"]
 [ext_resource type="PackedScene" uid="uid://dhs8elwnae0rg" path="res://Scenes/Mapping/Overlays/BlackTile.tscn" id="21_54hn3"]
+[ext_resource type="Script" uid="uid://dcewm51mwfmee" path="res://Source/Mapping/Markers/MarkerLayer.cs" id="27_0enno"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6wiys"]
 atlas = ExtResource("21_04b6o")
@@ -1255,7 +1256,7 @@ metadata/_custom_type_script = "uid://bn1u57sn0woiq"
 atlas = ExtResource("7_ccdcv")
 region = Rect2(62, 38, 38, 38)
 
-[node name="Map" type="Node2D" unique_id=1338299763 node_paths=PackedStringArray("FrameBackground", "GroundLayer", "DecorationLayer", "EntityLayer", "OverlayLayer", "ProjectileLayer", "Selector", "Camera")]
+[node name="Map" type="Node2D" unique_id=1338299763 node_paths=PackedStringArray("FrameBackground", "GroundLayer", "DecorationLayer", "EntityLayer", "OverlayLayer", "ProjectileLayer", "MarkerLayer", "Selector", "Camera")]
 script = ExtResource("1_lo67w")
 FrameBackground = NodePath("Border")
 GroundLayer = NodePath("Ground")
@@ -1263,6 +1264,7 @@ DecorationLayer = NodePath("Decoration")
 EntityLayer = NodePath("Entities")
 OverlayLayer = NodePath("Overlays")
 ProjectileLayer = NodePath("Projectiles")
+MarkerLayer = NodePath("Markers")
 Selector = NodePath("Selector")
 Camera = NodePath("Camera")
 
@@ -1303,6 +1305,10 @@ _map = NodePath("..")
 
 [node name="Sprite" type="Sprite2D" parent="Selector" unique_id=269947912]
 texture = SubResource("AtlasTexture_mukcc")
+
+[node name="Markers" type="Node2D" parent="." unique_id=1449783854]
+visible = false
+script = ExtResource("27_0enno")
 
 [node name="Camera" type="Camera2D" parent="." unique_id=221812195 node_paths=PackedStringArray("_calibratingAtlasLayer")]
 script = ExtResource("16_mukcc")

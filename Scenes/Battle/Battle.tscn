@@ -8,7 +8,6 @@
 [ext_resource type="Script" uid="uid://btbtqp8lo1xc2" path="res://Source/Battle/Components/BattleTopnav.cs" id="3_3ihc8"]
 [ext_resource type="Script" uid="uid://csmobm8nus0qv" path="res://Source/Battle/Stages/StageManager.cs" id="4_07e4u"]
 [ext_resource type="Script" uid="uid://b6ocl3clhwf1h" path="res://Source/Battle/Components/PauseOverlay.cs" id="4_odh8s"]
-[ext_resource type="Script" uid="uid://b68kavkhjnwmm" path="res://Source/Battle/Components/Markers.cs" id="4_q0gc0"]
 [ext_resource type="Script" uid="uid://bnmf3stn1wm0k" path="res://Source/Battle/Components/PauseContainer.cs" id="5_rremj"]
 [ext_resource type="PackedScene" uid="uid://dnasbla8y237b" path="res://Scenes/Components/Counter.tscn" id="7_tmq01"]
 [ext_resource type="Script" uid="uid://7abbuvthhp83" path="res://Source/Battle/Components/Counters.cs" id="7_ukbm8"]
@@ -67,10 +66,6 @@ _altitiudeLabel = NodePath("Overlay/Topnav/InfoContainer/AltitudeContainer/Altit
 
 [node name="Map" parent="." unique_id=1338299763 instance=ExtResource("2_dcr6b")]
 process_mode = 1
-
-[node name="Markers" type="CanvasLayer" parent="." unique_id=1322097216]
-visible = false
-script = ExtResource("4_q0gc0")
 
 [node name="StageManager" type="CanvasLayer" parent="." unique_id=1845418048]
 process_mode = 1

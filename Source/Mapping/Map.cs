@@ -10,6 +10,7 @@ using Drumstalotajs.Mapping.Cameras;
 using Drumstalotajs.Resources.Mapping.Layers;
 using System.Threading.Tasks;
 using Drumstalotajs.Mapping.Entities;
+using Drumstalotajs.Mapping.Markers;
 
 namespace Drumstalotajs.Mapping;
 
@@ -25,6 +26,7 @@ public partial class Map : Node2D
 	[Export] public EntityLayer EntityLayer { get; private set; }
 	[Export] public OverlayLayer OverlayLayer { get; private set; }
 	[Export] public ProjectileLayer ProjectileLayer { get; private set; }
+	[Export] public MarkerLayer MarkerLayer { get; private set; }
 	[Export] public Selector Selector { get; private set; }
 	[Export] public Camera Camera { get; private set; }
 	
