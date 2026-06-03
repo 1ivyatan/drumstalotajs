@@ -32,6 +32,9 @@ public partial class BattleScene : Node2D
 	public override void _Ready()
 	{
 		BattleTopnav.PressedPause += () => { Pause(); };
+		BattleTopnav.RulerToggled += (bool toggle) => {
+			GD.Print(toggle);
+		};
 		_pauseOverlay.PressedResume += () => { Resume(); };
 		_pauseOverlay.PressedRestart += () => { Restart(); };
 		_pauseOverlay.PressedExit += () => { Exit(); };

@@ -36,6 +36,7 @@ public partial class End : Control
 		_scene.BattleTopnav.Title = "Conclusion";
 		
 		_scene.BattleTopnav.TogglePauseButton(false);
+		_scene.BattleTopnav.ToggleRulerButton(false);
 		_scene.ScoreManager.SetRunning(false);
 		
 		if (_scene.ScoreManager.HasVictory())
