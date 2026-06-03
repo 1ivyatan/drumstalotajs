@@ -54,13 +54,13 @@ public partial class RulerOverlay : Control
 							_adding = true;
 							_pointA = pos;
 							_deselect.Disabled = false;
-							GD.Print($"1. {pos}");
+							_map.MarkerLayer.PutPoint(pos);
 						} else
 						{
 							_pointB = pos;
 							_adding = false;
 							_deselect.Disabled = true;
-							GD.Print($"2. {pos}");
+							_map.MarkerLayer.WipePoints();
 						}
 					} else
 					{
