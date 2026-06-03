@@ -18,9 +18,15 @@ public partial class RulerOverlay : Control
 	
 	public override void _Ready()
 	{
-		_deselect.Pressed += () => { 
-			_adding = false;
-			_deselect.Disabled = true;
+		_deselect.Pressed += () => {
+			DeselectPoint();
+		};
+		_wipe.Pressed += () => {
+			_map.MarkerLayer.Wipe();
+		};
+		_removeNewest.Pressed += () => {
+			_map.MarkerLayer.PopRuler();
+			DeselectPoint();
 		};
 	}
 	
@@ -58,19 +64,22 @@ public partial class RulerOverlay : Control
 						} else
 						{
 							_pointB = pos;
-							_adding = false;
-							_deselect.Disabled = true;
-							_map.MarkerLayer.WipePoints();
+							DeselectPoint();
 							_map.MarkerLayer.PutRuler(_pointA, _pointB);
 						}
 					} else
 					{
-						_adding = false;
-						_deselect.Disabled = true;
-						_map.MarkerLayer.WipePoints();
+						DeselectPoint();
 					}
 				}
 			}
 		}
+	}
+	
+	private void DeselectPoint()
+	{
+		_adding = false;
+		_deselect.Disabled = true;
+		_map.MarkerLayer.WipePoints();
 	}
 }
