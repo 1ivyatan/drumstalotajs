@@ -114,6 +114,7 @@ layout_mode = 2
 
 [node name="Deselect" type="Button" parent="Overlay/RulerOverlay/RulerControls/VBoxContainer" unique_id=429373069]
 layout_mode = 2
+disabled = true
 text = "Deselect"
 
 [node name="Wipe" type="Button" parent="Overlay/RulerOverlay/RulerControls/VBoxContainer" unique_id=1663590489]
