@@ -138,6 +138,16 @@ public partial class Map : Node2D
 		return GetLocalMousePosition();
 	}
 	
+	public bool ViewportMouseOnMap()
+	{
+		var cellRect = GroundLayer.GetUsedRect();
+		var rect = new Rect2();
+		var cell = new Vector2((float)Constants.Mapping.TileSize.X, (float)Constants.Mapping.TileSize.Y);
+		rect.Position = cellRect.Position * cell;
+		rect.Size = cellRect.Size * cell;
+		return rect.HasPoint(ViewportMouseToLocal());
+	}
+	
 	public void AddSceneTile(
 		AtlasLayer layer, 
 		string atlas,

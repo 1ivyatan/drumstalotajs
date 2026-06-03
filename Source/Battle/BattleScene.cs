@@ -36,7 +36,7 @@ public partial class BattleScene : Node2D
 		BattleTopnav.RulerToggled += (bool toggle) => {
 			if (toggle)
 			{
-				Nodes.GetRoot().ToastManager.SpawnOne("Right click to draw a ruler.");
+				Nodes.GetRoot().ToastManager.SpawnOne("Right click two positions to draw a ruler");
 			//	Map.MarkerLayer.Wipe();
 			}
 			Map.MarkerLayer.Visible = toggle;
