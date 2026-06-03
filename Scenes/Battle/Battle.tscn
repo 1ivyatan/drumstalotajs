@@ -88,7 +88,7 @@ _map = NodePath("../Map")
 
 [node name="Overlay" type="CanvasLayer" parent="." unique_id=1518625057]
 
-[node name="RulerOverlay" type="Control" parent="Overlay" unique_id=890588354 node_paths=PackedStringArray("_map")]
+[node name="RulerOverlay" type="Control" parent="Overlay" unique_id=890588354 node_paths=PackedStringArray("_map", "_deselect", "_wipe", "_removeNewest")]
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -99,6 +99,9 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("6_q0gc0")
 _map = NodePath("../../Map")
+_deselect = NodePath("RulerControls/VBoxContainer/Deselect")
+_wipe = NodePath("RulerControls/VBoxContainer/Wipe")
+_removeNewest = NodePath("RulerControls/VBoxContainer/RemoveNewest")
 
 [node name="RulerControls" type="PanelContainer" parent="Overlay/RulerOverlay" unique_id=2095369115]
 layout_mode = 0

@@ -8,12 +8,17 @@ namespace Drumstalotajs.Battle.Components;
 public partial class RulerOverlay : Control
 {
 	[Export] private Map _map;
+	[Export] private Button _deselect;
+	[Export] private Button _wipe;
+	[Export] private Button _removeNewest;
+	
 	private bool _adding = false;
 	private Vector2 _pointA;
 	private Vector2 _pointB;
 	
 	public override void _Ready()
 	{
+		_deselect.Pressed += () => { _adding = false; };
 	}
 	
 	public override void _Input(InputEvent @event)
