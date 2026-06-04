@@ -38,12 +38,14 @@ layout_mode = 2
 
 [node name="Title" type="Label" parent="FireTracker/VBoxContainer" unique_id=2029752818]
 layout_mode = 2
-text = "Friendly firing tracking"
+text = "Firing tracking"
 
 [node name="PlayerDevices" type="ItemList" parent="FireTracker/VBoxContainer" unique_id=1708315160]
 layout_mode = 2
+size_flags_horizontal = 4
 mouse_filter = 2
 allow_search = false
+max_text_lines = 2
 auto_width = true
 auto_height = true
 max_columns = 30

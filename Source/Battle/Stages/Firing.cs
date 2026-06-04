@@ -106,7 +106,14 @@ public partial class Firing : Control
 		
 		_playerDevicesContainer.Visible = true;
 		_firingTrackerContainer.Visible = true;
-	
+		
+		foreach (var dev in _playerDevs)
+		{
+			var atlas = (EntityLayerAtlasData)_map.EntityLayer.GetAtlasData(dev.TileId);
+			var cellPos = _map.LocalPosToMilCoords(dev.Position);
+			_playerDevices.AddDevice(dev, atlas, $"{_map.FormatMilCoords((Vector2I)cellPos)}");
+		}
+			
 		MassFire(_playerDevs);
 	}
 	
@@ -132,9 +139,6 @@ public partial class Firing : Control
 				: dev.ShellsPerTurn;
 			_devFireTracker[dev] = (0, expendable);
 			
-			var atlas = (EntityLayerAtlasData)_map.EntityLayer.GetAtlasData(dev.TileId);
-			_playerDevices.AddDevice(dev, atlas);
-			
 			SceneTreeTimer delayToFire = GetTree().CreateTimer(GD.RandRange(0.01f, .5f), false);
 			delayToFire.Connect(SceneTreeTimer.SignalName.Timeout , Callable.From(() => {
 				BatchFire(dev);
@@ -150,6 +154,7 @@ public partial class Firing : Control
 			for (int i = 0; i < devTrackingInfo.Max; i++)
 			{
 				var projectile = _map.ProjectileLayer.SpawnProjectile(device);
+				_playerDevices.UpdateDeviceData(device, i);
 				projectile.Connect(Projectile.SignalName.Detonated, Callable.From(
 					(Device device) => {
 						LogTracker(device, 1);
@@ -176,7 +181,6 @@ public partial class Firing : Control
 	{
 		var oldDevTrackingInfo = _devFireTracker[device];
 		_devFireTracker[device] = (oldDevTrackingInfo.Count += inc, oldDevTrackingInfo.Max);
-		_playerDevices.SubtractDeviceShell(device);
 		
 		if (_devFireTracker[device].Count == _devFireTracker[device].Max)
 		{
