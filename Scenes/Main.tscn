@@ -76,8 +76,13 @@ _settingsPath = "user://settings"
 _settingsWindowContainer = NodePath("SettingsWindowLayer/SettingsWindowContainer")
 
 [node name="SettingsWindowLayer" type="CanvasLayer" parent="SettingsManager" unique_id=594495051]
+process_mode = 3
+layer = 3
 
 [node name="SettingsWindowContainer" parent="SettingsManager/SettingsWindowLayer" unique_id=1063269450 instance=ExtResource("11_grg3l")]
+z_index = 5
+z_as_relative = false
+mouse_behavior_recursive = 2
 
 [node name="Overlay" type="CanvasLayer" parent="." unique_id=1415426569]
 process_mode = 3
