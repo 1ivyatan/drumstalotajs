@@ -38,9 +38,23 @@ public partial class MarkerLayer : Node2D
 		QueueRedraw();
 	}
 	
-	public void PopRuler()
+	public (Vector2 A, Vector2 B) PopRuler()
 	{
+		var ruler = _rulers[_rulers.Count - 1];
 		_rulers.RemoveAt(_rulers.Count - 1);
+		QueueRedraw();
+		return ruler;
+	}
+	
+	public void PopPoint()
+	{
+		_points.RemoveAt(_points.Count - 1);
+		QueueRedraw();
+	}
+	
+	public void RemovePoint(Vector2 pos)
+	{
+		_points.Remove(pos);
 		QueueRedraw();
 	}
 	
