@@ -138,6 +138,30 @@ public partial class Map : Node2D
 		return GetLocalMousePosition();
 	}
 	
+	public Vector2 ViewportToMilCoords()
+	{
+		var mousePos = ViewportMouseToMap();
+		var cellRect = GroundLayer.GetUsedRect();
+
+		var x = mousePos.X - cellRect.Position.X;
+		var bY = cellRect.Position.Y + cellRect.Size.Y - 1;
+		var y = bY - mousePos.Y;
+
+		return new Vector2(x, y);
+	}
+	
+	public Vector2 LocalPosToMilCoords(Vector2 localPos)
+	{
+		var pos = GroundLayer.LocalToMap(localPos);
+		var cellRect = GroundLayer.GetUsedRect();
+
+		var x = pos.X - cellRect.Position.X;
+		var bY = cellRect.Position.Y + cellRect.Size.Y - 1;
+		var y = bY - pos.Y;
+
+		return new Vector2(x, y);
+	}
+	
 	public bool ViewportMouseOnMap()
 	{
 		var cellRect = GroundLayer.GetUsedRect();
