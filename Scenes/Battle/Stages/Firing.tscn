@@ -1,13 +1,44 @@
 [gd_scene format=3 uid="uid://xy5ddkip34e3"]
 
 [ext_resource type="Script" uid="uid://brrvcotpjwrnx" path="res://Source/Battle/Stages/Firing.cs" id="1_m2fyo"]
+[ext_resource type="Script" uid="uid://d2n8xf2jjlq1j" path="res://Source/Battle/Components/FireTracker.cs" id="2_sspis"]
 
-[node name="Firing" type="Control" unique_id=1630068081]
+[node name="Firing" type="Control" unique_id=1630068081 node_paths=PackedStringArray("_playerDevices", "_enemyFiring")]
 layout_mode = 3
-anchors_preset = 15
+anchors_preset = 12
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 mouse_filter = 2
 script = ExtResource("1_m2fyo")
+_playerDevices = NodePath("FireTracker/PlayerDevices")
+_enemyFiring = NodePath("FireTracker/EnemyFiring")
+
+[node name="FireTracker" type="PanelContainer" parent="." unique_id=501012860]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -5.0
+offset_top = -15.0
+offset_right = 5.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="PlayerDevices" type="ItemList" parent="FireTracker" unique_id=1708315160]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+allow_search = false
+auto_width = true
+auto_height = true
+script = ExtResource("2_sspis")
+
+[node name="EnemyFiring" type="Label" parent="FireTracker" unique_id=1961772301]
+visible = false
+layout_mode = 2
+text = "Enemy devices are firing..."

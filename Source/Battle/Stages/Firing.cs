@@ -23,6 +23,9 @@ namespace Drumstalotajs.Battle.Stages;
 
 public partial class Firing : Control
 {
+	[Export] private FireTracker _playerDevices;
+	[Export] private Label _enemyFiring;
+	
 	private BattleScene _scene;
 	private Map _map;
 	
@@ -84,6 +87,8 @@ public partial class Firing : Control
 		if (_map.CurrentLoadedMap.Counterbattery && _mode != FiringMode.Player)
 		{
 			_scene.BattleTopnav.Title = "Enemy Counterbattery!";
+			_enemyFiring.Visible = true;
+			_playerDevices.Visible = false;
 			MassFire(_enemyDevs);
 		} else
 		{
@@ -94,6 +99,10 @@ public partial class Firing : Control
 	private void FirePlayerDevices()
 	{
 		_scene.BattleTopnav.Title = "Battery!";
+		_enemyFiring.Visible = false;
+		
+		_playerDevices.Visible = true;
+		
 		MassFire(_playerDevs);
 	}
 	
@@ -116,6 +125,10 @@ public partial class Firing : Control
 				? dev.Shells
 				: dev.ShellsPerTurn;
 			_devFireTracker[dev] = (0, expendable);
+			
+			var atlas = (EntityLayerAtlasData)_map.EntityLayer.GetAtlasData(dev.TileId);
+			_playerDevices.AddDevice(dev, atlas);
+			
 			SceneTreeTimer delayToFire = GetTree().CreateTimer(GD.RandRange(0.01f, .5f), false);
 			delayToFire.Connect(SceneTreeTimer.SignalName.Timeout , Callable.From(() => {
 				BatchFire(dev);
