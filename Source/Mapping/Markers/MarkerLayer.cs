@@ -23,11 +23,22 @@ public partial class MarkerLayer : Node2D
 			/* points */
 			var direction = (ruler.B - ruler.A).Normalized();
 			float distance = ruler.A.DistanceTo(ruler.B);
-			int count = (int)(distance / 32f) + 1;
-			for (int i = 0; i < count; i++)
+			Vector2 perpendicular = new Vector2(-direction.Y, direction.X);
+			for (float i = 32f; i <= distance; i += 32f)
 			{
-				var pos = ruler.A + direction * i * 32f;
-				DrawCircle(pos, 5f, Colors.Red);
+				var pos = ruler.A + direction * i;
+				DrawLine(
+					pos - perpendicular * 7.5f, 
+					pos + perpendicular * 7.5f,
+					Colors.Black,
+					7.5f
+				);
+				DrawLine(
+					pos - perpendicular * 5f, 
+					pos + perpendicular * 5f,
+					Colors.White,
+					5f
+				);
 			}
 		}
 		
