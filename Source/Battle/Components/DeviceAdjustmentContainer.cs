@@ -96,7 +96,7 @@ public partial class DeviceAdjustmentContainer : Container
 			: $"({device.Shells} shells)";
 		
 		
-		_title.Text = $"{_atlas.Name} {resupplyStr}";
+		_title.Text = $"{device.Name} {resupplyStr}";
 		
 		Visible = true;
 	}
