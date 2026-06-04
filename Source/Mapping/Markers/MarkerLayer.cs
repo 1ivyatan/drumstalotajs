@@ -56,35 +56,42 @@ public partial class MarkerLayer : Node2D
 		
 		foreach(var ruler in _rulers)
 		{
+			var direction = (ruler.B - ruler.A).Normalized();
+			float distance = ruler.A.DistanceTo(ruler.B) * _map.CellCoefficient.X;
+			
 			var oldACellPos = _map.LocalPosToMilCoords(ruler.A);
 			var oldBCellPos = _map.LocalPosToMilCoords(ruler.B);
 			var aPosDecimals = ruler.A / 32f;
 			var bPosDecimals = ruler.B / 32f;
-			aPosDecimals.X = (float)Math.Round(Calculations.GetDecimal(aPosDecimals.X), 3);
-			aPosDecimals.Y = (float)Math.Round(Mathf.Abs(Calculations.GetDecimal(aPosDecimals.Y)), 3);
-			bPosDecimals.X = (float)Math.Round(Calculations.GetDecimal(bPosDecimals.X), 3);
-			bPosDecimals.Y = (float)Math.Round(Mathf.Abs(Calculations.GetDecimal(bPosDecimals.Y)), 3);
+			aPosDecimals.X = (float)Math.Round(Calculations.GetDecimal(aPosDecimals.X), 2);
+			aPosDecimals.Y = (float)Math.Round(Mathf.Abs(Calculations.GetDecimal(aPosDecimals.Y)), 2);
+			bPosDecimals.X = (float)Math.Round(Calculations.GetDecimal(bPosDecimals.X), 2);
+			bPosDecimals.Y = (float)Math.Round(Mathf.Abs(Calculations.GetDecimal(bPosDecimals.Y)), 2);
 			
-			var newACellPos = oldACellPos + aPosDecimals;
-			var newBCellPos = oldBCellPos + bPosDecimals;
+			var newACellPos = (oldACellPos + aPosDecimals).Snapped(new Vector2(0.01f, 0.01f));
+			var newBCellPos = (oldBCellPos + bPosDecimals).Snapped(new Vector2(0.01f, 0.01f));
 			
-			DrawPointLabel(ruler.A, $"{newACellPos}", 0);
-			DrawPointLabel(ruler.B, $"{newBCellPos}", 0);
+			if (distance > 50)
+			{
+				DrawPointLabel(ruler.A, direction, $"{newACellPos}");
+			}
+			DrawPointLabel(ruler.B, direction, $"{newBCellPos}\n~{Math.Round(distance, 2)}m");
 		}
 	}
 	
-	private void DrawPointLabel(Vector2 pos, string text, double spacing)
+	private void DrawPointLabel(Vector2 pos, Vector2 direction, string text)
 	{
-		var offset = _pointTexture.GetSize() / 2;
-		DrawStringOutline(_font, 
-			pos + new Vector2(offset.X, 8f + (float)spacing), 
-			text, HorizontalAlignment.Center, -1,
-			12, 8, Colors.Black
+		Vector2 oppositeDir = -direction.Normalized();
+		Vector2 textSize = _font.GetMultilineStringSize(text, width: -1, fontSize: 12);
+		Vector2 alignment = (oppositeDir + Vector2.One) / 2.0f;
+		Vector2 drawPosition = pos + (oppositeDir * 10.0f) - (textSize * alignment);
+		DrawMultilineStringOutline(
+			_font, drawPosition, text, alignment: HorizontalAlignment.Left,
+			width: -1, fontSize: 12, modulate: Colors.Black, size: 8
 		);
-		DrawString(_font,
-			pos + new Vector2(offset.X, 8f + (float)spacing), 
-			text, HorizontalAlignment.Center, -1,
-			12, Colors.White
+		DrawMultilineString(
+			_font, drawPosition, text, alignment: HorizontalAlignment.Left,
+			width: -1, fontSize: 12, modulate: Colors.White
 		);
 	}
 	
