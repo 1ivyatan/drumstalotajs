@@ -16,8 +16,19 @@ public partial class MarkerLayer : Node2D
 	{
 		foreach(var ruler in _rulers)
 		{
+			/* line */
 			DrawLine(ruler.A, ruler.B, Colors.Black, 7.5f);
 			DrawLine(ruler.A, ruler.B, Colors.White, 3.5f);
+			
+			/* points */
+			var direction = (ruler.B - ruler.A).Normalized();
+			float distance = ruler.A.DistanceTo(ruler.B);
+			int count = (int)(distance / 32f) + 1;
+			for (int i = 0; i < count; i++)
+			{
+				var pos = ruler.A + direction * i * 32f;
+				DrawCircle(pos, 5f, Colors.Red);
+			}
 		}
 		
 		foreach(var point in _points)
