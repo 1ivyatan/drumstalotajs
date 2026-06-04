@@ -9,6 +9,7 @@ namespace Drumstalotajs.Mapping.Markers;
 public partial class MarkerLayer : Node2D
 {
 	[Export] private Texture2D _pointTexture;
+	[Export] private Sprite2D _brush;
 	private List<(Vector2 A, Vector2 B)> _rulers = new();
 	private List<Vector2> _points = new();
 	
@@ -48,6 +49,25 @@ public partial class MarkerLayer : Node2D
 			DrawTexture(_pointTexture, point - offset);
 		}
 		
+	}
+	
+	public override void _UnhandledInput(InputEvent @event)
+	{
+		if (_brush.Visible && @event is InputEventMouseMotion mouseMotionEvent)
+		{
+			_brush.Position = GetLocalMousePosition();
+		}
+	}
+	
+	public void ActivateBrush()
+	{
+		_brush.Texture = _pointTexture;
+		_brush.Visible = true;
+	}
+	
+	public void HideBrush()
+	{
+		_brush.Visible = false;
 	}
 	
 	public void PutPoint(Vector2 position)

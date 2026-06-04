@@ -1310,11 +1310,16 @@ _map = NodePath("..")
 [node name="Sprite" type="Sprite2D" parent="Selector" unique_id=269947912]
 texture = SubResource("AtlasTexture_mukcc")
 
-[node name="Markers" type="Node2D" parent="." unique_id=1449783854]
+[node name="Markers" type="Node2D" parent="." unique_id=1449783854 node_paths=PackedStringArray("_brush")]
 visible = false
 z_index = 6
 script = ExtResource("27_0enno")
 _pointTexture = SubResource("AtlasTexture_j86cl")
+_brush = NodePath("Brush")
+
+[node name="Brush" type="Sprite2D" parent="Markers" unique_id=1018228950]
+visible = false
+modulate = Color(1, 1, 1, 0.5019608)
 
 [node name="Camera" type="Camera2D" parent="." unique_id=221812195 node_paths=PackedStringArray("_calibratingAtlasLayer")]
 script = ExtResource("16_mukcc")
