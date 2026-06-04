@@ -29,6 +29,7 @@ public partial class BattleScene : Node2D
 
 	public bool Paused { get; private set; } = false;
 	private string _mapPath;
+	private Vector2I _mapGrid = Vector2I.Zero;
 	
 	public override void _Ready()
 	{
@@ -56,7 +57,8 @@ public partial class BattleScene : Node2D
 	public override void _UnhandledInput(InputEvent @event)
 	{
 		var pos = Map.ViewportToMilCoords();
-		_positionLabel.Text = $"{pos}";
+		//_mapGrid
+		_positionLabel.Text = $"[{pos}]";
 	}
 	
 	public void Exit()
@@ -97,6 +99,7 @@ public partial class BattleScene : Node2D
 			ScoreManager.PrepareScoring(Map.CurrentLoadedMap);
 		}
 		
+		_mapGrid = (Vector2I)Map.LocalPosToMilCoords(levelProps.InMapPosition);
 		_measureLabel.Text = $"{Map.CurrentLoadedMap.MetersPerCell.X}m";
 		_altitiudeLabel.Text = $"{Map.CurrentLoadedMap.GroundLayer.BaseHeight}m";
 	}
