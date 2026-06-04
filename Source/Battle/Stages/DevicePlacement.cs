@@ -14,6 +14,7 @@ using Drumstalotajs.Mapping.Selection;
 using Drumstalotajs.Mapping.Layers;
 using Drumstalotajs.Mapping.Tiles;
 using System.Threading.Tasks;
+using Drumstalotajs.Components;
 
 namespace Drumstalotajs.Battle.Stages;
 
@@ -23,6 +24,7 @@ public partial class DevicePlacement : Control
 	[Export] private Button _toDeviceAdjustment;
 	[Export] private Label _deviceCountLabel;
 	[Export] private AudioStreamPlayer _tickSfx;
+	[Export] private DeviceInfoContainer _deviceInfoContainer;
 	private BattleScene _scene;
 	private Map _map;
 	
@@ -108,6 +110,31 @@ public partial class DevicePlacement : Control
 		_selectedDeviceAtlas = atlas;
 		_deviceProps = props;
 		_itemListIndex = index;
+	}
+	
+	private int _currentHoveredDevice = -1;
+	
+	public override void _Input(InputEvent @event)
+	{
+		if (@event is InputEventMouseMotion mouseMotion)
+		{
+			var hover = _deviceInventory.GetItemAtPosition(
+				_deviceInventory.GetLocalMousePosition(), true
+			);
+			if (hover != _currentHoveredDevice)
+			{
+				if (hover != -1)
+				{
+					int id = _deviceIds[(int)hover];
+					var atlas = _deviceAtlas.FirstOrDefault(d => d.Id == id);
+					_deviceInfoContainer.LoadDeviceData(atlas);
+				} else
+				{
+					_deviceInfoContainer.Close();
+				}
+				_currentHoveredDevice = hover;
+			}
+		}
 	}
 	
 	public async override void _UnhandledInput(InputEvent @event)

@@ -7,6 +7,10 @@ namespace Drumstalotajs.Resources.Mapping.Entities;
 [GlobalClass]
 public partial class DevicePropertiesData : EntityPropertiesData
 {
+	[ExportGroup("Meta")]
+	[Export] public string Name { get; set; } = "";
+	[Export(PropertyHint.MultilineText)] public string Description { get; set; } = "";
+	
 	[ExportGroup("Textures")]
 	[Export] public Texture2D DeviceBody { get; set; } = null;
 	[Export] public Texture2D DeviceHead { get; set; } = null;

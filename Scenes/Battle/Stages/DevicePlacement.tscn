@@ -2,13 +2,14 @@
 
 [ext_resource type="Script" uid="uid://dlakdl7qufbmm" path="res://Source/Battle/Stages/DevicePlacement.cs" id="1_8xrf7"]
 [ext_resource type="Texture2D" uid="uid://v2gkmg7yaoh5" path="res://Assets/Textures/controls.png" id="2_0v3wf"]
+[ext_resource type="PackedScene" uid="uid://dfdrxt0kr5q14" path="res://Scenes/Components/DeviceInfoContainer.tscn" id="2_nuqpx"]
 [ext_resource type="AudioStream" uid="uid://bfwhncauxvpnm" path="res://Assets/Audio/Tick.wav" id="3_loeph"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_loeph"]
 atlas = ExtResource("2_0v3wf")
 region = Rect2(141, 34, 64, 64)
 
-[node name="DevicePlacement" type="Control" unique_id=1734111832 node_paths=PackedStringArray("_deviceInventory", "_toDeviceAdjustment", "_deviceCountLabel", "_tickSfx")]
+[node name="DevicePlacement" type="Control" unique_id=1734111832 node_paths=PackedStringArray("_deviceInventory", "_toDeviceAdjustment", "_deviceCountLabel", "_tickSfx", "_deviceInfoContainer")]
 layout_mode = 3
 anchors_preset = 12
 anchor_top = 1.0
@@ -17,29 +18,37 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("1_8xrf7")
-_deviceInventory = NodePath("DeviceInventoryContainer/VBoxContainer/DeviceInventory")
+_deviceInventory = NodePath("VBoxContainer/DeviceInventoryContainer/VBoxContainer/DeviceInventory")
 _toDeviceAdjustment = NodePath("ToDeviceAdjustment")
-_deviceCountLabel = NodePath("DeviceInventoryContainer/VBoxContainer/Label")
+_deviceCountLabel = NodePath("VBoxContainer/DeviceInventoryContainer/VBoxContainer/Label")
 _tickSfx = NodePath("TickSfx")
+_deviceInfoContainer = NodePath("VBoxContainer/DeviceInfoContainer")
 
-[node name="DeviceInventoryContainer" type="PanelContainer" parent="." unique_id=1814224064]
-custom_minimum_size = Vector2(0, 81)
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=764287346]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -64.0
-offset_right = 40.0
+offset_top = -81.0
+offset_right = 195.0
 grow_vertical = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="DeviceInventoryContainer" unique_id=511821074]
+[node name="DeviceInfoContainer" parent="VBoxContainer" unique_id=1264773573 instance=ExtResource("2_nuqpx")]
+visible = false
 layout_mode = 2
 
-[node name="Label" type="Label" parent="DeviceInventoryContainer/VBoxContainer" unique_id=1318471230]
+[node name="DeviceInventoryContainer" type="PanelContainer" parent="VBoxContainer" unique_id=1814224064]
+custom_minimum_size = Vector2(0, 81)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/DeviceInventoryContainer" unique_id=511821074]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/DeviceInventoryContainer/VBoxContainer" unique_id=1318471230]
 layout_mode = 2
 text = "Placed: 0; Limits: 0-1"
 
-[node name="DeviceInventory" type="ItemList" parent="DeviceInventoryContainer/VBoxContainer" unique_id=1736832961]
+[node name="DeviceInventory" type="ItemList" parent="VBoxContainer/DeviceInventoryContainer/VBoxContainer" unique_id=1736832961]
 layout_mode = 2
 size_flags_vertical = 3
 allow_search = false
