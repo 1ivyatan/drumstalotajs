@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bvriq6a47jad1"]
 
 [ext_resource type="Script" uid="uid://de4woxc2uwi5r" path="res://Source/Battle/Stages/InitDeviceAdjustment.cs" id="1_y6unp"]
+[ext_resource type="PackedScene" uid="uid://dfdrxt0kr5q14" path="res://Scenes/Components/DeviceInfoContainer.tscn" id="2_5j57l"]
 [ext_resource type="Script" uid="uid://bw2lob855567r" path="res://Source/Battle/Components/InitDeviceAdjustmentContainer.cs" id="2_62jor"]
 [ext_resource type="PackedScene" uid="uid://dmgd2vv1ixfnn" path="res://Scenes/Components/CircleSlider.tscn" id="2_g3l6y"]
 [ext_resource type="PackedScene" uid="uid://tkq5giln4ao6" path="res://Scenes/Components/Wheel.tscn" id="3_svpor"]
@@ -12,7 +13,7 @@
 atlas = ExtResource("5_8qgox")
 region = Rect2(141, 98, 64, 64)
 
-[node name="InitDeviceAdjustment" type="Control" unique_id=1768267525 node_paths=PackedStringArray("_initDeviceAdjustmentContainer", "_toFiringButton", "_tickSfx")]
+[node name="InitDeviceAdjustment" type="Control" unique_id=1768267525 node_paths=PackedStringArray("_deviceInfoContainer", "_initDeviceAdjustmentContainer", "_toFiringButton", "_tickSfx")]
 layout_mode = 3
 anchors_preset = 12
 anchor_top = 1.0
@@ -21,19 +22,27 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("1_y6unp")
-_initDeviceAdjustmentContainer = NodePath("InitDeviceAdjustmentContainer")
+_deviceInfoContainer = NodePath("VBoxContainer/DeviceInfoContainer")
+_initDeviceAdjustmentContainer = NodePath("VBoxContainer/InitDeviceAdjustmentContainer")
 _toFiringButton = NodePath("ToFiring")
 _tickSfx = NodePath("TickSfx")
 
-[node name="InitDeviceAdjustmentContainer" type="PanelContainer" parent="." unique_id=87147405 node_paths=PackedStringArray("_title", "_azimuthSlider", "_azimuthLabel", "_angleSlider", "_angleLabel", "_shellSlider", "_shellLabel", "_antitickSfx")]
-visible = false
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=352213234]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -157.0
-offset_right = 260.0
+offset_top = -40.0
+offset_right = 40.0
 grow_vertical = 0
+
+[node name="DeviceInfoContainer" parent="VBoxContainer" unique_id=1264773573 instance=ExtResource("2_5j57l")]
+visible = false
+layout_mode = 2
+
+[node name="InitDeviceAdjustmentContainer" type="PanelContainer" parent="VBoxContainer" unique_id=87147405 node_paths=PackedStringArray("_title", "_azimuthSlider", "_azimuthLabel", "_angleSlider", "_angleLabel", "_shellSlider", "_shellLabel", "_antitickSfx")]
+visible = false
+layout_mode = 2
 script = ExtResource("2_62jor")
 _title = NodePath("Container/Title")
 _azimuthSlider = NodePath("Container/Wheels/Azimuth/CircleSlider")
@@ -44,66 +53,66 @@ _shellSlider = NodePath("Container/Wheels/Shells/VSlider")
 _shellLabel = NodePath("Container/Wheels/Shells/Value")
 _antitickSfx = NodePath("Container/Wheels/Shells/AntitickSfx")
 
-[node name="Container" type="VBoxContainer" parent="InitDeviceAdjustmentContainer" unique_id=1010489265]
+[node name="Container" type="VBoxContainer" parent="VBoxContainer/InitDeviceAdjustmentContainer" unique_id=1010489265]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="InitDeviceAdjustmentContainer/Container" unique_id=753167254]
+[node name="Title" type="Label" parent="VBoxContainer/InitDeviceAdjustmentContainer/Container" unique_id=753167254]
 layout_mode = 2
 text = "Prepare device"
 horizontal_alignment = 1
 
-[node name="Wheels" type="HBoxContainer" parent="InitDeviceAdjustmentContainer/Container" unique_id=2142764939]
+[node name="Wheels" type="HBoxContainer" parent="VBoxContainer/InitDeviceAdjustmentContainer/Container" unique_id=2142764939]
 layout_mode = 2
 
-[node name="Azimuth" type="VBoxContainer" parent="InitDeviceAdjustmentContainer/Container/Wheels" unique_id=2145251941]
+[node name="Azimuth" type="VBoxContainer" parent="VBoxContainer/InitDeviceAdjustmentContainer/Container/Wheels" unique_id=2145251941]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 4
 
-[node name="Title" type="Label" parent="InitDeviceAdjustmentContainer/Container/Wheels/Azimuth" unique_id=1619432581]
+[node name="Title" type="Label" parent="VBoxContainer/InitDeviceAdjustmentContainer/Container/Wheels/Azimuth" unique_id=1619432581]
 layout_mode = 2
 text = "Azimuth"
 horizontal_alignment = 1
 
-[node name="CircleSlider" parent="InitDeviceAdjustmentContainer/Container/Wheels/Azimuth" unique_id=858039364 instance=ExtResource("2_g3l6y")]
+[node name="CircleSlider" parent="VBoxContainer/InitDeviceAdjustmentContainer/Container/Wheels/Azimuth" unique_id=858039364 instance=ExtResource("2_g3l6y")]
 layout_mode = 2
 MaxValue = 360.0
 
-[node name="Value" type="Label" parent="InitDeviceAdjustmentContainer/Container/Wheels/Azimuth" unique_id=191958126]
+[node name="Value" type="Label" parent="VBoxContainer/InitDeviceAdjustmentContainer/Container/Wheels/Azimuth" unique_id=191958126]
 layout_mode = 2
 text = "~0°"
 horizontal_alignment = 1
 
-[node name="Angle" type="VBoxContainer" parent="InitDeviceAdjustmentContainer/Container/Wheels" unique_id=2078709291]
+[node name="Angle" type="VBoxContainer" parent="VBoxContainer/InitDeviceAdjustmentContainer/Container/Wheels" unique_id=2078709291]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 
-[node name="Title" type="Label" parent="InitDeviceAdjustmentContainer/Container/Wheels/Angle" unique_id=1792810669]
+[node name="Title" type="Label" parent="VBoxContainer/InitDeviceAdjustmentContainer/Container/Wheels/Angle" unique_id=1792810669]
 layout_mode = 2
 text = "Elevation"
 horizontal_alignment = 1
 
-[node name="Wheel" parent="InitDeviceAdjustmentContainer/Container/Wheels/Angle" unique_id=484444380 instance=ExtResource("3_svpor")]
+[node name="Wheel" parent="VBoxContainer/InitDeviceAdjustmentContainer/Container/Wheels/Angle" unique_id=484444380 instance=ExtResource("3_svpor")]
 layout_mode = 2
 Step = 0.1
 WheelIntensity = 1.0
 
-[node name="Value" type="Label" parent="InitDeviceAdjustmentContainer/Container/Wheels/Angle" unique_id=508199123]
+[node name="Value" type="Label" parent="VBoxContainer/InitDeviceAdjustmentContainer/Container/Wheels/Angle" unique_id=508199123]
 layout_mode = 2
 text = "~0°"
 horizontal_alignment = 1
 
-[node name="Shells" type="VBoxContainer" parent="InitDeviceAdjustmentContainer/Container/Wheels" unique_id=523109623]
+[node name="Shells" type="VBoxContainer" parent="VBoxContainer/InitDeviceAdjustmentContainer/Container/Wheels" unique_id=523109623]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 
-[node name="Title" type="Label" parent="InitDeviceAdjustmentContainer/Container/Wheels/Shells" unique_id=161467355]
+[node name="Title" type="Label" parent="VBoxContainer/InitDeviceAdjustmentContainer/Container/Wheels/Shells" unique_id=161467355]
 layout_mode = 2
 text = "Shelling"
 horizontal_alignment = 1
 
-[node name="VSlider" type="VSlider" parent="InitDeviceAdjustmentContainer/Container/Wheels/Shells" unique_id=605242499]
+[node name="VSlider" type="VSlider" parent="VBoxContainer/InitDeviceAdjustmentContainer/Container/Wheels/Shells" unique_id=605242499]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
@@ -112,12 +121,12 @@ value = 1.0
 rounded = true
 allow_greater = true
 
-[node name="Value" type="Label" parent="InitDeviceAdjustmentContainer/Container/Wheels/Shells" unique_id=283418871]
+[node name="Value" type="Label" parent="VBoxContainer/InitDeviceAdjustmentContainer/Container/Wheels/Shells" unique_id=283418871]
 layout_mode = 2
 text = "1"
 horizontal_alignment = 1
 
-[node name="AntitickSfx" type="AudioStreamPlayer" parent="InitDeviceAdjustmentContainer/Container/Wheels/Shells" unique_id=1054665287]
+[node name="AntitickSfx" type="AudioStreamPlayer" parent="VBoxContainer/InitDeviceAdjustmentContainer/Container/Wheels/Shells" unique_id=1054665287]
 stream = ExtResource("5_hkow6")
 bus = &"Sfx"
 
