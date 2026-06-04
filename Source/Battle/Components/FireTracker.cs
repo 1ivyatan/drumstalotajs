@@ -17,6 +17,22 @@ public partial class FireTracker : ItemList
 	
 	public void AddDevice(Device device, EntityLayerAtlasData atlasData)
 	{
+		if (atlasData.Properties is DevicePropertiesData deviceProps)
+		{
+			AddItem($":D", atlasData.Thumbnail);
+			//_icon.Texture = atlasData.Thumbnail;
+			//_name.Text = deviceProps.Name;
+			//_desc.Text = deviceProps.Description;
+		}
+	}
+	
+	public void SubtractDeviceShell(Device device)
+	{
+		
+	}
+	
+	public void Clear()
+	{
 		
 	}
 }

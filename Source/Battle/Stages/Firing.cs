@@ -23,6 +23,8 @@ namespace Drumstalotajs.Battle.Stages;
 
 public partial class Firing : Control
 {
+	[Export] private PanelContainer _firingTrackerContainer;
+	[Export] private VBoxContainer _playerDevicesContainer;
 	[Export] private FireTracker _playerDevices;
 	[Export] private Label _enemyFiring;
 	
@@ -88,7 +90,8 @@ public partial class Firing : Control
 		{
 			_scene.BattleTopnav.Title = "Enemy Counterbattery!";
 			_enemyFiring.Visible = true;
-			_playerDevices.Visible = false;
+			_playerDevicesContainer.Visible = false;
+			_firingTrackerContainer.Visible = true;
 			MassFire(_enemyDevs);
 		} else
 		{
@@ -101,13 +104,16 @@ public partial class Firing : Control
 		_scene.BattleTopnav.Title = "Battery!";
 		_enemyFiring.Visible = false;
 		
-		_playerDevices.Visible = true;
-		
+		_playerDevicesContainer.Visible = true;
+		_firingTrackerContainer.Visible = true;
+	
 		MassFire(_playerDevs);
 	}
 	
 	private void NextStage()
 	{
+		_playerDevices.Clear();
+		
 		if (_scene.ScoreManager.CanContinue())
 		{
 			_scene.StageManager.DeviceAdjustment();
@@ -170,6 +176,7 @@ public partial class Firing : Control
 	{
 		var oldDevTrackingInfo = _devFireTracker[device];
 		_devFireTracker[device] = (oldDevTrackingInfo.Count += inc, oldDevTrackingInfo.Max);
+		_playerDevices.SubtractDeviceShell(device);
 		
 		if (_devFireTracker[device].Count == _devFireTracker[device].Max)
 		{
