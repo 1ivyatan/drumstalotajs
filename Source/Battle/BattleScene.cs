@@ -57,8 +57,8 @@ public partial class BattleScene : Node2D
 	public override void _UnhandledInput(InputEvent @event)
 	{
 		var pos = Map.ViewportToMilCoords();
-		//_mapGrid
-		_positionLabel.Text = $"[{pos}]";
+		var str = Map.FormatMilCoords((Vector2I)pos);
+		_positionLabel.Text = str;
 	}
 	
 	public void Exit()

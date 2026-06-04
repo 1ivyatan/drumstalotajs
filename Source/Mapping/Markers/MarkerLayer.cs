@@ -73,9 +73,9 @@ public partial class MarkerLayer : Node2D
 			
 			if (distance > 50)
 			{
-				DrawPointLabel(ruler.A, direction, $"{newACellPos}");
+				DrawPointLabel(ruler.A, direction, $"{_map.FormatMilCoords(newACellPos)}");
 			}
-			DrawPointLabel(ruler.B, direction, $"{newBCellPos}\n~{Math.Round(distance, 2)}m");
+			DrawPointLabel(ruler.B, direction, $"{_map.FormatMilCoords(newBCellPos)}\n~{Math.Round(distance, 2)}m");
 		}
 	}
 	
