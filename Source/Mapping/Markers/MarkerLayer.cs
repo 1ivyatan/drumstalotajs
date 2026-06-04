@@ -8,6 +8,7 @@ namespace Drumstalotajs.Mapping.Markers;
 
 public partial class MarkerLayer : Node2D
 {
+	[Export] private Texture2D _pointTexture;
 	private List<(Vector2 A, Vector2 B)> _rulers = new();
 	private List<Vector2> _points = new();
 	
@@ -15,8 +16,8 @@ public partial class MarkerLayer : Node2D
 	{
 		foreach(var point in _points)
 		{
-			DrawCircle(point, 7.5f, Colors.Black);
-			DrawCircle(point, 5f, Colors.White);
+			var offset = _pointTexture.GetSize() / 2;
+			DrawTexture(_pointTexture, point - offset);
 		}
 		
 		foreach(var ruler in _rulers)

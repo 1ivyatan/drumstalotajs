@@ -1256,6 +1256,10 @@ metadata/_custom_type_script = "uid://bn1u57sn0woiq"
 atlas = ExtResource("7_ccdcv")
 region = Rect2(62, 38, 38, 38)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_j86cl"]
+atlas = ExtResource("21_04b6o")
+region = Rect2(196, 205, 21, 20)
+
 [node name="Map" type="Node2D" unique_id=1338299763 node_paths=PackedStringArray("FrameBackground", "GroundLayer", "DecorationLayer", "EntityLayer", "OverlayLayer", "ProjectileLayer", "MarkerLayer", "Selector", "Camera")]
 script = ExtResource("1_lo67w")
 FrameBackground = NodePath("Border")
@@ -1310,6 +1314,7 @@ texture = SubResource("AtlasTexture_mukcc")
 visible = false
 z_index = 6
 script = ExtResource("27_0enno")
+_pointTexture = SubResource("AtlasTexture_j86cl")
 
 [node name="Camera" type="Camera2D" parent="." unique_id=221812195 node_paths=PackedStringArray("_calibratingAtlasLayer")]
 script = ExtResource("16_mukcc")
