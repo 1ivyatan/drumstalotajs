@@ -53,7 +53,6 @@ public partial class RulerOverlay : Control
 			)
 			{
 				bool rClick = mouseButton.ButtonIndex == MouseButton.Right;
-				bool lClick = mouseButton.ButtonIndex == MouseButton.Left;
 				
 				if (rClick)
 				{

@@ -32,4 +32,11 @@ public static class Calculations
 	{
 		return Constants.Physics.SeaLevelAirDensity * Math.Exp(-altitude / Constants.Physics.ScaleHeight);
 	}
+	
+	public static double GetDecimal(double number)
+	{
+		decimal preciseNumber = (decimal)number;
+		decimal decimalPart = preciseNumber - Math.Truncate(preciseNumber);
+		return (float)decimalPart;
+	}
 }

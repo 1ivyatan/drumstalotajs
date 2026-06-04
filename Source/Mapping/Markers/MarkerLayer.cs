@@ -2,19 +2,25 @@ using Godot;
 using System;
 using System.Collections.Generic;
 using Drumstalotajs;
+using Drumstalotajs.Utilities;
 using Drumstalotajs.Mapping.Layers;
 
 namespace Drumstalotajs.Mapping.Markers;
 
 public partial class MarkerLayer : Node2D
 {
+	[Export] private Map _map;
 	[Export] private Texture2D _pointTexture;
 	[Export] private Sprite2D _brush;
+
 	private List<(Vector2 A, Vector2 B)> _rulers = new();
 	private List<Vector2> _points = new();
+	private Font _font = ThemeDB.FallbackFont;
 	
 	public override void _Draw()
 	{
+		var offset = _pointTexture.GetSize() / 2;
+			
 		foreach(var ruler in _rulers)
 		{
 			/* line */
@@ -45,10 +51,41 @@ public partial class MarkerLayer : Node2D
 		
 		foreach(var point in _points)
 		{
-			var offset = _pointTexture.GetSize() / 2;
 			DrawTexture(_pointTexture, point - offset);
 		}
 		
+		foreach(var ruler in _rulers)
+		{
+			var oldACellPos = _map.LocalPosToMilCoords(ruler.A);
+			var oldBCellPos = _map.LocalPosToMilCoords(ruler.B);
+			var aPosDecimals = ruler.A / 32f;
+			var bPosDecimals = ruler.B / 32f;
+			aPosDecimals.X = (float)Math.Round(Calculations.GetDecimal(aPosDecimals.X), 3);
+			aPosDecimals.Y = (float)Math.Round(Mathf.Abs(Calculations.GetDecimal(aPosDecimals.Y)), 3);
+			bPosDecimals.X = (float)Math.Round(Calculations.GetDecimal(bPosDecimals.X), 3);
+			bPosDecimals.Y = (float)Math.Round(Mathf.Abs(Calculations.GetDecimal(bPosDecimals.Y)), 3);
+			
+			var newACellPos = oldACellPos + aPosDecimals;
+			var newBCellPos = oldBCellPos + bPosDecimals;
+			
+			DrawPointLabel(ruler.A, $"{newACellPos}", 0);
+			DrawPointLabel(ruler.B, $"{newBCellPos}", 0);
+		}
+	}
+	
+	private void DrawPointLabel(Vector2 pos, string text, double spacing)
+	{
+		var offset = _pointTexture.GetSize() / 2;
+		DrawStringOutline(_font, 
+			pos + new Vector2(offset.X, 8f + (float)spacing), 
+			text, HorizontalAlignment.Center, -1,
+			12, 8, Colors.Black
+		);
+		DrawString(_font,
+			pos + new Vector2(offset.X, 8f + (float)spacing), 
+			text, HorizontalAlignment.Center, -1,
+			12, Colors.White
+		);
 	}
 	
 	public override void _UnhandledInput(InputEvent @event)
