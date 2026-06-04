@@ -37,7 +37,9 @@ public partial class BattleScene : Node2D
 			if (toggle)
 			{
 				Nodes.GetRoot().ToastManager.SpawnOne("Right click two positions to draw a ruler");
-			//	Map.MarkerLayer.Wipe();
+			} else
+			{
+				Nodes.GetRoot().ToastManager.Clear();
 			}
 			Map.MarkerLayer.Visible = toggle;
 			RulerOverlay.Visible = toggle;
