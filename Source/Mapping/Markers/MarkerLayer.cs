@@ -14,16 +14,18 @@ public partial class MarkerLayer : Node2D
 	
 	public override void _Draw()
 	{
+		foreach(var ruler in _rulers)
+		{
+			DrawLine(ruler.A, ruler.B, Colors.Black, 7.5f);
+			DrawLine(ruler.A, ruler.B, Colors.White, 3.5f);
+		}
+		
 		foreach(var point in _points)
 		{
 			var offset = _pointTexture.GetSize() / 2;
 			DrawTexture(_pointTexture, point - offset);
 		}
 		
-		foreach(var ruler in _rulers)
-		{
-			DrawLine(ruler.A, ruler.B, Colors.Cyan, 5.8f);
-		}
 	}
 	
 	public void PutPoint(Vector2 position)
