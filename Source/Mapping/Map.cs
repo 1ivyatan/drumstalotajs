@@ -164,14 +164,14 @@ public partial class Map : Node2D
 	
 	public string FormatMilCoords(Vector2I coords)
 	{
-		return $"[{coords.X:D2}, {coords.Y:D2}]";
+		return $"[{coords.X:D2} {coords.Y:D2}]";
 	}
 	
 	public string FormatMilCoords(Vector2 coords)
 	{
 		int x = Mathf.RoundToInt(coords.X * 10f);
 		int y = Mathf.RoundToInt(coords.Y * 10f);
-		return $"[{x:D2}, {y:D2}]";
+		return $"[{x:D2} {y:D2}]";
 	}
 	
 	public bool ViewportMouseOnMap()
