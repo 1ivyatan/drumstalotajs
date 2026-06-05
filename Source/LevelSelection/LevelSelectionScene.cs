@@ -37,6 +37,7 @@ public partial class LevelSelectionScene : Node2D
 		Topnav.Title = "Deploy";
 		await Map.Load(LevelSet.BackgroundMapPath);
 		SpriteRain.SetRect(Map.GetMapRect(), false);
+		SpriteRain.SpawnAllOverRandomly();
 		SpriteRain.Activated = true;
 		if (LevelSet != null)
 		{

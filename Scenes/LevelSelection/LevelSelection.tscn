@@ -7,6 +7,23 @@
 [ext_resource type="PackedScene" uid="uid://bqh5apppkldxo" path="res://Scenes/Components/Topnav.tscn" id="3_2duud"]
 [ext_resource type="PackedScene" uid="uid://causi3ie5ctdf" path="res://Scenes/Components/SpriteRain.tscn" id="4_4ir6m"]
 [ext_resource type="Texture2D" uid="uid://v2gkmg7yaoh5" path="res://Assets/Textures/controls.png" id="4_fka4w"]
+[ext_resource type="Texture2D" uid="uid://dbkcs2uvrwqtx" path="res://Assets/Textures/clouds.png" id="5_tgk5c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e7dhg"]
+atlas = ExtResource("5_tgk5c")
+region = Rect2(0, 0, 41, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tgk5c"]
+atlas = ExtResource("5_tgk5c")
+region = Rect2(42, 0, 30, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vec2v"]
+atlas = ExtResource("5_tgk5c")
+region = Rect2(73, 0, 57, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_th0lj"]
+atlas = ExtResource("5_tgk5c")
+region = Rect2(1, 24, 58, 28)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_epixl"]
 atlas = ExtResource("4_fka4w")
@@ -29,9 +46,13 @@ _return = NodePath("Overlay/ToStart")
 [node name="Map" parent="." unique_id=1338299763 instance=ExtResource("2_675ns")]
 
 [node name="SpriteRain" parent="Map" unique_id=310659395 instance=ExtResource("4_4ir6m")]
+Sprites = [SubResource("AtlasTexture_e7dhg"), SubResource("AtlasTexture_tgk5c"), SubResource("AtlasTexture_vec2v"), SubResource("AtlasTexture_th0lj")]
+Direction = Vector2(-1, 0)
+Delay = 0.75
 Activated = false
 
 [node name="Overlay" type="CanvasLayer" parent="." unique_id=1073188663]
+layer = 2
 
 [node name="Topnav" parent="Overlay" unique_id=118245835 instance=ExtResource("3_2duud")]
 

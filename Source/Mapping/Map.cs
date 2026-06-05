@@ -69,6 +69,11 @@ public partial class Map : Node2D
 	public Vector2I SquareMetersPerCell { get; private set; } = Constants.Mapping.TileSize;
 	public Vector2 CellCoefficient { get; private set; } = new Vector2(1.0f, 1.0f);
 	
+	public override void _Ready()
+	{
+		MoveChild(Camera, -1);
+	}
+	
 	public MapResource Export()
 	{
 		return new MapResource(this);

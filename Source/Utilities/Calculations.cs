@@ -43,6 +43,13 @@ public static class Calculations
 		return Mathf.PosMod(Mathf.RadToDeg(directionRads), 360f);
 	}
 	
+	public static Vector2 GetRandomPoint(Rect2 rect)
+	{
+		float x = (float)GD.RandRange(rect.Position.X, rect.End.X);
+		float y = (float)GD.RandRange(rect.Position.Y, rect.End.Y);
+		return new Vector2(x, y);
+	}
+	
 	public static Vector2[][] GetClusters(List<Vector2> points, List<Vector2> filter = null, double minDistance = 50)
 	{
 		if (points.Count == 0)
