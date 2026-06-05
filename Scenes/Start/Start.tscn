@@ -15,7 +15,7 @@ region = Rect2(132, 0, 25, 14)
 atlas = ExtResource("3_x3rvt")
 region = Rect2(0, 0, 580, 424)
 
-[node name="Start" type="Control" unique_id=1888125272 node_paths=PackedStringArray("_annotation", "_start", "_editor", "_settings", "_about", "_exit")]
+[node name="Start" type="Control" unique_id=1888125272 node_paths=PackedStringArray("_annotation", "_start", "_devices", "_editor", "_settings", "_about", "_exit")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -26,6 +26,7 @@ script = ExtResource("1_x3rvt")
 _annotationFilePath = "res://Resources/Annotation.txt"
 _annotation = NodePath("Ui/AnnotationContainer")
 _start = NodePath("Ui/Grid/MenuColumn/Buttons/Start")
+_devices = NodePath("Ui/Grid/MenuColumn/Buttons/Devices")
 _editor = NodePath("Ui/Grid/MenuColumn/Buttons/Editor")
 _settings = NodePath("Ui/Grid/MenuColumn/Buttons/Settings")
 _about = NodePath("Ui/Grid/MenuColumn/Buttons/About")
@@ -86,6 +87,10 @@ layout_mode = 2
 [node name="Start" type="Button" parent="Ui/Grid/MenuColumn/Buttons" unique_id=838659274]
 layout_mode = 2
 text = "Start"
+
+[node name="Devices" type="Button" parent="Ui/Grid/MenuColumn/Buttons" unique_id=685871037]
+layout_mode = 2
+text = "Devices"
 
 [node name="Editor" type="Button" parent="Ui/Grid/MenuColumn/Buttons" unique_id=1106992829]
 visible = false

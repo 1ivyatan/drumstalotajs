@@ -11,6 +11,7 @@ public partial class StartScene : Control
 	[Export(PropertyHint.File, "*.txt")] private string _annotationFilePath;
 	[Export] AnnonationContainer _annotation;
 	[Export] private Button _start;
+	[Export] private Button _devices;
 	[Export] private Button _editor;
 	[Export] private Button _settings;
 	[Export] private Button _about;
