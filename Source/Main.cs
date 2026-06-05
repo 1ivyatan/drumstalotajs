@@ -40,6 +40,7 @@ public partial class Main : Node
 			_exitDialogContainer.Visible = false;
 			Exit();
 		};
+		DisplayServer.WindowSetMinSize(new Vector2I(640, 480));
 		SettingsManager.LoadSettings();
 		SceneManager.Start();
 	}
