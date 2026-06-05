@@ -51,7 +51,7 @@ region = Rect2(108, 34, 32, 32)
 atlas = ExtResource("10_diuyf")
 region = Rect2(174, 0, 32, 32)
 
-[node name="Battle" type="Node2D" unique_id=1007953308 node_paths=PackedStringArray("BattleTopnav", "Map", "ScoreManager", "StageManager", "Counters", "RulerOverlay", "_pauseOverlay", "_measureLabel", "_positionLabel", "_altitiudeLabel")]
+[node name="Battle" type="Node2D" unique_id=1007953308 node_paths=PackedStringArray("BattleTopnav", "Map", "ScoreManager", "StageManager", "Counters", "RulerOverlay", "_pauseOverlay", "_measureLabel", "_positionLabel", "_altitiudeLabel", "_switchContainer")]
 script = ExtResource("1_ael4v")
 BattleTopnav = NodePath("Overlay/Topnav")
 Map = NodePath("Map")
@@ -63,6 +63,7 @@ _pauseOverlay = NodePath("Overlay/PauseOverlay")
 _measureLabel = NodePath("Overlay/Topnav/InfoContainer/MeasureContainer/MeasureText")
 _positionLabel = NodePath("Overlay/Topnav/InfoContainer/PositionContainer/PosText")
 _altitiudeLabel = NodePath("Overlay/Topnav/InfoContainer/AltitudeContainer/AltitudeText")
+_switchContainer = NodePath("Overlay/Topnav/SwitchContainer")
 
 [node name="Background" parent="." unique_id=1528618539 instance=ExtResource("2_gibtw")]
 
@@ -131,6 +132,7 @@ _ruler = NodePath("SwitchContainer/RulerButton")
 
 [node name="SwitchContainer" type="HBoxContainer" parent="Overlay/Topnav" unique_id=535321116]
 layout_mode = 2
+size_flags_horizontal = 0
 
 [node name="PauseButton" type="Button" parent="Overlay/Topnav/SwitchContainer" unique_id=268528842]
 custom_minimum_size = Vector2(64, 64)
@@ -164,15 +166,16 @@ stretch_mode = 3
 
 [node name="PosText" type="Label" parent="Overlay/Topnav/InfoContainer/PositionContainer" unique_id=24564550]
 layout_mode = 2
+text = "[000, 000]"
 horizontal_alignment = 1
 
 [node name="MeasureContainer" type="VBoxContainer" parent="Overlay/Topnav/InfoContainer" unique_id=1017487334]
+custom_minimum_size = Vector2(35, 55)
 layout_mode = 2
 size_flags_vertical = 4
 tooltip_text = "Length of a 32px cell in meters"
 
 [node name="MeasurePreview" type="TextureRect" parent="Overlay/Topnav/InfoContainer/MeasureContainer" unique_id=782017182]
-custom_minimum_size = Vector2(75, 32)
 layout_mode = 2
 size_flags_vertical = 3
 texture = SubResource("AtlasTexture_gibtw")

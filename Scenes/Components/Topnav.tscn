@@ -2,15 +2,27 @@
 
 [ext_resource type="Script" uid="uid://dkn2ycrhfe8wj" path="res://Source/Components/Topnav.cs" id="1_wxygq"]
 
-[node name="Topnav" type="PanelContainer" unique_id=118245835 node_paths=PackedStringArray("_title")]
+[node name="Topnav" type="PanelContainer" unique_id=118245835 node_paths=PackedStringArray("_titleContainer", "_spacer", "_title")]
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 23.0
 grow_horizontal = 2
 script = ExtResource("1_wxygq")
-_title = NodePath("Title")
+_titleContainer = NodePath("TitleContainer")
+_spacer = NodePath("TitleContainer/Spacer")
+_title = NodePath("TitleContainer/Title")
 
-[node name="Title" type="Label" parent="." unique_id=1464729364]
+[node name="TitleContainer" type="VFlowContainer" parent="." unique_id=1225066784]
+custom_minimum_size = Vector2(0, 22)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+last_wrap_alignment = 2
+
+[node name="Spacer" type="Control" parent="TitleContainer" unique_id=1447907982]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="TitleContainer" unique_id=1464729364]
 z_index = 1
 layout_mode = 2
 size_flags_horizontal = 4

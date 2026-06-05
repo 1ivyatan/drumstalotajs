@@ -26,6 +26,7 @@ public partial class BattleScene : Node2D
 	[Export] private Label _measureLabel;
 	[Export] private Label _positionLabel;
 	[Export] private Label _altitiudeLabel;
+	[Export] private Control _switchContainer;
 
 	public bool Paused { get; private set; } = false;
 	private string _mapPath;
@@ -33,6 +34,7 @@ public partial class BattleScene : Node2D
 	
 	public override void _Ready()
 	{
+		GetWindow().SizeChanged += AdjustTitlebar;
 		BattleTopnav.PressedPause += () => { Pause(); };
 		BattleTopnav.RulerToggled += (bool toggle) => {
 			if (toggle)
@@ -50,6 +52,7 @@ public partial class BattleScene : Node2D
 		_pauseOverlay.PressedResume += () => { Resume(); };
 		_pauseOverlay.PressedRestart += () => { Restart(); };
 		_pauseOverlay.PressedExit += () => { Exit(); };
+		AdjustTitlebar();
 		Map.Camera.ShiftTop((int)BattleTopnav.Size.Y);
 		StageManager.DevicePlacement();
 	}
@@ -59,6 +62,23 @@ public partial class BattleScene : Node2D
 		var pos = Map.ViewportToMilCoords();
 		var str = Map.FormatMilCoords((Vector2I)pos);
 		_positionLabel.Text = str;
+	}
+	
+	private void AdjustTitlebar()
+	{
+		var size = GetWindow().Size;
+		if (size.X < 620)
+		{
+			BattleTopnav.ToggleTitle(false);
+		} else if (size.X < 850)
+		{
+			BattleTopnav.SetPaddingFromLeft((int)_switchContainer.Size.X + 10);
+			BattleTopnav.ToggleTitle(true);
+		} else
+		{
+			BattleTopnav.SetPaddingFromLeft(0);
+			BattleTopnav.ToggleTitle(true);
+		}
 	}
 	
 	public void Exit()
