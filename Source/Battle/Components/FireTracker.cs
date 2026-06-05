@@ -19,7 +19,7 @@ public partial class FireTracker : ItemList
 	{
 		if (atlasData.Properties is DevicePropertiesData deviceProps)
 		{
-			var countText = device.Shells > 0 ? $"{device.ShellsPerTurn}" : "Reloading";
+			var countText = device.Shells > 0 ? $"Rem: {device.ShellsPerTurn}" : "Reloading";
 			AddItem($"{milCoords}\n{countText}", atlasData.Thumbnail);
 			_devices.Add(device, _head);
 			_head++;
@@ -34,11 +34,7 @@ public partial class FireTracker : ItemList
 			var oldText = GetItemText(id);
 			var pos = oldText.Split(new[] {"\n"}, 2, StringSplitOptions.None);
 			var remaining = device.ShellsPerTurn - (count + 1);
-			var countText = device.Shells > 0 ? (
-				remaining > 0
-					? $"{remaining}"
-					: "Done!"
-			) : "Reloading";
+			var countText = device.Shells > 0 ? $"Rem: {remaining}" : "Reloading";
 			SetItemText(id, $"{pos[0]}\n{countText}");
 		}
 	}

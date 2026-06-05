@@ -23,10 +23,9 @@ namespace Drumstalotajs.Battle.Stages;
 
 public partial class Firing : Control
 {
-	[Export] private PanelContainer _firingTrackerContainer;
-	[Export] private VBoxContainer _playerDevicesContainer;
+	[Export] private FoldableContainer _firingTrackerContainer;
 	[Export] private FireTracker _playerDevices;
-	[Export] private Label _enemyFiring;
+	[Export] private Label _title;
 	
 	private BattleScene _scene;
 	private Map _map;
@@ -89,8 +88,7 @@ public partial class Firing : Control
 		if (_map.CurrentLoadedMap.Counterbattery && _mode != FiringMode.Player)
 		{
 			_scene.BattleTopnav.Title = "Enemy Counterbattery!";
-			_enemyFiring.Visible = true;
-			_playerDevicesContainer.Visible = false;
+			_title.Text = "Enemy is firing...";
 			_firingTrackerContainer.Visible = true;
 			MassFire(_enemyDevs);
 		} else
@@ -102,9 +100,8 @@ public partial class Firing : Control
 	private void FirePlayerDevices()
 	{
 		_scene.BattleTopnav.Title = "Battery!";
-		_enemyFiring.Visible = false;
+		_title.Text = "Friendly devices";
 		
-		_playerDevicesContainer.Visible = true;
 		_firingTrackerContainer.Visible = true;
 		
 		foreach (var dev in _playerDevs)

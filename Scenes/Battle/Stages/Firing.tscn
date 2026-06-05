@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://brrvcotpjwrnx" path="res://Source/Battle/Stages/Firing.cs" id="1_m2fyo"]
 [ext_resource type="Script" uid="uid://d2n8xf2jjlq1j" path="res://Source/Battle/Components/FireTracker.cs" id="2_sspis"]
 
-[node name="Firing" type="Control" unique_id=1630068081 node_paths=PackedStringArray("_firingTrackerContainer", "_playerDevicesContainer", "_playerDevices", "_enemyFiring")]
+[node name="Firing" type="Control" unique_id=1630068081 node_paths=PackedStringArray("_firingTrackerContainer", "_playerDevices", "_title")]
 layout_mode = 3
 anchors_preset = 12
 anchor_top = 1.0
@@ -14,26 +14,25 @@ grow_vertical = 0
 mouse_filter = 2
 script = ExtResource("1_m2fyo")
 _firingTrackerContainer = NodePath("FireTracker")
-_playerDevicesContainer = NodePath("FireTracker/VBoxContainer")
 _playerDevices = NodePath("FireTracker/VBoxContainer/PlayerDevices")
-_enemyFiring = NodePath("FireTracker/EnemyFiring")
+_title = NodePath("FireTracker/VBoxContainer/Title")
 
-[node name="FireTracker" type="PanelContainer" parent="." unique_id=501012860]
-visible = false
+[node name="FireTracker" type="FoldableContainer" parent="." unique_id=1295125397]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -5.0
-offset_top = -15.0
-offset_right = 5.0
+offset_left = -13.0
+offset_top = -41.0
+offset_right = 13.0
 grow_horizontal = 2
 grow_vertical = 0
+title = "Tracking"
+title_position = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="FireTracker" unique_id=854876024]
-visible = false
 layout_mode = 2
 
 [node name="Title" type="Label" parent="FireTracker/VBoxContainer" unique_id=2029752818]
@@ -51,8 +50,3 @@ auto_height = true
 max_columns = 30
 icon_mode = 0
 script = ExtResource("2_sspis")
-
-[node name="EnemyFiring" type="Label" parent="FireTracker" unique_id=1961772301]
-visible = false
-layout_mode = 2
-text = "Enemy devices are firing..."
