@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dnasbla8y237b" path="res://Scenes/Components/Counter.tscn" id="7_tmq01"]
 [ext_resource type="Script" uid="uid://7abbuvthhp83" path="res://Source/Battle/Components/Counters.cs" id="7_ukbm8"]
 [ext_resource type="Texture2D" uid="uid://2io65q52gq16" path="res://Assets/Textures/overlay.png" id="8_cmwrv"]
+[ext_resource type="PackedScene" uid="uid://cxs76g6hqtwuh" path="res://Scenes/Components/MilPositionContainer.tscn" id="10_dby5i"]
 [ext_resource type="Texture2D" uid="uid://v2gkmg7yaoh5" path="res://Assets/Textures/controls.png" id="10_diuyf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6tmns"]
@@ -22,10 +23,6 @@ region = Rect2(207, 88, 62, 62)
 [sub_resource type="AtlasTexture" id="AtlasTexture_tx6ec"]
 atlas = ExtResource("10_diuyf")
 region = Rect2(232, 153, 62, 62)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8f5sm"]
-atlas = ExtResource("10_diuyf")
-region = Rect2(209, 1, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gibtw"]
 atlas = ExtResource("8_cmwrv")
@@ -51,7 +48,7 @@ region = Rect2(108, 34, 32, 32)
 atlas = ExtResource("10_diuyf")
 region = Rect2(174, 0, 32, 32)
 
-[node name="Battle" type="Node2D" unique_id=1007953308 node_paths=PackedStringArray("BattleTopnav", "Map", "ScoreManager", "StageManager", "Counters", "RulerOverlay", "_pauseOverlay", "_measureLabel", "_positionLabel", "_altitiudeLabel", "_switchContainer")]
+[node name="Battle" type="Node2D" unique_id=1007953308 node_paths=PackedStringArray("BattleTopnav", "Map", "ScoreManager", "StageManager", "Counters", "RulerOverlay", "_pauseOverlay", "_milPositionContainer", "_measureLabel", "_altitiudeLabel", "_switchContainer")]
 script = ExtResource("1_ael4v")
 BattleTopnav = NodePath("Overlay/Topnav")
 Map = NodePath("Map")
@@ -60,8 +57,8 @@ StageManager = NodePath("StageManager")
 Counters = NodePath("Overlay/Topnav/InfoContainer/Counters")
 RulerOverlay = NodePath("Overlay/RulerOverlay")
 _pauseOverlay = NodePath("Overlay/PauseOverlay")
+_milPositionContainer = NodePath("Overlay/Topnav/InfoContainer/MilPositionContainer")
 _measureLabel = NodePath("Overlay/Topnav/InfoContainer/MeasureContainer/MeasureText")
-_positionLabel = NodePath("Overlay/Topnav/InfoContainer/PositionContainer/PosText")
 _altitiudeLabel = NodePath("Overlay/Topnav/InfoContainer/AltitudeContainer/AltitudeText")
 _switchContainer = NodePath("Overlay/Topnav/SwitchContainer")
 
@@ -138,11 +135,13 @@ size_flags_horizontal = 0
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 0
+tooltip_text = "Pause"
 text = "  ||  "
 
 [node name="RulerButton" type="TextureButton" parent="Overlay/Topnav/SwitchContainer" unique_id=1175189503]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
+tooltip_text = "Toggle ruler tool"
 toggle_mode = true
 texture_normal = SubResource("AtlasTexture_6tmns")
 texture_pressed = SubResource("AtlasTexture_tx6ec")
@@ -153,21 +152,9 @@ stretch_mode = 3
 layout_mode = 2
 size_flags_horizontal = 8
 
-[node name="PositionContainer" type="VBoxContainer" parent="Overlay/Topnav/InfoContainer" unique_id=100180890]
-custom_minimum_size = Vector2(80, 0)
+[node name="MilPositionContainer" parent="Overlay/Topnav/InfoContainer" unique_id=1085273700 node_paths=PackedStringArray("_map") instance=ExtResource("10_dby5i")]
 layout_mode = 2
-tooltip_text = "Cell position of cursor"
-
-[node name="TextureRect" type="TextureRect" parent="Overlay/Topnav/InfoContainer/PositionContainer" unique_id=1544777778]
-custom_minimum_size = Vector2(0, 32)
-layout_mode = 2
-texture = SubResource("AtlasTexture_8f5sm")
-stretch_mode = 3
-
-[node name="PosText" type="Label" parent="Overlay/Topnav/InfoContainer/PositionContainer" unique_id=24564550]
-layout_mode = 2
-text = "[000, 000]"
-horizontal_alignment = 1
+_map = NodePath("../../../../Map")
 
 [node name="MeasureContainer" type="VBoxContainer" parent="Overlay/Topnav/InfoContainer" unique_id=1017487334]
 custom_minimum_size = Vector2(35, 55)

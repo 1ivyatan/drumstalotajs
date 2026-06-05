@@ -10,6 +10,7 @@ using Drumstalotajs.Resources.Saves;
 using Drumstalotajs.Battle.Stages;
 using Drumstalotajs.Mapping.Entities;
 using Drumstalotajs.Mapping.Tiles;
+using Drumstalotajs.Components;
 
 namespace Drumstalotajs.Battle;
 
@@ -23,8 +24,8 @@ public partial class BattleScene : Node2D
 	[Export] public RulerOverlay RulerOverlay { get; private set; }
 
 	[Export] private PauseOverlay _pauseOverlay;
+	[Export] private MilPositionContainer _milPositionContainer;
 	[Export] private Label _measureLabel;
-	[Export] private Label _positionLabel;
 	[Export] private Label _altitiudeLabel;
 	[Export] private Control _switchContainer;
 
@@ -59,9 +60,10 @@ public partial class BattleScene : Node2D
 	
 	public override void _UnhandledInput(InputEvent @event)
 	{
-		var pos = Map.ViewportToMilCoords();
-		var str = Map.FormatMilCoords((Vector2I)pos);
-		_positionLabel.Text = str;
+		if (@event is InputEventMouseMotion)
+		{
+			_milPositionContainer.UpdateCoords();
+		}
 	}
 	
 	private void AdjustTitlebar()

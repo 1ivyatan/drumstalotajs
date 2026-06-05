@@ -1312,7 +1312,7 @@ texture = SubResource("AtlasTexture_mukcc")
 
 [node name="Markers" type="Node2D" parent="." unique_id=1449783854 node_paths=PackedStringArray("_map", "_brush")]
 visible = false
-z_index = 6
+z_index = 9
 script = ExtResource("27_0enno")
 _map = NodePath("..")
 _pointTexture = SubResource("AtlasTexture_j86cl")
