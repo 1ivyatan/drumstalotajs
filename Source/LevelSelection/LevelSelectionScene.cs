@@ -21,6 +21,7 @@ public partial class LevelSelectionScene : Node2D
 	[Export] private LevelMetaContainer LevelMetaContainer { get; set; }
 	[Export] public Map Map { get; private set; }
 	[Export] private Topnav Topnav { get; set; }
+	[Export] private SpriteRain SpriteRain { get; set; }
 	public LevelSet LevelSet { get; private set; }
 	
 	[Export] private Button _return;
@@ -35,6 +36,8 @@ public partial class LevelSelectionScene : Node2D
 		Map.Camera.Mode = CameraMode.DragOnly;
 		Topnav.Title = "Deploy";
 		await Map.Load(LevelSet.BackgroundMapPath);
+		SpriteRain.SetRect(Map.GetMapRect(), false);
+		SpriteRain.Activated = true;
 		if (LevelSet != null)
 		{
 			foreach (var level in LevelSet.Levels)

@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://bkxbq06wvfjt2" path="res://Source/LevelSelection/Components/LevelMetaContainer.cs" id="2_bnw7x"]
 [ext_resource type="PackedScene" uid="uid://dec5f0w2x3ome" path="res://Scenes/Components/Background.tscn" id="2_epixl"]
 [ext_resource type="PackedScene" uid="uid://bqh5apppkldxo" path="res://Scenes/Components/Topnav.tscn" id="3_2duud"]
+[ext_resource type="PackedScene" uid="uid://causi3ie5ctdf" path="res://Scenes/Components/SpriteRain.tscn" id="4_4ir6m"]
 [ext_resource type="Texture2D" uid="uid://v2gkmg7yaoh5" path="res://Assets/Textures/controls.png" id="4_fka4w"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_epixl"]
@@ -15,16 +16,20 @@ region = Rect2(63, 132, 64, 64)
 atlas = ExtResource("4_fka4w")
 region = Rect2(-1, 132, 64, 64)
 
-[node name="LevelSelection" type="Node2D" unique_id=1846218210 node_paths=PackedStringArray("LevelMetaContainer", "Map", "Topnav", "_return")]
+[node name="LevelSelection" type="Node2D" unique_id=1846218210 node_paths=PackedStringArray("LevelMetaContainer", "Map", "Topnav", "SpriteRain", "_return")]
 script = ExtResource("1_g1q0k")
 LevelMetaContainer = NodePath("Overlay/LevelMetaContainer")
 Map = NodePath("Map")
 Topnav = NodePath("Overlay/Topnav")
+SpriteRain = NodePath("Map/SpriteRain")
 _return = NodePath("Overlay/ToStart")
 
 [node name="Background" parent="." unique_id=1528618539 instance=ExtResource("2_epixl")]
 
 [node name="Map" parent="." unique_id=1338299763 instance=ExtResource("2_675ns")]
+
+[node name="SpriteRain" parent="Map" unique_id=310659395 instance=ExtResource("4_4ir6m")]
+Activated = false
 
 [node name="Overlay" type="CanvasLayer" parent="." unique_id=1073188663]
 

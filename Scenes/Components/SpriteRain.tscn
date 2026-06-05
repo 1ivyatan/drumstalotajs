@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://causi3ie5ctdf"]
+
+[ext_resource type="Script" uid="uid://bw8ec1jsf8e40" path="res://Source/Components/SpriteRain.cs" id="1_i625u"]
+
+[node name="SpriteRain" type="CanvasLayer" unique_id=310659395]
+script = ExtResource("1_i625u")

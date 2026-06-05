@@ -174,6 +174,14 @@ public partial class Map : Node2D
 		return $"[{x:D2} {y:D2}]";
 	}
 	
+	public Rect2 GetMapRect()
+	{
+		var rect = GroundLayer.GetUsedRect();
+		rect.Size *= GroundLayer.TileSize;
+		rect.Position *= GroundLayer.TileSize;
+		return rect;
+	}
+	
 	public bool ViewportMouseOnMap()
 	{
 		var cellRect = GroundLayer.GetUsedRect();
