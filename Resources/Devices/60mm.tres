@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="DevicePropertiesData" format=3 uid="uid://b5xu6nmvd6j2q"]
+
+[ext_resource type="Texture2D" uid="uid://b12sdf1d12it1" path="res://Assets/Textures/entities.png" id="1_nt5fp"]
+[ext_resource type="Script" uid="uid://cqwwdwx080x60" path="res://Source/Resources/Mapping/Entities/DevicePropertiesData.cs" id="2_12dds"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h63tt"]
+atlas = ExtResource("1_nt5fp")
+region = Rect2(2, 171, 30, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g74wd"]
+atlas = ExtResource("1_nt5fp")
+region = Rect2(292, 163, 22, 25)
+
+[resource]
+script = ExtResource("2_12dds")
+DeviceHead = SubResource("AtlasTexture_g74wd")
+DestroyedDeviceBody = SubResource("AtlasTexture_h63tt")
+MinAngle = 40.0
+MaxAngle = 85.0
+TraverseRadius = 40.0
+MuzzleVelocity = 168.0
+ResupplyTurns = 3
+MaxFiringPerTurn = 15
+DelayBetweenFires = 1.5
+Caliber = 60.0
+ExplosiveFill = 0.6
+TotalWeight = 1.36
+DragCoefficient = 0.65
+Height = 1.0
+Toughness = 0.00999999999999978
+metadata/_custom_type_script = "uid://cqwwdwx080x60"
