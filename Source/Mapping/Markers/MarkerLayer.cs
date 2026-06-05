@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using Drumstalotajs;
 using Drumstalotajs.Utilities;
@@ -54,29 +55,53 @@ public partial class MarkerLayer : Node2D
 			DrawTexture(_pointTexture, point - offset);
 		}
 		
+		double clusterDistance = 50;
 		foreach(var ruler in _rulers)
 		{
 			var direction = (ruler.B - ruler.A).Normalized();
+			float directionAz = (float)Calculations.DirectionToAzimuth(direction);
 			float distance = ruler.A.DistanceTo(ruler.B) * _map.CellCoefficient.X;
+			var nearestToPointBDistance = NearestPointDistance(ruler.B);
 			
-			var oldACellPos = _map.LocalPosToMilCoords(ruler.A);
-			var oldBCellPos = _map.LocalPosToMilCoords(ruler.B);
-			var aPosDecimals = ruler.A / 32f;
-			var bPosDecimals = ruler.B / 32f;
-			aPosDecimals.X = (float)Math.Round(Calculations.GetDecimal(aPosDecimals.X), 2);
-			aPosDecimals.Y = (float)Math.Round(Mathf.Abs(Calculations.GetDecimal(aPosDecimals.Y)), 2);
-			bPosDecimals.X = (float)Math.Round(Calculations.GetDecimal(bPosDecimals.X), 2);
-			bPosDecimals.Y = (float)Math.Round(Mathf.Abs(Calculations.GetDecimal(bPosDecimals.Y)), 2);
-			
-			var newACellPos = (oldACellPos + aPosDecimals).Snapped(new Vector2(0.01f, 0.01f));
-			var newBCellPos = (oldBCellPos + bPosDecimals).Snapped(new Vector2(0.01f, 0.01f));
-			
-			if (distance > 50)
+			if (nearestToPointBDistance > clusterDistance || nearestToPointBDistance == -1)
 			{
-				DrawPointLabel(ruler.A, direction, $"{_map.FormatMilCoords(newACellPos)}");
+				DrawPointLabel(ruler.B, direction, $"~{Math.Round(distance, 2)}m\n~{directionAz}°");
+			} else
+			{
+				DrawPointLabel(ruler.A, direction, $"~{Math.Round(distance, 2)}m\n~{directionAz}°");
 			}
-			DrawPointLabel(ruler.B, direction, $"{_map.FormatMilCoords(newBCellPos)}\n~{Math.Round(distance, 2)}m");
 		}
+		
+		var pointBs = _rulers.Select(p => p.B).ToList();
+		var clusters = Calculations.GetClusters(_points, pointBs, clusterDistance);
+		for (int i = 0; i < clusters.Length; i++)
+		{
+			for (int j = 0; j < clusters[i].Length; j++)
+			{
+				var pointB = clusters[i][j];
+				var pointA = _rulers.Where(r => r.B == pointB).First().A;
+				var direction = (pointB - pointA).Normalized();
+				float directionAz = (float)Calculations.DirectionToAzimuth(direction);
+				float distance = pointA.DistanceTo(pointB) * _map.CellCoefficient.X;
+				DrawPointLabel(pointA, direction, $"~{Math.Round(distance, 2)}m\n~{directionAz}°");
+			}
+		}
+	}
+	
+	private Vector2 NearestPoint(Vector2 point)
+	{
+		if (_points.Count <= 1) return point;
+		var nearestPoints = _points
+			.OrderBy(p => p.DistanceTo(point))
+			.Where(p => p != point);
+		return nearestPoints.Count() > 0 ? nearestPoints.First() : point;
+	}
+	
+	private double NearestPointDistance(Vector2 point)
+	{
+		var nearest = NearestPoint(point);
+		if (nearest == point) return -1;
+		else return (double)point.DistanceTo(nearest);
 	}
 	
 	private void DrawPointLabel(Vector2 pos, Vector2 direction, string text)
@@ -84,7 +109,7 @@ public partial class MarkerLayer : Node2D
 		Vector2 oppositeDir = -direction.Normalized();
 		Vector2 textSize = _font.GetMultilineStringSize(text, width: -1, fontSize: 12);
 		Vector2 alignment = (oppositeDir + Vector2.One) / 2.0f;
-		Vector2 drawPosition = pos + (oppositeDir * 10.0f) - (textSize * alignment);
+		Vector2 drawPosition = pos + (oppositeDir * 5.0f) - (textSize * alignment);
 		DrawMultilineStringOutline(
 			_font, drawPosition, text, alignment: HorizontalAlignment.Left,
 			width: -1, fontSize: 12, modulate: Colors.Black, size: 8
