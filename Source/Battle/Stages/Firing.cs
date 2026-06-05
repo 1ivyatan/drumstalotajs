@@ -101,7 +101,6 @@ public partial class Firing : Control
 	{
 		_scene.BattleTopnav.Title = "Battery!";
 		_title.Text = "Friendly devices";
-		
 		_firingTrackerContainer.Visible = true;
 		
 		foreach (var dev in _playerDevs)
@@ -110,7 +109,7 @@ public partial class Firing : Control
 			var cellPos = _map.LocalPosToMilCoords(dev.Position);
 			_playerDevices.AddDevice(dev, atlas, $"{_map.FormatMilCoords((Vector2I)cellPos)}");
 		}
-			
+		_firingTrackerContainer.CustomMinimumSize = new Vector2(_playerDevices.ItemCount * 70, 40);
 		MassFire(_playerDevs);
 	}
 	
