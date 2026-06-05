@@ -110,6 +110,7 @@ public partial class SpriteRain : CanvasLayer
 		Sprite2D sprite = new Sprite2D();
 		sprite.Texture = randSprite;
 		sprite.Position = pos;
+		sprite.Rotation = Direction.Angle();
 		_instances.Add(sprite);
 		AddChild(sprite);
 	}
@@ -121,6 +122,7 @@ public partial class SpriteRain : CanvasLayer
 		Sprite2D sprite = new Sprite2D();
 		sprite.Texture = randSprite;
 		sprite.Position = pos;
+		sprite.Rotation = Direction.Angle();
 		_instances.Add(sprite);
 		AddChild(sprite);
 	}
