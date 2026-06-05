@@ -1,0 +1,50 @@
+[gd_resource type="Resource" script_class="EntityLayerAtlasData" format=3 uid="uid://0ekd2rcibtr2"]
+
+[ext_resource type="Texture2D" uid="uid://b12sdf1d12it1" path="res://Assets/Textures/entities.png" id="1_lvrxd"]
+[ext_resource type="Script" uid="uid://cqwwdwx080x60" path="res://Source/Resources/Mapping/Entities/DevicePropertiesData.cs" id="2_g8rgh"]
+[ext_resource type="PackedScene" uid="uid://blnp1df0jakre" path="res://Scenes/Mapping/Entities/Device.tscn" id="3_g7hi1"]
+[ext_resource type="Script" uid="uid://7qxwheiwlsgl" path="res://Source/Resources/Mapping/Layers/EntityLayerAtlasData.cs" id="4_64l1k"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_380ny"]
+atlas = ExtResource("1_lvrxd")
+region = Rect2(160, 166, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7teux"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_flfds"]
+atlas = ExtResource("1_lvrxd")
+region = Rect2(160, 161, 32, 50)
+
+[sub_resource type="Resource" id="Resource_gttav"]
+script = ExtResource("2_g8rgh")
+DeviceBody = SubResource("AtlasTexture_7teux")
+DeviceHead = SubResource("AtlasTexture_flfds")
+DestroyedDeviceBody = SubResource("AtlasTexture_380ny")
+MinAngle = 0.5
+MaxAngle = 83.0
+TraverseRadius = 40.0
+MuzzleVelocity = 655.0
+Shells = 25
+MaxFiringPerTurn = 10
+DelayBetweenFires = 7.2
+Caliber = 155.0
+ExplosiveFill = 7.0
+TotalWeight = 43.0
+DragCoefficient = 0.7
+Height = 4.0
+Toughness = 0.34999999999999964
+metadata/_custom_type_script = "uid://cqwwdwx080x60"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s3gkw"]
+atlas = ExtResource("1_lvrxd")
+region = Rect2(160, 161, 32, 50)
+
+[resource]
+script = ExtResource("4_64l1k")
+Type = 1
+Properties = SubResource("Resource_gttav")
+Id = 32
+Name = "155mm ~ 83"
+Thumbnail = SubResource("AtlasTexture_s3gkw")
+Scene = ExtResource("3_g7hi1")
+metadata/_custom_type_script = "uid://7qxwheiwlsgl"

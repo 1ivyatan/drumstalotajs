@@ -1,0 +1,53 @@
+[gd_resource type="Resource" script_class="EntityLayerAtlasData" format=3 uid="uid://dxp13odi4otvq"]
+
+[ext_resource type="Texture2D" uid="uid://b12sdf1d12it1" path="res://Assets/Textures/entities.png" id="1_4sxig"]
+[ext_resource type="Script" uid="uid://cqwwdwx080x60" path="res://Source/Resources/Mapping/Entities/DevicePropertiesData.cs" id="2_ywh4m"]
+[ext_resource type="PackedScene" uid="uid://blnp1df0jakre" path="res://Scenes/Mapping/Entities/Device.tscn" id="3_j1ixu"]
+[ext_resource type="Script" uid="uid://7qxwheiwlsgl" path="res://Source/Resources/Mapping/Layers/EntityLayerAtlasData.cs" id="4_nyc76"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hrxa5"]
+atlas = ExtResource("1_4sxig")
+region = Rect2(196, 161, 26, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ej4kq"]
+atlas = ExtResource("1_4sxig")
+region = Rect2(192, 161, 32, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_updx0"]
+atlas = ExtResource("1_4sxig")
+region = Rect2(103, 192, 16, 68)
+
+[sub_resource type="Resource" id="Resource_52fpk"]
+script = ExtResource("2_ywh4m")
+DeviceBody = SubResource("AtlasTexture_ej4kq")
+DeviceHead = SubResource("AtlasTexture_updx0")
+DestroyedDeviceBody = SubResource("AtlasTexture_hrxa5")
+DeviceHeadPosition = Vector2(0, 13.5)
+MinAngle = 0.1
+MaxAngle = 87.5
+TraverseRadius = 180.0
+MuzzleVelocity = 900.0
+Shells = 20
+ResupplyTurns = 5
+DelayBetweenFires = 5.0
+Caliber = 155.0
+ExplosiveFill = 7.0
+TotalWeight = 40.0
+DragCoefficient = 0.7
+Height = 3.0
+Toughness = 0.5
+metadata/_custom_type_script = "uid://cqwwdwx080x60"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_byfsy"]
+atlas = ExtResource("1_4sxig")
+region = Rect2(33, 266, 31, 48)
+
+[resource]
+script = ExtResource("4_nyc76")
+Type = 1
+Properties = SubResource("Resource_52fpk")
+Id = 34
+Name = "155mm ~ Crab"
+Thumbnail = SubResource("AtlasTexture_byfsy")
+Scene = ExtResource("3_j1ixu")
+metadata/_custom_type_script = "uid://7qxwheiwlsgl"
