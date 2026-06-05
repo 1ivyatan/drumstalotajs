@@ -66,7 +66,7 @@ grow_vertical = 0
 text = "Return"
 icon = SubResource("AtlasTexture_epixl")
 
-[node name="LevelMetaContainer" type="VBoxContainer" parent="Overlay" unique_id=113706533 node_paths=PackedStringArray("_map", "_levelMeta", "_title", "_desc", "_playLevel", "_loadCustomMap", "_customMapDialog")]
+[node name="LevelMetaContainer" type="VBoxContainer" parent="Overlay" unique_id=113706533 node_paths=PackedStringArray("_map", "_image", "_levelMeta", "_title", "_desc", "_playLevel", "_loadCustomMap", "_customMapDialog")]
 anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
@@ -77,6 +77,7 @@ grow_vertical = 2
 alignment = 2
 script = ExtResource("2_bnw7x")
 _map = NodePath("../../Map")
+_image = NodePath("LevelMeta/ScrollContainer/MetaContainer/Image")
 _levelMeta = NodePath("LevelMeta")
 _title = NodePath("LevelMeta/ScrollContainer/MetaContainer/Title")
 _desc = NodePath("LevelMeta/ScrollContainer/MetaContainer/Desc")
@@ -96,6 +97,10 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="Image" type="TextureRect" parent="Overlay/LevelMetaContainer/LevelMeta/ScrollContainer/MetaContainer" unique_id=1105458614]
+layout_mode = 2
+expand_mode = 5
 
 [node name="Title" type="Label" parent="Overlay/LevelMetaContainer/LevelMeta/ScrollContainer/MetaContainer" unique_id=872026647]
 layout_mode = 2

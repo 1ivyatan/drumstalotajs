@@ -15,6 +15,7 @@ namespace Drumstalotajs.LevelSelection.Components;
 public partial class LevelMetaContainer : Control
 {
 	[Export] private Map _map;
+	[Export] private TextureRect _image;
 	[Export] private Container _levelMeta;
 	[Export] private Label _title;
 	[Export] private RichTextLabel _desc;
@@ -60,6 +61,16 @@ public partial class LevelMetaContainer : Control
 			} else if (level != null)
 			{
 				_selectedLevel = level;
+				
+				if (level.CoverImage != null)
+				{
+					_image.Texture = level.CoverImage;
+					_image.Visible = true;
+				} else
+				{
+					_image.Visible = false;
+				}
+				
 				_title.Text = level.Name;
 				_desc.Text = level.Desc;
 				_playLevel.Disabled = !_saveManager.IsLevelUnlocked(levelSet, level.Order);
