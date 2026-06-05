@@ -5,6 +5,7 @@ using Drumstalotajs.Resources.Mapping.Sets;
 using Drumstalotajs.Resources.Mapping.Entities;
 using Drumstalotajs.Resources.Mapping.Layers;
 using Drumstalotajs.Mapping;
+using Drumstalotajs.Utilities;
 
 namespace Drumstalotajs.Components;
 
@@ -49,9 +50,13 @@ public partial class MilPositionContainer : BaseButton
 		{
 			if (_precise)
 			{
-				var coords = _map.ViewportToMilCoords().Snapped(new Vector2(0.01f, 0.01f));
-				var str = _map.FormatMilCoords(coords);
-				_oldPos = coords;
+				var coords = _map.ViewportToMilCoords();
+				var decimals = _map.ViewportMouseToLocal() / 32f;
+				decimals.X = (float)Math.Round(Calculations.GetDecimal(decimals.X), 2);
+				decimals.Y = (float)Math.Round(Mathf.Abs(Calculations.GetDecimal(decimals.Y)), 2);
+				var newCoords = (coords + decimals).Snapped(new Vector2(0.01f, 0.01f));
+				var str = _map.FormatMilCoords(newCoords);
+				_oldPos = newCoords;
 				_posText.Text = str;
 			} else
 			{
