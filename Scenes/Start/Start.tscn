@@ -3,12 +3,19 @@
 [ext_resource type="Script" uid="uid://r3lgv0vnhfe7" path="res://Source/Start/StartScene.cs" id="1_x3rvt"]
 [ext_resource type="PackedScene" uid="uid://causi3ie5ctdf" path="res://Scenes/Components/SpriteRain.tscn" id="2_ernxe"]
 [ext_resource type="Texture2D" uid="uid://c7ijf0gautnit" path="res://Assets/Textures/bg2.png" id="2_x3rvt"]
+[ext_resource type="Texture2D" uid="uid://b12sdf1d12it1" path="res://Assets/Textures/entities.png" id="3_6cmhh"]
 [ext_resource type="Texture2D" uid="uid://dbkcs2uvrwqtx" path="res://Assets/Textures/clouds.png" id="3_ernxe"]
 [ext_resource type="Texture2D" uid="uid://dxpcp5oar78by" path="res://Assets/Textures/logo.png" id="3_x3rvt"]
 [ext_resource type="Script" uid="uid://vh48eypy6o4x" path="res://Source/Start/AnnonationContainer.cs" id="4_uh10c"]
 [ext_resource type="Script" uid="uid://bhcgmaolvo2ha" path="res://Source/Start/DeviceInfoContainer.cs" id="7_6cmhh"]
-[ext_resource type="Resource" uid="uid://c50pdpqm3771m" path="res://Resources/Devices/81mm.tres" id="8_ybdni"]
+[ext_resource type="Resource" uid="uid://b5xu6nmvd6j2q" path="res://Resources/Devices/60mm.tres" id="8_ybdni"]
 [ext_resource type="Script" uid="uid://cvk1cobtbcj4w" path="res://Source/Resources/Lore/DeviceLore.cs" id="9_7aom0"]
+[ext_resource type="Resource" uid="uid://c50pdpqm3771m" path="res://Resources/Devices/81mm.tres" id="10_7aom0"]
+[ext_resource type="Resource" uid="uid://p2oy88hagl5v" path="res://Resources/Devices/105mm.tres" id="11_v0nqg"]
+[ext_resource type="Resource" uid="uid://cnjugscjmrcrq" path="res://Resources/Devices/120mm.tres" id="12_muxgs"]
+[ext_resource type="Resource" uid="uid://doh8ivmrglxof" path="res://Resources/Devices/155mm83.tres" id="13_mdoot"]
+[ext_resource type="Resource" uid="uid://ddc6v5ubi00ot" path="res://Resources/Devices/155mm70.tres" id="14_lm1xv"]
+[ext_resource type="Resource" uid="uid://bkx7jowbfnr2u" path="res://Resources/Devices/155mmCrab.tres" id="15_66wrg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6cmhh"]
 atlas = ExtResource("3_ernxe")
@@ -18,17 +25,74 @@ region = Rect2(132, 0, 25, 14)
 atlas = ExtResource("3_x3rvt")
 region = Rect2(0, 0, 580, 424)
 
-[sub_resource type="Resource" id="Resource_v0nqg"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_bkfr3"]
+atlas = ExtResource("3_6cmhh")
+region = Rect2(292, 163, 22, 25)
+
+[sub_resource type="Resource" id="Resource_x3y4u"]
 script = ExtResource("9_7aom0")
+Icon = SubResource("AtlasTexture_bkfr3")
 DeviceProps = ExtResource("8_ybdni")
 metadata/_custom_type_script = "uid://cvk1cobtbcj4w"
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_kccsq"]
+atlas = ExtResource("3_6cmhh")
+region = Rect2(291, 194, 26, 29)
+
 [sub_resource type="Resource" id="Resource_ybdni"]
 script = ExtResource("9_7aom0")
+Icon = SubResource("AtlasTexture_kccsq")
+DeviceProps = ExtResource("10_7aom0")
 metadata/_custom_type_script = "uid://cvk1cobtbcj4w"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_65n7a"]
+atlas = ExtResource("3_6cmhh")
+region = Rect2(132, 193, 24, 28)
 
 [sub_resource type="Resource" id="Resource_7aom0"]
 script = ExtResource("9_7aom0")
+Icon = SubResource("AtlasTexture_65n7a")
+DeviceProps = ExtResource("11_v0nqg")
+metadata/_custom_type_script = "uid://cvk1cobtbcj4w"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eu2ox"]
+atlas = ExtResource("3_6cmhh")
+region = Rect2(256, 163, 32, 50)
+
+[sub_resource type="Resource" id="Resource_v0nqg"]
+script = ExtResource("9_7aom0")
+Icon = SubResource("AtlasTexture_eu2ox")
+DeviceProps = ExtResource("12_muxgs")
+metadata/_custom_type_script = "uid://cvk1cobtbcj4w"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xlaws"]
+atlas = ExtResource("3_6cmhh")
+region = Rect2(160, 161, 32, 50)
+
+[sub_resource type="Resource" id="Resource_muxgs"]
+script = ExtResource("9_7aom0")
+Icon = SubResource("AtlasTexture_xlaws")
+DeviceProps = ExtResource("13_mdoot")
+metadata/_custom_type_script = "uid://cvk1cobtbcj4w"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_byt68"]
+atlas = ExtResource("3_6cmhh")
+region = Rect2(224, 161, 32, 51)
+
+[sub_resource type="Resource" id="Resource_mdoot"]
+script = ExtResource("9_7aom0")
+Icon = SubResource("AtlasTexture_byt68")
+DeviceProps = ExtResource("14_lm1xv")
+metadata/_custom_type_script = "uid://cvk1cobtbcj4w"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pmnay"]
+atlas = ExtResource("3_6cmhh")
+region = Rect2(32, 266, 32, 48)
+
+[sub_resource type="Resource" id="Resource_lm1xv"]
+script = ExtResource("9_7aom0")
+Icon = SubResource("AtlasTexture_pmnay")
+DeviceProps = ExtResource("15_66wrg")
 metadata/_custom_type_script = "uid://cvk1cobtbcj4w"
 
 [node name="Start" type="Control" unique_id=1888125272 node_paths=PackedStringArray("_annotation", "_deviceInfoContainer", "_spriteRain", "_start", "_devices", "_editor", "_settings", "_about", "_exit")]
@@ -168,7 +232,7 @@ bbcode_enabled = true
 layout_mode = 2
 text = "I acknowledge"
 
-[node name="DeviceInfoContainer" type="Control" parent="Ui" unique_id=110168396 node_paths=PackedStringArray("_icon", "_title", "_image", "_desc", "_stats", "_close", "_left", "_right")]
+[node name="DeviceInfoContainer" type="Control" parent="Ui" unique_id=110168396 node_paths=PackedStringArray("_title", "_image", "_desc", "_stats", "_close", "_left", "_right")]
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -177,10 +241,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("7_6cmhh")
-_devices = Array[Object]([SubResource("Resource_v0nqg"), SubResource("Resource_ybdni"), SubResource("Resource_7aom0")])
-_icon = NodePath("DeviceInfo/VBoxContainer/Title/Icon")
+_devices = [SubResource("Resource_x3y4u"), SubResource("Resource_ybdni"), SubResource("Resource_7aom0"), SubResource("Resource_v0nqg"), SubResource("Resource_muxgs"), SubResource("Resource_mdoot"), SubResource("Resource_lm1xv")]
 _title = NodePath("DeviceInfo/VBoxContainer/Title/Label")
-_image = NodePath("DeviceInfo/VBoxContainer/Carousel/Image")
+_image = NodePath("DeviceInfo/VBoxContainer/Carousel/Bg/Image")
 _desc = NodePath("DeviceInfo/VBoxContainer/Desc/ScrollContainer/VBoxContainer/Desc")
 _stats = NodePath("DeviceInfo/VBoxContainer/Desc/ScrollContainer/VBoxContainer/Stats")
 _close = NodePath("DeviceInfo/VBoxContainer/Title/Close")
@@ -209,12 +272,6 @@ layout_mode = 2
 layout_mode = 2
 alignment = 1
 
-[node name="Icon" type="TextureRect" parent="Ui/DeviceInfoContainer/DeviceInfo/VBoxContainer/Title" unique_id=442955252]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-expand_mode = 3
-stretch_mode = 4
-
 [node name="Label" type="Label" parent="Ui/DeviceInfoContainer/DeviceInfo/VBoxContainer/Title" unique_id=1812479587]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -234,22 +291,38 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "<"
 
-[node name="Image" type="TextureRect" parent="Ui/DeviceInfoContainer/DeviceInfo/VBoxContainer/Carousel" unique_id=1968804257]
-custom_minimum_size = Vector2(200, 200)
+[node name="Bg" type="ColorRect" parent="Ui/DeviceInfoContainer/DeviceInfo/VBoxContainer/Carousel" unique_id=1631932743]
+custom_minimum_size = Vector2(200, 150)
 layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.44087267, 0.64468336, 0.2884235, 1)
+
+[node name="Image" type="TextureRect" parent="Ui/DeviceInfoContainer/DeviceInfo/VBoxContainer/Carousel/Bg" unique_id=1968804257]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
+stretch_mode = 5
 
 [node name="Right" type="Button" parent="Ui/DeviceInfoContainer/DeviceInfo/VBoxContainer/Carousel" unique_id=1737948364]
 layout_mode = 2
 text = ">"
 
 [node name="Desc" type="VBoxContainer" parent="Ui/DeviceInfoContainer/DeviceInfo/VBoxContainer" unique_id=1433096994]
+custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Ui/DeviceInfoContainer/DeviceInfo/VBoxContainer/Desc" unique_id=564550958]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
+size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Ui/DeviceInfoContainer/DeviceInfo/VBoxContainer/Desc/ScrollContainer" unique_id=36717044]
 layout_mode = 2
