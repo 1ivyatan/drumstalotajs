@@ -9,7 +9,7 @@ using Drumstalotajs.Utilities;
 using Drumstalotajs.Managers.Audio;
 using Drumstalotajs.Resources.Mapping.Entities;
 
-namespace Drumstalotajs.Resources.Levels;
+namespace Drumstalotajs.Resources.Lore;
 
 [GlobalClass]
 public partial class DeviceLore : Resource

@@ -10,6 +10,7 @@ public partial class StartScene : Control
 {
 	[Export(PropertyHint.File, "*.txt")] private string _annotationFilePath;
 	[Export] AnnonationContainer _annotation;
+	[Export] DeviceInfoContainer _deviceInfoContainer;
 	[Export] private Button _start;
 	[Export] private Button _devices;
 	[Export] private Button _editor;
@@ -29,6 +30,10 @@ public partial class StartScene : Control
 		
 		_start.Pressed += () => {
 			Nodes.GetRoot().SceneManager.LevelSelection();
+		};
+		
+		_devices.Pressed += () => {
+			_deviceInfoContainer.Open();
 		};
 		
 		_editor.Pressed += () => {
