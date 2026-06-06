@@ -14,6 +14,7 @@ namespace Drumstalotajs.Resources.Lore;
 [GlobalClass]
 public partial class DeviceLore : Resource
 {
+	[Export] public Texture2D Icon { get; set; } = null;
 	[Export] public Texture2D Image { get; set; } = null;
 	[Export] public DevicePropertiesData DeviceProps { get; set; } = null;
 }

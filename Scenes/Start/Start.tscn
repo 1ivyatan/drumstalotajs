@@ -188,16 +188,17 @@ _left = NodePath("DeviceInfo/VBoxContainer/Carousel/Left")
 _right = NodePath("DeviceInfo/VBoxContainer/Carousel/Right")
 
 [node name="DeviceInfo" type="PanelContainer" parent="Ui/DeviceInfoContainer" unique_id=1303957390]
+custom_minimum_size = Vector2(320, 0)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -5.0
-offset_top = -7.5
-offset_right = 5.0
-offset_bottom = 7.5
+offset_left = -160.0
+offset_top = -177.5
+offset_right = 160.0
+offset_bottom = 177.5
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -211,6 +212,8 @@ alignment = 1
 [node name="Icon" type="TextureRect" parent="Ui/DeviceInfoContainer/DeviceInfo/VBoxContainer/Title" unique_id=442955252]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
+expand_mode = 3
+stretch_mode = 4
 
 [node name="Label" type="Label" parent="Ui/DeviceInfoContainer/DeviceInfo/VBoxContainer/Title" unique_id=1812479587]
 layout_mode = 2
@@ -223,6 +226,7 @@ text = "Close"
 
 [node name="Carousel" type="VFlowContainer" parent="Ui/DeviceInfoContainer/DeviceInfo/VBoxContainer" unique_id=1991543259]
 layout_mode = 2
+size_flags_horizontal = 4
 alignment = 1
 
 [node name="Left" type="Button" parent="Ui/DeviceInfoContainer/DeviceInfo/VBoxContainer/Carousel" unique_id=544338463]
@@ -234,6 +238,7 @@ text = "<"
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 4
 
 [node name="Right" type="Button" parent="Ui/DeviceInfoContainer/DeviceInfo/VBoxContainer/Carousel" unique_id=1737948364]
 layout_mode = 2
@@ -257,6 +262,9 @@ size_flags_horizontal = 3
 theme_override_font_sizes/normal_font_size = 14
 text = "cvcvc"
 fit_content = true
+
+[node name="HSeparator" type="HSeparator" parent="Ui/DeviceInfoContainer/DeviceInfo/VBoxContainer/Desc/ScrollContainer/VBoxContainer" unique_id=426194962]
+layout_mode = 2
 
 [node name="Stats" type="RichTextLabel" parent="Ui/DeviceInfoContainer/DeviceInfo/VBoxContainer/Desc/ScrollContainer/VBoxContainer" unique_id=1534268391]
 layout_mode = 2
