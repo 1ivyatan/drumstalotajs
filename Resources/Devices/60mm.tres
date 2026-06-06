@@ -13,6 +13,9 @@ region = Rect2(292, 163, 22, 25)
 
 [resource]
 script = ExtResource("2_12dds")
+Name = "60mm"
+Description = "Small enough to be carried by a single soldier,
+cost being that all it can do is scare a squad off"
 DeviceHead = SubResource("AtlasTexture_g74wd")
 DestroyedDeviceBody = SubResource("AtlasTexture_h63tt")
 MinAngle = 40.0

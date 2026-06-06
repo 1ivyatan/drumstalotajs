@@ -15,6 +15,9 @@ region = Rect2(132, 193, 24, 28)
 
 [resource]
 script = ExtResource("2_4cttv")
+Name = "105mm"
+Description = "This is the first of the towed devices.
+Also isn't that caliber historical?"
 DeviceBody = SubResource("AtlasTexture_6s3u4")
 DeviceHead = SubResource("AtlasTexture_l116o")
 DestroyedDeviceBody = SubResource("AtlasTexture_kiyy7")

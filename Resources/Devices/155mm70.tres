@@ -15,6 +15,10 @@ region = Rect2(224, 161, 32, 51)
 
 [resource]
 script = ExtResource("2_rohes")
+Name = "155mm ~ 70"
+Description = "So powerful and heavy that
+it needs an engine to aid moving
+a part of itself."
 DeviceBody = SubResource("AtlasTexture_4p7di")
 DeviceHead = SubResource("AtlasTexture_6tvxw")
 DestroyedDeviceBody = SubResource("AtlasTexture_hg6ce")

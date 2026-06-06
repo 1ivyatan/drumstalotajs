@@ -15,6 +15,9 @@ region = Rect2(291, 194, 26, 29)
 
 [resource]
 script = ExtResource("2_bmw36")
+Name = "81mm"
+Description = "Far better explosive power, but requires
+few more soldiers to carry."
 DeviceBody = SubResource("AtlasTexture_o2t2a")
 DeviceHead = SubResource("AtlasTexture_crov1")
 DestroyedDeviceBody = SubResource("AtlasTexture_o5vxm")

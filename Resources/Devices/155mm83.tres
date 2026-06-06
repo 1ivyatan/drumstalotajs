@@ -15,6 +15,10 @@ region = Rect2(160, 161, 32, 50)
 
 [resource]
 script = ExtResource("2_g8rgh")
+Name = "155mm ~ 83"
+Description = "This piece can knock out structures,
+especially those of wood, but still not
+the most powerful."
 DeviceBody = SubResource("AtlasTexture_7teux")
 DeviceHead = SubResource("AtlasTexture_flfds")
 DestroyedDeviceBody = SubResource("AtlasTexture_380ny")

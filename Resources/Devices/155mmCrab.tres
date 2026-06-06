@@ -17,6 +17,10 @@ region = Rect2(103, 192, 16, 68)
 
 [resource]
 script = ExtResource("2_ywh4m")
+Name = "155mm ~ Crab"
+Description = "This device is independent.
+It can move on its own and
+change traverse freely."
 DeviceBody = SubResource("AtlasTexture_ej4kq")
 DeviceHead = SubResource("AtlasTexture_updx0")
 DestroyedDeviceBody = SubResource("AtlasTexture_hrxa5")

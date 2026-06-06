@@ -17,6 +17,10 @@ region = Rect2(103, 192, 16, 69)
 
 [resource]
 script = ExtResource("2_euwnh")
+Name = "155mm ~ PzH2K"
+Description = "Is this an engineering magic or maintenance burden?
+Either way this is also one of the most powerful
+devices at our disposal, both in firepower and movepower."
 DeviceBody = SubResource("AtlasTexture_ovqr4")
 DeviceHead = SubResource("AtlasTexture_15sun")
 DestroyedDeviceBody = SubResource("AtlasTexture_oubdd")

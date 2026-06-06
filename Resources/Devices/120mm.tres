@@ -15,6 +15,9 @@ region = Rect2(256, 163, 32, 50)
 
 [resource]
 script = ExtResource("2_21ks6")
+Name = "120mm"
+Description = "Our army are still amongst armies
+that use this caliber these days."
 DeviceBody = SubResource("AtlasTexture_b1yc4")
 DeviceHead = SubResource("AtlasTexture_7dofr")
 DestroyedDeviceBody = SubResource("AtlasTexture_pactd")
