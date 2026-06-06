@@ -11,7 +11,6 @@ public partial class DeviceInfoContainer : Control
 {
 	[Export] private DeviceLore[] _devices = [];
 	
-	[Export] private TextureRect _icon;
 	[Export] private Label _title;
 	[Export] private TextureRect _image;
 	[Export] private RichTextLabel _desc;
@@ -53,17 +52,12 @@ public partial class DeviceInfoContainer : Control
 		
 		if (device.Icon != null)
 		{
-			_icon.Texture = device.Icon;
-		}
-		
-		if (device.Image != null)
-		{
-			_image.Texture = device.Image;
+			_image.Texture = device.Icon;
 		}
 		
 		if (props != null)
 		{
-			_title.Text = $"Device ({idx}/{_devices.Length}): {props.Name}";
+			_title.Text = $"Device ({idx+1}/{_devices.Length}): {props.Name}";
 			_desc.Text = props.Description;
 			_stats.Text = 
 				$"~ Device:\n" +
@@ -81,7 +75,6 @@ public partial class DeviceInfoContainer : Control
 				$"Drag coefficient: {props.DragCoefficient}"
 			;
 		}
-		
 		_idx = idx;
 	}
 	
