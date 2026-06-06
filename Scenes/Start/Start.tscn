@@ -23,7 +23,15 @@ script = ExtResource("9_7aom0")
 DeviceProps = ExtResource("8_ybdni")
 metadata/_custom_type_script = "uid://cvk1cobtbcj4w"
 
-[node name="Start" type="Control" unique_id=1888125272 node_paths=PackedStringArray("_annotation", "_deviceInfoContainer", "_start", "_devices", "_editor", "_settings", "_about", "_exit")]
+[sub_resource type="Resource" id="Resource_ybdni"]
+script = ExtResource("9_7aom0")
+metadata/_custom_type_script = "uid://cvk1cobtbcj4w"
+
+[sub_resource type="Resource" id="Resource_7aom0"]
+script = ExtResource("9_7aom0")
+metadata/_custom_type_script = "uid://cvk1cobtbcj4w"
+
+[node name="Start" type="Control" unique_id=1888125272 node_paths=PackedStringArray("_annotation", "_deviceInfoContainer", "_spriteRain", "_start", "_devices", "_editor", "_settings", "_about", "_exit")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -34,6 +42,7 @@ script = ExtResource("1_x3rvt")
 _annotationFilePath = "res://Resources/Annotation.txt"
 _annotation = NodePath("Ui/AnnotationContainer")
 _deviceInfoContainer = NodePath("Ui/DeviceInfoContainer")
+_spriteRain = NodePath("SpriteRain")
 _start = NodePath("Ui/Grid/MenuColumn/Buttons/Start")
 _devices = NodePath("Ui/Grid/MenuColumn/Buttons/Devices")
 _editor = NodePath("Ui/Grid/MenuColumn/Buttons/Editor")
@@ -58,6 +67,7 @@ Direction = Vector2(-0.7, 1)
 Limit = 250
 Delay = 0.2
 Speed = 200.0
+Activated = false
 
 [node name="Ui" type="CanvasLayer" parent="." unique_id=903295425]
 
@@ -167,7 +177,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("7_6cmhh")
-_devices = Array[Object]([SubResource("Resource_v0nqg")])
+_devices = Array[Object]([SubResource("Resource_v0nqg"), SubResource("Resource_ybdni"), SubResource("Resource_7aom0")])
 _icon = NodePath("DeviceInfo/VBoxContainer/Title/Icon")
 _title = NodePath("DeviceInfo/VBoxContainer/Title/Label")
 _image = NodePath("DeviceInfo/VBoxContainer/Carousel/Image")
