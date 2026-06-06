@@ -1,7 +1,12 @@
 [gd_resource type="Resource" script_class="LevelSet" format=3 uid="uid://bg5ml0po4tcgm"]
 
+[ext_resource type="Texture2D" uid="uid://yboycp88pssa" path="res://Assets/Textures/previews.png" id="1_33t4b"]
 [ext_resource type="Script" uid="uid://r6uws5n8excx" path="res://Source/Resources/Levels/LevelSet.cs" id="1_mck5y"]
 [ext_resource type="Script" uid="uid://dj5l06h3bhoe2" path="res://Source/Resources/Levels/LevelProps.cs" id="1_pflqy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l0w2v"]
+atlas = ExtResource("1_33t4b")
+region = Rect2(0, 0, 300, 300)
 
 [sub_resource type="Resource" id="Resource_33t4b"]
 script = ExtResource("1_pflqy")
@@ -9,8 +14,13 @@ Name = "Shoreline road"
 Desc = "Already opposing forces are responding to our attacks on this island, however will their response be smooth? Our naval infantrymen have already snuck up in the island and this road not far away from them is an artery to slow down our advances. Disrupt this road by blowing up some enemy trucks!"
 Type = 1
 InMapPosition = Vector2i(12, 18)
+CoverImage = SubResource("AtlasTexture_l0w2v")
 MapPath = "uid://b2y0lmy1aoqxs"
 metadata/_custom_type_script = "uid://dj5l06h3bhoe2"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_33t4b"]
+atlas = ExtResource("1_33t4b")
+region = Rect2(0, 300, 300, 300)
 
 [sub_resource type="Resource" id="Resource_pflqy"]
 script = ExtResource("1_pflqy")
@@ -18,8 +28,13 @@ Name = "Entrenched hills"
 Desc = "Turns out there already are fortifications on the main island, but that section was seemingly hastily dug out, but unbeknowst to them, our logistics teams already brought in heavy weapons to face them off. This spot has serveral MG nests that can bring trouble to our troops, blow them apart!"
 Order = 1
 InMapPosition = Vector2i(9, 14)
+CoverImage = SubResource("AtlasTexture_33t4b")
 MapPath = "uid://deefn1vyiv3v8"
 metadata/_custom_type_script = "uid://dj5l06h3bhoe2"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_btbr6"]
+atlas = ExtResource("1_33t4b")
+region = Rect2(0, 600, 0, 300)
 
 [sub_resource type="Resource" id="Resource_l0w2v"]
 script = ExtResource("1_pflqy")
@@ -28,8 +43,13 @@ Desc = "This outpost may be the most painful for us all, for opponent has thorou
 Order = 2
 Type = 6
 InMapPosition = Vector2i(14, 9)
+CoverImage = SubResource("AtlasTexture_btbr6")
 MapPath = "uid://bhr6w3pni58io"
 metadata/_custom_type_script = "uid://dj5l06h3bhoe2"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_asn50"]
+atlas = ExtResource("1_33t4b")
+region = Rect2(0, 900, 300, 300)
 
 [sub_resource type="Resource" id="Resource_btbr6"]
 script = ExtResource("1_pflqy")
@@ -38,8 +58,13 @@ Desc = "Heaviest and the best weapons have been brought to deal with remaining r
 Order = 3
 Type = 2
 InMapPosition = Vector2i(18, 7)
+CoverImage = SubResource("AtlasTexture_asn50")
 MapPath = "uid://lf31vlpwba3t"
 metadata/_custom_type_script = "uid://dj5l06h3bhoe2"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_groyf"]
+atlas = ExtResource("1_33t4b")
+region = Rect2(0, 1200, 0, 300)
 
 [sub_resource type="Resource" id="Resource_asn50"]
 script = ExtResource("1_pflqy")
@@ -48,6 +73,7 @@ Desc = "This smaller island is not as defended as the main island, still the dan
 Order = 4
 Type = 4
 InMapPosition = Vector2i(25, 9)
+CoverImage = SubResource("AtlasTexture_groyf")
 MapPath = "uid://mxh0jswniowf"
 metadata/_custom_type_script = "uid://dj5l06h3bhoe2"
 
