@@ -16,7 +16,7 @@ public partial class DeviceInfoContainer : Control
 	[Export] private TextureRect _image;
 	[Export] private RichTextLabel _desc;
 	[Export] private RichTextLabel _stats;
-	
+
 	[Export] private Button _close;
 	[Export] private Button _left;
 	[Export] private Button _right;

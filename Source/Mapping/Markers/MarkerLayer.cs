@@ -65,10 +65,10 @@ public partial class MarkerLayer : Node2D
 			
 			if (nearestToPointBDistance > clusterDistance || nearestToPointBDistance == -1)
 			{
-				DrawPointLabel(ruler.B, direction, $"~{Math.Round(distance, 2)}m\n~{directionAz}°");
+				DrawPointLabel(ruler.B, direction, $"~{Math.Round(distance, 2)}m\n~{Math.Round(directionAz, 2)}°");
 			} else
 			{
-				DrawPointLabel(ruler.A, direction, $"~{Math.Round(distance, 2)}m\n~{directionAz}°");
+				DrawPointLabel(ruler.A, direction, $"~{Math.Round(distance, 2)}m\n~{Math.Round(directionAz, 2)}°");
 			}
 		}
 		
@@ -83,7 +83,7 @@ public partial class MarkerLayer : Node2D
 				var direction = (pointB - pointA).Normalized();
 				float directionAz = (float)Calculations.DirectionToAzimuth(direction);
 				float distance = pointA.DistanceTo(pointB) * _map.CellCoefficient.X;
-				DrawPointLabel(pointA, direction, $"~{Math.Round(distance, 2)}m\n~{directionAz}°");
+				DrawPointLabel(pointA, direction, $"~{Math.Round(distance, 2)}m\n~{Math.Round(directionAz, 2)}°");
 			}
 		}
 	}
