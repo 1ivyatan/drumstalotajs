@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://dxys044lqqydy" path="res://Assets/Audio/Battle1.mp3" id="7_grg3l"]
 [ext_resource type="Script" uid="uid://b72p3gp0pmsf4" path="res://Source/Managers/Settings/SettingsManager.cs" id="10_4kpch"]
 [ext_resource type="PackedScene" uid="uid://d0rn2nwxh40cj" path="res://Scenes/Components/SettingsWindowContainer.tscn" id="11_grg3l"]
+[ext_resource type="Script" uid="uid://b0p1wxa03lkij" path="res://Source/Components/GameRunStatus.cs" id="12_frkhe"]
 
 [node name="Main" type="Node" unique_id=1017316100 node_paths=PackedStringArray("SceneManager", "ToastManager", "SaveManager", "AudioManager", "SettingsManager", "_exitDialogContainer", "_exitDialog")]
 script = ExtResource("1_r150o")
@@ -131,3 +132,14 @@ popup_wm_hint = true
 ok_button_text = "Yes"
 dialog_text = "Really quit?"
 cancel_button_text = "No"
+
+[node name="DebugOverlay" type="CanvasLayer" parent="." unique_id=41306969]
+layer = 99
+
+[node name="GameRunStatus" type="Label" parent="DebugOverlay" unique_id=1283916054]
+z_index = 999
+offset_right = 40.0
+offset_bottom = 22.0
+theme_override_colors/font_color = Color(1, 1, 1, 0.6039216)
+theme_override_font_sizes/font_size = 11
+script = ExtResource("12_frkhe")
