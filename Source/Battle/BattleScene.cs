@@ -30,6 +30,7 @@ public partial class BattleScene : Node2D
 	[Export] private Control _switchContainer;
 
 	public bool Paused { get; private set; } = false;
+
 	private string _mapPath;
 	private Vector2I _mapGrid = Vector2I.Zero;
 	

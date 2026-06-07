@@ -27,6 +27,15 @@ public partial class Firing : Control
 	[Export] private FireTracker _playerDevices;
 	[Export] private Label _title;
 	
+	public bool FoldedFireTracker {
+		get;
+		set
+		{
+			field = value;
+			_firingTrackerContainer.Folded = value;
+		}
+	} = false;
+	
 	private BattleScene _scene;
 	private Map _map;
 	
@@ -44,6 +53,12 @@ public partial class Firing : Control
 	
 	public override void _Ready()
 	{
+		_firingTrackerContainer.FoldingChanged += (bool folded) => { 
+			if (FoldedFireTracker != folded)
+			{
+				FoldedFireTracker = folded;
+			}
+		};
 		_scene = Nodes.GetSceneRoot() as BattleScene;
 		_map = _scene.Map;
 		_map.Mode = MapMode.HiddenInteractable;

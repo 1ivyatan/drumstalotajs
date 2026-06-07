@@ -11,15 +11,17 @@ public partial class StageManager : CanvasLayer
 	[Export] private Dictionary<string, string> Stages { get; set; }
 	public Node CurrentStage { get; private set; }
 	
-	public override void _Ready()
-	{
-		
-	}
+	private bool _firingFoldedFireTracker = false;
 	
 	private void SetStage(string path)
 	{
 		if (CurrentStage != null)
 		{
+			if (CurrentStage is Firing firing)
+			{
+				_firingFoldedFireTracker = firing.FoldedFireTracker;
+			}
+			
 			CurrentStage.QueueFree();
 			RemoveChild(CurrentStage);
 		}
@@ -36,6 +38,7 @@ public partial class StageManager : CanvasLayer
 	public void Unmasking() { SetStage(Stages["Unmasking"]);}
 	public void Firing(FiringMode mode) {
 		SetStage(Stages["Firing"]);
+		((Firing)CurrentStage).FoldedFireTracker = _firingFoldedFireTracker;
 		((Firing)CurrentStage).StartFiring(mode);
 	}
 	public void DeviceAdjustment() { SetStage(Stages["DeviceAdjustment"]); }
