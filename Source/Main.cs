@@ -20,6 +20,8 @@ public partial class Main : Node
 	[Export] private Control _exitDialogContainer;
 	[Export] private ConfirmationDialog _exitDialog;
 	
+	private Vector2I _oldSize;
+	
 	public override void _Ready()
 	{
 		SettingsManager.ChangedSettings += () => {
@@ -29,7 +31,12 @@ public partial class Main : Node
 			GetWindow().Mode = SettingsManager.MaxWindow
 				? Window.ModeEnum.Maximized
 				: Window.ModeEnum.Windowed;
-		//	GD.Print(SettingsManager.MaxWindow);
+			
+			if (_oldSize != SettingsManager.WindowSize)
+			{
+				DisplayServer.WindowSetSize(SettingsManager.WindowSize);
+				_oldSize = SettingsManager.WindowSize;
+			}
 		};
 		_exitDialog.Canceled += () => {
 			_exitDialog.Hide();
