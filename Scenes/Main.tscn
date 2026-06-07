@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://b72p3gp0pmsf4" path="res://Source/Managers/Settings/SettingsManager.cs" id="10_4kpch"]
 [ext_resource type="PackedScene" uid="uid://d0rn2nwxh40cj" path="res://Scenes/Components/SettingsWindowContainer.tscn" id="11_grg3l"]
 [ext_resource type="Script" uid="uid://b0p1wxa03lkij" path="res://Source/Components/GameRunStatus.cs" id="12_frkhe"]
+[ext_resource type="PackedScene" uid="uid://d3uhdww0vfr35" path="res://Scenes/Components/Toast.tscn" id="13_1p5hy"]
 
 [node name="Main" type="Node" unique_id=1017316100 node_paths=PackedStringArray("SceneManager", "ToastManager", "SaveManager", "AudioManager", "SettingsManager", "_exitDialogContainer", "_exitDialog")]
 script = ExtResource("1_r150o")
@@ -87,6 +88,7 @@ mouse_behavior_recursive = 2
 
 [node name="Overlay" type="CanvasLayer" parent="." unique_id=1415426569]
 process_mode = 3
+layer = 20
 
 [node name="ToastContainer" type="VBoxContainer" parent="Overlay" unique_id=163075433]
 anchors_preset = 7
@@ -107,6 +109,7 @@ size_flags_vertical = 8
 mouse_filter = 2
 script = ExtResource("3_kln2b")
 ToastFadeTime = 1.75
+ToastScene = ExtResource("13_1p5hy")
 
 [node name="Spacer" type="Control" parent="Overlay/ToastContainer" unique_id=1837963641]
 custom_minimum_size = Vector2(0, 50)

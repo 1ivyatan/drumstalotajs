@@ -6,11 +6,12 @@ namespace Drumstalotajs.Managers.Toasts;
 
 public partial class Toast : PanelContainer
 {
+	[Export] private Label _label;
+	
 	private double Time { get; set; }
 	private string Text { get; set; }
-	private Label _label;
 	
-	public override void _Ready()
+	public void StartTimer()
 	{
 		SceneTreeTimer timer = GetTree().CreateTimer((float)Time);
 		timer.Timeout += () => {
@@ -20,12 +21,10 @@ public partial class Toast : PanelContainer
 		};
 	}
 	
-	public Toast(String text, double time)
+	public void AddData(String text, double time)
 	{
-		_label = new Label();
 		Text = text;
 		_label.Text = text;
 		Time = time;
-		AddChild(_label);
 	}
 }

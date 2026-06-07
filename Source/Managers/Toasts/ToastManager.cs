@@ -8,6 +8,8 @@ namespace Drumstalotajs.Managers.Toasts;
 public partial class ToastManager : Control
 {
 	[Export] private double ToastFadeTime { get; set; }
+	[Export] private PackedScene ToastScene { get; set; }
+	
 	private List<Toast> Toasts;
 	private int limit = 5;
 	
@@ -52,12 +54,15 @@ public partial class ToastManager : Control
 	
 	public void Spawn(string message)
 	{
-		AddChild(new Toast(message, ToastFadeTime));
+		var toast = ToastScene.Instantiate() as Toast;
+		toast.AddData(message, ToastFadeTime);
+		AddChild(toast);
+		toast.StartTimer();
 	}
 	
 	public void SpawnOne(string message)
 	{
 		Clear();
-		AddChild(new Toast(message, ToastFadeTime));
+		Spawn(message);
 	}
 }
