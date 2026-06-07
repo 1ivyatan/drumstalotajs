@@ -18,12 +18,17 @@ public partial class SettingsManager : Node
 	public double MusicVolume { get; set { field = value; EmitSignal(SignalName.ChangedSettings); } } = 1;
 	public double SfxVolume { get; set { field = value; EmitSignal(SignalName.ChangedSettings); } } = 1;
 	public bool MaxWindow { get; set { field = value; EmitSignal(SignalName.ChangedSettings); } } = false;
+	public Vector2I WindowSize { get; set { field = value; EmitSignal(SignalName.ChangedSettings); } } = new Vector2I(1280, 720);
 	
 	public override void _Ready()
 	{
 		GetWindow().SizeChanged += () => {
 			var max = DisplayServer.WindowGetMode() == DisplayServer.WindowMode.Maximized;
 			MaxWindow = max;
+			if (!max)
+			{
+				WindowSize = GetWindow().Size;
+			}
 		};
 	}
 	
@@ -46,6 +51,7 @@ public partial class SettingsManager : Node
 			MusicVolume = (double)file.GetValue("Audio", "MusicVolume", 1);
 			SfxVolume = (double)file.GetValue("Audio", "SfxVolume", 1);
 			MaxWindow = (bool)file.GetValue("Graphics", "MaxWindow", false);
+			WindowSize = (Vector2I)file.GetValue("Graphics", "WindowSize", new Vector2I(1280, 720));
 		}
 	}
 	
@@ -57,6 +63,7 @@ public partial class SettingsManager : Node
 		file.SetValue("Audio", "MusicVolume", MusicVolume);
 		file.SetValue("Audio", "SfxVolume", SfxVolume);
 		file.SetValue("Graphics", "MaxWindow", MaxWindow);
+		file.SetValue("Graphics", "WindowSize", WindowSize);
 		file.Save(_settingsPath);
 	}
 }
