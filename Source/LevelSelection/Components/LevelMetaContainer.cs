@@ -22,6 +22,8 @@ public partial class LevelMetaContainer : Control
 	[Export] private Button _playLevel;
 	[Export] private Button _loadCustomMap;
 	[Export] private FileDialog _customMapDialog;
+	
+	private bool _debugOpened = false;
 	private LevelProps _selectedLevel = null;
 	private SaveManager _saveManager;
 	
@@ -31,7 +33,12 @@ public partial class LevelMetaContainer : Control
 		Utilities.Editor.EditorControl(_loadCustomMap);
 		_playLevel.Pressed += () => {
 			var levelSet = GetCurrentLevelSet();
-			if (_selectedLevel != null && _saveManager.IsLevelUnlocked(levelSet, _selectedLevel.Order))
+			if (_selectedLevel == null) return;
+			
+			if (_debugOpened)
+			{
+				 OpenCustomMap(_selectedLevel.MapPath);
+			} else if (_saveManager.IsLevelUnlocked(levelSet, _selectedLevel.Order))
 			{
 				Nodes.GetRoot().SceneManager.Battle(levelSet, _selectedLevel);
 			}
@@ -39,13 +46,18 @@ public partial class LevelMetaContainer : Control
 		if (Utilities.Editor.IsEditor())
 		{
 			_customMapDialog.FileSelected += (string path) => {
-				var editedPath = ProjectSettings.LocalizePath(path.Replace("\\", "/"));
-				Nodes.GetRoot().SceneManager.Battle(editedPath);
+				OpenCustomMap(path);
 			};
 			_loadCustomMap.Pressed += () => {
 				_customMapDialog.PopupCentered();
 			};
 		}
+	}
+	
+	private void OpenCustomMap(string path)
+	{
+		var editedPath = ProjectSettings.LocalizePath(path.Replace("\\", "/"));
+		Nodes.GetRoot().SceneManager.Battle(editedPath);
 	}
 	
 	public void Load(OverlayTile tile)
@@ -73,7 +85,21 @@ public partial class LevelMetaContainer : Control
 				
 				_title.Text = level.Name;
 				_desc.Text = level.Desc;
-				_playLevel.Disabled = !_saveManager.IsLevelUnlocked(levelSet, level.Order);
+				
+				var debugAndShifting = Debug.IsDebug() && Input.IsKeyPressed(Key.Shift);
+				if (debugAndShifting || _saveManager.IsLevelUnlocked(levelSet, level.Order))
+				{
+					if (debugAndShifting)
+					{
+						Nodes.GetRoot().ToastManager.SpawnOne("Debugger unlocked! No unlocking after win");
+					}
+					_playLevel.Disabled = false;
+				} else
+				{
+					_playLevel.Disabled = true;
+				}
+				
+				_debugOpened = debugAndShifting;
 				_levelMeta.Visible = true;
 			}
 		} else Close();
