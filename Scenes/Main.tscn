@@ -37,7 +37,7 @@ FadeCurtainContainer = NodePath("FadeCurtainContainer")
 [node name="FadeCurtainContainer" type="CanvasLayer" parent="SceneManager" unique_id=1463910313 node_paths=PackedStringArray("ColorRect")]
 process_mode = 3
 process_priority = 1
-layer = 2
+layer = 10
 visible = false
 script = ExtResource("3_v1gob")
 Time = 0.125
@@ -105,7 +105,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 8
 mouse_filter = 2
 script = ExtResource("3_kln2b")
-ToastFadeTime = 5.0
+ToastFadeTime = 1.75
 
 [node name="Spacer" type="Control" parent="Overlay/ToastContainer" unique_id=1837963641]
 custom_minimum_size = Vector2(0, 50)
