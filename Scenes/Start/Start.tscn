@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://dxpcp5oar78by" path="res://Assets/Textures/logo.png" id="3_x3rvt"]
 [ext_resource type="Script" uid="uid://vh48eypy6o4x" path="res://Source/Start/AnnonationContainer.cs" id="4_uh10c"]
 [ext_resource type="Script" uid="uid://bhcgmaolvo2ha" path="res://Source/Start/DeviceInfoContainer.cs" id="7_6cmhh"]
-[ext_resource type="Resource" uid="uid://b5xu6nmvd6j2q" path="res://Resources/Devices/60mm.tres" id="8_ybdni"]
 [ext_resource type="Script" uid="uid://cvk1cobtbcj4w" path="res://Source/Resources/Lore/DeviceLore.cs" id="9_7aom0"]
 [ext_resource type="Resource" uid="uid://c50pdpqm3771m" path="res://Resources/Devices/81mm.tres" id="10_7aom0"]
 [ext_resource type="Resource" uid="uid://p2oy88hagl5v" path="res://Resources/Devices/105mm.tres" id="11_v0nqg"]
@@ -24,16 +23,6 @@ region = Rect2(132, 0, 25, 14)
 [sub_resource type="AtlasTexture" id="AtlasTexture_x3rvt"]
 atlas = ExtResource("3_x3rvt")
 region = Rect2(0, 0, 580, 424)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bkfr3"]
-atlas = ExtResource("3_6cmhh")
-region = Rect2(292, 163, 22, 25)
-
-[sub_resource type="Resource" id="Resource_x3y4u"]
-script = ExtResource("9_7aom0")
-Icon = SubResource("AtlasTexture_bkfr3")
-DeviceProps = ExtResource("8_ybdni")
-metadata/_custom_type_script = "uid://cvk1cobtbcj4w"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kccsq"]
 atlas = ExtResource("3_6cmhh")
@@ -241,7 +230,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("7_6cmhh")
-_devices = [SubResource("Resource_x3y4u"), SubResource("Resource_ybdni"), SubResource("Resource_7aom0"), SubResource("Resource_v0nqg"), SubResource("Resource_muxgs"), SubResource("Resource_mdoot"), SubResource("Resource_lm1xv")]
+_devices = [SubResource("Resource_ybdni"), SubResource("Resource_7aom0"), SubResource("Resource_v0nqg"), SubResource("Resource_muxgs"), SubResource("Resource_mdoot"), SubResource("Resource_lm1xv")]
 _title = NodePath("DeviceInfo/VBoxContainer/Title/Label")
 _image = NodePath("DeviceInfo/VBoxContainer/Carousel/Bg/Image")
 _desc = NodePath("DeviceInfo/VBoxContainer/Desc/ScrollContainer/VBoxContainer/Desc")
