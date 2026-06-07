@@ -38,6 +38,16 @@ public partial class Main : Node
 				_oldSize = SettingsManager.WindowSize;
 			}
 		};
+		SettingsManager.LoadedSettings += () => {
+			if (!SettingsManager.MaxWindow)
+			{
+				var currentScreen = DisplayServer.WindowGetCurrentScreen();
+				var screenSize = DisplayServer.ScreenGetSize(currentScreen);
+				var windowSize = DisplayServer.WindowGetSize();
+				var centerPosition = (screenSize - windowSize) / 2;
+				DisplayServer.WindowSetPosition(centerPosition);
+			}
+		};
 		_exitDialog.Canceled += () => {
 			_exitDialog.Hide();
 			_exitDialogContainer.Visible = false;

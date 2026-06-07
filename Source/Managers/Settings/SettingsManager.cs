@@ -10,6 +10,8 @@ namespace Drumstalotajs.Managers.Settings;
 
 public partial class SettingsManager : Node
 {
+	[Signal] public delegate void LoadedSettingsEventHandler();
+	[Signal] public delegate void SavedSettingsEventHandler();
 	[Signal] public delegate void ChangedSettingsEventHandler();
 	[Export] private string _settingsPath;
 	[Export] private SettingsWindowContainer _settingsWindowContainer;
@@ -20,7 +22,7 @@ public partial class SettingsManager : Node
 	public bool MaxWindow { get; set { field = value; EmitSignal(SignalName.ChangedSettings); } } = false;
 	public Vector2I WindowSize { get; set { field = value; EmitSignal(SignalName.ChangedSettings); } } = new Vector2I(1280, 720);
 	
-	private bool _oldMaxWindow = false;
+//	private bool _oldMaxWindow = false;
 	
 	public override void _Ready()
 	{
@@ -28,12 +30,12 @@ public partial class SettingsManager : Node
 			var max = DisplayServer.WindowGetMode() == DisplayServer.WindowMode.Maximized;
 			MaxWindow = max;
 			
-			if (_oldMaxWindow && (_oldMaxWindow != MaxWindow) || !max)
+			if (!max) //_oldMaxWindow && (_oldMaxWindow != MaxWindow) ||
 			{
 				WindowSize = GetWindow().Size;
 			}
 			
-			_oldMaxWindow = max;
+			//_oldMaxWindow = max;
 		};
 	}
 	
@@ -58,6 +60,7 @@ public partial class SettingsManager : Node
 			MaxWindow = (bool)file.GetValue("Graphics", "MaxWindow", false);
 			WindowSize = (Vector2I)file.GetValue("Graphics", "WindowSize", new Vector2I(1280, 720));
 		}
+		EmitSignal(SignalName.LoadedSettings);
 	}
 	
 	public void SaveSettings()
@@ -70,5 +73,6 @@ public partial class SettingsManager : Node
 		file.SetValue("Graphics", "MaxWindow", MaxWindow);
 		file.SetValue("Graphics", "WindowSize", WindowSize);
 		file.Save(_settingsPath);
+		EmitSignal(SignalName.SavedSettings);
 	}
 }
