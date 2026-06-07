@@ -13,21 +13,32 @@
 
 ## How to Play
 
-* Place devices in assigned fields
-* Adjust their traverse, elevation and firing times at the target
+* Pick up a level in level selection
+* Place devices in assigned fields, marked with blue arrows
+* Adjust their traverse, elevation and firing times at the target marked with a red flag
+    * Use ruler tool to aid measurements
 * After firing, correct device configurations until all targets are destroyed or time has run out
 
 ## Previews
 
-<img width="1273" height="714" alt="attels" src="https://github.com/user-attachments/assets/c4c19888-0bb5-4364-9aef-50f08ceeb96b" />
+<img width="770" height="787" alt="Guide0" src="https://github.com/user-attachments/assets/ab36fe5d-0d3b-454c-96c9-61fc3a7ec58b" />
 
-<img width="1277" height="711" alt="Ekrānattēls_20260527_112441" src="https://github.com/user-attachments/assets/d55b30dc-a35a-427b-9ad7-b9988bb4c335" />
+<img width="770" height="787" alt="Guide6" src="https://github.com/user-attachments/assets/7820ef60-e1ca-4aeb-ba94-4cb4a266fa49" />
 
-<img width="1273" height="714" alt="attels" src="https://github.com/user-attachments/assets/46c0b5da-b4d4-4c04-928d-3f83e7983f30" />
+<img width="770" height="787" alt="Guide19" src="https://github.com/user-attachments/assets/7da78218-cb94-4b07-aac3-d5a7ca79b537" />
 
-<img width="1277" height="711" alt="Ekrānattēls_20260527_112539" src="https://github.com/user-attachments/assets/d5be753b-7313-4215-bffb-0a48ce7497f4" />
+<img width="770" height="787" alt="Guide20" src="https://github.com/user-attachments/assets/4ca8c69a-a69e-4cb7-bb0b-6ad0f49a218e" />
 
-<img width="1273" height="694" alt="attels" src="https://github.com/user-attachments/assets/f42576fd-ec05-4b4a-b9c9-68447df34423" />
+<img width="770" height="787" alt="Guide29" src="https://github.com/user-attachments/assets/ff38ce4e-d641-49ab-a4c1-471870333297" />
+
+<img width="770" height="787" alt="Guide36" src="https://github.com/user-attachments/assets/ddc0d588-f23f-4d41-bfa9-0d682235e855" />
+
+<img width="770" height="787" alt="Guide45" src="https://github.com/user-attachments/assets/e7058611-0584-4fd2-9c6f-f5c234617ffb" />
+
+<img width="770" height="787" alt="Guide52" src="https://github.com/user-attachments/assets/2dfc3ef8-a80d-40ea-8729-883b506d17fa" />
+
+<img width="770" height="787" alt="Guide32" src="https://github.com/user-attachments/assets/c48d3601-d8c8-40ab-bf05-5c8a6378c392" />
+
 
 ## Running
 
@@ -38,6 +49,8 @@ Minimum required hardware specifications to run the game:
 * 640x480 Resolution
 * 200MB Hard drive space
 * OpenGL 3.3 or Direct3D 11
+
+Depending on your operating system's graphics driver configuration, the game may be automatically rendered by hardware if configuration on your computer allows rendering by hardware, such as GPU, to lessen overall load needed to run the game on both CPU and GPU, otherwise rendered by software.
 
 Required software minimum versions to run the game:
 
