@@ -56,7 +56,8 @@ public partial class DevicePlacement : Control
 			var sceneTile = _deviceAtlas.FirstOrDefault(e => e.Id == device.DeviceId);
 			if (sceneTile != null && sceneTile.Type == EntityType.Device)
 			{
-				_deviceInventory.AddItem($"{device.MaxCount}", sceneTile.Thumbnail);
+				var idx = _deviceInventory.AddItem($"{device.MaxCount}", sceneTile.Thumbnail);
+				_deviceInventory.SetItemTooltipEnabled(idx, false);
 				_counter[sceneTile.Id] = 0;
 				_deviceIds.Add(sceneTile.Id);
 			}
