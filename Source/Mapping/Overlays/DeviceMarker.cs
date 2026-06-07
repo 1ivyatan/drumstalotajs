@@ -11,22 +11,6 @@ namespace Drumstalotajs.Mapping.Overlays;
 public partial class DeviceMarker : OverlayTile
 {
 	[Export] private Sprite2D _arrow;
-
-	//public override Dictionary Data { get; 
-//		set {
-//			field = value;
-//		}
-//	} = new();
-/*
-	[Export] private float _speed = 1.0f;
-	private float _t = 0f;
-	
-	public override void _PhysicsProcess(double delta)
-	{
-		_t += (float)delta * _speed;
-		float weight = Mathf.PingPong(_t, 1f);
-		Modulate = _c1.Lerp(_c2, weight);
-	}*/
 	
 	[Export] private float _speed = 10.0f;
 	private float _t = 0f;

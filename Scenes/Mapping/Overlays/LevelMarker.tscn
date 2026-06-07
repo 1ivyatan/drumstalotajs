@@ -48,9 +48,14 @@ region = Rect2(129, 165, 58, 30)
 atlas = ExtResource("4_ec2lj")
 region = Rect2(155, 196, 40, 32)
 
-[node name="LevelMarker" unique_id=1900493059 node_paths=PackedStringArray("_building", "_flag") instance=ExtResource("1_fcrg6")]
+[sub_resource type="AtlasTexture" id="AtlasTexture_qtfoe"]
+atlas = ExtResource("4_ec2lj")
+region = Rect2(79, 269, 29, 17)
+
+[node name="LevelMarker" unique_id=1900493059 node_paths=PackedStringArray("_arrow", "_building", "_flag") instance=ExtResource("1_fcrg6")]
 script = ExtResource("2_igsmk")
 _buildings = Array[Texture2D]([SubResource("AtlasTexture_gok0u"), SubResource("AtlasTexture_irsvf"), SubResource("AtlasTexture_8hqh3"), SubResource("AtlasTexture_j6b74"), SubResource("AtlasTexture_j0q3r"), SubResource("AtlasTexture_tv4fl"), SubResource("AtlasTexture_hjhyy"), SubResource("AtlasTexture_4q541")])
+_arrow = NodePath("Arrow")
 _building = NodePath("Building")
 _flag = NodePath("Flag")
 
@@ -68,3 +73,10 @@ position = Vector2(25, -16)
 [node name="Building" type="Sprite2D" parent="." index="3" unique_id=530738490]
 texture = SubResource("AtlasTexture_ec2lj")
 offset = Vector2(0, -5)
+
+[node name="Arrow" type="Sprite2D" parent="." index="4" unique_id=974423160]
+visible = false
+modulate = Color(0.0013465881, 0, 1, 1)
+z_index = 7
+position = Vector2(0, -35)
+texture = SubResource("AtlasTexture_qtfoe")

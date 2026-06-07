@@ -12,6 +12,7 @@ using Drumstalotajs.Mapping.Layers;
 using Drumstalotajs.LevelSelection.Components;
 using Drumstalotajs.Resources.Levels;
 using Drumstalotajs.Mapping.Tiles;
+using Drumstalotajs.Mapping.Overlays;
 
 namespace Drumstalotajs.LevelSelection;
 
@@ -20,6 +21,7 @@ public partial class LevelSelectionScene : Node2D
 	private bool _mouseLeftPressed = false;
 	private bool _mouseRightPressed = false;
 	private bool _mouseMoving = false;
+	private LevelMarker _selectedTile = null;
 	
 	public override void _UnhandledInput(InputEvent @event)
 	{
@@ -49,9 +51,24 @@ public partial class LevelSelectionScene : Node2D
 				tiles.ContainsKey(Map.OverlayLayer) &&
 				tiles[Map.OverlayLayer].Count > 0 )
 			{
-				LevelMetaContainer.Load((OverlayTile)tiles[Map.OverlayLayer][0]);
+				var tile = (LevelMarker)tiles[Map.OverlayLayer][0];
+				
+				if (_selectedTile != null)
+				{
+					_selectedTile.MarkDeselected();
+				}
+				
+				LevelMetaContainer.Load(tile);
+				_selectedTile = tile;
+				tile.MarkSelected();
 			} else
 			{
+				if (_selectedTile != null)
+				{
+					_selectedTile.MarkDeselected();
+				}
+				
+				_selectedTile = null;
 				LevelMetaContainer.Close();
 			}
 		}
