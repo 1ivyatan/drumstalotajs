@@ -29,6 +29,7 @@ public partial class Main : Node
 			GetWindow().Mode = SettingsManager.MaxWindow
 				? Window.ModeEnum.Maximized
 				: Window.ModeEnum.Windowed;
+		//	GD.Print(SettingsManager.MaxWindow);
 		};
 		_exitDialog.Canceled += () => {
 			_exitDialog.Hide();
