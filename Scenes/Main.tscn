@@ -87,6 +87,7 @@ mouse_behavior_recursive = 2
 
 [node name="Overlay" type="CanvasLayer" parent="." unique_id=1415426569]
 process_mode = 3
+layer = 10
 
 [node name="ToastContainer" type="VBoxContainer" parent="Overlay" unique_id=163075433]
 anchors_preset = 7

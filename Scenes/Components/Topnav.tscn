@@ -2,11 +2,25 @@
 
 [ext_resource type="Script" uid="uid://dkn2ycrhfe8wj" path="res://Source/Components/Topnav.cs" id="1_wxygq"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wxygq"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 10.0
+bg_color = Color(0.039644003, 0.039644003, 0.039644003, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.9998151, 0.9998151, 0.9998151, 1)
+corner_detail = 16
+
 [node name="Topnav" type="PanelContainer" unique_id=118245835 node_paths=PackedStringArray("_titleContainer", "_spacer", "_title")]
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 23.0
 grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wxygq")
 script = ExtResource("1_wxygq")
 _titleContainer = NodePath("TitleContainer")
 _spacer = NodePath("TitleContainer/Spacer")
