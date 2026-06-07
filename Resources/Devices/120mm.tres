@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="DevicePropertiesData" format=3 uid="uid://cnjugscjmrcrq"]
+
+[ext_resource type="Texture2D" uid="uid://b12sdf1d12it1" path="res://Assets/Textures/entities.png" id="1_41erg"]
+[ext_resource type="Script" uid="uid://cqwwdwx080x60" path="res://Source/Resources/Mapping/Entities/DevicePropertiesData.cs" id="2_21ks6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pactd"]
+atlas = ExtResource("1_41erg")
+region = Rect2(256, 173, 30, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1yc4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7dofr"]
+atlas = ExtResource("1_41erg")
+region = Rect2(256, 163, 32, 50)
+
+[resource]
+script = ExtResource("2_21ks6")
+Name = "120mm"
+Description = "Our army are still amongst armies
+that use this caliber these days."
+DeviceBody = SubResource("AtlasTexture_b1yc4")
+DeviceHead = SubResource("AtlasTexture_7dofr")
+DestroyedDeviceBody = SubResource("AtlasTexture_pactd")
+MinAngle = 5.0
+TraverseRadius = 7.0
+MuzzleVelocity = 300.0
+Shells = 30
+ResupplyTurns = 3
+MaxFiringPerTurn = 10
+DelayBetweenFires = 5.0
+Caliber = 120.0
+ExplosiveFill = 3.0
+TotalWeight = 15.0
+DragCoefficient = 0.6
+Height = 1.5
+Toughness = 0.15000000000000036
+metadata/_custom_type_script = "uid://cqwwdwx080x60"

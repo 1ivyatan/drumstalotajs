@@ -10,6 +10,7 @@ using Drumstalotajs.Mapping.Cameras;
 using Drumstalotajs.Resources.Mapping.Layers;
 using System.Threading.Tasks;
 using Drumstalotajs.Mapping.Entities;
+using Drumstalotajs.Mapping.Markers;
 
 namespace Drumstalotajs.Mapping;
 
@@ -25,6 +26,7 @@ public partial class Map : Node2D
 	[Export] public EntityLayer EntityLayer { get; private set; }
 	[Export] public OverlayLayer OverlayLayer { get; private set; }
 	[Export] public ProjectileLayer ProjectileLayer { get; private set; }
+	[Export] public MarkerLayer MarkerLayer { get; private set; }
 	[Export] public Selector Selector { get; private set; }
 	[Export] public Camera Camera { get; private set; }
 	
@@ -66,6 +68,11 @@ public partial class Map : Node2D
 	public MapResource CurrentLoadedMap { get; private set; } = null;
 	public Vector2I SquareMetersPerCell { get; private set; } = Constants.Mapping.TileSize;
 	public Vector2 CellCoefficient { get; private set; } = new Vector2(1.0f, 1.0f);
+	
+	public override void _Ready()
+	{
+		MoveChild(Camera, -1);
+	}
 	
 	public MapResource Export()
 	{
@@ -134,6 +141,60 @@ public partial class Map : Node2D
 			Mathf.Clamp(mapPos.Y, usedRect.Position.Y, usedRect.End.Y - 1)
 		);*/
 		return GetLocalMousePosition();
+	}
+	
+	public Vector2 ViewportToMilCoords()
+	{
+		var mousePos = ViewportMouseToMap();
+		var cellRect = GroundLayer.GetUsedRect();
+
+		var x = mousePos.X - cellRect.Position.X;
+		var bY = cellRect.Position.Y + cellRect.Size.Y - 1;
+		var y = bY - mousePos.Y;
+
+		return new Vector2(x, y);
+	}
+	
+	public Vector2 LocalPosToMilCoords(Vector2 localPos)
+	{
+		var pos = GroundLayer.LocalToMap(localPos);
+		var cellRect = GroundLayer.GetUsedRect();
+
+		var x = pos.X - cellRect.Position.X;
+		var bY = cellRect.Position.Y + cellRect.Size.Y - 1;
+		var y = bY - pos.Y;
+
+		return new Vector2(x, y);
+	}
+	
+	public string FormatMilCoords(Vector2I coords)
+	{
+		return $"[{coords.X:D2} {coords.Y:D2}]";
+	}
+	
+	public string FormatMilCoords(Vector2 coords)
+	{
+		int x = Mathf.RoundToInt(coords.X * 10f);
+		int y = Mathf.RoundToInt(coords.Y * 10f);
+		return $"[{x:D2} {y:D2}]";
+	}
+	
+	public Rect2 GetMapRect()
+	{
+		var rect = GroundLayer.GetUsedRect();
+		rect.Size *= GroundLayer.TileSize;
+		rect.Position *= GroundLayer.TileSize;
+		return rect;
+	}
+	
+	public bool ViewportMouseOnMap()
+	{
+		var cellRect = GroundLayer.GetUsedRect();
+		var rect = new Rect2();
+		var cell = new Vector2((float)Constants.Mapping.TileSize.X, (float)Constants.Mapping.TileSize.Y);
+		rect.Position = cellRect.Position * cell;
+		rect.Size = cellRect.Size * cell;
+		return rect.HasPoint(ViewportMouseToLocal());
 	}
 	
 	public void AddSceneTile(

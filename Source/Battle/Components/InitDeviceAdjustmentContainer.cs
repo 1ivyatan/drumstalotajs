@@ -99,7 +99,7 @@ public partial class InitDeviceAdjustmentContainer : Container
 		_shellLabel.Text = $"{_device.ShellsPerTurn}";
 		
 		var resupplyStr = device.ResupplyTurns > 0 ? $"({device.ResupplyTurns} turns until resupply)" : $"({device.Shells} shells)";
-		_title.Text = $"{_atlas.Name} {resupplyStr}";
+		_title.Text = $"{resupplyStr}";
 		
 		Visible = true;
 	}

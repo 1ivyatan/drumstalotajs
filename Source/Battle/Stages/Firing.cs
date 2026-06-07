@@ -23,6 +23,10 @@ namespace Drumstalotajs.Battle.Stages;
 
 public partial class Firing : Control
 {
+	[Export] private FoldableContainer _firingTrackerContainer;
+	[Export] private FireTracker _playerDevices;
+	[Export] private Label _title;
+	
 	private BattleScene _scene;
 	private Map _map;
 	
@@ -84,6 +88,8 @@ public partial class Firing : Control
 		if (_map.CurrentLoadedMap.Counterbattery && _mode != FiringMode.Player)
 		{
 			_scene.BattleTopnav.Title = "Enemy Counterbattery!";
+			_title.Text = "Enemy is firing...";
+			_firingTrackerContainer.Visible = true;
 			MassFire(_enemyDevs);
 		} else
 		{
@@ -94,11 +100,23 @@ public partial class Firing : Control
 	private void FirePlayerDevices()
 	{
 		_scene.BattleTopnav.Title = "Battery!";
+		_title.Text = "Friendly devices";
+		_firingTrackerContainer.Visible = true;
+		
+		foreach (var dev in _playerDevs)
+		{
+			var atlas = (EntityLayerAtlasData)_map.EntityLayer.GetAtlasData(dev.TileId);
+			var cellPos = _map.LocalPosToMilCoords(dev.Position);
+			_playerDevices.AddDevice(dev, atlas, $"{_map.FormatMilCoords((Vector2I)cellPos)}");
+		}
+		_firingTrackerContainer.CustomMinimumSize = new Vector2(_playerDevices.ItemCount * 70, 40);
 		MassFire(_playerDevs);
 	}
 	
 	private void NextStage()
 	{
+		_playerDevices.Clear();
+		
 		if (_scene.ScoreManager.CanContinue())
 		{
 			_scene.StageManager.DeviceAdjustment();
@@ -116,6 +134,7 @@ public partial class Firing : Control
 				? dev.Shells
 				: dev.ShellsPerTurn;
 			_devFireTracker[dev] = (0, expendable);
+			
 			SceneTreeTimer delayToFire = GetTree().CreateTimer(GD.RandRange(0.01f, .5f), false);
 			delayToFire.Connect(SceneTreeTimer.SignalName.Timeout , Callable.From(() => {
 				BatchFire(dev);
@@ -131,6 +150,7 @@ public partial class Firing : Control
 			for (int i = 0; i < devTrackingInfo.Max; i++)
 			{
 				var projectile = _map.ProjectileLayer.SpawnProjectile(device);
+				_playerDevices.UpdateDeviceData(device, i);
 				projectile.Connect(Projectile.SignalName.Detonated, Callable.From(
 					(Device device) => {
 						LogTracker(device, 1);

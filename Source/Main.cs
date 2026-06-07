@@ -26,6 +26,10 @@ public partial class Main : Node
 			AudioManager.SetMasterVolume(SettingsManager.MasterVolume);
 			AudioManager.SetMusicVolume(SettingsManager.MusicVolume);
 			AudioManager.SetSfxVolume(SettingsManager.SfxVolume);
+			GetWindow().Mode = SettingsManager.MaxWindow
+				? Window.ModeEnum.Maximized
+				: Window.ModeEnum.Windowed;
+		//	GD.Print(SettingsManager.MaxWindow);
 		};
 		_exitDialog.Canceled += () => {
 			_exitDialog.Hide();
@@ -40,6 +44,7 @@ public partial class Main : Node
 			_exitDialogContainer.Visible = false;
 			Exit();
 		};
+		DisplayServer.WindowSetMinSize(new Vector2I(640, 480));
 		SettingsManager.LoadSettings();
 		SceneManager.Start();
 	}

@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using Drumstalotajs;
+using Drumstalotajs.Utilities;
 
 namespace Drumstalotajs.Battle.Components;
 
@@ -13,11 +14,13 @@ public partial class PauseContainer : Control
 	[Export] private Button _resume;
 	[Export] private Button _restart;
 	[Export] private Button _exit;
+	[Export] private Button _settings;
 
 	public override void _Ready()
 	{
 		_resume.Pressed += () => { EmitSignal(SignalName.PressedResume); };
 		_restart.Pressed += () => { EmitSignal(SignalName.PressedRestart); };
 		_exit.Pressed += () => { EmitSignal(SignalName.PressedExit); };
+		_settings.Pressed += () => { Nodes.GetRoot().SettingsManager.OpenSettings(); };
 	}
 }

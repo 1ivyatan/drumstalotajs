@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="DevicePropertiesData" format=3 uid="uid://c50pdpqm3771m"]
+
+[ext_resource type="Texture2D" uid="uid://b12sdf1d12it1" path="res://Assets/Textures/entities.png" id="1_3t2dp"]
+[ext_resource type="Script" uid="uid://cqwwdwx080x60" path="res://Source/Resources/Mapping/Entities/DevicePropertiesData.cs" id="2_bmw36"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o5vxm"]
+atlas = ExtResource("1_3t2dp")
+region = Rect2(2, 169, 29, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o2t2a"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_crov1"]
+atlas = ExtResource("1_3t2dp")
+region = Rect2(291, 194, 26, 29)
+
+[resource]
+script = ExtResource("2_bmw36")
+Name = "81mm"
+Description = "The smallest caliber of our sortiment.
+Useful for the infantry."
+DeviceBody = SubResource("AtlasTexture_o2t2a")
+DeviceHead = SubResource("AtlasTexture_crov1")
+DestroyedDeviceBody = SubResource("AtlasTexture_o5vxm")
+MinAngle = 42.0
+MaxAngle = 89.0
+ResupplyTurns = 4
+MaxFiringPerTurn = 15
+DelayBetweenFires = 2.0
+DragCoefficient = 0.65
+Height = 1.15
+Toughness = 0.00999999999999978
+metadata/_custom_type_script = "uid://cqwwdwx080x60"

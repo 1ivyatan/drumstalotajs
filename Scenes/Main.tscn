@@ -37,7 +37,7 @@ FadeCurtainContainer = NodePath("FadeCurtainContainer")
 [node name="FadeCurtainContainer" type="CanvasLayer" parent="SceneManager" unique_id=1463910313 node_paths=PackedStringArray("ColorRect")]
 process_mode = 3
 process_priority = 1
-layer = 2
+layer = 10
 visible = false
 script = ExtResource("3_v1gob")
 Time = 0.125
@@ -76,8 +76,13 @@ _settingsPath = "user://settings"
 _settingsWindowContainer = NodePath("SettingsWindowLayer/SettingsWindowContainer")
 
 [node name="SettingsWindowLayer" type="CanvasLayer" parent="SettingsManager" unique_id=594495051]
+process_mode = 3
+layer = 3
 
 [node name="SettingsWindowContainer" parent="SettingsManager/SettingsWindowLayer" unique_id=1063269450 instance=ExtResource("11_grg3l")]
+z_index = 5
+z_as_relative = false
+mouse_behavior_recursive = 2
 
 [node name="Overlay" type="CanvasLayer" parent="." unique_id=1415426569]
 process_mode = 3
@@ -100,7 +105,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 8
 mouse_filter = 2
 script = ExtResource("3_kln2b")
-ToastFadeTime = 5.0
+ToastFadeTime = 1.75
 
 [node name="Spacer" type="Control" parent="Overlay/ToastContainer" unique_id=1837963641]
 custom_minimum_size = Vector2(0, 50)

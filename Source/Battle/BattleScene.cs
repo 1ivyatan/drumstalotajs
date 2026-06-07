@@ -10,6 +10,7 @@ using Drumstalotajs.Resources.Saves;
 using Drumstalotajs.Battle.Stages;
 using Drumstalotajs.Mapping.Entities;
 using Drumstalotajs.Mapping.Tiles;
+using Drumstalotajs.Components;
 
 namespace Drumstalotajs.Battle;
 
@@ -20,30 +21,66 @@ public partial class BattleScene : Node2D
 	[Export] public ScoreManager ScoreManager { get; private set; }
 	[Export] public StageManager StageManager { get; private set; }
 	[Export] public Counters Counters { get; private set; }
+	[Export] public RulerOverlay RulerOverlay { get; private set; }
 
 	[Export] private PauseOverlay _pauseOverlay;
+	[Export] private MilPositionContainer _milPositionContainer;
 	[Export] private Label _measureLabel;
-	[Export] private Label _positionLabel;
 	[Export] private Label _altitiudeLabel;
+	[Export] private Control _switchContainer;
 
 	public bool Paused { get; private set; } = false;
 	private string _mapPath;
+	private Vector2I _mapGrid = Vector2I.Zero;
 	
 	public override void _Ready()
 	{
+		GetWindow().SizeChanged += AdjustTitlebar;
 		BattleTopnav.PressedPause += () => { Pause(); };
+		BattleTopnav.RulerToggled += (bool toggle) => {
+			if (toggle)
+			{
+				Nodes.GetRoot().ToastManager.SpawnOne("Right click two positions to draw a ruler");
+				Map.MarkerLayer.ActivateBrush();
+			} else
+			{
+				Map.MarkerLayer.HideBrush();
+				Nodes.GetRoot().ToastManager.Clear();
+			}
+			Map.MarkerLayer.Visible = toggle;
+			RulerOverlay.Visible = toggle;
+		};
 		_pauseOverlay.PressedResume += () => { Resume(); };
 		_pauseOverlay.PressedRestart += () => { Restart(); };
 		_pauseOverlay.PressedExit += () => { Exit(); };
+		AdjustTitlebar();
 		Map.Camera.ShiftTop((int)BattleTopnav.Size.Y);
 		StageManager.DevicePlacement();
 	}
 	
 	public override void _UnhandledInput(InputEvent @event)
 	{
-		var pos = Map.ViewportMouseToMap();
-		var newpos = new Vector2I((int)pos.X, (int)Math.Abs(pos.Y));
-		_positionLabel.Text = $"{newpos}";
+		if (@event is InputEventMouseMotion)
+		{
+			_milPositionContainer.UpdateCoords();
+		}
+	}
+	
+	private void AdjustTitlebar()
+	{
+		var size = GetWindow().Size;
+		if (size.X < 620)
+		{
+			BattleTopnav.ToggleTitle(false);
+		} else if (size.X < 850)
+		{
+			BattleTopnav.SetPaddingFromLeft((int)_switchContainer.Size.X + 10);
+			BattleTopnav.ToggleTitle(true);
+		} else
+		{
+			BattleTopnav.SetPaddingFromLeft(0);
+			BattleTopnav.ToggleTitle(true);
+		}
 	}
 	
 	public void Exit()
@@ -84,6 +121,7 @@ public partial class BattleScene : Node2D
 			ScoreManager.PrepareScoring(Map.CurrentLoadedMap);
 		}
 		
+		_mapGrid = (Vector2I)Map.LocalPosToMilCoords(levelProps.InMapPosition);
 		_measureLabel.Text = $"{Map.CurrentLoadedMap.MetersPerCell.X}m";
 		_altitiudeLabel.Text = $"{Map.CurrentLoadedMap.GroundLayer.BaseHeight}m";
 	}

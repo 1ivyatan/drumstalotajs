@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://cxs76g6hqtwuh"]
+
+[ext_resource type="Script" uid="uid://bmk4mnaglf1h3" path="res://Source/Components/MilPositionContainer.cs" id="1_l74vo"]
+[ext_resource type="Texture2D" uid="uid://v2gkmg7yaoh5" path="res://Assets/Textures/controls.png" id="1_q10wa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8f5sm"]
+atlas = ExtResource("1_q10wa")
+region = Rect2(209, 1, 32, 32)
+
+[node name="MilPositionContainer" type="TextureButton" unique_id=2129254478 node_paths=PackedStringArray("_posText")]
+custom_minimum_size = Vector2(80, 0)
+offset_right = 85.0
+offset_bottom = 58.0
+tooltip_text = "Cell position of cursor
+Click to toggle precision"
+toggle_mode = true
+script = ExtResource("1_l74vo")
+_posText = NodePath("VBoxContainer/PosText")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2095640879]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer" unique_id=85766952]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+texture = SubResource("AtlasTexture_8f5sm")
+stretch_mode = 3
+
+[node name="PosText" type="Label" parent="VBoxContainer" unique_id=179910209]
+layout_mode = 2
+text = "[000, 000]"
+horizontal_alignment = 1

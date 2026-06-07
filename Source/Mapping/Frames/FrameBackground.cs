@@ -59,7 +59,7 @@ public partial class FrameBackground : Sprite2D
 		if (_draw && _styleBox != null)
 		{
 			DrawStyleBox(_styleBox, _drawRect);
-			GD.Print(_drawRect);
+		//	GD.Print(_drawRect);
 		}
 	}
 }

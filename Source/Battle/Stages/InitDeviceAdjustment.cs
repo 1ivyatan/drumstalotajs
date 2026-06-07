@@ -22,6 +22,7 @@ namespace Drumstalotajs.Battle.Stages;
 
 public partial class InitDeviceAdjustment : Control
 {
+	[Export] private DeviceInfoContainer _deviceInfoContainer;
 	[Export] private InitDeviceAdjustmentContainer _initDeviceAdjustmentContainer;
 	[Export] private Button _toFiringButton;
 	[Export] private AudioStreamPlayer _tickSfx;
@@ -89,13 +90,18 @@ public partial class InitDeviceAdjustment : Control
 						if (!device.Player && !Utilities.Editor.IsEditor()) return;
 						_map.OverlayLayer.ClearAllHighlighters();
 						_map.OverlayLayer.PlaceHighlighter(_map.OverlayLayer.LocalToMap(device.Position));
+						
+						var atlas = (EntityLayerAtlasData)_map.EntityLayer.GetAtlasData(device.TileId);
+						_deviceInfoContainer.LoadDeviceData(atlas);
 						_initDeviceAdjustmentContainer.Load(device);
+						
 						_tickSfx.Play();
 					}
 				} else
 				{
 					_map.OverlayLayer.ClearAllHighlighters();
 					_initDeviceAdjustmentContainer.Close();
+					_deviceInfoContainer.Close();
 				}
 			}
 		}

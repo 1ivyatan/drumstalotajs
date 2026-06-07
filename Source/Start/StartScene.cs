@@ -3,6 +3,7 @@ using System;
 using Drumstalotajs;
 using Drumstalotajs.Utilities;
 using Drumstalotajs.Managers.Audio;
+using Drumstalotajs.Components;
 
 namespace Drumstalotajs.Start;
 
@@ -10,7 +11,10 @@ public partial class StartScene : Control
 {
 	[Export(PropertyHint.File, "*.txt")] private string _annotationFilePath;
 	[Export] AnnonationContainer _annotation;
+	[Export] DeviceInfoContainer _deviceInfoContainer;
+	[Export] SpriteRain _spriteRain;
 	[Export] private Button _start;
+	[Export] private Button _devices;
 	[Export] private Button _editor;
 	[Export] private Button _settings;
 	[Export] private Button _about;
@@ -20,7 +24,7 @@ public partial class StartScene : Control
 	{
 		Utilities.Editor.EditorControl(_editor);
 		
-		var annFile = Files.SafeLoadFile(_annotationFilePath,  FileAccess.ModeFlags.Read);
+		var annFile = Files.SafeLoadFile(_annotationFilePath, FileAccess.ModeFlags.Read);
 		if (annFile != null)
 		{
 			_annotation.SetText(annFile.GetAsText());
@@ -28,6 +32,10 @@ public partial class StartScene : Control
 		
 		_start.Pressed += () => {
 			Nodes.GetRoot().SceneManager.LevelSelection();
+		};
+		
+		_devices.Pressed += () => {
+			_deviceInfoContainer.Open();
 		};
 		
 		_editor.Pressed += () => {
@@ -48,5 +56,8 @@ public partial class StartScene : Control
 		_exit.Pressed += () => {
 			Nodes.GetRoot().ExitPrompt();
 		};
+		
+		_spriteRain.SpawnAllOverRandomly();
+		_spriteRain.Activated = true;
 	}
 }

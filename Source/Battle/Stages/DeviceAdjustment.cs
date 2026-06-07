@@ -16,11 +16,13 @@ using Drumstalotajs.Mapping.Tiles;
 using System.Threading.Tasks;
 using Drumstalotajs.Battle.Components;
 using Drumstalotajs.Battle.Stages;
+using Drumstalotajs.Components;
 
 namespace Drumstalotajs.Battle.Stages;
 
 public partial class DeviceAdjustment : Control
 {
+	[Export] private DeviceInfoContainer _deviceInfoContainer;
 	[Export] private DeviceAdjustmentContainer _deviceAdjustmentContainer;
 	[Export] private Button _toFiringButton;
 	[Export] private AudioStreamPlayer _tickSfx;
@@ -78,13 +80,18 @@ public partial class DeviceAdjustment : Control
 						if (!device.Player && !Utilities.Editor.IsEditor()) return;
 						_map.OverlayLayer.ClearAllHighlighters();
 						_map.OverlayLayer.PlaceHighlighter(_map.OverlayLayer.LocalToMap(device.Position));
+						
+						var atlas = (EntityLayerAtlasData)_map.EntityLayer.GetAtlasData(device.TileId);
+						_deviceInfoContainer.LoadDeviceData(atlas);
 						_deviceAdjustmentContainer.Load(device);
+						
 						_tickSfx.Play();
 					}
 				} else
 				{
 					_map.OverlayLayer.ClearAllHighlighters();
 					_deviceAdjustmentContainer.Close();
+					_deviceInfoContainer.Close();
 				}
 			}
 		}

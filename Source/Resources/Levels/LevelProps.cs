@@ -18,6 +18,7 @@ public partial class LevelProps : Resource
 	[Export] public int Order { get; set; } = 0;
 	[Export] public LevelType Type { get; set; } = LevelType.Dugout;
 	[Export] public Vector2I InMapPosition { get; set; }
+	[Export] public Texture2D CoverImage { get; set; } = null;
 	[Export(PropertyHint.File, "*.tres,*.res")] public string MapPath { get; set; } = "";
 	[Export] public UiMusic BgMusic { get; set; } = UiMusic.BattleOne;
 	

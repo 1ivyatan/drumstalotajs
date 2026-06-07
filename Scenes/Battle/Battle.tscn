@@ -9,14 +9,20 @@
 [ext_resource type="Script" uid="uid://csmobm8nus0qv" path="res://Source/Battle/Stages/StageManager.cs" id="4_07e4u"]
 [ext_resource type="Script" uid="uid://b6ocl3clhwf1h" path="res://Source/Battle/Components/PauseOverlay.cs" id="4_odh8s"]
 [ext_resource type="Script" uid="uid://bnmf3stn1wm0k" path="res://Source/Battle/Components/PauseContainer.cs" id="5_rremj"]
+[ext_resource type="Script" uid="uid://crrj2ginbmn5b" path="res://Source/Battle/Components/RulerOverlay.cs" id="6_q0gc0"]
 [ext_resource type="PackedScene" uid="uid://dnasbla8y237b" path="res://Scenes/Components/Counter.tscn" id="7_tmq01"]
 [ext_resource type="Script" uid="uid://7abbuvthhp83" path="res://Source/Battle/Components/Counters.cs" id="7_ukbm8"]
 [ext_resource type="Texture2D" uid="uid://2io65q52gq16" path="res://Assets/Textures/overlay.png" id="8_cmwrv"]
+[ext_resource type="PackedScene" uid="uid://cxs76g6hqtwuh" path="res://Scenes/Components/MilPositionContainer.tscn" id="10_dby5i"]
 [ext_resource type="Texture2D" uid="uid://v2gkmg7yaoh5" path="res://Assets/Textures/controls.png" id="10_diuyf"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8f5sm"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_6tmns"]
 atlas = ExtResource("10_diuyf")
-region = Rect2(209, 1, 32, 32)
+region = Rect2(207, 88, 62, 62)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tx6ec"]
+atlas = ExtResource("10_diuyf")
+region = Rect2(232, 153, 62, 62)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gibtw"]
 atlas = ExtResource("8_cmwrv")
@@ -42,17 +48,19 @@ region = Rect2(108, 34, 32, 32)
 atlas = ExtResource("10_diuyf")
 region = Rect2(174, 0, 32, 32)
 
-[node name="Battle" type="Node2D" unique_id=1007953308 node_paths=PackedStringArray("BattleTopnav", "Map", "ScoreManager", "StageManager", "Counters", "_pauseOverlay", "_measureLabel", "_positionLabel", "_altitiudeLabel")]
+[node name="Battle" type="Node2D" unique_id=1007953308 node_paths=PackedStringArray("BattleTopnav", "Map", "ScoreManager", "StageManager", "Counters", "RulerOverlay", "_pauseOverlay", "_milPositionContainer", "_measureLabel", "_altitiudeLabel", "_switchContainer")]
 script = ExtResource("1_ael4v")
 BattleTopnav = NodePath("Overlay/Topnav")
 Map = NodePath("Map")
 ScoreManager = NodePath("ScoreManager")
 StageManager = NodePath("StageManager")
 Counters = NodePath("Overlay/Topnav/InfoContainer/Counters")
+RulerOverlay = NodePath("Overlay/RulerOverlay")
 _pauseOverlay = NodePath("Overlay/PauseOverlay")
+_milPositionContainer = NodePath("Overlay/Topnav/InfoContainer/MilPositionContainer")
 _measureLabel = NodePath("Overlay/Topnav/InfoContainer/MeasureContainer/MeasureText")
-_positionLabel = NodePath("Overlay/Topnav/InfoContainer/PositionContainer/PosText")
 _altitiudeLabel = NodePath("Overlay/Topnav/InfoContainer/AltitudeContainer/AltitudeText")
+_switchContainer = NodePath("Overlay/Topnav/SwitchContainer")
 
 [node name="Background" parent="." unique_id=1528618539 instance=ExtResource("2_gibtw")]
 
@@ -78,39 +86,83 @@ _map = NodePath("../Map")
 
 [node name="Overlay" type="CanvasLayer" parent="." unique_id=1518625057]
 
-[node name="Topnav" parent="Overlay" unique_id=118245835 node_paths=PackedStringArray("_pause") instance=ExtResource("2_gunap")]
-script = ExtResource("3_3ihc8")
-_pause = NodePath("PauseButton")
+[node name="RulerOverlay" type="Control" parent="Overlay" unique_id=890588354 node_paths=PackedStringArray("_map", "_deselect", "_wipe", "_removeNewest")]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 1
+script = ExtResource("6_q0gc0")
+_map = NodePath("../../Map")
+_deselect = NodePath("RulerControls/VBoxContainer/Deselect")
+_wipe = NodePath("RulerControls/VBoxContainer/Wipe")
+_removeNewest = NodePath("RulerControls/VBoxContainer/RemoveNewest")
 
-[node name="PauseButton" type="Button" parent="Overlay/Topnav" unique_id=268528842]
+[node name="RulerControls" type="PanelContainer" parent="Overlay/RulerOverlay" unique_id=2095369115]
+layout_mode = 0
+offset_top = 80.0
+offset_right = 10.0
+offset_bottom = 95.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Overlay/RulerOverlay/RulerControls" unique_id=1103708508]
+layout_mode = 2
+
+[node name="Deselect" type="Button" parent="Overlay/RulerOverlay/RulerControls/VBoxContainer" unique_id=429373069]
+layout_mode = 2
+disabled = true
+text = "Deselect"
+
+[node name="Wipe" type="Button" parent="Overlay/RulerOverlay/RulerControls/VBoxContainer" unique_id=1663590489]
+layout_mode = 2
+disabled = true
+text = "Remove rulers"
+
+[node name="RemoveNewest" type="Button" parent="Overlay/RulerOverlay/RulerControls/VBoxContainer" unique_id=836213621]
+layout_mode = 2
+disabled = true
+text = "Remove newest ruler"
+
+[node name="Topnav" parent="Overlay" unique_id=118245835 node_paths=PackedStringArray("_pause", "_ruler") instance=ExtResource("2_gunap")]
+custom_minimum_size = Vector2(0, 79)
+script = ExtResource("3_3ihc8")
+_pause = NodePath("SwitchContainer/PauseButton")
+_ruler = NodePath("SwitchContainer/RulerButton")
+
+[node name="SwitchContainer" type="HBoxContainer" parent="Overlay/Topnav" unique_id=535321116]
 layout_mode = 2
 size_flags_horizontal = 0
+
+[node name="PauseButton" type="Button" parent="Overlay/Topnav/SwitchContainer" unique_id=268528842]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 0
+tooltip_text = "Pause"
 text = "  ||  "
+
+[node name="RulerButton" type="TextureButton" parent="Overlay/Topnav/SwitchContainer" unique_id=1175189503]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+tooltip_text = "Toggle ruler tool"
+toggle_mode = true
+texture_normal = SubResource("AtlasTexture_6tmns")
+texture_pressed = SubResource("AtlasTexture_tx6ec")
+ignore_texture_size = true
+stretch_mode = 3
 
 [node name="InfoContainer" type="HBoxContainer" parent="Overlay/Topnav" unique_id=1611135056]
 layout_mode = 2
 size_flags_horizontal = 8
 
-[node name="PositionContainer" type="VBoxContainer" parent="Overlay/Topnav/InfoContainer" unique_id=100180890]
-custom_minimum_size = Vector2(100, 0)
+[node name="MilPositionContainer" parent="Overlay/Topnav/InfoContainer" unique_id=1085273700 node_paths=PackedStringArray("_map") instance=ExtResource("10_dby5i")]
 layout_mode = 2
-tooltip_text = "Cell position of cursor"
-
-[node name="TextureRect" type="TextureRect" parent="Overlay/Topnav/InfoContainer/PositionContainer" unique_id=1544777778]
-layout_mode = 2
-texture = SubResource("AtlasTexture_8f5sm")
-stretch_mode = 3
-
-[node name="PosText" type="Label" parent="Overlay/Topnav/InfoContainer/PositionContainer" unique_id=24564550]
-layout_mode = 2
-horizontal_alignment = 1
+_map = NodePath("../../../../Map")
 
 [node name="MeasureContainer" type="VBoxContainer" parent="Overlay/Topnav/InfoContainer" unique_id=1017487334]
+custom_minimum_size = Vector2(35, 55)
 layout_mode = 2
+size_flags_vertical = 4
 tooltip_text = "Length of a 32px cell in meters"
 
 [node name="MeasurePreview" type="TextureRect" parent="Overlay/Topnav/InfoContainer/MeasureContainer" unique_id=782017182]
-custom_minimum_size = Vector2(75, 3)
 layout_mode = 2
 size_flags_vertical = 3
 texture = SubResource("AtlasTexture_gibtw")
@@ -123,6 +175,7 @@ horizontal_alignment = 1
 
 [node name="AltitudeContainer" type="VBoxContainer" parent="Overlay/Topnav/InfoContainer" unique_id=1035650609]
 layout_mode = 2
+size_flags_vertical = 4
 tooltip_text = "Base altitude of the place"
 
 [node name="TextureRect" type="TextureRect" parent="Overlay/Topnav/InfoContainer/AltitudeContainer" unique_id=945607272]
@@ -138,6 +191,7 @@ horizontal_alignment = 1
 [node name="Counters" type="HBoxContainer" parent="Overlay/Topnav/InfoContainer" unique_id=598029868 node_paths=PackedStringArray("_playerDeviceCounter", "_enemyTargetCounter", "_timerCounter", "_turnCounter", "_map", "_scoreManager")]
 layout_mode = 2
 size_flags_horizontal = 8
+size_flags_vertical = 4
 script = ExtResource("7_ukbm8")
 _playerDeviceCounter = NodePath("PlayerDeviceCounter")
 _enemyTargetCounter = NodePath("EnemyTargetCount")
@@ -188,7 +242,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.5176471)
 
-[node name="PauseMenu" type="PanelContainer" parent="Overlay/PauseOverlay" unique_id=1047462654 node_paths=PackedStringArray("_resume", "_restart", "_exit")]
+[node name="PauseMenu" type="PanelContainer" parent="Overlay/PauseOverlay" unique_id=1047462654 node_paths=PackedStringArray("_resume", "_restart", "_exit", "_settings")]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 1
 anchors_preset = 8
@@ -202,6 +256,7 @@ script = ExtResource("5_rremj")
 _resume = NodePath("VBoxContainer/Resume")
 _restart = NodePath("VBoxContainer/Restart")
 _exit = NodePath("VBoxContainer/Exit")
+_settings = NodePath("VBoxContainer/Settings")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Overlay/PauseOverlay/PauseMenu" unique_id=769875721]
 layout_mode = 2
@@ -213,6 +268,10 @@ text = "Resume"
 [node name="Restart" type="Button" parent="Overlay/PauseOverlay/PauseMenu/VBoxContainer" unique_id=448006504]
 layout_mode = 2
 text = "Restart"
+
+[node name="Settings" type="Button" parent="Overlay/PauseOverlay/PauseMenu/VBoxContainer" unique_id=746228904]
+layout_mode = 2
+text = "Settings"
 
 [node name="Exit" type="Button" parent="Overlay/PauseOverlay/PauseMenu/VBoxContainer" unique_id=1292169710]
 layout_mode = 2
