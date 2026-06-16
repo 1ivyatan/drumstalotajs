@@ -68,19 +68,4 @@ public partial class Counters : Control
 			_enemyTargetCounter.Value -= 1;
 		}
 	}
-	
-/*	private void UpdateCounters()
-	{
-		var devs = _map.EntityLayer.Instances
-		.Where(e => _map.EntityLayer.GetType(e.TileId) == EntityType.Device)
-		.Where(e => ((Entity)e).Player == true);
-		_playerDeviceCounter.SetCount(devs.Count());
-		
-	//	EntityType GetType
-	//	_map.EntityLayer.GetType()
-		
-		//	.Where()
-		//var entity = tile as Entity;
-		GD.Print(123);
-	}*/
 }

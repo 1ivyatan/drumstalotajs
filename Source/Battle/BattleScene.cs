@@ -60,6 +60,11 @@ public partial class BattleScene : Node2D
 			} else DebugOverlay.Visible = false;
 		};
 		
+		DebugOverlay.AppliedDebugCheat += () => {
+			DebugOverlay.Visible = false;
+			BattleTopnav.ToggleDebugButton(false);
+		};
+		
 		_pauseOverlay.PressedResume += () => { Resume(); };
 		_pauseOverlay.PressedRestart += () => { Restart(); };
 		_pauseOverlay.PressedExit += () => { Exit(); };
