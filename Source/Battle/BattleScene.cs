@@ -22,6 +22,7 @@ public partial class BattleScene : Node2D
 	[Export] public StageManager StageManager { get; private set; }
 	[Export] public Counters Counters { get; private set; }
 	[Export] public RulerOverlay RulerOverlay { get; private set; }
+	[Export] public DebugOverlay DebugOverlay { get; private set; }
 
 	[Export] private PauseOverlay _pauseOverlay;
 	[Export] private MilPositionContainer _milPositionContainer;
@@ -51,6 +52,14 @@ public partial class BattleScene : Node2D
 			Map.MarkerLayer.Visible = toggle;
 			RulerOverlay.Visible = toggle;
 		};
+		
+		BattleTopnav.DebugToggled += (bool toggle) => {
+			if ( Utilities.Debug.IsDebug() )
+			{
+				DebugOverlay.Visible = toggle;
+			} else DebugOverlay.Visible = false;
+		};
+		
 		_pauseOverlay.PressedResume += () => { Resume(); };
 		_pauseOverlay.PressedRestart += () => { Restart(); };
 		_pauseOverlay.PressedExit += () => { Exit(); };

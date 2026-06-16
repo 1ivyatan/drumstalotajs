@@ -68,6 +68,8 @@ public partial class InitDeviceAdjustment : Control
 				_scene.StageManager.Firing(FiringMode.Both);
 			}
 		};
+		
+		_scene.BattleTopnav.ToggleDebugButton(true);
 	}
 	
 	public async override void _UnhandledInput(InputEvent @event)

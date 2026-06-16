@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://b6ocl3clhwf1h" path="res://Source/Battle/Components/PauseOverlay.cs" id="4_odh8s"]
 [ext_resource type="Script" uid="uid://bnmf3stn1wm0k" path="res://Source/Battle/Components/PauseContainer.cs" id="5_rremj"]
 [ext_resource type="Script" uid="uid://crrj2ginbmn5b" path="res://Source/Battle/Components/RulerOverlay.cs" id="6_q0gc0"]
+[ext_resource type="Script" uid="uid://b50eqrrpwwgtw" path="res://Source/Battle/Components/DebugOverlay.cs" id="7_8f5sm"]
 [ext_resource type="PackedScene" uid="uid://dnasbla8y237b" path="res://Scenes/Components/Counter.tscn" id="7_tmq01"]
 [ext_resource type="Script" uid="uid://7abbuvthhp83" path="res://Source/Battle/Components/Counters.cs" id="7_ukbm8"]
 [ext_resource type="Texture2D" uid="uid://2io65q52gq16" path="res://Assets/Textures/overlay.png" id="8_cmwrv"]
@@ -48,14 +49,15 @@ region = Rect2(108, 34, 32, 32)
 atlas = ExtResource("10_diuyf")
 region = Rect2(174, 0, 32, 32)
 
-[node name="Battle" type="Node2D" unique_id=1007953308 node_paths=PackedStringArray("BattleTopnav", "Map", "ScoreManager", "StageManager", "Counters", "RulerOverlay", "_pauseOverlay", "_milPositionContainer", "_measureLabel", "_altitiudeLabel", "_switchContainer")]
+[node name="Battle" type="Node2D" unique_id=1007953308 node_paths=PackedStringArray("BattleTopnav", "Map", "ScoreManager", "StageManager", "Counters", "RulerOverlay", "DebugOverlay", "_pauseOverlay", "_milPositionContainer", "_measureLabel", "_altitiudeLabel", "_switchContainer")]
 script = ExtResource("1_ael4v")
 BattleTopnav = NodePath("Overlay/Topnav")
 Map = NodePath("Map")
 ScoreManager = NodePath("ScoreManager")
 StageManager = NodePath("StageManager")
 Counters = NodePath("Overlay/Topnav/InfoContainer/Counters")
-RulerOverlay = NodePath("Overlay/RulerOverlay")
+RulerOverlay = NodePath("Overlay/TinyOverlays/HBoxContainer/RulerControls")
+DebugOverlay = NodePath("Overlay/TinyOverlays/HBoxContainer/DebugControls")
 _pauseOverlay = NodePath("Overlay/PauseOverlay")
 _milPositionContainer = NodePath("Overlay/Topnav/InfoContainer/MilPositionContainer")
 _measureLabel = NodePath("Overlay/Topnav/InfoContainer/MeasureContainer/MeasureText")
@@ -86,46 +88,67 @@ _map = NodePath("../Map")
 
 [node name="Overlay" type="CanvasLayer" parent="." unique_id=1518625057]
 
-[node name="RulerOverlay" type="Control" parent="Overlay" unique_id=890588354 node_paths=PackedStringArray("_map", "_deselect", "_wipe", "_removeNewest")]
-visible = false
+[node name="TinyOverlays" type="Control" parent="Overlay" unique_id=1507874722]
 layout_mode = 3
 anchors_preset = 0
-mouse_filter = 1
-script = ExtResource("6_q0gc0")
-_map = NodePath("../../Map")
-_deselect = NodePath("RulerControls/VBoxContainer/Deselect")
-_wipe = NodePath("RulerControls/VBoxContainer/Wipe")
-_removeNewest = NodePath("RulerControls/VBoxContainer/RemoveNewest")
 
-[node name="RulerControls" type="PanelContainer" parent="Overlay/RulerOverlay" unique_id=2095369115]
+[node name="HBoxContainer" type="HBoxContainer" parent="Overlay/TinyOverlays" unique_id=962517300]
 layout_mode = 0
 offset_top = 80.0
-offset_right = 10.0
-offset_bottom = 95.0
+offset_bottom = 80.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Overlay/RulerOverlay/RulerControls" unique_id=1103708508]
+[node name="RulerControls" type="PanelContainer" parent="Overlay/TinyOverlays/HBoxContainer" unique_id=2095369115 node_paths=PackedStringArray("_map", "_deselect", "_wipe", "_removeNewest")]
+visible = false
+layout_mode = 2
+script = ExtResource("6_q0gc0")
+_map = NodePath("../../../../Map")
+_deselect = NodePath("VBoxContainer/Deselect")
+_wipe = NodePath("VBoxContainer/Wipe")
+_removeNewest = NodePath("VBoxContainer/RemoveNewest")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Overlay/TinyOverlays/HBoxContainer/RulerControls" unique_id=1103708508]
 layout_mode = 2
 
-[node name="Deselect" type="Button" parent="Overlay/RulerOverlay/RulerControls/VBoxContainer" unique_id=429373069]
+[node name="Deselect" type="Button" parent="Overlay/TinyOverlays/HBoxContainer/RulerControls/VBoxContainer" unique_id=429373069]
 layout_mode = 2
 disabled = true
 text = "Deselect"
 
-[node name="Wipe" type="Button" parent="Overlay/RulerOverlay/RulerControls/VBoxContainer" unique_id=1663590489]
+[node name="Wipe" type="Button" parent="Overlay/TinyOverlays/HBoxContainer/RulerControls/VBoxContainer" unique_id=1663590489]
 layout_mode = 2
 disabled = true
 text = "Remove rulers"
 
-[node name="RemoveNewest" type="Button" parent="Overlay/RulerOverlay/RulerControls/VBoxContainer" unique_id=836213621]
+[node name="RemoveNewest" type="Button" parent="Overlay/TinyOverlays/HBoxContainer/RulerControls/VBoxContainer" unique_id=836213621]
 layout_mode = 2
 disabled = true
 text = "Remove newest ruler"
 
-[node name="Topnav" parent="Overlay" unique_id=118245835 node_paths=PackedStringArray("_pause", "_ruler") instance=ExtResource("2_gunap")]
+[node name="DebugControls" type="PanelContainer" parent="Overlay/TinyOverlays/HBoxContainer" unique_id=1702489344 node_paths=PackedStringArray("_map", "_disableEnemy", "_disablePlayer")]
+visible = false
+layout_mode = 2
+script = ExtResource("7_8f5sm")
+_map = NodePath("../../../../Map")
+_disableEnemy = NodePath("VBoxContainer/DisableAllTargets")
+_disablePlayer = NodePath("VBoxContainer/DisablePlayer")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Overlay/TinyOverlays/HBoxContainer/DebugControls" unique_id=808670032]
+layout_mode = 2
+
+[node name="DisableAllTargets" type="Button" parent="Overlay/TinyOverlays/HBoxContainer/DebugControls/VBoxContainer" unique_id=782082251]
+layout_mode = 2
+text = "Disable all targets"
+
+[node name="DisablePlayer" type="Button" parent="Overlay/TinyOverlays/HBoxContainer/DebugControls/VBoxContainer" unique_id=700071139]
+layout_mode = 2
+text = "Disable player"
+
+[node name="Topnav" parent="Overlay" unique_id=118245835 node_paths=PackedStringArray("_pause", "_ruler", "_debug") instance=ExtResource("2_gunap")]
 custom_minimum_size = Vector2(0, 79)
 script = ExtResource("3_3ihc8")
 _pause = NodePath("SwitchContainer/PauseButton")
 _ruler = NodePath("SwitchContainer/RulerButton")
+_debug = NodePath("SwitchContainer/DebugMenu")
 
 [node name="SwitchContainer" type="HBoxContainer" parent="Overlay/Topnav" unique_id=535321116]
 layout_mode = 2
@@ -147,6 +170,12 @@ texture_normal = SubResource("AtlasTexture_6tmns")
 texture_pressed = SubResource("AtlasTexture_tx6ec")
 ignore_texture_size = true
 stretch_mode = 3
+
+[node name="DebugMenu" type="Button" parent="Overlay/Topnav/SwitchContainer" unique_id=609517596]
+visible = false
+layout_mode = 2
+toggle_mode = true
+text = "Debug"
 
 [node name="InfoContainer" type="HBoxContainer" parent="Overlay/Topnav" unique_id=1611135056]
 layout_mode = 2
