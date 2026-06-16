@@ -78,6 +78,12 @@ public partial class Firing : Control
 		_totalEnemyDeviceCount = _enemyDevs.Length;
 		_firedEnemyDeviceCount = 0;
 		
+		if (_totalPlayerDeviceCount == 0 || _totalEnemyDeviceCount == 0)
+		{
+			NextStage();
+			return;
+		}
+		
 		switch (mode)
 		{
 			case FiringMode.Player:
