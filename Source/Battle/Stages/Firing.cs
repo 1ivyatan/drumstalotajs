@@ -78,7 +78,12 @@ public partial class Firing : Control
 		_totalEnemyDeviceCount = _enemyDevs.Length;
 		_firedEnemyDeviceCount = 0;
 		
-		if (_totalPlayerDeviceCount == 0 || _totalEnemyDeviceCount == 0)
+		var enemyTargetCount = _map.EntityLayer.Instances
+				.Where(i => i is Entity)
+				.Where(e => ((Entity)e).Player == false)
+				.Where(e => ((Entity)e).Target == true).Count();
+		
+		if (_totalPlayerDeviceCount == 0 || enemyTargetCount == 0)
 		{
 			NextStage();
 			return;
