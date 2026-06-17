@@ -16,7 +16,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 config/name="Drumstalotajs"
 config/description="Topdown turn-based tactical precision shell shooter-launcher."
-config/version="1.0"
+config/version="1.3.2"
 run/main_scene="uid://gno18tio1tc1"
 config/auto_accept_quit=false
 config/features=PackedStringArray("4.6", "C#", "GL Compatibility")
